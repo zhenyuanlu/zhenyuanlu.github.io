@@ -1,6 +1,14 @@
 .post-header {
     margin-bottom: $vertical-spacing-unit;
+
 }
+.post-header > div:first-child {
+  flex: 1;
+}
+.post-header > div:last-child {
+  width: 200px;
+}
+
 .post-list {
     margin: 0;
     padding: 0;
