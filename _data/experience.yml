@@ -1,0 +1,49 @@
+- organization: Northeastern University
+  title: Data Science Instructor
+  date: 2019-present
+  location: Boston, MA
+  caption:
+    "• Designing IE6600 Computation and Visualization Analytics for leading graduate students to do research, team projects and prepare for future career
+    <br/>• Developing Tableau, R, RShiny materials for improving students' data science skills
+    <br/>• Teaching IE7275 Data Mining in Engineering"
+  mentors: Dr. Sagar Kamarthi
+  logo: neu.png
+  # skills:
+
+- organization: Workhuman, Ltd
+  title: Data Scientist
+  date: 2018
+  location: Framingham, MA
+  caption: "Developed data product implemented machine learning and ELT features"
+  mentors: Dr. John Gao
+  logo: wh.png
+
+- organization: Paratus Diagnostics, LLC
+  title: Bioengineer, Data Analyst
+  date: 2015-2017
+  location: Austin, TX
+  mentors:
+    - Roland Schneider
+  caption: Point-of-care; Disease diagnoses; Lateral flow model; Bio-device design
+  logo: par.png
+
+#- organization: Texas State University
+#  title: Graduate Instructor Assistant
+#  date: 2014-2017
+#  location: San Marcos, TX
+#  logo: tsu.png
+
+- organization: Shanghai Jahwa United Co., Ltd
+  title: Product R&D Scientist
+  date: 2012-2013
+  location: Shanghai
+  caption: Personal Care; Informatics
+  logo: jahwa.png
+
+- organization: Shanghai Academy of Agricultural Sciences
+  title: Research Scientist
+  date: 2010-2012
+  location: Shanghai
+  caption: Gene Vaccine; Biostatistics
+  logo: saas.png
+  # skills:

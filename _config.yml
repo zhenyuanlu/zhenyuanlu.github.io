@@ -1,0 +1,44 @@
+# Site settings
+author: Zhenyuan Lu
+name: Zhenyuan Lu
+title: Zhenyuan Lu
+email: lu.zhenyua@northeastern.edu
+description: >
+  Machine Learning and R&D scientist with 7+ years
+  of experience in data-driven decision making
+
+url:  # the base hostname & protocol for your site
+baseurl:  # the subpath of your site, e.g. /blog/
+
+github_username: zhenyuanlu
+google_analytics: UA-177324856-1
+youtube_channel:
+rss:  # notes rss
+
+permalink: /:categories/:title/
+
+show_social_icons:  true
+enable_anchorjs:    true
+enable_latexjs:     true
+enable_katex:       true
+
+sass:
+  style: compressed
+
+markdown: kramdown
+highlighter: rouge
+
+include: ['_pages']
+exclude: [vendor]
+
+collections:
+  publications:
+    output: false
+
+plugins:
+    - jekyll-email-protect
+
+jquery_version: "1.12.4"
+katex_version: "0.10.1"
+anchorjs_version: "3.2.2"
+latexjs_version: "0.11.1"

@@ -1,0 +1,41 @@
+---
+layout: default
+---
+  <nav aria-label="breadcrumb">
+    <ol class="breadcrumb p-0 text-lowercase">
+      <li class="breadcrumb-item"><a href="{{ '/' | prepend: site.baseurl }}">Home</a></li>
+      <li class="breadcrumb-item"><a href="{{ '/teaching' | prepend: site.baseurl }}">Teaching</a></li>
+      <li class="breadcrumb-item active">{{ page.title }}</li>
+    </ol>
+  </nav>
+
+  <header class="post-header about">
+    <img class="logo" src="{{ page.logo | prepend: '/assets/img/' | relative_url }}">
+    <h1 class="post-title">{{ page.title }}</h1>
+    <h2 class="post-description clearfix">{{ page.description }}</h2>
+  </header>
+
+
+  <article class="post-content {{page.title}} clearfix">
+    <table class="table table-hover">
+      <colgroup>
+        <col style="width:5%">
+        <col style="width:35%">
+        <col style="width:45%">
+        <col style="width:15%">
+      </colgroup>
+      <thead class="thead-light">
+        <tr>
+          <th scope="col">Date</th>
+          <th scope="col">Lecture</th>
+          <th scope="col">Readings</th>
+          <th scope="col">Logistics</th>
+        </tr>
+      </thead>
+      <tbody>
+        {{ content }}
+      </tbody>
+    </table>
+  </article>
+
+</div>

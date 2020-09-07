@@ -1,0 +1,33 @@
+<head>
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-177324856-1"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'UA-177324856-1');
+  </script>
+
+  <meta charset="UTF-8">
+  <meta http-equiv="content-language" content="en">
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <meta name="viewport" content="width=device-width initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+  <title>{{ site.name }}{% if page.nav and page.url != "/" %} | {{ page.nav }}{% endif %}</title>
+  <meta name="description" content="{{ site.description }}">
+
+  <link rel="stylesheet" href="{{ '/assets/css/main.css' | prepend: site.baseurl }}">
+  <!--<link rel="stylesheet" href="{{ '/assets/css/academicons.min.css' | prepend: site.baseurl }}">-->
+  <link rel="shortcut icon" href="{{ '/assets/img/favicon.ico' | relative_url }}">
+  <!--<link rel="stylesheet" href="{{ '/assets/css/main.css' | relative_url }}"> -->
+  <link rel="canonical" href="{{ page.url | replace:'index.html','' | relative_url }}">
+  <link href="https://use.fontawesome.com/releases/v5.11.2/css/all.css" rel="stylesheet">
+
+  {% if site.enable_latexjs %}
+  <!-- Load Latex JS -->
+  <script src="https://cdn.jsdelivr.net/npm/latex.js@{{ site.latexjs_version }}/dist/latex.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/latex.js@{{ site.latexjs_version }}/dist/latex.component.js"></script>
+  {% endif %}
+</head>

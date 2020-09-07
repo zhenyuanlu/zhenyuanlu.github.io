@@ -1,0 +1,43 @@
+div #experience-section {
+  .item {
+    font-size: 0.95em;
+    margin-bottom: 1.5em;
+    .logo {
+      justify-self: start;
+      align-self: center;
+      width: 50px - 10;
+      height: 50px - 10;
+      background-size: contain;
+      background-position: center;
+      background-repeat: no-repeat;
+    }
+
+    .organization {
+      font-weight: 1000;
+    }
+    .title {
+      font-style: italic;
+    }
+    .date {
+      font-size: 0.9em;
+      float: right;
+    }
+    .caption {
+      font-size: 0.9em;
+      color: #666;
+    }
+  }
+}
+
+div.tabbed-section {
+  grid-column-start: 1;
+  grid-column-end: span 2;
+
+  .item {
+    display: grid;
+    grid-template-columns: 50px 1fr;
+    grid-column-gap: 10px;
+    margin-bottom: 12px;
+
+  }
+}

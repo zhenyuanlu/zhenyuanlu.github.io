@@ -1,0 +1,365 @@
+.home {
+  h1 {
+    margin-top: 0;
+  }
+
+  h2 {
+    font-size: 1.5em;
+    border-bottom: none;
+  }
+
+  .columns {
+    display: flex;
+    flex-direction: row;
+
+    .intro {
+      flex: 1;
+      font-size: 1.1em;
+    }
+
+    .me {
+      margin-left: $spacing-unit;
+      margin-bottom: $spacing-unit;
+
+      font-size: 0.9em;
+      text-align: center;
+
+      picture, img {
+        width: 220px;
+        height: 220px;
+        border-radius: 6px;
+      }
+
+      ul {
+        margin-top: 16px;
+      }
+    }
+  }
+
+  .button {
+    color: $brand-color;
+    padding: 6px 16px;
+    border-radius: 3px;
+    border: 1px solid lighten($brand-color, 20%);
+
+    &:hover {
+      opacity: 1;
+      text-decoration: none;
+      background-color: lighten($brand-color, 50%);
+    }
+  }
+
+  .featured-projects {
+    font-size: 0.9em;
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 1.5em;
+
+    .project {
+      flex-grow: 1;
+      flex-basis: 0;
+
+      display: flex;
+      flex-direction: column;
+
+      &:not(:last-child) {
+        margin-right: 16px;
+      }
+
+      border-radius: 3px;
+      padding: 16px;
+      border: 1px solid #ddd;
+
+      transition: box-shadow 0.2s ease;
+
+      &:hover {
+        box-shadow: #aaa 2px 2px 11px;
+      }
+
+      .spacer {
+        flex: 1;
+      }
+
+      .title {
+        margin: 0 0 0.6em 0;
+        font-size: 1.3em;
+        font-weight: bold;
+        line-height: 1;
+      }
+
+      p {
+        font-size: 0.85em;
+        margin: 0.7em 0;
+        line-height: 1.2;
+      }
+
+      .preview-image {
+        display: block;
+        width: 100%;
+        height: 0;
+        padding-top: 60%;
+        border: 1px solid #f1f1f1;
+        background-size: cover;
+        background-position: top left;
+        transition: background 1.5s;
+
+        &:hover {
+          background-position: bottom right;
+        }
+      }
+
+      .links {
+        font-size: 0.8em;
+
+        a {
+          margin-right: 0.5em;
+          white-space: nowrap;
+        }
+      }
+    }
+  }
+
+
+    .featured-tutorials {
+      font-size: 0.9em;
+      display: flex;
+      flex-direction: row;
+      margin-bottom: 1.5em;
+
+      .project {
+        flex-grow: 1;
+        flex-basis: 0;
+
+        display: flex;
+        flex-direction: column;
+
+        &:not(:last-child) {
+          margin-right: 16px;
+        }
+
+        border-radius: 3px;
+        padding: 16px;
+        border: 1px solid #ddd;
+
+        transition: box-shadow 0.2s ease;
+
+        &:hover {
+          box-shadow: #aaa 2px 2px 11px;
+        }
+
+        .spacer {
+          flex: 1;
+        }
+
+        .title {
+          margin: 0 0 0.6em 0;
+          font-size: 1.3em;
+          font-weight: bold;
+          line-height: 1;
+        }
+
+        p {
+          font-size: 0.85em;
+          margin: 0.7em 0;
+          line-height: 1.2;
+        }
+
+        .preview-image {
+          display: block;
+          width: 100%;
+          height: 0;
+          padding-top: 60%;
+          border: 1px solid #f1f1f1;
+          background-size: cover;
+          background-position: top left;
+          transition: background 1.5s;
+
+          &:hover {
+            background-position: bottom right;
+          }
+        }
+
+        .links {
+          font-size: 0.8em;
+
+          a {
+            margin-right: 0.5em;
+            white-space: nowrap;
+          }
+        }
+      }
+    }
+
+
+  @include media-query($on-palm) {
+    .columns {
+      flex-direction: column;
+      align-items: center;
+
+      .intro {
+        order: 2;
+      }
+      .me {
+        order: 1;
+        margin-left: 0;
+      }
+    }
+
+    .button {
+      font-size: 1.1em;
+      background-color: lighten($brand-color, 57%);
+    }
+
+    .featured-projects {
+      flex-direction: column;
+
+      .project {
+        display: block;
+        margin-bottom: 16px;
+
+        &:not(:last-child) {
+          margin-right: 0;
+        }
+
+        .preview-image {
+          width: 40%;
+          padding-top: 22%;
+          float: left;
+          margin-right: 18px;
+        }
+      }
+    }
+
+
+  }
+
+  .social-buttons {
+    margin-bottom: 0;
+      a {
+        font-size: 20px;
+        margin: 0 15px 0 0;
+        display: inline-block;
+        width: 20px;
+        height: 40px;
+        -webkit-transition: all 0.3s;
+        -moz-transition: all 0.3s;
+        transition: all 0.3s;
+        color: $theme-color;
+        outline: none;
+        &:active,
+        &:focus,
+        &:hover {
+          transform: scale(1.2);
+        }
+    }
+  }
+
+  .pubs {
+    font-size: 0.95em;
+    .pub-year {
+      font-size: 1.3em;
+      margin: 0.7em 0 0.5em 0;
+      border-bottom: none;
+      color: $grey-color;
+    }
+
+    .publication,
+    .year {
+      opacity: 1;
+      max-height: 600px;
+      overflow: hidden;
+      transition: all 0.6s ease;
+
+      &.hidden {
+        max-height: 0;
+        margin: 0;
+        opacity: 0;
+      }
+    }
+
+    .publication {
+      margin-bottom: 2em;
+
+      h3 {
+        font-size: 1.2em;
+        margin: 0em;
+        font-weight: 500;
+
+        max-height: 600px;
+        overflow: hidden;
+
+        &.hidden {
+          max-height: 0;
+        }
+      }
+
+      .award-icon {
+        margin-right: 0.2em;
+        font-size: 1.2em;
+
+        &.fa-trophy {
+          color: $yellow-color;
+        }
+
+        &.fa-award {
+          color: firebrick;
+        }
+      }
+
+      .authors {
+        margin-bottom: 0.3em;
+        font-weight: 300;
+        a {
+          color: $text-color;
+        }
+      }
+
+      .venue,
+      .venue a {
+        color: $grey-color;
+      }
+
+      .awards {
+        margin-top: 0.1em;
+        font-weight: 500;
+        color: firebrick;
+      }
+
+      .tweet {
+        &:hover {
+          text-decoration: none;
+
+          .message {
+            text-decoration: underline;
+          }
+        }
+        .message {
+          font-size: 0.9em;
+          font-style: italic;
+          color: $grey-color;
+        }
+      }
+
+      p {
+        margin-bottom: 0;
+      }
+
+      .extra-links {
+        margin-top: 0.5em;
+        font-weight: 300;
+        font-size: 0.9em;
+
+        a {
+          margin-right: 1em;
+          white-space: nowrap;
+
+          &:hover {
+            text-decoration: none;
+            border-bottom: 1px solid $link-color;
+          }
+        }
+      }
+    }
+  }
+
+}
