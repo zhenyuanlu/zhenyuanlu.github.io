@@ -1,14 +1,19 @@
 .post-header {
     margin-bottom: $vertical-spacing-unit;
+    justify-content: space-between;
 
 }
-.post-header > div:first-child {
-  flex: 1;
-}
-.post-header > div:last-child {
-  width: 200px;
-}
+  @include media-query($on-laptop) {
+    .post-header {
+      flex: 1;
+    }
+  }
 
+  @include media-query($on-palm) {
+  .post-header  {
+    width: 200px;
+  }
+}
 .post-list {
     margin: 0;
     padding: 0;
