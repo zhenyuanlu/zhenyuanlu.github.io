@@ -16,7 +16,7 @@ description: Machine Learning Scientist
 
 <div class="row-right"  style="margin-top: -3em;">
     <p class="right-align">
-      <a href="{{ absolute_url }}/">https://www.zhenyuanlu.com</a><br/>
+      <a href="{{ absolute_url }}/">https://zhenyuanlu.github.io/</a><br/>
       <a href="https://www.linkedin.com/in/zhenyuanlu/">linkedin.com/in/zhenyuanlu</a><br/>
       <a href="https://github.com/zhenyuanlu">github.com/zhenyuanlu</a><br/>
 
