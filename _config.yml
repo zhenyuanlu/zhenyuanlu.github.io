@@ -28,7 +28,7 @@ sass:
 markdown: kramdown
 highlighter: rouge
 
-include: ['_pages']
+include: ['_pages', '_courses']
 exclude: [vendor]
 
 collections:
