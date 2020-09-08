@@ -6,7 +6,7 @@ title: "MealthUp&trade;"
 highlight: 3
 description: A new era of health consultant & personalized meal plan implemented machine learning techniques.
 date: 2019-02-02
-
+cite: false
 authors:
   - name: Zhenyuan Lu  # author's full name
     url: "#"  # optional URL to the author's homepage

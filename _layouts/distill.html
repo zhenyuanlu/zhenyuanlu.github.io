@@ -56,11 +56,19 @@
         {{ content }}
       </d-article>
 
+      {% if page.cite == false%}
+        <div style="display: none;"></div>
+      {% else %}
       <d-appendix>
         <d-footnote-list></d-footnote-list>
         <d-citation-list></d-citation-list>
       </d-appendix>
-
+      {% endif %}
+    </div>
+    <div style="max-width: 100%;width: 800px;margin: auto;">
+    {% if page.comments %}
+      {% include disqus.html %}
+    {% endif %}
     </div>
 
     {% include footer.html %}
