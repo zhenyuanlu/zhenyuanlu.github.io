@@ -4,7 +4,7 @@ permalink: /
 title: "Hi, I'm Zhenyuan Lu"
 class: home
 ---
-<img src="/assets/img/home.png" style="display: none;" /> 
+
 <div class="columns" markdown="1">
 
 <div class="intro" markdown="1">
@@ -35,7 +35,7 @@ I am actively contributing to open source projects on creating user-friendly R-s
 </span>
 </p>
 
-
+<img src="/assets/img/home.png" style="visibility:hidden;" />
 
 </div>
 
