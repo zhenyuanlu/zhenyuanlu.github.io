@@ -1,6 +1,6 @@
 - title: "Module 1: Introduction"
 
-- date: 9/10
+- date: 9/11
   lecturer:
   title: >
     <strong>Course introduction and expectations</strong>
@@ -12,7 +12,7 @@
     - Instructor’s brain
   assignments:
 
-- date: 9/14
+- date: 9/15
   lecturer:
   title: >
     <strong>Basic of R I</strong>
@@ -21,7 +21,7 @@
     - <b>R4E</b> "Advanced Data Structure"
   assignments:
 
-- date: 9/17
+- date: 9/18
   lecturer:
   title: >
     <strong>Basic of R II</strong>
@@ -30,7 +30,7 @@
     - <b>R4E</b> "Advanced Data Structure"
   assignments:
 
-- date: 9/21
+- date: 9/22
   lecturer:
   title: >
     <strong>R functions and the grammar of visualization I</strong>
@@ -40,7 +40,7 @@
     - (optional) <b>R4E</b> "Writing R functions"
   assignments:
 
-- date: 9/24
+- date: 9/25
   lecturer:
   title: >
     <strong>R functions and the grammar of visualization II</strong>
@@ -53,19 +53,33 @@
 
 - title: "Module 2: Basic Visualization and Data Engineering"
 
-- date: 9/28
+- date: 9/29
+  title: >
+    <strong>Data Visualization Concepts I</strong>
+  materials:
+  assignments: >
+    <span class="deadline">Group arrangement due
+    9/28 @ 11:59pm</span>
+
+- title: 9/29, Last day to drop a full-semester fall class without a W grade
+
+- date: 10/2
+  title: >
+    <strong>Data Visualization Concepts II</strong>
+  materials:
+  assignments: >
+    <span class="deadline">HW1 due 10/1 @ 11:59pm</span>
+
+- date: 10/6
   lecturer:
   title: >
     <strong>Basic data visualization in R I</strong>
   materials:
     - <b>R4DS</b> <a href="https://r4ds.had.co.nz/workflow-basics.html" target="_blank">Data Visualization with ggplot2</a>
     - (optional) RGC "Quickly Exploring Data"
-  assignments: >
-    <span class="deadline">Group arrangement due 9/29 @ 11:59pm</span>
+  assignments:
 
-- title: 9/29, Last day to drop a full-semester fall class without a W grade
-
-- date: 10/1
+- date: 10/9
   lecturer:
   title: >
     <strong>Basic data visualization in R II</strong>
@@ -73,7 +87,6 @@
     - <b>R4DS</b> <a href="https://r4ds.had.co.nz/workflow-basics.html" target="_blank">Data Visualization with ggplot2</a>
     - (optional) RGC "Quickly Exploring Data"
   assignments: >
-    <span class="deadline">HW1 due 9/30 @ 11:59pm</span> <br>
     <span class="event">HW2 out</span>
 
 - date: 10/5
