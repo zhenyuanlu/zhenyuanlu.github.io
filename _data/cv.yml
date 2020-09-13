@@ -39,11 +39,11 @@
       description:
         - Taught, Designed and Developed <b><a href="{{ '/lectures/' | relative_url }}">IE6600</a></b> (Tableau, R, and RShiny) and IE7275 graduate courses
 
-    - title: 'Data Scientist, GRAPEI, LLC.'
-      year: 2020-present
-      description:
-        - '<a href="https://www.grapei.com/" target="_blank"><b>GRAPEI official website</b></a>'
-        - Data Science Consulting
+    #- title: 'Data Scientist, GRAPEI, LLC.'
+      #year: 2020-present
+      #description:
+      #  - '<a href="https://www.grapei.com/" target="_blank"><b>GRAPEI official website</b></a>'
+      #  - Data Science Consulting
 
     - title: 'Data Scientist, WorkHuman Analytics and Research Institute, WORKHUMAN, LTD.'
       year: 2018
