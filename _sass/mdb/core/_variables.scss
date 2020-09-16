@@ -1,24 +1,4 @@
-
 // Basic font properties
 $roboto-font-path:                            "../font/roboto/" !default;
 $roboto-font-family:                          "Roboto", sans-serif !default;
 $mdb-font-family:                             $roboto-font-family !default;
-
-$font-size-large:                             1.5rem !default;
-$font-size-small:                             0.9rem !default;
-
-
-// Transitions
-$transition-basic                            : all .2s ease-in-out !default;
-$transition-hoverable                        : all .55s ease-in-out !default;
-
-
-// Divider
-$divider-margin-y                            : 2.8rem !default;
-$divider-margin-x                            : .5rem !default;
-$divider-height                              : 2px !default;
-
-// Dividers colors
-$hr-light                                    : $white-base !default;
-$hr-dark                                     : #666 !default;
-$flex-center-ul-mb                           : 1rem !default;
