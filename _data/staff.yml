@@ -6,25 +6,25 @@ instructor:
       office-hours: "Tue 01:00pm to 02:00pm on Zoom"
       image: staff/z.jpg
 
-    - name: TBA
+    - name: Anuja Nanal
       title: TA
-      email: TBA
+      email: nanal.a@northeastern.edu
       url:
       office-hours: "TBA"
+      image: staff/husky.jpg
+
+    - name: Kate Kryder
+      title: Data Visualization Specialist
+      email: k.kryder@northeastern.edu
+      url:
+      office-hours: Book Appointment (See Slides)
       image: staff/husky.jpg
 
     - name: TBA
       title: TA
       email: TBA
       url:
-      office-hours: "TBA"
-      image: staff/husky.jpg
-
-    - name: TBA
-      title: TA
-      email: TBA
-      url:
-      office-hours: "TBA"
+      office-hours: Book Appointment
       image: staff/husky.jpg
 
     #- name: Kate Kryder
