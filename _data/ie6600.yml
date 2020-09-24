@@ -67,8 +67,7 @@
   title: >
     <strong>Data Visualization Concepts II</strong>
   materials:
-  assignments: >
-    <span class="deadline">HW1 due 10/1 @ 11:59pm</span>
+  assignments:
 
 - date: 10/6
   lecturer:
@@ -77,7 +76,8 @@
   materials:
     - <b>R4DS</b> <a href="https://r4ds.had.co.nz/workflow-basics.html" target="_blank">Data Visualization with ggplot2</a>
     - (optional) RGC "Quickly Exploring Data"
-  assignments:
+  assignments: >
+    <span class="deadline">HW1 due 10/5 @ 11:59pm</span>
 
 - date: 10/9
   lecturer:
@@ -127,7 +127,7 @@
   assignments: >
     <span class="deadline">Project proposal due 10/22 @ 11:59pm</span><br>
     <span class="deadline">HW3 due 10/22 @ 11:59pm</span><br>
-    <span class="event">HW4 out</span> 
+    <span class="event">HW4 out</span>
 
 - date: 10/27
   title: >
