@@ -7,7 +7,7 @@ description: >
   Machine Learning and R&D scientist with 7+ years
   of experience in data-driven decision making
 
-url:  # the base hostname & protocol for your site
+url: "https://zhenyuanlu.com/" # the base hostname & protocol for your site
 baseurl: "" # the subpath of your site, e.g. /blog/
 
 github_username: zhenyuanlu
@@ -37,6 +37,9 @@ collections:
 
 plugins:
     - jekyll-email-protect
+    - jekyll-sitemap
+    - jekyll-seo-tag
+    - jekyll-mentions
 
 jquery_version: "1.12.4"
 katex_version: "0.10.1"
