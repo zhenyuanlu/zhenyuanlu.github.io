@@ -57,6 +57,9 @@
   title: >
     <strong>R functions and the grammar of visualization II</strong>
   materials:
+    - <b>R4DS</b> <a href="https://r4ds.had.co.nz/workflow-basics.html" target="_blank">Workflow</a>
+    - <b>Wickham</b> <a href="https://vita.had.co.nz/papers/layered-grammar.pdf" target="_blank">A layered grammar of graphics</a>
+    - (optional) <b>R4E</b> "Writing R functions"
   assignments: >
     <span class="deadline">Group arrangement due
     9/28 @ 11:59pm</span>
