@@ -68,13 +68,14 @@
 
 - date: 10/2
   title: >
-    <strong>Data Visualization Concepts</strong>
+    <strong>Data Visualization Concepts I</strong>
   materials:
   assignments:
 
 - date: 10/6
   lecturer:
   title: >
+    <strong>Data Visualization Concepts II</strong>
     <strong>Basic data visualization in R I</strong>
   materials:
     - <b>R4DS</b> <a href="https://r4ds.had.co.nz/workflow-basics.html" target="_blank">Data Visualization with ggplot2</a>
