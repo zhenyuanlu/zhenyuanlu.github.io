@@ -4,7 +4,7 @@
     <a href="{{ guest.url }}" target="_blank"><img src="{{ guest.image | prepend: '/assets/img/' | relative_url }}" /></a>
     <ul class="instructor-info">
       <li><span>{{ instructor.title }}</span> </li>
-      <li><a href="{{ guest.url }}" target="_blank">{{ guest.name }}</a></li>
+      <li><span><a href="{{ guest.url }}" target="_blank">{{ guest.name }}</a></span></li>
       <li><span>Email:</span>
         <a href="mailto:{{ guest.email | encode_email }}" target="_blank">
         <i class="far fa-envelope" aria-hidden="true"></i>
