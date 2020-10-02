@@ -32,5 +32,12 @@ guest:
       title: Guest Lecturer
       email:
       url:
-      office-hours:
+      expertise: TBA
+      image: staff/husky.jpg
+
+    - name: TBA
+      title: Guest Lecturer
+      email:
+      url:
+      expertise: TBA
       image: staff/husky.jpg
