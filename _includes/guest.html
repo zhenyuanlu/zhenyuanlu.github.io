@@ -1,0 +1,15 @@
+<div class="instructors clearfix">
+  {% for instructor in site.data.staff.guest %}
+  <div class="instructor-profile-two-col">
+    <a href="{{ guest.url }}" target="_blank"><img src="{{ guest.image | prepend: '/assets/img/' | relative_url }}" /></a>
+    <ul class="instructor-info">
+      <li><span>{{ instructor.title }}</span> </li>
+      <li><a href="{{ guest.url }}" target="_blank">{{ guest.name }}</a></li>
+      <li><span>Email:</span>
+        <a href="mailto:{{ guest.email | encode_email }}" target="_blank">
+        <i class="far fa-envelope" aria-hidden="true"></i>
+        </a></li>
+    </ul>
+  </div>
+  {% endfor %}
+</div>

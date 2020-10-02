@@ -27,16 +27,10 @@ instructor:
       office-hours: Book Appointment (See Slides)
       image: staff/husky.jpg
 
-    #- name: Kate Kryder
-    #  title: Data Visualization Specialist
-    #  email: k.kryder@northeastern.edu
-    #  url: https://northeastern.libcal.com/appointments/KateKryder
-    #  office-hours: See above
-    #  image: staff/husky.jpg
-
-    #- name: Jodi Bolognese
-    #  title: Engineering Librarian
-    #  email: j.bolognese@northeastern.edu
-    #  url: https://northeastern.libcal.com/appointment/68501
-    #  office-hours: See above
-    #  image: staff/husky.jpg
+guest:
+    - name: TBA
+      title: Guest Lecturer
+      email:
+      url:
+      office-hours:
+      image: staff/husky.jpg
