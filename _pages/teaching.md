@@ -24,7 +24,7 @@ description: Classes, Workshops, and Course websites
 
 
 
-    <h6 class="mt-2 mt-sm-0">Fall 2020 [<b><a href="{{ '/ie6600/' | relative_url }}">Website</a></b>], Spring 2020 (Seattle), Spring 2019: Instructor</h6>
+    <h6 class="mt-2 mt-sm-0">Fall 2020 [<b><a href="{{ '/ie6600/' | relative_url }}" target="_blank">Website</a></b>], Spring 2020 (Seattle), Spring 2019: Instructor</h6>
     <ul class="card-text font-weight-light list-group list-group-flush">
 
       <!--<li class="list-group-item">Fall 2020 [<a href="{{ '/lectures/' | relative_url }}">Website</a>], Spring 2020 (Seattle), Spring 2019: Instructor</li>-->
@@ -71,7 +71,7 @@ description: Classes, Workshops, and Course websites
     </div>
     <h6 class="mt-2 mt-sm-0">Fall 2014-Spring 2017: Graduate Instructor Assistant</h6>
     <ul class="card-text font-weight-light list-group list-group-flush">
-      <li class="list-group-item">Supervised by <a href="https://www.bio.txstate.edu/about/Faculty---Staff/faculty/David-Lemke/Lemke-lab.html">Prof. David E. Lemke</a></li>
+      <li class="list-group-item">Supervised by <a href="https://www.bio.txstate.edu/about/Faculty---Staff/faculty/David-Lemke/Lemke-lab.html" target="_blank">Prof. David E. Lemke</a></li>
       <li class="list-group-item">This course provides the nonscience major the strong and diverse background necessary to understand the structural and functional diversity of organisms, evolution and behavior, and interactions among organisms and their environment. Topics include issues such as the genetic basis of behavior, overpopulation and extinction, ozone depletion, and conservation biology. This course is not recommended for majors in the natural sciences, including biology.</li>
     </ul>
   </div>
