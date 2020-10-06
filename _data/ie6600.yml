@@ -73,7 +73,8 @@
   assignments:
 
 - date: 10/6
-  lecturer: Guest Lecturer
+  lecturer: Guest Lecturer - Nan
+  guest: Visualization and Color Design
   title: >
     <strong>Data Visualization Concepts II</strong>
     <strong>Basic data visualization in R I</strong>

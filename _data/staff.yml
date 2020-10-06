@@ -28,12 +28,13 @@ instructor:
       image: staff/husky.jpg
 
 guest:
-    - name: TBA
+    - name: Nan Wang
       title: Guest Lecturer
       email:
       url:
-      expertise: TBA
-      image: staff/husky.jpg
+      expertise: Visualization Design
+      title2: Design & Innovation Manager
+      image: staff/nanW.jpg
 
     - name: TBA
       title: Guest Lecturer
