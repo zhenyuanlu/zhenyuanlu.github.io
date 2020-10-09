@@ -34,7 +34,14 @@ guest:
       url:
       expertise: Visualization Design
       title2: Design & Innovation Manager
-      image: staff/nanW.jpg
+      image: staff/husky.jpg
+
+    - name: TBA
+      title: Guest Lecturer
+      email:
+      url:
+      expertise: TBA
+      image: staff/husky.jpg
 
     - name: TBA
       title: Guest Lecturer
