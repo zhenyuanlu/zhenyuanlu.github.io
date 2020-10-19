@@ -110,7 +110,6 @@
     <span class="deadline">HW2 due 10/15 @ 11:59pm</span><br>
     <span class="event">HW3 out</span>
 
-
 - date: 10/20
   title: >
     <strong>Data wrangling with tibbles, readr and tidyr I</strong>
