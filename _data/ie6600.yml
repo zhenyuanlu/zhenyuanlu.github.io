@@ -170,8 +170,7 @@
     <strong>Data analytics web apps with Shiny</strong>
   materials:
     - <b>R Shiny</b> <a href="https://shiny.rstudio.com/tutorial/" target="_blank">Shiny tutorial</a>
-  assignments: >
-    <span class="deadline">HW5 due 11/9 @ 11:59pm</span><br>
+  assignments:
 
 
 - date: 11/13
@@ -180,6 +179,7 @@
   materials:
     - <b>R4DS</b> <a href="https://r4ds.had.co.nz/exploratory-data-analysis.html" target="_blank">Exploratory Data Analysis</a>
   assignments: >
+      <span class="deadline">HW5 due 11/12 @ 11:59pm</span><br>
       <span class="event">HW6 out</span>
 
 - date: 11/17
