@@ -12,6 +12,7 @@ I am a data science instructor and PhD student in the [Department of Mechanical 
 
 I am actively contributing to open source projects on creating user-friendly R-shiny app and machine learning implementations. When I am not at work, I am a photographer with my own studio taking photos included but not limited to human-beings, driver-only road trips, etc.
 
+
 <p>
 <span class="social-buttons">
   <span class="item">
