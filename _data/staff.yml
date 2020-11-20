@@ -43,7 +43,7 @@ guest:
       expertise: Software Development
       title2: Software Engineer
       image: staff/hui.jpg
-      
+
     - name: Qibin Tan
       title: Guest Lecturer
       email:
@@ -51,3 +51,11 @@ guest:
       expertise: DevOps
       title2: Build And Release Engineer
       image: staff/qibin.jpg
+
+    - name: TBA
+      title: Guest Lecturer
+      email:
+      url:
+      expertise:
+      title2:
+      image: staff/husky.jpg
