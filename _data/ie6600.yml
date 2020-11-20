@@ -191,14 +191,15 @@
 
 - date: 11/20
   title: >
-    <strong>Data visualization and Calculation with Tableau</strong>
+    <strong>Moved to 11/24</strong>
   materials:
-    - <b>Tableau</b> <a href="http://kb.tableau.com/" target="_blank">Tableau tutorial</a>
   assignments: >
     <span class="deadline">HW6 due 11/23 @ 11:59pm</span><br>
 
 - date: 11/24
-  title: No classes - Thanksgiving
+  title: Additional topics and Workshop
+  materials:
+  assignments:
 
 - date: 11/27
   title: No classes - Thanksgiving
