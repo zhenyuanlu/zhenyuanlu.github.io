@@ -36,16 +36,18 @@ guest:
       title2: Design & Innovation Manager
       image: staff/nanW.jpg
 
-    - name: TBA
+    - name: Qibin Tan
       title: Guest Lecturer
       email:
-      url:
-      expertise: TBA
-      image: staff/husky.jpg
+      url: https://www.linkedin.com/in/qibint/
+      expertise: DevOps
+      title2: Build And Release Engineer
+      image: staff/qibin.jpg
 
-    - name: TBA
+    - name: Jinhui Zhao
       title: Guest Lecturer
       email:
-      url:
-      expertise: TBA
-      image: staff/husky.jpg
+      url: https://www.linkedin.com/in/jinhui-zhao-7ab2a186/
+      expertise: Software Development
+      title2: Software Engineer
+      image: staff/hui.jpg
