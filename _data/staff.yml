@@ -52,10 +52,10 @@ guest:
       title2: Build And Release Engineer
       image: staff/qibin.jpg
 
-    - name: TBA
+    - name: Wenxin Liu
       title: Guest Lecturer
       email:
-      url:
-      expertise:
-      title2:
-      image: staff/husky.jpg
+      url: https://www.linkedin.com/in/wenxin-liu-22b33492/
+      expertise: Cloud Architecture
+      title2: Cloud Infrastructure Architect
+      image: staff/wen.jpg
