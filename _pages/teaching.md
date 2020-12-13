@@ -24,7 +24,7 @@ description: Classes, Workshops, and Course websites
 
 
 
-    <h6 class="mt-2 mt-sm-0">Spring 2021, Fall 2020 [<b><a href="{{ '/ie6600/' | relative_url }}" target="_blank">Website</a></b>], Spring 2020, Spring 2019: Instructor</h6>
+    <h6 class="mt-2 mt-sm-0">Instructor: Spring 2021, Fall 2020 [<b><a href="{{ '/ie6600/' | relative_url }}" target="_blank">Website</a></b>], Spring 2020, Spring 2019</h6>
     <ul class="card-text font-weight-light list-group list-group-flush">
 
       <!--<li class="list-group-item">Fall 2020 [<a href="{{ '/lectures/' | relative_url }}">Website</a>], Spring 2020 (Seattle), Spring 2019: Instructor</li>-->
@@ -48,7 +48,7 @@ description: Classes, Workshops, and Course websites
         </span>
       </div>
     </div>
-    <h6 class=" mt-2 mt-sm-0">Summer 2020: Instructor</h6>
+    <h6 class=" mt-2 mt-sm-0">Instructor: Summer 2020</h6>
     <ul class="card-text font-weight-light list-group list-group-flush">
         <li class="list-group-item">This course covers the theory and applications of data mining in engineering. It reviews fundamentals and key concepts of data mining, discusses important data mining techniques, and presents algorithms for implementing these techniques. In specific, this course covers data mining techniques for data preprocessing, association rule extraction, classification, prediction, clustering, and complex data exploration. Data mining applications in several areas including manufacturing, healthcare, medicine, business, and other service sectors are discussed.</li>
     </ul>
@@ -69,7 +69,7 @@ description: Classes, Workshops, and Course websites
         </span>
       </div>
     </div>
-    <h6 class="mt-2 mt-sm-0">Fall 2014-Spring 2017: Graduate Instructor Assistant</h6>
+    <h6 class="mt-2 mt-sm-0">Graduate Instructor Assistant: Fall 2014-Spring 2017</h6>
     <ul class="card-text font-weight-light list-group list-group-flush">
       <li class="list-group-item">Supervised by <a href="https://www.bio.txstate.edu/about/Faculty---Staff/faculty/David-Lemke/Lemke-lab.html" target="_blank">Prof. David E. Lemke</a></li>
       <li class="list-group-item">This course provides the nonscience major the strong and diverse background necessary to understand the structural and functional diversity of organisms, evolution and behavior, and interactions among organisms and their environment. Topics include issues such as the genetic basis of behavior, overpopulation and extinction, ozone depletion, and conservation biology. This course is not recommended for majors in the natural sciences, including biology.</li>
