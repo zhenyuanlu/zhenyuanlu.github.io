@@ -1,9 +1,9 @@
 ---
 layout: schedule
-permalink: /ie6600/
+permalink: /ie6600-sea-sp20/
 title: <b>C</b>omputation and <b>V</b>isualization for <b>A</b>nalytics
 class: course
-description: IE6600 • Fall 2020 • Northeastern University • Boston
+description: IE6600 • Spring 2020 • Northeastern University • Seattle
 logo: neu.png
 nav: IE6600
 ---
@@ -12,22 +12,17 @@ This course covers basic of the R, and R Shiny for data preprocessing, and visua
 
 ***
 
-- **Class:** Tue, Fri 08:30am – 10:10am (ET)
+- **Class:** Monday, Thursday 08:30am – 10:10am (ET)
 - **Location:** Online via Zoom
-- **Dates:** 09/11/2020 – 12/11/2020
-- **Administration:** Class/HW/project questions, discussion or assignments will be only posted via Piazza (sign up link see slides or directly through Canvas).
+- **Dates:** 09/09/2020 – 12/10/2020
+- **Administration:** Class/HW/project questions, discussion or assignments will be only posted via Piazza (On Canvas).
 - **HW submission:** [Canvas](https://canvas.northeastern.edu/){:target="\_blank"}
-- **Online lectures:** The lectures will be live-streamed through Zoom.
+- **Online lectures:** The lectures will be live-streamed through Zoom, recorded, and made available on Piazza.
 
 ***
 
 <!-- Staff  -->
 {% include staff.html %}
-
-***
-
-<!-- Guest  -->
-{% include guest.html %}
 
 ***
 
@@ -89,18 +84,6 @@ Eating healthy food, having regular exercises, avoiding alcohol and drugs, getti
 
 If you have difficulty to keep up with any materials or homework for personal reasons please let me know early. If you or your friends/classmates who appears to be struggling, or having trouble coping with stress. We strongly encourage you to seek support at the [We Care](https://studentlife.northeastern.edu/we-care/){:target="\_blank"} program at NEU. At Northeastern, a student is never alone when struggling with a demanding situation.
 
-***
-### homework
-There are 6 individual homework assignments. Due day will be posted with the homework. Late submission would not be accepted. Please let me know 72 hours in advance before the due day if you need extensions with a reasonable justification.
-Requests for regrades in writing will only be accepted no less than 10 days after receiving grade. Please send the instructor your NUID, and name with title “Request for regrade: HW+number” via email. The new grade may be lower than the original one.
-
-Please feel free to refer to any materials from my slides. You may discuss homework with your classmates, but all the assignments are supposed to completed by your own. Sharing of completed solutions will not be tolerated. Plagiarism will be considered, if solutions and project documentations with a very high degree of similarity with other student’s or materials online. Such academic dishonesty will be handled in accordance with university policies.
-
-***
-### Projects
-More details will be posted later in the semester.
-
-
 
 ***
 
@@ -143,12 +126,10 @@ More details will be posted later in the semester.
     {% else %}
     <td>
         <!--Lecture #{{ forloop.index | minus: current_module | minus: skip_classes }}-->
-
+        <!--{% if lecture.lecturer %}({{ lecture.lecturer }}){% endif %}:
+        <br />-->
         {{ lecture.title }}
         <br />
-        {% if lecture.lecturer %}({{ lecture.lecturer }}):
-        <br />{% endif %}
-        {{ lecture.guest }}
         <!--[-->
             {% if lecture.slides %}
               <a href="{{ lecture.slides }}" target="_blank">slides</a>
