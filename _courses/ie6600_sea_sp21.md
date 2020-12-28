@@ -3,7 +3,7 @@ layout: schedule
 permalink: /ie6600-sea-sp21/
 title: <b>C</b>omputation and <b>V</b>isualization for <b>A</b>nalytics
 class: course
-description: IE6600 • Spring 2020 • Northeastern University • Seattle
+description: IE6600 • Spring 2021 • Northeastern University • Seattle
 logo: neu.png
 nav: IE6600
 ---
@@ -23,6 +23,12 @@ This course covers basic of the R, and R Shiny for data preprocessing, and visua
 
 <!-- Staff  -->
 {% include staff.html %}
+
+***
+
+
+<!-- Guest  -->
+{% include guest.html %}
 
 ***
 
