@@ -22,38 +22,12 @@ This course covers basic of the R, and R Shiny for data preprocessing, and visua
 ***
 
 <!-- Staff  -->
-<div class="instructors clearfix">
-  {% for instructor in site.data.staff_sea_sp21.instructor %}
-  <div class="instructor-profile-two-col">
-    <a href="{{ instructor.url }}" target="_blank"><img src="{{ instructor.image | prepend: '/assets/img/' | relative_url }}" /></a>
-    <ul class="instructor-info">
-      <li><span>{{ instructor.title }}</span> <a href="{{ instructor.url }}" target="_blank">{{ instructor.name }}</a></li>
-      <li><span>Email:</span>
-        <a href="mailto:{{ instructor.email | encode_email }}" target="_blank">
-        <i class="far fa-envelope" aria-hidden="true"></i>
-        </a></li>
-        <li><span>Office hours:</span> {{ instructor.office-hours }}</li>
-    </ul>
-  </div>
-  {% endfor %}
-</div>
+{% include staff.html %}
 
 ***
 
 <!-- Guest  -->
-<div class="instructors clearfix">
-  {% for instructor in site.data.staff_sea_sp21.guest %}
-  <div class="instructor-profile-two-col">
-    <a href="{{ instructor.url }}" target="_blank"><img src="{{ instructor.image | prepend: '/assets/img/' | relative_url }}" /></a>
-    <ul class="instructor-info">
-      <li><span>{{ instructor.title }}</span> </li>
-      <li><a href="{{ instructor.url }}" target="_blank">{{ instructor.name }}</a></li>
-      <li><span>Title:</span> {{ instructor.title2 }}</li>
-      <li><span>Expertise:</span> {{ instructor.expertise }}</li>
-    </ul>
-  </div>
-  {% endfor %}
-</div>
+{% include guest.html %}
 
 ***
 

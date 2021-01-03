@@ -55,8 +55,11 @@
 
 - date: 9/29
   title: >
-    <strong>Data Visualization Concepts I</strong>
+    <strong>R functions and the grammar of visualization II</strong>
   materials:
+    - <b>R4DS</b> <a href="https://r4ds.had.co.nz/workflow-basics.html" target="_blank">Workflow</a>
+    - <b>Wickham</b> <a href="https://vita.had.co.nz/papers/layered-grammar.pdf" target="_blank">A layered grammar of graphics</a>
+    - (optional) <b>R4E</b> "Writing R functions"
   assignments: >
     <span class="deadline">Group arrangement due
     9/28 @ 11:59pm</span>
@@ -65,13 +68,15 @@
 
 - date: 10/2
   title: >
-    <strong>Data Visualization Concepts II</strong>
+    <strong>Data Visualization Concepts I</strong>
   materials:
   assignments:
 
 - date: 10/6
-  lecturer:
+  lecturer: Guest Lecturer - Nan
+  guest: Visualization and Color Design
   title: >
+    <strong>Data Visualization Concepts II</strong>
     <strong>Basic data visualization in R I</strong>
   materials:
     - <b>R4DS</b> <a href="https://r4ds.had.co.nz/workflow-basics.html" target="_blank">Data Visualization with ggplot2</a>
@@ -104,7 +109,6 @@
   assignments: >
     <span class="deadline">HW2 due 10/15 @ 11:59pm</span><br>
     <span class="event">HW3 out</span>
-
 
 - date: 10/20
   title: >
@@ -166,8 +170,7 @@
     <strong>Data analytics web apps with Shiny</strong>
   materials:
     - <b>R Shiny</b> <a href="https://shiny.rstudio.com/tutorial/" target="_blank">Shiny tutorial</a>
-  assignments: >
-    <span class="deadline">HW5 due 11/9 @ 11:59pm</span><br>
+  assignments:
 
 
 - date: 11/13
@@ -176,6 +179,7 @@
   materials:
     - <b>R4DS</b> <a href="https://r4ds.had.co.nz/exploratory-data-analysis.html" target="_blank">Exploratory Data Analysis</a>
   assignments: >
+      <span class="deadline">HW5 due 11/12 @ 11:59pm</span><br>
       <span class="event">HW6 out</span>
 
 - date: 11/17
@@ -187,20 +191,21 @@
 
 - date: 11/20
   title: >
-    <strong>Data visualization and Calculation with Tableau</strong>
+    <strong>Moved to 11/24</strong>
   materials:
-    - <b>Tableau</b> <a href="http://kb.tableau.com/" target="_blank">Tableau tutorial</a>
   assignments: >
     <span class="deadline">HW6 due 11/23 @ 11:59pm</span><br>
 
 - date: 11/24
-  title: No classes - Thanksgiving
+  lecturer: Guest Lecturer - Jinhui Zhao, Qibin Tan, and Wenxin Liu
+  guest: Find jobs in industry
+  title: >
+    <strong>Additional topics and Workshop</strong>
+  materials:
+  assignments:
 
 - date: 11/27
   title: No classes - Thanksgiving
-
-
-- title: Project and Slides due Sun 11/29 @ 11:59pm
-
+- title: Project and Slides due Mon 11/30 @ 11:59pm
 - date: 12/1, 12/4, 12/8, 12/11
   title: Project presentation
