@@ -17,6 +17,7 @@ rss:  # notes rss
 
 permalink: /:categories/:title/
 
+
 show_social_icons:  true
 enable_anchorjs:    true
 enable_latexjs:     true
