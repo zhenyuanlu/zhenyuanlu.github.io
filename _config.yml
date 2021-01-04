@@ -11,7 +11,7 @@ url: "https://zhenyuanlu.com/" # the base hostname & protocol for your site
 baseurl: "" # the subpath of your site, e.g. /blog/
 
 github_username: zhenyuanlu
-google_analytics: UA-177324856-1
+google_analytics: G-YKJ7CXRCW1
 youtube_channel:
 rss:  # notes rss
 
