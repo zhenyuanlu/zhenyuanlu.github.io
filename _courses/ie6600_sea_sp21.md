@@ -136,7 +136,7 @@ If you have difficulty to keep up with any materials or homework for personal re
 {% assign skip_classes = 0 %}
 {% assign prev_date = 0 %}
 
-{% for item in site.data.ie6600_sea_sp21 %}
+{% for item in site.data.ie6600_sea_sp22 %}
 {% if item.date %}
 {% assign lecture = item %}
 {% assign event_type = "upcoming" %}
@@ -157,8 +157,8 @@ If you have difficulty to keep up with any materials or homework for personal re
     {% else %}
     <td>
         <!--Lecture #{{ forloop.index | minus: current_module | minus: skip_classes }}-->
-        <!--{% if lecture.lecturer %}({{ lecture.lecturer }}){% endif %}:
-        <br />-->
+        <!--{% if lecture.lecturer %}({{ lecture.lecturer }}){% endif %}:-->
+        <!--<br />-->
         {{ lecture.title }}
         <br />
         <!--[-->
