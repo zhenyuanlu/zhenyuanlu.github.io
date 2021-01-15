@@ -14,7 +14,7 @@ This course covers basic of the R, and R Shiny for data preprocessing, and visua
 
 - **Class:** Tuesday 11:00 – 14:00 (PT)
 - **Location:** TBA
-- **Dates:** 01/19/2021 – 05/01/2021
+- **Dates:** 01/19/2021 – 04/27/2021
 - **Administration:** Class/HW/project questions, discussion or assignments will be only posted via Piazza (On Canvas).
 - **HW submission:** [Canvas](https://canvas.northeastern.edu/){:target="\_blank"}
 
@@ -99,6 +99,8 @@ Additional textbooks:
 
 Please post questions, or discussion only via Piazza. The visibility of questions and discussion are expected to set for public view (**to the Entire class on Piazza**). Please feel free to send instructor/TAs emails regarding any personal or other private issues/concerns.
 
+We understand that there will be difficulties or emergencies happened in your daily life. Therefore, each student has a 3-day extension applying on your HW. This extension can only be used once and cannot be separated in usage. If you have decided to use this extension on your current or the future HW, please send an email to our TA, and CC me before the deadline. We are able to mark it on your grade sheet. This won't affect your grade, no worries.
+
 Plagiarism, cheating, and any form of unauthorized collaboration will not be tolerated and will be handled in accordance with University policies described in the Student Handbook. For additional information on Northeastern University’s [Academic Integrity Policy](http://www.northeastern.edu/osccr/academic-integrity-policy/){:target="\_blank"}
 
 ***
@@ -136,7 +138,7 @@ If you have difficulty to keep up with any materials or homework for personal re
 {% assign skip_classes = 0 %}
 {% assign prev_date = 0 %}
 
-{% for item in site.data.ie6600_sea_sp22 %}
+{% for item in site.data.ie6600_sea_sp21 %}
 {% if item.date %}
 {% assign lecture = item %}
 {% assign event_type = "upcoming" %}

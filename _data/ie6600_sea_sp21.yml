@@ -29,8 +29,9 @@
     - <b>R4DS</b> <a href="https://r4ds.had.co.nz/workflow-basics.html" target="_blank">Workflow</a>
     - <b>Wickham</b> <a href="https://vita.had.co.nz/papers/layered-grammar.pdf" target="_blank">A layered grammar of graphics</a>
     - (optional) <b>R4E</b> "Writing R functions"
-  assignments: >
-    <span class="event">HW1 out</span>
+  assignments:
+
+- title: 2/8, Last day to drop a full-semester fall class without a W grade
 
 - title: "Module 2: Basic Visualization and Data Engineering"
 
@@ -39,143 +40,98 @@
     <strong>Data Visualization Concepts</strong>
   materials:
   assignments: >
-    <span class="deadline">Group arrangement due
-    2/8 @ 11:59pm</span>
+      <span class="deadline">Group arrangement due 2/1 @ 11:59pm PT</span>
+      <span class="event">HW1 out</span>
 
-- title: 9/29, Last day to drop a full-semester fall class without a W grade
-
-- date: 10/6
+- date: 2/16
   lecturer:
   title: >
-    <strong>Basic data visualization in R I</strong>
+    <strong>Basic data visualization in R</strong>
   materials:
     - <b>R4DS</b> <a href="https://r4ds.had.co.nz/workflow-basics.html" target="_blank">Data Visualization with ggplot2</a>
     - (optional) RGC "Quickly Exploring Data"
   assignments: >
-    <span class="deadline">HW1 due 10/5 @ 11:59pm</span>
-
-- date: 10/9
-  lecturer:
-  title: >
-    <strong>Basic data visualization in R II</strong>
-  materials:
-    - <b>R4DS</b> <a href="https://r4ds.had.co.nz/workflow-basics.html" target="_blank">Data Visualization with ggplot2</a>
-    - (optional) RGC "Quickly Exploring Data"
-  assignments: >
+    <span class="deadline">HW1 due 2/15 @ 11:59pm PT</span><br>
     <span class="event">HW2 out</span>
 
-- date: 10/13
+- date: 2/23
+  lecturer:
   title: >
-    <strong>Data transformation with dplyr I</strong>
-  materials:
-    - <b>R4DS</b> <a href="https://r4ds.had.co.nz/transform.html" target="_blank">Data Transformation with dplyr</a>
-  assignments:
-
-- date: 10/16
-  title: >
-    <strong>Data transformation with dplyr II</strong>
+    <strong>Data transformation with dplyr</strong>
   materials:
     - <b>R4DS</b> <a href="https://r4ds.had.co.nz/transform.html" target="_blank">Data Transformation with dplyr</a>
   assignments: >
-    <span class="deadline">HW2 due 10/15 @ 11:59pm</span><br>
+    <span class="deadline">HW2 due 2/22 @ 11:59pm PT</span><br>
     <span class="event">HW3 out</span>
 
-
-- date: 10/20
+- date: 3/2
   title: >
-    <strong>Data wrangling with tibbles, readr and tidyr I</strong>
-  materials:
-    - <b>R4DS</b> <a href="https://r4ds.had.co.nz/tibbles.html" target="_blank">Tibbles with tibble</a>
-    - <b>R4DS</b> <a href="https://r4ds.had.co.nz/data-import.html" target="_blank">Data Import with readr</a>
-    - <b>R4DS</b> <a href="https://r4ds.had.co.nz/tidy-data.html" targe="_blank">Tidy Data with tidyr</a>
-  assignments:
-
-- date: 10/23
-  title: >
-    <strong>Data wrangling with tibbles, readr and tidyr II</strong> <br>
-    Optional: <br> <strong>Data wrangling with stringr, forcats and lubridate</strong>
+    <strong>Data wrangling with tibbles, readr and tidyr</strong><br>
+    Optional: <br>Data wrangling with stringr, forcats and lubridate
   materials:
     - <b>R4DS</b> <a href="https://r4ds.had.co.nz/tibbles.html" target="_blank">Tibbles with tibble</a>
     - <b>R4DS</b> <a href="https://r4ds.had.co.nz/data-import.html" target="_blank">Data Import with readr</a>
     - <b>R4DS</b> <a href="https://r4ds.had.co.nz/tidy-data.html" targe="_blank">Tidy Data with tidyr</a>
     - (optional) <b>R4DS</b> "Strings with stringr", "Factors with forcats", "Dates and Times with lubridate"
   assignments: >
-    <span class="deadline">Project proposal due 10/22 @ 11:59pm</span><br>
-    <span class="deadline">HW3 due 10/22 @ 11:59pm</span><br>
+    <span class="deadline">HW3 due 3/1 @ 11:59pm PT</span><br>
     <span class="event">HW4 out</span>
 
-- date: 10/27
+- date: 3/9
   title: >
     <strong>Visualizing relational data</strong>
   materials:
     - <b>R4DS</b> <a href="https://r4ds.had.co.nz/relational-data.html" target="_blank">Relational Data with dplyr</a>
-  assignments:
+  assignments: >
+    <span class="deadline">Project proposal due 3/8 @ 11:59pm PT;</span><br>
+    <span class="deadline">HW4 due 3/8 @ 11:59pm PT</span>
+
 
 - title: "Module 3: Advanced Visualization"
 
-- date: 10/30
+- date: 3/16
   title: >
     <strong>Introduction to Shiny interactive visualization web app I</strong>
   materials:
     - <b>R Shiny</b> <a href="https://shiny.rstudio.com/tutorial/" target="_blank">Shiny tutorial</a>
   assignments: >
-    <span class="deadline">HW4 due 10/29 @ 11:59pm</span><br>
     <span class="event">HW5 out</span>
 
-- date: 11/3
+- date: 3/23
   title: >
     <strong>Introduction to Shiny interactive visualization web app II</strong>
   materials:
     - <b>R Shiny</b> <a href="https://shiny.rstudio.com/tutorial/" target="_blank">Shiny tutorial</a>
   assignments:
 
-- date: 11/6
-  title: >
-    <strong>Introduction to Shiny interactive visualization web app III</strong>
-  materials:
-    - <b>R Shiny</b> <a href="https://shiny.rstudio.com/tutorial/" target="_blank">Shiny tutorial</a>
-  assignments:
 
-- date: 11/10
+- date: 3/30
   title: >
     <strong>Data analytics web apps with Shiny</strong>
   materials:
     - <b>R Shiny</b> <a href="https://shiny.rstudio.com/tutorial/" target="_blank">Shiny tutorial</a>
-  assignments: >
-    <span class="deadline">HW5 due 11/9 @ 11:59pm</span><br>
-
-
-- date: 11/13
-  title: >
-    <strong>Exploratory data analysis and more data visualization I</strong>
-  materials:
-    - <b>R4DS</b> <a href="https://r4ds.had.co.nz/exploratory-data-analysis.html" target="_blank">Exploratory Data Analysis</a>
-  assignments: >
-      <span class="event">HW6 out</span>
-
-- date: 11/17
-  title: >
-    <strong>Exploratory data analysis and more data visualization II</strong>
-  materials:
-    - <b>R4DS</b> <a href="https://r4ds.had.co.nz/exploratory-data-analysis.html" target="_blank">Exploratory Data Analysis</a>
   assignments:
 
-- date: 11/20
+
+- date: 4/6
   title: >
-    <strong>Data visualization and Calculation with Tableau</strong>
+    <strong>Exploratory data analysis and more data visualization</strong>
   materials:
-    - <b>Tableau</b> <a href="http://kb.tableau.com/" target="_blank">Tableau tutorial</a>
+    - <b>R4DS</b> <a href="https://r4ds.had.co.nz/exploratory-data-analysis.html" target="_blank">Exploratory Data Analysis</a>
   assignments: >
-    <span class="deadline">HW6 due 11/23 @ 11:59pm</span><br>
+      <span class="deadline">HW5 due 4/5 @ 11:59pm PT</span><br>
+      <span class="event">HW6 out</span>
 
-- date: 11/24
-  title: No classes - Thanksgiving
+- date: 4/13
+  lecturer: TBA
+  guest: TBA
+  title: >
+    <strong>TBA</strong>
+  materials:
+  assignments: >
+      <span class="deadline">HW6 due 4/12 @ 11:59pm PT</span><br>
 
-- date: 11/27
-  title: No classes - Thanksgiving
+- title: Project and Slides due Sun 4/19 @ 11:59pm PT
 
-
-- title: Project and Slides due Sun 11/29 @ 11:59pm
-
-- date: 12/1, 12/4, 12/8, 12/11
+- date: 4/20, 4/27
   title: Project presentation
