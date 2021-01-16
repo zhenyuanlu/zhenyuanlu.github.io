@@ -13,6 +13,7 @@ This course covers basic of the R, and R Shiny for data preprocessing, and visua
 ***
 
 - **Class:** Tuesday 11:00 – 14:00 (PT)
+- **Office hour:** Monday 9:00 - 10:00 (PT)
 - **Location:** TBA
 - **Dates:** 01/19/2021 – 04/27/2021
 - **Administration:** Class/HW/project questions, discussion or assignments will be only posted via Piazza (On Canvas).
