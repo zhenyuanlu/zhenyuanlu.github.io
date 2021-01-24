@@ -1,30 +1,35 @@
 ---
 layout: schedule
-permalink: /ie6600-sea-sp21/
-title: <b>C</b>omputation and <b>V</b>isualization for <b>A</b>nalytics
+permalink: /ie7275-bos-sm20/
+title: <b>D</b>ata <b>M</b>ining in <b>E</b>gineering
 class: course
-description: IE6600 • Spring 2021 • Northeastern University • Seattle
+description: IE7275 • Summer 2020 • Northeastern University • Boston
 logo: neu.png
-nav: IE6600
+nav: IE7275
 ---
 
-This course covers basic of the R, and R Shiny for data preprocessing, and visualization. It introduces students to static and interactive visualization, dashboard, and platform that reveal information, patterns, interactions, and comparisons by paying attention to details such as color encoding, a shape selection, spatial layout, and annotation. Based on these fundamentals of analytical and creative thinking, the course then focuses on data visualization techniques and the use of the most current popular software tools that support data exploration, analytics-based storytelling and knowledge discovery, and decision-making in engineering, healthcare operations, manufacturing, and related applications.
+This course covers the theory and applications of data mining in engineering. It reviews fundamentals and key concepts of data mining, discusses important data mining techniques, and presents algorithms for implementing these techniques. In specific, this course covers data mining techniques for data preprocessing, association rule extraction, classification, prediction, clustering, and complex data exploration. Data mining applications in several areas including manufacturing, healthcare, medicine, business, and other service sectors are discussed.
 
 ***
 
-- **Class:** Tuesday 11:00 – 14:00 (PT)
-- **Office hour:** Monday 9:00 - 10:00 (PT)
+- **Class:** Thuesday 1:20pm – 03:00pm (EDT)
+- **Office hour:** Monday 3:30pm to 4:30pm on zoom
 - **Location:** Zoom
-- **Dates:** 01/19/2021 – 04/27/2021
-- **Administration:** Class/HW/project questions, discussion or assignments will be only posted via Piazza (On Canvas).
-- **HW submission:** [Canvas](https://canvas.northeastern.edu/){:target="\_blank"}
-
+- **Dates:** 05/04/2020 – 06/25/2020
+- **Administration:** Class/HW/project questions, or discussion will be only posted via Piazza.
+- **Prerequisites**: IE6200 (familiar with R and necessary packages/libraries, e.g. tidyverse)
+- **Preparation for the course**:
+  - Linear Algebra: G. Strang. Introduction to Linear Algebra. Wellesley-Cambridge Press, 2009. Ch 1-4.
+    - [<a href="https://studentlife.northeastern.edu/we-care/" target="_blank"> Video lectures</a>]
+  - Calculus: G. Strang. Calculus. Wellesley-Cambridge Press, 2010. Old edition of the book (1991)
+    - [<a href="https://ocw.mit.edu/ans7870/resources/Strang/Edited/Calculus/Calculus.pdf" target="_blank"> Materials </a>]
+    - [<a href="https://ocw.mit.edu/resources/res-18-005-highlights-of-calculus-spring-2010/highlights_of_calculus/big-picture-of-calculus/" target="_blank"> Video lectures</a>]
 
 ***
 
 <!-- Staff  -->
 <div class="instructors clearfix">
-  {% for instructor in site.data.staff_sea_sp21.instructor %}
+  {% for instructor in site.data.staff_bos_sm20_ie7275.instructor %}
   <div class="instructor-profile-two-col">
     <a href="{{ instructor.url }}" target="_blank"><img src="{{ instructor.image | prepend: '/assets/img/' | relative_url }}" /></a>
     <ul class="instructor-info">
@@ -43,7 +48,7 @@ This course covers basic of the R, and R Shiny for data preprocessing, and visua
 
 <!-- Guest  -->
 <div class="instructors clearfix">
-  {% for instructor in site.data.staff_sea_sp21.guest %}
+  {% for instructor in site.data.staff_bos_sm20_ie7275.guest %}
   <div class="instructor-profile-two-col">
     <a href="{{ instructor.url }}" target="_blank"><img src="{{ instructor.image | prepend: '/assets/img/' | relative_url }}" /></a>
     <ul class="instructor-info">
@@ -65,43 +70,41 @@ This course covers basic of the R, and R Shiny for data preprocessing, and visua
 ***
 ### Course goals
 <div>
-  <img src='/assets/img/ie6600/goal.png' alt='Course Goals' style="max-width:100%;">
+  <img src='/assets/img/ie7275/goal.png' alt='Course Goals' style="max-width:100%;">
 </div>
-R For Data Science, Wickham, Hadley, and Garrett Grolemund
+Galit Shmueli, Peter C. Bruce, Inbal Yahav, Nitin R. Patel, Kenneth C. Lichtendahl Jr., Data Mining for Business Analytics: Concepts, Techniques, and Applications in R
 
 ***
 
 ### Textbooks
 
 The required textbook:
-- [R For Data Science](https://r4ds.had.co.nz/){:target="\_blank"} (**R4DS**), Wickham, Hadley, and Garrett Grolemund
-
-The required tutorials:
-- [Shiny tutorial](https://shiny.rstudio.com/tutorial/){:target="\_blank"}, R Shiny
-- [Tableau Public Knowledge Base](http://kb.tableau.com/){:target="\_blank"}, Tableau
-- [Tableau Public training videos](http://www.tableausoftware.com/public/training), Tableau.
+- [**DMBA**] Galit Shmueli, Peter C. Bruce, Inbal Yahav, Nitin R. Patel, Kenneth C. Lichtendahl Jr., Data Mining for Business Analytics: Concepts, Techniques, and Applications in R, Wiley, 1st Edition，ISBN-10: 1118879368, ISBN-13: 978-1118879368.
 
 Additional textbooks:
-- [R For Everyone](https://onesearch.library.northeastern.edu/permalink/f/365rt0/NEU_ALMA51284955070001401){:target="\_blank"} (**R4E**), Lander, Jared P.
+
+R: 
+- [R For Data Science](https://r4ds.had.co.nz/){:target="\_blank"} (**R4DS**), Wickham, Hadley, and Garrett Grolemund
 - [R Markdown](https://bookdown.org/yihui/rmarkdown/){:target="\_blank"} (**RMD**), Xie, Yihui, et al.
 
-***
+Data Mining: 
+- Mohammed J. Zaki, Wagner Meira, Jr., Data Mining and Analysis: Fundamental Concepts and Algorithms (**DMA**), Cambridge University Press, May 2014 [(NEU Library Link)](https://onesearch.library.northeastern.edu/permalink/f/365rt0/NEU_ALMA51311637120001401){:target="\_blank"}
+- Tan, Pang-Ning, et al. Introduction to Data Mining (**DM**). Pearson Education, 2006. [(Book website)](https://www-users.cs.umn.edu/~kumar001/dmbook/index.php){:target="\_blank"}
 
-### R-related Materials
+Statistical Modeling:
+- [**ISLR**] James, Gareth, et al. An Introduction to Statistical Learning: with Applications in R. Springer, 2017. [Open License](https://static1.squarespace.com/static/5ff2adbe3fe4fe33db902812/t/6009dd9fa7bc363aa822d2c7/1611259312432/ISLR+Seventh+Printing.pdf){:target="\_blank"}, [Book Website](https://www.statlearning.com/){:target="\_blank"}
+- [**ESL**]Hastie, T., Friedman, J., & Tisbshirani, R. (2017). The Elements of statistical learning: data mining, inference, and prediction. New York: Springer. [Open License](https://web.stanford.edu/~hastie/ElemStatLearn/){:target="\_blank"}
 
-- [R Graphics Cookbook](https://r-graphics.org/){:target="\_blank"} (**RGC**), Chang, Winston.
-- [Advanced R](http://adv-r.had.co.nz/){:target="\_blank"} (**ADR**), Wickham, Hadley.
-- [R Packages](http://r-pkgs.had.co.nz/){:target="\_blank"}  (**RPK**), Wickham, Hadley.
-- [Text Mining with R](https://www.tidytextmining.com/){:target="\_blank"} (**TM**), Silge, Julia, and David Robinson.
+Machine learning and Deep learning:
+- [**ML**] Machine Learning, Mitchell, Tom M. [Book Website](http://www.cs.cmu.edu/~tom/mlbook.html)
+- [**DL**] Deep learning, Goodfellow, Ian, et al. [Open License](http://www.deeplearningbook.org/)
 
 ***
 
 ### Policies
 
-Please post questions, or discussion only via Piazza. The visibility of questions and discussion are expected to set for public view (**to the Entire class on Piazza**). Please feel free to send instructor/TAs emails regarding any personal or other private issues/concerns.
-
-We understand that there will be difficulties or emergencies happened in your daily life. Therefore, each student has a 3-day extension applying on your HW. This extension can only be used once and cannot be separated in usage. If you have decided to use this extension on your current or the future HW, please send an email to our TA, and CC me before the deadline. We are able to mark it on your grade sheet. This won't affect your grade, no worries.
-
+Please post questions, and discussion only via Piazza. The visibility of questions and discussion are expected to set for public view (to the Entire class on Piazza). Please feel free to send instructor/TAs emails regarding any personal or other private issues/concerns.
+All students are expected to attend the class through the entire semester. Please send me an email 24 hours before the coming class regarding the absence for any medical, or emergency reasons. You will be granted one homework extension of two calendar days, to be used at your discretion, without having to ask.
 Plagiarism, cheating, and any form of unauthorized collaboration will not be tolerated and will be handled in accordance with University policies described in the Student Handbook. For additional information on Northeastern University’s [Academic Integrity Policy](http://www.northeastern.edu/osccr/academic-integrity-policy/){:target="\_blank"}
 
 ***
@@ -123,13 +126,12 @@ If you have difficulty to keep up with any materials or homework for personal re
 
 ### Course Evaluation
 
-- Homework **42%**
--	Final Project **50%**
-    - Proposal	10%
-    - Presentation	40%
--	Class Participation	**8%**
+- Homework **35%**
+-	Midterm Exam **20%**
+- Final Exam **20%**
+-	Project		**15%**
+-	Class Participation	**10%**
 
-*This course does not have any quizzes or exams.*
 
 ***
 
@@ -139,17 +141,13 @@ If you have difficulty to keep up with any materials or homework for personal re
 {% assign skip_classes = 0 %}
 {% assign prev_date = 0 %}
 
-{% for item in site.data.ie6600_sea_sp21 %}
+{% for item in site.data.ie7275_bos_sm20 %}
 {% if item.date %}
 {% assign lecture = item %}
 {% assign event_type = "upcoming" %}
 {% assign today_date = "now" | date: "%s" | divided_by: 86400 %}
 {% assign lecture_date = lecture.date | date: "%s" | divided_by: 86400 %}
-{% if today_date > lecture_date %}
-    {% assign event_type = "past" %}
-{% elsif today_date <= lecture_date and today_date > prev_date %}
-    {% assign event_type = "warning" %}
-{% endif %}
+
 {% assign prev_date = lecture_date %}
 
 <tr class="{{ event_type }}">

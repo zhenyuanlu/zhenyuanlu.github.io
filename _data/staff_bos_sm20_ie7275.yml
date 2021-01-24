@@ -1,0 +1,31 @@
+instructor:
+    - name: Zhenyuan Lu
+      title: Instructor
+      email: lu.zhenyua@northeastern.edu
+      url: /
+      office-hours: "Tue 01:00pm to 02:00pm on Zoom"
+      image: staff/z.jpg
+
+    - name: TBA
+      title: TA
+      email: TBA@northeastern.edu
+      url:
+      office-hours: "TBA"
+      image: staff/husky.jpg
+
+guest:
+    - name: Jinhui Zhao
+      title: Guest Lecturer
+      email:
+      url: https://www.linkedin.com/in/jinhui-zhao-7ab2a186/
+      expertise: Software Development
+      title2: Software Engineer
+      image: staff/hui.jpg
+
+    - name: Qibin Tan
+      title: Guest Lecturer
+      email:
+      url: https://www.linkedin.com/in/qibint/
+      expertise: DevOps
+      title2: Build And Release Engineer
+      image: staff/qibin.jpg

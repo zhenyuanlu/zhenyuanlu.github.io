@@ -48,7 +48,7 @@ description: Classes, Workshops, and Course websites
         </span>
       </div>
     </div>
-    <h6 class=" mt-2 mt-sm-0">Summer 2020: Instructor</h6>
+    <h6 class=" mt-2 mt-sm-0">Summer 2020 [<b><a href="{{ '/ie7275-bos-sm20/' | relative_url }}" target="_blank">Website</a></b>]: Instructor</h6>
     <ul class="card-text font-weight-light list-group list-group-flush">
         <li class="list-group-item">This course covers the theory and applications of data mining in engineering. It reviews fundamentals and key concepts of data mining, discusses important data mining techniques, and presents algorithms for implementing these techniques. In specific, this course covers data mining techniques for data preprocessing, association rule extraction, classification, prediction, clustering, and complex data exploration. Data mining applications in several areas including manufacturing, healthcare, medicine, business, and other service sectors are discussed.</li>
     </ul>
