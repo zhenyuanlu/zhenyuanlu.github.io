@@ -1,7 +1,7 @@
 ---
 layout: schedule
 permalink: /ie7275-bos-sm20/
-title: <b>D</b>ata <b>M</b>ining in <b>E</b>gineering
+title: <b>D</b>ata <b>M</b>ining in <b>E</b>ngineering
 class: course
 description: IE7275 • Summer 2020 • Northeastern University • Boston
 logo: neu.png
