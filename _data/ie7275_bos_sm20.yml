@@ -70,9 +70,7 @@
     - Dimension Reduction
     - Evaluating Predictive Performance
     - Multiple Linear Regression
-  assignments: >
-    <span class="deadline">HW3 due 3/1 @ 11:59pm PT</span><br>
-    <span class="event">HW4 out</span>
+  assignments:
 
 - date: 5/21
   title: >
@@ -80,8 +78,7 @@
   materials:
     - <b>DMBA</b> "k-Nearest Neighbors"
     - (Optional)DM Ch 5.2; ESL Ch 11.3
-  assignments: >
-    <span class="deadline">HW2 Due 5/21, 11:59pm</span><br>
+  assignments: 
 
 
 - title: "Week 4"
@@ -94,8 +91,7 @@
   materials:
     - <b>DMBA</b> "Naive Bayes Classifier"
     - (Optional)ESL Ch 6.6.3; DMA Ch 18
-  assignments: >
-    <span class="event">HW5 out</span>
+  assignments:
 
 - title: "5/28, No class, hw3 due 5/28 11:59 pm ET; midterm Due 5/29 11:59 pm, GOOD LUCK!"
 
