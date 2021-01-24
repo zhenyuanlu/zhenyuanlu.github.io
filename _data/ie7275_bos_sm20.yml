@@ -150,11 +150,10 @@
 
 - date: 6/17
   title: >
-    <strong>Association Rule</strong><br>
+    <strong>Association Rule and Clustering Anaysis</strong><br>
     <strong>Q&A Workshop</strong>
   materials:
-    - <b>DMBA</b>"Neural Nets"
-    - (Optional) DL Ch 6
+    - <b>DMBA</b>"Association Rule"; "Clustering Analysis"
   assignments: >
       <span class="deadline">Project Slides and files due 6/17, 11:59pm</span>
 
