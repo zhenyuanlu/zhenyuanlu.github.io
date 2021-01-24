@@ -78,8 +78,8 @@
   materials:
     - <b>DMBA</b> "k-Nearest Neighbors"
     - (Optional)DM Ch 5.2; ESL Ch 11.3
-  assignments: 
-
+  assignments: >
+      <span class="deadline">HW2 Due 5/21, 11:59pm</span>
 
 - title: "Week 4"
 
@@ -147,6 +147,7 @@
   title: >
     <strong>Association Rule and Clustering Anaysis</strong><br>
     <strong>Q&A Workshop</strong>
+  lecturer: Guest Lecturer - Jinhui Zhao, Qibin Tan
   materials:
     - <b>DMBA</b>"Association Rule"; "Clustering Analysis"
   assignments: >
