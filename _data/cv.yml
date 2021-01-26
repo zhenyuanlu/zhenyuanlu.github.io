@@ -107,3 +107,13 @@
       year: 2020
     - title: 'Bio1421: Modern Biology, Texas State University.'
       year: 2014-2017
+
+- title: Workshop and Talk
+  type: table
+  contents:
+    - title: 'Introduction to Application of Artificial Intelligence in Healthcare, Tufts University.'
+      year: 2021
+    - title: 'R Shiny Workshop, Northeastern University.'
+      year: 2018
+    - title: 'Point-of-care diagnostic cartridge having a programmable fluidic wicking network, Texas State University.'
+      year: 2016

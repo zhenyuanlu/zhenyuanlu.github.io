@@ -56,7 +56,6 @@ description: Classes, Workshops, and Course websites
 </div>
 
 <h3 class="mt-4">Texas State University</h3>
-
 <div class="card mt-3">
   <div class="p-3">
     <div class="row">
