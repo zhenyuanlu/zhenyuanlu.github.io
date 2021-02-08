@@ -6,7 +6,6 @@ class: home
 ---
 
 <div class="columns" markdown="1">
-
 <div class="intro" markdown="1">
 I am a data science teaching faculty and PhD research fellow in the [Department of Mechanical & Industrial Engineering](https://mie.northeastern.edu/) of the [College of Engineering](https://coe.northeastern.edu/) at [Northeastern University](https://www.northeastern.edu/), where I am working with [Prof. Sagar Kamarthi](https://coe.northeastern.edu/people/kamarthi-sagar/) focusing on cancer diagnosis and pain research using machine learning techniques, e.g. cancer diagnostics, pain research, etc. I also design and teach graduate-level courses in data mining and [IE6600 Computation and Visualization for Analytics]({{ "/ie6600-bos-fa20/" | relative_url }}) to prepare graduate students doing research, team projects and future career.
 
