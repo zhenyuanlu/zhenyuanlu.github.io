@@ -6,6 +6,13 @@ instructor:
       office-hours: "Tue 01:00pm to 02:00pm on Zoom"
       image: staff/z.jpg
 
+    - name: No TA this semester
+      title: TA
+      email: TBA@northeastern.edu
+      url:
+      office-hours: "TBA"
+      image: staff/husky.jpg
+
     - name: Kate Kryder
       title: Data Visualization Specialist
       email: k.kryder@northeastern.edu
