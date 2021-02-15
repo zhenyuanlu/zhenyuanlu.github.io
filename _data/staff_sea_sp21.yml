@@ -6,6 +6,13 @@ instructor:
       office-hours: "Tue 01:00pm to 02:00pm on Zoom"
       image: staff/z.jpg
 
+    - name: Kate Kryder
+      title: Data Visualization Specialist
+      email: k.kryder@northeastern.edu
+      url:
+      office-hours: Book Appointment (See Slides)
+      image: staff/kate.jpg
+
 
 guest:
     - name: TBA
