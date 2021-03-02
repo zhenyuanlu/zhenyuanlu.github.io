@@ -67,12 +67,12 @@
 - date: 3/2
   title: >
     <strong>Data wrangling with tibbles, readr and tidyr</strong><br>
-    Optional: <br>Data wrangling with stringr, forcats and lubridate
+    Optional: <br>Data wrangling with stringr, forcats
   materials:
     - <b>R4DS</b> <a href="https://r4ds.had.co.nz/tibbles.html" target="_blank">Tibbles with tibble</a>
     - <b>R4DS</b> <a href="https://r4ds.had.co.nz/data-import.html" target="_blank">Data Import with readr</a>
     - <b>R4DS</b> <a href="https://r4ds.had.co.nz/tidy-data.html" targe="_blank">Tidy Data with tidyr</a>
-    - (optional) <b>R4DS</b> "Strings with stringr", "Factors with forcats", "Dates and Times with lubridate"
+    - (optional) <b>R4DS</b> "Strings with stringr", "Factors with forcats"
   assignments: >
     <span class="deadline">HW3 due 3/1 @ 11:59pm PT</span><br>
     <span class="event">HW4 out</span>
