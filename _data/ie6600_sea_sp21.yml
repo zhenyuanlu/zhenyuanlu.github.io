@@ -80,6 +80,7 @@
 - date: 3/9
   title: >
     <strong>Visualizing relational data</strong>
+    <strong>Visualization by PCA</strong>
   materials:
     - <b>R4DS</b> <a href="https://r4ds.had.co.nz/relational-data.html" target="_blank">Relational Data with dplyr</a>
   assignments: >
