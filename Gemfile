@@ -7,6 +7,6 @@ group :jekyll_plugins do
     gem 'jekyll-paginate'
     gem "jekyll-feed", "~> 0.6"
     gem 'jekyll-sitemap'
-    gem "nokogiri", ">= 1.11.0.rc4",
+    gem "nokogiri", ">= 1.11.0.rc4"
     gem "kramdown", ">= 2.3.1"
 end
