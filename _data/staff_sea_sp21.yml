@@ -19,29 +19,3 @@ instructor:
       url:
       office-hours: Book Appointment (See Slides)
       image: staff/kate.jpg
-
-
-guest:
-    - name: TBA
-      title: Guest Lecturer
-      email:
-      url:
-      expertise: TBA
-      title2: TBA
-      image: staff/husky.jpg
-
-    - name: TBA
-      title: Guest Lecturer
-      email:
-      url:
-      expertise: TBA
-      title2: TBA
-      image: staff/husky.jpg
-
-    - name: TBA
-      title: Guest Lecturer
-      email:
-      url:
-      expertise: TBA
-      title2: TBA
-      image: staff/husky.jpg
