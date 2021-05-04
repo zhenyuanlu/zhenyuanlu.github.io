@@ -1,0 +1,24 @@
+instructor:
+    - name: Zhenyuan Lu
+      title: Instructor
+      email: lu.zhenyua@northeastern.edu
+      url: /
+      office-hours: "TBA"
+      image: staff/z.jpg
+
+    - name: TBA
+      title: TA
+      email: TBA@northeastern.edu
+      url:
+      office-hours: "TBA"
+      image: staff/husky.jpg
+
+
+guest:
+    - name: TBA
+      title: TBA
+      email:
+      url:
+      expertise:
+      title2:
+      image: staff/husky.jpg
