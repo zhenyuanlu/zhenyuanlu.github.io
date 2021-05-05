@@ -3,15 +3,15 @@ instructor:
       title: Instructor
       email: lu.zhenyua@northeastern.edu
       url: /
-      office-hours: "TBA"
+      office-hours: "Tue 10 am - 11 am "
       image: staff/z.jpg
 
-    - name: TBA
+    - name: Lekha Cheruku
       title: TA
-      email: TBA@northeastern.edu
+      email: cheruku.l@northeastern.edu
       url:
-      office-hours: "TBA"
-      image: staff/husky.jpg
+      office-hours: "Thur 9 am - 10 am"
+      image: staff/lekha.png
 
 
 guest:
