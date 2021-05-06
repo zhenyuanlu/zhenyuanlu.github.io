@@ -13,7 +13,7 @@ This course covers basic of the R, and R Shiny for data preprocessing, and visua
 ***
 
 - **Class:** Monday and Wednesday 13:30 – 15:10 (EDT)
-- **Office hour:** TBA
+- **Office hour:** Tue 10：00 - 11：00 (EDT)
 - **Location:**  Room 129, Forsyth Building
 - **Dates:** 05/10/2021 – 08/18/2021
 - **Administration:** Class/HW/project questions, discussion or assignments will be only posted via Piazza.
