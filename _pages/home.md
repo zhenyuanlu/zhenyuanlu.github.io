@@ -34,9 +34,11 @@ I am actively contributing to open source projects on creating user-friendly R-s
     <i class="far fa-file-pdf"></i>
     <b>CV</b>
   </a>
-</span>
+</span>-->
+
 </p>
--->
+
+
 </div>
 
 <div class="me" markdown="1">
