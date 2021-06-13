@@ -37,8 +37,6 @@ I am actively contributing to open source projects on creating user-friendly R-s
 </span>-->
 
 </p>
-
-
 </div>
 
 <div class="me" markdown="1">
