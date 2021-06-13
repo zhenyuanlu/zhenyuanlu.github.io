@@ -28,6 +28,7 @@ I am actively contributing to open source projects on creating user-friendly R-s
   </span>
 </span>
 
+<!--
 <span style="float: right">
   <a href="{{ '/cv/' | relative_url }}" target="_blank">
     <i class="far fa-file-pdf"></i>
@@ -35,7 +36,7 @@ I am actively contributing to open source projects on creating user-friendly R-s
   </a>
 </span>
 </p>
-
+-->
 </div>
 
 <div class="me" markdown="1">
