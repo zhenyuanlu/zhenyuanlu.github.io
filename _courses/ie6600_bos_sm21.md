@@ -106,7 +106,7 @@ We strongly encourage students to get the vaccine as soon as they become eligibl
 
 Please post questions, or discussion only via Piazza. The visibility of questions and discussion are expected to set for public view (**to the Entire class on Piazza**). Please feel free to send instructor/TAs emails regarding any personal or other private issues/concerns.
 
-We understand that there will be difficulties or emergencies happened in your daily life. Therefore, each student has a 3-day extension applying on your HW. This extension can only be used once and cannot be separated in usage. If you have decided to use this extension on your current or the future HW, please send an email to our TA, and CC me before the deadline. We are able to mark it on your grade sheet. This won't affect your grade, no worries. Except for this, we won't accept any assignments after the due. 
+We understand that there will be difficulties or emergencies happened in your daily life. Therefore, each student has a 3-day extension applying on your HW. This extension can only be used once and cannot be separated in usage. If you have decided to use this extension on your current or the future HW, please send an email to our TA, and CC me before the deadline. We are able to mark it on your grade sheet. This won't affect your grade, no worries. Except for this, we won't accept any assignments after the due.
 
 Plagiarism, cheating, and any form of unauthorized collaboration will not be tolerated and will be handled in accordance with University policies described in the Student Handbook. For additional information on Northeastern University’s [Academic Integrity Policy](http://www.northeastern.edu/osccr/academic-integrity-policy/){:target="\_blank"}
 
@@ -123,7 +123,6 @@ If you have a disability, I encourage you to contact [Disability Resource Center
 Eating healthy food, having regular exercises, avoiding alcohol and drugs, getting adequate sleep and taking time to relax. This will help you achieve your goals and tame stress.
 
 If you have difficulty to keep up with any materials or homework for personal reasons please let me know early. If you or your friends/classmates who appears to be struggling, or having trouble coping with stress. We strongly encourage you to seek support at the [We Care](https://studentlife.northeastern.edu/we-care/){:target="\_blank"} program at NEU. At Northeastern, a student is never alone when struggling with a demanding situation.
-
 
 ***
 
