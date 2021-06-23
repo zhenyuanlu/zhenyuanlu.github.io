@@ -124,6 +124,7 @@ Eating healthy food, having regular exercises, avoiding alcohol and drugs, getti
 
 If you have difficulty to keep up with any materials or homework for personal reasons please let me know early. If you or your friends/classmates who appears to be struggling, or having trouble coping with stress. We strongly encourage you to seek support at the [We Care](https://studentlife.northeastern.edu/we-care/){:target="\_blank"} program at NEU. At Northeastern, a student is never alone when struggling with a demanding situation.
 
+
 ***
 
 ### Course Evaluation
