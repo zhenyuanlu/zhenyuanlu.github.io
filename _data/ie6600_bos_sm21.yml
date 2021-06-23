@@ -117,7 +117,7 @@
 - date: 6/23
   title: >
     <strong>Data wrangling with tibbles, readr and tidyr II</strong> <br>
-    Optional: <br> <strong>Data wrangling with stringr, forcats and lubridate</strong>
+    Optional: <br> <strong>Data wrangling with stringr, forcats</strong>
   materials:
     - <b>R4DS</b> <a href="https://r4ds.had.co.nz/tibbles.html" target="_blank">Tibbles with tibble</a>
     - <b>R4DS</b> <a href="https://r4ds.had.co.nz/data-import.html" target="_blank">Data Import with readr</a>
