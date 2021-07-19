@@ -192,14 +192,14 @@
   title: >
     <strong>Additional R Workshop</strong>
   materials: TBD
-  assignments: >
-    <span class="deadline">HW6 due 7/25 @ 11:59pm</span><br>
+  assignments:
 
 - date: 7/28
   title: >
     <strong>TBD</strong>
   materials: TBD
-  assignments:
+  assignments: >
+    <span class="deadline">HW6 due 7/27 @ 11:59pm</span><br>
 
 - date: 8/2
   title: Preparing for the project presentation
