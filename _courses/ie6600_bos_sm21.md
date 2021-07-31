@@ -42,6 +42,7 @@ This course covers basic of the R, and R Shiny for data preprocessing, and visua
 ***
 
 <!-- Guest  -->
+
 <div class="instructors clearfix">
   {% for instructor in site.data.staff_bos_sm21.guest %}
   <div class="instructor-profile-two-col">
