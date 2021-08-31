@@ -115,23 +115,17 @@
     <strong>Exploratory data analysis and more data visualization</strong>
   materials:
     - <b>R4DS</b> <a href="https://r4ds.had.co.nz/exploratory-data-analysis.html" target="_blank">Exploratory Data Analysis</a>
-  assignments:
+  assignments: >
+      <span class="deadline">HW5 due 11/30 @ 11:59pm ET</span><br>
+      <span class="event">HW6 out</span>
 
 - date: 12/8
   title: >
     <strong>Additional R Workshop</strong>
   materials:
-    
-  assignments: >
-      <span class="deadline">HW5 due 12/7 @ 11:59pm ET</span><br>
-      <span class="event">HW6 out</span>
-
-- date: 12/15
-  title: >
-    <strong>Additional R Workshop</strong>
-  materials:
   assignments: >
       <span class="deadline">HW6 due 12/14 @ 11:59pm ET</span><br>
+
 
 - title: Project and Slides due 12/14 @ 11:59pm ET
 
