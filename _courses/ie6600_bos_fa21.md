@@ -147,7 +147,7 @@ More details will be posted later in the semester.
 {% assign skip_classes = 0 %}
 {% assign prev_date = 0 %}
 
-{% for item in site.data.ie6600_bos_fa20 %}
+{% for item in site.data.ie6600_bos_fa21 %}
 {% if item.date %}
 {% assign lecture = item %}
 {% assign event_type = "upcoming" %}
