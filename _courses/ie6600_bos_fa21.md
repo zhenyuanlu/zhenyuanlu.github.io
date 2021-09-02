@@ -102,8 +102,6 @@ Plagiarism, cheating, and any form of unauthorized collaboration will not be tol
 
 Northeastern University strictly prohibits discrimination or harassment on the basis of race, color, religion, religious creed, genetic information, sex, gender identity, sexual orientation, age, national origin, ancestry, veteran, or disability status. Please review [Northeastern’s Title IX policy](https://www.northeastern.edu/ouec/){:target="\_blank"}, which protects individuals from sex or gender-based discrimination, including discrimination based on gender-identity. Faculty members are required to report all allegations of sex/gender-based discrimination to the Title IX coordinator.
 
-**Please be kind and respectful to your fellow students regardless of identity or background. Students are expected to respect and use other students’ names and pronouns**
-
 ***
 
 ### COVID-19
