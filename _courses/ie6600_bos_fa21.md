@@ -108,8 +108,7 @@ Northeastern University strictly prohibits discrimination or harassment on the b
 
 All students, faculty, staff, and vendors across Northeastern’s network of global campuses will be required to wear masks indoors. Northeastern’s indoor mask mandate will take effect on Friday, August 27 on the Boston campus. Each campus will continue to stay aligned with local guidance, and all campuses will resume indoor mask wearing no later than September 6.  
 
-Also, feel free to check out the latest on-campus COVID policy, please revew [
-University MessagesCOVID-19 FALL DEADLINES AND CHECKLIST](https://news.northeastern.edu/coronavirus/university-messages/covid-19-fall-deadlines-and-checklist/)
+Also, feel free to check out the latest on-campus COVID policy, please revew [COVID-19 FALL DEADLINES AND CHECKLIST](https://news.northeastern.edu/coronavirus/university-messages/covid-19-fall-deadlines-and-checklist/)
 
 ***
 
