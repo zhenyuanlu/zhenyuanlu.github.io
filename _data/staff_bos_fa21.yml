@@ -6,13 +6,19 @@ instructor:
       office-hours: TBD
       image: staff/z.jpg
 
-    - name: TBA
+    - name: Ameya Mande
       title: TA
-      email: TBA@northeastern.edu
+      email: mande.a@northeastern.edu
+      url:
+      office-hours: "Fri 11:00am to 12:00pm on Zoom"
+      image: staff/ameya.jpg
+
+    - name: Sucharitha Sai E
+      title: TA
+      email: e.s@northeastern.edu
       url:
       office-hours: TBA
-      image: staff/husky.jpg
-
+      image: staff/sucharitha.jpg
 
 guest:
     - name: TBA
