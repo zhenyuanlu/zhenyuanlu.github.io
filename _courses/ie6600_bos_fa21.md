@@ -136,7 +136,6 @@ Please feel free to refer to any materials from my slides. You may discuss homew
 More details will be posted later in the semester.
 
 
-
 ***
 
 ### Course Evaluation
