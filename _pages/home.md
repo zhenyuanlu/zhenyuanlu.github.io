@@ -9,9 +9,9 @@ class: home
 <div class="intro" markdown="1">
 I am a data science teaching faculty and PhD research fellow at [Northeastern University](https://www.northeastern.edu/) focusing on cancer diagnosis and pain research using machine learning techniques. I also design and teach graduate-level courses in [IE7275 data mining]({{ "/ie7275-bos-sm20/" | relative_url }}) and [IE6600 Computation and Visualization for Analytics]({{ "/ie6600-bos-fa20/" | relative_url }}) to prepare graduate students doing research, team projects and future career.
 
-Using background and experience working in Biomedical sciences and data science fields over the last 10 years. I weave healthcare and machine learning concepts together. Prior to NEU, I worked as a research scientist with biotech and personal care companies and helped holds patents on disease diagnosis and healthcare inventions funded by the government and institutions.
+<!--Using background and experience working in Biomedical sciences and data science fields over the last 10 years. I weave healthcare and machine learning concepts together. Prior to NEU, I worked as a research scientist with biotech and personal care companies and helped holds patents on disease diagnosis and healthcare inventions funded by the government and institutions.
 
-I am actively contributing to open source projects on creating user-friendly R-shiny app and machine learning implementations. When I am not at work, I am a photographer with my own studio taking photos included but not limited to human-beings, driver-only road trips, etc.
+I am actively contributing to open source projects on creating user-friendly R-shiny app and machine learning implementations. When I am not at work, I am a photographer with my own studio taking photos included but not limited to human-beings, driver-only road trips, etc.-->
 
 <p>
 <span class="social-buttons">
