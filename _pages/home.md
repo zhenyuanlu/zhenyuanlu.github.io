@@ -1,7 +1,7 @@
 ---
 layout: page
 permalink: /
-title: "Zhenyuan Lu"
+title: "Hi, I'm Zhenyuan Lu"
 class: home
 ---
 
