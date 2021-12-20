@@ -3,7 +3,7 @@ layout: schedule
 permalink: /ie6600-bos-fa21/
 title: <b>C</b>omputation and <b>V</b>isualization for <b>A</b>nalytics
 class: course
-description: IE6600 • Fall 2021 • Northeastern University • Boston
+description: IE6600 • Spring 2022 • Northeastern University • Seattle
 logo: neu.png
 nav: IE6600
 ---
