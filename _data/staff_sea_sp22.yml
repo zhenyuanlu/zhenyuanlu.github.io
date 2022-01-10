@@ -19,3 +19,12 @@ instructor:
       url:
       office-hours: TBA
       image: staff/husky.jpg
+
+guest:
+    - name: TBA
+      title: TBA
+      email:
+      url:
+      expertise:
+      title2:
+      image: staff/husky.jpg
