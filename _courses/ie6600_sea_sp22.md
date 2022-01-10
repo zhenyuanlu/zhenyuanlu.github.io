@@ -42,7 +42,7 @@ IE6600 covers basic of the R, and R Shiny for data preprocessing, and visualizat
 
 <!-- Guest  -->
 <div class="instructors clearfix">
-  {% for instructor in site.data.staff_bos_fa21.guest %}
+  {% for instructor in site.data.staff_sea_sp22.guest %}
   <div class="instructor-profile-two-col">
     <a href="{{ instructor.url }}" target="_blank"><img src="{{ instructor.image | prepend: '/assets/img/' | relative_url }}" /></a>
     <ul class="instructor-info">

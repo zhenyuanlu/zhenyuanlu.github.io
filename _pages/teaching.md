@@ -24,7 +24,7 @@ description: Classes, Workshops, and Course websites
 
 
 
-    <h6 class="mt-2 mt-sm-0">[<b><a href="{{ '/ie6600-bos-fa21/' | relative_url }}" target="_blank">Fall 2021</a></b>], [<b><a href="{{ '/ie6600-bos-sm21/' | relative_url }}" target="_blank">Summer 2021</a></b>], [<b><a href="{{ '/ie6600-sea-sp21/' | relative_url }}" target="_blank">Spring 2021</a></b>], [<b><a href="{{ '/ie6600-bos-fa20/' | relative_url }}" target="_blank">Fall 2020</a></b>], Spring 2020, Spring 2019: Instructor</h6>
+    <h6 class="mt-2 mt-sm-0">[<b><a href="{{ '/ie6600-sea-sp22/' | relative_url }}" target="_blank">Spring 2022</a></b>],[<b><a href="{{ '/ie6600-bos-fa21/' | relative_url }}" target="_blank">Fall 2021</a></b>], [<b><a href="{{ '/ie6600-bos-sm21/' | relative_url }}" target="_blank">Summer 2021</a></b>], [<b><a href="{{ '/ie6600-sea-sp21/' | relative_url }}" target="_blank">Spring 2021</a></b>], [<b><a href="{{ '/ie6600-bos-fa20/' | relative_url }}" target="_blank">Fall 2020</a></b>], Spring 2020, Spring 2019: Instructor</h6>
     <ul class="card-text font-weight-light list-group list-group-flush">
 
       <!--<li class="list-group-item">Fall 2020 [<a href="{{ '/lectures/' | relative_url }}">Website</a>], Spring 2020 (Seattle), Spring 2019: Instructor</li>-->
