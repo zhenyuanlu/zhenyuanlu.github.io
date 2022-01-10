@@ -4,7 +4,7 @@ permalink: /ie6600-sea-sp22/
 title: <b>C</b>omputation and <b>V</b>isualization for <b>A</b>nalytics
 class: course
 description: IE6600 • Spring 2022 • Northeastern University • Seattle
-logo: neu.png
+logo: seal-250x250.png
 nav: IE6600
 ---
 

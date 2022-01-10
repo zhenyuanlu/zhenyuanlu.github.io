@@ -10,4 +10,5 @@ group :jekyll_plugins do
     gem "kramdown", ">= 2.3.1"
     gem "addressable", ">= 2.8.0"
     gem "nokogiri", ">= 1.12.5"
+    gem 'wdm', '>= 0.1.0'
 end
