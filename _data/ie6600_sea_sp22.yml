@@ -1,6 +1,6 @@
 - title: "Module 1: Introduction"
 
-- date: 1/15
+- date: 1/18
   lecturer:
   title: >
     <strong>Course introduction and expectations</strong>
@@ -12,7 +12,7 @@
     - Instructor’s brain
   assignments:
 
-- date: 9/22
+- date: 1/25
   lecturer:
   title: >
     <strong>Basic of R</strong>
@@ -21,9 +21,9 @@
     - <b>R4E</b> "Advanced Data Structure"
   assignments:
 
-- title: 9/28, Last day to drop a full-semester fall class without a W grade
+- title: 1/31, Last day to drop a full-semester fall class without a W grade
 
-- date: 9/29
+- date: 2/1
   lecturer:
   title: >
     <strong>R functions and the grammar of visualization</strong>
@@ -35,7 +35,7 @@
 
 - title: "Module 2: Basic Visualization and Data Engineering"
 
-- date: 10/6
+- date: 2/8
   title: >
     <strong>Data Visualization Concepts</strong>
   materials:
@@ -43,7 +43,7 @@
       <span class="deadline">Group arrangement due 10/5 @ 11:59pm ET</span>
       <span class="event">HW1 out</span>
 
-- date: 10/13
+- date: 2/15
   lecturer:
   title: >
     <strong>Basic data visualization in R</strong>
@@ -54,7 +54,7 @@
     <span class="deadline">HW1 due 10/12 @ 11:59pm ET</span><br>
     <span class="event">HW2 out</span>
 
-- date: 10/20
+- date: 2/22
   lecturer:
   title: >
     <strong>Data transformation with dplyr</strong>
@@ -64,7 +64,7 @@
     <span class="deadline">HW2 due 10/19 @ 11:59pm ET</span><br>
     <span class="event">HW3 out</span>
 
-- date: 10/27
+- date: 3/1
   title: >
     <strong>Data wrangling with tibbles, readr and tidyr</strong><br>
     Optional: <br>Data wrangling with stringr, forcats
@@ -77,7 +77,7 @@
     <span class="deadline">HW3 due 10/26 @ 11:59pm ET</span><br>
     <span class="event">HW4 out</span>
 
-- date: 11/3
+- date: 3/8
   title: >
     <strong>Visualizing relational data</strong>
     (Additional) Visualization by PCA
@@ -90,7 +90,7 @@
 
 - title: "Module 3: Advanced Visualization"
 
-- date: 11/10
+- date: 3/15
   title: >
     <strong>Introduction to Shiny interactive visualization web app I</strong>
   materials:
@@ -99,17 +99,15 @@
     <span class="deadline">Project proposal due 11/9 @ 11:59pm ET;</span><br>
     <span class="event">HW5 out</span>
 
-- date: 11/17
+- date: 3/22
   title: >
     <strong>Introduction to Shiny interactive visualization web app II</strong>
   materials:
     - <b>R Shiny</b> <a href="https://shiny.rstudio.com/tutorial/" target="_blank">Shiny tutorial</a>
   assignments:
 
-- date: 11/24
-  title: No classes - Thanksgiving
 
-- date: 12/1
+- date: 3/29
   title: >
     <strong>Exploratory data analysis and more data visualization</strong>
   materials:
@@ -118,15 +116,20 @@
       <span class="deadline">HW5 due 11/30 @ 11:59pm ET</span><br>
       <span class="event">HW6 out</span>
 
-- date: 12/8
+- date: 4/5
   title: >
     <strong>Additional R Workshop</strong>
   materials:
   assignments: >
       <span class="deadline">HW6 due 12/7 @ 11:59pm ET</span><br>
 
+- date: 4/12
+  title: >
+    <strong>TBD</strong>
+  materials:
+  assignments:
 
 - title: Project and Slides due 12/14 @ 11:59pm ET
 
-- date: 12/15
+- date: 4/19
   title: Project presentation
