@@ -130,7 +130,7 @@ If you have difficulty to keep up with any materials or homework for personal re
 
 ***
 
-### homework
+### Homework
 
 There are 6 individual homework assignments. Due day will be posted with the homework. Late submission would not be accepted. Please let me know 72 hours in advance before the due day if you need extensions with a reasonable justification.
 Requests for regrades in writing will only be accepted no less than 10 days after receiving grade. Please send the instructor your NUID, and name with title “Request for regrade: HW+number” via email. The new grade may be lower than the original one.
