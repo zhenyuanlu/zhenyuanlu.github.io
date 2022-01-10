@@ -24,7 +24,7 @@ description: Classes, Workshops, and Course websites
 
 
 
-    <h6 class="mt-2 mt-sm-0">[<b><a href="{{ '/ie6600-sea-sp22/' | relative_url }}" target="_blank">Spring 2022</a></b>],[<b><a href="{{ '/ie6600-bos-fa21/' | relative_url }}" target="_blank">Fall 2021</a></b>], [<b><a href="{{ '/ie6600-bos-sm21/' | relative_url }}" target="_blank">Summer 2021</a></b>], [<b><a href="{{ '/ie6600-sea-sp21/' | relative_url }}" target="_blank">Spring 2021</a></b>], [<b><a href="{{ '/ie6600-bos-fa20/' | relative_url }}" target="_blank">Fall 2020</a></b>], Spring 2020, Spring 2019: Instructor</h6>
+    <h6 class="mt-2 mt-sm-0">[<b><a href="{{ '/ie6600-sea-sp22/' | relative_url }}" target="_blank">Spring 22</a></b>],[<b><a href="{{ '/ie6600-bos-fa21/' | relative_url }}" target="_blank">Fall 21</a></b>], [<b><a href="{{ '/ie6600-bos-sm21/' | relative_url }}" target="_blank">Summer 21</a></b>], [<b><a href="{{ '/ie6600-sea-sp21/' | relative_url }}" target="_blank">Spring 21</a></b>], [<b><a href="{{ '/ie6600-bos-fa20/' | relative_url }}" target="_blank">Fall 20</a></b>], Spring 20, Spring 19: Instructor</h6>
     <ul class="card-text font-weight-light list-group list-group-flush">
 
       <!--<li class="list-group-item">Fall 2020 [<a href="{{ '/lectures/' | relative_url }}">Website</a>], Spring 2020 (Seattle), Spring 2019: Instructor</li>-->
@@ -48,7 +48,7 @@ description: Classes, Workshops, and Course websites
         </span>
       </div>
     </div>
-    <h6 class=" mt-2 mt-sm-0">Summer 2020 [<b><a href="{{ '/ie7275-bos-sm20/' | relative_url }}" target="_blank">Website</a></b>]: Instructor</h6>
+    <h6 class=" mt-2 mt-sm-0"> [<b><a href="{{ '/ie7275-bos-sm20/' | relative_url }}" target="_blank">Summer 20</a></b>]: Instructor</h6>
     <ul class="card-text font-weight-light list-group list-group-flush">
         <li class="list-group-item">This course covers the theory and applications of data mining in engineering. It reviews fundamentals and key concepts of data mining, discusses important data mining techniques, and presents algorithms for implementing these techniques. In specific, this course covers data mining techniques for data preprocessing, association rule extraction, classification, prediction, clustering, and complex data exploration. Data mining applications in several areas including manufacturing, healthcare, medicine, business, and other service sectors are discussed.</li>
     </ul>
