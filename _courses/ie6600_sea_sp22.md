@@ -80,8 +80,7 @@ The required textbook:
 
 The required tutorials:
 - [Shiny tutorial](https://shiny.rstudio.com/tutorial/){:target="\_blank"}, R Shiny
-- [Tableau Public Knowledge Base](http://kb.tableau.com/){:target="\_blank"}, Tableau
-- [Tableau Public training videos](http://www.tableausoftware.com/public/training), Tableau.
+
 
 Additional textbooks:
 - [R For Everyone](https://onesearch.library.northeastern.edu/permalink/f/365rt0/NEU_ALMA51284955070001401){:target="\_blank"} (**R4E**), Lander, Jared P.

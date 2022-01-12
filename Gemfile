@@ -11,4 +11,5 @@ group :jekyll_plugins do
     gem "addressable", ">= 2.8.0"
     gem "nokogiri", ">= 1.12.5"
     gem 'wdm', '>= 0.1.0'
+    gem "webrick", "~> 1.7"
 end
