@@ -14,7 +14,7 @@ IE6600 covers basic of the R, and R Shiny for data preprocessing, and visualizat
 
 - **Class:** Tuesday 11:00 – 14:00 (PT)
 - **Office hour:** Monday 9:00 - 10:00 (PT)
-- **Location:**  Room 409, 225 Terry Ave
+- **Location:**  Room 416, 225 Terry Ave
 - **Dates:** 01/19/2021 – 04/27/2021
 - **Administration platform:** All questions, discussion or notes will be only posted via [Campuswire](https://campuswire.com/){:target="\_blank"}. See sign up link on Canvas.
 - **Guideline**: Please see the post [How to ask a good question](https://stackoverflow.com/help/how-to-ask) before posting any questions or discussions.
