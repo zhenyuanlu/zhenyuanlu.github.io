@@ -40,7 +40,7 @@
     <strong>Data Visualization Concepts</strong>
   materials:
   assignments: >
-      <span class="deadline">Group arrangement due 10/5 @ 11:59pm ET</span>
+      <span class="deadline">Group arrangement due 2/7 @ 11:59pm PT</span>
       <span class="event">HW1 out</span>
 
 - date: 2/15
@@ -51,7 +51,7 @@
     - <b>R4DS</b> <a href="https://r4ds.had.co.nz/workflow-basics.html" target="_blank">Data Visualization with ggplot2</a>
     - (optional) RGC "Quickly Exploring Data"
   assignments: >
-    <span class="deadline">HW1 due 10/12 @ 11:59pm ET</span><br>
+    <span class="deadline">HW1 due 2/14 @ 11:59pm PT</span><br>
     <span class="event">HW2 out</span>
 
 - date: 2/22
@@ -61,7 +61,7 @@
   materials:
     - <b>R4DS</b> <a href="https://r4ds.had.co.nz/transform.html" target="_blank">Data Transformation with dplyr</a>
   assignments: >
-    <span class="deadline">HW2 due 10/19 @ 11:59pm ET</span><br>
+    <span class="deadline">HW2 due 2/21 @ 11:59pm PT</span><br>
     <span class="event">HW3 out</span>
 
 - date: 3/1
@@ -74,7 +74,7 @@
     - <b>R4DS</b> <a href="https://r4ds.had.co.nz/tidy-data.html" targe="_blank">Tidy Data with tidyr</a>
     - (optional) <b>R4DS</b> "Strings with stringr", "Factors with forcats"
   assignments: >
-    <span class="deadline">HW3 due 10/26 @ 11:59pm ET</span><br>
+    <span class="deadline">HW3 due 2/31 @ 11:59pm PT</span><br>
     <span class="event">HW4 out</span>
 
 - date: 3/8
@@ -85,7 +85,7 @@
     - <b>R4DS</b> <a href="https://r4ds.had.co.nz/relational-data.html" target="_blank">Relational Data with dplyr</a>
     - James, Gareth, et al. <a href="https://web.stanford.edu/~hastie/ISLR2/ISLRv2_website.pdf" target="_blank"> An Introduction to Statistical Learning, with Applications in R</a>
   assignments: >
-    <span class="deadline">HW4 due 11/2 @ 11:59pm ET</span>
+    <span class="deadline">HW4 due 3/7 @ 11:59pm PT</span>
 
 
 - title: "Module 3: Advanced Visualization"
@@ -96,7 +96,7 @@
   materials:
     - <b>R Shiny</b> <a href="https://shiny.rstudio.com/tutorial/" target="_blank">Shiny tutorial</a>
   assignments: >
-    <span class="deadline">Project proposal due 11/9 @ 11:59pm ET;</span><br>
+    <span class="deadline">Project proposal due 3/14 @ 11:59pm PT</span><br>
     <span class="event">HW5 out</span>
 
 - date: 3/22
@@ -113,7 +113,7 @@
   materials:
     - <b>R4DS</b> <a href="https://r4ds.had.co.nz/exploratory-data-analysis.html" target="_blank">Exploratory Data Analysis</a>
   assignments: >
-      <span class="deadline">HW5 due 11/30 @ 11:59pm ET</span><br>
+      <span class="deadline">HW5 due 3/28 @ 11:59pm PT</span><br>
       <span class="event">HW6 out</span>
 
 - date: 4/5
@@ -121,7 +121,7 @@
     <strong>Additional R Workshop</strong>
   materials:
   assignments: >
-      <span class="deadline">HW6 due 12/7 @ 11:59pm ET</span><br>
+      <span class="deadline">HW6 due 4/4 @ 11:59pm PT</span><br>
 
 - date: 4/12
   title: >
@@ -129,7 +129,7 @@
   materials:
   assignments:
 
-- title: Project and Slides due 12/14 @ 11:59pm ET
+- title: Project and Slides due 4/18 @ 11:59pm PT
 
 - date: 4/19
   title: Project presentation
