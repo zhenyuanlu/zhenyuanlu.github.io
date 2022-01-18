@@ -149,7 +149,7 @@ More details will be posted later in the semester.
 -	Final Project **50%**
     - Proposal	10%
     - Presentation	35%
-    - Peer Estimation 5%
+    - Peer Estimation	5%
 -	Class Participation	**8%**
 
 *This course does not have any quizzes or exams.*
