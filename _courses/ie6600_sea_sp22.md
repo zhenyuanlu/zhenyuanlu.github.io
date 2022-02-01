@@ -132,7 +132,7 @@ If you have difficulty to keep up with any materials or homework for personal re
 
 ### Homework
 
-There are 6 individual homework assignments. Due day will be posted with the homework. Late submission would not be accepted. Each student has one time 3-day extension per semester only applied on homework. This extension will be applied automatically. 
+There are 6 individual homework assignments. Due day will be posted with the homework. Late submission would not be accepted. Each student has one time 3-day extension per semester only applied on homework. This extension will be applied automatically.
 
 Requests for regrades in writing will only be accepted no less than 10 days after receiving grade. Please send the instructor your NUID, and name with title “Request for regrade: HW+number” via email. The new grade may be lower than the original one.
 
@@ -150,7 +150,7 @@ More details will be posted later in the semester.
 -	Final Project **50%**
     - Proposal	10%
     - Presentation	35%
-    - Peer Estimation	5%
+    - Peer Review	5%
 -	Class Participation	**8%**
 
 *This course does not have any quizzes or exams.*
