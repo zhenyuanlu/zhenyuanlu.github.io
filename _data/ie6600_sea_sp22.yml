@@ -108,9 +108,7 @@
     <strong>Introduction to Shiny interactive visualization web app II</strong>
   materials:
     - <b>R Shiny</b> <a href="https://shiny.rstudio.com/tutorial/" target="_blank">Shiny tutorial</a>
-  assignments: >
-    <span class="deadline">HW5 due 3/28 @ 11:59pm PT</span><br>
-    <span class="event">HW6 out</span>
+  assignments:
 
 
 - date: 4/5
@@ -118,7 +116,9 @@
     <strong>Exploratory data analysis and more data visualization</strong>
   materials:
     - <b>R4DS</b> <a href="https://r4ds.had.co.nz/exploratory-data-analysis.html" target="_blank">Exploratory Data Analysis</a>
-  assignments:
+  assignments: >
+    <span class="deadline">HW5 due 4/4 @ 11:59pm PT</span><br>
+    <span class="event">HW6 out</span>
 
 
 - date: 4/12
@@ -126,7 +126,7 @@
     <strong>Additional R Workshop</strong>
   materials:
   assignments: >
-      <span class="deadline">HW6 due 4/4 @ 11:59pm PT</span><br>
+      <span class="deadline">HW6 due 4/11 @ 11:59pm PT</span><br>
 
 - title: Project and Slides due 4/18 @ 11:59pm PT
 
