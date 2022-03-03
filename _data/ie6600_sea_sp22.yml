@@ -93,8 +93,7 @@
 - date: 3/15
   title: >
     No classes - Spring Break
-  assignments: >
-    <span class="deadline">Project proposal due 3/14 @ 11:59pm PT</span>
+  assignments:
 
 
 - date: 3/22
@@ -102,7 +101,8 @@
     <strong>Introduction to Shiny interactive visualization web app I</strong>
   materials:
     - <b>R Shiny</b> <a href="https://shiny.rstudio.com/tutorial/" target="_blank">Shiny tutorial</a>
-  assignments:
+  assignments: >
+    <span class="deadline">Project proposal due 3/21 @ 11:59pm PT</span>
 
 - date: 3/29
   title: >
