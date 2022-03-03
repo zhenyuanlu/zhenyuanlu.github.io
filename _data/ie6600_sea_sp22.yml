@@ -86,6 +86,7 @@
     - James, Gareth, et al. <a href="https://web.stanford.edu/~hastie/ISLR2/ISLRv2_website.pdf" target="_blank"> An Introduction to Statistical Learning, with Applications in R</a>
   assignments: >
     <span class="deadline">HW4 due 3/7 @ 11:59pm PT</span>
+    <span class="event">HW5 out</span>
 
 
 - title: "Module 3: Advanced Visualization"
@@ -95,7 +96,7 @@
     No classes - Spring Break
   assignments: >
     <span class="deadline">Project proposal due 3/14 @ 11:59pm PT</span><br>
-    <span class="event">HW5 out</span>
+
 
 - date: 3/22
   title: >
