@@ -113,7 +113,7 @@
     <span class="event">HW6 out</span>
 
 
-- date: 3/29
+- date: 4/5
   title: >
     <strong>Exploratory data analysis and more data visualization</strong>
   materials:
@@ -121,18 +121,12 @@
   assignments:
 
 
-- date: 4/5
+- date: 4/12
   title: >
     <strong>Additional R Workshop</strong>
   materials:
   assignments: >
       <span class="deadline">HW6 due 4/4 @ 11:59pm PT</span><br>
-
-- date: 4/12
-  title: >
-    <strong>TBD</strong>
-  materials:
-  assignments:
 
 - title: Project and Slides due 4/18 @ 11:59pm PT
 
