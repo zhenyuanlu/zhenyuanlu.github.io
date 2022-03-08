@@ -80,10 +80,10 @@
 - date: 3/8
   title: >
     <strong>Visualizing relational data</strong>
-    (Additional) Visualization by PCA
+
   materials:
     - <b>R4DS</b> <a href="https://r4ds.had.co.nz/relational-data.html" target="_blank">Relational Data with dplyr</a>
-    - James, Gareth, et al. <a href="https://web.stanford.edu/~hastie/ISLR2/ISLRv2_website.pdf" target="_blank"> An Introduction to Statistical Learning, with Applications in R</a>
+
   assignments: >
     <span class="deadline">HW4 due 3/7 @ 11:59pm PT</span>
 
@@ -126,9 +126,11 @@
 - date: 4/12
   title: >
     <strong>Additional R Workshop</strong>
-  materials:
+    (Additional) Visualization by PCA
+  materials: >
+    - James, Gareth, et al. <a href="https://web.stanford.edu/~hastie/ISLR2/ISLRv2_website.pdf" target="_blank"> An Introduction to Statistical Learning, with Applications in R</a>
   assignments: >
-      <span class="deadline">HW6 due 4/11 @ 11:59pm PT</span><br>
+    <span class="deadline">HW6 due 4/11 @ 11:59pm PT</span><br>
 
 - title: Project and Slides due 4/18 @ 11:59pm PT
 
