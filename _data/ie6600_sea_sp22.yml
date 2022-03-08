@@ -125,7 +125,7 @@
 
 - date: 4/12
   title: >
-    <strong>Additional R Workshop</strong>
+    <strong>Additional R Workshop</strong><br>
     (Additional) Visualization by PCA
   materials: >
     - James, Gareth, et al. <a href="https://web.stanford.edu/~hastie/ISLR2/ISLRv2_website.pdf" target="_blank"> An Introduction to Statistical Learning, with Applications in R</a>
