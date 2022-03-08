@@ -12,4 +12,5 @@ group :jekyll_plugins do
     gem "nokogiri", ">= 1.13.2"
     gem 'wdm', '>= 0.1.0'
     gem "webrick", "~> 1.7"
+    gem "commonmarker", ">= 0.23.4"
 end
