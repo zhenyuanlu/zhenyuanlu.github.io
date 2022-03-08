@@ -112,7 +112,6 @@
     - <b>R Shiny</b> <a href="https://shiny.rstudio.com/tutorial/" target="_blank">Shiny tutorial</a>
   assignments:
 
-
 - date: 4/5
   title: >
     <strong>Exploratory data analysis and more data visualization</strong>
@@ -121,7 +120,6 @@
   assignments: >
     <span class="deadline">HW5 due 4/4 @ 11:59pm PT</span><br>
     <span class="event">HW6 out</span>
-
 
 - date: 4/12
   title: >
