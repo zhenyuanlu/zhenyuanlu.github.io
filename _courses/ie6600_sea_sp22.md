@@ -8,6 +8,7 @@ logo: seal-250x250.png
 nav: IE6600
 ---
 
+
 IE6600 covers basic of the R, and R Shiny for data preprocessing, and visualization. It introduces students to static and interactive visualization, dashboard, and platform that reveal information, patterns, interactions, and comparisons by paying attention to details such as color encoding, a shape selection, spatial layout, and annotation. Based on these fundamentals of analytical and creative thinking, the course then focuses on data visualization techniques and the use of the most current popular software tools that support data exploration, analytics-based storytelling and knowledge discovery, and decision-making in engineering, healthcare operations, manufacturing, and related applications.
 
 ***
@@ -132,7 +133,7 @@ If you have difficulty to keep up with any materials or homework for personal re
 
 ### Homework
 
-There are 6 individual homework assignments. Due day will be posted with the homework. Late submission would not be accepted. Each student has one time 3-day extension per semester only applied on homework. This extension will be applied automatically. Please let me know 24 hours in advance before the due day if any emergencies or difficulties occur. 
+There are 6 individual homework assignments. Due day will be posted with the homework. Late submission would not be accepted. Each student has one time 3-day extension per semester only applied on homework. This extension will be applied automatically. Please let me know 24 hours in advance before the due day if any emergencies or difficulties occur.
 
 Requests for regrades in writing will only be accepted no less than 10 days after receiving grade. Please send the instructor your NUID, and name with title “Request for regrade: HW+number” via email. The new grade may be lower than the original one.
 
