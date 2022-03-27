@@ -193,7 +193,12 @@ More details will be posted later in the semester.
         {{ lecture.guest }}
         <!--[-->
             {% if lecture.slides %}
-              <a href="{{ lecture.slides }}" target="_blank">slides</a>
+              [<a href="{{ lecture.slides }}" target="_blank">slides</a>]
+            {% else %}
+              <!--slides-->
+            {% endif %}
+            {% if lecture.slides2 %}
+              [<a href="{{ lecture.slides2 }}" target="_blank">slides2</a>]
             {% else %}
               <!--slides-->
             {% endif %}
