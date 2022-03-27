@@ -109,8 +109,8 @@ Northeastern University strictly prohibits discrimination or harassment on the b
 
 ***
 
-
 ### Schedule
+
 (subject to change)
 {% assign current_module = 0 %}
 {% assign skip_classes = 0 %}
