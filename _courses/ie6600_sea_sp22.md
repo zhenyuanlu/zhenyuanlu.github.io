@@ -109,54 +109,6 @@ Northeastern University strictly prohibits discrimination or harassment on the b
 
 ***
 
-### COVID-19
-
-All students, faculty, staff, and vendors across Northeastern’s network of global campuses will be required to wear masks indoors. Northeastern’s indoor mask mandate will take effect on Friday, August 27 on the Boston campus. Each campus will continue to stay aligned with local guidance, and all campuses will resume indoor mask wearing no later than September 6.
-
-Also, feel free to check out the latest on-campus COVID policy, please revew [COVID-19 FALL DEADLINES AND CHECKLIST](https://news.northeastern.edu/coronavirus/university-messages/covid-19-fall-deadlines-and-checklist/)
-
-***
-
-### Accommodations for Students with Disabilities
-
-If you have a disability, I encourage you to contact [Disability Resource Center](http://www.northeastern.edu/drc/about-the-drc/){:target="\_blank"} to register and request the accommodations. Also please discuss your needs with me as early in the semester as possible.
-
-***
-
-### Take care of yourself
-
-Eating healthy food, having regular exercises, avoiding alcohol and drugs, getting adequate sleep and taking time to relax. This will help you achieve your goals and tame stress.
-
-If you have difficulty to keep up with any materials or homework for personal reasons please let me know early. If you or your friends/classmates who appears to be struggling, or having trouble coping with stress. We strongly encourage you to seek support at the [We Care](https://studentlife.northeastern.edu/we-care/){:target="\_blank"} program at NEU. At Northeastern, a student is never alone when struggling with a demanding situation.
-
-***
-
-### Homework
-
-There are 6 individual homework assignments. Due day will be posted with the homework. Late submission would not be accepted. Each student has one time 3-day extension per semester only applied on homework. This extension will be applied automatically. Please let me know 24 hours in advance before the due day if any emergencies or difficulties occur.
-
-Requests for regrades in writing will only be accepted no less than 10 days after receiving grade. Please send the instructor your NUID, and name with title “Request for regrade: HW+number” via email. The new grade may be lower than the original one.
-
-Please feel free to refer to any materials from my slides. You may discuss homework with your classmates, but all the assignments are supposed to completed by your own. Sharing of completed solutions will not be tolerated. Plagiarism will be considered, if solutions and project documentations with a very high degree of similarity with other student’s or materials online. Such academic dishonesty will be handled in accordance with university policies.
-
-***
-### Projects
-More details will be posted later in the semester.
-
-***
-
-### Course Evaluation
-
-- Homework **42%**
--	Final Project **50%**
-    - Proposal	10%
-    - Presentation	35%
-    - Peer Review	5%
--	Class Participation	**8%**
-
-*This course does not have any quizzes or exams.*
-
-***
 
 ### Schedule
 (subject to change)
@@ -239,3 +191,54 @@ More details will be posted later in the semester.
 </tr>
 {% endif %}
 {% endfor %}
+
+***
+
+### COVID-19
+
+All students, faculty, staff, and vendors across Northeastern’s network of global campuses will be required to wear masks indoors. Northeastern’s indoor mask mandate will take effect on Friday, August 27 on the Boston campus. Each campus will continue to stay aligned with local guidance, and all campuses will resume indoor mask wearing no later than September 6.
+
+Also, feel free to check out the latest on-campus COVID policy, please revew [COVID-19 FALL DEADLINES AND CHECKLIST](https://news.northeastern.edu/coronavirus/university-messages/covid-19-fall-deadlines-and-checklist/)
+
+***
+
+### Accommodations for Students with Disabilities
+
+If you have a disability, I encourage you to contact [Disability Resource Center](http://www.northeastern.edu/drc/about-the-drc/){:target="\_blank"} to register and request the accommodations. Also please discuss your needs with me as early in the semester as possible.
+
+***
+
+### Take care of yourself
+
+Eating healthy food, having regular exercises, avoiding alcohol and drugs, getting adequate sleep and taking time to relax. This will help you achieve your goals and tame stress.
+
+If you have difficulty to keep up with any materials or homework for personal reasons please let me know early. If you or your friends/classmates who appears to be struggling, or having trouble coping with stress. We strongly encourage you to seek support at the [We Care](https://studentlife.northeastern.edu/we-care/){:target="\_blank"} program at NEU. At Northeastern, a student is never alone when struggling with a demanding situation.
+
+***
+
+### Homework
+
+There are 6 individual homework assignments. Due day will be posted with the homework. Late submission would not be accepted. Each student has one time 3-day extension per semester only applied on homework. This extension will be applied automatically. Please let me know 24 hours in advance before the due day if any emergencies or difficulties occur.
+
+Requests for regrades in writing will only be accepted no less than 10 days after receiving grade. Please send the instructor your NUID, and name with title “Request for regrade: HW+number” via email. The new grade may be lower than the original one.
+
+Please feel free to refer to any materials from my slides. You may discuss homework with your classmates, but all the assignments are supposed to completed by your own. Sharing of completed solutions will not be tolerated. Plagiarism will be considered, if solutions and project documentations with a very high degree of similarity with other student’s or materials online. Such academic dishonesty will be handled in accordance with university policies.
+
+***
+### Projects
+More details will be posted later in the semester.
+
+***
+
+### Course Evaluation
+
+- Homework **42%**
+-	Final Project **50%**
+    - Proposal	10%
+    - Presentation	35%
+    - Peer Review	5%
+-	Class Participation	**8%**
+
+*This course does not have any quizzes or exams.*
+
+***
