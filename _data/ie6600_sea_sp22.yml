@@ -135,6 +135,7 @@
     (Additional) Visualization by PCA
   materials: >
     - James, Gareth, et al. <a href="https://web.stanford.edu/~hastie/ISLR2/ISLRv2_website.pdf" target="_blank"> An Introduction to Statistical Learning, with Applications in R</a>
+    - Kilian Weinberger <a href="https://www.cs.cornell.edu/courses/cs4780/2021fa/lectures/UnsupervisedLearning.html#pca" target="_blank">PCA for Visualization</a>
   assignments: >
     <span class="deadline">HW6 due 4/11 @ 11:59pm PT</span><br>
 
