@@ -1,13 +1,14 @@
 ---
 layout: page
 permalink: /
-title: "Hi, I'm Zhenyuan Lu"
+title: "Zhenyuan Lu"
 class: home
 ---
 
 <div class="columns" markdown="1">
 <div class="intro" markdown="1">
-I am a scientist and PhD research fellow at [Northeastern University](https://www.northeastern.edu/) focusing on applied machine learning techniques. I also develop and teach graduate-level courses in [IE7275 data mining]({{ "/ie7275-bos-sm20/" | relative_url }}) and [IE6600 Computation and Visualization for Analytics]({{ "/ie6600-bos-fa20/" | relative_url }}) to prepare graduate students doing research, team projects and future career.
+## Zhenyuan Lu
+Hi! I am a PhD research fellow at [Northeastern University](https://www.northeastern.edu/) focusing on applied machine learning techniques. I also develop and teach graduate-level courses in [IE7275 data mining]({{ "/ie7275-bos-sm20/" | relative_url }}) and [IE6600 Computation and Visualization for Analytics]({{ "/ie6600-bos-fa20/" | relative_url }}) to prepare graduate students doing research, team projects and future career.
 
 <!-- Using background and experience working in Biomedical sciences and data science fields over the last 10 years. I weave healthcare and machine learning concepts together. Prior to NEU, I worked as a research scientist with biotech and personal care companies and helped holds patents on disease diagnosis and healthcare inventions funded by the government and institutions.
 
@@ -41,7 +42,6 @@ I am actively contributing to open source projects on creating user-friendly R-s
 
 <div class="me" markdown="1">
 <picture>
-
   <img src='/assets/img/staff/z.jpg'
     alt='Zhenyuan Lu'/>
 </picture>
@@ -53,6 +53,24 @@ I am actively contributing to open source projects on creating user-friendly R-s
 </div>
 
 
+## Teaching
+
+<!-- <img src='https://raw.githubusercontent.com/rstudio/rmarkdown/main/man/figures/logo.png' align="right" height="58.5"/>
+<img src='https://raw.githubusercontent.com/tidyverse/tidyverse/main/man/figures/logo.png' align="right" height="58.5"/>
+<img src='https://raw.githubusercontent.com/rstudio/shiny/main/man/figures/logo.png' align="right" height="58.5"/> -->
+
+- **Instructor, IE6600 Computation and Visualization for Analytics**
+  - [Spring 22]({{ "/ie6600-sea-sp22/" | relative_url}}), [Fall 21]({{ "/ie6600-bos-fa21/" | relative_url}}), [Summer 21]({{ "/ie6600-bos-sm21/" | relative_url}}), [Spring 21]({{ "/ie6600-sea-sp21/" | relative_url}}), [Fall 20]({{ "/ie6600-bos-fa20/" | relative_url}}), Spring 20, Spring 19
+
+- **Instructor, IE7275 Data Mining in Engineering**
+  - [Summer 20]({{ "/ie7275-bos-sm20/" | relative_url }})
+
+- **Graduate Instructor Assistant, BIO1421 Modern Biology**
+  - Fall 2014-Spring 2017, Superviosr <a href="https://www.bio.txstate.edu/about/Faculty---Staff/faculty/David-Lemke/Lemke-lab.html" target="_blank">Prof. David E. Lemke</a>
+
+
+
+<br>
 
 ## Projects
 
@@ -65,10 +83,13 @@ I am actively contributing to open source projects on creating user-friendly R-s
     {% endif %}
   {% endfor %}
 </div>
+<br>
 <a href="{{ "/projects/" | relative_url }}" class="button">
   <i class="fas fa-chevron-circle-right"></i>
   Show More Projects
 </a>
+
+
 
 <!--## Tutorials
 
@@ -91,6 +112,7 @@ I am actively contributing to open source projects on creating user-friendly R-s
   {% include experience.html %}
 </div>-->
 
+<br>
 
 ## Publications
 <div class="pubs">

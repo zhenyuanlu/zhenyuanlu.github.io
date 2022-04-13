@@ -7,7 +7,7 @@ nav: Posts
 ---
 
 {:.lead}
-For work, school, or fun.
+For work, research, or fun.
 
 <div class="grid">
   {% for project in site.posts %}

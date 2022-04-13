@@ -1,11 +1,12 @@
 ---
-layout: schedule
+layout: course
 permalink: /ie6600-sea-sp22/
 title: <b>C</b>omputation and <b>V</b>isualization for <b>A</b>nalytics
 class: course
 description: IE6600 • Spring 2022 • Northeastern University • Seattle
 logo: seal-250x250.png
 nav: IE6600
+name: ie6600_sea_sp22
 ---
 
 
@@ -101,6 +102,18 @@ Additional textbooks:
 
 ***
 
+### Schedule
+
+
+(subject to change)
+
+{% include schedule.html %}
+
+
+
+
+***
+
 
 ### Policies
 
@@ -159,88 +172,3 @@ More details will be posted later in the semester.
 -	Class Participation	**8%**
 
 *This course does not have any quizzes or exams.*
-
-***
-
-### Schedule
-
-(subject to change)
-{% assign current_module = 0 %}
-{% assign skip_classes = 0 %}
-{% assign prev_date = 0 %}
-
-{% for item in site.data.ie6600_sea_sp22 %}
-{% if item.date %}
-{% assign lecture = item %}
-{% assign event_type = "upcoming" %}
-{% assign today_date = "now" | date: "%s" | divided_by: 86400 %}
-{% assign lecture_date = lecture.date | date: "%s" | divided_by: 86400 %}
-{% if today_date > lecture_date %}
-    {% assign event_type = "past" %}
-{% elsif today_date <= lecture_date and today_date > prev_date %}
-    {% assign event_type = "warning" %}
-{% endif %}
-{% assign prev_date = lecture_date %}
-
-<tr class="{{ event_type }}">
-    <th scope="row">{{ lecture.date }}</th>
-    {% if lecture.title contains 'No classes' or forloop.last %}
-      {% assign skip_classes = skip_classes | plus: 1 %}
-      <td colspan="4" align="center">{{ lecture.title }}</td>
-    {% else %}
-    <td>
-        <!--Lecture #{{ forloop.index | minus: current_module | minus: skip_classes }}-->
-
-        {{ lecture.title }}
-        <br />
-        {% if lecture.lecturer %}({{ lecture.lecturer }}):
-        <br />{% endif %}
-        {{ lecture.guest }}
-        <!--[-->
-            {% if lecture.slides %}
-              [<a href="{{ lecture.slides }}" target="_blank">slides</a>]
-            {% else %}
-              <!--slides-->
-            {% endif %}
-            {% if lecture.slides2 %}
-              [<a href="{{ lecture.slides2 }}" target="_blank">slides2</a>]
-            {% else %}
-              <!--slides-->
-            {% endif %}
-            {% if lecture.annotated %}
-              (<a href="{{ lecture.annotated }}" target="_blank">annotated</a>)
-            {% endif %}
-            {% if lecture.video %}
-            | <a href="{{ lecture.video }}" target="_blank">video</a>
-            {% else %}
-            <!--| video-->
-            {% endif %}
-            {% if lecture.notes %}
-            | <a href="{{ lecture.notes }}" target="_blank">notes</a>
-            {% else %}
-            <!--| notes-->
-            {% endif %}
-        <!--]-->
-    </td>
-    <td>
-        {% if lecture.materials %}
-        <ul>
-        {% for material in lecture.materials %}
-            <li>{{ material }}</li>
-        {% endfor %}
-        </ul>
-        {% endif %}
-    </td>
-    <td>
-        <p>{{ lecture.assignments }}</p>
-    </td>
-    {% endif %}
-</tr>
-{% else %}
-{% assign current_module = current_module | plus: 1 %}
-{% assign module = item %}
-<tr class="info">
-    <td colspan="5" align="center"><strong>{{ module.title }}</strong></td>
-</tr>
-{% endif %}
-{% endfor %}

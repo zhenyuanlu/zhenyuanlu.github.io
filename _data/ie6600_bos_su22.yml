@@ -133,7 +133,7 @@
   title: >
     <strong>Additional R Workshop</strong><br>
     (Additional) Visualization by PCA
-  github: https://github.com/zhenyuanlu/ML-workshop-IE6600
+
   materials: >
     - James, Gareth, et al. <a href="https://web.stanford.edu/~hastie/ISLR2/ISLRv2_website.pdf" target="_blank"> An Introduction to Statistical Learning, with Applications in R</a>
     - Kilian Weinberger <a href="https://www.cs.cornell.edu/courses/cs4780/2021fa/lectures/UnsupervisedLearning.html#pca" target="_blank">PCA for Visualization</a>

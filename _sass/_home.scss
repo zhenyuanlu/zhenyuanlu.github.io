@@ -25,8 +25,8 @@
       text-align: center;
 
       picture, img {
-        width: 220px;
-        height: 220px;
+        width: 180px;
+        height: 180px;
         border-radius: 6px;
       }
 
@@ -118,7 +118,75 @@
       }
     }
   }
-
+  //
+  // .grid-pub {
+  //   display: grid;
+  //   grid-template-columns:  1fr;
+  //   grid-template-rows: auto;
+  //   grid-column-gap: 20px;
+  //   grid-row-gap: 10px;
+  //
+  //   .project {
+  //     display: block;
+  //     flex-direction: column;
+  //
+  //     border-radius: 3px;
+  //     padding: 16px;
+  //     border: 1px solid #ddd;
+  //
+  //     // transition: box-shadow 0.2s ease;
+  //
+  //     // &:hover {
+  //     //   box-shadow: #aaa 2px 2px 11px;
+  //     // }
+  //
+  //     .spacer {
+  //       flex: 1;
+  //     }
+  //
+  //     .title {
+  //       margin: 0 0 0.6em 0;
+  //       font-size: 1.3em;
+  //       font-weight: bold;
+  //       line-height: 1;
+  //     }
+  //
+  //     p {
+  //       font-size: 0.85em;
+  //       margin: 0.7em 0;
+  //       line-height: 1.2;
+  //     }
+  //
+  //     .preview-image {
+  //       float: left;
+  //       margin-right: 18px;
+  //       display: block;
+  //       width: 40%;
+  //       height: 0;
+  //       padding-top: 22%;
+  //       border: 1px solid #f1f1f1;
+  //
+  //       background-size: cover;
+  //       background-position: top left;
+  //
+  //       transition: background 1.5s;
+  //
+  //       &:hover {
+  //         opacity: 1;
+  //         background-position: bottom right;
+  //       }
+  //     }
+  //
+  //     .links {
+  //       font-size: 0.8em;
+  //
+  //       a {
+  //         margin-right: 0.5em;
+  //         white-space: nowrap;
+  //       }
+  //     }
+  //   }
+  // }
 
     .featured-tutorials {
       font-size: 0.9em;

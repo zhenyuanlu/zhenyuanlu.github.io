@@ -1,5 +1,5 @@
 ---
-layout: schedule
+layout: course
 permalink: /ie6600-sea-sp21/
 title: <b>C</b>omputation and <b>V</b>isualization for <b>A</b>nalytics
 class: course

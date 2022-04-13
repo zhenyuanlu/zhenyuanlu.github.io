@@ -1,5 +1,5 @@
 ---
-layout: schedule
+layout: course
 permalink: /ie6600-bos-sm21/
 title: <b>C</b>omputation and <b>V</b>isualization for <b>A</b>nalytics
 class: course
@@ -99,7 +99,7 @@ Additional textbooks:
 
 From Northeastern [Messages](https://news.northeastern.edu/coronavirus/university-messages/student-vaccination-requirements-for-fall-2021/){:target="\_blank"}
 
-We strongly encourage students to get the vaccine as soon as they become eligible. Northeastern is not currently distributing the vaccine, due to changes in the Massachusetts vaccination distribution plan, but students who are living, working or studying in Massachusetts can access the vaccine through the providers listed on [vaxfinder.mass.gov](https://vaxfinder.mass.gov/){:target="\_blank"}. At our other locations, each campus is updating students on how and where to access the COVID-19 vaccine. For international students who may have limited access to the vaccine, Northeastern will assist you in getting the vaccine soon after your arrival. If you have additional questions, please email the COVID-19 vaccine inbox at covid19vaccine@northeastern.edu.  
+We strongly encourage students to get the vaccine as soon as they become eligible. Northeastern is not currently distributing the vaccine, due to changes in the Massachusetts vaccination distribution plan, but students who are living, working or studying in Massachusetts can access the vaccine through the providers listed on [vaxfinder.mass.gov](https://vaxfinder.mass.gov/){:target="\_blank"}. At our other locations, each campus is updating students on how and where to access the COVID-19 vaccine. For international students who may have limited access to the vaccine, Northeastern will assist you in getting the vaccine soon after your arrival. If you have additional questions, please email the COVID-19 vaccine inbox at covid19vaccine@northeastern.edu.
 
 ***
 
@@ -140,78 +140,8 @@ If you have difficulty to keep up with any materials or homework for personal re
 ***
 
 ### Schedule
+
+
 (subject to change)
-{% assign current_module = 0 %}
-{% assign skip_classes = 0 %}
-{% assign prev_date = 0 %}
 
-{% for item in site.data.ie6600_bos_sm21 %}
-{% if item.date %}
-{% assign lecture = item %}
-{% assign event_type = "upcoming" %}
-{% assign today_date = "now" | date: "%s" | divided_by: 86400 %}
-{% assign lecture_date = lecture.date | date: "%s" | divided_by: 86400 %}
-{% if today_date > lecture_date %}
-    {% assign event_type = "past" %}
-{% elsif today_date <= lecture_date and today_date > prev_date %}
-    {% assign event_type = "warning" %}
-{% endif %}
-{% assign prev_date = lecture_date %}
-
-<tr class="{{ event_type }}">
-    <th scope="row">{{ lecture.date }}</th>
-    {% if lecture.title contains 'No classes' or forloop.last %}
-      {% assign skip_classes = skip_classes | plus: 1 %}
-      <td colspan="4" align="center">{{ lecture.title }}</td>
-    {% else %}
-    <td>
-        <!--Lecture #{{ forloop.index | minus: current_module | minus: skip_classes }}-->
-
-        {{ lecture.title }}
-        <br />
-        {% if lecture.lecturer %}({{ lecture.lecturer }}):
-        <br />{% endif %}
-        {{ lecture.guest }}
-        <!--[-->
-            {% if lecture.slides %}
-              <a href="{{ lecture.slides }}" target="_blank">slides</a>
-            {% else %}
-              <!--slides-->
-            {% endif %}
-            {% if lecture.annotated %}
-              (<a href="{{ lecture.annotated }}" target="_blank">annotated</a>)
-            {% endif %}
-            {% if lecture.video %}
-            | <a href="{{ lecture.video }}" target="_blank">video</a>
-            {% else %}
-            <!--| video-->
-            {% endif %}
-            {% if lecture.notes %}
-            | <a href="{{ lecture.notes }}" target="_blank">notes</a>
-            {% else %}
-            <!--| notes-->
-            {% endif %}
-        <!--]-->
-    </td>
-    <td>
-        {% if lecture.materials %}
-        <ul>
-        {% for material in lecture.materials %}
-            <li>{{ material }}</li>
-        {% endfor %}
-        </ul>
-        {% endif %}
-    </td>
-    <td>
-        <p>{{ lecture.assignments }}</p>
-    </td>
-    {% endif %}
-</tr>
-{% else %}
-{% assign current_module = current_module | plus: 1 %}
-{% assign module = item %}
-<tr class="info">
-    <td colspan="5" align="center"><strong>{{ module.title }}</strong></td>
-</tr>
-{% endif %}
-{% endfor %}
+{% include schedule.html %}

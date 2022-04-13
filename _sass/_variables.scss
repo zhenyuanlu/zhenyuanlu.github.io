@@ -92,7 +92,7 @@ $space-4: 4rem !default;
 
 $horizontal-spacing-unit:       30px;
 $vertical-spacing-unit:         30px;
-$nav-height:                    56px;
+$nav-height:                    46px; //(56px)
 
 // Buttons
 $button-font-size: inherit !default;
@@ -141,7 +141,7 @@ $hljs-change: $dark-blue;
 $hljs-chunk: $light-gray;
 
 // Header
-$nav-height: 56px;
+$nav-height: 46px; //(56px)
 
 // Footer
 $footer-border-top: thin solid $grey-color-dark;
