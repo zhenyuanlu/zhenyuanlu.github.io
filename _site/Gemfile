@@ -9,7 +9,7 @@ group :jekyll_plugins do
     gem 'jekyll-sitemap'
     gem "kramdown", ">= 2.3.1"
     gem "addressable", ">= 2.8.0"
-    # gem "nokogiri", ">= 1.13.2"
+    gem "nokogiri", ">= 1.13.4"
     gem 'wdm', '>= 0.1.0'
     gem "webrick", "~> 1.7"
     gem "commonmarker", ">= 0.23.4"
