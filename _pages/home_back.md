@@ -1,9 +1,3 @@
----
-layout: page
-permalink: /
-title: "Zhenyuan Lu"
-class: home
----
 
 <div class="columns" markdown="1">
 <div class="intro" markdown="1">
@@ -120,3 +114,14 @@ I am actively contributing to open source projects on creating user-friendly R-s
 </div>-->
 
 <br>
+## Publications
+<div class="pubs">
+{% assign pubyears = site.publications | group_by:"year"  %}
+{% assign sorted_pubyears = pubyears | reverse %}
+{% for year in sorted_pubyears %}
+{{ year.name }}
+{% for pub in year.items %}
+  {% include publication.html pub=pub %}
+{% endfor %}
+{% endfor %}
+</div>
