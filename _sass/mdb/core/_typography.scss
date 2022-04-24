@@ -57,9 +57,13 @@
 // General properties
 body {
   font-family: $mdb-font-family;
-  font-weight: $font-weight-light;
+  font-weight: 300;
+  line-height: 1.5 ;
+  color: #404040;
+  -webkit-font-smoothing: antialiased;
 }
 
 h1, h2, h3, h4, h5, h6 {
-  font-weight: $font-weight-light;
+  margin-top: 0;
+  font-weight: 300;
 }

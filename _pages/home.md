@@ -121,7 +121,7 @@ I am actively contributing to open source projects on creating user-friendly R-s
 
 <br>
 
-## Publications
+<!-- ## Publications
 <div class="pubs">
 {% assign pubyears = site.publications | group_by:"year"  %}
 {% assign sorted_pubyears = pubyears | reverse %}
@@ -132,4 +132,4 @@ I am actively contributing to open source projects on creating user-friendly R-s
   {% include publication.html pub=pub %}
 {% endfor %}
 {% endfor %}
-</div>
+</div> -->

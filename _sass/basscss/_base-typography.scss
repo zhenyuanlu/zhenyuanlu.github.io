@@ -1,9 +1,11 @@
 /* Basscss Base Typography */
 
 body {
-  font-family: $font-family;
-  line-height: $line-height;
-  font-size: 100%;
+  font-family: Lato, Helvetica, Arial, sans-serif ;
+  line-height: 1.5 ;
+  color: #404040;
+  font-size: 100%; //16px
+  -webkit-font-smoothing: antialiased;
 }
 
 h1,
@@ -12,9 +14,9 @@ h3,
 h4,
 h5,
 h6 {
-  font-family: $heading-font-family;
-  font-weight: $heading-font-weight;
-  line-height: $heading-line-height;
+  font-family: Lato, Helvetica, sans-serif;
+  font-weight: 900;
+  line-height: 1.25;
   margin-top: 1em;
   margin-bottom: .5em;
 }
