@@ -3,7 +3,7 @@ layout: course
 permalink: /ie6600-bos-su22/
 title: <b>C</b>omputation and <b>V</b>isualization for <b>A</b>nalytics
 class: course
-description: IE6600 • Spring 2022 • Northeastern University • Boston
+description: IE6600 • Full Summer 2022 • Northeastern University • Boston
 logo: seal-250x250.png
 nav: IE6600
 ---
