@@ -45,11 +45,7 @@ I am actively contributing to open source projects on creating user-friendly R-s
   <img src='/assets/img/staff/z.jpg'
     alt='Zhenyuan Lu'/>
 </picture>
-
-
-
 </div>
-
 </div>
 
 
