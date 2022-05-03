@@ -55,7 +55,7 @@ I am actively contributing to open source projects on creating user-friendly R-s
 
 ## Teaching
 
-- **<a href="https://zhenyuanlu.com/r-comput-viz-notes/" target="_blank">Instructor notes</a>(Comming Soon) for IE6600 Computation and Visualization for Analytics**
+- **<a href="https://zhenyuanlu.com/r-comput-viz-notes/" target="_blank">Instructor notes</a>(Still working on) for IE6600 Computation and Visualization for Analytics**
 
 
 <img src='https://raw.githubusercontent.com/rstudio/rmarkdown/main/man/figures/logo.png' align="right" height="55.5"/>
