@@ -16,8 +16,8 @@
   lecturer:
   title: >
     <strong>Basic of R I</strong>
-  # slides: /slides/t02BasicR.pdf
-  # slides2: /slides/t02IntroR.pdf
+  slides: /slides/t02BasicR.pdf
+  slides2: /slides/t02IntroR.pdf
   materials:
     - <b>R4E</b> "Basics of R"
     - <b>R4E</b> "Advanced Data Structure"
@@ -27,8 +27,8 @@
   lecturer:
   title: >
     <strong>Basic of R II</strong>
-  # slides: /slides/t02BasicR.pdf
-  # slides2: /slides/t02IntroR.pdf
+  slides: /slides/t02BasicR.pdf
+  slides2: /slides/t02IntroR.pdf
   materials:
     - <b>R4E</b> "Basics of R"
     - <b>R4E</b> "Advanced Data Structure"
@@ -38,7 +38,7 @@
   lecturer:
   title: >
     <strong>R functions and the grammar of visualization I</strong>
-  # slides: /slides/t03Grammar.pdf
+  slides: /slides/t03Grammar.pdf
   materials:
     - <b>R4DS</b> <a href="https://r4ds.had.co.nz/workflow-basics.html" target="_blank">Workflow</a>
     - <b>Wickham</b> <a href="https://vita.had.co.nz/papers/layered-grammar.pdf" target="_blank">A layered grammar of graphics</a>
@@ -52,7 +52,7 @@
   lecturer:
   title: >
     <strong>R functions and the grammar of visualization II</strong>
-  # slides: /slides/t03Grammar.pdf
+  slides: /slides/t03Grammar.pdf
   materials:
     - <b>R4DS</b> <a href="https://r4ds.had.co.nz/workflow-basics.html" target="_blank">Workflow</a>
     - <b>Wickham</b> <a href="https://vita.had.co.nz/papers/layered-grammar.pdf" target="_blank">A layered grammar of graphics</a>
