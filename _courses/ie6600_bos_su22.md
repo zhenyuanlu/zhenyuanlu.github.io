@@ -15,7 +15,7 @@ IE6600 covers basic of the R, and R Shiny for data preprocessing, and visualizat
 - **Class:** Monday, Wednesday 03:20 - 05:00 PM (ET)
 - **Office hour:** Wed 9:00-10:00 AM (ET)
 - **Location:**  Room 254, Richards Hall
-- **Dates:** 05/09/2021 – 08/20/2022
+- **Dates:** 05/09/2022 – 08/20/2022
 - **Administration platform:** All questions, discussion or notes will be only posted via [Campuswire](https://campuswire.com/){:target="\_blank"}. See sign up link on Canvas.
 - **Guideline**: Please see the post [How to ask a good question](https://stackoverflow.com/help/how-to-ask) before posting any questions or discussions.
 - **HW submission:** [Canvas](https://canvas.northeastern.edu/){:target="\_blank"}
