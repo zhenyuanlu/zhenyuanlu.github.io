@@ -160,9 +160,10 @@
 
 - date: 6/29
   title: >
-    <strong>Visualizing relational data</strong>
+    <strong>Visualizing relational data</strong><br>
     (Additional) Visualization by PCA
   slides: /slides/t08RelationalData.pdf
+  slides2: /slides/VizPCA_workshop.pdf
   materials:
     - <b>R4DS</b> <a href="https://r4ds.had.co.nz/relational-data.html" target="_blank">Relational Data with dplyr</a>
     - Kilian Weinberger <a href="https://www.cs.cornell.edu/courses/cs4780/2021fa/lectures/UnsupervisedLearning.html#pca" target="_blank">PCA for Visualization</a>
