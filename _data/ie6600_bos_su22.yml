@@ -158,7 +158,6 @@
     - (optional) <b>R4DS</b> "Strings with stringr", "Factors with forcats"
   assignments:
 
-
 - date: 6/29
   title: >
     <strong>Visualizing relational data</strong><br>
