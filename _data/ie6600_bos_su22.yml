@@ -181,6 +181,7 @@
 - date: 7/6
   title: >
     <strong>Introduction to Shiny interactive visualization web app I</strong>
+  slides: /slides/t09IntroToShiny.pdf
   materials:
     - <b>R Shiny</b> <a href="https://shiny.rstudio.com/tutorial/" target="_blank">Shiny tutorial</a>
   assignments: >
