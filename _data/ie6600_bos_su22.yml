@@ -192,6 +192,7 @@
 - date: 7/11
   title: >
     <strong>Introduction to Shiny interactive visualization web app II</strong>
+  slides: /slides/t09IntroToShiny.pdf
   materials:
     - <b>R Shiny</b> <a href="https://shiny.rstudio.com/tutorial/" target="_blank">Shiny tutorial</a>
   assignments:
@@ -200,6 +201,7 @@
 - date: 7/13
   title: >
     <strong>Introduction to Shiny interactive visualization web app III</strong>
+  slides: /slides/t10ShinyApp.pdf
   materials:
     - <b>R Shiny</b> <a href="https://shiny.rstudio.com/tutorial/" target="_blank">Shiny tutorial</a>
   assignments:
