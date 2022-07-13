@@ -188,7 +188,6 @@
     <span class="deadline">Project proposal due 7/5 @ 11:59pm ET</span><br>
     <span class="event">HW5 out</span>
 
-
 - date: 7/11
   title: >
     <strong>Introduction to Shiny interactive visualization web app II</strong>
@@ -197,7 +196,6 @@
     - <b>R Shiny</b> <a href="https://shiny.rstudio.com/tutorial/" target="_blank">Shiny tutorial</a>
   assignments:
 
-
 - date: 7/13
   title: >
     <strong>Introduction to Shiny interactive visualization web app III</strong>
@@ -205,7 +203,6 @@
   materials:
     - <b>R Shiny</b> <a href="https://shiny.rstudio.com/tutorial/" target="_blank">Shiny tutorial</a>
   assignments:
-
 
 - date: 7/18
   title: >
