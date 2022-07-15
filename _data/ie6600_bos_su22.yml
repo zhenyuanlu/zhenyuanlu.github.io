@@ -57,7 +57,6 @@
     - (optional) <b>R4E</b> "Writing R functions"
   assignments:
 
-
 - title: "Module 2: Basic Visualization and Data Engineering"
 
 - date: 5/25
@@ -68,9 +67,7 @@
   assignments: >
       <span class="event">HW1 out</span>
 
-
 - title: 5/29, Last day to drop a full-semester summer class without a W grade
-
 
 - date: 5/30
   title: >
@@ -113,7 +110,6 @@
   materials:
     - <b>R4DS</b> <a href="https://r4ds.had.co.nz/transform.html" target="_blank">Data Transformation with dplyr</a>
   assignments:
-
 
 - date: 6/15
   lecturer:
@@ -167,7 +163,6 @@
   materials:
     - <b>R4DS</b> <a href="https://r4ds.had.co.nz/relational-data.html" target="_blank">Relational Data with dplyr</a>
     - Kilian Weinberger <a href="https://www.cs.cornell.edu/courses/cs4780/2021fa/lectures/UnsupervisedLearning.html#pca" target="_blank">PCA for Visualization</a>
-
   assignments: >
     <span class="deadline">HW4 due 6/28 @ 11:59pm ET</span>
 
@@ -176,7 +171,6 @@
     No classes - Independence Day
 
 - title: "Module 3: Advanced Visualization"
-
 
 - date: 7/6
   title: >
@@ -211,7 +205,7 @@
   materials:
     - <b>R4DS</b> <a href="https://r4ds.had.co.nz/exploratory-data-analysis.html" target="_blank">Exploratory Data Analysis</a>
   assignments: >
-    <span class="deadline">HW5 due 7/19 @ 11:59pm ET</span><br>
+    <span class="deadline">HW5 due 7/21 @ 11:59pm ET</span><br>
     <span class="event">HW6 out</span>
 
 - date: 7/20
