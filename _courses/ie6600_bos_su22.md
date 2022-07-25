@@ -20,6 +20,7 @@ IE6600 covers basic of the R, and R Shiny for data preprocessing, and visualizat
 - **Guideline**: Please see the post [How to ask a good question](https://stackoverflow.com/help/how-to-ask) before posting any questions or discussions.
 - **HW submission:** [Canvas](https://canvas.northeastern.edu/){:target="\_blank"}
 - **Course notes:** [Notes](https://zhenyuanlu.com/r-comput-viz-notes/){:target="\_blank"}
+- **Teaching style:** [There’s no speed limit](https://sive.rs/kimo){:target="\_blank"}.
 
 ***
 
