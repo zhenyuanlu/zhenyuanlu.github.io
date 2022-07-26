@@ -18,6 +18,7 @@ This course covers basic of the R, and R Shiny for data preprocessing, and visua
 - **Administration:** Class/HW/project questions, discussion or assignments will be only posted via Piazza (sign up link see slides or directly through Canvas).
 - **HW submission:** [Canvas](https://canvas.northeastern.edu/){:target="\_blank"}
 - **Online lectures:** The lectures will be live-streamed through Zoom.
+- **Teaching style:** [There’s no speed limit](https://sive.rs/kimo){:target="\_blank"}.
 
 ***
 
