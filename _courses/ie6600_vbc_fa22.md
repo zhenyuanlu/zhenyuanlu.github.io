@@ -1,9 +1,9 @@
 ---
 layout: course
-permalink: /ie6600-bos-su22/
+permalink: /ie6600-vbc-fa22/
 title: <b>C</b>omputation and <b>V</b>isualization for <b>A</b>nalytics
 class: course
-description: IE6600 • Full Summer 2022 • Northeastern University • Boston
+description: IE6600 • Fall 2022 • Northeastern University • Vancouver
 logo: seal-250x250.png
 nav: IE6600
 ---
@@ -12,10 +12,10 @@ IE6600 covers basic of the R, and R Shiny for data preprocessing, and visualizat
 
 ***
 
-- **Class:** Monday, Wednesday 03:20 - 05:00 PM (ET)
-- **Office hour:** Wed 9:00-10:00 AM (ET)
-- **Location:**  Room 254, Richards Hall
-- **Dates:** 05/09/2022 – 08/20/2022
+- **Class:** Monday 01:30 - 05:00 PM (PT)
+- **Office hour:** TBD
+- **Location:**  Room 1425, West Georgia
+- **Dates:** 09/07/2022 – 12/17/2022
 - **Administration platform:** All questions, discussion or notes will be only posted via [Campuswire](https://campuswire.com/){:target="\_blank"}. See sign up link on Canvas.
 - **Guideline**: Please see the post [How to ask a good question](https://stackoverflow.com/help/how-to-ask) before posting any questions or discussions.
 - **HW submission:** [Canvas](https://canvas.northeastern.edu/){:target="\_blank"}
@@ -27,7 +27,7 @@ IE6600 covers basic of the R, and R Shiny for data preprocessing, and visualizat
 
 <!-- Staff  -->
 <div class="instructors clearfix">
-  {% for instructor in site.data.staff_bos_su22.instructor %}
+  {% for instructor in site.data.staff_vbc_fa22.instructor %}
   <div class="instructor-profile-two-col">
     <a href="{{ instructor.url }}" target="_blank"><img src="{{ instructor.image | prepend: '/assets/img/' | relative_url }}" /></a>
     <ul class="instructor-info">
@@ -46,7 +46,7 @@ IE6600 covers basic of the R, and R Shiny for data preprocessing, and visualizat
 
 <!-- Guest  -->
 <!-- <div class="instructors clearfix">
-  {% for instructor in site.data.staff_sea_sp22.guest %}
+  {% for instructor in site.data.staff_vbc_fa22.guest %}
   <div class="instructor-profile-two-col">
     <a href="{{ instructor.url }}" target="_blank"><img src="{{ instructor.image | prepend: '/assets/img/' | relative_url }}" /></a>
     <ul class="instructor-info">
@@ -70,7 +70,7 @@ IE6600 covers basic of the R, and R Shiny for data preprocessing, and visualizat
 ***
 ### Course goals
 
-This section of IE6600 follows the [flipped classroom model](https://en.wikipedia.org/wiki/Flipped_classroom){:target="\_blank"}, and delivers all course materials online via Canvas. The schedule below shows the due dates for all modules.
+This section of IE6600 follows the [flipped classroom model](https://en.wikipedia.org/wiki/Flipped_classroom){:target="\_blank"}, and delivers all course materials online. The schedule below shows the due dates for all modules.
 
 <div>
   <img src='/assets/img/ie6600/goal.png' alt='Course Goals' style="max-width:100%;">

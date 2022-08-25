@@ -57,7 +57,7 @@ I am actively contributing to open source projects on creating user-friendly R-s
 <img src='https://raw.githubusercontent.com/rstudio/shiny/main/man/figures/logo.png' align="right" height="55.5"/>
 
 - **Instructor, IE6600 Computation and Visualization for Analytics**
-  - [Summer 22]({{ "/ie6600-bos-su22/" | relative_url}}), [Spring 22]({{ "/ie6600-sea-sp22/" | relative_url}}), [Fall 21]({{ "/ie6600-bos-fa21/" | relative_url}}), [Summer 21]({{ "/ie6600-bos-sm21/" | relative_url}}), [Spring 21]({{ "/ie6600-sea-sp21/" | relative_url}}), [Fall 20]({{ "/ie6600-bos-fa20/" | relative_url}}), Spring 20, Spring 19
+  - [Fall 22]({{ "/ie6600-vbc-fa22/" | relative_url}}), [Summer 22]({{ "/ie6600-bos-su22/" | relative_url}}), [Spring 22]({{ "/ie6600-sea-sp22/" | relative_url}}), [Fall 21]({{ "/ie6600-bos-fa21/" | relative_url}}), [Summer 21]({{ "/ie6600-bos-sm21/" | relative_url}}), [Spring 21]({{ "/ie6600-sea-sp21/" | relative_url}}), [Fall 20]({{ "/ie6600-bos-fa20/" | relative_url}}), Spring 20, Spring 19
 
 <!-- <img src='https://torch.mlverse.org/css/images/hex/torch.png' align="right" height="55.5"/>
 <img src='https://torch.mlverse.org/css/images/hex/torchvision.png' align="right" height="55.5"/>
