@@ -50,22 +50,17 @@
     }
   }
 
+
   .featured-projects {
-    font-size: 0.9em;
-    display: flex;
-    flex-direction: row;
-    margin-bottom: 1.5em;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: auto-fill;
+    grid-column-gap: 20px;
+    grid-row-gap: 20px;
 
     .project {
-      flex-grow: 1;
-      flex-basis: 0;
-
-      display: flex;
+      display: block;
       flex-direction: column;
-
-      &:not(:last-child) {
-        margin-right: 16px;
-      }
 
       border-radius: 3px;
       padding: 16px;
@@ -95,16 +90,23 @@
       }
 
       .preview-image {
+
+
+        float: left;
+        margin-right: 18px;
         display: block;
-        width: 100%;
+        width: 30%;
         height: 0;
-        padding-top: 60%;
+        padding-top: 15%;
         border: 1px solid #f1f1f1;
+
         background-size: cover;
         background-position: top left;
+
         transition: background 1.5s;
 
         &:hover {
+          opacity: 1;
           background-position: bottom right;
         }
       }

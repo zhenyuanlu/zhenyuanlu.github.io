@@ -61,9 +61,9 @@ I am actively contributing to open source projects on creating user-friendly R-s
 - **Instructor, IE6600 Computation and Visualization for Analytics**
   - [Fall 22]({{ "/ie6600-vbc-fa22/" | relative_url}}), [Summer 22]({{ "/ie6600-bos-su22/" | relative_url}}), [Spring 22]({{ "/ie6600-sea-sp22/" | relative_url}}), [Fall 21]({{ "/ie6600-bos-fa21/" | relative_url}}), [Summer 21]({{ "/ie6600-bos-sm21/" | relative_url}}), [Spring 21]({{ "/ie6600-sea-sp21/" | relative_url}}), [Fall 20]({{ "/ie6600-bos-fa20/" | relative_url}}), Spring 20, Spring 19
 
-<!-- <img src='https://torch.mlverse.org/css/images/hex/torch.png' align="right" height="55.5"/>
+<img src='https://torch.mlverse.org/css/images/hex/torch.png' align="right" height="55.5"/>
 <img src='https://torch.mlverse.org/css/images/hex/torchvision.png' align="right" height="55.5"/>
-<img src='https://keras.io/img/logo.png' align="right" height="50.5"/> -->
+<!-- <img src='https://keras.io/img/logo.png' align="right" height="50.5"/> -->
 
 - **Instructor, IE7275 Data Mining in Engineering**
   - [Summer 20]({{ "/ie7275-bos-sm20/" | relative_url }})
@@ -73,6 +73,8 @@ I am actively contributing to open source projects on creating user-friendly R-s
 
 
 <br>
+
+
 
 ## Projects
 
@@ -86,10 +88,11 @@ I am actively contributing to open source projects on creating user-friendly R-s
   {% endfor %}
 </div>
 <br>
-<a href="{{ "/projects/" | relative_url }}" class="button">
+
+<!-- <a href="{{ "/projects/" | relative_url }}" class="button">
   <i class="fas fa-chevron-circle-right"></i>
   Show More Projects
-</a>
+</a> -->
 
 
 
