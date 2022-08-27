@@ -54,9 +54,10 @@ I am actively contributing to open source projects on creating user-friendly R-s
 - **<a href="https://zhenyuanlu.com/r-comput-viz-notes/" target="_blank">Instructor notes</a> for IE6600 Computation and Visualization for Analytics**
 
 
-<img src='https://raw.githubusercontent.com/rstudio/rmarkdown/main/man/figures/logo.png' align="right" height="55.5"/>
+
 <img src='https://raw.githubusercontent.com/tidyverse/tidyverse/main/man/figures/logo.png' align="right" height="55.5"/>
 <img src='https://raw.githubusercontent.com/rstudio/shiny/main/man/figures/logo.png' align="right" height="55.5"/>
+<img src='https://raw.githubusercontent.com/rstudio/rmarkdown/main/man/figures/logo.png' align="right" height="55.5"/>
 
 - **Instructor, IE6600 Computation and Visualization for Analytics**
   - [Fall 22]({{ "/ie6600-vbc-fa22/" | relative_url}}), [Summer 22]({{ "/ie6600-bos-su22/" | relative_url}}), [Spring 22]({{ "/ie6600-sea-sp22/" | relative_url}}), [Fall 21]({{ "/ie6600-bos-fa21/" | relative_url}}), [Summer 21]({{ "/ie6600-bos-sm21/" | relative_url}}), [Spring 21]({{ "/ie6600-sea-sp21/" | relative_url}}), [Fall 20]({{ "/ie6600-bos-fa20/" | relative_url}}), Spring 20, Spring 19
@@ -77,11 +78,19 @@ I am actively contributing to open source projects on creating user-friendly R-s
 
 
 ## Projects
+For work, research, or fun.
 
 <div class="featured-projects">
 
-  {% assign sorted_projects = site.posts | sort: 'highlight' %}
-  {% for project in sorted_projects%}
+  <!-- {% assign projects = site.data.projects | sort: 'highlight'  %}
+  {% for project in projects %}
+    {% if project.highlight %}
+      {% include project.html project=project %}
+    {% endif %}
+  {% endfor %} -->
+
+  {% assign projects = site.posts | sort: 'highlight'  %}
+  {% for project in projects %}
     {% if project.highlight and project.categories contains "projects" %}
       {% include project.html project=project %}
     {% endif %}

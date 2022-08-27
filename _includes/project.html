@@ -1,13 +1,14 @@
 <div class="project">
 
-  {% if project.url || project.code || project.article || project.paper %}
+  {% if project.external %}
+    <a href="{{ project.external }}" class="preview-image" style="background-image: url('{{ "/assets/img/projects/" | append: project.image | relative_url }}')"></a>
+  {% elsif project.url || project.code || project.article || project.paper %}
     <a href="{{ project.url || project.code || project.article || project.paper }}" class="preview-image" style="background-image: url('{{ "/assets/img/projects/" | append: project.image | relative_url }}')"></a>
   {% else %}
     <span class="preview-image" style="background-image: url('{{ "/assets/img/projects/" | append: project.image | relative_url }}')"></span>
   {% endif %}
 
   <span class="title">{{ project.title }}</span>
-
 
   <p>
     {{ project.description | markdownify | remove: '<p>' | remove: '</p>' }}
@@ -20,9 +21,13 @@
     {% if project.demo %}
       <a href="{{ project.demo }}"><i class="fas fa-play"></i> Demo</a>
     {% endif %}
-    {% if project.url %}
-      <a href="{{ project.url }}"><i class="fas fa-link" aria-hidden="true"></i> Website</a>
+
+    {% if project.external %}
+      <a href="{{ project.external }}"><i class="fas fa-link" aria-hidden="true"></i> Website</a>
+    {% elsif project.url %}
+      <a href="{{ project.url }}"><i class="fas fa-solid fa-book" ></i> Page</a>
     {% endif %}
+
     {% if project.code %}
       <a href="{{ project.code }}"><i class="fab fa-github" aria-hidden="true"></i> Code</a>
     {% endif %}
