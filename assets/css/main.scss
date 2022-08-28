@@ -16,26 +16,24 @@
 @import 'pages';
 @import 'posts';
 
-@import 'profile';
+// @import 'profile';
 
-@import 'blockquotes';
-@import 'code';
+// @import 'blockquotes';
+// @import 'code';
 @import 'links';
 
 @import 'tables';
 @import 'typography';
-@import 'experience';
+
 
 @import
         "mdb/core/bootstrap/bootstrap",
         "mdb/mdb",
         "home",
-        // "badge_0",
         "course",
-        "teachings",
-        "cv";
+        "teachings"
 
 
-/*@import 'badges';
-@import 'cards';
-@import 'mixins';*/
+// /*@import 'badges';
+// @import 'cards';
+// @import 'mixins';*/

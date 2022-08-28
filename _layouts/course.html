@@ -4,8 +4,8 @@ layout: default
   <nav aria-label="breadcrumb">
     <ol class="breadcrumb p-0 text-lowercase">
       <li class="breadcrumb-item"><a href="{{ '/' | prepend: site.baseurl }}">Home</a></li>
-      <li class="breadcrumb-item"><a href="{{ '/teaching' | prepend: site.baseurl }}">Teaching</a></li>
-      <li class="breadcrumb-item active">{{ page.title }}</li>
+      <!-- <li class="breadcrumb-item"><a href="{{ '/teaching' | prepend: site.baseurl }}">Teaching</a></li> -->
+      <li class="breadcrumb-item active">{{ page.description }}</li>
     </ol>
   </nav>
 
@@ -14,7 +14,7 @@ layout: default
     <h1 class="post-title">{{ page.title }}</h1>
     <h2 class="post-description clearfix">{{ page.description }}</h2>
   </header>
-  
+
         {{ content }}
 
 </div>

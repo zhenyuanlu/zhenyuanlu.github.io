@@ -3,7 +3,7 @@ categories: projects
 image: mealthup.png
 layout: distill
 title: "MealthUp&trade;"
-highlight: 3
+highlight: 2
 description: A new era of health consultant & personalized meal plan implemented machine learning techniques.
 date: 2019-02-02
 cite: false
