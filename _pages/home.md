@@ -17,9 +17,9 @@ I am actively contributing to open source projects on creating user-friendly R-s
 <p>
 <span class="social-buttons">
   <span class="item">
-    <a href="mailto:{{ site.email }}" target="_blank">
+    <!-- <a href="mailto:{{ site.email }}" target="_blank">
       <i class="fas fa-envelope"></i>
-    </a>
+    </a> -->
     <a href="https://github.com/zhenyuanlu" target="_blank">
       <i class="fab fa-github"></i>
     </a>
@@ -51,7 +51,7 @@ I am actively contributing to open source projects on creating user-friendly R-s
 
 ## Teaching
 
-- **<a href="https://zhenyuanlu.com/r-comput-viz-notes/" target="_blank">Instructor notes</a> for IE6600 Computation and Visualization for Analytics**
+- <a href="https://zhenyuanlu.com/r-comput-viz-notes/" target="_blank">Instructor notes</a> for IE6600 Computation and Visualization for Analytics
 
 
 
@@ -59,17 +59,18 @@ I am actively contributing to open source projects on creating user-friendly R-s
 <img src='https://raw.githubusercontent.com/rstudio/shiny/main/man/figures/logo.png' align="right" height="55.5"/>
 <img src='https://raw.githubusercontent.com/rstudio/rmarkdown/main/man/figures/logo.png' align="right" height="55.5"/> -->
 
-- **Instructor, IE6600 Computation and Visualization for Analytics**
+- Instructor, IE6600 Computation and Visualization for Analytics
   - [Fall 22]({{ "/ie6600-vbc-fa22/" | relative_url}}), [Summer 22]({{ "/ie6600-bos-su22/" | relative_url}}), [Spring 22]({{ "/ie6600-sea-sp22/" | relative_url}}), [Fall 21]({{ "/ie6600-bos-fa21/" | relative_url}}), [Summer 21]({{ "/ie6600-bos-sm21/" | relative_url}}), [Spring 21]({{ "/ie6600-sea-sp21/" | relative_url}}), [Fall 20]({{ "/ie6600-bos-fa20/" | relative_url}}), Spring 20, Spring 19
 
 <!-- <img src='https://torch.mlverse.org/css/images/hex/torch.png' align="right" height="55.5"/>
 <img src='https://torch.mlverse.org/css/images/hex/torchvision.png' align="right" height="55.5"/> -->
 <!-- <img src='https://keras.io/img/logo.png' align="right" height="50.5"/> -->
 
-- **Instructor, IE7275 Data Mining in Engineering**
+- Instructor, IE7275 Data Mining in Engineering
   - [Summer 20]({{ "/ie7275-bos-sm20/" | relative_url }})
 
-- **Graduate Instructor Assistant, BIO1421 Modern Biology**
+
+- Graduate Instructor Assistant, BIO1421 Modern Biology
   - Fall 2014-Spring 2017, Superviosr <a href="https://www.bio.txstate.edu/about/Faculty---Staff/faculty/David-Lemke/Lemke-lab.html" target="_blank">Prof. David E. Lemke</a>
 
 

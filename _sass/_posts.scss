@@ -3,17 +3,7 @@
     justify-content: space-between;
 
 }
-  @include media-query($on-laptop) {
-    .post-header {
-      flex: 1;
-    }
-  }
 
-  @include media-query($on-palm) {
-  .post-header  {
-    width: 200px;
-  }
-}
 .post-list {
     margin: 0;
     padding: 0;
@@ -70,6 +60,10 @@
         // @include media-query($on-laptop) {
         //     font-size: 18px;
         // }
+    }
+    blockquote {
+      border-left: 5px solid var(--global-theme-color);
+      padding: 8px;
     }
 }
 .post-meta {

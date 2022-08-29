@@ -10,6 +10,12 @@ span.deadline {
 }
 
 
+
+h3 {
+  font-size: $h3;
+  font-weight: bold;
+  border-bottom: none;
+}
 // Divider
 .divider-new {
   flex-direction: row;
@@ -46,37 +52,6 @@ span.deadline {
   border-radius: .25rem;
 }
 
-.breadcrumb-item {
-  // The separator between breadcrumbs (by default, a forward-slash: "/")
-  + .breadcrumb-item {
-    padding-left: .5rem;
-
-    &::before {
-      display: inline-block; // Suppress underlining of the separator in modern browsers
-      padding-right: .5rem;
-      color: $text-color;
-      content: quote("/");
-    }
-  }
-
-  // IE9-11 hack to properly handle hyperlink underlines for breadcrumbs built
-  // without `<ul>`s. The `::before` pseudo-element generates an element
-  // *within* the .breadcrumb-item and thereby inherits the `text-decoration`.
-  //
-  // To trick IE into suppressing the underline, we give the pseudo-element an
-  // underline and then immediately remove it.
-  + .breadcrumb-item:hover::before {
-    text-decoration: underline;
-  }
-  // stylelint-disable-next-line no-duplicate-selectors
-  + .breadcrumb-item:hover::before {
-    text-decoration: none;
-  }
-
-  &.active {
-    color: $text-color;
-  }
-}
 
 
 .logo {

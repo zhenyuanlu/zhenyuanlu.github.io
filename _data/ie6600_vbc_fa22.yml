@@ -3,7 +3,7 @@
 - date: 9/12
   lecturer:
   title: >
-    <strong>Course introduction and expectations</strong>
+    <strong>Course introduction and expectations;</strong> <br>
     <strong>Basic of R</strong>
   slides: /slides/t02BasicR.pdf
   annotated:

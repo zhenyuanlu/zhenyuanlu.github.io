@@ -11,8 +11,9 @@
   <span class="title">{{ project.title }}</span>
 
   <p>
-    {{ project.description | markdownify | remove: '<p>' | remove: '</p>' }}
+    {{ project.description }}
   </p>
+
   <div class="spacer"></div>
   <div class="links">
     {% if project.article %}
