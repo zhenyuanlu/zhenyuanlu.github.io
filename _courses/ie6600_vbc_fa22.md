@@ -14,7 +14,7 @@ IE6600 covers basic of the R, and R Shiny for data preprocessing, and visualizat
 ***
 
 - **Class:** Monday 01:30 - 05:00 PM (PT)
-- **Office hour:** Tue 9:00 AM - 10:00 AM (PT) on Zoom
+- **Office hour:** Wed 9:00 AM - 10:00 AM (PT) on Zoom
 - **Location:**  Room 1425, West Georgia
 - **Dates:** 09/07/2022 – 12/17/2022
 - **Administration platform:** All questions, discussion or notes will be only posted via [Campuswire](https://campuswire.com/){:target="\_blank"}. See sign up link on Canvas.
