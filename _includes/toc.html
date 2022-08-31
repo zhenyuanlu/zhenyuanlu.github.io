@@ -3,8 +3,8 @@
         <summary>
             <span class="details">Table of Contents</span>
         </summary>
-      <section class="inner">
-        {% toc %}
+      <section class="inner" id="table-of-contents">
+        {{ content | toc_only }}
       </section>
     </details>
 </div>

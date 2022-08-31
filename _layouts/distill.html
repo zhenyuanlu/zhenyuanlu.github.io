@@ -68,7 +68,16 @@
       <d-article>
         <d-contents>
           <nav class="figcaption">
-            {% include toc.html %}
+            <div class="toc">
+                <details>
+                    <summary>
+                        <span class="details">Table of Contents</span>
+                    </summary>
+                  <section class="inner">
+                    {{ content | toc_only }}
+                  </section>
+                </details>
+            </div>
           </nav>
         </d-contents>
 
