@@ -1,150 +1,168 @@
 // Schedule.
-tr.past {
-//     color: #999;
-}
-span.event {
-    color: $dark-green;
-}
-span.deadline {
-    color: $red;
-}
 
-
-
-h3 {
-  font-size: $h3;
-  font-weight: bold;
-  border-bottom: none;
-}
-// Divider
-.divider-new {
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-  display: flex;
-  margin-top: 2.8rem;
-  margin-bottom: 2.8rem;
-  > h1, h2, h3, h4, h5, h6 {
-    margin-bottom: 0;
+.course{
+  tr.past {
+  //     color: #999;
   }
-  &:before,
-  &:after {
-    content: "";
-    height: 1.5px;
-    flex: 1;
-    height: 2px;
-    background: #c6c6c6;
+  span.event {
+      color: $dark-green;
   }
-  &:before {
-    margin: 0 .5rem 0 0;
+  span.deadline {
+      color: $red;
   }
-  &:after {
-    margin: 0 0 0 .5rem;
+
+  h3 {
+    font-size: $h3;
+    font-weight: bold;
+    border-bottom: none;
   }
-}
 
-.breadcrumb {
-  display: flex;
-  flex-wrap: wrap;
-  padding: .75rem 1rem;
-  margin-bottom: 1rem;
-  list-style: none;
-  border-radius: .25rem;
-}
-
-
-
-.logo {
-    float: left;
-    margin-right: 20px;
-    padding-bottom: 15px;
-    width: 120px;
-}
-
-.about {
-    .post-title {
-        padding-top: 20px;
+  // Divider
+  .divider-new {
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    margin-top: 2.8rem;
+    margin-bottom: 2.8rem;
+    > h1, h2, h3, h4, h5, h6 {
+      margin-bottom: 0;
     }
-    .post-description {
-        font-size: 20px;
+    &:before,
+    &:after {
+      content: "";
+      height: 1.5px;
+      flex: 1;
+      height: 2px;
+      background: #c6c6c6;
     }
-}
-
-.instructors {
-    padding: 0 0 0 1%;
-}
-
-%instructor-profile {
-    display: block;
-    float: left;
-    height: 210px;
-
-    @media screen and (min-width: 676px) {
-        height: 130px;
+    &:before {
+      margin: 0 .5rem 0 0;
     }
-
-    img {
-        border-radius: 50%;
-        float: left;
-        object-fit: cover;
-        height: 100px;
-        width: 100px;
-        margin-right: 10px;
+    &:after {
+      margin: 0 0 0 .5rem;
     }
+  }
 
-    ul.instructor-info {
-        display: block;
-        float: left;
-        list-style-type: none;
-        padding-left: 0;
-        width: 65%;
-        width: -webkit-calc(100% - 130px);
-        width: calc(100% - 130px);
-        min-width: 210px;
+  .course-title {
+      font-size: 42px;
+      letter-spacing: -1px;
+      line-height: 1;
+      margin-bottom: 10px;
+      margin-top: 0;
+      // @include media-query($on-laptop) {
+      //     font-size: 36px;
+      // }
+      b {
+          color: $theme-color;
+      }
+  }
 
-        a {
-            color: $theme-color;
-            &:hover {
-                text-decoration: underline;
-            }
-        }
+  .course-description {
+      font-size: 20px;
+      letter-spacing: -1px;
+      line-height: 1;
+      margin-bottom: 10px;
+      margin-top: 0;
+  }
 
-        span {
-            font-weight: 400;
-        }
-    }
-}
-.instructor-profile-two-col {
-    @extend %instructor-profile;
-    width: 50%;
-}
-.instructor-profile-three-col {
-    @extend %instructor-profile;
-    width: 33%;
-}
+  .logo {
+      float: left;
+      margin-right: 20px;
+      padding-bottom: 15px;
+      width: 120px;
+  }
 
-.news {
-    border-top: 1px solid $grey-color-light;
-    margin-top: 30px;
-    padding-top: 20px;
+  // .about {
+  //     .post-title {
+  //         padding-top: 20px;
+  //     }
+  //     .post-description {
+  //         font-size: 20px;
+  //     }
+  // }
 
-    h2 {
-        font-weight: bold;
-        margin-top: 0;
-        margin-bottom: 10px;
-    }
-    table {
-        border-collapse: collapse;
-        width: 100%;
 
-        .date { width: 19%; }
-        .announcement { width: 81%; }
+  .instructors {
+      padding: 0 0 0 1%;
+  }
 
-        tr { text-align: left; }
-        td {
-            padding: 6px 0;
-            vertical-align: top;
-            border: none;
-        }
-    }
+  // Person profile
+  %instructor-profile {
+      display: block;
+      float: left;
+      height: 210px;
+
+      @media screen and (min-width: 676px) {
+          height: 130px;
+      }
+
+      img {
+          border-radius: 50%;
+          float: left;
+          object-fit: cover;
+          height: 100px;
+          width: 100px;
+          margin-right: 10px;
+      }
+
+      ul.instructor-info {
+          display: block;
+          float: left;
+          list-style-type: none;
+          padding-left: 0;
+          width: 65%;
+          width: -webkit-calc(100% - 130px);
+          width: calc(100% - 130px);
+          min-width: 210px;
+
+          a {
+              color: $theme-color;
+              &:hover {
+                  text-decoration: underline;
+              }
+          }
+
+          span {
+              font-weight: 400;
+          }
+      }
+  }
+
+  .instructor-profile-two-col {
+      @extend %instructor-profile;
+      width: 50%;
+  }
+
+  .instructor-profile-three-col {
+      @extend %instructor-profile;
+      width: 33%;
+  }
+
+  // Announcement
+  // .news {
+  //     border-top: 1px solid $grey-color-light;
+  //     margin-top: 30px;
+  //     padding-top: 20px;
+  //
+  //     h2 {
+  //         font-weight: bold;
+  //         margin-top: 0;
+  //         margin-bottom: 10px;
+  //     }
+  //     table {
+  //         border-collapse: collapse;
+  //         width: 100%;
+  //
+  //         .date { width: 19%; }
+  //         .announcement { width: 81%; }
+  //
+  //         tr { text-align: left; }
+  //         td {
+  //             padding: 6px 0;
+  //             vertical-align: top;
+  //             border: none;
+  //         }
+  //     }
+  // }
 }

@@ -1,5 +1,25 @@
 @charset "UTF-8";
 
+
+// Container
+.wrapper {
+    max-width: -webkit-calc(#{$content-width} - (#{$horizontal-spacing-unit}));
+    max-width:         calc(#{$content-width} - (#{$horizontal-spacing-unit}));
+    margin-right: auto;
+    margin-left: auto;
+    padding-right: $horizontal-spacing-unit / 2;
+    padding-left: $horizontal-spacing-unit / 2;
+    @extend .clearfix;
+
+    @media screen and (min-width: $on-laptop) {
+        max-width: -webkit-calc(#{$content-width} -
+         (#{$horizontal-spacing-unit} * 2));
+        max-width:         calc(#{$content-width} - (#{$horizontal-spacing-unit} * 2));
+        padding-right: $horizontal-spacing-unit;
+        padding-left: $horizontal-spacing-unit;
+  }
+}
+
 html, body {
   height: auto;
   min-height: 100%;
@@ -21,20 +41,136 @@ body {
   -webkit-box-sizing: border-box;
 }
 
-.wrapper {
-    max-width: -webkit-calc(#{$content-width} - (#{$horizontal-spacing-unit}));
-    max-width:         calc(#{$content-width} - (#{$horizontal-spacing-unit}));
-    margin-right: auto;
-    margin-left: auto;
-    padding-right: $horizontal-spacing-unit / 2;
-    padding-left: $horizontal-spacing-unit / 2;
-    @extend .clearfix;
 
-    @media screen and (min-width: $on-large) {
-        max-width: -webkit-calc(#{$content-width} -
-         (#{$horizontal-spacing-unit} * 2));
-        max-width:         calc(#{$content-width} - (#{$horizontal-spacing-unit} * 2));
-        padding-right: $horizontal-spacing-unit;
-        padding-left: $horizontal-spacing-unit;
+// Page
+.page-content {
+    padding: 75px 0; /* VERTICAL PADDING FOR TITLE ON EVERY PAGE */
+}
+.page-heading {
+    font-size: 20px;
+}
+.contacticon {
+    display: block;
+    font-size: 60px;
+    margin: 10px;
+}
+.center{
+    text-align: center;
+}
+
+
+// Links
+a {
+  cursor: pointer;
+  text-decoration: none;
+  color: $theme-color;
+  transition: all .2s ease-in-out;
+  &:hover {
+    color: darken(#343a40, 15%);
+    transition: all .2s ease-in-out;
+    text-decoration: underline;
   }
+  &.disabled,
+  &:disabled {
+    &:hover {
+      color: $theme-color;
+    }
+  }
+}
+
+//math
+.equation {
+  margin-bottom: 1rem;
+  text-align: center;
+}
+
+//positions
+.left {
+  float: left;
+}
+
+.right {
+  float: right;
+}
+
+
+.post-header {
+    margin-bottom: $vertical-spacing-unit;
+    justify-content: space-between;
+
+}
+
+.post-list {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+
+    > li {
+        border-bottom: 1px solid $grey-color-light;
+        padding-bottom: $space-3;
+        padding-top: $space-3;
+
+        h2 {
+            margin-top: 0.2em;
+        }
+        p {
+            margin-top: 0.1em;
+        }
+    }
+}
+.post-title {
+    font-size: 42px;
+    letter-spacing: -1px;
+    line-height: 1;
+    margin-bottom: 10px;
+    margin-top: 0;
+    // @include media-query($on-laptop) {
+    //     font-size: 36px;
+    // }
+    b {
+        color: $theme-color;
+    }
+}
+.post-description {
+    font-size: 20px;
+    letter-spacing: -1px;
+    line-height: 1;
+    margin-bottom: 10px;
+    margin-top: 0;
+}
+.post-content {
+    h2 {
+        font-size: 42px;
+        // @include media-query($on-laptop) {
+        //     font-size: 28px;
+        // }
+    }
+    h3 {
+        font-size: 30px;
+        // @include media-query($on-laptop) {
+        //     font-size: 22px;
+        // }
+    }
+    h4 {
+        font-size: 20px;
+        // @include media-query($on-laptop) {
+        //     font-size: 18px;
+        // }
+    }
+}
+.post-meta {
+    color: $grey-color;
+    font-size: $small-font-size;
+    margin-bottom: 0px;
+}
+.post-link {
+    display: block;
+    font-size: 42px;
+}
+#markdown-toc {
+    list-style: none;
+    padding-left: 0;
+    li > ul {
+        margin-bottom: 0;
+    }
 }

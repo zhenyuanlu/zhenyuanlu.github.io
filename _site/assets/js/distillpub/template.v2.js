@@ -1550,7 +1550,7 @@ d-appendix {
   border-top: 1px solid rgba(0, 0, 0, 0.1);
   color: rgba(0,0,0,0.5);
   padding-top: 60px;
-  padding-bottom: 0px;
+  padding-bottom: 48px;
 }
 
 d-appendix h3 {
@@ -2626,17 +2626,17 @@ d-citation-list .references .title {
   			code: code
   		};
 
-  		function insertHighlightedCode(highlightedCode) {
-  			env.highlightedCode = highlightedCode;
-
-  			_.hooks.run('before-insert', env);
-
-  			env.element.innerHTML = env.highlightedCode;
-
-  			_.hooks.run('after-highlight', env);
-  			_.hooks.run('complete', env);
-  			callback && callback.call(env.element);
-  		}
+  		// function insertHighlightedCode(highlightedCode) {
+  		// 	env.highlightedCode = highlightedCode;
+      //
+  		// 	_.hooks.run('before-insert', env);
+      //
+  		// 	env.element.innerHTML = env.highlightedCode;
+      //
+  		// 	_.hooks.run('after-highlight', env);
+  		// 	_.hooks.run('complete', env);
+  		// 	callback && callback.call(env.element);
+  		// }
 
   		_.hooks.run('before-sanity-check', env);
 

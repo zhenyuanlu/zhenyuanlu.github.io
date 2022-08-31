@@ -3,35 +3,18 @@
 ---
 @charset "utf-8";
 
-
-@import 'variables';
-
-
-@import 'base';
-@import 'clearfix';
-
-
-@import 'header';
-@import 'footer';
-@import 'pages';
-@import 'posts';
-
-
-@import 'blockquotes';
-@import 'code';
-
-
-@import 'tables';
-@import 'typography';
-
-
 @import
-        "home",
-        "course",
-        "teachings",
-        "distill"
-
-
-// /*@import 'badges';
-// @import 'cards';
-// @import 'mixins';*/
+  "variables",
+  "home",
+  "course",
+  "distill",
+  "base",
+  "clearfix",
+  "header",
+  "footer",
+  "blockquotes",
+  "code",
+  "tables",
+  "typography",
+  "toc"
+;

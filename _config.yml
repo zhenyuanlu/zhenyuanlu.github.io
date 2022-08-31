@@ -30,9 +30,18 @@ sass:
 
 markdown: kramdown
 highlighter: rouge
+kramdown:
+  input: GFM
+  syntax_highlighter: rouge
+  syntax_highlighter_opts:
+    css_class: 'highlight'
+    span:
+      line_numbers: false
+    block:
+      line_numbers: false
+      start_line: 1
 
 include: ['_pages', '_courses']
-exclude: [vendor]
 
 collections:
   publications:
@@ -43,6 +52,7 @@ plugins:
     - jekyll-sitemap
     - jekyll-seo-tag
     - jekyll-mentions
+    - jekyll-toc
 
 jquery_version: "1.12.4"
 katex_version: "0.10.1"

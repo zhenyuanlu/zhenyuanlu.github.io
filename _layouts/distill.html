@@ -2,7 +2,8 @@
 <html>
   <head>
     {% include head.html %}
-
+    <!-- <script src="https://cdn.jsdelivr.net/npm/jquery@{{ site.jquery.version }}/dist/jquery.min.js" integrity="{{ site.jquery.integrity }}" crossorigin="anonymous"></script> -->
+    <!-- <script src="https://distill.pub/template.v2.js"></script> -->
     <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
     <script src="{{ '/assets/js/distillpub/template.v2.js' | relative_url }}"></script>
     <script src="{{ '/assets/js/distillpub/transforms.v2.js' | relative_url }}"></script>
@@ -55,7 +56,7 @@
     {% include header.html %}
 
 
-    <div class="page-content">
+    <div class="post distill">
 
       <d-title>
         <h1>{{ page.title }}</h1>
@@ -65,6 +66,22 @@
       <d-byline></d-byline>
 
       <d-article>
+        <d-contents>
+          <nav class="figcaption">
+            <div class="toc">
+                <details>
+                    <summary>
+                        <span class="details">Table of Contents</span>
+                    </summary>
+                  <section class="inner">
+                    {% toc %}
+                  </section>
+                </details>
+            </div>
+          </nav>
+        </d-contents>
+
+<!--
         {% if page.toc -%}
         <d-contents>
           <nav class="l-text figcaption">
@@ -81,7 +98,7 @@
             {%- endfor %}
           </nav>
         </d-contents>
-        {%- endif %}
+        {%- endif %} -->
 
         {{ content }}
       </d-article>

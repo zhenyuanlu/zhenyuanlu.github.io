@@ -48,7 +48,7 @@
   width:         calc(100% - (#{$horizontal-spacing-unit} / 2));
 }
 
-@media screen and (min-width: $on-large) {
+@media screen and (min-width: $on-laptop) {
   .footer-col-1 {
     width: -webkit-calc(35% - (#{$horizontal-spacing-unit} / 2));
     width:         calc(35% - (#{$horizontal-spacing-unit} / 2));
@@ -65,7 +65,7 @@
   }
 }
 
-@media screen and (min-width: $on-medium) {
+@media screen and (min-width: $on-palm) {
   .footer-col {
     float: left;
   }

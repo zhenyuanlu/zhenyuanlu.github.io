@@ -7,21 +7,6 @@ description: IE6600 • Fall 2022 • Northeastern University • Vancouver
 logo: seal-250x250.png
 nav: IE6600
 
-toc:
-  - name: Course goals
-    # if a section has subsections, you can add them as follows:
-    # subsections:
-    #   - name: Example Child Subsection 1
-    #   - name: Example Child Subsection 2
-  - name: Textbooks
-  - name: R-related Materials
-  - name: Schedule
-  - name: Policies
-  - name: Accommodations for Students with Disabilities
-  - name: Take care of yourself
-  - name: Homework
-  - name: Projects
-  - name: Course Evaluation
 ---
 
 IE6600 covers basic of the R, and R Shiny for data preprocessing, and visualization. It introduces students to static and interactive visualization, dashboard, and platform that reveal information, patterns, interactions, and comparisons by paying attention to details such as color encoding, a shape selection, spatial layout, and annotation. Based on these fundamentals of analytical and creative thinking, the course then focuses on data visualization techniques and the use of the most current popular software tools that support data exploration, analytics-based storytelling and knowledge discovery, and decision-making in engineering, healthcare operations, manufacturing, and related applications.
@@ -74,7 +59,6 @@ IE6600 covers basic of the R, and R Shiny for data preprocessing, and visualizat
   </div>
   {% endfor %}
 </div> -->
-
 
 
 ***

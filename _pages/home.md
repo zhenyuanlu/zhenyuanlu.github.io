@@ -83,13 +83,6 @@ For work, research, or fun.
 
 <div class="featured-projects">
 
-  <!-- {% assign projects = site.data.projects | sort: 'highlight'  %}
-  {% for project in projects %}
-    {% if project.highlight %}
-      {% include project.html project=project %}
-    {% endif %}
-  {% endfor %} -->
-
   {% assign projects = site.posts | sort: 'highlight'  %}
   {% for project in projects %}
     {% if project.highlight and project.categories contains "projects" %}
@@ -122,9 +115,5 @@ For work, research, or fun.
 </a>-->
 
 
-<!--## Professional Experience
-<div id="experience-section" class="tabbed-section">
-  {% include experience.html %}
-</div>-->
 
 <br>

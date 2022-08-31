@@ -1,11 +1,12 @@
 
-/******************************************************************************/
 // Basic font properties
-$roboto-font-path:                            "../font/LatoLatin/" !default;
-$roboto-font-family:                          -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
-// $roboto-font-family:                          "Montserrat", "Helvetica Neue", Helvetica, Arial, sans-serif !default;
-// $roboto-font-family:                          "Roboto", sans-serif !default;
-// $roboto-font-family:                          "LatoLatin", sans-serif !default;
+$font-family-sans-serif:                          -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Symbol";
+// $font-family-Montserrat:                          "Montserrat", "Helvetica Neue", Helvetica, Arial, sans-serif !default;
+// $font-family-roboto:                          "Roboto", sans-serif !default;
+// $font-family-LatoLatin:                          "LatoLatin", sans-serif !default;
+// $font-family-monospace:       SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace !default;
+// $font-family-base:            $font-family-sans-serif !default;
+
 
 // Typography
 $base-font-size: 16px !default;
@@ -34,8 +35,66 @@ $h0-responsive-max: 5.76rem !default;
 $h1-responsive-max: 3.84rem !default;
 $abbr-border-bottom: 1px black dotted;
 
-// Page width
-$measure-width: 42rem !default;
+/*******************************************************************************
+ * Variables used throughout the theme.
+ * To adjust anything, simply edit the variables below and rebuild the theme.
+ ******************************************************************************/
+
+
+// Colors
+$red-color:           #FF3636 !default;
+$red-color-dark:      #B71C1C !default;
+$orange-color:        #F29105 !default;
+$blue-color:          #0076df !default;
+$blue-color-dark:     #00369f !default;
+$cyan-color:          #2698BA !default;
+$light-cyan-color:    lighten($cyan-color, 25%);
+$green-color:         #00ab37 !default;
+$green-color-lime:    #B7D12A !default;
+$green-color-dark:    #009f06 !default;
+$green-color-light:   #ddffdd !default;
+$green-color-bright:  #11D68B !default;
+$purple-color:        #B509AC !default;
+$light-purple-color:  lighten($purple-color, 25%);
+$pink-color:          #f92080 !default;
+$pink-color-light:    #ffdddd !default;
+$yellow-color:        #efcc00 !default;
+
+$grey-color:          #828282 !default;
+$grey-color-light:    lighten($grey-color, 40%);
+$grey-color-dark:     #1C1C1D;
+$grey-900:            #212529;
+
+$white-color: #ffffff !default;
+$black-color: #000000 !default;
+
+
+// Theme colors
+
+$code-bg-color-light:     rgba($purple-color, 0.05);
+$code-bg-color-dark:      #2c3237 !default;
+
+$global-text-color: #000000 !default;
+$global-hover-color: #5bbad5 !default; // #B509AC
+$global-theme-color: #5bbad5 !default;
+$global-bg-color: #ffffff;
+$global-code-bg-color:  #F5F5F5;
+$global-text-color-light: $grey-color;
+$global-footer-bg-color: $grey-color-dark;
+$global-footer-text-color: $grey-color-light;
+$global-footer-link-color: $white-color;
+$global-distill-app-color: $grey-color;
+$global-divider-color: rgba(0,0,0,.1);
+$global-card-bg-color: $white-color;
+
+
+// Media
+@mixin media-query($device) {
+  @media screen and (max-width: $device) {
+    @content;
+  }
+}
+
 
 // Viewport widths
 $viewport-small: 32em;
@@ -77,7 +136,7 @@ $darken-3:          rgba(#000,.25) !default;
 $darken-4:          rgba(#000,.5) !default;
 
 $theme-color:       #5B9BD5;//#0ab0ba,$blue
-$theme-color-second: #0ab0ba;//#cc0000
+$theme-color-second: #0ab0ba;//#cc0000, #4FC3F7
 $code-color:        $dark-gray;
 $text-color:        $dark-gray;
 $background-color:  $white;
@@ -98,56 +157,11 @@ $space-4: 4rem !default;
 
 $horizontal-spacing-unit:       30px;
 $vertical-spacing-unit:         30px;
-$nav-height:                    46px; //(56px)
 
-// Buttons
-$button-font-size: inherit !default;
-$button-font-weight: normal !default;
-$button-line-height: 1.125rem !default;
-$button-padding-y: .5rem !default;
-$button-padding-x: 1rem !default;
-$button-font-family: $heading-font-family;
 
-// Forms
-$form-field-font-size: 1rem !default;
-$form-field-height: 2.25rem !default;
-$form-field-padding-y: .5rem !default;
-$form-field-padding-x: .5rem !default;
-
-// Borders
-$border-color: $light-gray !default;
-$border-width: 1px !default;
-$border-radius: 3px !default;
-
-// Forms
-$form-field-font-size: 1rem;
-$form-field-height: 2.25rem;
-$form-field-padding-y: .5rem;
-$form-field-padding-x: .5rem;
-
-// Code
-$pre-border-radius: 0;
-$pre-background-color: #fafafa;
-$hljs-comment: $mid-gray;
-$hljs-keyword: $dark-blue;
-$hljs-name: $dark-gray;
-$hljs-number: $dark-green;
-$hljs-string: $red;
-$hljs-title: $red;
-$hljs-type: $dark-blue;
-$hljs-tag: $dark-blue;
-$hljs-attribute: $dark-green;
-$hljs-regexp: $dark-green;
-$hljs-symbol: $purple;
-$hljs-built-in: $dark-blue;
-$hljs-preprocessor: $mid-gray;
-$hljs-deletion: $light-pink;
-$hljs-addition: $light-green;
-$hljs-change: $dark-blue;
-$hljs-chunk: $light-gray;
 
 // Header
-$nav-height: 46px; //(56px)
+$nav-height: 36px; //(56px)
 
 // Footer
 $footer-border-top: thin solid $grey-color-dark;
@@ -202,15 +216,12 @@ $state-danger-border:            darken(adjust-hue($state-danger-bg, -10), 5%) !
 $screen-xs:                  480px !default;
 //** Deprecated `$screen-xs-min` as of v3.2.0
 $screen-xs-min:              $screen-xs !default;
-//** Deprecated `$screen-phone` as of v3.0.1
-$screen-phone:               $screen-xs-min !default;
 
 // Small screen / tablet
 //** Deprecated `$screen-sm` as of v3.0.1
 $screen-sm:                  768px !default;
 $screen-sm-min:              $screen-sm !default;
-//** Deprecated `$screen-tablet` as of v3.0.1
-$screen-tablet:              $screen-sm-min !default;
+
 
 // Medium screen / desktop
 //** Deprecated `$screen-md` as of v3.0.1
@@ -231,46 +242,13 @@ $screen-xs-max:              ($screen-sm-min - 1) !default;
 $screen-sm-max:              ($screen-md-min - 1) !default;
 $screen-md-max:              ($screen-lg-min - 1) !default;
 
-
-/******************************************************************************/
-
-
-/* portfolio tinkering */
-$img_spacing: 5px;
-$img-height: 275px;
-$caption-font-size: 12px;
-$caption-color: #aaa;
-
 /* add on-palm to be consistent with other jekyll theme media queries */
 $content-width:    900px !default;
 
-$on-palm:          600px !default;
+$on-palm:          576px !default;
 $on-laptop:        768px !default;
 
-$on-medium:        $on-palm !default;
-$on-large:         $on-laptop !default;
-
-
-
-
 $spacing-unit:     32px;
-
-$text-color:        #414141;
-$dark-text-color:   #333;
-$background-color:  #fff;
-$brand-color:       #b00;
-$yellow-color:       #ffc000;
-$header-background: #ececec;
-$footer-background: #234;
-$footer-text:       darken(#fff, 10%);
-
-$grey-color:       #6b6b6b;
-$grey-color-lightest: #f8f8f8;
-$grey-color-dark:  darken($grey-color, 15%);
-$grey-color-light:  lighten($grey-color, 15%);
-
-
-
 
 // Variables
 //
@@ -289,215 +267,3 @@ $gray-700: #495057 !default;
 $gray-800: #343a40 !default;
 $gray-900: #212529 !default;
 $black:    #000 !default;
-
-$grays: () !default;
-// stylelint-disable-next-line scss/dollar-variable-default
-$grays: map-merge(
-  (
-    "100": $gray-100,
-    "200": $gray-200,
-    "300": $gray-300,
-    "400": $gray-400,
-    "500": $gray-500,
-    "600": $gray-600,
-    "700": $gray-700,
-    "800": $gray-800,
-    "900": $gray-900
-  ),
-  $grays
-);
-
-$blue:    #007bff !default;
-$indigo:  #6610f2 !default;
-$purple:  #6f42c1 !default;
-$pink:    #e83e8c !default;
-$red:     #dc3545 !default;
-$orange:  #fd7e14 !default;
-$yellow:  #ffc107 !default;
-$green:   #28a745 !default;
-$teal:    #20c997 !default;
-$cyan:    #17a2b8 !default;
-
-$primary:       $blue !default;
-$secondary:     $gray-600 !default;
-$success:       $green !default;
-$info:          $cyan !default;
-$warning:       $yellow !default;
-$danger:        $red !default;
-$light:         $gray-100 !default;
-$dark:          $gray-800 !default;
-
-$theme-colors: () !default;
-// stylelint-disable-next-line scss/dollar-variable-default
-$theme-colors: map-merge(
-  (
-    "primary":    $primary,
-    "secondary":  $secondary,
-    "success":    $success,
-    "info":       $info,
-    "warning":    $warning,
-    "danger":     $danger,
-    "light":      $light,
-    "dark":       $dark
-  ),
-  $theme-colors
-);
-
-// Set a specific jump point for requesting color jumps
-$theme-color-interval:      8% !default;
-
-// The yiq lightness value that determines when the lightness of color changes from "dark" to "light". Acceptable values are between 0 and 255.
-$yiq-contrasted-threshold:  150 !default;
-
-// Customize the light and dark text colors for use in our YIQ color contrast function.
-$yiq-text-dark:             $gray-900 !default;
-$yiq-text-light:            $white !default;
-
-
-// Options
-//
-// Quickly modify global styling by enabling or disabling optional features.
-
-$enable-caret:                                true !default;
-$enable-rounded:                              true !default;
-$enable-shadows:                              false !default;
-$enable-gradients:                            false !default;
-$enable-transitions:                          true !default;
-$enable-prefers-reduced-motion-media-query:   true !default;
-$enable-hover-media-query:                    false !default; // Deprecated, no longer affects any compiled CSS
-$enable-grid-classes:                         true !default;
-$enable-pointer-cursor-for-buttons:           true !default;
-$enable-print-styles:                         true !default;
-$enable-responsive-font-sizes:                false !default;
-$enable-validation-icons:                     true !default;
-$enable-deprecation-messages:                 true !default;
-
-
-// Spacing
-//
-// Control the default styling of most Bootstrap elements by modifying these
-// variables. Mostly focused on spacing.
-// You can add more entries to the $spacers map, should you need more variation.
-
-$spacer: 1rem !default;
-$spacers: () !default;
-// stylelint-disable-next-line scss/dollar-variable-default
-$spacers: map-merge(
-  (
-    0: 0,
-    1: ($spacer * .25),
-    2: ($spacer * .5),
-    3: $spacer,
-    4: ($spacer * 1.5),
-    5: ($spacer * 3)
-  ),
-  $spacers
-);
-
-// This variable affects the `.h-*` and `.w-*` classes.
-$sizes: () !default;
-// stylelint-disable-next-line scss/dollar-variable-default
-$sizes: map-merge(
-  (
-    25: 25%,
-    50: 50%,
-    75: 75%,
-    100: 100%,
-    auto: auto
-  ),
-  $sizes
-);
-
-
-// Body
-//
-// Settings for the `<body>` element.
-
-$body-bg:                   $white !default;
-$body-color:                $gray-900 !default;
-
-
-
-// Paragraphs
-//
-// Style p element.
-
-$paragraph-margin-bottom:   1rem !default;
-
-
-// Grid breakpoints
-//
-// Define the minimum dimensions at which your layout will change,
-// adapting to different screen sizes, for use in media queries.
-
-$grid-breakpoints: (
-  xs: 0,
-  sm: 576px,
-  md: 768px,
-  lg: 992px,
-  xl: 1200px
-) !default;
-
-
-// Grid containers
-//
-// Define the maximum width of `.container` for different screen sizes.
-
-$container-max-widths: (
-  sm: 540px,
-  md: 720px,
-  lg: 960px,
-  xl: 1140px
-) !default;
-
-
-// Grid columns
-//
-// Set the number of columns and specify the width of the gutters.
-
-$grid-columns:                12 !default;
-$grid-gutter-width:           30px !default;
-
-
-// Typography
-//
-// Font, line-height, and color for body text, headings, and more.
-
-// stylelint-disable value-keyword-case
-$font-family-sans-serif:      -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji" !default;
-$font-family-monospace:       SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace !default;
-$font-family-base:            $font-family-sans-serif !default;
-// stylelint-enable value-keyword-case
-
-$font-size-base:              1rem !default; // Assumes the browser default, typically `16px`
-$font-size-lg:                $font-size-base * 1.25 !default;
-$font-size-sm:                $font-size-base * .875 !default;
-
-$font-weight-lighter:         lighter !default;
-$font-weight-light:           300 !default;
-$font-weight-normal:          400 !default;
-$font-weight-bold:            700 !default;
-$font-weight-bolder:          bolder !default;
-
-$headings-margin-bottom:      $spacer / 2 !default;
-$headings-font-family:        null !default;
-$headings-font-weight:        500 !default;
-$headings-line-height:        1.2 !default;
-$headings-color:              null !default;
-
-
-$hr-border-color:             rgba($black, .1) !default;
-$hr-border-width:             $border-width !default;
-
-$mark-padding:                .2em !default;
-
-$dt-font-weight:              $font-weight-bold !default;
-
-$kbd-box-shadow:              inset 0 -.1rem 0 rgba($black, .25) !default;
-$nested-kbd-font-weight:      $font-weight-bold !default;
-
-$list-inline-padding:         .5rem !default;
-
-$mark-bg:                     #fcf8e3 !default;
-
-$hr-margin-y:                 $spacer !default;

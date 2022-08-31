@@ -1,19 +1,32 @@
 /*******************************************************************************
  * Style overrides for distill blog posts.
  ******************************************************************************/
+.distill {
+   a:hover {
+     // border-bottom-color: $global-theme-color;
+     text-decoration: none;
+     border-bottom: none;
+   }
+}
+
+d-title{
+  h1 {
+    margin-top: 46px;
+  }
+}
 
 d-byline {
   border-top-color: var(-rgba(0,0,0,.1)) !important;
 }
 
 d-byline h3 {
-  color: var(-rgba(0,0,0,.1)) !important;
+  color: $global-text-color !important;
 }
 
 d-byline a, d-article d-byline a {
-  color: var(--global-text-color) !important;
+  color: $global-text-color !important;
   &:hover {
-    color: var(--global-hover-color) !important;
+    color: $global-hover-color !important;
   }
 }
 
@@ -21,72 +34,94 @@ d-byline a, d-article d-byline a {
 d-article {
   border-top-color: var(-rgba(0,0,0,.1)) !important;
   a, p, h1, h2, h3, h4, h5, h6, li, table {
-    color: var(-rgba(0,0,0,.1)) !important;
+    color: $global-text-color !important;
   }
   a, h1, h2, hr, table, table th, table td {
     border-bottom-color: var(-rgba(0,0,0,.1)) !important;
   }
+  h1, h2, h3, h4, h5, h6 {
+    margin-top: 0px;
+  }
   a:hover {
-    border-bottom-color: var(--global-hover-color) !important;
+    border-bottom: none;
+    color: $global-hover-color !important;
   }
   b i {
     display: inline;
   }
 
   d-contents {
-    align-self: start;
-    grid-column: 1 / 4;
-    grid-row: auto / span 4;
-    justify-self: end;
-    margin-top: 0em;
-    padding-left: 2em;
-    padding-right: 3em;
-    border-right: 1px solid var(-rgba(0,0,0,.1));
-    width: calc(max(70%, 300px));
-    margin-right: 0px;
-    margin-top:  0em;
-    display: grid;
-    grid-template-columns:
-      minmax(8px, 1fr) [toc] auto
-      minmax(8px, 1fr) [toc-line] 1px
-      minmax(32px, 2fr);
-
-    nav {
-      grid-column: toc;
-      a {
+    .figcaption {
+      line-height: 1.4em;
+    }
+    .toc {
+      // margin-bottom: 0.8em;
+      color: rgba(0, 0, 0, 0.8);
+      // font-weight: bold;
+      margin: 0 2px 40px;
+      border: 1px solid #EEEEEE;
+      background: #F5F5F5;
+      border-radius: 8px;
+      padding: .4em;
+      font-size: 15px;
+    	a {
         border-bottom: none !important;
-        &:hover {
-          border-bottom: 1px solid var(-rgba(0,0,0,.1)) !important;
-        }
-      }
+    		&:hover {
+    			box-shadow: 0 1px;
+          // border-bottom: 1px solid var(-rgba(0,0,0,.1)) !important;
+          // text-decoration: underline;
+    		}
+    	}
       h3 {
         margin-top: 0;
         margin-bottom: 1em;
       }
-      div {
-        display: block;
-        outline: none;
-        margin-bottom: 0.8em;
-        color: rgba(0, 0, 0, 0.8);
-        font-weight: bold;
-      }
+
       ul {
-        padding-left: 1em;
-        margin-top: 0;
+        // padding-left: 1em;
+        margin-top: 8px;
         margin-bottom: 6px;
-        list-style-type: none;
+        // list-style-type: none;
         li {
-          margin-bottom: 0.25em;
+          margin-top: 8px;
+          margin-bottom: 0;
         }
       }
+    	details {
+    		summary {
+    			cursor: grab;
+    			margin-inline-start: 20px;
+    		}
+    	}
+    	details[open] {
+    		summary {
+    			cursor: zoom-out;
+    		}
+    	}
+    	.details {
+    		display: inline;
+    		font-weight: 500;
+    	}
+    	.inner {
+    		margin: 0 20px;
+    		padding: 10px 0;
+    	}
+    	// li {
+    	// 	ul {
+    	// 		margin-inline-start: 24px;
+    	// 	}
+    	// }
+    	summary {
+    		&:focus {
+    			outline: 0;
+    		}
+    	}
     }
-    .figcaption {
-      line-height: 1.4em;
-    }
-    toc-line {
-      border-right: 1px solid var(-rgba(0,0,0,.1));
-      grid-column: toc-line;
-    }
+
+    // toc-line {
+    //   border-right: 1px solid var(-rgba(0,0,0,.1));
+    //   grid-column: toc-line;
+    // }
   }
 
   d-footnote {
@@ -95,15 +130,15 @@ d-article {
 }
 
 d-appendix {
-  border-top-color: var(-rgba(0,0,0,.1)) !important;
-  color: var(-rgba(0,0,0,.1)) !important;
+  border-top-color: $global-divider-color !important;
+  color: $global-divider-color !important;
   h3, li, span {
-    color: var(-rgba(0,0,0,.1)) !important;
+    color: $global-distill-app-color !important;
   }
   a, a.footnote-backlink {
-    color: var(-rgba(0,0,0,.1)) !important;
+    color: $global-distill-app-color !important;
     &:hover {
-      color: var(-rgba(0,0,0,.1)) !important;
+      color: $global-hover-color !important;
     }
   }
 }
@@ -118,7 +153,7 @@ d-appendix {
       margin-bottom: 1em;
       padding-top: 0.5em;
       width: 100%;
-      border: 1px solid var(--global-divider-color);
+      border: 1px solid var(-rgba(0,0,0,.1));
       nav {
         grid-column: none;
       }
