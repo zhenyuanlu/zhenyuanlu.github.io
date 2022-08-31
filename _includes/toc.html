@@ -1,10 +1,12 @@
+{% if page.toc -%}
 <div class="toc">
     <details>
         <summary>
             <span class="details">Table of Contents</span>
         </summary>
-      <section class="inner" id="table-of-contents">
+      <section class="inner">
         {{ content | toc_only }}
       </section>
     </details>
 </div>
+{%- endif -%}

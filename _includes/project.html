@@ -22,13 +22,11 @@
     {% if project.demo %}
       <a href="{{ project.demo }}"><i class="fas fa-play"></i> Demo</a>
     {% endif %}
-
     {% if project.external %}
       <a href="{{ project.external }}"><i class="fas fa-link" aria-hidden="true"></i> Website</a>
     {% elsif project.url %}
       <a href="{{ project.url }}"><i class="fas fa-solid fa-book" ></i> Page</a>
     {% endif %}
-
     {% if project.code %}
       <a href="{{ project.code }}"><i class="fab fa-github" aria-hidden="true"></i> Code</a>
     {% endif %}

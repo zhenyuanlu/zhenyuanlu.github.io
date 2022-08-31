@@ -66,6 +66,7 @@
       <d-byline></d-byline>
 
       <d-article>
+        {% if page.toc -%}
         <d-contents>
           <nav class="figcaption">
             <div class="toc">
@@ -80,6 +81,7 @@
             </div>
           </nav>
         </d-contents>
+      {%- endif -%}
 
 <!--
         {% if page.toc -%}

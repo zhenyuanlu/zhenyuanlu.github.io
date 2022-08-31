@@ -244,8 +244,8 @@ $screen-md-max:              ($screen-lg-min - 1) !default;
 /* add on-palm to be consistent with other jekyll theme media queries */
 $content-width:    900px !default;
 
-$on-palm:          576px !default;
-$on-laptop:        768px !default;
+$on-palm:          600px !default;
+$on-laptop:        800px !default;
 
 $spacing-unit:     32px;
 

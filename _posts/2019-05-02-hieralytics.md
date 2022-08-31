@@ -14,6 +14,8 @@ authors:
 
 abstract: >
   An easy-to-use analytics web app for exploring and analyzing data based on hierarchical tree.
+
+toc: false
 ---
 
 ## Abstract
