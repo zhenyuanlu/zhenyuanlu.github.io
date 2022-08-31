@@ -11,7 +11,7 @@
     a {
         font-family: $font-family-sans-serif;
         color: #000000;
-        line-height: $nav-height;
+        line-height: 36px;
         // letter-spacing: -1px;
         margin-bottom: 0;
         text-decoration: none;
@@ -24,27 +24,27 @@
         }
     }
 }
-
-.site-title a {
-    font-family: $font-family-sans-serif;
-    color: #000000;
-    font-size: 20px;
-    line-height: $nav-height;
-    // letter-spacing: -1px;
-    margin-bottom: 0;
-    text-decoration: none;
-    //font-weight: bold;
-    &:hover {
-      text-decoration: none;
-      opacity: 0.75;
-      //border-bottom-color: #333;
-      transition: opacity 0.25s ease-in-out, border 0.25s ease-in-out;
-    }
-}
+//
+// .site-title a {
+//     font-family: $font-family-sans-serif;
+//     color: #000000;
+//     font-size: 20px;
+//     line-height: 36px;
+//     // letter-spacing: -1px;
+//     margin-bottom: 0;
+//     text-decoration: none;
+//     //font-weight: bold;
+//     &:hover {
+//       text-decoration: none;
+//       opacity: 0.75;
+//       //border-bottom-color: #333;
+//       transition: opacity 0.25s ease-in-out, border 0.25s ease-in-out;
+//     }
+// }
 
 .site-nav {
     float: right;
-    line-height: $nav-height;
+    line-height: 36px;
 
     .nav-trigger {
         display: none;
