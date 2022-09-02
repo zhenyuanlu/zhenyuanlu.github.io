@@ -51,7 +51,7 @@ I am actively contributing to open source projects on creating user-friendly R-s
 
 ## Teaching
 
-- <a href="https://zhenyuanlu.com/r-comput-viz-notes/" target="_blank">Instructor notes</a> for IE6600 Computation and Visualization for Analytics
+- <a href="https://zhenyuanlu.com/r-comput-viz-notes/" target="_blank">Instructor Notes</a> for IE6600 Computation and Visualization for Analytics
 
 
 
