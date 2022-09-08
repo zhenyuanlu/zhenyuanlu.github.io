@@ -54,7 +54,6 @@ I am actively contributing to open source projects on creating user-friendly R-s
 - <a href="https://zhenyuanlu.com/r-comput-viz-notes/" target="_blank">Instructor Notes</a> for IE6600 Computation and Visualization for Analytics
 
 
-
 <!-- <img src='https://raw.githubusercontent.com/tidyverse/tidyverse/main/man/figures/logo.png' align="right" height="55.5"/>
 <img src='https://raw.githubusercontent.com/rstudio/shiny/main/man/figures/logo.png' align="right" height="55.5"/>
 <img src='https://raw.githubusercontent.com/rstudio/rmarkdown/main/man/figures/logo.png' align="right" height="55.5"/> -->
