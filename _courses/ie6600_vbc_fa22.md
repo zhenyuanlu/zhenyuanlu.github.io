@@ -72,10 +72,12 @@ IE6600 covers basic of the R, and R Shiny for data preprocessing, and visualizat
 
 This section of IE6600 follows the [flipped classroom model](https://en.wikipedia.org/wiki/Flipped_classroom){:target="\_blank"}, and delivers all course materials online. The schedule below shows the due dates for all modules.
 
-<div>
+<figure>
   <img src='/assets/img/ie6600/goal.png' alt='Course Goals' style="max-width:100%;">
-</div>
-R For Data Science, Wickham, Hadley, and Garrett Grolemund
+<figcaption>
+<strong> R For Data Science, Wickham, Hadley, and Garrett Grolemund</strong>.
+</figcaption>
+</figure>
 
 ***
 
