@@ -4,7 +4,7 @@ layout: distill
 title: Thickener Blend Composition And Its Application
 description: US patent
 date: 2014-10-01
-# highlight: 4
+highlight: 
 image: /patent/cartridge.png
 comments: false
 authors:

@@ -4,7 +4,7 @@ layout: distill
 title: Thickening Agent Composition And Applications In Cosmetics
 description: patent
 date: 2018-08-02
-# highlight: 4
+highlight: 
 image: fa-solid fa-flask-vial
 comments: false
 authors:

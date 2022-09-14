@@ -85,12 +85,14 @@ For work, research, or fun.
 <div class="featured-projects">
 
 <!-- sort highlight descending and date ascending -->
-  {% assign projects = site.posts | sort: 'date' | reverse | sort: 'highlight' %}
+
+  {% assign projects = site.posts | sort: "highlight" %}
   {% for project in projects %}
     {% if project.highlight and project.categories contains "projects"  or "publication" %}
       {% include project.html project=project %}
     {% endif %}
   {% endfor %}
+
 </div>
 <br>
 
