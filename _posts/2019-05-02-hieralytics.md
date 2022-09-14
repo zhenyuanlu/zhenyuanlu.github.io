@@ -3,7 +3,7 @@ categories: projects
 image: hieralytics.png
 layout: distill
 title: "hierAlytics"
-highlight: 3
+highlight: 2
 description: An easy-to-use analytics web app for exploring and analyzing data based on hierarchical tree.
 date: 2019-05-02
 cite: false

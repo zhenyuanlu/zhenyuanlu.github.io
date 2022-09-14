@@ -79,15 +79,15 @@ I am actively contributing to open source projects on creating user-friendly R-s
 
 
 
-## Projects
+## Featured Projects
 For work, research, or fun.
 
 <div class="featured-projects">
 
 <!-- sort highlight descending and date ascending -->
-  {% assign projects = site.posts | sort: 'highlight' | sort: 'date' | reverse %}
+  {% assign projects = site.posts | sort: 'date' | reverse | sort: 'highlight' %}
   {% for project in projects %}
-    {% if project.highlight and project.categories contains "projects" %}
+    {% if project.highlight and project.categories contains "projects"  or "publication" %}
       {% include project.html project=project %}
     {% endif %}
   {% endfor %}

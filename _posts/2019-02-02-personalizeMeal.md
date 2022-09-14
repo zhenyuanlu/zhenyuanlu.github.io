@@ -21,10 +21,10 @@ toc: false
 ## Abstract
 
 <figure>
-<img src="{{ '/assets/img/projects/mealthup.png' | relative_url }}" />
-<figcaption>
-<strong> MealthUp &trade; personalized meal web app presenting on the phone</strong>.
-</figcaption>
+  <img src="{{ '/assets/projects/mealthup.png' | relative_url }}" />
+  <figcaption>
+    <strong> MealthUp &trade; personalized meal web app presenting on the phone</strong>.
+  </figcaption>
 </figure>
 
 Healthy life is one of the most common and popular topics, integrates a combination of how to get enough nutrition, how to make a correct selection on food fitting individual physical status and matching different individual’s taste and life style. In the current daily life, there is a lack of advanced nutrition consultant or personalized meal system to process proper food recommendation to adapt our health status. Therefore, there is a need to develop inexpensive, easy-to-use, rapid and convenient consultant system that do not require a nutritionist or other related high cost service. To address this need, we have developed a novel customization meal plan system, that uses Mysql database system for integration of basic database, algorithm, user privilege and other implementation, which assists us to make an intelligent system to output the accurate recommendation for our customers.
