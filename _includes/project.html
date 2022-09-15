@@ -10,7 +10,7 @@
 
   <span class="title">{{ project.title }}</span>
 
-  <p>
+  <p class="name">
     {% for category in project.categories %}
     {% if category == "projects" %}
       {{ project.description }}
@@ -20,7 +20,8 @@
 
   <p>
     {% for author in project.authors -%}
-      {{ author.name }}{% unless forloop.last %}, {% endunless %}
+    {% include person person=author.name %}{% unless forloop.last %}, {% endunless %}
+      <!-- {{ author.name }}{% unless forloop.last %}, {% endunless %} -->
     {% endfor %}
   </p>
 
