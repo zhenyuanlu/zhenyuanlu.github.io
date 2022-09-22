@@ -86,20 +86,28 @@ For work, research, or fun.
 
 <!-- sort highlight descending and date ascending -->
 
-  {% assign projects = site.posts | sort: "highlight" %}
-  {% for project in projects %}
-    {% if project.highlight and project.categories contains "projects"  or "publication" %}
-      {% include project.html project=project %}
+{% assign posts_grouped = site.posts | group_by: "highlight" | sort: "name" %}
+{% for group in posts_grouped %}
+{% assign projects = group.items | sort: "date" | reverse %}
+  {% for project in projects  %}
+    {% if project.hide != true and project.categories contains "projects"  or "publication" %}
+        {% include project.html project=project %}
     {% endif %}
   {% endfor %}
+{% endfor %}
+
+
 
 </div>
 <br>
+
+
 
 <!-- <a href="{{ "/projects/" | relative_url }}" class="button">
   <i class="fas fa-chevron-circle-right"></i>
   Show More Projects
 </a> -->
+
 
 
 

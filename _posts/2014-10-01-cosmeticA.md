@@ -1,11 +1,12 @@
 ---
+hide: true
 categories: publication
 layout: distill
 title: Thickening Agent Composition And Applications In Cosmetics
 description: patent
 date: 2018-08-02
-highlight: 
-image: fa-solid fa-flask-vial
+highlight: 5
+image:
 comments: false
 authors:
   - name: Shubiao Pan

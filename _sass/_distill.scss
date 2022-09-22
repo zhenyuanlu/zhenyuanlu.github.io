@@ -11,7 +11,8 @@
 
 d-title{
   h1 {
-    margin-top: 46px;
+    font-size: 36px; //can be changed
+    margin-top: 42px;
   }
 }
 
@@ -31,6 +32,12 @@ d-byline a, d-article d-byline a {
 }
 
 d-article {
+  h1 {
+    font-size: 32px;
+  }
+  h2 {
+    font-size: 30px; //can be changed
+  }
   border-top-color: var(-rgba(0,0,0,.1)) !important;
   a, p, h1, h2, h3, h4, h5, h6, li, table {
     color: $global-text-color !important;
@@ -73,6 +80,7 @@ d-article {
           // text-decoration: underline;
     		}
     	}
+
       h3 {
         margin-top: 0;
         margin-bottom: 1em;

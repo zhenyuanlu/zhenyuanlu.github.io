@@ -1,11 +1,12 @@
 ---
+hide: true
+highlight: 5
 categories: publication
 layout: distill
 title: Thickener Blend Composition And Its Application
 description: US patent
 date: 2014-10-01
-highlight: 
-image: /patent/cartridge.png
+image:
 comments: false
 authors:
   - name: Shubiao Pan

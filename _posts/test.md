@@ -1,4 +1,6 @@
 ---
+hide: true
+highlight: 5
 layout: distill
 date: 2017-01-01
 title: test
