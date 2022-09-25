@@ -17,7 +17,7 @@ abstract: >
 
 toc: false
 ---
-
+<meta property="og:image" content="{{ '/assets/projects/clVR/cover.jpg' | relative_url }}" />
 ## Abstract
 
 <strong>
