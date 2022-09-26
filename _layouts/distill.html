@@ -77,7 +77,7 @@
                           <span class="details">Table of Contents</span>
                       </summary>
                     <section class="inner">
-                      {% toc %}
+                      {{ content | toc_only }}
                     </section>
                   </details>
               </div>
@@ -103,7 +103,7 @@
         </d-contents>
         {%- endif %} -->
 
-        {{ content }}
+        {{ content | inject_anchors }}
 
       </d-article>
 
