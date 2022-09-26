@@ -76,9 +76,9 @@
                       <summary>
                           <span class="details">Table of Contents</span>
                       </summary>
-                    <section id="table-of-contents" class="inner">
-                      {% toc %}
-                      {{ content | toc_only }}
+                    <section class="inner">
+                      <!-- {{ content | toc_only }} -->
+                      {% include toc.html html=content %}
                     </section>
                   </details>
               </div>
