@@ -27,7 +27,7 @@ d-byline h3 {
 d-byline a, d-article d-byline a {
   color: $global-text-color !important;
   &:hover {
-    color: $global-hover-color !important;
+    color: $theme-color !important;
   }
 }
 
@@ -50,7 +50,7 @@ d-article {
     margin-top: 0px;
   }
   a:hover {
-    border-bottom-color: $global-theme-color;
+    border-bottom-color: $theme-color;
     text-decoration: none;
     // color: $global-hover-color !important;
   }
@@ -76,7 +76,7 @@ d-article {
         border-bottom: none !important;
     		&:hover {
     			box-shadow: 0 1px;
-          color: $global-text-color !important;
+          color: $theme-color !important;
           // border-bottom: 1px solid var(-rgba(0,0,0,.1)) !important;
           // text-decoration: underline;
     		}
@@ -148,7 +148,23 @@ d-appendix {
   a, a.footnote-backlink {
     color: $global-distill-app-color !important;
     &:hover {
-      color: $global-hover-color !important;
+      color: $theme-color !important;
+    }
+  }
+}
+
+d-share {
+  margin: 0 25px 0 0;
+  .center {
+  text-align: center;
+  }
+
+  a {
+    margin: 0 15px 0 0;
+    font-size: 30px;
+    color: $global-distill-app-color !important;
+    &:hover {
+      color: $theme-color !important;
     }
   }
 }

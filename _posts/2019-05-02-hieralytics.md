@@ -21,9 +21,9 @@ toc: false
 
 ## Abstract
 
-<figure>
+<!-- <figure>
   <img src="{{ '/assets/projects/hieralytics.png' | relative_url }}" />
-</figure>
+</figure> -->
 
 <strong>
 An easy-to-use analytics web app for exploring and analyzing data based on hierarchical tree.</strong>.

@@ -13,12 +13,8 @@
       {{ page._styles }}
     </style>
     {%- endif %}
-    <meta property="og:title" content="{{ page.title }}" />
-    <meta property="og:type" content="article" />
-    <meta property="og:url" content="{{ page.url }}" />
     <meta property="og:description" content="{{ page.description }}" />
     <meta property="og:image" content="{{ page.image }}" />
-
   </head>
 
   <d-front-matter>
@@ -109,6 +105,7 @@
         {%- endif %} -->
 
         {{ content }}
+
       </d-article>
 
       {% if page.cite == false%}
@@ -120,8 +117,13 @@
         <d-citation-list></d-citation-list>
       </d-appendix>
       {% endif %}
+      <d-share>
+        {% include share.html%}
+      </d-share>
     </div>
+
     <div style="max-width: 100%;width: 800px;margin: auto;">
+
     {% if page.comments %}
       {% include disqus.html %}
     {% endif %}
