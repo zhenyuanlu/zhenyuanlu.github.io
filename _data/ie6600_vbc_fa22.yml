@@ -130,6 +130,7 @@
 - date: 11/28
   title: >
     <strong>Exploratory data analysis and more data visualization</strong>
+  slieds: /slides/t11AppDataViz.pdf
   materials:
     - <b>R4DS</b> <a href="https://r4ds.had.co.nz/exploratory-data-analysis.html" target="_blank">Exploratory Data Analysis</a>
   assignments: >
