@@ -148,10 +148,13 @@ Requests for regrades in writing will only be accepted no less than 10 days afte
 Please feel free to refer to any materials from my slides. You may discuss homework with your classmates, but all the assignments are supposed to completed by your own. Sharing of completed solutions will not be tolerated. Plagiarism will be considered, if solutions and project documentations with a very high degree of similarity with other student’s or materials online. Such academic dishonesty will be handled in accordance with university policies.
 
 ***
+
 ### Projects
 More details will be posted later in the semester.
 - <b>Project Example</b> <a href="https://yuchengqiu96.shinyapps.io/koifish/" target="_blank">Students' demo</a>
 - Credits: Qiu Yucheng; Yu Wei
+
+
 ***
 
 ### Course Evaluation
