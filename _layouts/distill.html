@@ -13,8 +13,15 @@
       {{ page._styles }}
     </style>
     {%- endif %}
+    <meta name="citation_title" content="{{ page.title}}">
+    <meta name="citation_author" content="Lu, Zhenyuan">
+    <meta name="citation_publication_date" content="{{ page.date }}">
     <meta property="og:description" content="{{ page.description }}" />
     <meta property="og:image" content="{{ page.image }}" />
+    {% if page.paper %}
+      <meta name="citation_pdf_url"
+        content="{{ page.paper }}">
+    {% endif %}
   </head>
 
   <d-front-matter>
