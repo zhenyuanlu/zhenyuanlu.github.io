@@ -3,7 +3,7 @@ categories: publication
 layout: distill
 title: Keyword Co-occurrence Network For Pain Research Literature Review
 description: informs, Indianapolis, MN
-date: 2022-09-16
+date: 2022-10-16
 highlight: 1
 image: /informs/2022.png
 comments: false
