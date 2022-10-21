@@ -2,17 +2,9 @@
 <html>
   <head>
     {% include head.html %}
-    <meta name="author" content="Zhenyuan Lu">
-    <meta name="citation_title" content="{{ page.title}}">
-    <meta name="citation_author" content="Zhenyuan Lu">
-    <meta name="citation_publication_date" content="{{ page.date }}">
-    <meta property="og:description" content="{{ page.description }}" />
-    <meta property="og:image" content="{{ page.image }}" />
-    <meta property="twitter:title" content="{{ page.title}}">
-    {% if page.paper %}
-      <meta name="citation_pdf_url"
-        content="{{ page.paper }}">
-    {% endif %}
+    {% include google.html %}
+    {% include meta.html %}
+
     <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
     <script src="{{ '/assets/js/distillpub/template.v2.js' | relative_url }}"></script>
     <script src="{{ '/assets/js/distillpub/transforms.v2.js' | relative_url }}"></script>
