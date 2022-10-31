@@ -1,9 +1,10 @@
 ---
 layout: page
 permalink: /
-title: "Zhenyuan Lu"
+title: Zhenyuan Lu
 class: home
 description: Machine learning and PhD research fellow at Northeastern University. Using background and experience working in Biomedical sciences and data science fields over the last 10 years. I weave healthcare and machine learning concepts together.
+image: staff/z.jpg
 ---
 
 <div class="columns" markdown="1">
