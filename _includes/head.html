@@ -6,19 +6,17 @@
 <meta name="viewport" content="width=device-width initial-scale=1.0">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
-
 <title>{{ site.name }}{% if page.nav and page.url != "/" %} | {{ page.nav }}{% endif %}</title>
-<meta name="description" content="{{ site.description }}">
+
 
 <!-- Code Syntax Highlighting -->
 <link rel="stylesheet" href="{{ '/assets/css/intellij.css' | prepend: site.baseurl }}">
 
-<!-- <link rel="stylesheet" href="{{ '/assets/css/main.css' | relative_url }}"> -->
 <link rel="stylesheet" href="{{ '/assets/css/main.css' | prepend: site.baseurl }}">
 
 <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jwarby/jekyll-pygments-themes@master/github.css"  /> -->
 <link rel="shortcut icon" href="{{ '/assets/img/favicon.ico' | relative_url }}">
 
-<!-- <link rel="canonical" href="{{ page.url | replace:'index.html','' | relative_url }}"> -->
+<link rel="canonical" href="{{ page.url | prepend: site.url }}">
 <!-- <link href="https://use.fontawesome.com/releases/v5.11.2/css/all.css" rel="stylesheet"> -->
 <script src="https://kit.fontawesome.com/367d344bfe.js" crossorigin="anonymous"></script>

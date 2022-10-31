@@ -3,8 +3,9 @@ layout: course
 permalink: /ie6600-bos-fa20/
 title: <b>C</b>omputation and <b>V</b>isualization for <b>A</b>nalytics
 class: course
-description: IE6600 • Fall 2020 • Northeastern University • Boston
-logo: neu.png
+subtitle: IE6600 • Fall 2020 • Northeastern University • Boston
+description: IE6600 covers basic of the R, and R Shiny for data preprocessing, and visualization. It introduces students to static and interactive visualization, dashboard, and platform that reveal information, patterns, interactions, and comparisons by paying attention to details such as color encoding, a shape selection, spatial layout, and annotation. 
+image: neu.png
 nav: IE6600
 ---
 

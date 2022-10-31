@@ -3,9 +3,10 @@ layout: course
 permalink: /ie6600-sea-sp21/
 title: <b>C</b>omputation and <b>V</b>isualization for <b>A</b>nalytics
 class: course
-description: IE6600 • Spring 2021 • Northeastern University • Seattle
-logo: neu.png
+subtitle: IE6600 • Spring 2021 • Northeastern University • Seattle
+image: neu.png
 nav: IE6600
+description: IE6600 covers basic of the R, and R Shiny for data preprocessing, and visualization. It introduces students to static and interactive visualization, dashboard, and platform that reveal information, patterns, interactions, and comparisons by paying attention to details such as color encoding, a shape selection, spatial layout, and annotation. 
 ---
 
 This course covers basic of the R, and R Shiny for data preprocessing, and visualization. It introduces students to static and interactive visualization, dashboard, and platform that reveal information, patterns, interactions, and comparisons by paying attention to details such as color encoding, a shape selection, spatial layout, and annotation. Based on these fundamentals of analytical and creative thinking, the course then focuses on data visualization techniques and the use of the most current popular software tools that support data exploration, analytics-based storytelling and knowledge discovery, and decision-making in engineering, healthcare operations, manufacturing, and related applications.
