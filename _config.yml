@@ -7,7 +7,7 @@ description: > # this means to ignore newlines until "baseurl:"
   and data science fields over the last 10 years.
   I weave healthcare and machine learning concepts together.
 
-url: "https://zhenyuanlu.com/" # the base hostname & protocol for your site
+url: "https://zhenyuanlu.com" # the base hostname & protocol for your site
 baseurl: "" # the subpath of your site, e.g. /blog/
 
 github_username: zhenyuanlu
