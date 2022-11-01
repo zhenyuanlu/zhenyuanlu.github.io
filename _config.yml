@@ -47,10 +47,10 @@ collections:
 
 plugins:
     - jekyll-email-protect
-    - jekyll-sitemap
     - jekyll-seo-tag
     - jekyll-mentions
     - jekyll-toc
+    - jekyll-sitemap
 
 jquery_version: "1.12.4"
 katex_version: "0.10.1"

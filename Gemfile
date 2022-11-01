@@ -4,9 +4,6 @@ group :jekyll_plugins do
     gem 'github-pages'
     gem 'jekyll'
     gem 'jekyll-email-protect'
-    gem 'jekyll-paginate'
-    gem 'jekyll-feed', '~> 0.6'
-    gem 'jekyll-sitemap'
     gem 'kramdown', '>= 2.3.1'
     gem 'addressable', '>= 2.8.0'
     gem 'nokogiri', '>= 1.13.4'
@@ -14,4 +11,5 @@ group :jekyll_plugins do
     gem 'webrick', '~> 1.7'
     gem 'commonmarker', '>= 0.23.4'
     gem 'jekyll-toc'
+    gem 'jekyll-sitemap'
 end
