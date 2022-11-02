@@ -43,22 +43,6 @@ IE6600 covers basic of the R, and R Shiny for data preprocessing, and visualizat
   {% endfor %}
 </div>
 
-<!-- *** -->
-
-<!-- Guest  -->
-<!-- <div class="instructors clearfix">
-  {% for instructor in site.data.staff_vbc_fa22.guest %}
-  <div class="instructor-profile-two-col">
-    <a href="{{ instructor.url }}" target="_blank"><img src="{{ instructor.image | prepend: '/assets/img/' | relative_url }}" /></a>
-    <ul class="instructor-info">
-      <li><span>{{ instructor.title }}</span> </li>
-      <li><a href="{{ instructor.url }}" target="_blank">{{ instructor.name }}</a></li>
-      <li><span>Title:</span> {{ instructor.title2 }}</li>
-      <li><span>Expertise:</span> {{ instructor.expertise }}</li>
-    </ul>
-  </div>
-  {% endfor %}
-</div> -->
 
 
 ***
@@ -106,8 +90,6 @@ Additional textbooks:
 ***
 
 ### Schedule
-
-
 (subject to change)
 
 {% include schedule.html %}

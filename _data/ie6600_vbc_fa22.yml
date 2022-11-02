@@ -5,7 +5,7 @@
   title: >
     <strong>Course introduction and expectations;</strong> <br>
     <strong>Basic of R</strong>
-  slides: /slides/t02IntroR.pdf
+  slides: /assets/slides/t02IntroR.pdf
   annotated:
   video:
   notes:
@@ -18,8 +18,8 @@
   lecturer:
   title: >
     <strong>Basic of R</strong>
-  slides: /slides/t02BasicR.pdf
-  slides2: /slides/t02IntroR.pdf
+  slides: /assets/slides/t02BasicR.pdf
+  slides2: /assets/slides/t02IntroR.pdf
   materials:
     - <b>R4E</b> "Basics of R"
     - <b>R4E</b> "Advanced Data Structure"
@@ -29,7 +29,7 @@
   lecturer:
   title: >
     <strong>R functions and the grammar of visualization</strong>
-  slides: /slides/t03RGrammar.pdf
+  slides: /assets/slides/t03RGrammar.pdf
   materials:
     - <b>R4DS</b> <a href="https://r4ds.had.co.nz/workflow-basics.html" target="_blank">Workflow</a>
     - <b>Wickham</b> <a href="https://vita.had.co.nz/papers/layered-grammar.pdf" target="_blank">A layered grammar of graphics</a>
@@ -58,7 +58,7 @@
   lecturer:
   title: >
     <strong>Basic data visualization in R</strong>
-  slides: /slides/t05DataViz.pdf
+  slides: /assets/slides/t05DataViz.pdf
   materials:
     - <b>R4DS</b> <a href="https://r4ds.had.co.nz/workflow-basics.html" target="_blank">Data Visualization with ggplot2</a>
     - (optional) RGC "Quickly Exploring Data"
@@ -70,7 +70,7 @@
   lecturer:
   title: >
     <strong>Data transformation with dplyr</strong>
-  slides: /slides/t06DataTrans.pdf
+  slides: /assets/slides/t06DataTrans.pdf
   materials:
     - <b>R4DS</b> <a href="https://r4ds.had.co.nz/transform.html" target="_blank">Data Transformation with dplyr</a>
   assignments: >
@@ -81,8 +81,8 @@
   title: >
     <strong>Data wrangling with tibbles, readr and tidyr</strong><br>
     Optional: <br>Data wrangling with stringr, forcats
-  slides: /slides/t07DataWrg_trt.pdf
-  slides2: /slides/t07DataWrg_sf.pdf
+  slides: /assets/slides/t07DataWrg_trt.pdf
+  slides2: /assets/slides/t07DataWrg_sf.pdf
   materials:
     - <b>R4DS</b> <a href="https://r4ds.had.co.nz/tibbles.html" target="_blank">Tibbles with tibble</a>
     - <b>R4DS</b> <a href="https://r4ds.had.co.nz/data-import.html" target="_blank">Data Import with readr</a>
@@ -96,7 +96,7 @@
   title: >
     <strong>Visualizing relational data;</strong><br>
     <strong>Visualization by PCA</strong>
-  slides: /slides/t08RelationalData.pdf
+  slides: /assets/slides/t08RelationalData.pdf
   github: https://github.com/zhenyuanlu/ML-workshop-IE6600
   materials:
     - <b>R4DS</b> <a href="https://r4ds.had.co.nz/relational-data.html" target="_blank">Relational Data with dplyr</a>
@@ -112,7 +112,7 @@
 - date: 11/14
   title: >
     <strong>Introduction to Shiny interactive visualization web app I</strong>
-  slides: /slides/t09IntroToShiny.pdf
+  slides: /assets/slides/t09IntroToShiny.pdf
   materials:
     - <b>R Shiny</b> <a href="https://shiny.rstudio.com/tutorial/" target="_blank">Shiny tutorial</a>
   assignments: >
@@ -122,7 +122,7 @@
 - date: 11/21
   title: >
     <strong>Introduction to Shiny interactive visualization web app II</strong>
-  slides: /slides/t10ShinyApp.pdf
+  slides: /assets/slides/t10ShinyApp.pdf
   materials:
     - <b>R Shiny</b> <a href="https://shiny.rstudio.com/tutorial/" target="_blank">Shiny tutorial</a>
   assignments:
@@ -130,7 +130,7 @@
 - date: 11/28
   title: >
     <strong>Exploratory data analysis and more data visualization</strong>
-  slides: /slides/t11AppDataViz.pdf
+  slides: /assets/slides/t11AppDataViz.pdf
   materials:
     - <b>R4DS</b> <a href="https://r4ds.had.co.nz/exploratory-data-analysis.html" target="_blank">Exploratory Data Analysis</a>
   assignments: >

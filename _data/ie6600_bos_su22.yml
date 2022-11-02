@@ -17,8 +17,8 @@
   lecturer:
   title: >
     <strong>Basic of R I</strong>
-  slides: /slides/t02BasicR.pdf
-  slides2: /slides/t02IntroR.pdf
+  slides: /assets/slides/t02BasicR.pdf
+  slides2: /assets/slides/t02IntroR.pdf
   materials:
     - <b>R4E</b> "Basics of R"
     - <b>R4E</b> "Advanced Data Structure"
@@ -28,8 +28,8 @@
   lecturer:
   title: >
     <strong>Basic of R II</strong>
-  slides: /slides/t02BasicR.pdf
-  slides2: /slides/t02IntroR.pdf
+  slides: /assets/slides/t02BasicR.pdf
+  slides2: /assets/slides/t02IntroR.pdf
   materials:
     - <b>R4E</b> "Basics of R"
     - <b>R4E</b> "Advanced Data Structure"
@@ -39,7 +39,7 @@
   lecturer:
   title: >
     <strong>R functions and the grammar of visualization I</strong>
-  slides: /slides/t03RGrammar.pdf
+  slides: /assets/slides/t03RGrammar.pdf
   materials:
     - <b>R4DS</b> <a href="https://r4ds.had.co.nz/workflow-basics.html" target="_blank">Workflow</a>
     - <b>Wickham</b> <a href="https://vita.had.co.nz/papers/layered-grammar.pdf" target="_blank">A layered grammar of graphics</a>
@@ -51,7 +51,7 @@
   lecturer:
   title: >
     <strong>R functions and the grammar of visualization II</strong>
-  slides: /slides/t03RGrammar.pdf
+  slides: /assets/slides/t03RGrammar.pdf
   materials:
     - <b>R4DS</b> <a href="https://r4ds.had.co.nz/workflow-basics.html" target="_blank">Workflow</a>
     - <b>Wickham</b> <a href="https://vita.had.co.nz/papers/layered-grammar.pdf" target="_blank">A layered grammar of graphics</a>
@@ -85,7 +85,7 @@
   lecturer:
   title: >
     <strong>Basic data visualization in R I</strong>
-  slides: /slides/t05DataViz.pdf
+  slides: /assets/slides/t05DataViz.pdf
   materials:
     - <b>R4DS</b> <a href="https://r4ds.had.co.nz/workflow-basics.html" target="_blank">Data Visualization with ggplot2</a>
     - (optional) RGC "Quickly Exploring Data"
@@ -95,7 +95,7 @@
   lecturer:
   title: >
     <strong>Basic data visualization in R II</strong>
-  slides: /slides/t05DataViz.pdf
+  slides: /assets/slides/t05DataViz.pdf
   materials:
     - <b>R4DS</b> <a href="https://r4ds.had.co.nz/workflow-basics.html" target="_blank">Data Visualization with ggplot2</a>
     - (optional) RGC "Quickly Exploring Data"
@@ -107,7 +107,7 @@
   lecturer:
   title: >
     <strong>Data transformation with dplyr I</strong>
-  slides: /slides/t06DataTrans.pdf
+  slides: /assets/slides/t06DataTrans.pdf
   materials:
     - <b>R4DS</b> <a href="https://r4ds.had.co.nz/transform.html" target="_blank">Data Transformation with dplyr</a>
   assignments:
@@ -116,7 +116,7 @@
   lecturer:
   title: >
     <strong>Data transformation with dplyr II</strong>
-  slides: /slides/t06DataTrans.pdf
+  slides: /assets/slides/t06DataTrans.pdf
   materials:
     - <b>R4DS</b> <a href="https://r4ds.had.co.nz/transform.html" target="_blank">Data Transformation with dplyr</a>
   assignments: >
@@ -131,8 +131,8 @@
   title: >
     <strong>Data wrangling with tibbles, readr and tidyr I</strong><br>
     Optional: <br>Data wrangling with stringr, forcats
-  slides: /slides/t07DataWrg_trt.pdf
-  slides2: /slides/t07DataWrg_sf.pdf
+  slides: /assets/slides/t07DataWrg_trt.pdf
+  slides2: /assets/slides/t07DataWrg_sf.pdf
   materials:
     - <b>R4DS</b> <a href="https://r4ds.had.co.nz/tibbles.html" target="_blank">Tibbles with tibble</a>
     - <b>R4DS</b> <a href="https://r4ds.had.co.nz/data-import.html" target="_blank">Data Import with readr</a>
@@ -146,8 +146,8 @@
   title: >
     <strong>Data wrangling with tibbles, readr and tidyr II</strong><br>
     Optional: <br>Data wrangling with stringr, forcats
-  slides: /slides/t07DataWrg_trt.pdf
-  slides2: /slides/t07DataWrg_sf.pdf
+  slides: /assets/slides/t07DataWrg_trt.pdf
+  slides2: /assets/slides/t07DataWrg_sf.pdf
   materials:
     - <b>R4DS</b> <a href="https://r4ds.had.co.nz/tibbles.html" target="_blank">Tibbles with tibble</a>
     - <b>R4DS</b> <a href="https://r4ds.had.co.nz/data-import.html" target="_blank">Data Import with readr</a>
@@ -159,8 +159,8 @@
   title: >
     <strong>Visualizing relational data</strong><br>
     (Additional) Visualization by PCA
-  slides: /slides/t08RelationalData.pdf
-  slides2: /slides/VizPCA_workshop.pdf
+  slides: /assets/slides/t08RelationalData.pdf
+  slides2: /assets/slides/VizPCA_workshop.pdf
   materials:
     - <b>R4DS</b> <a href="https://r4ds.had.co.nz/relational-data.html" target="_blank">Relational Data with dplyr</a>
     - Kilian Weinberger <a href="https://www.cs.cornell.edu/courses/cs4780/2021fa/lectures/UnsupervisedLearning.html#pca" target="_blank">PCA for Visualization</a>
@@ -176,7 +176,7 @@
 - date: 7/6
   title: >
     <strong>Introduction to Shiny interactive visualization web app I</strong>
-  slides: /slides/t09IntroToShiny.pdf
+  slides: /assets/slides/t09IntroToShiny.pdf
   materials:
     - <b>R Shiny</b> <a href="https://shiny.rstudio.com/tutorial/" target="_blank">Shiny tutorial</a>
   assignments: >
@@ -186,7 +186,7 @@
 - date: 7/11
   title: >
     <strong>Introduction to Shiny interactive visualization web app II</strong>
-  slides: /slides/t09IntroToShiny.pdf
+  slides: /assets/slides/t09IntroToShiny.pdf
   materials:
     - <b>R Shiny</b> <a href="https://shiny.rstudio.com/tutorial/" target="_blank">Shiny tutorial</a>
   assignments:
@@ -194,7 +194,7 @@
 - date: 7/13
   title: >
     <strong>Introduction to Shiny interactive visualization web app III</strong>
-  slides: /slides/t10ShinyApp.pdf
+  slides: /assets/slides/t10ShinyApp.pdf
   materials:
     - <b>R Shiny</b> <a href="https://shiny.rstudio.com/tutorial/" target="_blank">Shiny tutorial</a>
   assignments:
@@ -202,7 +202,7 @@
 - date: 7/18
   title: >
     <strong>Exploratory data analysis and more data visualization I</strong>
-  slides: /slides/t11AppDataViz.pdf
+  slides: /assets/slides/t11AppDataViz.pdf
   materials:
     - <b>R4DS</b> <a href="https://r4ds.had.co.nz/exploratory-data-analysis.html" target="_blank">Exploratory Data Analysis</a>
   assignments: >
@@ -212,7 +212,7 @@
 - date: 7/20
   title: >
     <strong>Exploratory data analysis and more data visualization II</strong>
-  slides: /slides/t11AppDataViz.pdf
+  slides: /assets/slides/t11AppDataViz.pdf
   materials:
     - <b>R4DS</b> <a href="https://r4ds.had.co.nz/exploratory-data-analysis.html" target="_blank">Exploratory Data Analysis</a>
   assignments:

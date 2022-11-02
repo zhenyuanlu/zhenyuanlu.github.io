@@ -18,7 +18,7 @@
       {% assign current_module = 0 %}
       {% assign skip_classes = 0 %}
       {% assign prev_date = 0 %}
-      {% assign filename = page.permalink | replace: '/', '' | replace: '-', '_' %}
+      {% assign filename = page.url | replace: '/', '' | replace: '-', '_' | remove: 'courses' %}
 
       {% for item in site.data[filename] %}
 
