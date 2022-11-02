@@ -11,7 +11,7 @@ image: staff/z.jpg
 <div class="intro" markdown="1">
 ## Zhenyuan Lu
 
-Hi! I'm a PhD research fellow at [Northeastern University](https://www.northeastern.edu/), advised by [Prof. Sagar Kamarthi](https://coe.northeastern.edu/people/kamarthi-sagar/). In order to prepare graduate students for their work on research projects, and future careers, I also create and instruct graduate-level courses in [IE7275 data mining]({{ "/courses/ie7275-bos-sm20" | relative_url }}) and [IE6600 Computation and Visualization for Analytics]({{ "/courses/ie6600-bos-fa20" | relative_url }}).
+Hi! I'm a PhD research fellow at [Northeastern University](https://www.northeastern.edu/), advised by [Prof. Sagar Kamarthi](https://coe.northeastern.edu/people/kamarthi-sagar/). In order to prepare graduate students for their work on research projects, and future careers, I also create and instruct graduate-level courses in [IE7275 data mining]({{ "/courses/ie7275-bos-sm20/" | relative_url }}) and [IE6600 Computation and Visualization for Analytics]({{ "/courses/ie6600-bos-fa20/" | relative_url }}).
 
 
 <!-- Using background and experience working in Biomedical sciences and data science fields over the last 10 years. I weave healthcare and machine learning concepts together. Prior to NEU, I worked as a research scientist with biotech and personal care companies and helped holds patents on disease diagnosis and healthcare inventions funded by the government and institutions.
@@ -63,14 +63,14 @@ I am actively contributing to open source projects on creating user-friendly R-s
 <img src='https://raw.githubusercontent.com/rstudio/rmarkdown/main/man/figures/logo.png' align="right" height="55.5"/> -->
 
 - Instructor, IE6600 Computation and Visualization for Analytics
-  - [Fall 22]({{ "/courses/ie6600-vbc-fa22" | relative_url}}), [Summer 22]({{ "/courses/ie6600-bos-su22" | relative_url}}), [Spring 22]({{ "/courses/ie6600-sea-sp22" | relative_url}}), [Fall 21]({{ "/courses/ie6600-bos-fa21" | relative_url}}), [Summer 21]({{ "/courses/ie6600-bos-sm21" | relative_url}}), [Spring 21]({{ "/courses/ie6600-sea-sp21" | relative_url}}), [Fall 20]({{ "/courses/ie6600-bos-fa20" | relative_url}}), Spring 20, Spring 19
+  - [Fall 22]({{ "/courses/ie6600-vbc-fa22/" | relative_url}}), [Summer 22]({{ "/courses/ie6600-bos-su22/" | relative_url}}), [Spring 22]({{ "/courses/ie6600-sea-sp22/" | relative_url}}), [Fall 21]({{ "/courses/ie6600-bos-fa21/" | relative_url}}), [Summer 21]({{ "/courses/ie6600-bos-sm21/" | relative_url}}), [Spring 21]({{ "/courses/ie6600-sea-sp21/" | relative_url}}), [Fall 20]({{ "/courses/ie6600-bos-fa20/" | relative_url}}), Spring 20, Spring 19
 
 <!-- <img src='https://torch.mlverse.org/css/images/hex/torch.png' align="right" height="55.5"/>
 <img src='https://torch.mlverse.org/css/images/hex/torchvision.png' align="right" height="55.5"/> -->
 <!-- <img src='https://keras.io/img/logo.png' align="right" height="50.5"/> -->
 
 - Instructor, IE7275 Data Mining in Engineering
-  - [Summer 20]({{ "/courses/ie7275-bos-sm20" | relative_url }})
+  - [Summer 20]({{ "/courses/ie7275-bos-sm20/" | relative_url }})
 
 
 - Graduate Instructor Assistant, BIO1421 Modern Biology

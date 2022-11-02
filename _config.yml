@@ -15,7 +15,7 @@ google_analytics: G-YKJ7CXRCW1
 youtube_channel:
 rss:  # notes rss
 
-permalink: /:categories/:title
+permalink: /:categories/:title/
 
 show_social_icons:  true
 enable_anchorjs:    true
