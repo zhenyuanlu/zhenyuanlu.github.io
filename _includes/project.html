@@ -8,6 +8,9 @@
     <span class="preview-image" style="background-image: url('{{ "/assets/projects/" | append: project.image | relative_url }}')"></span>
   {% endif %}
 
+
+
+
   <span class="title">{{ project.title }}</span>
 
   <p>
@@ -25,7 +28,7 @@
     {% endfor %}
   </p>
 
-  <div class="spacer"></div>
+
   <div class="links">
     {% if project.article %}
       <a href="{{ project.article }}"><i class="fas fa-file-alt"></i> Article</a>
@@ -55,6 +58,7 @@
     {% if project.patent %}
       <a href="{{ project.patent }}"><i class="fas fa-cogs" aria-hidden="true"></i> Patent </a>
     {% endif %}
-
   </div>
+
+
 </div>
