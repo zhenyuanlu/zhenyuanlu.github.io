@@ -1,32 +1,34 @@
 ---
 layout: course
-permalink: /ie6600-sea-sp22/
+categories: courses
 maintitle: <b>C</b>omputation and <b>V</b>isualization for <b>A</b>nalytics
 class: course
-title: IE6600 • Spring 2022 • Northeastern University • Seattle
+title: IE6600 • Fall 2022 • Northeastern University • Vancouver
 image: neu.png
 nav: IE6600
 description: IE6600 covers basic of the R, and R Shiny for data preprocessing, and visualization. It introduces students to static and interactive visualization, dashboard, and platform that reveal information, patterns, interactions, and comparisons by paying attention to details such as color encoding, a shape selection, spatial layout, and annotation.
 ---
 
-
 IE6600 covers basic of the R, and R Shiny for data preprocessing, and visualization. It introduces students to static and interactive visualization, dashboard, and platform that reveal information, patterns, interactions, and comparisons by paying attention to details such as color encoding, a shape selection, spatial layout, and annotation. Based on these fundamentals of analytical and creative thinking, the course then focuses on data visualization techniques and the use of the most current popular software tools that support data exploration, analytics-based storytelling and knowledge discovery, and decision-making in engineering, healthcare operations, manufacturing, and related applications.
 
 ***
 
-- **Class:** Tuesday 11:00 – 14:00 (PT)
-- **Office hour:** Monday 9:00 - 10:00 (PT)
-- **Location:**  Room 416, 225 Terry Ave
-- **Dates:** 01/19/2021 – 04/27/2021
+- **Class:** Monday 01:30 - 05:00 PM (PT)
+- **Office hour:** Wed 9:00 AM - 10:00 AM (PT) on Zoom
+- **Location:**  Room 1425, West Georgia
+- **Dates:** 09/07/2022 – 12/17/2022
 - **Administration platform:** All questions, discussion or notes will be only posted via [Campuswire](https://campuswire.com/){:target="\_blank"}. See sign up link on Canvas.
 - **Guideline**: Please see the post [How to ask a good question](https://stackoverflow.com/help/how-to-ask) before posting any questions or discussions.
 - **HW submission:** [Canvas](https://canvas.northeastern.edu/){:target="\_blank"}
+- **Course notes:** [Notes](https://zhenyuanlu.com/r-comput-viz-notes/){:target="\_blank"}
+- **Teaching style:** [There’s no speed limit](https://sive.rs/kimo){:target="\_blank"}.
+
 
 ***
 
 <!-- Staff  -->
 <div class="instructors clearfix">
-  {% for instructor in site.data.staff_sea_sp22.instructor %}
+  {% for instructor in site.data.staff_vbc_fa22.instructor %}
   <div class="instructor-profile-two-col">
     <a href="{{ instructor.url }}" target="_blank"><img src="{{ instructor.image | prepend: '/assets/img/' | relative_url }}" /></a>
     <ul class="instructor-info">
@@ -45,7 +47,7 @@ IE6600 covers basic of the R, and R Shiny for data preprocessing, and visualizat
 
 <!-- Guest  -->
 <!-- <div class="instructors clearfix">
-  {% for instructor in site.data.staff_sea_sp22.guest %}
+  {% for instructor in site.data.staff_vbc_fa22.guest %}
   <div class="instructor-profile-two-col">
     <a href="{{ instructor.url }}" target="_blank"><img src="{{ instructor.image | prepend: '/assets/img/' | relative_url }}" /></a>
     <ul class="instructor-info">
@@ -59,22 +61,23 @@ IE6600 covers basic of the R, and R Shiny for data preprocessing, and visualizat
 </div> -->
 
 
-
 ***
 
-#### Table of contents
+### Table of contents
 * (The list will be replaced with the table of contents.)
 {:toc}
 
 ***
 ### Course goals
 
-This section of IE6600 follows the [flipped classroom model](https://en.wikipedia.org/wiki/Flipped_classroom){:target="\_blank"}, and delivers all course materials online via Canvas. The schedule below shows the due dates for all modules.
+This section of IE6600 follows the [flipped classroom model](https://en.wikipedia.org/wiki/Flipped_classroom){:target="\_blank"}, and delivers all course materials online. The schedule below shows the due dates for all modules.
 
-<div>
+<figure>
   <img src='/assets/img/ie6600/goal.png' alt='Course Goals' style="max-width:100%;">
-</div>
-R For Data Science, Wickham, Hadley, and Garrett Grolemund
+<figcaption>
+<strong> R For Data Science, Wickham, Hadley, and Garrett Grolemund</strong>.
+</figcaption>
+</figure>
 
 ***
 
@@ -109,11 +112,7 @@ Additional textbooks:
 
 {% include schedule.html %}
 
-
-
-
 ***
-
 
 ### Policies
 
@@ -123,14 +122,6 @@ Plagiarism, cheating, and any form of unauthorized collaboration will not be tol
 
 Northeastern University strictly prohibits discrimination or harassment on the basis of race, color, religion, religious creed, genetic information, sex, gender identity, sexual orientation, age, national origin, ancestry, veteran, or disability status. Please review [Northeastern’s Title IX policy](https://www.northeastern.edu/ouec/){:target="\_blank"}, which protects individuals from sex or gender-based discrimination, including discrimination based on gender-identity. Faculty members are required to report all allegations of sex/gender-based discrimination to the Title IX coordinator.
 
-
-***
-
-### COVID-19
-
-All students, faculty, staff, and vendors across Northeastern’s network of global campuses will be required to wear masks indoors. Northeastern’s indoor mask mandate will take effect on Friday, August 27 on the Boston campus. Each campus will continue to stay aligned with local guidance, and all campuses will resume indoor mask wearing no later than September 6.
-
-Also, feel free to check out the latest on-campus COVID policy, please revew [COVID-19 FALL DEADLINES AND CHECKLIST](https://news.northeastern.edu/coronavirus/university-messages/covid-19-fall-deadlines-and-checklist/)
 
 ***
 
@@ -157,8 +148,12 @@ Requests for regrades in writing will only be accepted no less than 10 days afte
 Please feel free to refer to any materials from my slides. You may discuss homework with your classmates, but all the assignments are supposed to completed by your own. Sharing of completed solutions will not be tolerated. Plagiarism will be considered, if solutions and project documentations with a very high degree of similarity with other student’s or materials online. Such academic dishonesty will be handled in accordance with university policies.
 
 ***
+
 ### Projects
 More details will be posted later in the semester.
+- <b>Project Example</b> <a href="https://yuchengqiu96.shinyapps.io/koifish/" target="_blank">Students' demo</a>
+- Credits: Qiu Yucheng; Yu Wei
+
 
 ***
 

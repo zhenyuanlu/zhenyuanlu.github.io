@@ -1,6 +1,6 @@
 ---
 hide: true
-categories: publication
+categories: projects
 layout: distill
 title: Thickening Agent Composition And Applications In Cosmetics
 description: patent

@@ -1,5 +1,5 @@
 ---
-categories: publication
+categories: projects
 layout: distill
 title: Point-of-care Diagnostic Cartridge Having A Programmable Fluidic Wicking Network
 description: US patent

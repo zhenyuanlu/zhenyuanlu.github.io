@@ -1,29 +1,31 @@
 ---
 layout: course
-permalink: /ie6600-bos-fa21/
+categories: courses
 maintitle: <b>C</b>omputation and <b>V</b>isualization for <b>A</b>nalytics
 class: course
-title: IE6600 • Fall 2021 • Northeastern University • Boston
+title: IE6600 • Fall 2020 • Northeastern University • Boston
+description: IE6600 covers basic of the R, and R Shiny for data preprocessing, and visualization. It introduces students to static and interactive visualization, dashboard, and platform that reveal information, patterns, interactions, and comparisons by paying attention to details such as color encoding, a shape selection, spatial layout, and annotation.
 image: neu.png
 nav: IE6600
-description: IE6600 covers basic of the R, and R Shiny for data preprocessing, and visualization. It introduces students to static and interactive visualization, dashboard, and platform that reveal information, patterns, interactions, and comparisons by paying attention to details such as color encoding, a shape selection, spatial layout, and annotation.
 ---
 
-IE6600 covers basic of the R, and R Shiny for data preprocessing, and visualization. It introduces students to static and interactive visualization, dashboard, and platform that reveal information, patterns, interactions, and comparisons by paying attention to details such as color encoding, a shape selection, spatial layout, and annotation. Based on these fundamentals of analytical and creative thinking, the course then focuses on data visualization techniques and the use of the most current popular software tools that support data exploration, analytics-based storytelling and knowledge discovery, and decision-making in engineering, healthcare operations, manufacturing, and related applications.
+This course covers basic of the R, and R Shiny for data preprocessing, and visualization. It introduces students to static and interactive visualization, dashboard, and platform that reveal information, patterns, interactions, and comparisons by paying attention to details such as color encoding, a shape selection, spatial layout, and annotation. Based on these fundamentals of analytical and creative thinking, the course then focuses on data visualization techniques and the use of the most current popular software tools that support data exploration, analytics-based storytelling and knowledge discovery, and decision-making in engineering, healthcare operations, manufacturing, and related applications.
 
 ***
 
-- **Class:** Wed 06:00pm – 09:30pm (ET)
-- **Location:** Robinson Hall 409
-- **Dates:** 09/08/2020 – 12/18/2021
-- **Administration:** Class/HW/project questions, discussion or assignments will be only posted via Canvas
+- **Class:** Tue, Fri 08:30am – 10:10am (ET)
+- **Location:** Online via Zoom
+- **Dates:** 09/11/2020 – 12/11/2020
+- **Administration:** Class/HW/project questions, discussion or assignments will be only posted via Piazza (sign up link see slides or directly through Canvas).
 - **HW submission:** [Canvas](https://canvas.northeastern.edu/){:target="\_blank"}
+- **Online lectures:** The lectures will be live-streamed through Zoom.
+- **Teaching style:** [There’s no speed limit](https://sive.rs/kimo){:target="\_blank"}.
 
 ***
 
 <!-- Staff  -->
 <div class="instructors clearfix">
-  {% for instructor in site.data.staff_bos_fa21.instructor %}
+  {% for instructor in site.data.staff_bos_fa20.instructor %}
   <div class="instructor-profile-two-col">
     <a href="{{ instructor.url }}" target="_blank"><img src="{{ instructor.image | prepend: '/assets/img/' | relative_url }}" /></a>
     <ul class="instructor-info">
@@ -42,7 +44,7 @@ IE6600 covers basic of the R, and R Shiny for data preprocessing, and visualizat
 
 <!-- Guest  -->
 <div class="instructors clearfix">
-  {% for instructor in site.data.staff_bos_fa21.guest %}
+  {% for instructor in site.data.staff_bos_fa20.guest %}
   <div class="instructor-profile-two-col">
     <a href="{{ instructor.url }}" target="_blank"><img src="{{ instructor.image | prepend: '/assets/img/' | relative_url }}" /></a>
     <ul class="instructor-info">
@@ -63,9 +65,6 @@ IE6600 covers basic of the R, and R Shiny for data preprocessing, and visualizat
 
 ***
 ### Course goals
-
-This section of IE6600 follows the [flipped classroom model](https://en.wikipedia.org/wiki/Flipped_classroom){:target="\_blank"}, and delivers all course materials online via Canvas. The schedule below shows the due dates for all modules.
-
 <div>
   <img src='/assets/img/ie6600/goal.png' alt='Course Goals' style="max-width:100%;">
 </div>
@@ -100,19 +99,9 @@ Additional textbooks:
 
 ### Policies
 
-Please post questions, or discussion only via Canvas. The visibility of questions and discussion are expected to set for public view (**to the Entire class on Canvas**). Please feel free to send instructor/TAs emails regarding any personal or other private issues/concerns.
+Please post questions, or discussion only via Piazza. The visibility of questions and discussion are expected to set for public view (**to the Entire class on Piazza**). Please feel free to send instructor/TAs emails regarding any personal or other private issues/concerns.
 
 Plagiarism, cheating, and any form of unauthorized collaboration will not be tolerated and will be handled in accordance with University policies described in the Student Handbook. For additional information on Northeastern University’s [Academic Integrity Policy](http://www.northeastern.edu/osccr/academic-integrity-policy/){:target="\_blank"}
-
-Northeastern University strictly prohibits discrimination or harassment on the basis of race, color, religion, religious creed, genetic information, sex, gender identity, sexual orientation, age, national origin, ancestry, veteran, or disability status. Please review [Northeastern’s Title IX policy](https://www.northeastern.edu/ouec/){:target="\_blank"}, which protects individuals from sex or gender-based discrimination, including discrimination based on gender-identity. Faculty members are required to report all allegations of sex/gender-based discrimination to the Title IX coordinator.
-
-***
-
-### COVID-19
-
-All students, faculty, staff, and vendors across Northeastern’s network of global campuses will be required to wear masks indoors. Northeastern’s indoor mask mandate will take effect on Friday, August 27 on the Boston campus. Each campus will continue to stay aligned with local guidance, and all campuses will resume indoor mask wearing no later than September 6.
-
-Also, feel free to check out the latest on-campus COVID policy, please revew [COVID-19 FALL DEADLINES AND CHECKLIST](https://news.northeastern.edu/coronavirus/university-messages/covid-19-fall-deadlines-and-checklist/)
 
 ***
 
@@ -139,6 +128,8 @@ Please feel free to refer to any materials from my slides. You may discuss homew
 ### Projects
 More details will be posted later in the semester.
 
+
+
 ***
 
 ### Course Evaluation
@@ -153,7 +144,11 @@ More details will be posted later in the semester.
 
 ***
 
+
+
 ### Schedule
+
+
 (subject to change)
 
 {% include schedule.html %}

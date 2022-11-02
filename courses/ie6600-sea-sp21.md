@@ -1,6 +1,6 @@
 ---
 layout: course
-permalink: /ie6600-sea-sp21/
+categories: courses
 maintitle: <b>C</b>omputation and <b>V</b>isualization for <b>A</b>nalytics
 class: course
 title: IE6600 • Spring 2021 • Northeastern University • Seattle

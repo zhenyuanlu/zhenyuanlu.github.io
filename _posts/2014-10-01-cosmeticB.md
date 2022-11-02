@@ -1,7 +1,7 @@
 ---
 hide: true
 highlight: 5
-categories: publication
+categories: projects
 layout: distill
 title: Thickener Blend Composition And Its Application
 description: US patent

@@ -1,33 +1,30 @@
 ---
 layout: course
-permalink: /ie6600-sea-sp21/
-title: <b>C</b>omputation and <b>V</b>isualization for <b>A</b>nalytics
+categories: courses
+maintitle: <b>C</b>omputation and <b>V</b>isualization for <b>A</b>nalytics
 class: course
-description: IE6600 • Spring 2021 • Northeastern University • Seattle
-logo: neu.png
+title: IE6600 • Spring 2020 • Northeastern University • Seattle
+image: neu.png
 nav: IE6600
+description: IE6600 covers basic of the R, and R Shiny for data preprocessing, and visualization. It introduces students to static and interactive visualization, dashboard, and platform that reveal information, patterns, interactions, and comparisons by paying attention to details such as color encoding, a shape selection, spatial layout, and annotation.
 ---
 
 This course covers basic of the R, and R Shiny for data preprocessing, and visualization. It introduces students to static and interactive visualization, dashboard, and platform that reveal information, patterns, interactions, and comparisons by paying attention to details such as color encoding, a shape selection, spatial layout, and annotation. Based on these fundamentals of analytical and creative thinking, the course then focuses on data visualization techniques and the use of the most current popular software tools that support data exploration, analytics-based storytelling and knowledge discovery, and decision-making in engineering, healthcare operations, manufacturing, and related applications.
 
 ***
 
-- **Class:** Tuesday 11:00 – 14:00 (PT)
-- **Location:** TBA
-- **Dates:** 01/19/2021 – 05/01/2021
+- **Class:** Monday, Thursday 08:30am – 10:10am (ET)
+- **Location:** Online via Zoom
+- **Dates:** 09/09/2020 – 12/10/2020
 - **Administration:** Class/HW/project questions, discussion or assignments will be only posted via Piazza (On Canvas).
 - **HW submission:** [Canvas](https://canvas.northeastern.edu/){:target="\_blank"}
-
+- **Online lectures:** The lectures will be live-streamed through Zoom, recorded, and made available on Piazza.
+- **Teaching style:** [There’s no speed limit](https://sive.rs/kimo).
 
 ***
 
 <!-- Staff  -->
 {% include staff.html %}
-
-***
-
-<!-- Guest  -->
-{% include guest.html %}
 
 ***
 
@@ -105,76 +102,8 @@ If you have difficulty to keep up with any materials or homework for personal re
 ***
 
 ### Schedule
+
+
 (subject to change)
-{% assign current_module = 0 %}
-{% assign skip_classes = 0 %}
-{% assign prev_date = 0 %}
 
-{% for item in site.data.ie6600_sea_sp21 %}
-{% if item.date %}
-{% assign lecture = item %}
-{% assign event_type = "upcoming" %}
-{% assign today_date = "now" | date: "%s" | divided_by: 86400 %}
-{% assign lecture_date = lecture.date | date: "%s" | divided_by: 86400 %}
-{% if today_date > lecture_date %}
-    {% assign event_type = "past" %}
-{% elsif today_date <= lecture_date and today_date > prev_date %}
-    {% assign event_type = "warning" %}
-{% endif %}
-{% assign prev_date = lecture_date %}
-
-<tr class="{{ event_type }}">
-    <th scope="row">{{ lecture.date }}</th>
-    {% if lecture.title contains 'No classes' or forloop.last %}
-      {% assign skip_classes = skip_classes | plus: 1 %}
-      <td colspan="4" align="center">{{ lecture.title }}</td>
-    {% else %}
-    <td>
-        <!--Lecture #{{ forloop.index | minus: current_module | minus: skip_classes }}-->
-        <!--{% if lecture.lecturer %}({{ lecture.lecturer }}){% endif %}:
-        <br />-->
-        {{ lecture.title }}
-        <br />
-        <!--[-->
-            {% if lecture.slides %}
-              <a href="{{ lecture.slides }}" target="_blank">slides</a>
-            {% else %}
-              <!--slides-->
-            {% endif %}
-            {% if lecture.annotated %}
-              (<a href="{{ lecture.annotated }}" target="_blank">annotated</a>)
-            {% endif %}
-            {% if lecture.video %}
-            | <a href="{{ lecture.video }}" target="_blank">video</a>
-            {% else %}
-            <!--| video-->
-            {% endif %}
-            {% if lecture.notes %}
-            | <a href="{{ lecture.notes }}" target="_blank">notes</a>
-            {% else %}
-            <!--| notes-->
-            {% endif %}
-        <!--]-->
-    </td>
-    <td>
-        {% if lecture.materials %}
-        <ul>
-        {% for material in lecture.materials %}
-            <li>{{ material }}</li>
-        {% endfor %}
-        </ul>
-        {% endif %}
-    </td>
-    <td>
-        <p>{{ lecture.assignments }}</p>
-    </td>
-    {% endif %}
-</tr>
-{% else %}
-{% assign current_module = current_module | plus: 1 %}
-{% assign module = item %}
-<tr class="info">
-    <td colspan="5" align="center"><strong>{{ module.title }}</strong></td>
-</tr>
-{% endif %}
-{% endfor %}
+{% include schedule.html %}

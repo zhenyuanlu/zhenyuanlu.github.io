@@ -15,8 +15,7 @@ google_analytics: G-YKJ7CXRCW1
 youtube_channel:
 rss:  # notes rss
 
-permalink: /:categories/:title/
-
+permalink: /:categories/:title
 
 show_social_icons:  true
 enable_anchorjs:    true
@@ -39,7 +38,7 @@ kramdown:
       line_numbers: false
       start_line: 1
 
-include: ['_pages', '_courses']
+# include: ['_pages', 'courses']
 
 collections:
   publications:

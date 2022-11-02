@@ -1,9 +1,9 @@
 ---
 layout: course
-permalink: /ie6600-bos-su22/
+categories: courses
 maintitle: <b>C</b>omputation and <b>V</b>isualization for <b>A</b>nalytics
 class: course
-title: IE6600 • Full Summer 2022 • Northeastern University • Boston
+title: IE6600 • Spring 2022 • Northeastern University • Seattle
 image: neu.png
 nav: IE6600
 description: IE6600 covers basic of the R, and R Shiny for data preprocessing, and visualization. It introduces students to static and interactive visualization, dashboard, and platform that reveal information, patterns, interactions, and comparisons by paying attention to details such as color encoding, a shape selection, spatial layout, and annotation.
@@ -13,22 +13,19 @@ IE6600 covers basic of the R, and R Shiny for data preprocessing, and visualizat
 
 ***
 
-- **Class:** Monday, Wednesday 03:20 - 05:00 PM (ET)
-- **Office hour:** Wed 9:00-10:00 AM (ET)
-- **Location:**  Room 254, Richards Hall
-- **Dates:** 05/09/2022 – 08/20/2022
+- **Class:** Tuesday 11:00 – 14:00 (PT)
+- **Office hour:** Monday 9:00 - 10:00 (PT)
+- **Location:**  Room 416, 225 Terry Ave
+- **Dates:** 01/19/2021 – 04/27/2021
 - **Administration platform:** All questions, discussion or notes will be only posted via [Campuswire](https://campuswire.com/){:target="\_blank"}. See sign up link on Canvas.
 - **Guideline**: Please see the post [How to ask a good question](https://stackoverflow.com/help/how-to-ask) before posting any questions or discussions.
 - **HW submission:** [Canvas](https://canvas.northeastern.edu/){:target="\_blank"}
-- **Course notes:** [Notes](https://zhenyuanlu.com/r-comput-viz-notes/){:target="\_blank"}
-- **Teaching style:** [There’s no speed limit](https://sive.rs/kimo){:target="\_blank"}.
-
 
 ***
 
 <!-- Staff  -->
 <div class="instructors clearfix">
-  {% for instructor in site.data.staff_bos_su22.instructor %}
+  {% for instructor in site.data.staff_sea_sp22.instructor %}
   <div class="instructor-profile-two-col">
     <a href="{{ instructor.url }}" target="_blank"><img src="{{ instructor.image | prepend: '/assets/img/' | relative_url }}" /></a>
     <ul class="instructor-info">
@@ -111,7 +108,11 @@ Additional textbooks:
 
 {% include schedule.html %}
 
+
+
+
 ***
+
 
 ### Policies
 
@@ -121,6 +122,14 @@ Plagiarism, cheating, and any form of unauthorized collaboration will not be tol
 
 Northeastern University strictly prohibits discrimination or harassment on the basis of race, color, religion, religious creed, genetic information, sex, gender identity, sexual orientation, age, national origin, ancestry, veteran, or disability status. Please review [Northeastern’s Title IX policy](https://www.northeastern.edu/ouec/){:target="\_blank"}, which protects individuals from sex or gender-based discrimination, including discrimination based on gender-identity. Faculty members are required to report all allegations of sex/gender-based discrimination to the Title IX coordinator.
 
+
+***
+
+### COVID-19
+
+All students, faculty, staff, and vendors across Northeastern’s network of global campuses will be required to wear masks indoors. Northeastern’s indoor mask mandate will take effect on Friday, August 27 on the Boston campus. Each campus will continue to stay aligned with local guidance, and all campuses will resume indoor mask wearing no later than September 6.
+
+Also, feel free to check out the latest on-campus COVID policy, please revew [COVID-19 FALL DEADLINES AND CHECKLIST](https://news.northeastern.edu/coronavirus/university-messages/covid-19-fall-deadlines-and-checklist/)
 
 ***
 

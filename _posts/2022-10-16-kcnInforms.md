@@ -1,5 +1,5 @@
 ---
-categories: publication
+categories: projects
 layout: distill
 title: Keyword Co-occurrence Network For Pain Research Literature Review
 description: informs, Indianapolis, MN
