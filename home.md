@@ -11,7 +11,7 @@ image: staff/z.jpg
 <div class="intro" markdown="1">
 ## Zhenyuan Lu
 
-Hi! I'm a PhD research fellow at [Northeastern University](https://www.northeastern.edu/), advised by [Prof. Sagar Kamarthi](https://coe.northeastern.edu/people/kamarthi-sagar/). In order to prepare graduate students for their work on research projects, and future careers, I also create and instruct graduate-level courses in [IE7275 data mining]({{ "/courses/ie7275-bos-sm20/" | relative_url }}) and [IE6600 Computation and Visualization for Analytics]({{ "/courses/ie6600-bos-fa20/" | relative_url }}).
+Hi! I'm a PhD research fellow at [Northeastern University](https://www.northeastern.edu/) worked with [Prof. Sagar Kamarthi](https://coe.northeastern.edu/people/kamarthi-sagar/). In order to prepare graduate students for their work on research projects, and future careers, I also create and instruct graduate-level courses in [IE7275 data mining]({{ "/courses/ie7275-bos-sm20/" | relative_url }}) and [IE6600 Computation and Visualization for Analytics]({{ "/courses/ie6600-bos-fa20/" | relative_url }}).
 
 
 <!-- Using background and experience working in Biomedical sciences and data science fields over the last 10 years. I weave healthcare and machine learning concepts together. Prior to NEU, I worked as a research scientist with biotech and personal care companies and helped holds patents on disease diagnosis and healthcare inventions funded by the government and institutions.
