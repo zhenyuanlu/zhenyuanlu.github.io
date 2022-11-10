@@ -112,7 +112,6 @@ For understanding the difficulty.
 {% assign sorted_pubyears = pubyears | reverse %}
 {% for year in sorted_pubyears %}
 <h3> {{ year.name }} </h3>
-
   {% for pub in year.items %}
     {% include publications.html pub=pub %}
   {% endfor %}
