@@ -2,9 +2,9 @@
 categories: projects
 layout: distill
 title: Keyword Co-occurrence Network For Pain Research Literature Review
-description: informs, Indianapolis, MN
-date: 2022-10-16
-highlight: 1
+description: INFORMS 2022, Indianapolis, IN
+year: 2022
+highlight: 2
 image: /informs/2022.png
 comments: false
 authors:
@@ -26,8 +26,7 @@ authors:
       name: Northeastern University
 
 
-external: https://www.abstractsonline.com/pp8/?__hstc=194041586.c723525928a81bf032515185c4643e37.1650997648314.1663680015875.1663682721064.48&__hssc=194041586.5.1663682721064&__hsfp=3500831946&hsCtaTracking=025ee829-9db5-4f89-95dc-637573ec15db%7Cea016d7d-8b17-4156-8c3b-c1c801f2ba1f#!/10693/presentation/7640
-
+html: https://www.abstractsonline.com/pp8/?__hstc=194041586.c723525928a81bf032515185c4643e37.1650997648314.1663680015875.1663682721064.48&__hssc=194041586.5.1663682721064&__hsfp=3500831946&hsCtaTracking=025ee829-9db5-4f89-95dc-637573ec15db%7Cea016d7d-8b17-4156-8c3b-c1c801f2ba1f#!/10693/presentation/7640
 
 toc: false
 ---

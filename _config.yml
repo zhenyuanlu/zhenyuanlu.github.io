@@ -38,7 +38,7 @@ kramdown:
       line_numbers: false
       start_line: 1
 
-# include: ['_pages', 'courses']
+# include: ['_pages', '_courses']
 
 collections:
   publications:

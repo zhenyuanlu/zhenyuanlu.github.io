@@ -3,11 +3,10 @@ hide: true
 categories: projects
 layout: distill
 title: Thickening Agent Composition And Applications In Cosmetics
-description: patent
-date: 2018-08-02
-highlight: 5
-image:
-comments: false
+description: Patent CN104069024B
+hide: false
+year: 2017
+image: /patent/cosmetic.svg
 authors:
   - name: Shubiao Pan
     affiliations:
@@ -22,7 +21,7 @@ authors:
     affiliations:
       name: Shanghai Jahwa United Co Ltd
 
-external: https://patents.google.com/patent/CN104069024B/en
+html: https://patents.google.com/patent/CN104069024B/en
 patent: https://patentimages.storage.googleapis.com/62/33/2c/f30532002200d2/CN104069024B.pdf
 
 

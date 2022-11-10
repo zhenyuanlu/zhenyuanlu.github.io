@@ -3,7 +3,7 @@ categories: projects
 layout: distill
 title: Industry 4.0 for Asset Life Cycle Management for Sustainability - Keyword Co-occurrence Network Review and Analysis
 description:
-date: 2022-09-27
+year: 2022
 highlight: 1
 image: /sustain/cover.jpg
 comments: false
@@ -31,8 +31,8 @@ authors:
 
 
 
-external: https://www.mdpi.com/2071-1050/14/19/12233/htm
-paper: https://zhenyuanlu.com/papers/sustainability.pdf
+html: https://www.mdpi.com/2071-1050/14/19/12233/htm
+pdf: publications/pdf/sustainability.pdf
 
 
 toc: false

@@ -1,0 +1,99 @@
+
+
+- title: Thickening Agent Composition And Applications In Cosmetics
+  description: Patent CN104069024B, Worldwide Application
+  hide: false
+  date: 2017-03-08
+  image:
+  authors:
+    - name: Shubiao Pan
+      affiliations:
+        name: Shanghai Jahwa United Co Ltd
+    - name: Zhenyuan Lu
+      affiliations:
+        name: Shanghai Jahwa United Co Ltd
+    - name: Risheng jin
+      affiliations:
+        name: Shanghai Jahwa United Co Ltd
+    - name: Jun Lv
+      affiliations:
+        name: Shanghai Jahwa United Co Ltd
+  html: https://patents.google.com/patent/CN104069024B/en
+  patent: https://patentimages.storage.googleapis.com/62/33/2c/f30532002200d2/CN104069024B.pdf
+
+- title: Thickener Blend Composition And Its Application
+  description: Patent CN104069023B, Worldwide Application
+  hide: false
+  date: 2016-11-23
+  image:
+  comments: false
+  authors:
+    - name: Shubiao Pan
+      affiliations:
+        name: Shanghai Jahwa United Co Ltd
+    - name: Zhenyuan Lu
+      affiliations:
+        name: Shanghai Jahwa United Co Ltd
+    - name: Risheng jin
+      affiliations:
+        name: Shanghai Jahwa United Co Ltd
+    - name: Ying Wang
+      affiliations:
+        name: Shanghai Jahwa United Co Ltd
+    - name: Jun Lv
+      affiliations:
+        name: Shanghai Jahwa United Co Ltd
+
+
+  html: https://patents.google.com/patent/CN104069023B/en
+  patent: https://patentimages.storage.googleapis.com/55/5d/0c/2ca988eba57d8e/CN104069023B.pdf
+
+- title: Paper-based Device For Gastroenteritis Detection Integrated With Sample Preparation Cartridge
+  description: BMES, Minneapolis, MN
+  date: 2016-10-05
+  image: /bmes/paper_16.png
+  authors:
+    - name: Zhenyuan Lu
+      url: "https://zhenyuanlu.com/"
+      affiliations:
+        name: Texas State University; Paratus Diagnostics, LLC
+    - name: Kshitij Ranjan
+      url:
+      affiliations:
+        name: Texas State University
+    - name: J. Carrano
+      affiliations:
+        name: Paratus Diagnostics, LLC
+    - name: J. Carrano
+      affiliations:
+        name: Paratus Diagnostics, LLC
+    - name: Roland Schneider
+      affiliations:
+        name: Paratus Diagnostics, LLC
+    - name: Shannon Weigum
+      url:
+      affiliations:
+        name: Texas State University
+  html: publications/2016-bmes.pdf
+  paper: publications/2016-bmes.pdf
+
+
+
+- title: Paper Microfluidic Platform for Detection of Viral Gastroenteritis
+  description: BMES, Tampa, FL
+  date: 2015-10-07
+  image: /bmes/vlps_15.png
+  authors:
+    - name: Shannon Weigum
+      url:
+      affiliations:
+        name: Texas State University
+    - name: Kshitij Ranjan
+      url:
+      affiliations:
+        name: Texas State University
+    - name: Zhenyuan Lu
+      url: "https://zhenyuanlu.com/"
+      affiliations:
+        name: Texas State University
+  pdf: publications/2015-bmes.pdf

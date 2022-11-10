@@ -10,6 +10,13 @@
     border-bottom: none;
   }
 
+  h3 {
+    margin: 0;
+    font-size: 1.05em;
+    font-weight: bold;
+    line-height: 0;
+  }
+
   .columns {
     display: flex;
     flex-direction: row;
@@ -68,6 +75,11 @@
         font-size: 1.05em ;//$h4;
         font-weight: bold;
         line-height: 1;
+      }
+
+      .description {
+        color:  #686868;
+        font-weight: 600;
       }
 
       p {

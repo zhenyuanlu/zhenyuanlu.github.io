@@ -97,36 +97,29 @@ For work, research, or fun.
     {% endif %}
   {% endfor %}
 {% endfor %}
-
-
-
 </div>
+<br>
 <br>
 
 
 
-<!-- <a href="{{ "/projects/" | relative_url }}" class="button">
-  <i class="fas fa-chevron-circle-right"></i>
-  Show More Projects
-</a> -->
+## Featured Publications
+For understanding the difficulty.
 
+<div class="featured-projects">
 
+{% assign pubyears = site.publications | group_by:"year"  %}
+{% assign sorted_pubyears = pubyears | reverse %}
+{% for year in sorted_pubyears %}
+<h3> {{ year.name }} </h3>
 
-
-<!--## Tutorials
-
-<div class="featured-tutorials">
-  {% assign sorted_projects = site.posts | sort: 'highlight' %}
-  {% for project in sorted_projects %}
-    {% if project.highlight and project.categories contains "tutorials" %}
-      {% include project.html project=project %}
-    {% endif %}
+  {% for pub in year.items %}
+    {% include pubs.html pub=pub %}
   {% endfor %}
+{% endfor %}
 </div>
-<a href="{{ "/projects/" | relative_url }}" class="button">
-  <i class="fas fa-chevron-circle-right"></i>
-  Show More Tutorials
-</a>-->
+<br>
+
 
 
 

@@ -1,12 +1,11 @@
 ---
 hide: true
-highlight: 5
-categories: projects
 layout: distill
 title: Thickener Blend Composition And Its Application
-description: US patent
-date: 2014-10-01
-image:
+description: Patent CN104069023B
+hide: false
+year: 2016
+image: /patent/cosmetic.svg
 comments: false
 authors:
   - name: Shubiao Pan
@@ -25,8 +24,7 @@ authors:
     affiliations:
       name: Shanghai Jahwa United Co Ltd
 
-
-external: https://patents.google.com/patent/CN104069023B/en
+html: https://patents.google.com/patent/CN104069023B/en
 patent: https://patentimages.storage.googleapis.com/55/5d/0c/2ca988eba57d8e/CN104069023B.pdf
 
 toc: false
