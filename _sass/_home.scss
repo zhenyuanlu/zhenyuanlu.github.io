@@ -46,12 +46,14 @@
     grid-template-rows: auto-fill;
     grid-column-gap: 20px;
     grid-row-gap: 20px;
+
     h3 {
       margin: 0;
       font-size: 1.05em;
       font-weight: bold;
       line-height: 0;
     }
+    
     .project {
       display: block;
       flex-direction: column;
