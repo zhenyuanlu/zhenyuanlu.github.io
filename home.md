@@ -114,7 +114,7 @@ For understanding the difficulty.
 <h3> {{ year.name }} </h3>
 
   {% for pub in year.items %}
-    {% include pubs.html pub=pub %}
+    {% include publications.html pub=pub %}
   {% endfor %}
 {% endfor %}
 </div>

@@ -37,7 +37,6 @@
     {% if project.demo %}
       <a href="{{ project.demo }}"><i class="fas fa-play"></i> Demo</a>
     {% endif %}
-
     {% if project.code %}
       <a href="{{ project.code }}"><i class="fab fa-github" aria-hidden="true"></i> Code</a>
     {% endif %}
@@ -53,51 +52,18 @@
     {% if project.patent %}
       <a href="{{ project.patent }}"><i class="fas fa-cogs" aria-hidden="true"></i> Patent </a>
     {% endif %}
-
     {% if project.slides %}
       <a href="{{ pub.slides }}">
         <i class="fas fa-window-maximize" aria-hidden="true"></i> Slides
       </a>
     {% endif %}
 
-    <!-- {% if project.html %}
-      <a href="{{ project.html }}">
-        <i class="fab fa-html5" aria-hidden="true"></i> HTML
-      </a>
-    {% elsif project.arxiv %}
-      <a href="https://ar5iv.org/html/{{ project.arxiv | cgi_escape }}">
-        <i class="fab fa-html5" aria-hidden="true"></i> HTML
-      </a>
-    {% endif %} -->
-    <!-- {% if project.doi %}
-      <a href="https://www.doi2bib.org/bib/{{ project.doi }}">
-        <i class="fas fa-book" aria-hidden="true"></i> Bibtex
-      </a>
-    {% elsif project.arxiv %}
-      <a href="https://arxiv2bibtex.org/?q={{ project.arxiv | cgi_escape }}">
-        <i class="fas fa-book" aria-hidden="true"></i> Bibtex
-      </a>
-    {% endif %} -->
     {% if project.arxiv %}
       <a href="https://arxiv.org/abs/{{ project.arxiv }}">
         <i class="fas fa-archive" aria-hidden="true"></i> arxiv: {{ project.arxiv }}
       </a>
     {% endif %}
-    {% if project.video %}
-      <a href="{{ project.video }}">
-        <i class="fas fa-film" aria-hidden="true"></i> Video
-      </a>
-    {% endif %}
-    {% if project.recording %}
-      <a href="{{ project.recording }}">
-        <i class="fas fa-video" aria-hidden="true"></i> Recording
-      </a>
-    {% endif %}
-    {% if project.blog %}
-      <a href="{{ project.blog }}">
-        <i class="fas fa-newspaper" aria-hidden="true"></i> Article
-      </a>
-    {% endif %}
+
   </div>
 
 
