@@ -1,7 +1,9 @@
 <div class="project">
 
-  {% if pub.html | pub.arxiv %}
-    <a href="{{ pub.html | pub.arxiv }}" class="preview-image" style="background-image: url('{{ "/assets/projects/" | append: pub.image | relative_url }}')"></a>
+  {% if pub.html %}
+    <a href="{{ pub.html }}" class="preview-image" style="background-image: url('{{ "/assets/projects/" | append: pub.image | relative_url }}')"></a>
+  {% elsif pub.arxiv %}
+    <a href="https://arxiv.org/abs/{{ pub.arxiv }}" class="preview-image" style="background-image: url('{{ "/assets/projects/" | append: pub.image | relative_url }}')"></a>
   {% elsif pub.pdf %}
     <a href="{{ pub.pdf }}" class="preview-image" style="background-image: url('{{ "/assets/projects/" | append: pub.image | relative_url }}')"></a>
   {% else %}
