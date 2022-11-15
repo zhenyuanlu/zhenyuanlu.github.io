@@ -57,6 +57,10 @@ I am actively contributing to open source projects on creating user-friendly R-s
 
 ## Teaching
 
+- (WIP) Python Notebook
+
+- (WIP) Pytorch Cookbook for Deep learning
+
 - <a href="https://zhenyuanlu.com/r-comput-viz/" target="_blank">Instructor Notes</a> for IE6600 Computation and Visualization for Analytics
 
 
