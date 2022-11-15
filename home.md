@@ -61,7 +61,7 @@ I am actively contributing to open source projects on creating user-friendly R-s
 
 - (WIP) Pytorch Cookbook for Deep learning
 
-- <a href="https://zhenyuanlu.com/r-comput-viz/" target="_blank">Instructor Notes</a> for IE6600 Computation and Visualization for Analytics
+- <a href="https://zhenyuanlu.com/r-comput-viz/" target="_blank">Data Visualization and Transformation in R - Instructor Notes</a> for IE6600 Computation and Visualization for Analytics
 
 
 <!-- <img src='https://raw.githubusercontent.com/tidyverse/tidyverse/main/man/figures/logo.png' align="right" height="55.5"/>
