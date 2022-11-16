@@ -129,7 +129,8 @@
 
 - date: 11/28
   title: >
-    <strong>Exploratory data analysis and more data visualization</strong>
+    <strong>Additional Topics and Workshop</strong><br>
+    Optional: <br>EDA and more data visualization
   slides: /courses/slides/t11AppDataViz.pdf
   materials:
     - <b>R4DS</b> <a href="https://r4ds.had.co.nz/exploratory-data-analysis.html" target="_blank">Exploratory Data Analysis</a>
