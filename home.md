@@ -55,7 +55,7 @@ I am actively contributing to open source projects on creating user-friendly R-s
 </div>
 
 
-## Teaching
+## Teachings
 
 - (WIP) Python Notebook
 
