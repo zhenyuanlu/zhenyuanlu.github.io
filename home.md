@@ -51,7 +51,10 @@ I am actively contributing to open source projects on creating user-friendly R-s
   <img src='/assets/img/staff/z.jpg'
     alt='Zhenyuan Lu'/>
 </picture>
+
 </div>
+
+
 </div>
 
 
@@ -82,6 +85,13 @@ I am actively contributing to open source projects on creating user-friendly R-s
 - Graduate Instructor Assistant, BIO1421 Modern Biology
   - Fall 2014-Spring 2017, Superviosr <a href="https://www.bio.txstate.edu/about/Faculty---Staff/faculty/David-Lemke/Lemke-lab.html" target="_blank">Prof. David E. Lemke</a>
 
+
+  <div class="intro" markdown="1">
+  <picture class="me">
+  <img src='/assets/img/TXState.png'
+    alt='Students'/>
+  </picture>
+  </div>
 
 <br>
 
