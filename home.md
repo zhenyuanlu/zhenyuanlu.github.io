@@ -62,7 +62,7 @@ I am actively contributing to open source projects on creating user-friendly R-s
 
 - (WIP) Python Notebook
 
-- (WIP) Pytorch Cookbook for Deep learning
+<!-- - (WIP) Pytorch Cookbook for Deep learning -->
 
 - <a href="https://zhenyuanlu.com/r-comput-viz/" target="_blank">Data Visualization/Transformation Tutorial in R </a> for IE6600 Computation and Visualization for Analytics
 
