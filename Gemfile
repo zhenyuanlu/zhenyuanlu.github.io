@@ -12,4 +12,5 @@ group :jekyll_plugins do
     gem 'commonmarker', '>= 0.23.4'
     gem 'jekyll-toc'
     gem 'jekyll-sitemap'
+    gem 'jemoji'
 end

@@ -149,3 +149,22 @@ More details will be posted later in the semester.
 -	Class Participation	**8%**
 
 *This course does not have any quizzes or exams.*
+
+***
+
+## <b>Hall of Fame</b>
+
+
+### Fall2022
+
+### Top Projects
+:trophy:: Best Project :medal_sports:: Honorable Mention 
+
+:trophy::\
+:medal_sports::\
+:medal_sports::
+
+### Top Contributors 
+(From the course platform)
+
+
