@@ -155,9 +155,8 @@ More details will be posted later in the semester.
 ## <b>Hall of Fame</b>
 
 
-### Fall2022
-
 ### Top Projects
+<b>Fall2022</b>
 :trophy:: Best Project :medal_sports:: Honorable Mention 
 
 :trophy::\
