@@ -166,4 +166,6 @@ More details will be posted later in the semester.
 ### Top Contributors 
 (From the course platform)
 
-
+:1st_place_medal:: Yiming Wang \
+:1st_place_medal:: Farnaz Mohseni \
+:1st_place_medal:: Gen Li; Zhichun (Lillian) Li; Fante Meng
