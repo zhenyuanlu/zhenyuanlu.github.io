@@ -156,14 +156,18 @@ More details will be posted later in the semester.
 
 
 ### Top Projects
-<b>Fall2022</b>
-:trophy:: Best Project :medal_sports:: Honorable Mention 
+<b>Fall2022</b>\
+:trophy:: *Best Project* :medal_sports:: *Honorable Mention*
 
-:trophy::\
-:medal_sports::\
-:medal_sports::
+:trophy:: <b><a>COVID-19 Analysis</a></b>\
+Bananas: I-Hsuan Huang, Yiming Wang, Yen-Fong Li, Wenzheng Liao\
+:medal_sports:: <b><a>Academic success visualization and analysis</a></b>\
+TaylorExpansion: Farnaz Mohseni, Maryam Kian, David Suero Cobos, Sashankh Addanki, Yu Swe Zin Aung\
+:medal_sports:: <b><a>Washington Electric Vehicle Data Visualization and Analysis</a></b>\
+KohenKappa: Gen Li, Zhichun Li, Fante Meng, Lingyun Ding
 
 ### Top Contributors 
-(From the course platform)
-
-
+<b>Fall2022</b>\
+:1st_place_medal:: Yiming Wang \
+:1st_place_medal:: Farnaz Mohseni \
+:1st_place_medal:: Gen Li; Zhichun Li; Fante Meng
