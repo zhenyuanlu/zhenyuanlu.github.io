@@ -1,0 +1,21 @@
+instructor:
+    - name: Zhenyuan Lu
+      title: Instructor
+      email: lu.zhenyua@northeastern.edu
+      url: /
+      office-hours: "Wed 9:00 AM - 10:00 AM (PT) on Zoom"
+      image: staff/z.jpg
+
+    - name: TBA
+      title: TA
+      email: TBA@northeastern.edu
+      url:
+      office-hours: TBA
+      image: staff/gowtham.png
+
+    - name: TBA
+      title: TA
+      email: TBA@northeastern.edu
+      url:
+      office-hours: During the class meeting
+      image: staff/gowtham.jpg
