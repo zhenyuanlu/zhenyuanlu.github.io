@@ -1,7 +1,6 @@
 - title: "Module 1: Introduction"
 
-
-- date: 5/9
+- date: 1/10
   lecturer:
   title: >
     <strong>Course introduction and expectations</strong>
@@ -13,7 +12,7 @@
     - Instructor's brain
   assignments:
 
-- date: 5/11
+- date: 1/13
   lecturer:
   title: >
     <strong>Basic of R I</strong>
@@ -24,7 +23,7 @@
     - <b>R4E</b> "Advanced Data Structure"
   assignments:
 
-- date: 5/16
+- date: 1/17
   lecturer:
   title: >
     <strong>Basic of R II</strong>
@@ -35,7 +34,7 @@
     - <b>R4E</b> "Advanced Data Structure"
   assignments:
 
-- date: 5/18
+- date: 1/20
   lecturer:
   title: >
     <strong>R functions and the grammar of visualization I</strong>
@@ -45,9 +44,9 @@
     - <b>Wickham</b> <a href="https://vita.had.co.nz/papers/layered-grammar.pdf" target="_blank">A layered grammar of graphics</a>
     - (optional) <b>R4E</b> "Writing R functions"
   assignments: >
-    <span class="deadline">Group arrangement due 5/17 (Extended to 5/25) @ 11:59pm ET</span>
+    <span class="event">HW0 out</span>
 
-- date: 5/23
+- date: 1/24
   lecturer:
   title: >
     <strong>R functions and the grammar of visualization II</strong>
@@ -56,32 +55,33 @@
     - <b>R4DS</b> <a href="https://r4ds.had.co.nz/workflow-basics.html" target="_blank">Workflow</a>
     - <b>Wickham</b> <a href="https://vita.had.co.nz/papers/layered-grammar.pdf" target="_blank">A layered grammar of graphics</a>
     - (optional) <b>R4E</b> "Writing R functions"
-  assignments:
+  assignments: 
+
+
+
 
 - title: "Module 2: Basic Visualization and Data Engineering"
 
-- date: 5/25
+- date: 1/27
   title: >
     <strong>Data Visualization Concepts I</strong>
   slides:
   materials:
   assignments: >
-      <span class="event">HW1 out</span>
+      <span class="deadline">HW0 due 1/26 @ 11:59pm PT</span>
+      
 
-- title: 5/29, Last day to drop a full-semester summer class without a W grade
+- title: 1/30, Last day to drop a full-semester summer class without a W grade
 
-- date: 5/30
-  title: >
-    No classes - Memorial Day
-
-- date: 6/1
+- date: 1/31
   title: >
     <strong>Data Visualization Concepts II</strong>
-  slides:
-  materials:
-  assignments:
+  assignments: >
+      <span class="deadline">Group arrangement due 1/30 @ 11:59pm PT</span>
+      <span class="event">HW1 out</span> <br>
 
-- date: 6/6
+
+- date: 2/3
   lecturer:
   title: >
     <strong>Basic data visualization in R I</strong>
@@ -91,7 +91,7 @@
     - (optional) RGC "Quickly Exploring Data"
   assignments:
 
-- date: 6/8
+- date: 2/7
   lecturer:
   title: >
     <strong>Basic data visualization in R II</strong>
@@ -100,10 +100,10 @@
     - <b>R4DS</b> <a href="https://r4ds.had.co.nz/workflow-basics.html" target="_blank">Data Visualization with ggplot2</a>
     - (optional) RGC "Quickly Exploring Data"
   assignments: >
-    <span class="deadline">HW1 due 6/7 @ 11:59pm ET</span><br>
+    <span class="deadline">HW1 due 2/6 @ 11:59pm PT</span><br>
     <span class="event">HW2 out</span>
 
-- date: 6/13
+- date: 2/10
   lecturer:
   title: >
     <strong>Data transformation with dplyr I</strong>
@@ -112,7 +112,7 @@
     - <b>R4DS</b> <a href="https://r4ds.had.co.nz/transform.html" target="_blank">Data Transformation with dplyr</a>
   assignments:
 
-- date: 6/15
+- date: 2/14
   lecturer:
   title: >
     <strong>Data transformation with dplyr II</strong>
@@ -120,14 +120,10 @@
   materials:
     - <b>R4DS</b> <a href="https://r4ds.had.co.nz/transform.html" target="_blank">Data Transformation with dplyr</a>
   assignments: >
-    <span class="deadline">HW2 due 6/14 @ 11:59pm ET</span><br>
+    <span class="deadline">HW2 due 2/13 @ 11:59pm PT</span><br>
     <span class="event">HW3 out</span>
 
-- date: 6/20
-  title: >
-    No classes - Juneteenth observed
-
-- date: 6/22
+- date: 2/17
   title: >
     <strong>Data wrangling with tibbles, readr and tidyr I</strong><br>
     Optional: <br>Data wrangling with stringr, forcats
@@ -138,11 +134,9 @@
     - <b>R4DS</b> <a href="https://r4ds.had.co.nz/data-import.html" target="_blank">Data Import with readr</a>
     - <b>R4DS</b> <a href="https://r4ds.had.co.nz/tidy-data.html" targe="_blank">Tidy Data with tidyr</a>
     - (optional) <b>R4DS</b> "Strings with stringr", "Factors with forcats"
-  assignments: >
-    <span class="deadline">HW3 due 6/21 @ 11:59pm ET</span><br>
-    <span class="event">HW4 out</span>
+  assignments: 
 
-- date: 6/27
+- date: 2/21
   title: >
     <strong>Data wrangling with tibbles, readr and tidyr II</strong><br>
     Optional: <br>Data wrangling with stringr, forcats
@@ -153,45 +147,50 @@
     - <b>R4DS</b> <a href="https://r4ds.had.co.nz/data-import.html" target="_blank">Data Import with readr</a>
     - <b>R4DS</b> <a href="https://r4ds.had.co.nz/tidy-data.html" targe="_blank">Tidy Data with tidyr</a>
     - (optional) <b>R4DS</b> "Strings with stringr", "Factors with forcats"
-  assignments:
+  assignments: >
+    <span class="deadline">HW3 due 2/20 @ 11:59pm PT</span><br>
+    <span class="event">HW4 out</span>
 
-- date: 6/29
+- date: 2/24
   title: >
-    <strong>Visualizing relational data</strong><br>
-    (Additional) Visualization by PCA
+    <strong>Visualizing relational data</strong>
   slides: /courses/slides/t08RelationalData.pdf
-  slides2: /courses/slides/VizPCA_workshop.pdf
   materials:
     - <b>R4DS</b> <a href="https://r4ds.had.co.nz/relational-data.html" target="_blank">Relational Data with dplyr</a>
-    - Kilian Weinberger <a href="https://www.cs.cornell.edu/courses/cs4780/2021fa/lectures/UnsupervisedLearning.html#pca" target="_blank">PCA for Visualization</a>
-  assignments: >
-    <span class="deadline">HW4 due 6/28 @ 11:59pm ET</span>
+  assignments: 
 
-- date: 7/4
-  title: >
-    No classes - Independence Day
+
 
 - title: "Module 3: Advanced Visualization"
 
-- date: 7/6
+- date: 2/28
   title: >
     <strong>Introduction to Shiny interactive visualization web app I</strong>
   slides: /courses/slides/t09IntroToShiny.pdf
   materials:
     - <b>R Shiny</b> <a href="https://shiny.rstudio.com/tutorial/" target="_blank">Shiny tutorial</a>
-  assignments: >
-    <span class="deadline">Project proposal due 7/5 @ 11:59pm ET</span><br>
+  assignments: > 
+    <span class="deadline">HW4 due 2/27 @ 11:59pm PT</span>
     <span class="event">HW5 out</span>
 
-- date: 7/11
+- date: 3/3
   title: >
     <strong>Introduction to Shiny interactive visualization web app II</strong>
   slides: /courses/slides/t09IntroToShiny.pdf
   materials:
     - <b>R Shiny</b> <a href="https://shiny.rstudio.com/tutorial/" target="_blank">Shiny tutorial</a>
-  assignments:
+  assignments: >
+      <span class="deadline">Project proposal due 3/2 @ 11:59pm PT</span><br>
 
-- date: 7/13
+- date: 3/7
+  title: >
+    No classes - Spring Break
+
+- date: 3/10
+  title: >
+    No classes - Spring Break
+
+- date: 3/14
   title: >
     <strong>Introduction to Shiny interactive visualization web app III</strong>
   slides: /courses/slides/t10ShinyApp.pdf
@@ -199,17 +198,16 @@
     - <b>R Shiny</b> <a href="https://shiny.rstudio.com/tutorial/" target="_blank">Shiny tutorial</a>
   assignments:
 
-- date: 7/18
+- date: 3/17
   title: >
     <strong>Exploratory data analysis and more data visualization I</strong>
   slides: /courses/slides/t11AppDataViz.pdf
   materials:
     - <b>R4DS</b> <a href="https://r4ds.had.co.nz/exploratory-data-analysis.html" target="_blank">Exploratory Data Analysis</a>
   assignments: >
-    <span class="deadline">HW5 due 7/21 @ 11:59pm ET</span><br>
-    <span class="event">HW6 out</span>
+    <span class="deadline">HW5 due 3/16 @ 11:59pm PT</span><br>
 
-- date: 7/20
+- date: 3/21
   title: >
     <strong>Exploratory data analysis and more data visualization II</strong>
   slides: /courses/slides/t11AppDataViz.pdf
@@ -217,21 +215,38 @@
     - <b>R4DS</b> <a href="https://r4ds.had.co.nz/exploratory-data-analysis.html" target="_blank">Exploratory Data Analysis</a>
   assignments:
 
-- date: 7/25
+- date: 3/24
   title: >
-    No classes
+    <strong>Visualization by PCA I</strong>
+  slides: /courses/slides/VizPCA_workshop.pdf
+  materials:
+    - Kilian Weinberger <a href="https://www.cs.cornell.edu/courses/cs4780/2021fa/lectures/UnsupervisedLearning.html#pca" target="_blank">PCA for Visualization</a>
+  assignments:  
 
-- date: 7/27
+- date: 3/28
   title: >
-
-  materials: >
-
+    <strong>Visualization by PCA II</strong>
+  slides: /courses/slides/VizPCA_workshop.pdf
+  materials:
+    - Kilian Weinberger <a href="https://www.cs.cornell.edu/courses/cs4780/2021fa/lectures/UnsupervisedLearning.html#pca" target="_blank">PCA for Visualization</a>
   assignments: >
-    <span class="deadline">HW6 due 7/26 @ 11:59pm ET</span><br>
+    <span class="deadline">Github Setting due 3/27 @ 11:59pm PT</span><br>
 
-- title: Project and Slides due 7/31 @ 11:59pm ET
+- date: 3/31
+  title: >
+    <strong>Additional R Workshop</strong>
+  github: https://github.com/zhenyuanlu/ML-workshop-IE6600
+  materials: >
+    James, Gareth, et al. <a href="https://web.stanford.edu/~hastie/ISLR2/ISLRv2_website.pdf" target="_blank"> An Introduction to Statistical Learning, with Applications in R</a>
+    
 
-- date: 8/1
+- date: 4/4, 4/7
+  title: >
+    No classes - Preparation for Final
+
+- title: Project and Slides due 4/10 @ 11:59pm PT
+
+- date: 4/11, 4/14
   title: Project presentation
 
-- title: Peer Review and Intra-group Evaluation due 8/1 @ 11:59pm ET
+- title: Peer Review and Intra-Group Evaluation due 4/15 @ 11:59pm PT

@@ -87,8 +87,8 @@ Additional textbooks:
 - [R Packages](http://r-pkgs.had.co.nz/){:target="\_blank"}  (**RPK**), Wickham, Hadley.
 - [Text Mining with R](https://www.tidytextmining.com/){:target="\_blank"} (**TM**), Silge, Julia, and David Robinson.
 
-***
 
+***
 ### Schedule
 (subject to change)
 
@@ -96,11 +96,16 @@ Additional textbooks:
 
 ***
 
+
+### Plagiarism
+
+**Plagiarism, cheating, and any form of unauthorized collaboration will not be tolerated, certain work will be marked as zero and will be handled in accordance with university policies described in the Student Handbook.** We will also report violations to the Office of Student Conduct and Conflict Resolution (OSCCR). For additional information on Northeastern University’s [Academic Integrity Policy](http://www.northeastern.edu/osccr/academic-integrity-policy/){:target="\_blank"}
+
+***
+
 ### Policies
 
 Please post questions, or discussion only via Canvas. The visibility of questions and discussion are expected to set for public view (**to the Entire class on Canvas**). Please feel free to send instructor/TAs emails regarding any personal or other private issues/concerns.
-
-Plagiarism, cheating, and any form of unauthorized collaboration will not be tolerated and will be handled in accordance with University policies described in the Student Handbook. For additional information on Northeastern University’s [Academic Integrity Policy](http://www.northeastern.edu/osccr/academic-integrity-policy/){:target="\_blank"}
 
 Northeastern University strictly prohibits discrimination or harassment on the basis of race, color, religion, religious creed, genetic information, sex, gender identity, sexual orientation, age, national origin, ancestry, veteran, or disability status. Please review [Northeastern’s Title IX policy](https://www.northeastern.edu/ouec/){:target="\_blank"}, which protects individuals from sex or gender-based discrimination, including discrimination based on gender-identity. Faculty members are required to report all allegations of sex/gender-based discrimination to the Title IX coordinator.
 
@@ -142,11 +147,15 @@ More details will be posted later in the semester.
 ### Course Evaluation
 
 - Homework **42%**
+    - Each HW	7%
 -	Final Project **50%**
     - Proposal	10%
-    - Presentation	35%
-    - Peer Review	5%
+    - Presentation	20%
+    - Project and Documentation 18%
+    - Peer Review	2%
 -	Class Participation	**8%**
+    - Intra-Group Evaluation 1%
+    - Q&A during the class and on Campuswire 7%
 
 *This course does not have any quizzes or exams.*
 
