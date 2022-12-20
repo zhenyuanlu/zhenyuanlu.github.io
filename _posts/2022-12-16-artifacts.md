@@ -61,7 +61,7 @@ To well-understand the semantic representation in NLI, and address the lack of l
 
 <br>
 
-SNLI includes 570 k (550 k training pairs, 10 k development pairs, and 10 k test pairs) human-labeled sentence pairs categorized as entailment, contradiction, or neutral for training NLP models in NLI subjects. For the premise of the SNLI corpus, the researchers used captions from the Flickr30k corpus <d-cite key="emnlp2015,young-etal-2014-image"></d-cite> from a collection of 160k crowdsourced captions. They utilized Amazon Mechanical Turk to gather hypotheses, gave crowd workers with a premise p, and requested them to construct three new hypotheses based on p, using one of the rules below <d-cite key="emnlp2015, gururangan-etal-2018-annotation"></d-cite> and one of the examples from SNLI (**Table 1**): 
+SNLI includes 570 k (550 k training pairs, 10 k development pairs, and 10 k test pairs) human-labeled sentence pairs categorized as entailment, contradiction, or neutral for training NLP models in NLI subjects. For the premise of the SNLI corpus, the researchers used captions from the Flickr30k corpus <d-cite key="emnlp2015,young-etal-2014-image"></d-cite> from a collection of 160k crowdsourced captions. They utilized Amazon Mechanical Turk to gather hypotheses, gave crowd workers with a premise $p$, and requested them to construct three new hypotheses based on $p$, using one of the rules below <d-cite key="emnlp2015, gururangan-etal-2018-annotation"></d-cite> and one of the examples from SNLI (**Table 1**): 
 
 > **Entailment**   &nbsp; &nbsp;&nbsp; &nbsp;$h$ is definitely true given $p$ \\
 > **Neutral** &nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; $h$ might be true given $p$ \\
@@ -178,6 +178,7 @@ Surprisingly, our model ablation research demonstrates that the hypothesis alone
   <strong> Table 3.SNLI accuracies on different experiments. Hypothesis-Only indicates the accuracy of the model only trained on hypothesis-Only SNLI dataset. Hypothesis-Premise is the accuracy which model trained on the SNLI datasets included premise and hypothesis. </strong>
 </figcaption>
 
+<br>
 
 **Figure 2** shows that the pre-trained, finely-tuned ELECTRA-small model exhibits less-than-ideal performance across a variety of predefined tests, as determined by the checklisting tests. The examination of dataset artifacts indicates that the sentiment analysis model performs well in certain tests, including the vocabulary test with single positive words, where the failure rate was only 17.6%, and the NER test of changing names in sentences, where the failure rate was only 8.5%. However, when submitted to a robustness test that included random URLs and handles, the model failed 54.4% of the time. This suggests that the model can detect sentences with a positive sentiment well, but poorly with a negative ones.
 
@@ -224,7 +225,7 @@ Following the addition of more data, the model's accuracy increases to 89.79 per
 </div>
 
 
-However, when the data augmentation does not cover all the dataset artifacts in the SNLI dataset, most of the negative challenges remain and the failure rate even increase, such as "INV: Change names in a sentence" which reach up to +11.1\% more compared to the model before data augmentation. 
+However, when the data augmentation does not cover all the dataset artifacts in the SNLI dataset, most of the negative challenges remain and the failure rate even increase, such as "INV: Change names in a sentence" which reach up to +11.1% more compared to the model before data augmentation. 
 
 ***
 
