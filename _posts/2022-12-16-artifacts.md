@@ -235,19 +235,15 @@ To address this issue, we introduce a hybrid approach to identifying and mitigat
 
 ***
 
-<!-- arxiv
-
-> Lu, Z. (2022) ‘Brief Introduction to Contrastive Learning Pretext Tasks for Visual Representation’. arXiv. doi: 10.48550/ARXIV.2210.03163.
-
+arxiv
 
 ```bibtex
-@misc{lu2021clVR,
-  doi = {10.48550/ARXIV.2210.03163},
-  url = {https://arxiv.org/abs/2210.03163},
-  author = {Lu, Zhenyuan},
-  title = {Brief Introduction to Contrastive Learning Pretext Tasks for
-    Visual Representation},
-  publisher = {arXiv},
-  year = {2022}
+@misc{lu2022multiscales,
+      title={Multi-Scales Data Augmentation Approach In Natural Language Inference For Artifacts Mitigation And Pre-Trained Model Optimization}, 
+      author={Zhenyuan Lu},
+      year={2022},
+      eprint={2212.08756},
+      archivePrefix={arXiv},
+      primaryClass={cs.CL}
 }
-``` -->
+```
