@@ -3,7 +3,7 @@
 categories: projects
 layout: distill
 title: Artifacts Analysis and Mitigation in Natural Language Inference
-description: Multi-Scales Data Augmentation Approach with ELECTRA
+description: Multi-Scales Data Augmentation Approach with ELECTRA Pre-Trained Model.
 date: 2022-12-16
 highlight: 0
 image: /artifacts/electra.jpg
