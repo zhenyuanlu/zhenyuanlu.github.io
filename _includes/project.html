@@ -4,6 +4,8 @@
     <a href="{{ project.html }}" class="preview-image" style="background-image: url('{{ "/assets/projects/" | append: project.image | relative_url }}')"></a>
   {% elsif project.url %}
     <a href="{{ project.url }}" class="preview-image" style="background-image: url('{{ "/assets/projects/" | append: project.image | relative_url }}')"></a>
+  {% elsif pub.arxiv %}
+    <a href="https://arxiv.org/abs/{{ pub.arxiv }}" class="preview-image" style="background-image: url('{{ "/assets/projects/" | append: pub.image | relative_url }}')"></a>
   {% else %}
     <span class="preview-image" style="background-image: url('{{ "/assets/projects/" | append: project.image | relative_url }}')"></span>
   {% endif %}
