@@ -150,8 +150,7 @@ More details will be posted later in the semester.
     - Each HW	7%
 -	Final Project **50%**
     - Proposal	10%
-    - Presentation	20%
-    - Project and Documentation 18%
+    - Presentation, Project and Documentation 38%
     - Peer Review	2%
 -	Class Participation	**8%**
     - Intra-Group Evaluation 1%

@@ -1,5 +1,4 @@
 ---
-# hide: true
 categories: projects
 layout: distill
 title: Artifacts Analysis and Mitigation in Natural Language Inference
@@ -17,7 +16,6 @@ authors:
 arxiv: "2212.08756"
 bibliography: 2022-12-16-artifacts.bib
 
-# html: https://arxiv.org/abs/2210.03163
 pdf: https://arxiv.org/pdf/2212.08756.pdf
 
 toc: true
@@ -27,13 +25,14 @@ toc: true
 <div class="l-page">
 <center>
   <figure>
-    <img src="{{ '/assets/projects//artifacts/electra.jpg' | relative_url }}"  />
+    <img src="{{ '/assets/projects//artifacts/electra.jpg' | relative_url }}" />
     <figcaption>
       <strong> Figure 1. A summary of techniques for detecting replaced tokens. Token distributions can be created by any model, but often a small masked language model is trained in conjunction with the discriminator. Even though the models are built up similarly to a GAN, we train the generator using maximum likelihood instead of adversarially because GANs are often challenging to apply to text. After pre-training, we discard the generator and just alter the discriminator (the ELECTRA model) for subsequent jobs.</strong>.
     </figcaption>
   </figure>
 </center>
 </div>
+
 
 # Abstract
 
