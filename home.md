@@ -83,7 +83,7 @@ I am actively contributing to open source projects on creating user-friendly R-s
 
 
 - Graduate Instructor Assistant, BIO1421 Modern Biology
-  - Fall 2014-Spring 2017, Superviosr <a href="https://www.bio.txstate.edu/about/Faculty---Staff/faculty/David-Lemke/Lemke-lab.html" target="_blank">Prof. David E. Lemke</a>
+  - Fall 2014-Spring 2017, Course Superviosr <a href="https://www.bio.txstate.edu/about/Faculty---Staff/faculty/David-Lemke/Lemke-lab.html" target="_blank">Prof. David E. Lemke</a>
 
 
   <!-- <div class="intro" markdown="1">
