@@ -132,8 +132,11 @@ For understanding the difficulty.
 
 <br>
 
-## Pcitures From the Fields and Teachings at Texas
+## Field Researches and Teachings at Texas
+For involving the world.
+
 <br>
+
 <div class="columns">
     <div class="intro" style="text-align:center;">
     <picture class="life">
