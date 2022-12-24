@@ -83,15 +83,10 @@ I am actively contributing to open source projects on creating user-friendly R-s
 
 
 - Graduate Instructor Assistant, BIO1421 Modern Biology
-  - Fall 2014-Spring 2017, Course Superviosr <a href="https://www.bio.txstate.edu/about/Faculty---Staff/faculty/David-Lemke/Lemke-lab.html" target="_blank">Prof. David E. Lemke</a>
+  - Fall 2014-Spring 2017, Course Supervisor <a href="https://www.bio.txst.edu/faculty-staff/david-lemke.html" target="_blank">Prof. David E. Lemke</a>
 
+<!-- https://www.bio.txstate.edu/about/Faculty---Staff/faculty/David-Lemke/Lemke-lab.html -->
 
-  <!-- <div class="intro" markdown="1">
-  <picture class="me">
-  <img src='/assets/img/TXState.png'
-    alt='Students'/>
-  </picture>
-  </div> -->
 
 <br>
 
@@ -135,7 +130,20 @@ For understanding the difficulty.
 </div>
 <br>
 
-
-
-
 <br>
+
+## Pcitures From the Fields and Teachings at Texas
+<br>
+<div class="columns">
+    <div class="intro" style="text-align:center;">
+    <picture class="life">
+    <img src='/assets/img/TXState.png'
+      alt='@TXState'/>
+    <p><b>
+    Special thanks to my teaching advisor <a href="https://www.bio.txst.edu/faculty-staff/david-lemke.html" target="_blank">Dr. David E Lemke</a> <i class="fa-solid fa-dna"></i>; and <a href="https://www.bio.txst.edu/faculty-staff/timothy-bonner.html" target="_blank">Dr. Tim Bonner</a> who taught the BEST <a href="https://www.bio.txst.edu/faculty-staff/timothy-bonner/bonner-lab.html#&gid=1&pid=4" target="_blank">Ichthyology</a> <i class="fa-solid fa-fish"></i>.</b>
+    </p>
+    </picture>
+    </div>
+</div>
+
+

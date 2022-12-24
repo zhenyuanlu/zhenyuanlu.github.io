@@ -38,6 +38,33 @@
         margin-top: 16px;
       }
     }
+    .life {
+      margin-left: $spacing-unit;
+      margin-bottom: $spacing-unit;
+
+      font-size: 1em;
+      text-align: center;
+
+      picture, img {
+        width: 600px;
+        border-radius: 6px;
+      }
+      p {
+        a{
+          color:  #686868;
+          &:hover {
+            opacity: 0.8;
+
+          }
+        }
+        font-size: 0.85em;
+        margin: 0.7em 0;
+        line-height: 1.2;
+      }
+      ul {
+        margin-top: 16px;
+      }
+    }
   }
 
   .featured-projects {

@@ -6,7 +6,7 @@
 
     <div class="footer-col-wrapper">
       <div class="footer-col footer-col-1">
-        <abbr title="Last build on {{site.time | date: '%Y-%m-%d'}}">{{ site.time | date: '%B %Y'}}</abbr>
+        <abbr title="Last build on {{site.time | date: '%Y-%m-%d'}}">Last build on {{ site.time | date: '%B %Y'}}</abbr>
       </div>
 
       <!--<div class="footer-col footer-col-2">
@@ -26,10 +26,11 @@
       </div>-->
 
       <div class="footer-col footer-col-3">
-        <p> &#169 2020 -  {{ site.time | date: "%Y" }} {{ site.author | escape }} <br />
+        <p> &#169 2020 -  {{ site.time | date: "%Y" }} {{ site.author | escape }}
         </p>
-
       </div>
+
     </div>
+    
   </div>
 </footer>
