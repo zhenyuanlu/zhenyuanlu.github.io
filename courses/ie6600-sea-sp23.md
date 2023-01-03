@@ -97,18 +97,31 @@ Additional textbooks:
 ***
 
 
-### Plagiarism
 
-**Plagiarism, cheating, and any form of unauthorized collaboration will not be tolerated, certain work will be marked as zero and will be handled in accordance with university policies described in the Student Handbook.** We will also report violations to the Office of Student Conduct and Conflict Resolution (OSCCR). For additional information on Northeastern University’s [Academic Integrity Policy](http://www.northeastern.edu/osccr/academic-integrity-policy/){:target="\_blank"}
+### Homework
+
+There are 6 individual homework assignments. Due day will be posted with the homework. Late submission would not be accepted. Each student has one time 3-day extension per semester only applied on homework. This extension will be applied automatically. Please let me know 24 hours in advance before the due day if any emergencies or difficulties occur.
+
+Requests for regrades in writing will only be accepted no less than 10 days after receiving grade. Please send the instructor your NUID, and name with title “Request for regrade: HW+number” via email. The new grade may be lower than the original one.
+
+Please properly cite any references used in your homework. An overview and summary of how to reference sources can be found at [Purdue OWL Research and Citation Resources](https://owl.purdue.edu/owl/research_and_citation/resources.html)).You may discuss homework with your peers, but you must complete all assignments on your own. You can also utilize chatGPT or some other AI systems as a partial reference in your assignment, but you should optimize and enhance your answers rather than simply copying and pasting.
+
 
 ***
 
-### Policies
+### Honor Code
+
+**Plagiarism, cheating, and any form of unauthorized collaboration will not be tolerated, certain work will be marked as zero and will be handled in accordance with university policies described in the Student Handbook.** Sharing of completed solutions will not be tolerated. Plagiarism will be considered, if solutions and project documentations with a very high degree of similarity with other student’s or materials online. Such academic dishonesty will be handled in accordance with university policies. We will report violations to the Office of Student Conduct and Conflict Resolution (OSCCR). For additional information on Northeastern University’s [Academic Integrity Policy](http://www.northeastern.edu/osccr/academic-integrity-policy/){:target="\_blank"}
+
+***
+
+### Administration
 
 Please post questions, or discussion only via Canvas. The visibility of questions and discussion are expected to set for public view (**to the Entire class on Canvas**). Please feel free to send instructor/TAs emails regarding any personal or other private issues/concerns.
 
-Northeastern University strictly prohibits discrimination or harassment on the basis of race, color, religion, religious creed, genetic information, sex, gender identity, sexual orientation, age, national origin, ancestry, veteran, or disability status. Please review [Northeastern’s Title IX policy](https://www.northeastern.edu/ouec/){:target="\_blank"}, which protects individuals from sex or gender-based discrimination, including discrimination based on gender-identity. Faculty members are required to report all allegations of sex/gender-based discrimination to the Title IX coordinator.
+### Title IX
 
+Northeastern University strictly prohibits discrimination or harassment on the basis of race, color, religion, religious creed, genetic information, sex, gender identity, sexual orientation, age, national origin, ancestry, veteran, or disability status. Please review [Northeastern’s Title IX policy](https://www.northeastern.edu/ouec/){:target="\_blank"}, which protects individuals from sex or gender-based discrimination, including discrimination based on gender-identity. Faculty members are required to report all allegations of sex/gender-based discrimination to the Title IX coordinator.
 
 ***
 
@@ -124,15 +137,6 @@ Eating healthy food, having regular exercises, avoiding alcohol and drugs, getti
 
 If you have difficulty to keep up with any materials or homework for personal reasons please let me know early. If you or your friends/classmates who appears to be struggling, or having trouble coping with stress. We strongly encourage you to seek support at the [We Care](https://studentlife.northeastern.edu/we-care/){:target="\_blank"} program at NEU. At Northeastern, a student is never alone when struggling with a demanding situation.
 
-***
-
-### Homework
-
-There are 6 individual homework assignments. Due day will be posted with the homework. Late submission would not be accepted. Each student has one time 3-day extension per semester only applied on homework. This extension will be applied automatically. Please let me know 24 hours in advance before the due day if any emergencies or difficulties occur.
-
-Requests for regrades in writing will only be accepted no less than 10 days after receiving grade. Please send the instructor your NUID, and name with title “Request for regrade: HW+number” via email. The new grade may be lower than the original one.
-
-Please feel free to refer to any materials from my slides. You may discuss homework with your classmates, but all the assignments are supposed to completed by your own. Sharing of completed solutions will not be tolerated. Plagiarism will be considered, if solutions and project documentations with a very high degree of similarity with other student’s or materials online. Such academic dishonesty will be handled in accordance with university policies.
 
 ***
 
