@@ -18,10 +18,12 @@ IE6600 covers basic of the R, and R Shiny for data preprocessing, and visualizat
 - **Location:**  TBA
 - **Dates:** 01/09/2022 – 04/14/2022
 - **Administration platform:** All questions, discussion or notes will be only posted via [Campuswire](https://campuswire.com/){:target="\_blank"}. See sign up link on Canvas.
-- **Guideline**: Please see the post [How to ask a good question](https://stackoverflow.com/help/how-to-ask) before posting any questions or discussions.
 - **HW submission:** [Canvas](https://canvas.northeastern.edu/){:target="\_blank"}
 - **Course notes:** [Notes](https://zhenyuanlu.com/r-comput-viz/){:target="\_blank"}
 - **Teaching style:** [There’s no speed limit](https://sive.rs/kimo){:target="\_blank"}.
+- **Guidelines**: 
+  - Please see the post [How to ask a good question](https://stackoverflow.com/help/how-to-ask) before posting any questions or discussions.
+  - How to properly cite references in you HWs [Purdue OWL Research and Citation Resources](https://owl.purdue.edu/owl/research_and_citation/resources.html).
 
 
 ***
@@ -47,7 +49,8 @@ IE6600 covers basic of the R, and R Shiny for data preprocessing, and visualizat
 
 ***
 
-### Table of contents
+<b>Table of contents</b>
+
 * (The list will be replaced with the table of contents.)
 {:toc}
 
@@ -114,7 +117,6 @@ Please properly cite any references used in your homework. An overview and summa
 
 
 ***
-
 ### Honor Code
 
 **Plagiarism, cheating, and any form of unauthorized collaboration will not be tolerated, certain work will be marked as zero and will be handled in accordance with university policies described in the Student Handbook.** Sharing of completed solutions will not be tolerated. Plagiarism will be considered, if solutions and project documentations with a very high degree of similarity with other student’s or materials online. Such academic dishonesty will be handled in accordance with university policies. We will report violations to the Office of Student Conduct and Conflict Resolution (OSCCR). For additional information on Northeastern University’s [Academic Integrity Policy](http://www.northeastern.edu/osccr/academic-integrity-policy/){:target="\_blank"}.
@@ -144,7 +146,8 @@ If you have difficulty to keep up with any materials or homework for personal re
 
 ### Projects
 More details will be posted later in the semester.
-- <b>Project Example</b>: 
+
+#### Project Examples: 
 - <a href="https://yuchengqiu96.shinyapps.io/koifish/" target="_blank">Video Game Sales Visualization</a> by Qiu Yucheng, Yu Wei
 - <a href="https://jfonli.shinyapps.io/COVID-19_Analysis/" target="_blank">COVID-19 Analysis</a> by I-Hsuan Huang, Yiming Wang, Yen-Fong Li, Wenzheng Liao
 
