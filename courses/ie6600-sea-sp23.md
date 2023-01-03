@@ -98,6 +98,12 @@ Additional textbooks:
 
 
 
+### Administration
+
+Please post questions, or discussion only via Canvas. The visibility of questions and discussion are expected to set for public view (**to the Entire class on Canvas**). Please feel free to send instructor/TAs emails regarding any personal or other private issues/concerns.
+
+***
+
 ### Homework
 
 There are 6 individual homework assignments. Due day will be posted with the homework. Late submission would not be accepted. Each student has one time 3-day extension per semester only applied on homework. This extension will be applied automatically. Please let me know 24 hours in advance before the due day if any emergencies or difficulties occur.
@@ -111,13 +117,9 @@ Please properly cite any references used in your homework. An overview and summa
 
 ### Honor Code
 
-**Plagiarism, cheating, and any form of unauthorized collaboration will not be tolerated, certain work will be marked as zero and will be handled in accordance with university policies described in the Student Handbook.** Sharing of completed solutions will not be tolerated. Plagiarism will be considered, if solutions and project documentations with a very high degree of similarity with other student’s or materials online. Such academic dishonesty will be handled in accordance with university policies. We will report violations to the Office of Student Conduct and Conflict Resolution (OSCCR). For additional information on Northeastern University’s [Academic Integrity Policy](http://www.northeastern.edu/osccr/academic-integrity-policy/){:target="\_blank"}
+**Plagiarism, cheating, and any form of unauthorized collaboration will not be tolerated, certain work will be marked as zero and will be handled in accordance with university policies described in the Student Handbook.** Sharing of completed solutions will not be tolerated. Plagiarism will be considered, if solutions and project documentations with a very high degree of similarity with other student’s or materials online. Such academic dishonesty will be handled in accordance with university policies. We will report violations to the Office of Student Conduct and Conflict Resolution (OSCCR). For additional information on Northeastern University’s [Academic Integrity Policy](http://www.northeastern.edu/osccr/academic-integrity-policy/){:target="\_blank"}.
 
 ***
-
-### Administration
-
-Please post questions, or discussion only via Canvas. The visibility of questions and discussion are expected to set for public view (**to the Entire class on Canvas**). Please feel free to send instructor/TAs emails regarding any personal or other private issues/concerns.
 
 ### Title IX
 
