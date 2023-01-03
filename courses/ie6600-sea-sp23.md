@@ -104,7 +104,7 @@ There are 6 individual homework assignments. Due day will be posted with the hom
 
 Requests for regrades in writing will only be accepted no less than 10 days after receiving grade. Please send the instructor your NUID, and name with title “Request for regrade: HW+number” via email. The new grade may be lower than the original one.
 
-Please properly cite any references used in your homework. An overview and summary of how to reference sources can be found at [Purdue OWL Research and Citation Resources](https://owl.purdue.edu/owl/research_and_citation/resources.html)).You may discuss homework with your peers, but you must complete all assignments on your own. You can also utilize chatGPT or some other AI systems as a partial reference in your assignment, but you should optimize and enhance your answers rather than simply copying and pasting.
+Please properly cite any references used in your homework. An overview and summary of how to reference sources can be found at [Purdue OWL Research and Citation Resources](https://owl.purdue.edu/owl/research_and_citation/resources.html).You may discuss homework with your peers, but you must complete all assignments on your own. You can also utilize chatGPT or some other AI systems as a partial reference in your assignment, but you should optimize and enhance your answers rather than simply copying and pasting.
 
 
 ***
