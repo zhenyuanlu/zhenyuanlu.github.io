@@ -144,7 +144,9 @@ If you have difficulty to keep up with any materials or homework for personal re
 
 ### Projects
 More details will be posted later in the semester.
-- <b>Project Example</b>: <a href="https://yuchengqiu96.shinyapps.io/koifish/" target="_blank">Video Game Sales Visualization</a> by Qiu Yucheng, Yu Wei; <a href="https://jfonli.shinyapps.io/COVID-19_Analysis/" target="_blank">COVID-19 Summary</a> by I-Hsuan Huang, Yiming Wang, Yen-Fong Li, Wenzheng Liao
+- <b>Project Example</b>: 
+- <a href="https://yuchengqiu96.shinyapps.io/koifish/" target="_blank">Video Game Sales Visualization</a> by Qiu Yucheng, Yu Wei
+- <a href="https://jfonli.shinyapps.io/COVID-19_Analysis/" target="_blank">COVID-19 Summary</a> by I-Hsuan Huang, Yiming Wang, Yen-Fong Li, Wenzheng Liao
 
 
 ***
