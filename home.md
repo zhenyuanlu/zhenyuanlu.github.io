@@ -11,7 +11,7 @@ image: staff/z.jpg
 <div class="intro" markdown="1">
 ## Zhenyuan Lu
 
-Hi! I am currently a data science instructor and PhD research fellow at [Northeastern University](https://www.northeastern.edu/) work with [Prof. Sagar Kamarthi](https://coe.northeastern.edu/people/kamarthi-sagar/). I am on the market with expected graduation in Summer 2023. I am broadly interested in machine learning, data science/mining, and biostats positions.
+Hi! I am currently a data science faculty and PhD research fellow at [Northeastern University](https://www.northeastern.edu/) work with [Prof. Sagar Kamarthi](https://coe.northeastern.edu/people/kamarthi-sagar/). I am on the market with expected graduation in Summer 2023. I am broadly interested in machine learning, data science/mining, and biostats positions.
 
 In order to prepare graduate students for their work on research projects, and future careers, I also create and instruct graduate-level courses in [IE7275 data mining]({{ "/courses/ie7275-bos-sm20/" | relative_url }}) and [IE6600 Computation and Visualization for Analytics]({{ "/courses/ie6600-bos-fa20/" | relative_url }}).
 
