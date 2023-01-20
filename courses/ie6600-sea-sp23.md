@@ -145,7 +145,7 @@ If you have difficulty to keep up with any materials or homework for personal re
 ***
 
 ### Projects
-More details will be posted later in the semester.
+More details will be posted later in the semester. See it on Campuswire.
 
 #### Project Examples
 - <a href="https://yuchengqiu96.shinyapps.io/koifish/" target="_blank">Video Game Sales Visualization</a> by Qiu Yucheng, Yu Wei
