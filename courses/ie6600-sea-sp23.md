@@ -115,6 +115,22 @@ Requests for regrades in writing will only be accepted no less than 10 days afte
 
 Please properly cite any references used in your homework. An overview and summary of how to reference sources can be found at [Purdue OWL Research and Citation Resources](https://owl.purdue.edu/owl/research_and_citation/resources.html).You may discuss homework with your peers, but you must complete all assignments on your own. You can also utilize chatGPT or some other AI systems as a partial reference in your assignment, but you should optimize and enhance your answers rather than simply copying and pasting.
 
+***
+
+### Final Projects
+
+Project Instruction for RShiny: <a href="/courses/projects/final_project_guideline.pdf" target="_blank">Details</a>
+
+#### Project Proposal Examples
+- <a href="/courses/projects/ex_001.pdf" target="_blank">Project Example 1</a>
+- <a href="/courses/projects/ex_002.pdf" target="_blank">Project Example 2</a>
+- <a href="/courses/projects/ex_003.pdf" target="_blank">Project Example 3</a>
+
+
+#### Project Demos
+- <a href="https://yuchengqiu96.shinyapps.io/koifish/" target="_blank">Video Game Sales Visualization</a> by Qiu Yucheng, Yu Wei
+- <a href="https://jfonli.shinyapps.io/COVID-19_Analysis/" target="_blank">COVID-19 Analysis</a> by I-Hsuan Huang, Yiming Wang, Yen-Fong Li, Wenzheng Liao
+
 
 ***
 ### Honor Code
@@ -142,14 +158,6 @@ Eating healthy food, having regular exercises, avoiding alcohol and drugs, getti
 If you have difficulty to keep up with any materials or homework for personal reasons please let me know early. If you or your friends/classmates who appears to be struggling, or having trouble coping with stress. We strongly encourage you to seek support at the [We Care](https://studentlife.northeastern.edu/we-care/){:target="\_blank"} program at NEU. At Northeastern, a student is never alone when struggling with a demanding situation.
 
 
-***
-
-### Projects
-More details will be posted later in the semester. See it on Campuswire.
-
-#### Project Examples
-- <a href="https://yuchengqiu96.shinyapps.io/koifish/" target="_blank">Video Game Sales Visualization</a> by Qiu Yucheng, Yu Wei
-- <a href="https://jfonli.shinyapps.io/COVID-19_Analysis/" target="_blank">COVID-19 Analysis</a> by I-Hsuan Huang, Yiming Wang, Yen-Fong Li, Wenzheng Liao
 
 
 ***
