@@ -43,7 +43,7 @@
       <a href="{{ project.code }}"><i class="fab fa-github" aria-hidden="true"></i> Code</a>
     {% endif %}
     {% if project.github %}
-      <a href="{{ project.code }}"><i class="fab fa-github" aria-hidden="true"></i> github</a>
+      <a href="{{ project.github }}"><i class="fab fa-github" aria-hidden="true"></i> github</a>
     {% endif %}
     {% if project.pdf %}
       <a href="{{ project.pdf }}"><i class="far fa-file-pdf"></i> PDF</a>
@@ -58,7 +58,7 @@
       <a href="{{ project.patent }}"><i class="fas fa-cogs" aria-hidden="true"></i> Patent </a>
     {% endif %}
     {% if project.slides %}
-      <a href="{{ pub.slides }}">
+      <a href="{{ project.slides }}">
         <i class="fas fa-window-maximize" aria-hidden="true"></i> Slides
       </a>
     {% endif %}
