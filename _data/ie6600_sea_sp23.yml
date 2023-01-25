@@ -65,7 +65,7 @@
 - date: 1/27
   title: >
     <strong>Data Visualization Concepts I</strong>
-  slides:
+  slides: /assets/projects/informs/zhenyuan_dataViz.pdf
   materials:
   assignments: >
       <span class="deadline">HW0 due 1/27 @ 11:59pm PT</span>
@@ -76,6 +76,7 @@
 - date: 1/31
   title: >
     <strong>Data Visualization Concepts II</strong>
+  slides: /assets/projects/informs/zhenyuan_dataViz.pdf
   assignments: >
       <span class="deadline">Group arrangement due 1/30 @ 11:59pm PT</span>
       <span class="event">HW1 out</span> <br>
