@@ -92,8 +92,6 @@ I am actively contributing to open source projects on creating user-friendly R-s
 
 <br>
 
-
-
 ## Featured Projects
 For work, research, or fun.
 
