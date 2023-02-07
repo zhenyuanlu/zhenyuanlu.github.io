@@ -142,8 +142,7 @@ For involving the world.
 <div class="columns">
     <div class="intro" style="text-align:center;">
     <picture class="life">
-    <img src='/assets/img/TXState.webp' width="500" height="273"
-      alt='@TXState'/>
+    <img src='/assets/img/TXState.webp' width="500" height="273" alt='@TXState'/>
     <p><b>
     Special thanks to my teaching advisor <a href="https://www.bio.txst.edu/faculty-staff/david-lemke.html" target="_blank">Dr. David E Lemke</a> <i class="fa-solid fa-dna"></i>; and <a href="https://www.bio.txst.edu/faculty-staff/timothy-bonner.html" target="_blank">Dr. Tim Bonner</a> who taught the BEST <a href="https://www.bio.txst.edu/faculty-staff/timothy-bonner/bonner-lab.html#&gid=1&pid=4" target="_blank">Ichthyology</a> <i class="fa-solid fa-fish"></i>.</b>
     </p>
