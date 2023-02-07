@@ -75,8 +75,8 @@ $code-bg-color-light:     rgba($purple-color, 0.05);
 $code-bg-color-dark:      #2c3237 !default;
 
 $global-text-color: #000000 !default;
-$global-hover-color: #5bbad5 !default; // #B509AC
-$global-theme-color: #5bbad5 !default;
+$global-hover-color: #548dc2 !default; // #B509AC
+$global-theme-color: #548dc2 !default; //#008eb6 5bbad5
 $global-bg-color: #ffffff;
 $global-code-color: #EF4757;  // #4472C4;//
 $global-code-bg-color:  #F5F5F5;
@@ -136,7 +136,7 @@ $darken-2:          rgba(#000,.125) !default;
 $darken-3:          rgba(#000,.25) !default;
 $darken-4:          rgba(#000,.5) !default;
 
-$theme-color:       #5B9BD5;//#0ab0ba,$blue
+$theme-color:       #5B9BD5;//#0ab0ba,$blue, #5B9BD5
 $theme-color-second: #0ab0ba;//#cc0000, #4FC3F7
 $code-color:        $dark-gray;
 $text-color:        $dark-gray;
