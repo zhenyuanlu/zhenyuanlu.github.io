@@ -207,8 +207,7 @@
   slides: /courses/slides/t11AppDataViz.pdf
   materials:
     - <b>R4DS</b> <a href="https://r4ds.had.co.nz/exploratory-data-analysis.html" target="_blank">Exploratory Data Analysis</a>
-  assignments: >
-    <span class="deadline">HW5 due 3/16 @ 11:59pm PT</span><br>
+  assignments: 
 
 - date: 3/21
   title: >
@@ -216,7 +215,8 @@
   slides: /courses/slides/t11AppDataViz.pdf
   materials:
     - <b>R4DS</b> <a href="https://r4ds.had.co.nz/exploratory-data-analysis.html" target="_blank">Exploratory Data Analysis</a>
-  assignments:
+  assignments: >
+    <span class="deadline">HW5 due 3/20 @ 11:59pm PT</span><br>
 
 - date: 3/24
   title: >
