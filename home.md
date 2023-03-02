@@ -25,14 +25,14 @@ I am actively contributing to open source projects on creating user-friendly R-s
 <p>
 <span class="social-buttons">
   <span class="item">
-    <!-- <a href="mailto:{{ site.email }}" target="_blank">
-      <i class="fas fa-envelope"></i>
-    </a> -->
     <a href="https://github.com/zhenyuanlu" target="_blank">
       <i class="fab fa-github"></i>
     </a>
     <a href="https://www.linkedin.com/in/zhenyuanlu/" target="_blank">
       <i class="fab fa-linkedin-in"></i>
+    </a>
+    <a href="mailto:{{ site.email }}" target="_blank">
+      <i class="fas fa-envelope"></i>
     </a>
   </span>
 </span>
@@ -50,7 +50,7 @@ I am actively contributing to open source projects on creating user-friendly R-s
 
 <div class="me" markdown="1">
 <picture>
-  <img src='/assets/img/staff/z.jpg'
+  <img src='/assets/img/staff/z.png'
     alt='Zhenyuan Lu'/>
 </picture>
 
@@ -62,7 +62,7 @@ I am actively contributing to open source projects on creating user-friendly R-s
 
 ## Teachings
 
-- (WIP) Python Notebook
+<!-- - (WIP) Python Notebook -->
 
 <!-- - (WIP) Pytorch Cookbook for Deep learning -->
 
