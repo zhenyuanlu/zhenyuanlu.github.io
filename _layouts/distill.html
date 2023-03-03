@@ -106,6 +106,9 @@
         {{ content | inject_anchors }}
 
       </d-article>
+      <d-share>
+        {% include share.html%}
+      </d-share>
 
       {% if page.cite == false%}
         <div style="display: none;"></div>
@@ -119,9 +122,7 @@
 
 
     </div>
-    <d-share>
-      {% include share.html%}
-    </d-share>
+
 
     <div style="max-width: 100%;width: 800px;margin: auto;">
 
