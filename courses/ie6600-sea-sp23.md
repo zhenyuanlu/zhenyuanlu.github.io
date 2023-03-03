@@ -119,7 +119,7 @@ Please properly cite any references used in your homework. An overview and summa
 
 ### Final Projects
 
-Project Instruction for RShiny: <a href="/courses/projects/final_project_guideline.pdf" target="_blank">Details</a>
+#### Project Instructions and Github: <a href="https://github.com/zhenyuanlu/IE6600-final-project" target="_blank">github</a> 
 
 #### Project Proposal Examples
 - <a href="/courses/projects/ex_001.pdf" target="_blank">Project Example 1</a>
