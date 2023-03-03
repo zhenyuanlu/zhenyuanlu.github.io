@@ -106,10 +106,12 @@
         {{ content | inject_anchors }}
 
       </d-article>
+      <br>
       <d-share>
         {% include share.html%}
       </d-share>
 
+      
       {% if page.cite == false%}
         <div style="display: none;"></div>
         <d-appendix></d-appendix>
