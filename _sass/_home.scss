@@ -125,7 +125,6 @@
       }
 
       .preview-image {
-
         float: left;
         margin-right: 18px;
         display: block;
@@ -169,6 +168,12 @@
       .me {
         order: 1;
         margin-left: 0;
+      }
+      .life {
+        picture, img {
+          width: 350px;
+          border-radius: 6px;
+        }
       }
     }
 
