@@ -34,6 +34,9 @@ I am actively contributing to open source projects on creating user-friendly R-s
     <a href="mailto:{{ site.email }}" target="_blank">
       <i class="fas fa-envelope"></i>
     </a>
+    <a href="https://twitter.com/zyl_zhen" target="_blank">
+      <i class="fab fa-twitter"></i>
+    </a>
   </span>
 </span>
 
