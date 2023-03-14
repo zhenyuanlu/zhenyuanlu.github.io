@@ -195,7 +195,7 @@
 
 - date: 3/14
   title: >
-    <strong>Introduction to Shiny interactive visualization web app III</strong>
+    <strong>Introduction to Shiny interactive visualization web app II</strong>
   slides: /courses/slides/t10ShinyApp.pdf
   materials:
     - <b>R Shiny</b> <a href="https://shiny.rstudio.com/tutorial/" target="_blank">Shiny tutorial</a>
@@ -203,15 +203,15 @@
 
 - date: 3/17
   title: >
-    <strong>Exploratory data analysis and more data visualization I</strong>
-  slides: /courses/slides/t11AppDataViz.pdf
+    <strong>Introduction to Shiny interactive visualization web app III</strong>
+  slides: /courses/slides/t10ShinyApp.pdf
   materials:
-    - <b>R4DS</b> <a href="https://r4ds.had.co.nz/exploratory-data-analysis.html" target="_blank">Exploratory Data Analysis</a>
-  assignments: 
+    - <b>R Shiny</b> <a href="https://shiny.rstudio.com/tutorial/" target="_blank">Shiny tutorial</a>
+  assignments:
 
 - date: 3/21
   title: >
-    <strong>Exploratory data analysis and more data visualization II</strong>
+    <strong>Exploratory data analysis and more data visualization</strong>
   slides: /courses/slides/t11AppDataViz.pdf
   materials:
     - <b>R4DS</b> <a href="https://r4ds.had.co.nz/exploratory-data-analysis.html" target="_blank">Exploratory Data Analysis</a>
