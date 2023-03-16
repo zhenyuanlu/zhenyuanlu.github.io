@@ -94,6 +94,26 @@ I am actively contributing to open source projects on creating user-friendly R-s
 
 <br>
 
+
+## Featured Publications
+For understanding the difficulty.
+
+<div class="featured-projects">
+
+{% assign pubyears = site.publications | group_by:"year"  %}
+{% assign sorted_pubyears = pubyears | reverse %}
+{% for year in sorted_pubyears %}
+<h3> {{ year.name }} </h3>
+  {% for pub in year.items %}
+    {% include publications.html pub=pub %}
+  {% endfor %}
+{% endfor %}
+</div>
+
+<br/>
+<br/>
+
+
 ## Featured Projects
 For work, research, or fun.
 
@@ -111,33 +131,19 @@ For work, research, or fun.
   {% endfor %}
 {% endfor %}
 </div>
-<br>
-<br>
+
+<br/>
+<br/>
 
 
 
-## Featured Publications
-For understanding the difficulty.
 
-<div class="featured-projects">
-
-{% assign pubyears = site.publications | group_by:"year"  %}
-{% assign sorted_pubyears = pubyears | reverse %}
-{% for year in sorted_pubyears %}
-<h3> {{ year.name }} </h3>
-  {% for pub in year.items %}
-    {% include publications.html pub=pub %}
-  {% endfor %}
-{% endfor %}
-</div>
-<br>
-
-<br>
 
 ## Field Researches and Teachings at Texas <img src='/assets/img/tx.png' width="20" height="20" alt='TXmap'/>
 For involving the world.
 
-<br>
+<br/>
+
 
 <div class="columns">
     <div class="intro" style="text-align:center;">
