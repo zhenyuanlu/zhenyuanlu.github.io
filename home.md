@@ -95,7 +95,7 @@ I am actively contributing to open source projects on creating user-friendly R-s
 <br>
 
 
-## Featured Publications
+## Selected Publications
 For understanding the difficulty.
 
 <div class="featured-projects">
