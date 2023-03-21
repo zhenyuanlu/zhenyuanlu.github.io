@@ -138,7 +138,6 @@ For work, research, or fun.
 
 
 
-
 ## Field Researches and Teachings at Texas <img src='/assets/img/tx.png' width="20" height="20" alt='TXmap'/>
 For involving the world.
 
