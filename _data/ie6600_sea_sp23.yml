@@ -227,29 +227,28 @@
 
 - date: 3/28
   title: >
+    <strong>Visualization by PCA I</strong>
+  slides: /courses/slides/VizPCA_workshop.pdf
+  materials:
+    - Kilian Weinberger <a href="https://www.cs.cornell.edu/courses/cs4780/2021fa/lectures/UnsupervisedLearning.html#pca" target="_blank">PCA for Visualization</a>
+  assignments:  
+
+- date: 3/31
+  title: >
     <strong>Visualization by PCA II</strong>
   slides: /courses/slides/VizPCA_workshop.pdf
   materials:
     - Kilian Weinberger <a href="https://www.cs.cornell.edu/courses/cs4780/2021fa/lectures/UnsupervisedLearning.html#pca" target="_blank">PCA for Visualization</a>
   assignments: >
-    <span class="deadline">Github Setting due 3/27 @ 11:59pm PT</span><br>
-
-- date: 3/31
-  title: >
-    <strong>Additional R Workshop</strong>
-  github: https://github.com/zhenyuanlu/ML-workshop-IE6600
-  materials: >
-    James, Gareth, et al. <a href="https://web.stanford.edu/~hastie/ISLR2/ISLRv2_website.pdf" target="_blank"> An Introduction to Statistical Learning, with Applications in R</a>
-  assignments: >
     <span class="deadline">HW5 due 3/30 @ 11:59pm PT</span><br>
 
 - date: 4/4
   title: >
-    No classes - Preparation for Final
+    <strong>Additional Workshop</strong>
 
 - date: 4/7
   title: >
-    No classes - Preparation for Final
+    <strong>Additional Workshop</strong>
 
 - title: Project and Slides due 4/10 @ 11:59pm PT
 
