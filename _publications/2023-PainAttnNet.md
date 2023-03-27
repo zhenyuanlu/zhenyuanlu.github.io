@@ -1,6 +1,5 @@
 ---
-categories: projects
-layout: distill
+categories: publications
 title: Transformer Encoder with Multiscale Deep Learning for Pain Classification Using Physiological Signals
 description:
 year: 2023

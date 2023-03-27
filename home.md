@@ -64,6 +64,8 @@ I am actively contributing to open source projects on creating user-friendly R-s
 
 ## Teachings
 
+<div class="columns" markdown="1">
+<div class="intro" markdown="1">
 <!-- - (WIP) Python Notebook -->
 
 <!-- - (WIP) Pytorch Cookbook for Deep learning -->
@@ -77,23 +79,20 @@ I am actively contributing to open source projects on creating user-friendly R-s
 
 - Instructor, IE6600 Computation and Visualization for Analytics
   - [Spring 23]({{ "/courses/ie6600-sea-sp23/" | relative_url}}), [Fall 22]({{ "/courses/ie6600-vbc-fa22/" | relative_url}}), [Summer 22]({{ "/courses/ie6600-bos-su22/" | relative_url}}), [Spring 22]({{ "/courses/ie6600-sea-sp22/" | relative_url}}), [Fall 21]({{ "/courses/ie6600-bos-fa21/" | relative_url}}), [Summer 21]({{ "/courses/ie6600-bos-sm21/" | relative_url}}), [Spring 21]({{ "/courses/ie6600-sea-sp21/" | relative_url}}), [Fall 20]({{ "/courses/ie6600-bos-fa20/" | relative_url}}), Spring 20, Spring 19
-
 <!-- <img src='https://torch.mlverse.org/css/images/hex/torch.png' align="right" height="55.5"/>
 <img src='https://torch.mlverse.org/css/images/hex/torchvision.png' align="right" height="55.5"/> -->
 <!-- <img src='https://keras.io/img/logo.png' align="right" height="50.5"/> -->
-
 - Instructor, IE7275 Data Mining in Engineering
   - [Summer 20]({{ "/courses/ie7275-bos-sm20/" | relative_url }})
-
 
 - Graduate Instructor Assistant, BIO1421 Modern Biology
   - Fall 2014-Spring 2017, Course Supervisor <a href="https://www.bio.txst.edu/faculty-staff/david-lemke.html" target="_blank">Prof. David E. Lemke</a>
 
-<!-- https://www.bio.txstate.edu/about/Faculty---Staff/faculty/David-Lemke/Lemke-lab.html -->
 
+</div>
+</div>
 
-<br>
-
+<br/>
 
 ## Selected Publications
 For understanding the difficulty.
@@ -105,7 +104,9 @@ For understanding the difficulty.
 {% for year in sorted_pubyears %}
 <h3> {{ year.name }} </h3>
   {% for pub in year.items %}
+  {% if pub.hide != true %}
     {% include publications.html pub=pub %}
+    {% endif %}
   {% endfor %}
 {% endfor %}
 </div>

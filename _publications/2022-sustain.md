@@ -1,6 +1,5 @@
 ---
-categories: projects
-layout: distill
+categories: publications
 title: Industry 4.0 for Asset Life Cycle Management for Sustainability - Keyword Co-occurrence Network Review and Analysis
 description:
 year: 2022

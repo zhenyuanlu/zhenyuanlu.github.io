@@ -1,9 +1,8 @@
 ---
-hide: true
-layout: distill
+hide: false
+categories: publications
 title: Thickener Blend Composition And Its Application
 description: Patent CN104069023B
-hide: false
 year: 2016
 image: /patent/cosmetic.svg
 comments: false

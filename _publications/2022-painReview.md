@@ -1,6 +1,5 @@
 ---
-categories: projects
-layout: distill
+categories: publications
 title: Review and Analysis of Pain Research Literature through Keyword Co-occurrence Networks
 description:
 year: 2022
