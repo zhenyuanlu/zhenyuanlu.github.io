@@ -63,6 +63,7 @@ I am actively contributing to open source projects on creating user-friendly R-s
 
 
 ## Teachings
+For sharing the joy of what I have learnt.
 
 <div class="columns" markdown="1">
 <div class="intro" markdown="1">
