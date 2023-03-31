@@ -66,7 +66,7 @@ I am actively contributing to open source projects on creating user-friendly R-s
 
 <div class="columns" markdown="1">
 <div class="intro" markdown="1">
-<!-- - (WIP) Python Notebook -->
+- (WIP) Python Notebook
 
 <!-- - (WIP) Pytorch Cookbook for Deep learning -->
 
