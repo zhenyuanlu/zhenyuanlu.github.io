@@ -17,10 +17,11 @@ Hi! I am on the market with expected graduation in Summer 2023. I am broadly int
 
 My PhD story is featured on the [University PhD Network](https://phd.northeastern.edu/profile/zhenyuan-lu/). I also have been spotlighted by the College of Engineering department for the [Student Success Story](https://coe.northeastern.edu/news/ready-for-the-high-demand-field-of-data-analytics/).
 
+*Difficulty means we have not understood – Pierre Deligne, Mathematician*
 
 <!-- Using background and experience working in Biomedical sciences and data science fields over the last 10 years. I weave healthcare and machine learning concepts together. Prior to NEU, I worked as a research scientist with biotech and personal care companies and helped holds patents on disease diagnosis and healthcare inventions funded by the government and institutions.
 
-I am actively contributing to open source projects on creating user-friendly R-shiny app and machine learning implementations. When I am not at work, I am a photographer with my own studio taking photos included but not limited to human-beings, driver-only road trips, etc. -->
+I am actively contributing to open source projects on R/Python tutorial, data visualization, and machine learning. When I am not at work, I am a photographer with my own studio taking photos included but not limited to human-beings, driver-only road trips, etc. -->
 
 <p>
 <span class="social-buttons">
