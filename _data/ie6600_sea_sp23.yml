@@ -246,10 +246,15 @@
 - date: 4/4
   title: >
     <strong>Additional Workshop</strong>
+  github: https://github.com/zhenyuanlu/ML-workshop-IE6600
+  materials: Deep learning, Goodfellow, Ian, et al. <a href="https://www.deeplearningbook.org/contents/mlp.html" target="_blank">Ch 6 MLP</a>
+    
 
 - date: 4/7
   title: >
     <strong>Additional Workshop</strong>
+  github: https://github.com/zhenyuanlu/ML-workshop-IE6600
+  materials: Deep learning, Goodfellow, Ian, et al. <a href="https://www.deeplearningbook.org/contents/mlp.html" target="_blank">Ch 6 MLP</a>
 
 - title: Project and Slides due 4/10 @ 11:59pm PT
 
