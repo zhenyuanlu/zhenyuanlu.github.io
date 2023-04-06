@@ -63,7 +63,7 @@ I am actively contributing to open source projects on R/Python tutorial, data vi
 </div>
 
 
-## Teachings
+## Teachings/Tutorials
 For sharing the joy of what I have learnt.
 
 <div class="columns" markdown="1">
