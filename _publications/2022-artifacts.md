@@ -1,10 +1,9 @@
 ---
-hide: true
-categories: projects
+categories: publications
 layout: distill
 title: Artifacts Analysis and Mitigation in NLP
 description: Multi-Scales Data Augmentation Approach with ELECTRA Pre-Trained Model.
-date: 2022-12-16
+year: 2022
 highlight: 0
 image: /artifacts/electra.jpg
 comments: false
@@ -16,9 +15,8 @@ authors:
 
 arxiv: "2212.08756"
 bibliography: 2022-12-16-artifacts.bib
-
+html: /projects/artifacts/
 pdf: https://arxiv.org/pdf/2212.08756.pdf
-
 toc: true
 ---
 

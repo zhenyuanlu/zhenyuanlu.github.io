@@ -1,5 +1,5 @@
 ---
-hide: false
+hide: true
 categories: publications
 title: Keyword Co-occurrence Network For Pain Research Literature Review
 description: INFORMS 2022, Indianapolis, IN

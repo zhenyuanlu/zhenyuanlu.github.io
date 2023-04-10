@@ -1,4 +1,5 @@
 ---
+hide: true
 categories: publications
 title: Point-of-care Diagnostic Cartridge Having A Programmable Fluidic Wicking Network
 description: Patent US20180214865A1

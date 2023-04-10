@@ -25,7 +25,9 @@
 
     <div class="links">
       {% if pub.html %}
-        <a href="{{ pub.html }}"><i class="fas fa-link" aria-hidden="true"></i> HTML</a>
+      <a href="{{ pub.html }}"><i class="fas fa-link" aria-hidden="true"></i> HTML</a>
+      {% elsif pub.workshop %}
+        <i class="fa-solid fa-person-chalkboard"> </i> {{ pub.workshop }}<p></p>
       {% endif %}
       {% if pub.demo %}
         <a href="{{ pub.demo }}"><i class="fas fa-play"></i> Demo</a>

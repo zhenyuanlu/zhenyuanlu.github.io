@@ -1,5 +1,5 @@
 ---
-hide: false
+hide: true
 categories: publications
 title: Thickener Blend Composition And Its Application
 description: Patent CN104069023B

@@ -17,7 +17,7 @@ Hi! I am on the market with expected graduation in Summer 2023. I am broadly int
 
 My PhD story is featured on the [University PhD Network](https://phd.northeastern.edu/profile/zhenyuan-lu/). I also have been spotlighted by the College of Engineering department for the [Student Success Story](https://coe.northeastern.edu/news/ready-for-the-high-demand-field-of-data-analytics/).
 
-*Difficulty means we have not understood – Pierre Deligne, Mathematician*
+
 
 <!-- Using background and experience working in Biomedical sciences and data science fields over the last 10 years. I weave healthcare and machine learning concepts together. Prior to NEU, I worked as a research scientist with biotech and personal care companies and helped holds patents on disease diagnosis and healthcare inventions funded by the government and institutions.
 
@@ -68,12 +68,9 @@ For sharing the joy of what I have learnt.
 
 <div class="columns" markdown="1">
 <div class="intro" markdown="1">
-- (WIP) Python Notebook
+- (WIP) Python Notebook, <a href="https://zhenyuanlu.com/r-comput-viz/" target="_blank">Data Visualization/Transformation Tutorial in R </a>
 
 <!-- - (WIP) Pytorch Cookbook for Deep learning -->
-
-- <a href="https://zhenyuanlu.com/r-comput-viz/" target="_blank">Data Visualization/Transformation Tutorial in R </a> for IE6600 Computation and Visualization for Analytics
-
 
 <!-- <img src='https://raw.githubusercontent.com/tidyverse/tidyverse/main/man/figures/logo.png' align="right" height="55.5"/>
 <img src='https://raw.githubusercontent.com/rstudio/shiny/main/man/figures/logo.png' align="right" height="55.5"/>
@@ -100,17 +97,26 @@ For sharing the joy of what I have learnt.
 For understanding the difficulty.
 
 <div class="featured-projects">
+{% assign pubyears = site.publications | group_by:"year" %}
+{% assign sorted_pubyears = pubyears | sort: 'name' | reverse %}
 
-{% assign pubyears = site.publications | group_by:"year"  %}
-{% assign sorted_pubyears = pubyears | reverse %}
-{% for year in sorted_pubyears %}
-<h3> {{ year.name }} </h3>
-  {% for pub in year.items %}
-  {% if pub.hide != true %}
-    {% include publications.html pub=pub %}
+{% for year_group in sorted_pubyears %}
+  {% assign year = year_group.name %}
+  {% assign publications = year_group.items %}
+  
+  {% assign display_year = false %}
+  {% for pub in publications %}
+    {% if pub.hide != true %}
+      {% if display_year == false %}
+        <h3>{{ year }}</h3>
+        {% assign display_year = true %}
+      {% endif %}
+      {% include publications.html pub=pub %}
     {% endif %}
   {% endfor %}
 {% endfor %}
+
+
 </div>
 
 <br/>
@@ -157,5 +163,4 @@ For involving the world.
     </picture>
     </div>
 </div>
-
 

@@ -1,5 +1,5 @@
 ---
-hide: false
+hide: true
 categories: publications
 title: Thickening Agent Composition And Applications In Cosmetics
 description: Patent CN104069024B
