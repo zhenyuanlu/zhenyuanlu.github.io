@@ -190,7 +190,7 @@ If you have difficulty to keep up with any materials or homework for personal re
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Seattle OG: Rishabh Chawla, Shucheng Zhang, Weihua Pan, Yufei Sun\
 :trophy:: (Co-Winner) <b><a href="https://teamshabushabu.shinyapps.io/shinyapp/" target="_blank">Drinking Water, Sanitation, and Hygiene (WASH) Analysis</a></b>\
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Shabu Shabu: Jessica Tanumihardja, Jiayue Han, Tomoki Kyotani, Xinan Wang\
-:medal_sports:: <b><a href="https://cristina-stone-pedraza.shinyapps.io/shinyapp/" target="_blank">Academic success visualization and analysis</a></b>\
+:medal_sports:: <b><a href="https://cristina-stone-pedraza.shinyapps.io/shinyapp/" target="_blank">Excessive Alcohol Use</a></b>\
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Team 2: Chenchen Jiang, Chih-Hsuan Su, Cristina Stone Pedraza, Yiwei Li\
 :medal_sports:: <b><a href="https://caroll-carolll.shinyapps.io/AirQualityBeijing/" target="_blank">Global Mortality</a></b>\
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Marsala: Hui Du, Jessica Anna James, Jianjian Liu
