@@ -180,33 +180,38 @@ If you have difficulty to keep up with any materials or homework for personal re
 
 ## <b>Hall of Fame</b>
 
-
 ### Top Projects
 :trophy:: *Best Project* :medal_sports:: *Honorable Mention*
 
 <b>Spring2023</b>
 
-:trophy:: TBA\
-:medal_sports:: TBA\
-:medal_sports:: TBA
+
+:trophy:: (Co-Winner) <b><a href="https://seattleogawm.shinyapps.io/shinyapp/" target="_blank">General Wealth Analysis by Country Across the World</a></b>\
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Seattle OG: Rishabh Chawla, Shucheng Zhang, Weihua Pan, Yufei Sun\
+:trophy:: (Co-Winner) <b><a href="https://teamshabushabu.shinyapps.io/shinyapp/" target="_blank">Drinking Water, Sanitation, and Hygiene (WASH) Analysis</a></b>\
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Shabu Shabu: Jessica Tanumihardja, Jiayue Han, Tomoki Kyotani, Xinan Wang\
+:medal_sports:: <b><a href="https://cristina-stone-pedraza.shinyapps.io/shinyapp/" target="_blank">Academic success visualization and analysis</a></b>\
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Team 2: Chenchen Jiang, Chih-Hsuan Su, Cristina Stone Pedraza, Yiwei Li\
+:medal_sports:: <b><a href="https://caroll-carolll.shinyapps.io/AirQualityBeijing/" target="_blank">Global Mortality</a></b>\
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Marsala: Hui Du, Jessica Anna James, Jianjian Liu
 
 
 <b>Fall2022</b>
 
-:trophy:: <b><a>COVID-19 Analysis</a></b>\
-Bananas: I-Hsuan Huang, Yiming Wang, Yen-Fong Li, Wenzheng Liao\
+:trophy:: <b><a href="https://jfonli.shinyapps.io/COVID-19_Analysis/" target="_blank">COVID-19 Analysis</a></b>\
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Bananas: I-Hsuan Huang, Yiming Wang, Yen-Fong Li, Wenzheng Liao\
 :medal_sports:: <b><a>Academic success visualization and analysis</a></b>\
-TaylorExpansion: Farnaz Mohseni, Maryam Kian, David Suero Cobos, Sashankh Addanki, Yu Swe Zin Aung\
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; TaylorExpansion: Farnaz Mohseni, Maryam Kian, David Suero Cobos, Sashankh Addanki, Yu Swe Zin Aung\
 :medal_sports:: <b><a>Washington Electric Vehicle Data Visualization and Analysis</a></b>\
-KohenKappa: Gen Li, Zhichun Li, Fante Meng, Lingyun Ding
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; KohenKappa: Gen Li, Zhichun Li, Fante Meng, Lingyun Ding
 
 <br>
 
 ### Top Contributors 
 <b>Spring2023</b>\
-:1st_place_medal:: TBA \
-:1st_place_medal:: TBA \
-:1st_place_medal:: TBA; TBA; TBA
+:1st_place_medal:: Tomoki Kyotani \
+:1st_place_medal:: Jessica Tanumihardja \
+:1st_place_medal:: Weimeng Duan; Xin shen; Jessica James
 
 
 <b>Fall2022</b>\
