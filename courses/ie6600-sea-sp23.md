@@ -181,7 +181,7 @@ If you have difficulty to keep up with any materials or homework for personal re
 ## <b>Hall of Fame</b>
 
 ### Top Projects
-:trophy:: *Best Project* :medal_sports:: *Honorable Mention*
+:trophy:: *Best Project* :medal_sports:: *Honorable Mention (awarded equally)* 
 
 <b>Spring2023</b>
 
