@@ -66,15 +66,14 @@ For sharing the joy of what I have learnt.
 
 <div class="columns" markdown="1">
 <div class="intro" markdown="1">
-- (WIP) Python Notebook from Zero to Advanced, 
-- <a href="https://zhenyuanlu.com/r-comput-viz/" target="_blank">Data Visualization/Transformation Tutorial in R </a>
-
+- (WIP) Python Notebook from Zero to Advanced 
+<!-- <img src='https://upload.wikimedia.org/wikipedia/commons/thumb/1/1d/PyCharm_Icon.svg/512px-PyCharm_Icon.svg.png?20200803065702' align="center" height="20"/> -->
+<!-- <img src='https://raw.githubusercontent.com/numpy/numpy/17bae7c3f53d757144403ae09897e32f91a31d74/branding/logo/logomark/numpylogoicon.svg' align="center" height="20"/> -->
+- <a href="https://zhenyuanlu.com/r-comput-viz/" target="_blank">Data Visualization/Transformation Tutorial in R </a> 
+<img src='https://raw.githubusercontent.com/tidyverse/tidyverse/main/man/figures/logo.png' align="center" height="20"/>
+<img src='https://raw.githubusercontent.com/rstudio/shiny/main/man/figures/logo.png' align="center" height="20"/>
+<img src='https://raw.githubusercontent.com/rstudio/rmarkdown/main/man/figures/logo.png' align="center" height="20"/>
 <!-- - (WIP) Pytorch Cookbook for Deep learning -->
-
-<!-- <img src='https://raw.githubusercontent.com/tidyverse/tidyverse/main/man/figures/logo.png' align="right" height="55.5"/>
-<img src='https://raw.githubusercontent.com/rstudio/shiny/main/man/figures/logo.png' align="right" height="55.5"/>
-<img src='https://raw.githubusercontent.com/rstudio/rmarkdown/main/man/figures/logo.png' align="right" height="55.5"/> -->
-
 - Instructor, IE6600 Computation and Visualization for Analytics
   - [Spring 23]({{ "/courses/ie6600-sea-sp23/" | relative_url}}), [Fall 22]({{ "/courses/ie6600-vbc-fa22/" | relative_url}}), [Summer 22]({{ "/courses/ie6600-bos-su22/" | relative_url}}), [Spring 22]({{ "/courses/ie6600-sea-sp22/" | relative_url}}), [Fall 21]({{ "/courses/ie6600-bos-fa21/" | relative_url}}), [Summer 21]({{ "/courses/ie6600-bos-sm21/" | relative_url}}), [Spring 21]({{ "/courses/ie6600-sea-sp21/" | relative_url}}), [Fall 20]({{ "/courses/ie6600-bos-fa20/" | relative_url}}), Spring 20, Spring 19
 <!-- <img src='https://torch.mlverse.org/css/images/hex/torch.png' align="right" height="55.5"/>
