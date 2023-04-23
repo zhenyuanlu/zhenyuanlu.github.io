@@ -61,19 +61,24 @@ I also actively contribute to open-source projects, focusing on R/Python tutoria
 </div>
 
 
-## Teachings/Tutorials
+## Teachings/Tutorials 
+
 For sharing the joy of what I have learnt.
 
 <div class="columns" markdown="1">
 <div class="intro" markdown="1">
-- (WIP) Python Notebook from Zero to Advanced 
+
+
+- Tutorials/Books
+  - (WIP) Python Notebook from Zero to Advanced 
 <!-- <img src='https://upload.wikimedia.org/wikipedia/commons/thumb/1/1d/PyCharm_Icon.svg/512px-PyCharm_Icon.svg.png?20200803065702' align="center" height="20"/> -->
 <!-- <img src='https://raw.githubusercontent.com/numpy/numpy/17bae7c3f53d757144403ae09897e32f91a31d74/branding/logo/logomark/numpylogoicon.svg' align="center" height="20"/> -->
-- <a href="https://zhenyuanlu.com/r-comput-viz/" target="_blank">Data Visualization/Transformation Tutorial in R </a> 
-<img src='https://raw.githubusercontent.com/tidyverse/tidyverse/main/man/figures/logo.png' align="center" height="20"/>
-<img src='https://raw.githubusercontent.com/rstudio/shiny/main/man/figures/logo.png' align="center" height="20"/>
-<img src='https://raw.githubusercontent.com/rstudio/rmarkdown/main/man/figures/logo.png' align="center" height="20"/>
+  - <a href="https://zhenyuanlu.com/r-comput-viz/" target="_blank">Data Visualization/Transformation Tutorial in R </a> 
+  <img src='https://raw.githubusercontent.com/tidyverse/tidyverse/main/man/figures/logo.png' align="center" height="20"/>
+  <img src='https://raw.githubusercontent.com/rstudio/shiny/main/man/figures/logo.png' align="center" height="20"/>
+  <img src='https://raw.githubusercontent.com/rstudio/rmarkdown/main/man/figures/logo.png' align="center" height="20"/>
 <!-- - (WIP) Pytorch Cookbook for Deep learning -->
+- Instructor, IE5976 Python for Data Science/Machine Learning
 - Instructor, IE6600 Computation and Visualization for Analytics
   - [Spring 23]({{ "/courses/ie6600-sea-sp23/" | relative_url}}), [Fall 22]({{ "/courses/ie6600-vbc-fa22/" | relative_url}}), [Summer 22]({{ "/courses/ie6600-bos-su22/" | relative_url}}), [Spring 22]({{ "/courses/ie6600-sea-sp22/" | relative_url}}), [Fall 21]({{ "/courses/ie6600-bos-fa21/" | relative_url}}), [Summer 21]({{ "/courses/ie6600-bos-sm21/" | relative_url}}), [Spring 21]({{ "/courses/ie6600-sea-sp21/" | relative_url}}), [Fall 20]({{ "/courses/ie6600-bos-fa20/" | relative_url}}), Spring 20, Spring 19
 <!-- <img src='https://torch.mlverse.org/css/images/hex/torch.png' align="right" height="55.5"/>
@@ -81,14 +86,13 @@ For sharing the joy of what I have learnt.
 <!-- <img src='https://keras.io/img/logo.png' align="right" height="50.5"/> -->
 - Instructor, IE7275 Data Mining in Engineering
   - [Summer 20]({{ "/courses/ie7275-bos-sm20/" | relative_url }})
-
 - Graduate Instructor Assistant, BIO1421 Modern Biology
   - Fall 2014-Spring 2017, Course Supervisor <a href="https://www.bio.txst.edu/faculty-staff/david-lemke.html" target="_blank">Prof. David E. Lemke</a>
 
 </div>
 </div>
 
-<br/>
+<p style="line-height:25px;margin:0px;"><br></p>
 
 ## Selected Publications
 For understanding the difficulty.
@@ -116,8 +120,7 @@ For understanding the difficulty.
 
 </div>
 
-<br/>
-<br/>
+<p style="line-height:25px;margin:0px;"><br></p>
 
 
 ## Featured Projects
@@ -138,16 +141,13 @@ For work, research, or fun.
 {% endfor %}
 </div>
 
-<br/>
-<br/>
-
-
+<p style="line-height:25px;margin:0px;"><br></p>
 
 
 ## Field Researches and Teachings at Texas <img src='/assets/img/tx.png' width="20" height="20" alt='TXmap'/>
 For involving the world.
 
-<br/>
+<p style="line-height:20px;margin:0px;"><br></p>
 
 
 <div class="columns">
