@@ -123,7 +123,7 @@ For understanding the difficulty.
 <p style="line-height:25px;margin:0px;"><br></p>
 
 
-## Featured Projects
+## Featured Projects/Blogs
 For work, research, or fun.
 
 <div class="featured-projects">
