@@ -6,7 +6,6 @@ group :jekyll_plugins do
     gem 'jekyll-email-protect'
     gem 'kramdown', '>= 2.3.1'
     gem 'addressable', '>= 2.8.0'
-    gem "nokogiri", ">= 1.14.3"
     gem 'wdm', '>= 0.1.0'
     gem 'webrick', '~> 1.7'
     gem "commonmarker", ">= 0.23.9"
@@ -14,4 +13,5 @@ group :jekyll_plugins do
     gem 'jekyll-sitemap'
     gem 'jemoji'
     gem "activesupport", ">= 6.1.7.3"
+    gem "nokogiri", ">= 1.14.3"
 end
