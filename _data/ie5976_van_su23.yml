@@ -1,0 +1,80 @@
+- title: "Module 1: Introduction"
+
+- date: 5/10
+  title: >
+    <strong>Data Types;</strong> <br>
+    <strong>Control and Functions;</strong> <br>
+    <strong>Advanced Formatting</strong>
+  annotated:
+  video:
+  notes:
+  materials:
+    - <b>PyNote</b> <a href="https://zhenyuanlu.com/python-notebook/02_data_types/" target="_blank">02 Data Types</a>
+    - <b>PyNote</b> <a href="https://zhenyuanlu.com/python-notebook/03_control_functions/" target="_blank">03 Control and Functions</a>
+    - <b>PyNote</b> <a href="https://zhenyuanlu.com/python-notebook/04_advanced_formatting/" target="_blank">04 Advanced Formatting</a>
+  assignments:
+
+
+- date: 5/17
+  title: >
+    TBD
+  annotated:
+  video:
+  notes:
+  materials:
+    - TBD
+  assignments:
+
+- date: 5/24
+  title: >
+    TBD
+  annotated:
+  video:
+  notes:
+  materials:
+    - TBD
+  assignments:
+
+- date: 5/31
+  title: >
+    TBD
+  annotated:
+  video:
+  notes:
+  materials:
+    - TBD
+  assignments:
+
+- date: 6/7
+  title: >
+    TBD
+  annotated:
+  video:
+  notes:
+  materials:
+    - TBD
+  assignments:
+
+- date: 6/14
+  title: >
+    TBD
+  annotated:
+  video:
+  notes:
+  materials:
+    - TBD
+  assignments:
+
+- date: 6/21
+  title: >
+    TBD
+  annotated:
+  video:
+  notes:
+  materials:
+    - TBD
+  assignments:
+
+
+- title: 6/28 - Final Exam Week - No Class
+

@@ -12,8 +12,7 @@ image: staff/z.jpg
 
 ## Zhenyuan Lu
 
-Hi! I am on the market with expected graduation in Summer 2023. I am broadly interested in machine learning, data science/mining, and SDE positions. Currently, I am a data science instructor and PhD candidate at [Northeastern University](https://www.northeastern.edu/) work with [Prof. Sagar Kamarthi](https://coe.northeastern.edu/people/kamarthi-sagar/). My PhD story is featured on the [University PhD Network](https://phd.northeastern.edu/profile/zhenyuan-lu/). I also have been spotlighted by the College of Engineering department for the [Student Success Story](https://coe.northeastern.edu/news/ready-for-the-high-demand-field-of-data-analytics/).
-
+Hi! I am a data science instructor and PhD candidate at [Northeastern University](https://www.northeastern.edu/) work with [Prof. Sagar Kamarthi](https://coe.northeastern.edu/people/kamarthi-sagar/). My research interests are deep learning, representation learning, healthcare and sequential Data. My PhD story is featured on the [University PhD Network](https://phd.northeastern.edu/profile/zhenyuan-lu/). I also have been spotlighted by the College of Engineering department for the [Student Success Story](https://coe.northeastern.edu/news/ready-for-the-high-demand-field-of-data-analytics/).
 
 <!-- In order to prepare graduate students for their work on research projects, and future careers, I also develop and instruct graduate-level courses in [IE7275 data mining]({{ "/courses/ie7275-bos-sm20/" | relative_url }}) and [IE6600 Computation and Visualization for Analytics]({{ "/courses/ie6600-bos-fa20/" | relative_url }}). -->
 <!-- Research interests: Deep Learning, Representation Learning, Physiological Signals. -->
@@ -61,6 +60,7 @@ I also actively contribute to open-source projects, focusing on R/Python tutoria
 </div>
 
 
+
 ## Teachings/Tutorials 
 
 For sharing the joy of what I have learnt.
@@ -68,9 +68,8 @@ For sharing the joy of what I have learnt.
 <div class="columns" markdown="1">
 <div class="intro" markdown="1">
 
-
 - Tutorials/Books
-  - (WIP) Python Notebook from Zero to Advanced 
+  - (WIP) <a href = "https://zhenyuanlu.com/python-notebook/">Python Notebook from Zero to Advanced </a>
 <!-- <img src='https://upload.wikimedia.org/wikipedia/commons/thumb/1/1d/PyCharm_Icon.svg/512px-PyCharm_Icon.svg.png?20200803065702' align="center" height="20"/> -->
 <!-- <img src='https://raw.githubusercontent.com/numpy/numpy/17bae7c3f53d757144403ae09897e32f91a31d74/branding/logo/logomark/numpylogoicon.svg' align="center" height="20"/> -->
   - <a href="https://zhenyuanlu.com/r-comput-viz/" target="_blank">Data Visualization/Transformation Tutorial in R </a> 
@@ -78,16 +77,18 @@ For sharing the joy of what I have learnt.
   <img src='https://raw.githubusercontent.com/rstudio/shiny/main/man/figures/logo.png' align="center" height="20"/>
   <img src='https://raw.githubusercontent.com/rstudio/rmarkdown/main/man/figures/logo.png' align="center" height="20"/>
 <!-- - (WIP) Pytorch Cookbook for Deep learning -->
-- Instructor, IE5976 Python for Data Science/Machine Learning
+- Instructor, IE5976 Python for OOP and Applied Machine Learning: [Summer 23]({{ "/courses/ie5976-van-su23/" | relative_url}})
 - Instructor, IE6600 Computation and Visualization for Analytics
   - [Spring 23]({{ "/courses/ie6600-sea-sp23/" | relative_url}}), [Fall 22]({{ "/courses/ie6600-vbc-fa22/" | relative_url}}), [Summer 22]({{ "/courses/ie6600-bos-su22/" | relative_url}}), [Spring 22]({{ "/courses/ie6600-sea-sp22/" | relative_url}}), [Fall 21]({{ "/courses/ie6600-bos-fa21/" | relative_url}}), [Summer 21]({{ "/courses/ie6600-bos-sm21/" | relative_url}}), [Spring 21]({{ "/courses/ie6600-sea-sp21/" | relative_url}}), [Fall 20]({{ "/courses/ie6600-bos-fa20/" | relative_url}}), Spring 20, Spring 19
 <!-- <img src='https://torch.mlverse.org/css/images/hex/torch.png' align="right" height="55.5"/>
 <img src='https://torch.mlverse.org/css/images/hex/torchvision.png' align="right" height="55.5"/> -->
 <!-- <img src='https://keras.io/img/logo.png' align="right" height="50.5"/> -->
-- Instructor, IE7275 Data Mining in Engineering
-  - [Summer 20]({{ "/courses/ie7275-bos-sm20/" | relative_url }})
+- Instructor, IE7275 Data Mining in Engineering: [Summer 20]({{ "/courses/ie7275-bos-sm20/" | relative_url }})
 - Graduate Instructor Assistant, BIO1421 Modern Biology
   - Fall 2014-Spring 2017, Course Supervisor <a href="https://www.bio.txst.edu/faculty-staff/david-lemke.html" target="_blank">Prof. David E. Lemke</a>
+
+<!-- - <b>I received numerous emails from my students asking about what constitutes a good graduate program. I'd like to share with you some insightful words from [Dr. Yiqing Xu](https://yiqingxu.org/) of Stanford University:</b>
+  - <i>"The criteria for evaluating a good graduate program is how much time is spent on the continuous accumulation of knowledge and skills (during which the learning curve can be linear or even exponential) and how much time is spent on simple repetitive tasks that do not lead to the improvement of knowledge and skills."</i> -->
 
 </div>
 </div>
