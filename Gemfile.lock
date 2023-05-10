@@ -261,7 +261,6 @@ PLATFORMS
   x64-mingw32
 
 DEPENDENCIES
-  activesupport (>= 6.1.7.3)
   addressable (>= 2.8.0)
   bibtex-ruby (>= 5.1.0)
   commonmarker (>= 0.23.9)
