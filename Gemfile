@@ -12,6 +12,5 @@ group :jekyll_plugins do
     gem 'jekyll-toc'
     gem 'jekyll-sitemap'
     gem 'jemoji'
-    gem "activesupport", ">= 6.1.7.3"
     gem "nokogiri", ">= 1.14.3"
 end
