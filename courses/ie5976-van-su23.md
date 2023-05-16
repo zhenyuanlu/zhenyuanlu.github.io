@@ -74,4 +74,4 @@ The course notebook is based on the following textbooks:
 ***
 
 
-*This course does not have any quizzes, assignments or exams.*
+*This course does not have any quizzes, and exams.*
