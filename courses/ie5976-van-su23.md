@@ -14,7 +14,7 @@ IE5976 is an individual instruction designed for those with little or no Python 
 ***
 
 
-- **Class:** Wednesday, 09:00 AM - 12:00 PM (PT) 
+- **Class:** Wednesday, 08:00 AM - 10:00 PM (PT) 
 - **Office hour:** During the class meeting time
 - **Location:** RM 1425, West Georgia or via Zoom
 - **Dates:** 05/08/2023 – 06/21/2023
