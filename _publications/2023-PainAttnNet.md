@@ -25,6 +25,7 @@ authors:
 arxiv: "2303.06845"
 pdf: https://arxiv.org/pdf/2303.06845.pdf
 code: https://github.com/zhenyuanlu/PainAttnNet
+ar5iv: https://ar5iv.labs.arxiv.org/html/2303.06845
 
 toc: false
 ---
