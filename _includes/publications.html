@@ -33,13 +33,10 @@
         <a href="{{ pub.demo }}"><i class="fas fa-play"></i> Demo</a>
       {% endif %}
       {% if pub.code %}
-        <a href="{{ pub.code }}"><i class="fab fa-github" aria-hidden="true"></i> Code</a>
+        <a href="{{ pub.code }}"><i class="fab fa-github" aria-hidden="true"></i> Code </a>
       {% endif %}
       {% if pub.pdf %}
-        <a href="{{ pub.pdf }}"><i class="far fa-file-pdf"></i> PDF</a>
-      {% endif %}
-      {% if ar5iv %}
-        <a href="{{ pub.ar5iv }}"></a><i class="fa-brands fa-html5">html5</i>
+        <a href="{{ pub.pdf }}"><i class="far fa-file-pdf"></i> PDF </a>
       {% endif %}
       {% if pub.patent %}
         <a href="{{ pub.patent }}"><i class="fas fa-cogs" aria-hidden="true"></i> Patent </a>
@@ -67,6 +64,10 @@
       {% if pub.details %}
         <a href="{{ pub.details }}">
           <i class="fas fa-newspaper" aria-hidden="true"></i> Details
+        </a>
+      {% endif %}
+      {% if pub.html5 %}
+        <a href="{{ pub.html5 }}"><i class="fa-brands fa-html5"></i> html5
         </a>
       {% endif %}
     </div>
