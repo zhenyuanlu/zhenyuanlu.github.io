@@ -33,7 +33,8 @@
   video:
   notes:
   materials:
-    - TBD
+    - <b>PyNote</b> <a href="https://zhenyuanlu.com/python-notebook/05_loops_comprehensions/" target="_blank">05 Loops and Comprehensions</a>
+    - <b>PyNote</b> <a href="" target="_blank">06 Iterable, Iterator, Generator</a>
   assignments:
 
 - date: 5/31
