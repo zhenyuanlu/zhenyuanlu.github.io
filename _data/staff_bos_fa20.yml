@@ -28,13 +28,6 @@ instructor:
       image: staff/jodi.jpg
 
 guest:
-    - name: Nan Wang
-      title: Guest Lecturer
-      email:
-      url:
-      expertise: Visualization Design
-      title2: Design & Innovation Manager
-      image: staff/nanW.jpg
 
     - name: Jinhui Zhao
       title: Guest Lecturer
