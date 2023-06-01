@@ -1,7 +1,7 @@
 ---
 layout: course
 categories: courses
-maintitle: <b>P</b>ython for <b>OO</b>P and <b>A</b>pplied <b>M</b>achine <b>L</b>earning
+maintitle: <b>P</b>ython for <b>O</b>bject-<b>O</b>riented <b>P</b>rogramming
 class: course
 title: IE5976 • Summer 2023 • Northeastern University • Vancouver
 image: neu.png
