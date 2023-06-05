@@ -39,7 +39,8 @@
 
 - date: 5/31
   title: >
-    <strong>Object-Oriented Programming I</strong>
+    <strong>Object-Oriented Programming I:</strong> <br>
+    Classes and Instances; Class and Instance Variables; Classmethods and Staticmethods
   annotated:
   video:
   notes:
@@ -49,33 +50,35 @@
 
 - date: 6/7
   title: >
-    <strong>Object-Oriented Programming II</strong>
+    <strong>Object-Oriented Programming II:</strong> <br>
+    Inheritance; Special Methods
   annotated:
   video:
   notes:
   materials:
     - <b>PyNote</b> <a href="https://zhenyuanlu.com/python-notebook/07_oop/" target="_blank">06 Object-Oriented Programming</a>
-    - TBD
   assignments:
 
 - date: 6/14
   title: >
-    TBD
+    <strong>Object-Oriented Programming III:</strong> <br>
+    Decorators; Getters, Setters, and Deleters
   annotated:
   video:
   notes:
   materials:
-    - TBD
+    - <b>PyNote</b> <a href="https://zhenyuanlu.com/python-notebook/07_oop/" target="_blank">06 Object-Oriented Programming</a>
   assignments:
 
 - date: 6/21
   title: >
-    TBD
+    <strong>Object-Oriented Programming IV;</strong> <br>
+    Error Handling and Exceptions
   annotated:
   video:
   notes:
   materials:
-    - TBD
+    - <b>PyNote</b> <a href="https://zhenyuanlu.com/python-notebook/07_oop/" target="_blank">06 Object-Oriented Programming</a>
   assignments:
 
 
