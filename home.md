@@ -12,7 +12,7 @@ image: staff/z.jpg
 
 ## Zhenyuan Lu
 
-Hi! I am a data science instructor and PhD candidate at [Northeastern University](https://www.northeastern.edu/). My research interests are deep learning, representation learning, self-supervised learning, biomedical sensory data, healthcare data and sequential Data. My PhD story is featured on the [University PhD Network](https://phd.northeastern.edu/profile/zhenyuan-lu/). I also have been spotlighted by the College of Engineering department for the [Student Success Story](https://coe.northeastern.edu/news/ready-for-the-high-demand-field-of-data-analytics/).
+Hi! I am a data science instructor and PhD candidate at [Northeastern University](https://www.northeastern.edu/) work with Prof. [Sagar Kamarthi](https://coe.northeastern.edu/people/kamarthi-sagar/). My research interests are deep learning, representation learning, self-supervised learning, biomedical sensory data, healthcare data and sequential Data. My PhD story is featured on the [University PhD Network](https://phd.northeastern.edu/profile/zhenyuan-lu/). I also have been spotlighted by the College of Engineering department for the [Student Success Story](https://coe.northeastern.edu/news/ready-for-the-high-demand-field-of-data-analytics/).
 
 <!-- In order to prepare graduate students for their work on research projects, and future careers, I also develop and instruct graduate-level courses in [IE7275 data mining]({{ "/courses/ie7275-bos-sm20/" | relative_url }}) and [IE6600 Computation and Visualization for Analytics]({{ "/courses/ie6600-bos-fa20/" | relative_url }}). -->
 <!-- Research interests: Deep Learning, Representation Learning, Physiological Signals. -->
