@@ -72,13 +72,12 @@
 
 - date: 6/21
   title: >
-    <strong>Object-Oriented Programming IV;</strong> <br>
-    Error Handling and Exceptions
+    <strong>Error Handling and Exceptions;</strong>
   annotated:
   video:
   notes:
   materials:
-    - <b>PyNote</b> <a href="https://zhenyuanlu.com/python-notebook/07_oop/" target="_blank">07 Object-Oriented Programming</a>
+    - <b>PyNote</b> <a href="https://zhenyuanlu.com/python-notebook/08_errors/" target="_blank">08 Error Handling</a>
   assignments:
 
 
