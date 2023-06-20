@@ -1,6 +1,6 @@
 ---
 categories: publications
-title: Artifacts Analysis and Mitigation in NLP
+title: Artifacts Analysis and Mitigation in Natural Language Processing
 description: Multi-Scales Data Augmentation Approach with ELECTRA Pre-Trained Model.
 year: 2022
 image: /artifacts/electra.jpg
