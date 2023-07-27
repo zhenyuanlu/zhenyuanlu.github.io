@@ -7,7 +7,7 @@ group :jekyll_plugins do
     gem 'kramdown', '>= 2.3.1'
     gem 'addressable', '>= 2.8.0'
     gem 'wdm', '>= 0.1.0'
-    gem 'webrick', '~> 1.7'
+    gem "webrick", ">= 2.2.8"
     gem "commonmarker", ">= 0.23.9"
     gem 'jekyll-toc'
     gem 'jekyll-sitemap'
