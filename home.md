@@ -70,7 +70,7 @@ For sharing the joy of what I have learnt.
 
 - Tutorials/Books
 <!-- - (WIP) Pytorch Cookbook for Deep learning --> 
-  - (WIP) <a href = "https://zhenyuanlu.com/python-notebook/"> Python Notebook from Zero to Advanced </a>
+  - <a href = "https://zhenyuanlu.com/python-notebook/"> Python Notebook from Zero to Advanced </a>
 <img src='https://upload.wikimedia.org/wikipedia/commons/thumb/1/1d/PyCharm_Icon.svg/512px-PyCharm_Icon.svg.png?20200803065702' align="center" height="20"/>
 <img src='https://raw.githubusercontent.com/numpy/numpy/17bae7c3f53d757144403ae09897e32f91a31d74/branding/logo/logomark/numpylogoicon.svg' align="center" height="20"/>
   - <a href="https://zhenyuanlu.com/r-comput-viz/" target="_blank">Data Visualization/Transformation Tutorial in R </a> 
