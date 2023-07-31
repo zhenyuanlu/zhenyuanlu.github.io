@@ -87,8 +87,7 @@ For sharing the joy of what I have learnt.
 - Graduate Instructor Assistant, BIO1421 Modern Biology
   - Fall 2014-Spring 2017, Course Supervisor <a href="https://www.bio.txst.edu/faculty-staff/david-lemke.html" target="_blank">Prof. David E. Lemke</a>
 
-<!-- - <b>I received numerous emails from my students asking about what constitutes a good graduate program. I'd like to share with you some insightful words from [Dr. Yiqing Xu](https://yiqingxu.org/) of Stanford University:</b>
-  - <i>"The criteria for evaluating a good graduate program is how much time is spent on the continuous accumulation of knowledge and skills (during which the learning curve can be linear or even exponential) and how much time is spent on simple repetitive tasks that do not lead to the improvement of knowledge and skills."</i> -->
+
 
 </div>
 </div>
@@ -162,4 +161,11 @@ For involving the world.
     </picture>
     </div>
 </div>
+
+<p style="line-height:25px;margin:0px;"><br></p>
+
+## What is a Good Graduate Program?
+
+<b>I received numerous emails from my students asking about what constitutes a good graduate program. I'd like to share with you some insightful words from [Dr. Yiqing Xu](https://yiqingxu.org/) of Stanford University</b> (I translated it into English from Chinese):
+  - <i>"The criteria for evaluating a good graduate program is how much time is spent on the continuous accumulation of knowledge and skills (during which the learning curve can be linear or even exponential) and how much time is spent on simple repetitive tasks that do not lead to the improvement of knowledge and skills."</i>
 
