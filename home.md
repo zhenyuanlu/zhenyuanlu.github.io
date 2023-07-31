@@ -166,6 +166,6 @@ For involving the world.
 
 ## What is a Good Graduate Program?
 
-<b>I received numerous emails from my students asking about what constitutes a good graduate program. I'd like to share with you some insightful words from [Dr. Yiqing Xu](https://yiqingxu.org/) of Stanford University</b> (I translated it into English from Chinese):
+<b>I received numerous emails from my students asking about what constitutes a good graduate program. I'd like to share with you some insightful words from <a href="https://yiqingxu.org/" target="_blank"> Dr. Yiqing Xu</a> of Stanford University</b> (I translated it into English from Chinese):
   - <i>"The criteria for evaluating a good graduate program is how much time is spent on the continuous accumulation of knowledge and skills (during which the learning curve can be linear or even exponential) and how much time is spent on simple repetitive tasks that do not lead to the improvement of knowledge and skills."</i>
 
