@@ -14,6 +14,10 @@ image: staff/z.jpg
 
 Hi! I am a machine learning PhD candidate and data science instructor at [Northeastern University](https://www.northeastern.edu/) working with [Prof. Sagar Kamarthi](https://coe.northeastern.edu/people/kamarthi-sagar/). My research interests are deep learning, representation learning, self-supervised learning, signal Processing, biomedical sensory data, healthcare data and sequential Data. My PhD story is featured on the [University PhD Network](https://phd.northeastern.edu/profile/zhenyuan-lu/). I also have been spotlighted by the College of Engineering department for the [Student Success Story](https://coe.northeastern.edu/news/ready-for-the-high-demand-field-of-data-analytics/).
 
+I also actively contribute to open-source projects, focusing on R/Python tutorials, data viz, and machine learning. 
+
+Outside of work, I am a passionate photographer with my own studio, capturing a diverse range of subjects including portrait, scenic road trips, etc.
+
 <!-- In order to prepare graduate students for their work on research projects, and future careers, I also develop and instruct graduate-level courses in [IE7275 data mining]({{ "/courses/ie7275-bos-sm20/" | relative_url }}) and [IE6600 Computation and Visualization for Analytics]({{ "/courses/ie6600-bos-fa20/" | relative_url }}). -->
 <!-- Research interests: Deep Learning, Representation Learning, Physiological Signals. -->
 
