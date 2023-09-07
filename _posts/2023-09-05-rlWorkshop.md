@@ -23,9 +23,14 @@ workshop: Talks, School of Medicine, University of Washington, Seattle
 toc: false
 ---
 
-# Abstract 
 
+## Talks, School of Medicine, University of Washington, Seattle
+
+### Intro to AI, and Representation Learning
+<p>
 This presentation dive into the application of AI, progressing from conventional machine learning techniques to the more advanced representation learning. As the intricate nature of biological data demands sophisticated analytical tools, the gist points of this talk illustrating how representation learning can be adeptly applied to RNA-seq analysis, offering a glimpse into the potential of AI in unraveling complex biological narratives.
+</p>
+
 
 ***
 
