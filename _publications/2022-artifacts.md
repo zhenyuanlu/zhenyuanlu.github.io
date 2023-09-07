@@ -11,9 +11,9 @@ authors:
     affiliations: 
       name: 
 
-arxiv: "2212.08756"
-bibliography: 2022-12-16-artifacts.bib
-html: /projects/artifacts/
-pdf: https://arxiv.org/pdf/2212.08756.pdf
+# arxiv: "2212.08756"
+# bibliography: 2022-12-16-artifacts.bib
+# html: /projects/artifacts/
+# pdf: https://arxiv.org/pdf/2212.08756.pdf
 toc: true
 ---
