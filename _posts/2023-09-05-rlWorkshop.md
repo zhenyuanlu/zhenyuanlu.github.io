@@ -1,7 +1,7 @@
 ---
 categories: projects
 layout: distill
-title: Intro to Representation Learning
+title: Intro to Self-supervised Learning
 description:
 date: 2023-09-05
 highlight: 0
@@ -14,21 +14,18 @@ authors:
       name: Northeastern University
 
 
-workshop: Talks, School of Medicine, University of Washington, Seattle
+workshop: Talk, School of Medicine, University of Washington, Seattle
 
-# slides: /assets/projects/informs/zhenyuan_dataViz.pdf
-# github: https://github.com/zhenyuanlu/Data-Visualization-In-A-Nutshell/blob/main/zhenyuan_dataViz.pdf
 
-# bibliography: 2021-01-08-tufts.bib
 toc: false
 ---
 
 
-## Intro to AI, and Representation Learning
+## Intro to Self-supervised Learning
 
 ### Talk, School of Medicine, University of Washington, Seattle. Sep 5th, 2023
 <p>
-This presentation dive into the application of AI, progressing from conventional machine learning techniques to the more advanced representation learning. As the intricate nature of biological data demands sophisticated analytical tools, the gist points of this talk illustrating how representation learning can be adeptly applied to RNA-seq analysis, offering a glimpse into the potential of AI in unraveling complex biological narratives.
+This presentation dive into applications of AI, progressing from modern machine learning techniques to more specific topic self-supervised learning. As the intricate nature of biological data demands sophisticated analytical tools, the gist points of this talk illustrating how self-supervised learning can be adeptly applied to RNA-seq analysis, offering a glimpse into the potential of AI in unraveling complex biological narratives.
 </p>
 
 
