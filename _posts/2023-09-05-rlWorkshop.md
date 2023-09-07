@@ -22,6 +22,14 @@ workshop: Talks, School of Medicine, University of Washington, Seattle
 # bibliography: 2021-01-08-tufts.bib
 toc: false
 ---
+
+# Abstract 
+
+This presentation dive into the application of AI, progressing from conventional machine learning techniques to the more advanced representation learning. As the intricate nature of biological data demands sophisticated analytical tools, the gist points of this talk illustrating how representation learning can be adeptly applied to RNA-seq analysis, offering a glimpse into the potential of AI in unraveling complex biological narratives.
+
+***
+
+
 <div class="l-page">
 <center>
   <figure style="max-width:100%;">
@@ -33,4 +41,5 @@ toc: false
 </center>
 </div>
 
-***
+
+
