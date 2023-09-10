@@ -25,49 +25,49 @@
 
     <div class="links">
       {% if pub.html %}
-      <a href="{{ pub.html }}"><i class="fas fa-link" aria-hidden="true"></i> HTML</a>
+      <a href="{{ pub.html }}" target="_blank"><i class="fas fa-link" aria-hidden="true"></i> HTML</a>
       {% elsif pub.workshop %}
         <i class="fa-solid fa-person-chalkboard"> </i> {{ pub.workshop }}<p></p>
       {% endif %}
       {% if pub.demo %}
-        <a href="{{ pub.demo }}"><i class="fas fa-play"></i> Demo</a>
+        <a href="{{ pub.demo }}" target="_blank"><i class="fas fa-play"></i> Demo</a>
       {% endif %}
       {% if pub.code %}
-        <a href="{{ pub.code }}"><i class="fab fa-github" aria-hidden="true"></i> Code </a>
+        <a href="{{ pub.code }}" target="_blank"><i class="fab fa-github" aria-hidden="true"></i> Code </a>
       {% endif %}
       {% if pub.pdf %}
-        <a href="{{ pub.pdf }}"><i class="far fa-file-pdf"></i> PDF </a>
+        <a href="{{ pub.pdf }}" target="_blank"><i class="far fa-file-pdf"></i> PDF </a>
       {% endif %}
       {% if pub.patent %}
-        <a href="{{ pub.patent }}"><i class="fas fa-cogs" aria-hidden="true"></i> Patent </a>
+        <a href="{{ pub.patent }}" target="_blank"><i class="fas fa-cogs" aria-hidden="true"></i> Patent </a>
       {% endif %}
       {% if pub.slides %}
-        <a href="{{ pub.slides }}">
+        <a href="{{ pub.slides }}" target="_blank">
           <i class="fas fa-window-maximize" aria-hidden="true"></i> Slides
         </a>
       {% endif %}
       {% if pub.arxiv %}
-        <a href="https://arxiv.org/abs/{{ pub.arxiv }}">
+        <a href="https://arxiv.org/abs/{{ pub.arxiv }}" target="_blank">
           <i class="fas fa-archive" aria-hidden="true"></i> arxiv: {{ pub.arxiv }}
         </a>
       {% endif %}
       {% if pub.video %}
-        <a href="{{ pub.video }}">
+        <a href="{{ pub.video }}" target="_blank">
           <i class="fas fa-film" aria-hidden="true"></i> Video
         </a>
       {% endif %}
       {% if pub.recording %}
-        <a href="{{ pub.recording }}">
+        <a href="{{ pub.recording }}" target="_blank">
           <i class="fas fa-video" aria-hidden="true"></i> Recording
         </a>
       {% endif %}
       {% if pub.details %}
-        <a href="{{ pub.details }}">
+        <a href="{{ pub.details }}" target="_blank">
           <i class="fas fa-newspaper" aria-hidden="true"></i> Details
         </a>
       {% endif %}
       {% if pub.html5 %}
-        <a href="{{ pub.html5 }}"><i class="fa-brands fa-html5"></i> html5
+        <a href="{{ pub.html5 }}" target="_blank"><i class="fa-brands fa-html5"></i> html5
         </a>
       {% endif %}
     </div>
