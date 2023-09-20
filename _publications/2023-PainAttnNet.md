@@ -1,7 +1,7 @@
 ---
 categories: publications
 title: Transformer Encoder with Multiscale Deep Learning for Physiological Signals
-description:
+description: PainAttnNet Model
 year: 2023
 highlight: 1
 image: /pan/cover.webp
