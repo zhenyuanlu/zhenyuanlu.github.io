@@ -14,7 +14,7 @@ image: staff/z.jpg
 
 Hi! I am a machine learning PhD candidate and data science instructor at [Northeastern University](https://www.northeastern.edu/) working with [Prof. Sagar Kamarthi](https://coe.northeastern.edu/people/kamarthi-sagar/). My research interests are deep learning, representation learning, self-supervised learning. My PhD story is featured on the [University PhD Network](https://phd.northeastern.edu/profile/zhenyuan-lu/). I also have been spotlighted by the College of Engineering department for the [Student Success Story](https://coe.northeastern.edu/news/ready-for-the-high-demand-field-of-data-analytics/).
 
-I also actively contribute to open-source projects, Python Tutorial <a href = "https://zhenyuanlu.com/python-notebook/"> Python Notebook from Zero to Advanced </a> and R tutorial <a href="https://zhenyuanlu.com/r-comput-viz/" target="_blank">Data Visualization/Transformation Tutorial in R </a>, Data Visualization [Data Viz in a Nutshell](https://github.com/zhenyuanlu/Data-Visualization-In-A-Nutshell/tree/main), and machine learning. Outside of work, I am a passionate photographer with my own studio, capturing a diverse range of subjects including portrait, scenic road trips, etc.
+I also actively contribute to open-source projects, Python Tutorial <a href = "https://zhenyuanlu.com/python-notebook/"> Python Notebook from Zero to Advanced </a> and R tutorial <a href="https://zhenyuanlu.com/r-comput-viz/" target="_blank">Data Visualization/Transformation Tutorial in R </a>, Data Visualization [Data Viz in a Nutshell](https://github.com/zhenyuanlu/Data-Visualization-In-A-Nutshell/tree/main), and machine learning. Outside of work, I am a passionate photographer with my own studio, capturing a diverse range of subjects including portrait, etc.
 
 
 <p>
@@ -26,9 +26,9 @@ I also actively contribute to open-source projects, Python Tutorial <a href = "h
     <a href="https://www.linkedin.com/in/zhenyuanlu/" target="_blank">
       <i class="fab fa-linkedin-in"></i>
     </a>
-    <a href="mailto:{{ site.email }}" target="_blank">
+    <!-- <a href="mailto:{{ site.email }}" target="_blank">
       <i class="fas fa-envelope"></i>
-    </a>
+    </a> -->
     <a href="https://twitter.com/zyl_zhen" target="_blank">
       <i class="fab fa-twitter"></i>
     </a>
