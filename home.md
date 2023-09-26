@@ -55,9 +55,7 @@ I also actively contribute to open-source projects, Python Tutorial <a href = "h
 
 </div>
 
-
-
-
+<a name="publication"></a>
 ## Selected Publications
 For understanding the difficulty.
 
@@ -86,7 +84,7 @@ For understanding the difficulty.
 
 <p style="line-height:25px;margin:0px;"><br></p>
 
-
+<a name="project"></a>
 ## Featured Projects/Blogs
 For work, research, or fun.
 
@@ -107,7 +105,7 @@ For work, research, or fun.
 
 <p style="line-height:25px;margin:0px;"><br></p>
 
-
+<a name="teaching"></a>
 ## Teachings/Tutorials 
 
 For sharing the joy of what I have learnt.
