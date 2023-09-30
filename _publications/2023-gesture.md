@@ -15,7 +15,7 @@ authors:
 
 arxiv: 
 html: /projects/gesture/
-pdf: 
+pdf: https://github.com/zhenyuanlu/WristMotion-Gesture-Detection/blob/main/report/PisonWrist.pdf
 code: https://github.com/zhenyuanlu/WristMotion-Gesture-Detection
 toc: true
 ---
