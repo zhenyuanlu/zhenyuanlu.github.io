@@ -122,13 +122,13 @@ For sharing the joy of what I have learnt.
   <img src='https://raw.githubusercontent.com/tidyverse/tidyverse/main/man/figures/logo.png' align="center" height="20"/>
   <img src='https://raw.githubusercontent.com/rstudio/shiny/main/man/figures/logo.png' align="center" height="20"/>
   <img src='https://raw.githubusercontent.com/rstudio/rmarkdown/main/man/figures/logo.png' align="center" height="20"/>
-- Instructor, IE5976 Python for Object-Oriented Programming: [Summer 23]({{ "/courses/ie5976-van-su23/" | relative_url}})
-- Instructor, IE6600 Computation and Visualization for Analytics
+- Lecturer, IE5976 Python for Object-Oriented Programming: [Summer 23]({{ "/courses/ie5976-van-su23/" | relative_url}})
+- Lecturer, IE6600 Computation and Visualization for Analytics
   - [Spring 23]({{ "/courses/ie6600-sea-sp23/" | relative_url}}), [Fall 22]({{ "/courses/ie6600-vbc-fa22/" | relative_url}}), [Summer 22]({{ "/courses/ie6600-bos-su22/" | relative_url}}), [Spring 22]({{ "/courses/ie6600-sea-sp22/" | relative_url}}), [Fall 21]({{ "/courses/ie6600-bos-fa21/" | relative_url}}), [Summer 21]({{ "/courses/ie6600-bos-sm21/" | relative_url}}), [Spring 21]({{ "/courses/ie6600-sea-sp21/" | relative_url}}), [Fall 20]({{ "/courses/ie6600-bos-fa20/" | relative_url}}), Spring 20, Spring 19
 <!-- <img src='https://torch.mlverse.org/css/images/hex/torch.png' align="right" height="55.5"/>
 <img src='https://torch.mlverse.org/css/images/hex/torchvision.png' align="right" height="55.5"/> -->
 <!-- <img src='https://keras.io/img/logo.png' align="right" height="50.5"/> -->
-- Instructor, IE7275 Data Mining in Engineering: [Summer 20]({{ "/courses/ie7275-bos-sm20/" | relative_url }})
+- Lecturer, IE7275 Data Mining in Engineering: [Summer 20]({{ "/courses/ie7275-bos-sm20/" | relative_url }})
 - Graduate Instructor Assistant, BIO1421 Modern Biology
   - Fall 2014-Spring 2017, Course Supervisor <a href="https://www.bio.txst.edu/faculty-staff/david-lemke.html" target="_blank">Prof. David E. Lemke</a>
 
