@@ -55,12 +55,12 @@ When I am not buried in research, I'm crafting open-source contributions. Check 
 
 </div>
 
-<a name="software"></a>
+<!-- <a name="software"></a>
 ## Software
 For open-source spirit.
 - pyKCN: A *Python* Tool for Bridging Scientific Knowledge through Keyword Analysis (WIP)
 
-<p style="line-height:25px;margin:0px;"><br></p>
+<p style="line-height:25px;margin:0px;"><br></p> -->
 
 <a name="publication"></a>
 ## Selected Publications
