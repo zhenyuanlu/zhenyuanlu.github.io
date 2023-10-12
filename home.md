@@ -12,7 +12,7 @@ image: staff/z.jpg
 
 ## Zhenyuan Lu
 
-Hi there! I am currently a machine learning PhD candidate and data science instructor at [Northeastern University](https://www.northeastern.edu/) working with [Prof. Sagar Kamarthi](https://coe.northeastern.edu/people/kamarthi-sagar/). My research interests are deep learning, representation learning, and self-supervised learning. A peek into my PhD journey. It is showcased on the [University PhD Network](https://phd.northeastern.edu/profile/zhenyuan-lu/). Plus, the College of Engineering threw a spotlight on me for a [Student Success Story](https://coe.northeastern.edu/news/ready-for-the-high-demand-field-of-data-analytics/).
+Hi there! I am currently a machine learning PhD candidate and data science instructor at [Northeastern University](https://www.northeastern.edu/). My research interests are deep learning, representation learning, and self-supervised learning. My PhD journey is showcased on the [University PhD Network](https://phd.northeastern.edu/profile/zhenyuan-lu/). Plus, the College of Engineering threw a spotlight on me for a [Student Success Story](https://coe.northeastern.edu/news/ready-for-the-high-demand-field-of-data-analytics/).
 
 When I am not buried in research, I'm crafting open-source contributions. Check out my Python tutorial: <a href = "https://zhenyuanlu.com/python-notebook/"> Python Notebook from Zero to Advanced </a> or get visual with my R tutorial on <a href="https://zhenyuanlu.com/r-comput-viz/" target="_blank">Data Visualization/Transformation Tutorial in R </a>. Don't miss my guide on Data Visualization [Data Viz in a Nutshell](https://github.com/zhenyuanlu/Data-Visualization-In-A-Nutshell/tree/main). When I am not hustling at work, you will find me behind the lens in my very own studio, snapping everything from sassy portraits to whimsical whatever!
 
@@ -54,6 +54,13 @@ When I am not buried in research, I'm crafting open-source contributions. Check 
 </div>
 
 </div>
+
+<a name="software"></a>
+## Software
+For open-source spirit.
+- pyKCN: A *Python* Tool for Bridging Scientific Knowledge through Keyword Analysis (WIP)
+
+<p style="line-height:25px;margin:0px;"><br></p>
 
 <a name="publication"></a>
 ## Selected Publications
