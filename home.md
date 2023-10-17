@@ -17,7 +17,23 @@ Hi there! I am currently a machine learning PhD candidate and data science instr
 When I am not buried in research, I am crafting open-source contributions. Check out my Python tutorial: <a href = "https://zhenyuanlu.com/python-notebook/"> Python Notebook from Zero to Advanced </a> or get visual with my R tutorial on <a href="https://zhenyuanlu.com/r-comput-viz/" target="_blank">Data Visualization/Transformation Tutorial in R </a>. Don't miss my guide on Data Visualization [Data Viz in a Nutshell](https://github.com/zhenyuanlu/Data-Visualization-In-A-Nutshell/tree/main). When I am not hustling at work, you will find me behind the lens in my very own studio, snapping everything from sassy portraits to whimsical whatever!
 
 
-<p>
+<!-- <p>
+
+
+<span style="float: right">
+  <a href="{{ '/cv/' | relative_url }}" target="_blank">
+    <i class="far fa-file-pdf"></i>
+    <b>CV</b>
+  </a>
+</span>
+</p> -->
+</div>
+
+<div class="me" markdown="1">
+<picture>
+  <img src='/assets/img/staff/z.png'
+    alt='Zhenyuan Lu'/>
+</picture>
 <span class="social-buttons">
   <span class="item">
     <a href="https://github.com/zhenyuanlu" target="_blank">
@@ -35,32 +51,18 @@ When I am not buried in research, I am crafting open-source contributions. Check
   </span>
 </span>
 
-<!--
-<span style="float: right">
-  <a href="{{ '/cv/' | relative_url }}" target="_blank">
-    <i class="far fa-file-pdf"></i>
-    <b>CV</b>
-  </a>
-</span>-->
-
-</p>
-</div>
-
-<div class="me" markdown="1">
-<picture>
-  <img src='/assets/img/staff/z.png'
-    alt='Zhenyuan Lu'/>
-</picture>
 </div>
 
 </div>
+
 
 <!-- <a name="software"></a>
 ## Software
 For open-source spirit.
-- pyKCN: A *Python* Tool for Bridging Scientific Knowledge through Keyword Analysis (WIP)
 
-<p style="line-height:25px;margin:0px;"><br></p> -->
+<a href='https://github.com/zhenyuanlu/pyKCN' target="_blank"><img src='/assets/projects/pykcn/logo.webp' align="center" height="20"/></a> A *Python* Tool for Bridging Scientific Knowledge through Keyword Analysis (WIP) 
+
+<p style="line-height:10px;margin:0px;"><br></p> -->
 
 <a name="publication"></a>
 ## Selected Publications
