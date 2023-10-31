@@ -14,7 +14,7 @@ image: staff/z.jpg
 
 Hi there! I am currently a machine learning PhD candidate and data science instructor at [Northeastern University](https://www.northeastern.edu/). My research interests are deep learning, representation learning, and self-supervised learning. My PhD journey is showcased on the [University PhD Network](https://phd.northeastern.edu/profile/zhenyuan-lu/). Plus, the College of Engineering threw a spotlight on me for a [Student Success Story](https://coe.northeastern.edu/news/ready-for-the-high-demand-field-of-data-analytics/).
 
-When I am not buried in research, I am crafting open-source contributions. Check out my Python tutorial: <a href = "https://zhenyuanlu.com/python-notebook/"> Python Notebook from Zero to Advanced </a> or get visual with my R tutorial on <a href="https://zhenyuanlu.com/r-comput-viz/" target="_blank">Data Visualization/Transformation Tutorial in R </a>. Don't miss my guide on Data Visualization [Data Viz in a Nutshell](https://github.com/zhenyuanlu/Data-Visualization-In-A-Nutshell/tree/main). When I am not hustling at work, you will find me behind the lens in my very own studio, snapping everything from sassy portraits to whimsical whatever!
+When I am not buried in research, I am crafting open-source contributions. Check out my Python tutorial: <img src='/assets/projects/pynote/logo.webp' align="center" height="20"/> <a href = "https://zhenyuanlu.com/python-notebook/">Python Notebook from Zero to Advanced</a> or get visual with my R tutorial on <img src='/assets/projects/vizr/logo.webp' align="center" height="20"/> <a href="https://zhenyuanlu.com/r-comput-viz/" target="_blank">Data Visualization/Transformation Tutorial in R</a>. Don't miss my guide on Data Visualization [Data Viz in a Nutshell](https://github.com/zhenyuanlu/Data-Visualization-In-A-Nutshell/tree/main). When I am not hustling at work, you will find me behind the lens in my very own studio, snapping everything from sassy portraits to whimsical whatever!
 
 
 <!-- <p>
@@ -56,13 +56,12 @@ When I am not buried in research, I am crafting open-source contributions. Check
 </div>
 
 
-<!-- <a name="software"></a>
-## Software
-For open-source spirit.
+<a name="software"></a>
+## Software/Tools
+For open-source spirit.\
+<a href='https://github.com/zhenyuanlu/pyKCN' target="_blank"><img src='/assets/projects/pykcn/logo.webp' align="center" height="20"/> A *Python* Tool for Bridging Scientific Knowledge through Keyword Analysis.</a> (WIP)
 
-<a href='https://github.com/zhenyuanlu/pyKCN' target="_blank"><img src='/assets/projects/pykcn/logo.webp' align="center" height="20"/></a> A *Python* Tool for Bridging Scientific Knowledge through Keyword Analysis (WIP) 
-
-<p style="line-height:10px;margin:0px;"><br></p> -->
+<p style="line-height:10px;margin:0px;"><br></p>
 
 <a name="publication"></a>
 ## Selected Publications
@@ -115,7 +114,7 @@ For work, research, or fun.
 <p style="line-height:25px;margin:0px;"><br></p>
 
 <a name="teaching"></a>
-## Teachings/Tutorials 
+## Teachings
 
 For sharing the joy of what I have learnt.
 
@@ -124,10 +123,10 @@ For sharing the joy of what I have learnt.
 
 - Tutorials/Books
 <!-- - (WIP) Pytorch Cookbook for Deep learning --> 
-  - <a href = "https://zhenyuanlu.com/python-notebook/"> Python Notebook from Zero to Advanced </a>
+  - <a href = "https://zhenyuanlu.com/python-notebook/">Python Notebook from Zero to Advanced</a> <img src='/assets/projects/pynote/logo.webp' align="center" height="20"/>
 <img src='https://upload.wikimedia.org/wikipedia/commons/thumb/1/1d/PyCharm_Icon.svg/512px-PyCharm_Icon.svg.png?20200803065702' align="center" height="20"/>
 <img src='https://raw.githubusercontent.com/numpy/numpy/17bae7c3f53d757144403ae09897e32f91a31d74/branding/logo/logomark/numpylogoicon.svg' align="center" height="20"/>
-  - <a href="https://zhenyuanlu.com/r-comput-viz/" target="_blank">Data Visualization/Transformation Tutorial in R </a> 
+  - <a href="https://zhenyuanlu.com/r-comput-viz/" target="_blank">Data Visualization/Transformation Tutorial in R</a> <img src='/assets/projects/vizr/logo.webp' align="center" height="20"/>
   <img src='https://raw.githubusercontent.com/tidyverse/tidyverse/main/man/figures/logo.png' align="center" height="20"/>
   <img src='https://raw.githubusercontent.com/rstudio/shiny/main/man/figures/logo.png' align="center" height="20"/>
   <img src='https://raw.githubusercontent.com/rstudio/rmarkdown/main/man/figures/logo.png' align="center" height="20"/>
