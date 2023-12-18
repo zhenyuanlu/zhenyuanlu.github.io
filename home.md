@@ -3,7 +3,7 @@ layout: page
 permalink: /
 title: Zhenyuan Lu
 class: home
-description: Machine learning and PhD research fellow at Northeastern University. Using background and experience working in Biomedical sciences and data science fields over the last 10 years. I weave healthcare and machine learning concepts together.
+description: Earned my AI/ML PhD at Northeastern University. Using background and experience working in data science fields over the last 10 years. 
 image: staff/z.jpg
 ---
 
@@ -12,7 +12,7 @@ image: staff/z.jpg
 
 ## Zhenyuan Lu
 
-Hi there! I am currently a machine learning PhD candidate and data science instructor at [Northeastern University](https://www.northeastern.edu/). My research interests are deep learning, representation learning, time-series data, and NLP. My PhD journey is showcased on the [University PhD Network](https://phd.northeastern.edu/profile/zhenyuan-lu/). Plus, the College of Engineering threw a spotlight on me for a [Student Success Story](https://coe.northeastern.edu/news/ready-for-the-high-demand-field-of-data-analytics/).
+Hi there! I am a machine learning engineer and AI researcher. I earned my PhD and was a data science instructor at [Northeastern University](https://www.northeastern.edu/). My research interests are deep learning, representation learning, time-series data, and NLP. My PhD journey is showcased on the [University PhD Network](https://phd.northeastern.edu/profile/zhenyuan-lu/). Plus, the College of Engineering threw a spotlight on me for a [Student Success Story](https://coe.northeastern.edu/news/ready-for-the-high-demand-field-of-data-analytics/).
 
 When I am not buried in research, I am crafting open-source contributions. Check out my Python tutorial: <img src='/assets/projects/pynote/logo.webp' align="center" height="20"/> <a href = "https://zhenyuanlu.com/python-notebook/">Python Notebook from Zero to Advanced</a> or get visual with my R tutorial on <img src='/assets/projects/vizr/logo.webp' align="center" height="20"/> <a href="https://zhenyuanlu.com/r-comput-viz/" target="_blank">Data Visualization/Transformation Tutorial in R</a>. Don't miss my guide on Data Visualization [Data Viz in a Nutshell](https://github.com/zhenyuanlu/Data-Visualization-In-A-Nutshell/tree/main). When I am not at work, you will find me behind the lens in my very own [photography studio](https://zhenyuanlu.com/artLife/), snapping everything from sassy portraits to whimsical whatever.
 
