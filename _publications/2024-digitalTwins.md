@@ -1,6 +1,6 @@
 ---
 categories: publications
-title: The Evolution of Digital Twins Research through Keyword Co-Occurence Network Analysis
+title: The Evolution of Digital Twins Research Analysis
 description: Image created by <a href="https://www.microsoft.com/en-us/industry/blog/manufacturing-and-mobility/2020/12/14/manufacturers-gain-a-competitive-advantage-with-digital-twins/" target="_blank">Amol Adgaonkar</a>. Not included in the original publication.
 year: 2024
 highlight: 2
