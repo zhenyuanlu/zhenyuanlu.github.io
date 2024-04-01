@@ -76,7 +76,6 @@ For understanding the difficulty.
 {% for year_group in sorted_pubyears %}
   {% assign year = year_group.name %}
   {% assign publications = year_group.items %}
-  
   {% assign display_year = false %}
   {% for pub in publications %}
     {% if pub.hide != true %}

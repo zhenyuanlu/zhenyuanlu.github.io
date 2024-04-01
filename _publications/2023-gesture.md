@@ -1,5 +1,5 @@
 ---
-hide: false
+
 categories: publications
 title: Wrist Motion and Hand Gesture Classification
 description: PainAttnNet Model Extended Version on Motion Detection based on Signals.
