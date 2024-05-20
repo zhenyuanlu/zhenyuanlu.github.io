@@ -42,6 +42,7 @@ GEM
     faraday-net_http (3.1.0)
       net-http
     ffi (1.16.3)
+    ffi (1.16.3-x64-mingw-ucrt)
     ffi (1.16.3-x64-mingw32)
     forwardable-extended (2.6.0)
     gemoji (4.1.0)
@@ -232,6 +233,8 @@ GEM
     mutex_m (0.2.0)
     net-http (0.4.1)
       uri
+    nokogiri (1.16.3-x64-mingw-ucrt)
+      racc (~> 1.4)
     nokogiri (1.16.3-x64-mingw32)
       racc (~> 1.4)
     nokogiri (1.16.3-x86_64-linux)
@@ -269,6 +272,7 @@ GEM
     unf (0.1.4)
       unf_ext
     unf_ext (0.0.9.1)
+    unf_ext (0.0.9.1-x64-mingw-ucrt)
     unf_ext (0.0.9.1-x64-mingw32)
     unicode-display_width (1.8.0)
     uri (0.13.0)
@@ -276,6 +280,7 @@ GEM
     webrick (1.8.1)
 
 PLATFORMS
+  x64-mingw-ucrt
   x64-mingw32
   x86_64-linux
 
