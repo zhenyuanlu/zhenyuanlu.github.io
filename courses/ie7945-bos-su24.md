@@ -35,7 +35,8 @@ IE7945 offers theoretical or experimental work under individual faculty supervis
 - **Location:** Online
 - **Dates:** 
   - 05/13/2024 – 06/24/2024 (Summer I)
-  - 05/13/2024 – 08/27/2024 (Summer Full)
+  - 05/13/2024 – 08/17/2024 (Summer Full)
+  - Presentation Due: 8/12/2024; Report Due: 8/13/2024 (Summer Full)
 - **Teaching style:** [There's no speed limit](https://sive.rs/kimo){:target="\_blank"}.
 - **Guidelines**: 
   - Please see the post [How to ask a good question](https://stackoverflow.com/help/how-to-ask) before posting any questions or discussions.
