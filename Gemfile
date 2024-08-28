@@ -6,7 +6,7 @@ group :jekyll_plugins do
     gem 'jekyll-email-protect'
     gem 'kramdown', '>= 2.3.1'
     gem 'addressable', '>= 2.8.0'
-    gem 'wdm', '>= 0.1.0'
+    gem 'wdm', '>= 0.2.0'
     gem "webrick", ">= 1.8.1"
     gem "commonmarker", ">= 0.23.9"
     gem 'jekyll-toc'
