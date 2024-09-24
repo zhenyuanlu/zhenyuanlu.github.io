@@ -1,7 +1,7 @@
-- title: "Module 1: Introduction"
+- title: "Module 1: How To Start"
 
-- date: 9/11
-  lecturer:
+- date: 9/26
+  lecturer: 
   title: >
     <strong>Course introduction and expectations</strong>
   slides:
@@ -9,203 +9,142 @@
   video:
   notes:
   materials:
-    - Instructor's brain
+    - TBD
   assignments:
 
-- date: 9/15
-  lecturer:
+- date: 10/3
+  lecturer: 
   title: >
-    <strong>Basic of R I</strong>
+    <strong>TBD</strong>
+  slides:
+  annotated:
+  video:
+  notes:
   materials:
-    - <b>R4E</b> "Basics of R"
-    - <b>R4E</b> "Advanced Data Structure"
+    - TBD
   assignments:
 
-- date: 9/18
-  lecturer:
+- date: 10/10
+  lecturer: 
   title: >
-    <strong>Basic of R II</strong>
+    <strong>TBD</strong>
+  slides:
+  annotated:
+  video:
+  notes:
   materials:
-    - <b>R4E</b> "Basics of R"
-    - <b>R4E</b> "Advanced Data Structure"
-  assignments:
-
-- date: 9/22
-  lecturer:
-  title: >
-    <strong>R functions and the grammar of visualization I</strong>
-  materials:
-    - <b>R4DS</b> <a href="https://r4ds.had.co.nz/workflow-basics.html" target="_blank">Workflow</a>
-    - <b>Wickham</b> <a href="https://vita.had.co.nz/papers/layered-grammar.pdf" target="_blank">A layered grammar of graphics</a>
-    - (optional) <b>R4E</b> "Writing R functions"
-  assignments:
-
-- date: 9/25
-  lecturer:
-  title: >
-    <strong>R functions and the grammar of visualization II</strong>
-  materials:
-    - <b>R4DS</b> <a href="https://r4ds.had.co.nz/workflow-basics.html" target="_blank">Workflow</a>
-    - <b>Wickham</b> <a href="https://vita.had.co.nz/papers/layered-grammar.pdf" target="_blank">A layered grammar of graphics</a>
-    - (optional) <b>R4E</b> "Writing R functions"
+    - TBD
   assignments: >
-    <span class="event">HW1 out</span>
+    <span class="deadline">Project proposal due 10/10 @ 11:59pm PT</span>
 
-- title: "Module 2: Basic Visualization and Data Engineering"
+- title: "Module 2: What's Next"
 
-- date: 9/29
+- date: 10/17
+  lecturer: 
   title: >
-    <strong>R functions and the grammar of visualization II</strong>
+    <strong>TBD</strong>
+  slides:
+  annotated:
+  video:
+  notes:
   materials:
-    - <b>R4DS</b> <a href="https://r4ds.had.co.nz/workflow-basics.html" target="_blank">Workflow</a>
-    - <b>Wickham</b> <a href="https://vita.had.co.nz/papers/layered-grammar.pdf" target="_blank">A layered grammar of graphics</a>
-    - (optional) <b>R4E</b> "Writing R functions"
+    - TBD
+  assignments:
+
+- date: 10/24
+  lecturer: 
+  title: >
+    <strong>TBD</strong>
+  slides:
+  annotated:
+  video:
+  notes:
+  materials:
+    - TBD
   assignments: >
-    <span class="deadline">Group arrangement due
-    9/28 @ 11:59pm</span>
 
-- title: 9/29, Last day to drop a full-semester fall class without a W grade
 
-- date: 10/2
+
+- date: 10/31
+  lecturer: 
   title: >
-    <strong>Data Visualization Concepts I</strong>
+    <strong>Panel Review</strong>
+  slides:
+  annotated:
+  video:
+  notes:
   materials:
-  assignments:
-
-- date: 10/6
-  lecturer: Guest Lecturer - Nan
-  guest: Visualization and Color Design
-  title: >
-    <strong>Data Visualization Concepts II</strong>
-    <strong>Basic data visualization in R I</strong>
-  materials:
-    - <b>R4DS</b> <a href="https://r4ds.had.co.nz/workflow-basics.html" target="_blank">Data Visualization with ggplot2</a>
-    - (optional) RGC "Quickly Exploring Data"
+    - TBD
   assignments: >
-    <span class="deadline">HW1 due 10/5 @ 11:59pm</span>
+    <span class="deadline">Draft paper + Presentation due 10/31 @ 11:59pm PT</span>
 
-- date: 10/9
-  lecturer:
+
+- title: "Module 3: Final Stretch"
+
+- date: 11/7
+  lecturer: 
   title: >
-    <strong>Basic data visualization in R II</strong>
+    <strong>Data Visualization and Concept</strong>
+  slides:
+  annotated:
+  video:
+  notes:
   materials:
-    - <b>R4DS</b> <a href="https://r4ds.had.co.nz/workflow-basics.html" target="_blank">Data Visualization with ggplot2</a>
-    - (optional) RGC "Quickly Exploring Data"
+    - TBD
+  assignments:
+
+
+- date: 11/14
+  lecturer: 
+  title: >
+    <strong>Research Analysis</strong>
+  slides:
+  annotated:
+  video:
+  notes:
+  materials:
+    - TBD
+  assignments:
+
+- date: 11/21
+  lecturer: 
+  title: >
+    <strong>Discussion and Conclusion</strong>
+  slides:
+  annotated:
+  video:
+  notes:
+  materials:
+    - TBD
+  assignments:
+
+- date: 11/28
+  lecturer: 
+  title: >
+    <strong>Final Deliverables</strong>
+  slides:
+  annotated:
+  video:
+  notes:
+  materials: 
+    - Submit final paper and recorded presentation
+    - Encourage building a portfolio on <a href="https://pages.github.com/" target="_blank">Github Pages</a>
   assignments: >
-    <span class="event">HW2 out</span>
+    <span class="deadline">Full paper + recorded presentation due 11/28 @ 11:59pm PT</span>
 
-- date: 10/13
+- date: 12/5
+  lecturer: 
   title: >
-    <strong>Data transformation with dplyr I</strong>
+    <strong>Exit Individual Interview</strong>
+  slides:
+  annotated:
+  video:
+  notes:
   materials:
-    - <b>R4DS</b> <a href="https://r4ds.had.co.nz/transform.html" target="_blank">Data Transformation with dplyr</a>
-  assignments:
-
-- date: 10/16
-  title: >
-    <strong>Data transformation with dplyr II</strong>
-  materials:
-    - <b>R4DS</b> <a href="https://r4ds.had.co.nz/transform.html" target="_blank">Data Transformation with dplyr</a>
+    - One on one by appointment (Started by 3:30pm PT)
+    - Each student will have a 10-15 minutes interview with the instructor
   assignments: >
-    <span class="deadline">HW2 due 10/15 @ 11:59pm</span><br>
-    <span class="event">HW3 out</span>
+    <span class="event">Interview + Feedback 12/5 @ Class Meeting</span>
 
-- date: 10/20
-  title: >
-    <strong>Data wrangling with tibbles, readr and tidyr I</strong>
-  materials:
-    - <b>R4DS</b> <a href="https://r4ds.had.co.nz/tibbles.html" target="_blank">Tibbles with tibble</a>
-    - <b>R4DS</b> <a href="https://r4ds.had.co.nz/data-import.html" target="_blank">Data Import with readr</a>
-    - <b>R4DS</b> <a href="https://r4ds.had.co.nz/tidy-data.html" targe="_blank">Tidy Data with tidyr</a>
-  assignments:
+- title: "Module: Happy Holidays!"
 
-- date: 10/23
-  title: >
-    <strong>Data wrangling with tibbles, readr and tidyr II</strong> <br>
-    Optional: <br> <strong>Data wrangling with stringr, forcats and lubridate</strong>
-  materials:
-    - <b>R4DS</b> <a href="https://r4ds.had.co.nz/tibbles.html" target="_blank">Tibbles with tibble</a>
-    - <b>R4DS</b> <a href="https://r4ds.had.co.nz/data-import.html" target="_blank">Data Import with readr</a>
-    - <b>R4DS</b> <a href="https://r4ds.had.co.nz/tidy-data.html" targe="_blank">Tidy Data with tidyr</a>
-    - (optional) <b>R4DS</b> "Strings with stringr", "Factors with forcats", "Dates and Times with lubridate"
-  assignments: >
-    <span class="deadline">Project proposal due 10/22 @ 11:59pm</span><br>
-    <span class="deadline">HW3 due 10/22 @ 11:59pm</span><br>
-    <span class="event">HW4 out</span>
-
-- date: 10/27
-  title: >
-    <strong>Visualizing relational data</strong>
-  materials:
-    - <b>R4DS</b> <a href="https://r4ds.had.co.nz/relational-data.html" target="_blank">Relational Data with dplyr</a>
-  assignments:
-
-- title: "Module 3: Advanced Visualization"
-
-- date: 10/30
-  title: >
-    <strong>Introduction to Shiny interactive visualization web app I</strong>
-  materials:
-    - <b>R Shiny</b> <a href="https://shiny.rstudio.com/tutorial/" target="_blank">Shiny tutorial</a>
-  assignments: >
-    <span class="deadline">HW4 due 10/29 @ 11:59pm</span><br>
-    <span class="event">HW5 out</span>
-
-- date: 11/3
-  title: >
-    <strong>Introduction to Shiny interactive visualization web app II</strong>
-  materials:
-    - <b>R Shiny</b> <a href="https://shiny.rstudio.com/tutorial/" target="_blank">Shiny tutorial</a>
-  assignments:
-
-- date: 11/6
-  title: >
-    <strong>Introduction to Shiny interactive visualization web app III</strong>
-  materials:
-    - <b>R Shiny</b> <a href="https://shiny.rstudio.com/tutorial/" target="_blank">Shiny tutorial</a>
-  assignments:
-
-- date: 11/10
-  title: >
-    <strong>Data analytics web apps with Shiny</strong>
-  materials:
-    - <b>R Shiny</b> <a href="https://shiny.rstudio.com/tutorial/" target="_blank">Shiny tutorial</a>
-  assignments:
-
-
-- date: 11/13
-  title: >
-    <strong>Exploratory data analysis and more data visualization I</strong>
-  materials:
-    - <b>R4DS</b> <a href="https://r4ds.had.co.nz/exploratory-data-analysis.html" target="_blank">Exploratory Data Analysis</a>
-  assignments: >
-      <span class="deadline">HW5 due 11/12 @ 11:59pm</span><br>
-      <span class="event">HW6 out</span>
-
-- date: 11/17
-  title: >
-    <strong>Exploratory data analysis and more data visualization II</strong>
-  materials:
-    - <b>R4DS</b> <a href="https://r4ds.had.co.nz/exploratory-data-analysis.html" target="_blank">Exploratory Data Analysis</a>
-  assignments:
-
-- date: 11/20
-  title: >
-    <strong>Moved to 11/24</strong>
-  materials:
-  assignments: >
-    <span class="deadline">HW6 due 11/23 @ 11:59pm</span><br>
-
-- date: 11/24
-  lecturer: Guest Lecturer - Jinhui Zhao, Qibin Tan, and Wenxin Liu
-  guest: Find jobs in industry
-  title: >
-    <strong>Additional topics and Workshop</strong>
-  materials:
-  assignments:
-
-- date: 11/27
-  title: No classes - Thanksgiving
-- title: Project and Slides due Mon 11/30 @ 11:59pm
-- date: 12/1, 12/4, 12/8, 12/11
-  title: Project presentation

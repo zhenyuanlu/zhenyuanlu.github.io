@@ -1,54 +1,34 @@
 instructor:
     - name: Zhenyuan Lu
       title: Instructor
-      email: lu.zhenyua@northeastern.edu
+      email: zh.lu@northeastern.edu
       url: /
-      office-hours: "Tue 01:00pm to 02:00pm on Zoom"
+      office-hours: "Thursday 3:30-4:30pm PT"
       image: staff/z.png
 
-    - name: Anuja Nanal
-      title: TA
-      email: nanal.a@northeastern.edu
-      url:
-      office-hours: "Thur 10:00am to 11:00am on Zoom"
-      image: staff/AnujaNanal.jpg
-
-    - name: Kate Kryder
-      title: Data Visualization Specialist
-      email: k.kryder@northeastern.edu
-      url:
-      office-hours: Book Appointment (See Slides)
-      image: staff/kate.jpg
-
-    - name: Jodi Bolognese
-      title: Engineering Librarian
-      email: j.bolognese@northeastern.edu
-      url:
-      office-hours: Book Appointment (See Slides)
-      image: staff/jodi.jpg
 
 guest:
 
-    - name: Jinhui Zhao
+    - name: 
       title: Guest Lecturer
       email:
-      url: https://www.linkedin.com/in/jinhui-zhao-7ab2a186/
-      expertise: Software Development
-      title2: Software Engineer
-      image: staff/hui.jpg
+      url: 
+      expertise: 
+      title2: 
+      image: staff/husky.jpg
 
-    - name: Qibin Tan
+    - name: 
       title: Guest Lecturer
       email:
-      url: https://www.linkedin.com/in/qibint/
-      expertise: DevOps
-      title2: Build And Release Engineer
-      image: staff/qibin.jpg
+      url: 
+      expertise: 
+      title2: 
+      image: staff/husky.jpg
 
-    - name: Wenxin Liu
+    - name: 
       title: Guest Lecturer
       email:
-      url: https://www.linkedin.com/in/wenxin-liu-22b33492/
-      expertise: Cloud Architecture
-      title2: Cloud Infrastructure Architect
-      image: staff/wen.jpg
+      url: 
+      expertise: 
+      title2: 
+      image: staff/husky.jpg

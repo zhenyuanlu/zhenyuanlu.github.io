@@ -45,6 +45,9 @@ Check out my Python tutorial: <img src='/assets/projects/pynote/logo.webp' align
     <!-- <a href="mailto:{{ site.email }}" target="_blank">
       <i class="fas fa-envelope"></i>
     </a> -->
+    <a href="https://www.instagram.com/zylu_max/" target="_blank">
+      <i class="fab fa-instagram"></i>
+    </a>
     <a href="https://twitter.com/zyl_zhen" target="_blank">
       <i class="fab fa-twitter"></i>
     </a>
@@ -83,7 +86,7 @@ For sharing the joy of what I have learnt.
   <img src='https://raw.githubusercontent.com/rstudio/shiny/main/man/figures/logo.png' align="center" height="20"/>
   <img src='https://raw.githubusercontent.com/rstudio/rmarkdown/main/man/figures/logo.png' align="center" height="20"/>
 - Lecturer, IE7945 AI/ML Project:
-  - [Fall 24]({{ "/courses/ie7945-bos-fa24/" | relative_url}}), [Summer 24 I/Summer 24 Full]({{ "/courses/ie7945-bos-su24/" | relative_url}})
+  - [Fall 24]({{ "/courses/ie7945-van-fa24/" | relative_url}}), [Summer 24 I/Summer 24 Full]({{ "/courses/ie7945-bos-su24/" | relative_url}})
 - Lecturer, IE5976 Python for Object-Oriented Programming: [Summer 23]({{ "/courses/ie5976-van-su23/" | relative_url}})
 - Lecturer, IE6600 Computation and Visualization for Analytics
   - [Spring 23]({{ "/courses/ie6600-sea-sp23/" | relative_url}}), [Fall 22]({{ "/courses/ie6600-vbc-fa22/" | relative_url}}), [Summer 22]({{ "/courses/ie6600-bos-su22/" | relative_url}}), [Spring 22]({{ "/courses/ie6600-sea-sp22/" | relative_url}}), [Fall 21]({{ "/courses/ie6600-bos-fa21/" | relative_url}}), [Summer 21]({{ "/courses/ie6600-bos-sm21/" | relative_url}}), [Spring 21]({{ "/courses/ie6600-sea-sp21/" | relative_url}}), [Fall 20]({{ "/courses/ie6600-bos-fa20/" | relative_url}}), Spring 20, Spring 19

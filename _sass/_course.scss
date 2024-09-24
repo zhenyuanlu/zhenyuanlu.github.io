@@ -1,3 +1,16 @@
+// Table
+
+table {
+    border-collapse: collapse;
+    // width: 100%;
+}
+
+table, th, td {
+    border: 1px solid black;
+    padding: 8px;
+    text-align: left;
+}
+
 // Schedule.
 
 .course{
@@ -16,6 +29,8 @@
     font-weight: bold;
     border-bottom: none;
   }
+
+
 
   // Divider
   .divider-new {
