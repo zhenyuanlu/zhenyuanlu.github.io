@@ -1,7 +1,7 @@
 ---
 layout: course
 categories: courses
-maintitle: <b>A</b>rtificial <b>I</b>ntellegence / <b>M</b>achine <b>L</b>earning <b>M</b>aster's <b>P</b>roject
+maintitle: <b>A</b>rtificial <b>I</b>ntellegence /<b>M</b>achine <b>L</b>earning <b>M</b>aster's <b>P</b>roject
 title: IE7945 • Fall 2024 • Northeastern University • Vancouver
 class: course
 image: neu.png
