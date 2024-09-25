@@ -2,10 +2,10 @@
 layout: course
 categories: courses
 maintitle: <b>A</b>rtificial <b>I</b>ntellegence / <b>M</b>achine <b>L</b>earning <b>M</b>aster's <b>P</b>roject
-class: course
 title: IE7945 • Fall 2024 • Northeastern University • Vancouver
+class: course
 image: neu.png
-nav: IE7945
+nav: AI/ML Master's Capstone Project
 description: 
 ---
 
