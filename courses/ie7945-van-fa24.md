@@ -84,7 +84,7 @@ This course offers students a culminating experience to demonstrate proficiency 
 $\LaTeX$ **Editors**
 - [**Overleaf**](https://www.overleaf.com/){:target="\_blank"} (Preferred for collaboration, you can log in with your northeastern email)
 - [Visual Studio Code](https://code.visualstudio.com/){:target="\_blank"}
-
+ 
 $\LaTeX$ **Template**
 - We will use the [[**CVPR 2025**](https://github.com/cvpr-org/author-kit/archive/refs/tags/CVPR2025-v3(latex).zip){:target="_blank"}] templates for the paper, please download it to the local and then upload it to Overleaf.
 
