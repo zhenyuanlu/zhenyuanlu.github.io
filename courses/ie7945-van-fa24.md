@@ -8,7 +8,7 @@ image: neu.png
 nav: AI/ML Master's Capstone Project
 description: 
 ---
-[latex-logo]: https://github.com/zhenyuanlu/course-ie7945/blob/main/misc/LaTeX_logo.svg
+
 
 This course offers students a culminating experience to demonstrate proficiency in key concepts learned throughout their programs in core and elective courses. Designed to reinforce concepts in ethics and basic research principles, beyond an emphasis on technical knowledge.
 
@@ -24,7 +24,7 @@ This course offers students a culminating experience to demonstrate proficiency 
 - **Course Repository**: [IE7945 materials](https://github.com/zhenyuanlu/course-ie7945){:target="\_blank"} 
 
   
-- <img src="[latex-logo]" alt="LaTeX" width="50"/>: [Overleaf](https://www.overleaf.com/){:target="\_blank"} or [Visual Studio Code](https://code.visualstudio.com/){:target="\_blank"}, depending on your team preference.
+- <img src="https://raw.githubusercontent.com/zhenyuanlu/course-ie7945/746208e04c35b596d1cc7da776526c82545d0afa/misc/LaTeX_logo.svg" alt="LaTeX" width="50"/>: [Overleaf](https://www.overleaf.com/){:target="\_blank"} or [Visual Studio Code](https://code.visualstudio.com/){:target="\_blank"}, depending on your team preference.
 - **Code Repository:** [Github](https://github.com/){:target="\_blank"}, please register your account, and share with the instructor.
 - **Project Management:** [Jira](https://ie7945fa24.atlassian.net/jira/software/projects/VANFA24/boards/1/backlog?epics=visible&atlOrigin=eyJpIjoiMGRlNTBlN2E3ZGE3NDBiZTg2YmQzY2NiNDA2MDA1NjQiLCJwIjoiaiJ9){:target="\_blank"}, you will receive an invitation to join the project management tool.
 - **Portfolio:** [Github Pages](https://pages.github.com/){:target="\_blank"}, optional but encouraged.
@@ -82,11 +82,11 @@ This course offers students a culminating experience to demonstrate proficiency 
 ---
 ### Tools & Resources
 
-<img src="[latex-logo]" alt="LaTeX" width="50"/> **Editors**
+<img src="https://raw.githubusercontent.com/zhenyuanlu/course-ie7945/746208e04c35b596d1cc7da776526c82545d0afa/misc/LaTeX_logo.svg" alt="LaTeX" width="50"/> **Editors**
 - [**Overleaf**](https://www.overleaf.com/){:target="\_blank"} (Preferred for collaboration, you can log in with your northeastern email)
 - [Visual Studio Code](https://code.visualstudio.com/){:target="\_blank"}
  
-<img src="[latex-logo]" alt="LaTeX" width="50"/> **Template**
+<img src="https://raw.githubusercontent.com/zhenyuanlu/course-ie7945/746208e04c35b596d1cc7da776526c82545d0afa/misc/LaTeX_logo.svg" alt="LaTeX" width="50"/> **Template**
 - We will use the [[**CVPR 2025**](https://github.com/cvpr-org/author-kit/archive/refs/tags/CVPR2025-v3(latex).zip){:target="_blank"}] templates for the paper, please download it to the local and then upload it to Overleaf.
 
 **Git Repository**
