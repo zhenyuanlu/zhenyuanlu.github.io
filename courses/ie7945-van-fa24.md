@@ -23,7 +23,7 @@ This course offers students a culminating experience to demonstrate proficiency 
 - **Course Repository**: [IE7945 materials](https://github.com/zhenyuanlu/course-ie7945){:target="\_blank"} 
 
   
-- **$\LaTeX$**: [Overleaf](https://www.overleaf.com/){:target="\_blank"} or [Visual Studio Code](https://code.visualstudio.com/){:target="\_blank"}, depending on your team preference.
+- $\LaTeX$: [Overleaf](https://www.overleaf.com/){:target="\_blank"} or [Visual Studio Code](https://code.visualstudio.com/){:target="\_blank"}, depending on your team preference.
 - **Code Repository:** [Github](https://github.com/){:target="\_blank"}, please register your account, and share with the instructor.
 - **Project Management:** [Jira](https://ie7945fa24.atlassian.net/jira/software/projects/VANFA24/boards/1/backlog?epics=visible&atlOrigin=eyJpIjoiMGRlNTBlN2E3ZGE3NDBiZTg2YmQzY2NiNDA2MDA1NjQiLCJwIjoiaiJ9){:target="\_blank"}, you will receive an invitation to join the project management tool.
 - **Portfolio:** [Github Pages](https://pages.github.com/){:target="\_blank"}, optional but encouraged.
