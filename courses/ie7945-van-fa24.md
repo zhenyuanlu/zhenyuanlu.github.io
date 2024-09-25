@@ -20,6 +20,8 @@ This course offers students a culminating experience to demonstrate proficiency 
 - **Dates:** 09/04/2024 – 12/06/2024
 - **HW Submission**: [Gradescope](https://www.gradescope.com/courses/876356){:target="\_blank"}
 - **Q&A Platform:** [Piazza](https://piazza.com/class/m18cwbnltqn4tc){:target="\_blank"}, please sign up with your northeastern email.
+- **Course Repository**: [IE7945 materials](https://github.com/zhenyuanlu/course-ie7945){:target="\_blank"} 
+
   
 - **$\LaTeX$**: [Overleaf](https://www.overleaf.com/){:target="\_blank"} or [Visual Studio Code](https://code.visualstudio.com/){:target="\_blank"}, depending on your team preference.
 - **Code Repository:** [Github](https://github.com/){:target="\_blank"}, please register your account, and share with the instructor.
@@ -79,19 +81,30 @@ This course offers students a culminating experience to demonstrate proficiency 
 ---
 ### Tools & Resources
 
-$\LaTeX$
+**$\LaTeX$ Editors**
+- [**Overleaf**](https://www.overleaf.com/){:target="\_blank"} (Preferred for collaboration, you can log in with your northeastern email)
+- [Visual Studio Code](https://code.visualstudio.com/){:target="\_blank"}
 
-Code Repository
+**$\LaTeX$ Template**
+- We will use the [[**CVPR 2025**](https://github.com/cvpr-org/author-kit/archive/refs/tags/CVPR2025-v3(latex).zip){:target="_blank"}] templates for the paper, please download it to the local and then upload it to Overleaf.
 
-Portfolio
+**Git Repository**
+- As this is a group project, we will use Github for version control. Please register your account on [[**Github**](https://github.com/){:target="\_blank"}]
 
-Project Management
+**Project Management**
+- To understand how to manage the project in industry, we will use We will use [[**Jira**](https://ie7945fa24.atlassian.net/jira/software/projects/VANFA24/boards/1/backlog?epics=visible&atlOrigin=eyJpIjoiMGRlNTBlN2E3ZGE3NDBiZTg2YmQzY2NiNDA2MDA1NjQiLCJwIjoiaiJ9){:target="\_blank"}] for sprint planning and tracking . You will receive an invitation to join the project management tool.
+
+**Portfolio**
+- If you are interested in creating a portfolio, you can use [[**Github Pages**](https://pages.github.com/){:target="\_blank"}], this is optional but encouraged. 
+
+
+**Note: before posting any content on github, please consult with your instructor and industry mentor.**
 
 ---
 
 
 
-### Team Projects (Zhenyuan Lu Section)
+### Team Projects (Industry Partner)
 
 | Project                                                             | Team Members                                                   | Industry Partner       | Instructor              |
 |----------------------------------------------------------------------|----------------------------------------------------------------|------------------------|-------------------------|
@@ -106,7 +119,7 @@ Project Management
 
 ---
 
-## Grading (Subject to Change)
+### Grading (Subject to Change)
 
 - **30% Project Check-ins** (Individual):
   - Good Execution - 3%, Average - 2%, Poor - 1%, None - 0%
@@ -207,6 +220,8 @@ Please use the TRACE system to provide feedback at the end of the course. The in
 ### Accommodations for Students with Disabilities
 
 If you have a disability, I encourage you to contact [Disability Resource Center](http://www.northeastern.edu/drc/about-the-drc/){:target="\_blank"} to register and request the accommodations. Also please discuss your needs with me as early in the semester as possible.
+
+---
 
 ### Course Outcomes
 - Exhibit proficiency in the design, implementation, and testing of software.
