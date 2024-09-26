@@ -118,8 +118,6 @@ This course offers students a culminating experience to demonstrate proficiency 
 
 <p style="line-height:25px;margin:0px;"><br></p>
 
-
-
 ---
 
 ### Grading (Subject to Change)
@@ -138,27 +136,6 @@ This course offers students a culminating experience to demonstrate proficiency 
 ---
 
 ###  Course Schedule
-
-<!-- | Week       | Module                    | Assignment           | Materials                    |
-|------------|---------------------------|----------------------|------------------------------|
-| Week 1     | TBD                       | TBD                  | TBD                          |
-| Week 2     | TBD                       | TBD                  | TBD                          |
-| Week 3     | TBD                       | TBD                  | TBD                          |
-| Week 4     | TBD                       | TBD                  | TBD                          |
-| Week 5     | TBD                       | TBD                  | TBD                          |
-| Week 6     | TBD                       | TBD                  | TBD                          |
-| Week 7     | TBD                       | TBD                  | TBD                          |
-| Week 8     | TBD                       | TBD                  | TBD                          |
-| Week 9     | TBD                       | TBD                  | TBD                          |
-| Week 10    | TBD                       | TBD                  | TBD                          |
-| Week 11    | TBD                       | TBD                  | TBD                          |
-| Week 12    | TBD                       | TBD                  | TBD                          |
-| Week 13    | TBD                       | TBD                  | TBD                          |
-| Week 14    | TBD                       | TBD                  | TBD                          |
-| Week 15    | TBD                       | TBD                  | TBD                          |
-
---- -->
-
 
 (subject to change)
 
@@ -251,3 +228,33 @@ If you have a disability, I encourage you to contact [Disability Resource Center
   
 
 ---
+
+
+### Individual Project (Special Case)
+
+| Project | Materials | Instructor  |
+|------------------------|-------------------------|-------------------------|
+| **Contrastive Learning, Self-supervsied Learning**  |  [References](https://github.com/zhenyuanlu/course-ie7945/blob/main/references/ssl.md)         | **Zhenyuan Lu**          |
+
+Only for individual projects, **Contrastive Learning**:
+
+- Review 3 key papers,  
+  - Suggested: [2020: A Simple Framework for Contrastive Learning of Visual Representations](https://arxiv.org/pdf/2002.05709.pdf)
+  - Choose a research topic (e.g., image classification, time series, etc.) regarding contrastive learning.
+    - **due 10/3 @ 4:30pm PT**
+  - Write a two-page summary for each paper (total 6 pages) using Overleaf and [[**CVPR 2025**](https://github.com/cvpr-org/author-kit/archive/refs/tags/CVPR2025-v3(latex).zip)] template 
+    - **due 10/10 @ 4:30pm PT** submit to Gradescope:
+      - Paper overview
+      - Key contributions
+      - Methodology
+      - Results and conclusions
+- Decide one of the following project directions (**due 10/10 @ 4:30pm PT**):
+  1. **Survey paper**: Review at least 20 papers.
+  2. **Benchmark with coding**: Implement models and use datasets from the papers to compare results.
+  3. **Specific research paper**: Formulate a unique research question and conduct a study.
+- Write the final paper based on the chosen direction.
+- Prepare and deliver a project presentation.
+- All other tasks should be the same as the group project team members.
+
+
+
