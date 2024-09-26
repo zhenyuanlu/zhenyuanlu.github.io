@@ -1,21 +1,28 @@
 - title: "Module 1: How To Start"
 
 - date: 9/26
-  lecturer: 
+  lecturer: Zhenyuan Lu
   title: >
-    <strong>Course introduction and expectations</strong>
+    <strong>Introduction and Expectations</strong>; 
+    <strong>Project Management</strong>
   slides:
   annotated:
   video:
-  notes:
-  materials:
-    - TBD
+  notes: 
+  materials: 
+    - <b>Course syllabus and website</b> <a href="https://zhenyuanlu.com/courses/ie7945-van-fa24/" target="_blank">link</a>
+    - <b>Course gitHub repository</b> <a href="https://github.com/zhenyuanlu/course-ie7945" target="_blank">link</a>
+    - <b>Jira - Kanban board</b> <a href="https://ie7945fa24.atlassian.net/jira/software/projects/VANFA24/boards/1" target="_blank">link</a>
   assignments:
+    <span class="deadline"> [<a href="https://www.gradescope.com/courses/876356" target="_blank">Submit</a>] Check-In I due 10/03 @ 11:59pm PT</span>
 
 - date: 10/3
-  lecturer: 
+  lecturer: Zhenyuan Lu
+  guest: XiaoZang Li <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c1/Google_%22G%22_logo.svg/24px-Google_%22G%22_logo.svg.png?20230822192911" width="15" height="15">
   title: >
-    <strong>TBD</strong>
+    <strong>Section: Literature Review</strong>
+  title2: >
+    <strong>Industry Knowledge</strong>
   slides:
   annotated:
   video:
@@ -25,9 +32,12 @@
   assignments:
 
 - date: 10/10
-  lecturer: 
+  lecturer: Zhenyuan Lu
+  guest: Jinhui Zhao <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT67XAuEiPDDrQJ3g-TY6Zyy2kYe1wefm8OXQ&s" width="25" height="10">
   title: >
-    <strong>TBD</strong>
+    <strong>Section: Introduction and Background</strong>
+  title2: >
+    <strong>Industry Knowledge</strong>
   slides:
   annotated:
   video:
@@ -40,9 +50,9 @@
 - title: "Module 2: What's Next"
 
 - date: 10/17
-  lecturer: 
+  lecturer: Zhenyuan Lu
   title: >
-    <strong>TBD</strong>
+    <strong>Section: General Methodology</strong>
   slides:
   annotated:
   video:
@@ -52,9 +62,9 @@
   assignments:
 
 - date: 10/24
-  lecturer: 
+  lecturer: Zhenyuan Lu
   title: >
-    <strong>TBD</strong>
+    <strong>Section: Domain Methodology</strong>
   slides:
   annotated:
   video:
@@ -66,7 +76,7 @@
 
 
 - date: 10/31
-  lecturer: 
+  lecturer: Zhenyuan Lu
   title: >
     <strong>Panel Review</strong>
   slides:

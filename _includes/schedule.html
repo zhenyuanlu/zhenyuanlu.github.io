@@ -10,7 +10,7 @@
       <tr>
         <th scope="col">Date</th>
         <th scope="col">Lecture</th>
-        <th scope="col">Readings</th>
+        <th scope="col">Content</th>
         <th scope="col">Logistics</th>
       </tr>
     </thead>
@@ -42,12 +42,15 @@
           {% else %}
           <td>
               <!--Lecture #{{ forloop.index | minus: current_module | minus: skip_classes }}-->
-
+              {% if lecture.guest %}{{ lecture.title2 }}
+              <br />Guest Lecturer: {{ lecture.guest }}
+              <br />{% endif %}
               {{ lecture.title }}
               <br />
-              {% if lecture.lecturer %}({{ lecture.lecturer }}):
+              {% if lecture.lecturer %}Instructor: {{ lecture.lecturer }}
               <br />{% endif %}
-              {{ lecture.guest }}
+
+              
               <!--[-->
                   {% if lecture.slides %}
                     [<a href="{{ lecture.slides }}" target="_blank">slides</a>]

@@ -9,26 +9,28 @@ instructor:
 
 guest:
 
-    - name: 
+    - name: Xiaozang Li
       title: Guest Lecturer
       email:
-      url: 
-      expertise: 
-      title2: 
-      image: staff/husky.jpg
+      url: https://www.linkedin.com/in/xiaozangli/
+      expertise: Cloud Architect
+      title2: Google Cloud Customer Engineer
+      image: staff/lucian.jpg
+      description: 10+years experience, ex-amazon
 
-    - name: 
+    - name: Jinhui Zhao
       title: Guest Lecturer
       email:
-      url: 
-      expertise: 
-      title2: 
-      image: staff/husky.jpg
+      url: https://www.linkedin.com/in/jinhui-zhao-7ab2a186/
+      expertise: Full Stack
+      title2: Software Engineer, Tech Lead
+      image: staff/hui2.jpg
+      description: 10+years experience, ex-tiktok/ amazon
 
-    - name: 
+    - name: TBD
       title: Guest Lecturer
       email:
       url: 
-      expertise: 
-      title2: 
+      expertise: TBD
+      title2: TBD
       image: staff/husky.jpg

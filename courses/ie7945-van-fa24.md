@@ -45,18 +45,18 @@ This course offers students a culminating experience to demonstrate proficiency 
   <div class="instructor-profile-two-col">
     <a href="{{ instructor.url }}" target="_blank"><img src="{{ instructor.image | prepend: '/assets/img/' | relative_url }}" /></a>
     <ul class="instructor-info">
-      <li><span>{{ instructor.title }}</span> <a href="{{ instructor.url }}" target="_blank">{{ instructor.name }}</a></li>
-      <li><span>Email:</span>
+      <li><span><b>{{ instructor.title }}</b></span>: <a href="{{ instructor.url }}" target="_blank">{{ instructor.name }}</a></li>
+      <li><span><b>Email</b>:</span>
         <a href="mailto:{{ instructor.email | encode_email }}" target="_blank">
         <i class="far fa-envelope" aria-hidden="true"></i>
         </a></li>
-        <li><span>Office hours:</span> {{ instructor.office-hours }}</li>
+        <li><span><b>Office hours</b>:</span> {{ instructor.office-hours }}</li>
     </ul>
   </div>
   {% endfor %}
 </div>
 
----
+
 
 <!-- Guest  -->
 <div class="instructors clearfix">
@@ -64,10 +64,12 @@ This course offers students a culminating experience to demonstrate proficiency 
   <div class="instructor-profile-two-col">
     <a href="{{ instructor.url }}" target="_blank"><img src="{{ instructor.image | prepend: '/assets/img/' | relative_url }}" /></a>
     <ul class="instructor-info">
-      <li><span>{{ instructor.title }}</span> </li>
-      <li><a href="{{ instructor.url }}" target="_blank">{{ instructor.name }}</a></li>
-      <li><span>Title:</span> {{ instructor.title2 }}</li>
-      <li><span>Expertise:</span> {{ instructor.expertise }}</li>
+      <li><span><b>{{ instructor.title }}</b></span>: 
+      <a href="{{ instructor.url }}" target="_blank">{{ instructor.name }}</a> 
+      </li>
+      <li><span><b>Title</b>:</span> {{ instructor.title2 }}</li>
+      <li><span><b>Expertise</b>:</span> {{ instructor.expertise }}</li>
+      <li>{{ instructor.description }}</li>
     </ul>
   </div>
   {% endfor %}
