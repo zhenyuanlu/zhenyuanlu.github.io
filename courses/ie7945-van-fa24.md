@@ -155,17 +155,9 @@ This course offers students a culminating experience to demonstrate proficiency 
 
 ### Grade Scale
 
-| Grade | Range   |
-|-------|---------|
-| A     | 93-100  |
-| A-    | 90-<93  |
-| B+    | 86-<90  |
-| B     | 83-<86  |
-| B-    | 77-<83  |
-| C+    | 73-<77  |
-| C     | 69-<73  |
-| C-    | 65-<69  |
-| F     | <65     |
+Letter grade will be assigned at the end of the semester.  
+
+*This course does not have any quizzes or exams.*
 
 ---
 
