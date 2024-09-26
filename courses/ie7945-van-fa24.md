@@ -22,6 +22,7 @@ This course offers students a culminating experience to demonstrate proficiency 
 - **HW Submission**: [Gradescope](https://www.gradescope.com/courses/876356){:target="\_blank"}
 - **Q&A Platform:** [Piazza](https://piazza.com/class/m18cwbnltqn4tc){:target="\_blank"}, please sign up with your northeastern email.
 - **Course Repository**: [IE7945 materials](https://github.com/zhenyuanlu/course-ie7945){:target="\_blank"} 
+- **Whiteboard**: [MS Whiteboard](https://whiteboard.office.com/me/whiteboards/p/c3BvOmh0dHBzOi8vbm9ydGhlYXN0ZXJuLW15LnNoYXJlcG9pbnQuY29tL3BlcnNvbmFsL3poX2x1X25vcnRoZWFzdGVybl9lZHU%3D/b!m_J_swoA4U-F-51OMzrG7aR0C-BkFe5MtO08JhGWEPUr1lhY5cdvTrLZjnDru-79/01GDWMXU4QNCHN4KJKPJCKKZAM2WBRLBDT?source=applauncher&auth_upn=zh.lu%40northeastern.edu){:target="\_blank"}
 
   
 - <img src="https://raw.githubusercontent.com/zhenyuanlu/course-ie7945/746208e04c35b596d1cc7da776526c82545d0afa/misc/LaTeX_logo.svg" alt="LaTeX" width="50"/>: [Overleaf](https://www.overleaf.com/){:target="\_blank"} or [Visual Studio Code](https://code.visualstudio.com/){:target="\_blank"}, depending on your team preference.
