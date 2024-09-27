@@ -17,7 +17,7 @@ This course offers students a culminating experience to demonstrate proficiency 
 
 - **Term**: Fall 2024
 - **Class:** Thursdays, 3:30 PM - 4:30 PM PT
-- **Location:** TBD
+- **Location:** Vancouver 1426
 - **Dates:** 09/04/2024 – 12/06/2024
 - **HW Submission**: [Gradescope](https://www.gradescope.com/courses/876356){:target="\_blank"}
 - **Q&A Platform:** [Piazza](https://piazza.com/class/m18cwbnltqn4tc){:target="\_blank"}, please sign up with your northeastern email.
