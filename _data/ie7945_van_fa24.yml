@@ -31,7 +31,7 @@
     - <b> <a href="https://mitcommlab.mit.edu/be/commkit/journal-article/" target="_blank">How to write good article</a></b>, MIT CommLab
     - <b> <a href="https://www.sciencedirect.com/science/article/abs/pii/S001985011730874X" target="_blank">How to write really good articles for premier academic journals</a></b>, Laplaca 2018
   assignments:
-    <span class="event"> [<a href="https://www.gradescope.com/courses/876356" target="_blank">Submit</a>] Check-In II due 10/06 @ 11:59pm PT</span>
+
 
 - date: 10/10
   lecturer: Zhenyuan Lu
@@ -47,7 +47,11 @@
   materials:
     - <b> <a href="https://mitcommlab.mit.edu/be/commkit/journal-article/" target="_blank">How to write good article</a></b>, MIT CommLab
     - <b><a href="https://www.mrdbourke.com/get-a-machine-learning-job/" target="_blank">How to get a Machine Learning Job</a></b> , Daniel Bourke
+    - <b>Check-In II</b> - find 2 papers related to your industry project, and write one page summary for each paper.
+    - <b>Project proposal</b> - write proposal for your industry project. You may get some ideas here <a href="https://github.com/zhenyuanlu/course-ie7945/blob/main/project_materials/project_proposal_template.md" target="_blank">Project Proposal Template</a>
+    - <b>Latex template</b> <a href="https://github.com/cvpr-org/author-kit/releases/tag/CVPR2025-v3(latex)" target="_blank">CVPR 2025</a>
   assignments: >
+    <span class="event">Check-In II due 10/10 @ 11:59pm PT</span>
     <span class="deadline">Project proposal due 10/10 @ 11:59pm PT</span>
 
 - title: "Module 2: What's Next"

@@ -90,7 +90,7 @@ This course offers students a culminating experience to demonstrate proficiency 
 - [Visual Studio Code](https://code.visualstudio.com/){:target="\_blank"}
  
 <img src="https://raw.githubusercontent.com/zhenyuanlu/course-ie7945/746208e04c35b596d1cc7da776526c82545d0afa/misc/LaTeX_logo.svg" alt="LaTeX" width="50"/> **Template**
-- We will use the [[**CVPR 2025**](https://github.com/cvpr-org/author-kit/archive/refs/tags/CVPR2025-v3(latex).zip){:target="_blank"}] templates for the paper, please download it to the local and then upload it to Overleaf.
+- We will use the [[**CVPR 2025**](https://github.com/cvpr-org/author-kit/releases/tag/CVPR2025-v3(latex)){:target="_blank"}] templates for the paper, please download it to the local and then upload it to Overleaf.
 
 **Git Repository**
 - As this is a group project, we will use Github for version control. Please register your account on [[**Github**](https://github.com/){:target="\_blank"}]
