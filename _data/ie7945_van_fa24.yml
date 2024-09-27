@@ -14,7 +14,7 @@
     - <b>Course gitHub repository</b> <a href="https://github.com/zhenyuanlu/course-ie7945" target="_blank">link</a>
     - <b>Jira - Kanban board</b> <a href="https://ie7945fa24.atlassian.net/jira/software/projects/VANFA24/boards/1" target="_blank">link</a>
   assignments:
-    <span class="deadline"> [<a href="https://www.gradescope.com/courses/876356" target="_blank">Submit</a>] Check-In I due 10/03 @ 11:59pm PT</span>
+    <span class="event"> [<a href="https://www.gradescope.com/courses/876356" target="_blank">Submit</a>] Check-In I due 10/03 @ 11:59pm PT</span>
 
 - date: 10/3
   lecturer: Zhenyuan Lu
@@ -28,8 +28,10 @@
   video:
   notes:
   materials:
-    - TBD
+    - <b> <a href="https://mitcommlab.mit.edu/be/commkit/journal-article/" target="_blank">How to write good article</a></b>, MIT CommLab
+    - <b> <a href="https://www.sciencedirect.com/science/article/abs/pii/S001985011730874X" target="_blank">How to write really good articles for premier academic journals</a></b>, Laplaca 2018
   assignments:
+    <span class="event"> [<a href="https://www.gradescope.com/courses/876356" target="_blank">Submit</a>] Check-In II due 10/06 @ 11:59pm PT</span>
 
 - date: 10/10
   lecturer: Zhenyuan Lu
@@ -43,7 +45,8 @@
   video:
   notes:
   materials:
-    - TBD
+    - <b> <a href="https://mitcommlab.mit.edu/be/commkit/journal-article/" target="_blank">How to write good article</a></b>, MIT CommLab
+    - <b><a href="https://www.mrdbourke.com/get-a-machine-learning-job/" target="_blank">How to get a Machine Learning Job</a></b> , Daniel Bourke
   assignments: >
     <span class="deadline">Project proposal due 10/10 @ 11:59pm PT</span>
 
@@ -58,7 +61,8 @@
   video:
   notes:
   materials:
-    - TBD
+    - <b><a href="https://blog.teclado.com/python-abc-abstract-base-classes/" target="_blank">How to Write Cleaner Python Code Using Abstract Classes</a></b> , Petar Marković
+    - (Optional) <b> <a href="https://zhenyuanlu.com/python-notebook/07_oop/" target="_blank">OOP in Python</a></b>, Zhenyuan Lu
   assignments:
 
 - date: 10/24
