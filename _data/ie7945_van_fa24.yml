@@ -18,7 +18,7 @@
 
 - date: 10/3
   lecturer: Zhenyuan Lu
-  guest: XiaoZang Li <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c1/Google_%22G%22_logo.svg/24px-Google_%22G%22_logo.svg.png?20230822192911" width="15" height="15">
+  guest: <a href="https://www.linkedin.com/in/xiaozangli/" target="_blank">XiaoZang Li</a> <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c1/Google_%22G%22_logo.svg/24px-Google_%22G%22_logo.svg.png?20230822192911" width="15" height="15">
   title: >
     <strong>Section: Literature Review</strong>
   title2: >
@@ -28,15 +28,15 @@
   video:
   notes:
   materials:
-    - <b> <a href="https://mitcommlab.mit.edu/be/commkit/journal-article/" target="_blank">How to write good article</a></b>, MIT CommLab
-    - <b> <a href="https://www.sciencedirect.com/science/article/abs/pii/S001985011730874X" target="_blank">How to write really good articles for premier academic journals</a></b>, Laplaca 2018
+    - <a href="https://mitcommlab.mit.edu/be/commkit/journal-article/" target="_blank">How to write good article</a>, MIT CommLab
+    - <a href="https://www.sciencedirect.com/science/article/abs/pii/S001985011730874X" target="_blank">How to write really good articles for premier academic journals</a>, Laplaca 2018
   assignments:
     <span class="event">[<a href="https://www.gradescope.com/courses/876356" target="_blank">Submit</a>] Check-In II due 10/03 @ 11:59pm PT</span>
 
 
 - date: 10/10
   lecturer: Zhenyuan Lu
-  guest: Jinhui Zhao <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT67XAuEiPDDrQJ3g-TY6Zyy2kYe1wefm8OXQ&s" width="25" height="10">
+  guest: <a href="https://www.linkedin.com/in/jinhui-zhao-7ab2a186/" target="_blank">Jinhui Zhao</a> <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT67XAuEiPDDrQJ3g-TY6Zyy2kYe1wefm8OXQ&s" width="25" height="10">
   title: >
     <strong>Section: Introduction and Background</strong>
   title2: >
@@ -46,8 +46,8 @@
   video:
   notes:
   materials:
-    - <b> <a href="https://mitcommlab.mit.edu/be/commkit/journal-article/" target="_blank">How to write good article</a></b>, MIT CommLab
-    - <b><a href="https://www.mrdbourke.com/get-a-machine-learning-job/" target="_blank">How to get a Machine Learning Job</a></b> , Daniel Bourke
+    - <a href="https://mitcommlab.mit.edu/be/commkit/journal-article/" target="_blank">How to write good article</a>, MIT CommLab
+    - <a href="https://www.mrdbourke.com/get-a-machine-learning-job/" target="_blank">How to get a Machine Learning Job</a>, Daniel Bourke
     - <b>Project proposal</b> - write proposal for your industry project. You may get some ideas here <a href="https://github.com/zhenyuanlu/course-ie7945/blob/main/project_materials/project_proposal_template.md" target="_blank">Project Proposal Template</a>
     - <b>Latex template</b> <a href="https://github.com/cvpr-org/author-kit/releases/tag/CVPR2025-v3(latex)" target="_blank">CVPR 2025</a>
   assignments: >
@@ -64,12 +64,14 @@
   video:
   notes:
   materials:
-    - A good example I <b> <a href="https://arxiv.org/abs/2402.17300" target="_blank">VoCo A Simple-yet-Effective Volume Contrastive Learning Framework for 3D Medical Image Analysis </a></b>, Wu 2024
-    - A good example II <b> <a href="https://ieeexplore.ieee.org/stamp/stamp.jsp?arnumber=9873966" target="_blank">Contrastive Learning With Stronger Augmentations </a></b>, Wang 2021
-    - <b>Check-In III</b> - find 4 papers related to your industry project, and write one page summary for each paper. <u><i>These will be used in your final paper - related work section.</i></u>
+    - A good example I <a href="https://arxiv.org/abs/2402.17300" target="_blank">VoCo A Simple-yet-Effective Volume Contrastive Learning Framework for 3D Medical Image Analysis </a>, Wu 2024
+    - A good example II <a href="https://ieeexplore.ieee.org/stamp/stamp.jsp?arnumber=9873966" target="_blank">Contrastive Learning With Stronger Augmentations </a>, Wang 2021
+    - <b>Check-In III</b> [<a href="https://github.com/zhenyuanlu/course-ie7945/blob/main/check-ins/check-in_III_literature_review.pdf" target="_blank">Requirment</a>]  - find 4 papers related to your industry project, and write one page summary for each paper. <u><i>These will be used in your final paper - related work section.</i></u>
     - <b>Latex template</b> <a href="https://github.com/cvpr-org/author-kit/releases/tag/CVPR2025-v3(latex)" target="_blank">CVPR 2025</a>
   assignments:
-      <span class="event">Check-In III due 10/17 @ 11:59pm PT</span>
+      <span class="event">[<a href="https://www.gradescope.com/courses/876356" target="_blank">Submit</a>] Check-In III due 10/17 @ 11:59pm PT</span>
+
+
 
 - date: 10/24
   lecturer: Zhenyuan Lu
@@ -80,8 +82,8 @@
   video:
   notes:
   materials:
-    - (Optional) <b><a href="https://blog.teclado.com/python-abc-abstract-base-classes/" target="_blank">How to Write Cleaner Python Code Using Abstract Classes</a></b> , Petar Marković
-    - (Optional) <b> <a href="https://zhenyuanlu.com/python-notebook/07_oop/" target="_blank">OOP in Python</a></b>, Zhenyuan Lu
+    - (Optional)<a href="https://blog.teclado.com/python-abc-abstract-base-classes/" target="_blank">How to Write Cleaner Python Code Using Abstract Classes</a>, Petar Marković
+    - (Optional)<a href="https://zhenyuanlu.com/python-notebook/07_oop/" target="_blank">OOP in Python</a>, Zhenyuan Lu
   assignments: >
 
 

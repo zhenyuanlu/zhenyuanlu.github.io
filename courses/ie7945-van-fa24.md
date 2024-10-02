@@ -123,8 +123,9 @@ This course offers students a culminating experience to demonstrate proficiency 
 
 ### Grading (Subject to Change)
 
-- **30% Project Check-ins** (Individual):
+- **20% Project Check-ins** (Individual):
   - Good Execution - 3%, Average - 2%, Poor - 1%, None - 0%
+- **10% Project Proposal** (Group)
 - **30% Panel Review** (Group)
   - 15% Draft Paper (Introduction, Related Work, Methodology)
   - 15% Presentation
