@@ -223,11 +223,11 @@ If you have a disability, I encourage you to contact [Disability Resource Center
 ---
 
 
-### Individual Project (Special Case)
+### Individual Project (Special Case - Not For Team Project Members)
 
-| Project | Materials | Instructor  |
-|------------------------|-------------------------|-------------------------|
-| **Contrastive Learning, Self-supervsied Learning**  |  [References](https://github.com/zhenyuanlu/course-ie7945/blob/main/references/ssl.md)         | **Zhenyuan Lu**          |
+| Project | Materials | Individual | Instructor  |
+|------------------------|-------------------------|-------------------------|-------------------------|
+| **Contrastive Learning, Self-supervsied Learning**  |   [References](https://github.com/zhenyuanlu/course-ie7945/blob/main/references/ssl.md)       | Rida Khan  | **Zhenyuan Lu**          |
 
 Only for individual projects, **Contrastive Learning**:
 
