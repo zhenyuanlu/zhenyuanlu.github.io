@@ -64,6 +64,8 @@
   video:
   notes:
   materials:
+    - A good example I <b> <a href="https://arxiv.org/abs/2402.17300" target="_blank"> </a></b>, Wu 2024
+    - A good example II <b> <a href="https://ieeexplore.ieee.org/stamp/stamp.jsp?arnumber=9873966" target="_blank"> </a></b>, Wang 2021
     - <b><a href="https://blog.teclado.com/python-abc-abstract-base-classes/" target="_blank">How to Write Cleaner Python Code Using Abstract Classes</a></b> , Petar Marković
     - (Optional) <b> <a href="https://zhenyuanlu.com/python-notebook/07_oop/" target="_blank">OOP in Python</a></b>, Zhenyuan Lu
     - <b>Check-In III</b> - find 4 papers related to your industry project, and write one page summary for each paper.
