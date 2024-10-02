@@ -58,17 +58,15 @@
 - date: 10/17
   lecturer: Zhenyuan Lu
   title: >
-    <strong>Section: General Methodology</strong>
+    <strong>Section: How to Organize Related Work</strong>
   slides:
   annotated:
   video:
   notes:
   materials:
-    - A good example I <b> <a href="https://arxiv.org/abs/2402.17300" target="_blank"> </a></b>, Wu 2024
-    - A good example II <b> <a href="https://ieeexplore.ieee.org/stamp/stamp.jsp?arnumber=9873966" target="_blank"> </a></b>, Wang 2021
-    - <b><a href="https://blog.teclado.com/python-abc-abstract-base-classes/" target="_blank">How to Write Cleaner Python Code Using Abstract Classes</a></b> , Petar Marković
-    - (Optional) <b> <a href="https://zhenyuanlu.com/python-notebook/07_oop/" target="_blank">OOP in Python</a></b>, Zhenyuan Lu
-    - <b>Check-In III</b> - find 4 papers related to your industry project, and write one page summary for each paper.
+    - A good example I <b> <a href="https://arxiv.org/abs/2402.17300" target="_blank">VoCo A Simple-yet-Effective Volume Contrastive Learning Framework for 3D Medical Image Analysis </a></b>, Wu 2024
+    - A good example II <b> <a href="https://ieeexplore.ieee.org/stamp/stamp.jsp?arnumber=9873966" target="_blank">Contrastive Learning With Stronger Augmentations </a></b>, Wang 2021
+    - <b>Check-In III</b> - find 4 papers related to your industry project, and write one page summary for each paper. <i>These will be used in your final paper - related work section.<i>
     - <b>Latex template</b> <a href="https://github.com/cvpr-org/author-kit/releases/tag/CVPR2025-v3(latex)" target="_blank">CVPR 2025</a>
   assignments:
       <span class="event">Check-In III due 10/17 @ 11:59pm PT</span>
@@ -76,13 +74,14 @@
 - date: 10/24
   lecturer: Zhenyuan Lu
   title: >
-    <strong>Section: Domain Methodology</strong>
+    <strong>Section: Methodology</strong>
   slides:
   annotated:
   video:
   notes:
   materials:
-    - TBD
+    - (Optional) <b><a href="https://blog.teclado.com/python-abc-abstract-base-classes/" target="_blank">How to Write Cleaner Python Code Using Abstract Classes</a></b> , Petar Marković
+    - (Optional) <b> <a href="https://zhenyuanlu.com/python-notebook/07_oop/" target="_blank">OOP in Python</a></b>, Zhenyuan Lu
   assignments: >
 
 
