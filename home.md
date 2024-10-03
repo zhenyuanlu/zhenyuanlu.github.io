@@ -61,8 +61,10 @@ Check out my Python tutorial: <img src='/assets/projects/pynote/logo.webp' align
 
 <a name="software"></a>
 ## Software/Tools
-For open-source spirit.\
-<a href='https://github.com/zhenyuanlu/pyKCN' target="_blank"><img src='/assets/projects/pykcn/logo.webp' align="center" height="20"/> A *Python* Tool for Bridging Scientific Knowledge through Keyword Analysis.</a>
+For open-source spirit.
+- <a href='https://github.com/zhenyuanlu/pyKCN' target="_blank"><img src='/assets/projects/pykcn/logo.webp' align="center" height="20"/> A *Python* Tool for Bridging Scientific Knowledge through Keyword Analysis.</a>
+- **PainAttnNet:** <a href='https://github.com/zhenyuanlu/PainAttnNet' target="_blank"> Attention-based deep representation learning for signal classification.</a>
+
 
 
 
