@@ -48,7 +48,7 @@
   materials:
     - <a href="https://mitcommlab.mit.edu/be/commkit/journal-article/" target="_blank">How to write good article</a>, MIT CommLab
     - <a href="https://www.mrdbourke.com/get-a-machine-learning-job/" target="_blank">How to get a Machine Learning Job</a>, Daniel Bourke
-    - <b>Project proposal</b> - write proposal for your industry project. You may get some ideas here <a href="https://github.com/zhenyuanlu/course-ie7945/blob/main/project_materials/project_proposal_template.md" target="_blank">Project Proposal Template</a>
+    - <b>Project proposal</b> - write proposal for your industry project. You may get some ideas here <a href="https://github.com/zhenyuanlu/course-ie7945/blob/main/project_proposal/project_proposal_template.md" target="_blank">Project Proposal Template</a>
     - <b>Latex template</b> <a href="https://github.com/cvpr-org/author-kit/releases/tag/CVPR2025-v3(latex)" target="_blank">CVPR 2025</a>
   assignments: >
     <span class="deadline">Project proposal due 10/10 @ 11:59pm PT</span>
