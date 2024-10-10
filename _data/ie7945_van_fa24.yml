@@ -51,7 +51,7 @@
     - <b>Project proposal</b> - write proposal for your industry project. You may get some ideas here <a href="https://github.com/zhenyuanlu/course-ie7945/blob/main/project_proposal/project_proposal_template.md" target="_blank">Project Proposal Template</a>
     - <b>Latex template</b> <a href="https://github.com/cvpr-org/author-kit/releases/tag/CVPR2025-v3(latex)" target="_blank">CVPR 2025</a>
   assignments: >
-    <span class="deadline">[<a href="https://www.gradescope.com/courses/876356" target="_blank">Submit</a>] Project proposal due 10/13 @ 11:59pm PT</span>
+    <span class="deadline">[<a href="https://www.gradescope.com/courses/876356" target="_blank">Submit</a>] Project proposal due extended to 10/13 @ 11:59pm PT</span>
 
 - title: "Module 2: What's Next"
 
@@ -66,7 +66,7 @@
   materials:
     - A good example I <a href="https://arxiv.org/abs/2402.17300" target="_blank">VoCo A Simple-yet-Effective Volume Contrastive Learning Framework for 3D Medical Image Analysis </a>, Wu 2024
     - A good example II <a href="https://ieeexplore.ieee.org/stamp/stamp.jsp?arnumber=9873966" target="_blank">Contrastive Learning With Stronger Augmentations </a>, Wang 2021
-    - <b>Check-In III</b> [<a href="https://github.com/zhenyuanlu/course-ie7945/blob/main/check-ins/check-in_III_literature_review.pdf" target="_blank">Requirment</a>]  - find 2 papers related to your industry project, and write one page summary for each paper. <u><i>These will be used in your final paper - related work section.</i></u>
+    - <b>Check-In III</b> [<a href="https://github.com/zhenyuanlu/course-ie7945/blob/main/check-ins/check-in_III_literature_review.pdf" target="_blank">Requirment</a>]  - find <s>4</s> 2 papers related to your industry project, and write one page summary for each paper. <u><i>These will be used in your final paper - related work section.</i></u>
     - <b>Latex template</b> <a href="https://github.com/cvpr-org/author-kit/releases/tag/CVPR2025-v3(latex)" target="_blank">CVPR 2025</a>
   assignments:
       <span class="event">[<a href="https://www.gradescope.com/courses/876356" target="_blank">Submit</a>] Check-In III due 10/17 @ 11:59pm PT</span>
