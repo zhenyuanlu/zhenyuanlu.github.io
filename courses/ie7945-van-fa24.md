@@ -237,12 +237,12 @@ Only for individual projects, **Contrastive Learning**:
   - Choose a research topic (e.g., image classification, time series, etc.) regarding contrastive learning.
     - **due 10/3 @ 4:30pm PT**
   - Write a two-page summary for each paper (total 6 pages) using Overleaf and [[**CVPR 2025**](https://github.com/cvpr-org/author-kit/archive/refs/tags/CVPR2025-v3(latex).zip)] template 
-    - **due 10/10 @ 4:30pm PT** submit to Gradescope:
+    - **due 10/10 @  11:59pm PT** submit to Gradescope:
       - Paper overview
       - Key contributions
       - Methodology
       - Results and conclusions
-- Decide one of the following project directions (**due 10/10 @ 4:30pm PT**):
+- Decide one of the following project directions (**due 10/17 @ 11:59pm PT**):
   1. **Survey paper**: Review at least 20 papers.
   2. **Benchmark with coding**: Implement models and use datasets from the papers to compare results.
   3. **Specific research paper**: Formulate a unique research question and conduct a study.
