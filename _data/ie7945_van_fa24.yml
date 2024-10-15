@@ -84,7 +84,8 @@
   materials:
     - (Optional)<a href="https://blog.teclado.com/python-abc-abstract-base-classes/" target="_blank">How to Write Cleaner Python Code Using Abstract Classes</a>, Petar Marković
     - (Optional)<a href="https://zhenyuanlu.com/python-notebook/07_oop/" target="_blank">OOP in Python</a>, Zhenyuan Lu
-  assignments: >
+  assignments: 
+      <span class="event">[<a href="https://www.gradescope.com/courses/876356" target="_blank">Submit</a>] Check-In IV Methodology due 10/24 @ 11:59pm PT</span>
 
 
 
