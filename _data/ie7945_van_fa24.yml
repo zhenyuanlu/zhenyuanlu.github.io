@@ -75,7 +75,7 @@
 - date: 10/24
   lecturer: Zhenyuan Lu
   title: >
-    <strong>Section: Industry in a Nutshell III </strong>
+    <strong>Industry in a Nutshell III </strong>
   slides:
   annotated:
   video:
@@ -98,9 +98,10 @@
   video:
   notes:
   materials:
-    - TBD
+    - Each team will have 15 minutes to present their project proposal
+    - Each team will submit a draft paper and presentation slides before the class.
   assignments: >
-    <span class="deadline">Draft paper + Presentation due 10/31 @ 11:59pm PT</span>
+    <span class="deadline">Draft paper + Presentation due 10/31 @ 3:30pm PT</span>
 
 
 - title: "Module 3: Final Stretch"
