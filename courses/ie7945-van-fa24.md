@@ -109,11 +109,20 @@ This course offers students a culminating experience to demonstrate proficiency 
 
 
 ### Team Projects (Industry Partner)
+(Before 10/24)  
 
-| Project                                                             | Team Members                                                   | Industry Partner       | Instructor              |
+| Project                                                           | Team Members                                                   | Industry Partner       | Instructor              |
 |----------------------------------------------------------------------|----------------------------------------------------------------|------------------------|-------------------------|
 | **Clasibot 2.0: Towards Autonomous Bookkeeping**                     | Li Bao, Priya Hiteshkumar Daiya, Haritha Rathnam Kuppala, Suraju Ibiyemi | Classibot.com          | **Zhenyuan Lu**          |
 | **Live Timeless: Health Dashboard & AI Coach**                      | Yuanyuan Chen (She/Her), Ravi Teja Chintalapudi, Maharshi Shukla, Mohammed Rayyan Sami | Live Timeless          | **Zhenyuan Lu**          |
+
+<br> 
+
+(After 10/24) 
+
+| Project                                                            | Team Members                                                   | Industry Partner       | Instructor              |
+|----------------------------------------------------------------------|----------------------------------------------------------------|------------------------|-------------------------|
+| **Data Science Project**                     | Li Bao, Priya Hiteshkumar Daiya, Haritha Rathnam Kuppala, Suraju Ibiyemi, Yuanyuan Chen (She/Her), Ravi Teja Chintalapudi, Maharshi Shukla, Mohammed Rayyan Sami  | **Yaniv Talmor**    | **Zhenyuan Lu**          |
 
 
 
@@ -123,15 +132,15 @@ This course offers students a culminating experience to demonstrate proficiency 
 
 ### Grading (Subject to Change)
 
-- **20% Project Check-ins** (Individual):
+- **15% Project Check-ins** (Individual):
   - Good Execution - 3%, Average - 2%, Poor - 1%, None - 0%
 - **10% Project Proposal** (Group)
 - **30% Panel Review** (Group)
   - 15% Draft Paper (Introduction, Related Work, Methodology)
   - 15% Presentation
-- **30% Final Deliverables** (Group):
+- **35% Final Deliverables** (Group):
   - 15% Full Paper
-  - 15% Full Presentation
+  - 20% Full Presentation + Project
 - **10% Exit Interview** (Individual)
 - **Late Submissions**: 20% off per day, up to 100%.
 

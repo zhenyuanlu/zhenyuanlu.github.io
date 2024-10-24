@@ -87,19 +87,19 @@
       <br><i>Why</i> - Introduction and Background (Why this project?)
       <br><i>What</i> - Related Work (Dataset? Problem?)
       <br><i>How</i> - Methodology (Related work? How to solve the problem?)
-    - <b>Draft Paper (Team)</b>
+    - <s><b>Draft Paper (Team)</b>
       <br> <i>Abstract</i> 
       <br> <i>Introduction</i> 
       <br> <i>Related Work</i> 
-      <br> <i>Methodology</i> 
-    - <b>Latex template</b> <a href="https://github.com/cvpr-org/author-kit/releases/tag/CVPR2025-v3(latex)" target="_blank">CVPR 2025</a>
+      <br> <i>Methodology</i> </s>
   assignments: 
-      <span class="event">[<a href="https://www.gradescope.com/courses/876356" target="_blank">Submit</a>] Check-In IV Related work and methodology due 10/24 @ 11:59pm PT</span>
+
 
 
 
 - date: 10/31
   lecturer: Zhenyuan Lu
+  guest: 
   title: >
     <strong>Panel Review</strong>
   slides:
@@ -107,19 +107,22 @@
   video:
   notes:
   materials:
-    - Each team will have 15 minutes to present their project proposal
-    - Each team will submit a draft paper and presentation slides before the class.
-    - Presentation Order (alphabatical) 
-     <br> Classibot, Live Timeless, One Individual Project
+    - Team will have 20-30 minutes to present their proposed work.
+    - Team will submit a project proposal before the class. <a href="https://github.com/zhenyuanlu/course-ie7945/blob/main/project_proposal/project_proposal_template.md" target="_blank">Project Proposal Template</a>
+    - Presentation Order (In Class)
+     <br> Team Project, One Individual Project
   assignments: >
-    <span class="deadline">[<a href="https://www.gradescope.com/courses/876356" target="_blank">Submit</a>]<br> Draft paper + Presentation due 10/31 @ 3:30pm PT</span>
+    <span class="deadline">[<a href="https://www.gradescope.com/courses/876356" target="_blank">Submit</a>]<br> <s>Draft paper</s> New Project Proposal due 10/31 @ 3:30pm PT</span>
 
 
 - title: "Module 3: Final Stretch"
 
 - date: 11/7
-  lecturer: 
+  lecturer: Zhenyuan Lu
+  guest: TBD
   title: >
+    <strong>TBD</strong>
+  title2: > 
     <strong>Industry in a Nutshell IV</strong>
   slides:
   annotated:
@@ -166,6 +169,7 @@
   materials: 
     - Submit final paper and recorded presentation
     - Encourage building a portfolio on <a href="https://pages.github.com/" target="_blank">Github Pages</a>
+    - Latex template <a href="https://github.com/cvpr-org/author-kit/releases/tag/CVPR2025-v3(latex)" target="_blank">CVPR 2025</a>
   assignments: >
     <span class="deadline">Full paper + recorded presentation due 11/28 @ 11:59pm PT</span>
 
