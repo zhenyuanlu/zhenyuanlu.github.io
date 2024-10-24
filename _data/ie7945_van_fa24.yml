@@ -57,7 +57,8 @@
 - date: 10/17
   lecturer: Zhenyuan Lu
   title: >
-    <strong>Section: How to Organize Related Work and Methodology</strong>
+    <strong>Section: How to Organize Related Work and Methodology</strong>;<br>
+    <strong>Industry in a Nutshell III</strong>
   slides:
   annotated:
   video:
@@ -65,6 +66,7 @@
   materials:
     - A good example I <a href="https://arxiv.org/abs/2402.17300" target="_blank">VoCo A Simple-yet-Effective Volume Contrastive Learning Framework for 3D Medical Image Analysis </a>, Wu 2024
     - A good example II <a href="https://ieeexplore.ieee.org/stamp/stamp.jsp?arnumber=9873966" target="_blank">Contrastive Learning With Stronger Augmentations </a>, Wang 2021
+    - <a href="https://www.mrdbourke.com/get-a-machine-learning-job/" target="_blank">How to get a Machine Learning Job</a>, Daniel Bourke
     - <b>Check-In III</b> [<a href="https://github.com/zhenyuanlu/course-ie7945/blob/main/check-ins/check-in_III_literature_review.pdf" target="_blank">Requirment</a>]  - find <s>4</s> 2 papers related to your industry project, and write one page summary for each paper. <u><i>These will be used in your final paper - related work section.</i></u>
     - <b>Latex template</b> <a href="https://github.com/cvpr-org/author-kit/releases/tag/CVPR2025-v3(latex)" target="_blank">CVPR 2025</a>
   assignments:
@@ -75,15 +77,22 @@
 - date: 10/24
   lecturer: Zhenyuan Lu
   title: >
-    <strong>Industry in a Nutshell III </strong>
+    <strong>Panel Review Preparation</strong>
   slides:
   annotated:
   video:
   notes:
   materials:
-    - <a href="https://www.mrdbourke.com/get-a-machine-learning-job/" target="_blank">How to get a Machine Learning Job</a>, Daniel Bourke
-    - (Optional)<a href="https://blog.teclado.com/python-abc-abstract-base-classes/" target="_blank">How to Write Cleaner Python Code Using Abstract Classes</a>, Petar Marković
-    - (Optional)<a href="https://zhenyuanlu.com/python-notebook/07_oop/" target="_blank">OOP in Python</a>, Zhenyuan Lu
+    - <b>Presentation Structure (Team)</b>
+      <br><i>Why</i> - Introduction and Background (Why this project?)
+      <br><i>What</i> - Related Work (Dataset? Problem?)
+      <br><i>How</i> - Methodology (Related work? How to solve the problem?)
+    - <b>Draft Paper (Team)</b>
+      <br> <i>Abstract</i> 
+      <br> <i>Introduction</i> 
+      <br> <i>Related Work</i> 
+      <br> <i>Methodology</i> 
+    - <b>Latex template</b> <a href="https://github.com/cvpr-org/author-kit/releases/tag/CVPR2025-v3(latex)" target="_blank">CVPR 2025</a>
   assignments: 
       <span class="event">[<a href="https://www.gradescope.com/courses/876356" target="_blank">Submit</a>] Check-In IV Related work and methodology due 10/24 @ 11:59pm PT</span>
 
@@ -100,8 +109,10 @@
   materials:
     - Each team will have 15 minutes to present their project proposal
     - Each team will submit a draft paper and presentation slides before the class.
+    - Presentation Order (alphabatical) 
+     <br> Classibot, Live Timeless, One Individual Project
   assignments: >
-    <span class="deadline">Draft paper + Presentation due 10/31 @ 3:30pm PT</span>
+    <span class="deadline">[<a href="https://www.gradescope.com/courses/876356" target="_blank">Submit</a>]<br> Draft paper + Presentation due 10/31 @ 3:30pm PT</span>
 
 
 - title: "Module 3: Final Stretch"
@@ -109,20 +120,21 @@
 - date: 11/7
   lecturer: 
   title: >
-    <strong>Data Visualization and Concept</strong>
+    <strong>Industry in a Nutshell IV</strong>
   slides:
   annotated:
   video:
   notes:
   materials:
-    - TBD
+    - (Optional)<a href="https://blog.teclado.com/python-abc-abstract-base-classes/" target="_blank">How to Write Cleaner Python Code Using Abstract Classes</a>, Petar Marković
+    - (Optional)<a href="https://zhenyuanlu.com/python-notebook/07_oop/" target="_blank">OOP in Python</a>, Zhenyuan Lu
   assignments:
 
 
 - date: 11/14
   lecturer: 
   title: >
-    <strong>Research Analysis</strong>
+    <strong>TBD</strong>
   slides:
   annotated:
   video:
@@ -134,7 +146,7 @@
 - date: 11/21
   lecturer: 
   title: >
-    <strong>Discussion and Conclusion</strong>
+    <strong>TBD</strong>
   slides:
   annotated:
   video:
@@ -146,7 +158,7 @@
 - date: 11/28
   lecturer: 
   title: >
-    <strong>Final Deliverables</strong>
+    <strong>Final Deliverables (No Class)</strong>
   slides:
   annotated:
   video:
