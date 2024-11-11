@@ -133,14 +133,18 @@
 
 
 - date: 11/14
-  lecturer: 
+  lecturer: Zhenyuan Lu
+  guest: <a href="https://www.linkedin.com/in/shihan-tian-evesmilenice/" target="_blank">Shihan Tian</a> <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/ab/Meta-Logo.png/2560px-Meta-Logo.png" height="25">
   title: >
-    <strong>TBD</strong>
+    <strong>Section: Project Alignment</strong>
+  title2: >
+    <strong>Industry in a Nutshell IV</strong>
   slides:
   annotated:
   video:
   notes:
   materials:
+    - Leave your thoughts and questions for the guest here <a href="https://whiteboard.office.com/me/whiteboards/p/c3BvOmh0dHBzOi8vbm9ydGhlYXN0ZXJuLW15LnNoYXJlcG9pbnQuY29tL3BlcnNvbmFsL3poX2x1X25vcnRoZWFzdGVybl9lZHU%3D/b!m_J_swoA4U-F-51OMzrG7aR0C-BkFe5MtO08JhGWEPUr1lhY5cdvTrLZjnDru-79/01GDWMXU4QNCHN4KJKPJCKKZAM2WBRLBDT?source=applauncher&auth_upn=zh.lu%40northeastern.edu" target="_blank">MS Whiteboard</a>
     - (Optional)<a href="https://blog.teclado.com/python-abc-abstract-base-classes/" target="_blank">How to Write Cleaner Python Code Using Abstract Classes</a>, Petar Marković
     - (Optional)<a href="https://zhenyuanlu.com/python-notebook/07_oop/" target="_blank">OOP in Python</a>, Zhenyuan Lu
   assignments:

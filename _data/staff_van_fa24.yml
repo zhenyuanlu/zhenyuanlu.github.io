@@ -27,10 +27,20 @@ guest:
       image: staff/hui2.jpg
       description: 10+years experience, ex-tiktok/ amazon
 
-    - name: TBD
+    - name: Shihan Tian
       title: Guest Lecturer
       email:
+      url: https://www.linkedin.com/in/shihan-tian-evesmilenice/
+      expertise: Full Stack
+      title2: Meta Software Engineer
+      image: staff/tian.jpg
+      description: 7+ years experience, ex-amazon
+
+    - name: TBD
+      title: TBD
+      email:
       url: 
-      expertise: TBD
-      title2: TBD
+      expertise: 
+      title2: 
       image: staff/husky.jpg
+      description: 
