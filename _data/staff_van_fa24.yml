@@ -36,11 +36,11 @@ guest:
       image: staff/tian.jpg
       description: 7+ years experience, ex-amazon
 
-    - name: TBD
-      title: TBD
-      email:
-      url: 
-      expertise: 
-      title2: 
-      image: staff/husky.jpg
-      description: 
+    - name: Zhuohan Yu
+      title: Guest Lecturer
+      email: 
+      url: https://www.linkedin.com/in/zhuohan-yu-a689488b/
+      expertise: Data Science and Machine Learning
+      title2: Senior Data Scientist
+      image: staff/zhuohan.jpg
+      description: 7+ years experience in DS and ML
