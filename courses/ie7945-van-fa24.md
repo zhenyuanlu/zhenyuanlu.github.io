@@ -113,8 +113,8 @@ This course offers students a culminating experience to demonstrate proficiency 
 
 | Project                                                           | Team Members                                                   | Industry Partner       | Instructor              |
 |----------------------------------------------------------------------|----------------------------------------------------------------|------------------------|-------------------------|
-| **Clasibot 2.0: Towards Autonomous Bookkeeping**                     | Li Bao, Priya Hiteshkumar Daiya, Haritha Rathnam Kuppala, Suraju Ibiyemi | Classibot.com          | **Zhenyuan Lu**          |
-| **Live Timeless: Health Dashboard & AI Coach**                      | Yuanyuan Chen (She/Her), Ravi Teja Chintalapudi, Maharshi Shukla, Mohammed Rayyan Sami | Live Timeless          | **Zhenyuan Lu**          |
+| **Clasibot 2.0: Towards Autonomous Bookkeeping**                     | Li Bao, Priya Hiteshkumar Daiya, Haritha Rathnam Kuppala, Suraju Ibiyemi | Classibot.com          | Zhenyuan Lu          |
+| **Live Timeless: Health Dashboard & AI Coach**                      | Yuanyuan Chen (She/Her), Ravi Teja Chintalapudi, Maharshi Shukla, Mohammed Rayyan Sami | Live Timeless          | Zhenyuan Lu         |
 
 <br> 
 
@@ -122,7 +122,7 @@ This course offers students a culminating experience to demonstrate proficiency 
 
 | Project                                                            | Team Members                                                   | Industry Partner       | Instructor              |
 |----------------------------------------------------------------------|----------------------------------------------------------------|------------------------|-------------------------|
-| **Data Science Project**                     | Li Bao, Priya Hiteshkumar Daiya, Haritha Rathnam Kuppala, Suraju Ibiyemi, Yuanyuan Chen (She/Her), Ravi Teja Chintalapudi, Maharshi Shukla, Mohammed Rayyan Sami  | **Yaniv Talmor**    | **Zhenyuan Lu**          |
+| **Data Science Project**                     | Li Bao, Priya Hiteshkumar Daiya, Haritha Rathnam Kuppala, Suraju Ibiyemi, Yuanyuan Chen (She/Her), Ravi Teja Chintalapudi, Maharshi Shukla, Mohammed Rayyan Sami  | Yaniv Talmor    | Zhenyuan Lu        |
 
 
 
