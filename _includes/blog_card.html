@@ -64,7 +64,7 @@
       {% for post in combined %}
         {% capture stripped_content %}{{ post.content | strip_html | strip_newlines }}{% endcapture %}
         {% assign word_count = stripped_content | split:' ' | size %}
-        {% assign read_time = word_count | divided_by:200 %}
+        {% assign read_time = word_count | divided_by:250 %}
         {% if read_time == 0 %}{% assign read_time = 1 %}{% endif %}
 
         {% assign ctype = site.data.content_icons[post.type] %}
@@ -82,18 +82,24 @@
 
       <a
         href="{{ post.url | relative_url }}"
-        class="block group rounded-xl p-6 shadow-sm hover:shadow-md transition-all duration-300 border border-gray-100"
+        class="block group rounded-xl p-6 shadow-md transition-all duration-300 border border-gray-100"
         :class="darkMode ? 'bg-gray-900' : 'bg-white'"
       >
+        <!-- 
+          NOTE: We make the card relative so we can absolutely position the image on mobile.
+          On mobile: flex-col, image on top (absolute), text below with padding to not overlap.
+          On md+: flex-row side by side layout as before.
+        -->
         <article
-          class="blog-card flex flex-col md:flex-row gap-6 items-stretch"
+          class="blog-card relative flex flex-col md:flex-row gap-6 items-stretch"
           data-title="{{ post.title | downcase }}"
           data-author="{{ post.author | downcase }}"
           data-tags="{{ post.tags | join:',' | downcase }}"
           data-type="{{ post.type }}"
         >
           <!-- Image -->
-          <div class="relative w-full md:w-48 flex-shrink-0 rounded-lg border"
+          <!-- On mobile: absolute positioning. On md and up: revert to static positioning -->
+          <div class="image-container md:static absolute md:relative top-0 left-0 w-full md:w-48 h-48 md:h-auto flex-shrink-0 rounded-lg border overflow-hidden"
             :class="darkMode ? 'border-gray-800' : 'border-gray-200'">
             {% if post.image %}
             <img
@@ -108,7 +114,9 @@
             {% endif %}
           </div>
 
-          <div class="flex-1 min-w-0 flex flex-col justify-center">
+          <!-- Text Container -->
+          <!-- Add top padding on mobile to ensure text doesn't appear behind the image -->
+          <div class="flex-1 min-w-0 flex flex-col justify-center pt-52 md:pt-0">
             <div class="flex items-start justify-between mb-3">
               <h3 class="text-xl font-bold transition-colors"
                 :class="darkMode ? 'group-hover:text-blue-400 text-white' : 'group-hover:text-blue-600 text-gray-900'">

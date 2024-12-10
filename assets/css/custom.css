@@ -7,3 +7,26 @@ html{
 [x-cloak] {
     display: none !important;
 }
+
+
+.full-bleed {
+    width: 100vw;
+    position: relative;
+    left: 50%;
+    margin-left: -50vw;
+}
+
+.half-bleed {
+width: 150vw; /* 1.5 times the viewport width */
+position: relative;
+left: 50%;
+margin-left: -75vw; /* Half of 150vw */
+}
+
+.partial-bleed {
+    width: 140vw; /* 40% wider than viewport */
+    position: relative;
+    left: 50%;
+    margin-left: -70vw; /* Half of 140vw */
+}
+  

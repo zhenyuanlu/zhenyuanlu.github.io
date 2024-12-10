@@ -38,3 +38,5 @@ gem "base64", "~> 0.2.0"
 gem "jekyll-seo-tag", "~> 2.8.0"
 gem "jekyll-paginate", "~> 1.1.0"
 gem "jekyll-sitemap", "~> 1.4.0"
+
+gem 'jekyll-last-modified-at'

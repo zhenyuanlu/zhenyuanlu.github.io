@@ -1,0 +1,116 @@
+{% comment %}
+  share_menu.html
+  Added logic for WeChat: On mobile show a simple link, on desktop show QR code and copy link option.
+  Uses `isMobile` determined by screen width in `x-init`.
+  Also uses `toastMessage` and `showShareToast` defined in parent.
+{% endcomment %}
+<div
+  class="absolute right-0 mt-2 w-48 rounded-lg bg-white dark:bg-gray-800 
+         shadow-lg ring-1 ring-black/5 dark:ring-white/10 py-1 z-50"
+  x-show="openShare"
+  @click.outside="openShare = false"
+  x-transition
+  x-data="{ isMobile: false, showWeChatPanel: false }"
+  x-init="
+    isMobile = window.innerWidth < 768;
+  "
+>
+  <!-- Twitter -->
+  <button
+    @click="window.open('https://twitter.com/intent/tweet?text={{ page.title | url_encode }}&url={{ page.url | absolute_url | url_encode }}'); openShare=false;"
+    class="flex items-center w-full px-4 py-2 text-sm text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-700"
+  >
+    <i data-lucide="twitter" class="w-4 h-4 mr-3"></i>
+    Twitter
+  </button>
+
+  <!-- LinkedIn -->
+  <button
+    @click="window.open('https://www.linkedin.com/sharing/share-offsite/?url={{ page.url | absolute_url | url_encode }}'); openShare=false;"
+    class="flex items-center w-full px-4 py-2 text-sm text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-700"
+  >
+    <i data-lucide="linkedin" class="w-4 h-4 mr-3"></i>
+    LinkedIn
+  </button>
+
+  <!-- Facebook -->
+  <button
+    @click="window.open('https://www.facebook.com/sharer/sharer.php?u={{ page.url | absolute_url | url_encode }}'); openShare=false;"
+    class="flex items-center w-full px-4 py-2 text-sm text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-700"
+  >
+    <i data-lucide="facebook" class="w-4 h-4 mr-3"></i>
+    Facebook
+  </button>
+
+  <!-- WeChat -->
+  <template x-if="isMobile">
+    <button
+      @click="window.open('https://www.wechat.com/', '_blank'); openShare=false;"
+      class="flex items-center w-full px-4 py-2 text-sm text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-700"
+    >
+      <i data-lucide="message-circle" class="w-4 h-4 mr-3"></i>
+      WeChat
+    </button>
+  </template>
+  <template x-if="!isMobile">
+    <div class="relative">
+      <button
+        @click="showWeChatPanel = !showWeChatPanel"
+        class="flex items-center w-full px-4 py-2 text-sm text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-700"
+      >
+        <i data-lucide="message-circle" class="w-4 h-4 mr-3"></i>
+        WeChat
+      </button>
+      <div
+        class="absolute left-full top-0 ml-2 w-56 bg-white dark:bg-gray-700 rounded-lg shadow-lg p-4"
+        x-show="showWeChatPanel"
+        @click.outside="showWeChatPanel=false"
+        x-transition
+      >
+        <!-- QR Code placeholder -->
+        <div class="mb-3 flex justify-center">
+          <img src="/assets/images/wechat_qr.png" alt="WeChat QR Code" class="w-32 h-32 object-cover">
+        </div>
+        <button
+          @click="navigator.clipboard.writeText('{{ page.url | absolute_url }}'); toastMessage='Copied!'; showShareToast=true; setTimeout(()=>showShareToast=false,2000);"
+          class="w-full text-left flex items-center gap-2 px-3 py-2 rounded-lg text-sm
+                 hover:bg-gray-100 dark:hover:bg-gray-600 transition-colors text-gray-700 dark:text-gray-200"
+        >
+          <i data-lucide="copy" class="w-4 h-4"></i>
+          Copy Link
+        </button>
+      </div>
+    </div>
+  </template>
+
+  <!-- More (Web Share API) -->
+  <button
+    @click="
+      if (navigator.share) {
+        navigator.share({ title: '{{ page.title }}', url: '{{ page.url | absolute_url }}' }).then(() => { openShare=false; });
+      } else {
+        alert('Web Share API not supported on this browser.');
+        openShare=false;
+      }
+    "
+    class="flex items-center w-full px-4 py-2 text-sm text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-700"
+  >
+    <i data-lucide="share" class="w-4 h-4 mr-3"></i>
+    More
+  </button>
+
+  <!-- Copy Link (Main) -->
+  <button
+    @click="
+      navigator.clipboard.writeText('{{ page.url | absolute_url }}'); 
+      toastMessage='Copied!'; 
+      showShareToast=true; 
+      setTimeout(()=>showShareToast=false,2000); 
+      openShare=false;
+    "
+    class="flex items-center w-full px-4 py-2 text-sm text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-700"
+  >
+    <i data-lucide="link-2" class="w-4 h-4 mr-3"></i>
+    Copy Link
+  </button>
+</div>
