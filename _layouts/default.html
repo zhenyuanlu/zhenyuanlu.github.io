@@ -10,16 +10,7 @@
     <script src="{{ '/assets/js/dark-mode.js' | relative_url }}"></script>
     <script src="{{ '/assets/js/mobile-menu.js' | relative_url }}"></script>
     <script src="{{ '/assets/js/bibtex-modal.js' | relative_url }}"></script>
-    <script src="{{ '/assets/js/filter_courses.js' | relative_url }}"></script>
-    <script>
-        // Preserve dark mode preference
-        const userPref = localStorage.getItem('theme');
-        if (userPref === 'dark') {
-          document.documentElement.classList.add('dark');
-        }
-    </script>
-
-
+    <script src="{{ '/assets/js/filter_blog.js' | relative_url }}" defer></script>
 
 </head>
 
@@ -34,12 +25,18 @@
     {% include hero.html %}
     {% include software.html %}
     {% include courses.html %}
-
+    {% include blog.html %}
     {% include publications.html %}
     {% include field-studies.html %}
     {% include concepts.html %}
     </main>
 
     {% include footer.html %}
+
+    <script>// Load Lucide icons
+        document.addEventListener("DOMContentLoaded", function() {
+          lucide.createIcons();
+        });
+    </script>
 </body>
 </html>

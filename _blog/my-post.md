@@ -6,9 +6,8 @@ tags: ["Machine Learning", "Healthcare AI", "Self-supervised Learning"]
 author: "Zhenyuan Lu"
 date: "09/01/2021"
 hide: false
-highlight: true
+highlight: 1
 image: "/assets/images/blog/my-post.jpg"
-excerpt: "An in-depth exploration of how self-supervised learning techniques can address data scarcity in healthcare..."
 links:
   - type: pdf
     href: "#"

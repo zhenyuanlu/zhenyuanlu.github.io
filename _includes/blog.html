@@ -1,108 +1,198 @@
-{% assign post = include.post %}
+{% assign all_contents = site.blog | where_exp:'item','item.type != nil and item.hide != true' %}
+{% assign highlighted = all_contents | where_exp:'item','item.highlight != nil' | sort: 'highlight' %}
+{% assign normal = all_contents | where_exp:'item','item.highlight == nil' %}
+{% assign combined = highlighted | concat: normal %}
 
-<!-- Set defaults and handle nil values -->
-{% assign post_content = post.content | default: post.excerpt | default: "" %}
-{% assign post_tags = post.tags | default: empty_array %}
-{% assign post_type = post.type | default: "blog" %}
-{% assign post_author = post.author | default: "Anonymous" %}
-{% assign icons = site.data.resource_icons %}
-{% assign icon_set = site.icon_set | default: 'lucide' %}
+<section id="blog" x-cloak class="py-12 px-4"
+  :class="darkMode ? 'bg-gray-950 text-gray-100' : 'bg-gray-50 text-gray-900'">
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="mb-12">
+      <h2 class="text-3xl font-bold mb-2">Blog & Projects</h2>
+      <p :class="darkMode ? 'text-gray-300 italic' : 'text-gray-600 italic'">For work, research, or fun</p>
+    </div>
 
-<!-- Calculate read time safely -->
-{% if post_content != "" %}
-  {% assign words = post_content | number_of_words %}
-  {% assign read_time = words | divided_by: 250 | round %}
-  {% if read_time < 1 %}{% assign read_time = 1 %}{% endif %}
-{% else %}
-  {% assign read_time = 1 %}
-{% endif %}
+    <!-- Filters -->
+    <div class="flex flex-wrap gap-4 mb-8">
+      <!-- Type Filter -->
+      <div class="min-w-[150px]">
+        <label for="blogTypeFilter" class="block text-sm font-medium mb-1"
+          :class="darkMode ? 'text-gray-200' : 'text-gray-700'">Type</label>
+        <select
+          id="blogTypeFilter"
+          class="w-full px-3 py-2 rounded-lg border border-gray-200 text-sm focus:outline-none focus:border-blue-500"
+          :class="darkMode ? 'bg-gray-900 text-gray-200 border-gray-800' : 'bg-white text-gray-700'">
+          <option value="all">All</option>
+          {% assign all_types = combined | map: 'type' | uniq %}
+          {% for t in all_types %}
+          <option value="{{ t }}">{{ t | capitalize }}</option>
+          {% endfor %}
+        </select>
+      </div>
 
-<!-- Generate excerpt safely -->
-{% assign excerpt = post.excerpt | default: post_content | strip_html | truncatewords: 50 | default: "No excerpt available" %}
+      <!-- Tag Filter -->
+      <div class="min-w-[150px]">
+        <label for="blogTagFilter" class="block text-sm font-medium mb-1"
+          :class="darkMode ? 'text-gray-200' : 'text-gray-700'">Tag</label>
+        <select
+          id="blogTagFilter"
+          class="w-full px-3 py-2 rounded-lg border border-gray-200 text-sm focus:outline-none focus:border-blue-500"
+          :class="darkMode ? 'bg-gray-900 text-gray-200 border-gray-800' : 'bg-white text-gray-700'">
+          <option value="all">All</option>
+          {% assign all_tags = combined | map: 'tags' | compact | flatten | uniq %}
+          {% for tag in all_tags %}
+          <option value="{{ tag | downcase }}">{{ tag }}</option>
+          {% endfor %}
+        </select>
+      </div>
 
-<div 
-  class="rounded-xl p-6 shadow-md"
-  :class="darkMode ? 'bg-gray-900' : 'bg-white border border-gray-100'"
->
-  <div class="flex flex-col md:flex-row gap-6">
-    <!-- Post Image with animation -->
-    <div class="sm:w-full md:w-64 h-32 flex-shrink-0 rounded-lg overflow-hidden border border-gray-200">
-      <div class="w-full h-full bg-cover bg-[position:0%_0%] transition-[background-position] duration-[1500ms] hover:bg-[position:100%_100%]"
-           style="background-image: url('{{ post.image | default: '/api/placeholder/400/400' | relative_url }}');">
+      <!-- Search -->
+      <div class="flex-1 min-w-[200px]">
+        <label for="blogSearchInput" class="block text-sm font-medium mb-1"
+          :class="darkMode ? 'text-gray-200' : 'text-gray-700'">
+          Search
+        </label>
+        <input
+          id="blogSearchInput"
+          type="text"
+          placeholder="Search by title, author, or description..."
+          class="w-full px-3 py-2 rounded-lg border border-gray-200 text-sm focus:outline-none focus:border-blue-500"
+          :class="darkMode ? 'bg-gray-900 text-gray-200 border-gray-800' : 'bg-white text-gray-700'">
       </div>
     </div>
 
-    <div class="flex-1">
-      <!-- Title and Type Badge -->
-      <div class="flex items-start justify-between mb-2">
-        <h4 class="text-xl font-bold transition-colors"
-            :class="darkMode ? 'hover:text-blue-400 text-white' : 'hover:text-blue-600 text-gray-900'">
-          <a href="{{ post.url }}">{{ post.title | default: 'Untitled' }}</a>
-        </h4>
-        <span class="px-3 py-1 rounded-full text-sm font-medium"
-              :class="darkMode ? 'bg-blue-950 text-blue-400' : 'bg-blue-50 text-blue-600'">
-          {{ post_type | capitalize }}
-        </span>
-      </div>
+    <div id="blogGrid" class="space-y-6">
+      {% for post in combined %}
+        {% capture stripped_content %}{{ post.content | strip_html | strip_newlines }}{% endcapture %}
+        {% assign word_count = stripped_content | split:' ' | size %}
+        {% assign read_time = word_count | divided_by:200 %}
+        {% if read_time == 0 %}{% assign read_time = 1 %}{% endif %}
 
-      <!-- Tags -->
-      <div class="flex flex-wrap gap-2 mb-3">
-        {% for tag in post_tags %}
-          <span class="px-2.5 py-1 rounded-lg text-xs font-medium"
-                :class="darkMode ? 'bg-gray-800 text-gray-300' : 'bg-gray-100 text-gray-600'">
-            {{ tag }}
-          </span>
-        {% endfor %}
-      </div>
-
-      <!-- Excerpt -->
-      <p class="mb-4" :class="darkMode ? 'text-gray-300' : 'text-gray-600'">
-        {{ excerpt }}
-      </p>
-
-      <!-- Metadata -->
-      <div class="flex flex-wrap items-center gap-4 text-sm mb-4"
-           :class="darkMode ? 'text-gray-400' : 'text-gray-500'">
-        <!-- Author -->
-        <div class="flex items-center gap-2">
-          <i data-lucide="user" class="w-4 h-4"></i>
-          <span>{{ post_author }}</span>
-        </div>
-
-        <!-- Date -->
-        {% if post.date %}
-        <div class="flex items-center gap-2">
-          <i data-lucide="calendar" class="w-4 h-4"></i>
-          <span>
-            {{ post.date | date: "%B %-d, %Y" }}
-          </span>
-        </div>
+        {% assign ctype = site.data.content_icons[post.type] %}
+        {% if ctype == nil %}
+          {% assign ctype_icon = 'book' %}
+          {% assign ctype_label = post.type | capitalize %}
+          {% assign display_event_fields = false %}
+          {% assign display_read_time = false %}
+        {% else %}
+          {% assign ctype_icon = ctype.icon %}
+          {% assign ctype_label = ctype.label %}
+          {% assign display_event_fields = ctype.display_event_fields %}
+          {% assign display_read_time = ctype.display_read_time %}
         {% endif %}
 
-        <!-- Read Time -->
-        <div class="flex items-center gap-2">
-          <i data-lucide="clock" class="w-4 h-4"></i>
-          <span>{{ read_time }} min read</span>
-        </div>
-      </div>
+      <a
+        href="{{ post.url | relative_url }}"
+        class="block group rounded-xl p-6 shadow-sm hover:shadow-md transition-all duration-300 border border-gray-100"
+        :class="darkMode ? 'bg-gray-900' : 'bg-white'"
+      >
+        <article
+          class="blog-card flex flex-col md:flex-row gap-6 items-stretch"
+          data-title="{{ post.title | downcase }}"
+          data-author="{{ post.author | downcase }}"
+          data-tags="{{ post.tags | join:',' | downcase }}"
+          data-type="{{ post.type }}"
+        >
+          <!-- Image -->
+          <div class="relative w-full md:w-48 flex-shrink-0 rounded-lg border"
+            :class="darkMode ? 'border-gray-800' : 'border-gray-200'">
+            {% if post.image %}
+            <img
+              src="{{ post.image | relative_url }}"
+              alt="{{ post.title }}"
+              class="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+            >
+            {% else %}
+            <div class="absolute inset-0 flex items-center justify-center text-gray-400">
+              <i data-lucide="image" class="w-6 h-6"></i>
+            </div>
+            {% endif %}
+          </div>
 
-      <!-- Links -->
-      {% if post.links %}
-      <div class="flex flex-wrap gap-2">
-        {% for link in post.links %}
-          <a
-            href="{{ link.href }}"
-            target="_blank"
-            rel="noopener noreferrer"
-            class="inline-flex items-center px-3 py-1 rounded-lg text-sm gap-1.5 transition-colors group"
-            :class="darkMode ? 'bg-blue-950 text-blue-300 hover:bg-blue-900' : 'bg-blue-50 text-blue-700 hover:bg-blue-100'"
-          >
-            <i data-lucide="{{ icons[link.type].lucide }}" class="w-4 h-4"></i>
-            {{ link.type | capitalize }}
-          </a>
-        {% endfor %}
-      </div>
-      {% endif %}
+          <div class="flex-1 min-w-0 flex flex-col justify-center">
+            <div class="flex items-start justify-between mb-3">
+              <h3 class="text-xl font-bold transition-colors"
+                :class="darkMode ? 'group-hover:text-blue-400 text-white' : 'group-hover:text-blue-600 text-gray-900'">
+                {{ post.title }}
+              </h3>
+              <span class="px-3 py-1 rounded-full text-sm font-medium"
+                :class="darkMode ? 'bg-blue-900/90 text-blue-200' : 'bg-blue-100 text-blue-800'">
+                <i data-lucide="{{ ctype_icon }}" class="w-4 h-4 inline-block mr-1"></i>
+                {{ ctype_label }}
+              </span>
+            </div>
+
+            {% if post.tags %}
+            <div class="flex flex-wrap gap-2 mb-3">
+              {% for t in post.tags %}
+              <span class="px-2 py-0.5 rounded-full text-xs font-medium flex items-center gap-1"
+                :class="darkMode ? 'bg-gray-800 text-gray-300' : 'bg-gray-100 text-gray-800'">
+                <i data-lucide="tag" class="w-3 h-3"></i>
+                {{ t }}
+              </span>
+              {% endfor %}
+            </div>
+            {% endif %}
+
+            {% if post.description %}
+            <p class="mb-4 text-sm"
+              :class="darkMode ? 'text-gray-400' : 'text-gray-600'">
+              {{ post.description }}
+            </p>
+            {% endif %}
+
+            <!-- Metadata -->
+            <div class="flex flex-wrap items-center gap-4 text-sm">
+              {% if post.author %}
+              <div class="flex items-center gap-2 text-gray-500 dark:text-gray-400">
+                <i data-lucide="user" class="w-4 h-4"></i>
+                <span>{{ post.author }}</span>
+              </div>
+              {% endif %}
+
+              {% if display_read_time %}
+                {% if post.date %}
+                <div class="flex items-center gap-2 text-gray-500 dark:text-gray-400">
+                  <i data-lucide="calendar" class="w-4 h-4"></i>
+                  <span>{{ post.date | date: "%b %d, %Y" }}</span>
+                </div>
+                {% endif %}
+                <div class="flex items-center gap-2 text-gray-500 dark:text-gray-400">
+                  <i data-lucide="clock" class="w-4 h-4"></i>
+                  <span>{{ read_time }} min read</span>
+                </div>
+              {% endif %}
+
+              {% if display_event_fields %}
+                {% if post.location %}
+                <div class="flex items-center gap-2 text-gray-500 dark:text-gray-400">
+                  <i data-lucide="map-pin" class="w-4 h-4"></i>
+                  <span>{{ post.location }}</span>
+                </div>
+                {% endif %}
+
+                {% if post.duration %}
+                <div class="flex items-center gap-2 text-gray-500 dark:text-gray-400">
+                  <i data-lucide="clock" class="w-4 h-4"></i>
+                  <span>{{ post.duration }}</span>
+                </div>
+                {% endif %}
+
+                {% if post.date %}
+                <div class="flex items-center gap-2 text-gray-500 dark:text-gray-400">
+                  <i data-lucide="calendar" class="w-4 h-4"></i>
+                  <span>{{ post.date | date: "%b %d, %Y" }}</span>
+                </div>
+                {% endif %}
+              {% endif %}
+            </div>
+          </div>
+        </article>
+      </a>
+      {% endfor %}
+    </div>
+
+    <div id="noBlogMessage" class="hidden mt-6 text-center">
+      <p :class="darkMode ? 'text-gray-300' : 'text-gray-600'">No posts found.</p>
     </div>
   </div>
-</div>
+</section>

@@ -1,0 +1,23 @@
+blog:
+  icon: "book"
+  label: "Blog"
+  display_event_fields: false
+  display_read_time: true
+
+talk:
+  icon: "chalkboard"
+  label: "Talk"
+  display_event_fields: true
+  display_read_time: false
+
+workshop:
+  icon: "presentation"
+  label: "Workshop"
+  display_event_fields: true
+  display_read_time: false
+
+conference:
+  icon: "building"
+  label: "Conference"
+  display_event_fields: true
+  display_read_time: false
