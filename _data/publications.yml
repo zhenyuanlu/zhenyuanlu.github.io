@@ -1,0 +1,81 @@
+# _data/publications.yml
+- title: "Self-supervised Learning for Medical Image Analysis"
+  hide: false
+  highlight: true
+  authors: "Zhenyuan Lu, James Smith, Maria Garcia"
+  year: 2024
+  journal: "Nature Machine Intelligence"
+  image: "/assets/images/publications/clVR/cover.webp"
+  links:
+  - type: github
+    href: "https://github.com/zhenyuanlu/pyKCN"
+  - type: pdf
+    href: "#"
+  - type: journal
+    href: "#"
+  - type: arxiv
+    href: "#"
+  - type: slides
+    href: "#"
+  - type: demo
+    href: "#"
+  - type: video
+    href: "#"
+  - type: website
+    href: "#"
+  - type: blog
+    href: "#"
+  - type: data
+    href: "#"
+  - type: poster
+    href: "#"
+  - type: bibtex
+    href: |
+      @article{lu2024self,
+        title={Self-supervised Learning for Medical Image Analysis},
+        author={Lu, Zhenyuan and Smith, James and Garcia, Maria},
+        journal={Nature Machine Intelligence},
+        year={2024}
+      }
+
+- title: "test"
+  hide: false
+  highlight: false
+  authors: "Zhenyuan Lu, James Smith, Maria Garcia"
+  year: 2024
+  journal: "Nature Machine Intelligence"
+  image: "/assets/images/publications/ssl-medical.jpg"
+  links:
+  - type: github
+    href: "https://github.com/zhenyuanlu/pyKCN"
+  - type: bibtex
+    href: |
+      @article{lu2024self,
+        title={Self-supervised Learning for Medical Image Analysis},
+        author={Lu, Zhenyuan and Smith, James and Garcia, Maria},
+        journal={Nature Machine Intelligence},
+        year={2024}
+      }
+
+- title: "Deep Learning Framework for Healthcare"
+  hide: false
+  highlight: true
+  authors: "Zhenyuan Lu, Robert Johnson"
+  year: 2023
+  journal: "IEEE Transactions on Medical Imaging"
+  image: "/assets/images/publications/dl-healthcare.jpg"
+  links:
+  - type: github
+    href: "#"
+  - type: pdf
+    href: "#"
+  - type: journal
+    href: "#"
+  - type: bibtex
+    href: |
+      @article{lu2023deep,
+        title={Deep Learning Framework for Healthcare},
+        author={Lu, Zhenyuan and Johnson, Robert},
+        journal={IEEE TMI},
+        year={2023}
+      }

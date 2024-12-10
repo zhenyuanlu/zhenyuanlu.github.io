@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% include head.html %}
+    <!-- Alpine.js for reactivity -->
+    <script src="//unpkg.com/alpinejs" defer></script>
+
+    
+    <!-- Site JavaScript -->
+    <script src="{{ '/assets/js/dark-mode.js' | relative_url }}"></script>
+    <script src="{{ '/assets/js/mobile-menu.js' | relative_url }}"></script>
+    <script src="{{ '/assets/js/bibtex-modal.js' | relative_url }}"></script>
+    <script src="{{ '/assets/js/filter_courses.js' | relative_url }}"></script>
+    <script>
+        // Preserve dark mode preference
+        const userPref = localStorage.getItem('theme');
+        if (userPref === 'dark') {
+          document.documentElement.classList.add('dark');
+        }
+    </script>
+
+
+
+</head>
+
+
+
+<body class="min-h-screen transition-colors duration-200" x-data="{ darkMode: false }" 
+:class="darkMode ? 'bg-gray-950 text-gray-100' : 'bg-gray-50 text-gray-900'">
+    {% include header.html %}
+    
+    <main>
+        
+    {% include hero.html %}
+    {% include software.html %}
+    {% include courses.html %}
+
+    {% include publications.html %}
+    {% include field-studies.html %}
+    {% include concepts.html %}
+    </main>
+
+    {% include footer.html %}
+</body>
+</html>

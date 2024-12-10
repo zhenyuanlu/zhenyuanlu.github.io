@@ -1,0 +1,7 @@
+# _data/hero.yml
+name: Zhenyuan Lu
+title: Deep learning scientist at Seurat & AI/ML adjunct faculty
+bio: 
+  - "I am a deep learning scientist at [Seurat](https://www.seurat.com/)and an adjunct faculty member teaching AI/ML at [Northeastern University](https://www.northeastern.edu/) I received my PhD from Northeastern, with research interests in representation learning and self-supervised learning. My journey was featured on the [University PhD Network](https://phd.northeastern.edu/profile/zhenyuan-lu/) and spotlighted by the College of Engineering as a [Student Success Story](https://coe.northeastern.edu/news/ready-for-the-high-demand-field-of-data-analytics/)."
+  - "When I am not geeking out over machine learning, I enjoy DJing, snapping photos, or out on the water kayaking or paddleboarding."
+  # - "My name, Lu Zhenyuan (陆振渊, Asian name order), comes from an [ancestral tradition](https://en.wikipedia.org/wiki/Generation_name), \"Zhen\" (振) is my generational name, and my dad added \"Yuan\" (渊) for \"profound knowledge.\" On the day I got my PhD, he still argued there's always room for a little more depth!"

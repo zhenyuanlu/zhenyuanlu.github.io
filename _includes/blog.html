@@ -1,0 +1,108 @@
+{% assign post = include.post %}
+
+<!-- Set defaults and handle nil values -->
+{% assign post_content = post.content | default: post.excerpt | default: "" %}
+{% assign post_tags = post.tags | default: empty_array %}
+{% assign post_type = post.type | default: "blog" %}
+{% assign post_author = post.author | default: "Anonymous" %}
+{% assign icons = site.data.resource_icons %}
+{% assign icon_set = site.icon_set | default: 'lucide' %}
+
+<!-- Calculate read time safely -->
+{% if post_content != "" %}
+  {% assign words = post_content | number_of_words %}
+  {% assign read_time = words | divided_by: 250 | round %}
+  {% if read_time < 1 %}{% assign read_time = 1 %}{% endif %}
+{% else %}
+  {% assign read_time = 1 %}
+{% endif %}
+
+<!-- Generate excerpt safely -->
+{% assign excerpt = post.excerpt | default: post_content | strip_html | truncatewords: 50 | default: "No excerpt available" %}
+
+<div 
+  class="rounded-xl p-6 shadow-md"
+  :class="darkMode ? 'bg-gray-900' : 'bg-white border border-gray-100'"
+>
+  <div class="flex flex-col md:flex-row gap-6">
+    <!-- Post Image with animation -->
+    <div class="sm:w-full md:w-64 h-32 flex-shrink-0 rounded-lg overflow-hidden border border-gray-200">
+      <div class="w-full h-full bg-cover bg-[position:0%_0%] transition-[background-position] duration-[1500ms] hover:bg-[position:100%_100%]"
+           style="background-image: url('{{ post.image | default: '/api/placeholder/400/400' | relative_url }}');">
+      </div>
+    </div>
+
+    <div class="flex-1">
+      <!-- Title and Type Badge -->
+      <div class="flex items-start justify-between mb-2">
+        <h4 class="text-xl font-bold transition-colors"
+            :class="darkMode ? 'hover:text-blue-400 text-white' : 'hover:text-blue-600 text-gray-900'">
+          <a href="{{ post.url }}">{{ post.title | default: 'Untitled' }}</a>
+        </h4>
+        <span class="px-3 py-1 rounded-full text-sm font-medium"
+              :class="darkMode ? 'bg-blue-950 text-blue-400' : 'bg-blue-50 text-blue-600'">
+          {{ post_type | capitalize }}
+        </span>
+      </div>
+
+      <!-- Tags -->
+      <div class="flex flex-wrap gap-2 mb-3">
+        {% for tag in post_tags %}
+          <span class="px-2.5 py-1 rounded-lg text-xs font-medium"
+                :class="darkMode ? 'bg-gray-800 text-gray-300' : 'bg-gray-100 text-gray-600'">
+            {{ tag }}
+          </span>
+        {% endfor %}
+      </div>
+
+      <!-- Excerpt -->
+      <p class="mb-4" :class="darkMode ? 'text-gray-300' : 'text-gray-600'">
+        {{ excerpt }}
+      </p>
+
+      <!-- Metadata -->
+      <div class="flex flex-wrap items-center gap-4 text-sm mb-4"
+           :class="darkMode ? 'text-gray-400' : 'text-gray-500'">
+        <!-- Author -->
+        <div class="flex items-center gap-2">
+          <i data-lucide="user" class="w-4 h-4"></i>
+          <span>{{ post_author }}</span>
+        </div>
+
+        <!-- Date -->
+        {% if post.date %}
+        <div class="flex items-center gap-2">
+          <i data-lucide="calendar" class="w-4 h-4"></i>
+          <span>
+            {{ post.date | date: "%B %-d, %Y" }}
+          </span>
+        </div>
+        {% endif %}
+
+        <!-- Read Time -->
+        <div class="flex items-center gap-2">
+          <i data-lucide="clock" class="w-4 h-4"></i>
+          <span>{{ read_time }} min read</span>
+        </div>
+      </div>
+
+      <!-- Links -->
+      {% if post.links %}
+      <div class="flex flex-wrap gap-2">
+        {% for link in post.links %}
+          <a
+            href="{{ link.href }}"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="inline-flex items-center px-3 py-1 rounded-lg text-sm gap-1.5 transition-colors group"
+            :class="darkMode ? 'bg-blue-950 text-blue-300 hover:bg-blue-900' : 'bg-blue-50 text-blue-700 hover:bg-blue-100'"
+          >
+            <i data-lucide="{{ icons[link.type].lucide }}" class="w-4 h-4"></i>
+            {{ link.type | capitalize }}
+          </a>
+        {% endfor %}
+      </div>
+      {% endif %}
+    </div>
+  </div>
+</div>

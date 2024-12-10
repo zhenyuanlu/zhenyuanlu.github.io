@@ -1,0 +1,32 @@
+<section id="field-studies" x-cloak class="py-20 px-4"
+  :class="darkMode ? 'bg-gray-950 text-gray-100' : 'bg-gray-50 text-gray-900'">
+
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="mb-12">
+      <h2 class="text-3xl font-bold mb-2"
+          :class="darkMode ? 'text-white' : 'text-gray-900'">
+        Field Studies in Texas
+      </h2>
+      <p :class="darkMode ? 'text-gray-300 italic' : 'text-gray-600 italic'">
+        For involving the world
+      </p>
+    </div>
+
+    <!-- Featured Image/Experience Section -->
+    <div class="rounded-xl p-6 shadow-sm mb-8 transition-colors duration-200"
+         :class="darkMode ? 'bg-gray-900' : 'bg-white'">
+      <div class="max-w-3xl mx-auto">
+        <div class="rounded-lg overflow-hidden mb-4">
+          <img
+            src="{{ '/assets/images/field-studies.jpg' | relative_url }}"
+            alt="Field Research Memories"
+            class="w-full h-auto object-cover hover:scale-105 transition-transform duration-500"
+          />
+        </div>
+        <p class="text-sm text-center" :class="darkMode ? 'text-gray-400' : 'text-gray-600'">
+          2014 - 2017 Teaching and field trip, supervised by Dr. Lemke and Dr. Bonner
+        </p>
+      </div>
+    </div>
+
+</section>

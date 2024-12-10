@@ -1,0 +1,27 @@
+<!-- _includes/footer.html -->
+
+<footer x-cloak class="w-full bg-gray-100 pb-12"
+:class="darkMode ? 'bg-gray-950 text-gray-100' : 'bg-white text-gray-900'">
+  <div class="max-w-7xl mx-auto px-4 text-sm text-gray-600 grid grid-cols-1 md:grid-cols-3 gap-4 items-center">
+    <div class="text-center md:text-left">
+      &copy; 2019 - {{ 'now' | date: "%Y" }} Zhenyuan Lu.
+      <br>
+      Last edited on {{ site.time | date: '%-b %Y'}}.
+    </div>
+    <div class="text-center">
+      <span class="flex justify-center items-center">
+        <i class="fa-solid fa-map-marker-alt mr-2"></i>
+        Hello from Boston
+      </span>
+    </div>
+    <div class="text-center md:text-right">
+      <span class="flex justify-center md:justify-end items-center">
+        <!-- <i class="fa-solid fa-heart mr-2 text-red-500"></i> -->
+        Crafted by Zhenyuan Lu
+        <br>
+          &#10084; with ChatGPT and Claude.
+      </span>
+    </div>
+  </div>
+</footer>
+  

@@ -1,0 +1,12 @@
+# _data/mentors.yml
+- name: "Dr. David E Lemke"
+  contribution: "For his invaluable guidance in teaching methodology and curriculum development"
+  image: "/assets/images/mentors/lemke.jpg"
+  website: "https://www.bio.txstate.edu/about/faculty-and-staff/lemke.html"
+  icon: "dna"
+
+- name: "Dr. Tim Bonner"
+  contribution: "For teaching the BEST Ichthyology and inspiring a deep appreciation for aquatic ecosystems"
+  image: "/assets/images/mentors/bonner.jpg"
+  website: "https://www.bio.txstate.edu/about/faculty-and-staff/bonner.html"
+  icon: "fish"

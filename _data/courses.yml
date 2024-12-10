@@ -1,0 +1,15 @@
+- code: "CS5800"
+  title: "Algorithms"
+  level: "Graduate"
+  institution: "Northeastern University"
+  description: "Advanced algorithm design..."
+  semesters:
+    - term: "Spring 2024"
+      season: "spring"
+    - term: "Fall 2023"
+      season: "fall"
+    - term: "Summer 2023"
+      season: "summer"
+  campuses: ["Boston", "Seattle", "Silicon Valley"]
+  status: "active"
+  url: "/teaching/algorithms"

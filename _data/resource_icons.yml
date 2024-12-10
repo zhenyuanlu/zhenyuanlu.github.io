@@ -1,0 +1,49 @@
+# FontAwesome and Lucide Icons Mapping
+github:
+  fontawesome: "fa fa-github"
+  lucide: "github"
+
+pdf:
+  fontawesome: "fa fa-file-pdf"
+  lucide: "file"
+
+journal:
+  fontawesome: "fa fa-book"
+  lucide: "book"
+
+arxiv:
+  fontawesome: "fa fa-file-lines"
+  lucide: "book-open"
+
+slides:
+  fontawesome: "fab fa-slideshare"
+  lucide: "presentation"
+
+demo:
+  fontawesome: "fa fa-desktop"
+  lucide: "globe"
+
+video:
+  fontawesome: "fa fa-video"
+  lucide: "video"
+
+website:
+  fontawesome: "fa fa-globe"
+  lucide: "layout"
+
+blog:
+  fontawesome: "fa fa-blog"
+  lucide: "message-circle"
+
+data:
+  fontawesome: "fa fa-database"
+  lucide: "database"
+
+poster:
+  fontawesome: "fa fa-image"
+  lucide: "bar-chart"
+
+bibtex:
+  fontawesome: "fa fa-quote-right"
+  lucide: "quote"
+

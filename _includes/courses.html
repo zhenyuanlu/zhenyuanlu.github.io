@@ -1,0 +1,173 @@
+<section id="teaching" x-cloak class="py-20 px-4"
+  :class="darkMode ? 'bg-gray-950 text-gray-100' : 'bg-gray-50 text-gray-900'"
+>
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="mb-12">
+      <h2 class="text-3xl font-bold mb-2"
+      :class="darkMode ? 'text-white'">Teachings & Resources</h2>
+      <p :class="darkMode ? 'text-gray-300 italic' : 'text-gray-600 italic'">
+        For sharing the joy of what I have learned
+      </p>
+    </div>
+
+    {% assign icons = site.data.resource_icons %}
+    {% assign icon_set = site.icon_set | default: 'lucide' %}
+
+    <!-- Educational Resources Section -->
+    <div class="mb-16">
+      <h3 class="text-2xl font-bold mb-6"
+      :class="darkMode ? 'text-white'">Educational Resources</h3>
+      <div class="space-y-6">
+        {% for resource in site.data.course_materials %}
+          <article class="flex gap-6 rounded-xl p-6 shadow-md border border-gray-100"
+                   :class="darkMode ? 'bg-gray-900' : 'bg-white'">
+            <!-- Resource Image -->
+            <div class="w-40 h-40 flex-shrink-0 rounded-lg overflow-hidden border border-gray-200">
+              <div class="w-full h-full bg-cover bg-[position:0%_0%] transition-[background-position] duration-[1500ms] hover:bg-[position:100%_100%]"
+                       style="background-image: url('{{ resource.image | relative_url }}');">
+                  </div>
+            </div>
+
+            <!-- Resource Content -->
+            <div class="flex-1 min-w-0">
+              <div class="flex items-start justify-between mb-2">
+                <h4 class="text-xl font-bold"
+                 :class="darkMode ? 'text-white'">
+                  {{ resource.title }}
+                </h4>
+                <span class="px-3 py-1 rounded-full text-sm font-medium"
+                             :class="darkMode ? 'bg-purple-50 text-purple-700': 'bg-purple-950 text-purple-400' ">
+                  {{ resource.type }}
+                </span>
+              </div>
+
+              <p class="text-sm mb-3" :class="darkMode ? 'text-gray-400' : 'text-gray-600'">
+                {{ resource.author }}
+              </p>
+
+              <p class="mb-4" :class="darkMode ? 'text-gray-300' : 'text-gray-600'">
+                {{ resource.description }}
+              </p>
+
+              <!-- Topics -->
+              <div class="flex flex-wrap gap-2 mb-4">
+                {% for topic in resource.topics %}
+                  <span class="px-2.5 py-1 rounded-lg text-xs font-medium"
+                :class="darkMode ? 'bg-gray-800 text-gray-300' : 'bg-gray-100 text-gray-600'">
+                    {{ topic }}
+                  </span>
+                {% endfor %}
+              </div>
+
+              <!-- Resource Links -->
+              <div class="flex flex-wrap gap-2">
+                {% for link in resource.links %}
+                  <a
+                    href="{{ link.href }}"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="inline-flex items-center px-3 py-1 rounded-lg text-sm gap-1.5
+                           transition-colors group"
+                    :class="darkMode ? 'bg-blue-950 text-blue-300 hover:bg-blue-900' : 'bg-blue-50 text-blue-700 hover:bg-blue-100'"
+                  >
+                    {% if icon_set == 'fontawesome' %}
+                      <i class="{{ icons[link.type].fontawesome }}"></i>
+                    {% else %}
+                      <i data-lucide="{{ icons[link.type].lucide }}" class="w-4 h-4"></i>
+                    {% endif %}
+                    {{ link.type | capitalize }}
+                  </a>
+                {% endfor %}
+              </div>
+            </div>
+          </article>
+        {% endfor %}
+      </div>
+    </div>
+
+    <!-- Courses Section -->
+    <div>
+      <h3 class="text-2xl font-bold mb-6"
+      :class="darkMode ? 'text-white'">Courses</h3>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        {% for course in site.data.courses %}
+          <a
+            href="{{ course.url }}"
+            class="group block rounded-xl p-6 shadow-md border border-gray-100"
+            :class="darkMode ? 'bg-gray-900' : 'bg-white'"
+          >
+            <div class="flex items-start justify-between mb-3">
+              <div>
+                <div class="flex items-center gap-2 mb-1">
+                  <span class="text-sm font-medium"
+                  :class="darkMode ? 'text-gray-400' : 'text-gray-500'">
+                    {{ course.code }}
+                  </span>
+                  {% if course.level == 'Graduate' %}
+                    <span class="inline-flex items-center gap-1 px-2 py-0.5 
+                                 rounded-full text-xs font-medium"
+                            :class="darkMode ? 'bg-purple-950 text-purple-400' : 'bg-purple-50 text-purple-700'">
+                      <i data-lucide="graduation-cap" class="w-3 h-3"></i>
+                      {{ course.level }}
+                    </span>
+                  {% endif %}
+
+                  <span class="px-2 py-0.5 rounded-full text-xs font-medium"
+                  :class="darkMode ? {% if course.status == 'active' %}
+                                 'bg-green-950 text-green-400' : 'bg-green-50 text-green-700'
+                               {% else %}
+                                 'bg-gray-900 text-gray-300' : 'bg-gray-100 text-gray-700'
+                               {% endif %}">
+                    {% if course.status == 'active' %}Active{% else %}Past{% endif %}
+                  </span>
+                </div>
+                <h4 class="text-lg font-bold"
+                :class="darkMode ? 'text-white group-hover:text-blue-400' : 'group-hover:text-blue-600'">
+                  {{ course.title }}
+                </h4>
+              </div>
+            </div>
+
+            <p class="mb-4" :class="darkMode ? 'text-gray-300' : 'text-gray-600'">
+              {{ course.description }}
+            </p>
+
+            <!-- Semester and Campus Info -->
+            <div class="space-y-4 text-sm"
+            :class="darkMode ? 'text-gray-400' : 'text-gray-600'">
+              <div class="flex items-start gap-2">
+                <i data-lucide="calendar" class="w-4 h-4 mt-1"
+                :class="darkMode ? 'text-gray-400' : 'text-gray-500'"></i>
+                <div class="flex flex-wrap gap-2">
+                  {% for sem in course.semesters %}
+                    <div class="flex items-center gap-1 text-xs">
+                      {% if sem.season == 'spring' %}
+                        <i data-lucide="snowflake" class="w-4 h-4"
+                        :class="darkMode ? 'text-blue-400' : 'text-blue-500'"></i>
+                      {% elsif sem.season == 'summer' %}
+                        <i data-lucide="sun" class="w-4 h-4"
+                        :class="darkMode ? 'text-yellow-400' : 'text-yellow-500'"></i>
+                      {% elsif sem.season == 'fall' %}
+                        <i data-lucide="leaf" class="w-4 h-4"
+                        :class="darkMode ? 'text-orange-400' : 'text-orange-500'"></i>
+                      {% endif %}
+                      <span>{{ sem.term }}</span>
+                    </div>
+                  {% endfor %}
+                </div>
+              </div>
+
+              <div class="flex items-center gap-2">
+                <i data-lucide="map-pin" class="w-4 h-4"
+                :class="darkMode ? 'text-gray-400' : 'text-gray-500'"></i>
+                <p class="text-xs">
+                  {{ course.institution }}{% if course.campuses.size > 0 %} · {{ course.campuses | join: ' · ' }}{% endif %}
+                </p>
+              </div>
+            </div>
+          </a>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+</section>

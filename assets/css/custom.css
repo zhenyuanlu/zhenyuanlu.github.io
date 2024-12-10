@@ -1,0 +1,9 @@
+html{
+    /* scrollbar-gutter: stable both-edges; */
+    overflow-y: scroll;
+}
+
+
+[x-cloak] {
+    display: none !important;
+}

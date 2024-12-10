@@ -1,0 +1,37 @@
+title: "Zhenyuan Lu, PhD | Personal Page"
+description: "I am a deep learning scientist at Seurat and an adjunct faculty member teaching AI/ML at Northeastern University. I received my PhD from Northeastern, with research interests in representation learning and self-supervised learning."
+baseurl: ""
+url: "https://zhenyuanlu.com"
+
+markdown: kramdown
+kramdown:
+  parse_block_html: true
+  parse_span_html: true
+  syntax_highlighter: rouge
+
+icon_set: "lucide"  # options: lucide or fontawesome
+
+author:
+  name: "Zhenyuan Lu"
+  email: "lu.zhenyua@northeastern.edu"
+
+plugins:
+  - jekyll-feed
+  - jekyll-seo-tag
+  - jekyll-sitemap
+  
+include:
+  - _blog
+
+
+exclude:
+  - node_modules
+  - Gemfile
+  - Gemfile.lock
+  - LICENSE
+  - README.md
+
+collections:
+  blog:
+    output: true
+    permalink: /blog/:slug/

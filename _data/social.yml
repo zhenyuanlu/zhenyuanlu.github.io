@@ -1,0 +1,14 @@
+# _data/social.yml
+
+- icon: github
+  href: https://github.com/zhenyuanlu
+  label: GitHub Profile
+- icon: linkedin
+  href: https://linkedin.com/in/zhenyuanlu
+  label: LinkedIn Profile
+- icon: twitter
+  href: https://twitter.com/zhenyuanlu
+  label: Twitter Profile
+- icon: mail
+  href: mailto:zh.lu@northeastern.edu
+  label: Email Contact

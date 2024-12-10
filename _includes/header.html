@@ -1,0 +1,51 @@
+<nav x-cloak class="border-b sticky top-0 z-50" 
+:class="{ 'bg-gray-900 border-gray-800': darkMode, 'bg-white border-gray-200': !darkMode }"
+     x-data="{ mobileMenuOpen: false }">
+    <div class="max-w-7xl mx-auto px-4">
+        <div class="flex items-center justify-between h-16">
+            <div class="flex items-center gap-4">
+                <a href="/" class="font-bold text-xl">{{ site.author.name }}</a>
+                <button 
+                    @click="darkMode = !darkMode"
+                    class="p-2 rounded-lg"
+                    :class="darkMode ? 'bg-gray-800 text-yellow-400' : 'bg-gray-100 text-gray-600'">
+                    <i data-lucide="sun" x-show="darkMode" class="w-5 h-5"></i>
+                    <i data-lucide="moon" x-show="!darkMode" class="w-5 h-5"></i>
+                </button>
+            </div>
+            
+            <div class="hidden md:flex items-center gap-8">
+                {% for item in site.data.navigation.items %}
+                <a href="{{ item.href }}"
+                   class="text-sm font-medium transition-colors"
+                   :class="darkMode ? 'text-gray-300 hover:text-white' : 'text-gray-600 hover:text-gray-900'">
+                    {{ item.name }}
+                </a>
+                {% endfor %}
+            </div>
+
+            <button 
+                @click="mobileMenuOpen = !mobileMenuOpen"
+                class="md:hidden p-2 rounded-lg"
+                :class="darkMode ? 'text-gray-300 hover:bg-gray-800' : 'text-gray-600 hover:bg-gray-100'">
+                <i data-lucide="menu" x-show="!mobileMenuOpen" class="h-6 w-6"></i>
+                <i data-lucide="x" x-show="mobileMenuOpen" class="h-6 w-6"></i>
+            </button>
+        </div>
+    </div>
+
+    <div class="md:hidden transition-all duration-300"
+         x-show="mobileMenuOpen"
+         x-transition>
+        <div class="px-4 pt-2 pb-4 space-y-3"
+             :class="darkMode ? 'bg-gray-900' : 'bg-white'">
+            {% for item in site.data.navigation.items %}
+            <a href="{{ item.href }}"
+               class="block py-2 text-sm font-medium"
+               :class="darkMode ? 'text-gray-300 hover:text-white' : 'text-gray-600 hover:text-gray-900'">
+                {{ item.name }}
+            </a>
+            {% endfor %}
+        </div>
+    </div>
+</nav>

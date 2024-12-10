@@ -1,0 +1,23 @@
+
+<!-- _includes/concepts.html -->
+{% if site.data.concepts %}
+<section class="py-20 px-4"
+  :class="darkMode ? 'bg-gray-950 text-gray-100' : 'bg-white text-gray-900'">
+  <div class="max-w-lg mx-auto space-y-12 text-center">
+    {% for q in site.data.concepts %}
+    <div>
+      <span class="inline-flex items-center">
+        <i class="fa fa-quote-left mr-2" :class="darkMode ? 'text-gray-400' : 'text-gray-500'"></i>
+        <span class="italic" :class="darkMode ? 'text-gray-300' : 'text-gray-700'">
+          {{ q.text }}
+        </span>
+      </span>
+      <div class="mt-4 text-sm" :class="darkMode ? 'text-gray-400' : 'text-gray-500'">
+        — {{ q.author }}
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+</section>
+{% endif %}
+

@@ -1,0 +1,17 @@
+<!-- _includes/share_buttons.html -->
+
+<div class="flex justify-center space-x-4 mt-8">
+  <!-- Twitter -->
+  <a href="https://twitter.com/share?url={{ page.url | absolute_url }}&text={{ page.title | uri_escape }}" target="_blank" rel="noopener noreferrer" class="text-black-500 transition-all duration-300 hover:scale-110">
+    <i class="fa-brands fa-x-twitter fa-2x"></i>
+  </a>
+  <!-- Facebook -->
+  <a href="https://www.facebook.com/sharer/sharer.php?u={{ page.url | absolute_url }}" target="_blank" rel="noopener noreferrer" 
+  class="text-black-500 transition-all duration-300 hover:scale-110">
+    <i class="fa-brands fa-square-facebook fa-2x"></i>
+  </a>
+  <!-- LinkedIn -->
+  <a href="https://www.linkedin.com/shareArticle?mini=true&url={{ page.url | absolute_url }}&title={{ page.title | uri_escape }}" target="_blank" rel="noopener noreferrer" class="text-black-500 transition-all duration-300 hover:scale-110">
+    <i class="fa-brands fa-linkedin-in fa-2x"></i>
+  </a>
+</div>

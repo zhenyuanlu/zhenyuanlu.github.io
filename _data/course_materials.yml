@@ -1,0 +1,30 @@
+# _data/education_materials.yml
+- title: "Deep Learning Fundamentals: A Visual Approach"
+  type: book
+  description: A comprehensive guide to understanding deep learning concepts through visual explanations and interactive examples.
+  author: "Zhenyuan Lu, Textbook for Deep Learning and Neural Networks"
+  topics: [Neural Networks, Computer Vision, Natural Language Processing]
+  image: /assets/images/resources/dl-book.jpg
+  links:
+  - type: github
+    href: "https://github.com/zhenyuanlu/pyKCN"
+  - type: pdf
+    href: "#"
+  - type: journal
+    href: "#"
+  - type: arxiv
+    href: "#"
+  - type: slides
+    href: "#"
+  - type: demo
+    href: "#"
+  - type: video
+    href: "#"
+  - type: website
+    href: "#"
+  - type: blog
+    href: "#"
+  - type: data
+    href: "#"
+  - type: poster
+    href: "#"

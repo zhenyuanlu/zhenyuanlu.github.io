@@ -1,0 +1,45 @@
+# _data/software.yml
+- title: "pyKCN: A Python Tool for Bridging Scientific Knowledge through Keyword Analysis"
+  description: "pyKCN is a Python-based tool for analyzing co-occurrence keywords in literature reviews."
+  technologies: ["Python"]
+  image: "/assets/images/projects/dl-framework.jpg"
+  links:
+  - type: github
+    href: "https://github.com/zhenyuanlu/pyKCN"
+  - type: pdf
+    href: "#"
+  - type: journal
+    href: "#"
+  - type: arxiv
+    href: "#"
+  - type: slides
+    href: "#"
+  - type: demo
+    href: "#"
+  - type: video
+    href: "#"
+  - type: website
+    href: "#"
+  - type: blog
+    href: "#"
+  - type: data
+    href: "#"
+  - type: poster
+    href: "#"
+  - type: bibtex
+    href: |
+      @article{lu2024self,
+        title={Self-supervised Learning for Medical Image Analysis},
+        author={Lu, Zhenyuan and Smith, James and Garcia, Maria},
+        journal={Nature Machine Intelligence},
+        year={2024}
+      }
+
+
+- title: "PainAttnNet: Attention-based Deep Representation Learning for Signal Classification"
+  description: "A web-based tool for exploring high-dimensional medical imaging data."
+  technologies: ["Python", "PyTorch"]
+  image: "/assets/images/projects/viz-tool.jpg"
+  links:
+  - type: github
+    href: "https://github.com/zhenyuanlu/PainAttnNet"
