@@ -8,7 +8,7 @@ author: "Zhenyuan Lu"
 date: 2024-01-08
 hide: false
 highlight: 1
-image: "/assets/images/blog/my-post.jpg"
+image: ""
 links:
   - type: pdf
     href: "#"

@@ -105,6 +105,8 @@ module.exports = {
     'mt-2', 'mt-4', 'mt-6', 'mt-8', 'mt-12',
     // Width classes
     'w-2', 'w-4', 'w-6', 'w-8', 'w-10', 'w-12', 'w-16', 'w-20', 'w-24',
+    'w-2xl', 'w-3xl', 'w-4xl', 'w-5xl', 'w-6xl', 'w-7xl', 'w-8xl',
+    'max-w-xl', 'max-w-2xl', 'max-w-3xl', 'max-w-4xl', 'max-w-5xl', 'max-w-6xl', 'max-w-7xl',
     // Height classes
     'h-2', 'h-4', 'h-6', 'h-8', 'h-10', 'h-12', 'h-16', 'h-20', 'h-24',
     // Typography classes
@@ -114,5 +116,10 @@ module.exports = {
     'mt-6', 'mt-4', 'mt-3', 'mt-2', 'mt-1', 'mt-0',
     'ml-6', 'ml-4', 'ml-3', 'ml-2', 'ml-1', 'ml-0',
     'mr-6', 'mr-4', 'mr-3', 'mr-2', 'mr-1', 'mr-0',
+
+    'pt-2', 'pt-4', 'pt-6', 'pt-8', 'pt-12',
+    'pb-2', 'pb-4', 'pb-6', 'pb-8', 'pb-12',
+    'py-2', 'py-4', 'py-6', 'py-8', 'py-12',
+  
   ],
 };

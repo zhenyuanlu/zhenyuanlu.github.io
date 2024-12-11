@@ -17,6 +17,8 @@ links:
   demo: "#"
 image: "/api/placeholder/800/400"
 type: "blog"
+
+toc: true
 ---
 
 

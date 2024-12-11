@@ -1,9 +1,9 @@
-<section id="publications" x-cloak class="py-12 px-4"
+<section id="publications" x-cloak class="py-8 px-4"
   :class="darkMode ? 'bg-gray-950 text-gray-100' : 'bg-gray-50 text-gray-900'"
   x-data="{ showBibtex: false, currentBibtex: '', copied: false }"
 >
   <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-    <div class="mb-12">
+    <div class="mb-6">
       <h2 class="text-3xl font-bold mb-2">Research Publications</h2>
       <p :class="darkMode ? 'text-gray-300 italic' : 'text-gray-600 italic'">For understanding the difficulty</p>
     </div>
@@ -25,7 +25,7 @@
 
       <!-- Only show the year title if there are publications to show -->
       {% if combined_pubs.size > 0 %}
-        <h3 class="text-2xl font-bold mb-6 mt-12" :class="darkMode ? 'text-white' : 'text-gray-900'">{{ group.name }}</h3>
+        <h3 class="text-lg font-semibold mb-4 mt-4" :class="darkMode ? 'text-white' : 'text-gray-900'">{{ group.name }}</h3>
 
         <div class="grid gap-6 items-center ">
           {% for paper in combined_pubs %}
@@ -34,10 +34,10 @@
               class="rounded-xl p-6 shadow-md"
               :class="darkMode ? 'bg-gray-900' : 'bg-white border border-gray-100'"
             >
-                <div class="flex flex-col md:flex-row gap-6">
+              <div class="flex flex-col md:flex-row gap-6">
                 <div class="sm:w-full md:w-64 h-32 flex-shrink-0 rounded-lg overflow-hidden border border-gray-200">
                   <div class="w-full h-full bg-cover bg-[position:0%_0%] transition-[background-position] duration-[1500ms] hover:bg-[position:100%_100%]"
-                       style="background-image: url('{{ paper.image | relative_url }}');">
+                      style="background-image: url('{{ paper.image | relative_url }}');">
                   </div>
                 </div>
 

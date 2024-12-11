@@ -7,7 +7,7 @@ layout: default
 {% assign read_time = word_count | divided_by:200 %}
 {% if read_time == 0 %}{% assign read_time = 1 %}{% endif %}
 
-<div class="max-w-3xl mx-auto px-4" x-data="{ openShare: false, showShareToast: false }">
+<div x-cloak class="max-w-3xl mx-auto px-4" x-data="{ openShare: false, showShareToast: false }">
     <header class="py-12">
         <div class="mb-8">
             <a 

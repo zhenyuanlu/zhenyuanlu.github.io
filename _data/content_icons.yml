@@ -5,13 +5,13 @@ blog:
   display_read_time: true
 
 talk:
-  icon: "chalkboard"
+  icon: "presentation"
   label: "Talk"
   display_event_fields: true
   display_read_time: false
 
 workshop:
-  icon: "presentation"
+  icon: "settings"
   label: "Workshop"
   display_event_fields: true
   display_read_time: false

@@ -1,8 +1,8 @@
-<section id="teaching" x-cloak class="py-20 px-4"
+<section id="teaching" x-cloak class="py-8 px-4"
   :class="darkMode ? 'bg-gray-950 text-gray-100' : 'bg-gray-50 text-gray-900'"
 >
   <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-    <div class="mb-12">
+    <div class="mb-6">
       <h2 class="text-3xl font-bold mb-2"
       :class="darkMode ? 'text-white'">Teachings & Resources</h2>
       <p :class="darkMode ? 'text-gray-300 italic' : 'text-gray-600 italic'">
@@ -13,8 +13,8 @@
     {% assign icons = site.data.resource_icons %}
     {% assign icon_set = site.icon_set | default: 'lucide' %}
     <!-- Educational Resources Section -->
-    <div class="mb-16">
-      <h3 class="text-2xl font-bold mb-6" :class="darkMode ? 'text-white'">Educational Resources</h3>
+    <div class="mb-4">
+      <h3 class="text-lg font-semibold mb-4" :class="darkMode ? 'text-white'">Books</h3>
       <div class="space-y-6">
         {% for resource in site.data.course_materials %}
           <article 
@@ -90,7 +90,7 @@
 
     <!-- Courses Section -->
     <div>
-      <h3 class="text-2xl font-bold mb-6"
+      <h3 class="text-lg font-semibold mb-4"
       :class="darkMode ? 'text-white'">Courses</h3>
       <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
         {% for course in site.data.courses %}

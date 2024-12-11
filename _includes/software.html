@@ -1,9 +1,9 @@
-<section id="software" x-cloak class="py-12 px-4"
+<section id="software" x-cloak class="py-8 px-4"
   :class="darkMode ? 'bg-gray-950 text-gray-100' : 'bg-gray-50 text-gray-900'"
   x-data="{ showBibtex: false, currentBibtex: '', copied: false }"
 >
   <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-    <div class="mb-12">
+    <div class="mb-8">
       <h2 class="text-3xl font-bold mb-2">Software/Tools</h2>
       <p :class="darkMode ? 'text-gray-300 italic' : 'text-gray-600 italic'">For the open-source spirit.</p>
     </div>
@@ -17,13 +17,13 @@
         class="rounded-xl p-6 shadow-md"
         :class="darkMode ? 'bg-gray-900' : 'bg-white border border-gray-100'"
       >
-        <div class="flex items-center gap-3 mb-4">
-          <h3 class="text-lg font-semibold" :class="darkMode ? 'text-white' : 'text-gray-900'">{{ item.title }}</h3>
+        <div class="flex items-center gap-3 mb-3">
+          <h3 class="text-xl font-bold" :class="darkMode ? 'text-white' : 'text-gray-900'">{{ item.title }}</h3>
         </div>
 
-        <p class="mb-6" :class="darkMode ? 'text-gray-300' : 'text-gray-600'">{{ item.description }}</p>
+        <p class="mb-3" :class="darkMode ? 'text-gray-300' : 'text-gray-600'">{{ item.description }}</p>
 
-        <div class="flex flex-wrap gap-2 mb-6">
+        <div class="flex flex-wrap gap-2 mb-3">
           {% for tech in item.technologies %}
           <span 
             class="px-2.5 py-1 rounded-lg text-xs font-medium"

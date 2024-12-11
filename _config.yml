@@ -36,3 +36,6 @@ collections:
   blog:
     output: true
     permalink: /blog/:slug/
+
+sass:
+  style: compressed
