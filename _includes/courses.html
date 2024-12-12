@@ -23,14 +23,15 @@
           >
             <!-- Resource Image (Mobile: Overlaps, Desktop: Side) -->
             <div 
-              class="image-container absolute md:static top-0 left-0 w-full md:w-40 h-44 md:h-40 flex-shrink-0 rounded-lg overflow-hidden border"
-              :class="darkMode ? 'border-gray-800' : 'border-gray-200'"
+              class="image-container absolute md:static top-0 left-0 w-full md:w-40 h-44 md:h-40 flex-shrink-0 rounded-lg overflow-hidden"
             >
-              <div 
-                class="w-full h-full bg-cover bg-[position:0%_0%] transition-[background-position] duration-[1500ms] hover:bg-[position:100%_100%]"
-                style="background-image: url('{{ resource.image | relative_url }}');"
-              ></div>
+              <img 
+                src="{{ resource.image | relative_url }}" 
+                alt="Resource image"
+                class="w-full h-full object-contain"
+              />
             </div>
+
 
             <!-- Resource Content -->
             <!-- Add top padding on mobile to ensure text starts below the image -->
@@ -138,8 +139,8 @@
             <!-- Semester and Campus Info -->
             <div class="space-y-4 text-sm"
             :class="darkMode ? 'text-gray-400' : 'text-gray-600'">
-              <div class="flex items-start gap-2">
-                <i data-lucide="calendar" class="w-4 h-4 mt-1"
+              <div class="flex items-center gap-2">
+                <i data-lucide="calendar" class="w-4 h-4 flex-shrink-0"
                 :class="darkMode ? 'text-gray-400' : 'text-gray-500'"></i>
                 <div class="flex flex-wrap gap-2">
                   {% for sem in course.semesters %}

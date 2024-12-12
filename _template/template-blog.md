@@ -1,3 +1,4 @@
+---
 # =============================================
 # BLOG POST TEMPLATE
 # How to use:
@@ -6,7 +7,6 @@
 # 3. Replace placeholder values marked with < >
 # =============================================
 
----
 # Technical setup
 layout: blog
 

@@ -1,0 +1,25 @@
+# _data/status_colors.yml
+development:
+  label: "in development"
+  light: "bg-purple-50 text-purple-700"
+  dark: "bg-purple-900/50 text-purple-200"
+alpha:
+  label: "alpha"
+  light: "bg-emerald-50 text-emerald-700"
+  dark: "bg-emerald-900/50 text-emerald-200"
+beta:
+  label: "beta"
+  light: "bg-amber-50 text-amber-700"
+  dark: "bg-amber-900/50 text-amber-200"
+stable:
+  label: "stable"
+  light: "bg-blue-50 text-blue-700"
+  dark: "bg-blue-900/50 text-blue-200"
+archived:
+  label: "archived"
+  light: "bg-gray-50 text-gray-700"
+  dark: "bg-gray-900/50 text-gray-200"
+deprecated:
+  label: "deprecated"
+  light: "bg-red-50 text-red-700"
+  dark: "bg-red-900/50 text-red-200"

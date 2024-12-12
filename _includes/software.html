@@ -10,36 +10,89 @@
 
     {% assign icons = site.data.resource_icons %}
     {% assign icon_set = site.icon_set | default: 'lucide' %}
+    
+    {% assign visible_software = site.data.software | where_exp: "item", "item.hide != true" %}
+    {% assign highlighted_items = visible_software | where_exp: "item", "item.highlight > 0" | sort: "highlight" %}
+    {% assign regular_items = visible_software | where_exp: "item", "item.highlight == null or item.highlight == 0" %}
+    {% assign all_sorted_items = highlighted_items | concat: regular_items %}
 
-    <div class="grid gap-6">
-      {% for item in site.data.software %}
-      <div 
-        class="rounded-xl p-6 shadow-md"
-        :class="darkMode ? 'bg-gray-900' : 'bg-white border border-gray-100'"
-      >
-        <div class="flex items-center gap-3 mb-3">
-          <h3 class="text-xl font-bold" :class="darkMode ? 'text-white' : 'text-gray-900'">{{ item.title }}</h3>
-        </div>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+      {% for item in all_sorted_items %}
+      <div class="rounded-xl p-6 shadow-md relative overflow-hidden"
+        :class="darkMode ? 'bg-gray-900' : 'bg-white border border-gray-100'">
+        {% if item.highlight and item.highlight > 0 %}
+        <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-blue-500 to-purple-500"></div>
+        {% endif %}
+            
+        <div class="flex flex-col gap-4">
+          <div class="flex items-stretch gap-4">
+            <!-- Logo - keeping original height -->
+            <div class="flex-shrink-0 h-14 w-16">
+              {% if item.image %}
+              <div class="bg-white h-full rounded-lg overflow-hidden flex items-center justify-center">
+                <img src="{{ item.image }}" 
+                    alt="{{ item.title }} logo" 
+                    class="w-full h-full object-contain p-1">
+              </div>
+              {% else %}
+              <div class="h-full rounded-lg flex items-center justify-center"
+                  :class="darkMode ? 'bg-gray-800' : 'bg-gray-100'">
+                <span class="text-xl font-bold" :class="darkMode ? 'text-gray-600' : 'text-gray-400'">
+                  {{ item.title | slice: 0 }}
+                </span>
+              </div>
+              {% endif %}
+            </div>
+          
+            <!-- Content - flex layout for title and badges -->
+            <div class="flex-1 min-w-0">
+              <div class="flex flex-col gap-2">
+                <!-- Title and Status Line -->
+                <div class="flex items-center justify-between">
+                  <h3 class="text-lg font-bold" :class="darkMode ? 'text-white' : 'text-gray-900'">
+                    {{ item.title }}
+                  </h3>
+                  <div class="flex items-center gap-2 flex-shrink-0">
+                    {% if item.status %}
+                    {% assign status_color = site.data.status_colors[item.status] %}
+                    <span class="px-2 py-0.5 rounded-full text-xs font-medium whitespace-nowrap"
+                          :class="darkMode ? '{{ status_color.dark }}' : '{{ status_color.light }}'">
+                      {{ status_color.label }}
+                    </span>
+                    {% endif %}
+                    {% if item.version %}
+                    <span class="text-xs whitespace-nowrap" :class="darkMode ? 'text-gray-400' : 'text-gray-500'">
+                      v{{ item.version }}
+                    </span>
+                    {% endif %}
+                  </div>
+                </div>
+          
+                <!-- Tech Badges Line -->
+                <div class="flex flex-wrap gap-1.5">
+                  {% for tech in item.technologies %}
+                  <span class="inline-flex items-center px-2 py-0.5 rounded text-xs font-medium"
+                    :class="darkMode ? 'bg-blue-900/50 text-blue-200' : 'bg-blue-50 text-blue-700'">
+                    {{ tech | downcase}}
+                  </span>
+                  {% endfor %}
+                </div>
+              </div>
+            </div>
+          </div>
 
-        <p class="mb-3" :class="darkMode ? 'text-gray-300' : 'text-gray-600'">{{ item.description }}</p>
+          <!-- Description -->
+          <p class="text-sm" :class="darkMode ? 'text-gray-300' : 'text-gray-600'">
+            {{ item.description }}
+          </p>
 
-        <div class="flex flex-wrap gap-2 mb-3">
-          {% for tech in item.technologies %}
-          <span 
-            class="px-2.5 py-1 rounded-lg text-xs font-medium"
-            :class="darkMode ? 'bg-gray-800 text-gray-300' : 'bg-gray-100 text-gray-600'"
-          >
-            {{ tech }}
-          </span>
-          {% endfor %}
-        </div>
-
-        <div class="flex flex-wrap gap-2">
-          {% for link in item.links %}
-            {% if link.type == "bibtex" %}
+          <!-- Links -->
+          <div class="flex flex-wrap gap-2">
+            {% for link in item.links %}
+              {% if link.type == "bibtex" %}
               <button
                 @click="showBibtex = true; currentBibtex = `{{ link.href }}`; copied = false;"
-                class="inline-flex items-center px-3 py-1 rounded-lg text-sm gap-1.5 transition-colors group"
+                class="inline-flex items-center px-3 py-1 rounded-lg text-sm gap-1.5 transition-colors"
                 :class="darkMode ? 'bg-blue-950 text-blue-300 hover:bg-blue-900' : 'bg-blue-50 text-blue-700 hover:bg-blue-100'"
               >
                 {% if icon_set == 'fontawesome' %}
@@ -49,23 +102,23 @@
                 {% endif %}
                 Cite
               </button>
-            {% else %}
-              <a
-                href="{{ link.href }}"
-                target="_blank"
-                rel="noopener noreferrer"
-                class="inline-flex items-center px-3 py-1 rounded-lg text-sm gap-1.5 transition-colors group"
-                :class="darkMode ? 'bg-blue-950 text-blue-300 hover:bg-blue-900' : 'bg-blue-50 text-blue-700 hover:bg-blue-100'"
+              {% else %}
+              <a href="{{ link.href }}"
+                 target="_blank"
+                 rel="noopener noreferrer"
+                 class="inline-flex items-center px-3 py-1 rounded-lg text-sm gap-1.5 transition-colors"
+                 :class="darkMode ? 'bg-blue-950 text-blue-300 hover:bg-blue-900' : 'bg-blue-50 text-blue-700 hover:bg-blue-100'"
               >
                 {% if icon_set == 'fontawesome' %}
                   <i class="{{ icons[link.type].fontawesome }}"></i>
                 {% else %}
                   <i data-lucide="{{ icons[link.type].lucide }}" class="w-4 h-4"></i>
                 {% endif %}
-                {{ link.type | capitalize }}
+                {{ link.type }}
               </a>
-            {% endif %}
-          {% endfor %}
+              {% endif %}
+            {% endfor %}
+          </div>
         </div>
       </div>
       {% endfor %}

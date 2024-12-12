@@ -1,30 +1,38 @@
 # _data/education_materials.yml
-- title: "Deep Learning Fundamentals: A Visual Approach"
+- title: "Python Notebook from Zero to Advanced"
   type: book
-  description: A comprehensive guide to understanding deep learning concepts through visual explanations and interactive examples.
-  author: "Zhenyuan Lu, Textbook for Deep Learning and Neural Networks"
-  topics: [Neural Networks, Computer Vision, Natural Language Processing]
-  image: /assets/images/publications/clVR/cover.webp
+  description: This book is designed for those with little or no Python programming experience, and it is filled with concise, easy-to-understand examples that will help you learn quickly and effectively.
+  author: "Zhenyuan Lu"
+  topics: 
+    - OOP
+    - advanced formatting
+    - loops and comprehensions
+    - iterable, iterator, generator
+    - error handling
+
+  image: /assets/images/projects/pynote/logo.webp
   links:
   - type: github
     href: "https://github.com/zhenyuanlu/pyKCN"
-  - type: pdf
-    href: "#"
-  - type: journal
-    href: "#"
-  - type: arxiv
-    href: "#"
-  - type: slides
-    href: "#"
-  - type: demo
-    href: "#"
-  - type: video
-    href: "#"
   - type: website
-    href: "#"
-  - type: blog
-    href: "#"
-  - type: data
-    href: "#"
-  - type: poster
-    href: "#"
+    href: "https://zhenyuanlu.com/python-notebook/"
+  - type: pdf
+    href: "https://github.com/zhenyuanlu/python-notebook/blob/main/python_from_zero_to_advance_ZL.pdf"
+
+- title: "Data Visualization/Transformation Tutorial in R "
+  type: book
+  description: This book is designed for those with little or no Python programming experience, and it is filled with concise, easy-to-understand examples that will help you learn quickly and effectively.
+  author: "Zhenyuan Lu"
+  topics: 
+    - OOP
+    - advanced formatting
+    - loops and comprehensions
+    - iterable, iterator, generator
+    - error handling
+
+  image: /assets/images/projects/vizr/logo.webp
+  links:
+  - type: github
+    href: "https://github.com/zhenyuanlu/r-comput-viz"
+  - type: website
+    href: "https://zhenyuanlu.com/r-comput-viz/"

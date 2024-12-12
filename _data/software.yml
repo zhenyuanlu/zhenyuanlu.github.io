@@ -1,45 +1,56 @@
 # _data/software.yml
-- title: "pyKCN: A Python Tool for Bridging Scientific Knowledge through Keyword Analysis"
+- title: "pyKCN"
+  highlight: 0  # Priority ordering (optional, lower number = higher priority)
+  hide: false   # Whether to hide from display
+  status: "development"  # stable, beta, alpha, development, archived, deprecated
+  version: "0.1.0"  # (optional) semantic versioning
   description: "pyKCN is a Python-based tool for analyzing co-occurrence keywords in literature reviews."
-  technologies: ["Python"]
-  image: "/assets/images/projects/dl-framework.jpg"
+  technologies: 
+    - "python"
+  image: "/assets/images/projects/pykcn/logo.png"
   links:
   - type: github
     href: "https://github.com/zhenyuanlu/pyKCN"
-  - type: pdf
-    href: "#"
-  - type: journal
-    href: "#"
   - type: arxiv
-    href: "#"
-  - type: slides
-    href: "#"
-  - type: demo
-    href: "#"
-  - type: video
-    href: "#"
-  - type: website
-    href: "#"
-  - type: blog
-    href: "#"
-  - type: data
-    href: "#"
-  - type: poster
-    href: "#"
+    href: "https://arxiv.org/abs/2403.16157"
   - type: bibtex
     href: |
-      @article{lu2024self,
-        title={Self-supervised Learning for Medical Image Analysis},
-        author={Lu, Zhenyuan and Smith, James and Garcia, Maria},
-        journal={Nature Machine Intelligence},
+      @article{lu2024pykcn,
+        title={pyKCN: A Python Tool for Bridging Scientific Knowledge},
+        author={Lu, Zhenyuan and Li, Wei and Ozek, Burcu and Zhou, Haozhou and Radhakrishnan, Srinivasan and Kamarthi, Sagar},
+        journal={arXiv preprint arXiv:2403.16157},
         year={2024}
       }
 
 
-- title: "PainAttnNet: Attention-based Deep Representation Learning for Signal Classification"
-  description: "A web-based tool for exploring high-dimensional medical imaging data."
-  technologies: ["Python", "PyTorch"]
-  image: "/assets/images/projects/viz-tool.jpg"
+- title: "PainAttnNet"
+  highlight: 0  # Priority ordering (optional, lower number = higher priority)
+  hide: false   # Whether to hide from display
+  status: "stable" # Options: stable, beta, alpha, development, archived, deprecated
+  version: "1.0.0"
+  description: "PainAttnNet is composed transformer encoder with multiscale deep learning for signal classification."
+  technologies: 
+    - "Python"
+    - "PyTorch"
+    - "Transformers"
+    - "Deep Learning"
+  image: "/assets/images/projects/pan/cover.webp"
   links:
   - type: github
     href: "https://github.com/zhenyuanlu/PainAttnNet"
+  - type: journal
+    href: "https://www.frontiersin.org/journals/physiology/articles/10.3389/fphys.2023.1294577/full"
+  - type: data
+    href: "https://www.nit.ovgu.de/BioVid.html"
+  - type: bibtex
+    href: |
+      @article{lu2023transformer,
+        title={Transformer encoder with multiscale deep learning for pain classification using physiological signals},
+        author={Lu, Zhenyuan and Ozek, Burcu and Kamarthi, Sagar},
+        journal={Frontiers in Physiology},
+        volume={14},
+        pages={1294577},
+        year={2023},
+        publisher={Frontiers Media SA}
+      }
+        

@@ -1,15 +1,36 @@
-- code: "CS5800"
-  title: "Algorithms"
+- code: "IE6600"
+  title: "Computation and Visualization for Analytics"
   level: "Graduate"
   institution: "Northeastern University"
-  description: "Advanced algorithm design..."
+  description: "This course covers basic of the R, and R Shiny for data preprocessing, and visualization."
+  technologies:
+    - r
+    - shiny
+    - tableau
   semesters:
-    - term: "Spring 2024"
+    - term: "Spring 2023"
       season: "spring"
-    - term: "Fall 2023"
+    - term: "Fall 2022"
       season: "fall"
-    - term: "Summer 2023"
+    - term: "Summer 2022"
       season: "summer"
-  campuses: ["Boston", "Seattle", "Silicon Valley"]
+    - term: "Spring 2022"
+      season: "spring"
+    - term: "Fall 2021"
+      season: "fall"
+    - term: "Summer 2021"
+      season: "summer"
+    - term: "Spring 2021" 
+      season: "spring"
+    - term: "Fall 2020" 
+      season: "fall"
+    - term: "Spring 2020"
+      season: "spring"
+    - term: "Spring 2019"
+      season: "spring"
+  campuses:
+    - "Boston"
+    - "Seattle"
+    - "Vancourver"
   status: "active"
   url: "/teaching/algorithms"
