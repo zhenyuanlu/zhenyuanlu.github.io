@@ -9,7 +9,7 @@ layout: default
 
  <!-- Main Content -->
  <div x-cloak class="max-w-2xl mx-auto px-4" x-data="{ openShare: false, showShareToast: false }">
-    <header class="py-12">
+    <div class="py-12">
         <!-- Back Button -->
         <div class="mb-8">
           <a 
@@ -127,8 +127,8 @@ layout: default
         <!-- Resource Links -->
         <div class="flex flex-wrap gap-2 mb-8">
           {% for resource_type in page.links %}
-            {% assign rtype = resource_type[0] %}
-            {% assign link = resource_type[1] %}
+            {% assign rtype = resource_type.type %}
+            {% assign link = resource_type.href %}
             {% assign this_icon = icons[rtype] %}
             {% if icon_set == 'fontawesome' %}
               {% assign icon_class = this_icon.fontawesome %}
@@ -202,7 +202,7 @@ layout: default
           <p>{{ page.abstract }}</p>
         </div>
         {% endif %}
-    </header>
+      </div>
   
       <article class="prose prose-lg prose-headings:font-semibold max-w-none pb-12"
                :class="darkMode ? 'dark:prose-invert dark:prose-a:text-blue-400' : 'prose-a:text-blue-600'">

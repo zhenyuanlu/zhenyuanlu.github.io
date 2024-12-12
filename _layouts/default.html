@@ -2,23 +2,9 @@
 <html lang="en">
 <head>
     {% include head.html %}
-    <!-- Alpine.js for reactivity -->
-    <script src="//unpkg.com/alpinejs" defer></script>
-
-    
-    <!-- Site JavaScript -->
-    <script src="{{ '/assets/js/dark-mode.js' | relative_url }}"></script>
-    <script src="{{ '/assets/js/mobile-menu.js' | relative_url }}"></script>
-    <!-- For MathJax -->
-    <script async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js"></script>
-
-
-
 </head>
 
-
-
-<body class="min-h-screen transition-colors duration-200" x-data="{ darkMode: false }" 
+<body x-cloak class="min-h-screen transition-colors duration-200" x-data="{ darkMode: false }" 
 :class="darkMode ? 'bg-gray-950 text-gray-100' : 'bg-gray-50 text-gray-900'">
     {% include header.html %}
     

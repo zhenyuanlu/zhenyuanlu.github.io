@@ -8,7 +8,7 @@ layout: default
 {% if read_time == 0 %}{% assign read_time = 1 %}{% endif %}
 
 <div x-cloak class="max-w-3xl mx-auto px-4" x-data="{ openShare: false, showShareToast: false }">
-    <header class="py-12">
+    <div class="py-12">
         <div class="mb-8">
             <a 
                 href="/#blog" 
@@ -89,8 +89,8 @@ layout: default
                   {% assign icon_set = site.icon_set | default: 'lucide' %}
 
                   {% for resource_type in page.links %}
-                    {% assign rtype = resource_type[0] %}
-                    {% assign link = resource_type[1] %}
+                    {% assign rtype = resource_type.type %}
+                    {% assign link = resource_type.href %}
                     {% assign this_icon = icons[rtype] %}
                     {% if icon_set == 'fontawesome' %}
                       {% assign icon_class = this_icon.fontawesome %}
@@ -99,7 +99,7 @@ layout: default
                       {% assign icon_class = this_icon.lucide %}
                       {% capture resource_icon %}<i data-lucide="{{ icon_class }}" class="w-4 h-4"></i>{% endcapture %}
                     {% endif %}
-                    {% assign label = rtype | capitalize %}
+                    {% assign label = rtype %}
 
                     <a
                       href="{{ link }}"
@@ -118,7 +118,7 @@ layout: default
                 {% endif %}
             </div>
         </div>
-    </header>
+      </div>
 
     <article>
       {% if page.image %}

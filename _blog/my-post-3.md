@@ -11,10 +11,14 @@ tags:
   - "Medical Imaging"
   - "Self-supervised Learning"
 links:
-  pdf: "#"
-  github: "#"
-  slides: "#"
-  demo: "#"
+  - type: github
+    href: "https://github.com/zhenyuanlu/pyKCN"
+  - type: pdf
+    href: "#"
+  - type: journal
+    href: "#"
+  - type: arxiv
+    href: "#"
 image: "/api/placeholder/800/400"
 type: "blog"
 

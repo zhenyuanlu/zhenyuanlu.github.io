@@ -4,7 +4,7 @@
   description: A comprehensive guide to understanding deep learning concepts through visual explanations and interactive examples.
   author: "Zhenyuan Lu, Textbook for Deep Learning and Neural Networks"
   topics: [Neural Networks, Computer Vision, Natural Language Processing]
-  image: /assets/images/resources/dl-book.jpg
+  image: /assets/images/publications/clVR/cover.webp
   links:
   - type: github
     href: "https://github.com/zhenyuanlu/pyKCN"

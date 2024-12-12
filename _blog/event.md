@@ -26,9 +26,13 @@ speaker:
   image: "/api/placeholder/400/400"
 abstract: "This talk covers recent advances in SSL for medical imaging..."
 links:
-  pdf: "#"
-  code: "#"
-  slides: "#"
-  demo: "#"
+  - type: github
+    href: "https://github.com/zhenyuanlu/pyKCN"
+  - type: pdf
+    href: "#"
+  - type: journal
+    href: "#"
+  - type: arxiv
+    href: "#"
 ---
 This is the body of the event. You can include equations, images, and more here.

@@ -1,23 +1,32 @@
 ---
 layout: blog
+
 title: "Test Test"
+type: "talk"
 description: "A comprehensive guide on self-supervised learning for medical imaging."
+
 author: "Zhenyuan Lu"
 date: 2024-01-15
-hide: false
-highlight: 1
+
 tags:
   - "Deep Learning"
   - "Medical Imaging"
   - "Self-supervised Learning"
-links:
-  pdf: "#"
-  code: "#"
-  slides: "#"
-  demo: "#"
-image: "/assets/images/publications/clVR/cover.webp"
-type: "talk"
+highlight: 1
+
+hide: false
 toc: true
+
+image: "/assets/images/publications/clVR/cover.webp"
+links:
+  - type: github
+    href: "https://github.com/zhenyuanlu/pyKCN"
+  - type: pdf
+    href: "#"
+  - type: journal
+    href: "#"
+  - type: arxiv
+    href: "#"
 ---
 
 # Introduction

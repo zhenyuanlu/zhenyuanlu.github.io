@@ -1,51 +1,125 @@
-<nav x-cloak class="border-b sticky top-0 z-50" 
-:class="{ 'bg-gray-900 border-gray-800': darkMode, 'bg-white border-gray-200': !darkMode }"
-     x-data="{ mobileMenuOpen: false }">
-    <div class="max-w-7xl mx-auto px-4">
-        <div class="flex items-center justify-between h-16">
-            <div class="flex items-center gap-4">
-                <a href="/" class="font-bold text-xl">{{ site.author.name }}</a>
-                <button 
-                    @click="darkMode = !darkMode"
-                    class="p-2 rounded-lg"
-                    :class="darkMode ? 'bg-gray-800 text-yellow-400' : 'bg-gray-100 text-gray-600'">
-                    <i data-lucide="sun" x-show="darkMode" class="w-5 h-5"></i>
-                    <i data-lucide="moon" x-show="!darkMode" class="w-5 h-5"></i>
-                </button>
-            </div>
-            
-            <div class="hidden md:flex items-center gap-8">
-                {% for item in site.data.navigation.items %}
-                <a href="{{ item.href }}"
-                   class="text-sm font-medium transition-colors"
-                   :class="darkMode ? 'text-gray-300 hover:text-white' : 'text-gray-600 hover:text-gray-900'">
-                    {{ item.name }}
-                </a>
-                {% endfor %}
-            </div>
+<nav 
+  x-cloak 
+  class="border-b sticky top-0 z-50"
+  :class="{ 'bg-gray-900 border-gray-800': darkMode, 'bg-white border-gray-200': !darkMode }"
+  x-data="{ mobileMenuOpen: false }"
+  @keydown.escape="mobileMenuOpen = false"
+>
+  <div class="max-w-7xl mx-auto px-4">
+    <div class="flex items-center justify-between h-14">
+      <!-- Logo and Dark Mode -->
+      <div class="flex items-center gap-1">
+        <a href="/" class="font-bold text-lg">
+          {{ site.author.name }}
+        </a>
+        <button 
+          @click="darkMode = !darkMode"
+          class="p-2 rounded-lg"
+          :class="{ 
+            'hover:bg-gray-800 text-yellow-400': darkMode, 
+            'hover:bg-gray-100 text-gray-600': !darkMode }"
+          aria-label="Toggle dark mode"
+        >
+          <i 
+            data-lucide="sun" 
+            x-show="darkMode" 
+            class="w-5 h-5"
+            aria-hidden="true"
+          ></i>
+          <i 
+            data-lucide="moon" 
+            x-show="!darkMode" 
+            class="w-5 h-5"
+            aria-hidden="true"
+          ></i>
+        </button>
+      </div>
+      
+      <!-- Desktop Navigation -->
+      <div class="hidden md:flex items-center gap-8">
+        {% for item in site.data.navigation.items %}
+          <a 
+            href="{{ item.href }}"
+            class="relative text-sm font-medium group"
+            :class="{ 'text-gray-300 hover:text-white': darkMode, 'text-gray-600 hover:text-gray-900': !darkMode }"
+            {% if item.name == page.title %}
+              aria-current="page"
+            {% endif %}
+          >
+            {{ item.name }}
+            <span 
+              class="absolute inset-x-0 bottom-0 h-0.4 origin-right 
+                     group-hover:origin-left transition-transform duration-300 
+                     ease-out scale-x-0 group-hover:scale-x-100"
+              :class="{ 'bg-gray-400': darkMode, 'bg-gray-600': !darkMode }"
+              aria-hidden="true"
+            ></span>
+          </a>
+        {% endfor %}
+      </div>
 
-            <button 
-                @click="mobileMenuOpen = !mobileMenuOpen"
-                class="md:hidden p-2 rounded-lg"
-                :class="darkMode ? 'text-gray-300 hover:bg-gray-800' : 'text-gray-600 hover:bg-gray-100'">
-                <i data-lucide="menu" x-show="!mobileMenuOpen" class="h-6 w-6"></i>
-                <i data-lucide="x" x-show="mobileMenuOpen" class="h-6 w-6"></i>
-            </button>
+      <!-- Mobile Menu Button -->
+      <button 
+        @click="mobileMenuOpen = !mobileMenuOpen"
+        class="md:hidden inline-flex items-center justify-center p-2 
+               rounded-md focus:outline-none"
+        :class="{ 'text-gray-300 hover:bg-gray-800': darkMode, 'text-gray-600 hover:bg-gray-100': !darkMode }"
+        aria-controls="mobile-menu"
+        :aria-expanded="mobileMenuOpen"
+      >
+        <span class="sr-only">
+          <span x-text="mobileMenuOpen ? 'Close menu' : 'Open menu'"></span>
+        </span>
+        <div class="relative">
+          <i 
+            data-lucide="menu" 
+            class="h-6 w-6 transition-all duration-300"
+            :class="{ 'opacity-0 -translate-y-2': mobileMenuOpen }"
+            aria-hidden="true"
+          ></i>
+          <i 
+            data-lucide="x"
+            class="h-6 w-6 absolute top-0 left-0 transition-all duration-300"
+            :class="{ 'opacity-100 translate-y-0': mobileMenuOpen, 
+                     'opacity-0 translate-y-2': !mobileMenuOpen }"
+            aria-hidden="true"
+          ></i>
         </div>
+      </button>
     </div>
+  </div>
 
-    <div class="md:hidden transition-all duration-300"
-         x-show="mobileMenuOpen"
-         x-transition>
-        <div class="px-4 pt-2 pb-4 space-y-3"
-             :class="darkMode ? 'bg-gray-900' : 'bg-white'">
-            {% for item in site.data.navigation.items %}
-            <a href="{{ item.href }}"
-               class="block py-2 text-sm font-medium"
-               :class="darkMode ? 'text-gray-300 hover:text-white' : 'text-gray-600 hover:text-gray-900'">
-                {{ item.name }}
-            </a>
-            {% endfor %}
-        </div>
+  <!-- Mobile Menu -->
+  <div 
+    id="mobile-menu"
+    class="md:hidden transition-all duration-300 ease-in-out 
+           absolute left-0 right-0 transform"
+    :class="{ 
+      'opacity-100 translate-y-0 pointer-events-auto': mobileMenuOpen,
+      'opacity-0 -translate-y-4 pointer-events-none': !mobileMenuOpen,
+      'bg-gray-900 border-gray-800': darkMode,
+      'bg-white border-gray-200': !darkMode
+    }"
+  >
+    <div class="px-4 pt-2 pb-4 space-y-2">
+      {% for item in site.data.navigation.items %}
+        <a 
+          href="{{ item.href }}"
+          class="block px-3 py-2 rounded-md text-base font-medium"
+          :class="[
+            '{{ item.name }}' === currentPage
+              ? 'text-blue-600 bg-blue-50 dark:bg-blue-900'
+              : darkMode
+                ? 'text-gray-300 hover:text-white hover:bg-gray-800'
+                : 'text-gray-600 hover:text-gray-900 hover:bg-gray-50'
+          ]"
+          {% if item.name == page.title %}
+            aria-current="page"
+          {% endif %}
+        >
+          {{ item.name }}
+        </a>
+      {% endfor %}
     </div>
+  </div>
 </nav>

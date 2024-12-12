@@ -1,0 +1,64 @@
+# ==================================
+# PUBLICATION DATA TEMPLATE
+# Required fields marked with *
+# ==================================
+
+# Core publication details
+- title: "Self-supervised Learning for Medical Image Analysis"  # * Required
+  authors: "Zhenyuan Lu, James Smith, Maria Garcia"            # * Required
+  year: 2024                                                   # * Required
+  journal: "Nature Machine Intelligence"                       # * Required
+
+  # Display controls
+  hide: false      # Optional, default: false
+  highlight: true  # Optional, default: false
+
+  # Publication image
+  image: "/assets/images/publications/clVR/cover.webp"  # Optional
+
+  # Resource links grouped by category
+  links:
+    # Code resources
+    - type: github    # Repository
+      href: "#"
+    - type: demo      # Live demo
+      href: "#"
+    - type: data      # Dataset
+      href: "#"
+
+    # Paper resources
+    - type: pdf       # PDF version
+      href: "#"
+    - type: journal   # Publisher page
+      href: "#"
+    - type: arxiv     # ArXiv preprint
+      href: "#"
+
+    # Presentation resources
+    - type: slides    # Presentation slides
+      href: "#"
+    - type: video     # Talk recording
+      href: "#"
+    - type: poster    # Conference poster
+      href: "#"
+
+    # Additional resources
+    - type: website   # Project website
+      href: "#"
+    - type: blog      # Blog post
+      href: "#"
+
+  # Citation (separate from regular links)
+  bibtex: |
+    @article{lu2024self,
+      title={Self-supervised Learning for Medical Image Analysis},
+      author={Lu, Zhenyuan and Smith, James and Garcia, Maria},
+      journal={Nature Machine Intelligence},
+      year={2024}
+    }
+
+# You can add multiple publications following the same template
+- title: "Next Publication Title"
+  authors: "Authors"
+  year: 2024
+  # ... and so on
