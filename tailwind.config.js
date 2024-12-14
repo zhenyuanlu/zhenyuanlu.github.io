@@ -51,29 +51,35 @@ module.exports = {
         },
       },
       spacing: {
-      '0.25': '0.0625rem',
-      '0.3': '0.075rem',
-      '0.4': '0.1rem',
-      '0.5': '0.125rem',
-      '1.5': '0.375rem',
-      '2.5': '0.625rem',
-      '3.5': '0.875rem',
-      '4': '1rem',
-      '4.5': '1.125rem',
-      '5': '1.25rem',
-      '6': '1.5rem',
-      '6.5': '1.625rem',
-      '7': '1.75rem',
-      '8': '2rem',
-      '10': '2.5rem',
-      '14': '3.5rem',  
-      '16': '4rem',  
-      '18': '4.5rem',
-      '20': '5rem',
-      '24': '6rem',   
-      '26': '6.5rem',
-      '28': '7rem',
-      '32': '8rem',   
+      '0.25': '0.0625rem',    // 1px
+      '0.3': '0.075rem',      // 1.2px
+      '0.5': '0.125rem',      // 2px
+      '0.75': '0.1875rem',    // 3px
+      '1': '0.25rem',         // 4px
+      '1.5': '0.375rem',      // 6px
+      '2': '0.5rem',          // 8px
+      '2.5': '0.625rem',      // 10px
+      '3': '0.75rem',         // 12px
+      '3.5': '0.875rem',      // 14px
+      '4': '1rem',            // 16px
+      '5': '1.25rem',         // 20px
+      '6': '1.5rem',          // 24px
+      '7': '1.75rem',         // 28px
+      '8': '2rem',            // 32px
+      '9': '2.25rem',         // 36px
+      '10': '2.5rem',         // 40px
+      '11': '2.75rem',        // 44px
+      '12': '3rem',           // 48px
+      '14': '3.5rem',         // 56px
+      '16': '4rem',           // 64px
+      '20': '5rem',           // 80px
+      '24': '6rem',           // 96px
+      '28': '7rem',           // 112px
+      '32': '8rem',           // 128px
+      '36': '9rem',           // 144px
+      '40': '10rem',          // 160px
+      '44': '11rem',          // 176px
+      '48': '12rem',          // 192px
       },
     },
   },
@@ -81,48 +87,103 @@ module.exports = {
     require('@tailwindcss/typography'),
   ],
   safelist: [
-    'bg-zinc-900',
-    'bg-green-100', 'text-green-800', // Active status
-    'bg-gray-100', 'text-gray-600',   // Past status
-    'bg-gray-200', 
-    'bg-gray-300',
-    'bg-gray-400',
-    'bg-gray-500',
-    'bg-gray-600',
-    'bg-gray-700',
-    'bg-gray-800', 'text-gray-800',   // Default status
-    'bg-gray-900', 'text-gray-100',   // Dark mode
-    'bg-gray-950', 'text-gray-50',    // Dark mode
-    'bg-blue-100', 'text-blue-800',   // Python
-    'bg-orange-100', 'text-orange-800', // Java
-    'bg-purple-100', 'text-purple-800', // LaTeX
-    'bg-red-100', 'text-red-800',     // PyTorch
-    'bg-yellow-100', 'text-yellow-800', // TensorFlow
-    'bg-pink-100', 'text-pink-800',   // Julia
-    'bg-indigo-100', 'text-indigo-800', // R
-    'bg-teal-100', 'text-teal-800',   // C++
-    'bg-red-100', 'text-red-800',     // Default status
-    'bg-green-50', 'text-green-700', 
-    // Spacing classes
-    'mb-2', 'mb-4', 'mb-6', 'mb-8', 'mb-12',
-    'mt-2', 'mt-4', 'mt-6', 'mt-8', 'mt-12',
-    // Width classes
-    'w-2', 'w-4', 'w-6', 'w-8', 'w-10', 'w-12', 'w-16', 'w-20', 'w-24',
-    'w-2xl', 'w-3xl', 'w-4xl', 'w-5xl', 'w-6xl', 'w-7xl', 'w-8xl',
-    'max-w-xl', 'max-w-2xl', 'max-w-3xl', 'max-w-4xl', 'max-w-5xl', 'max-w-6xl', 'max-w-7xl',
-    // Height classes
-    'h-2', 'h-4', 'h-6', 'h-8', 'h-10', 'h-12', 'h-16', 'h-20', 'h-24',
-    // Typography classes
-    'text-4xl', 'text-3xl', 'text-2xl', 'text-xl', 'font-bold', 'mb-6', 'mb-4', 'mb-3',
-    // Spacing classes
-    'mb-6', 'mb-4', 'mb-3', 'mb-2', 'mb-1', 'mb-0',
-    'mt-6', 'mt-4', 'mt-3', 'mt-2', 'mt-1', 'mt-0',
-    'ml-6', 'ml-4', 'ml-3', 'ml-2', 'ml-1', 'ml-0',
-    'mr-6', 'mr-4', 'mr-3', 'mr-2', 'mr-1', 'mr-0',
+    // Layout & Spacing - Full spacing scale coverage
+    {
+      pattern: /^-?(m|p)[trblxy]?-(0|0\.25|0\.3|0\.5|0\.75|1|1\.5|2|2\.5|3|3\.5|4|5|6|7|8|9|10|11|12|14|16|20|24|28|32|36|40|44|48)$/,
+    },
+    
+    // Individual direction patterns for more specific control
+    {
+      pattern: /^-?(mt|mb|ml|mr)-(0|0\.25|0\.3|0\.5|0\.75|1|1\.5|2|2\.5|3|3\.5|4|5|6|7|8|9|10|11|12|14|16|20|24|28|32|36|40|44|48)$/,
+    },
+    {
+      pattern: /^(pt|pb|pl|pr)-(0|0\.25|0\.3|0\.5|0\.75|1|1\.5|2|2\.5|3|3\.5|4|5|6|7|8|9|10|11|12|14|16|20|24|28|32|36|40|44|48)$/,
+    },
+    {
+      pattern: /^(px|py)-(0|0\.25|0\.3|0\.5|0\.75|1|1\.5|2|2\.5|3|3\.5|4|5|6|7|8|9|10|11|12|14|16|20|24|28|32|36|40|44|48)$/,
+    },
 
-    'pt-2', 'pt-4', 'pt-6', 'pt-8', 'pt-12',
-    'pb-2', 'pb-4', 'pb-6', 'pb-8', 'pb-12',
-    'py-2', 'py-4', 'py-6', 'py-8', 'py-12',
-  
-  ],
+    // Width & Height - Full scale
+    {
+      pattern: /^(w|h|min-w|min-h|max-w|max-h)-(0|0\.25|0\.3|0\.5|0\.75|1|1\.5|2|2\.5|3|3\.5|4|5|6|7|8|9|10|11|12|14|16|20|24|28|32|36|40|44|48|auto|full|screen)$/,
+    },
+    {
+      pattern: /^max-w-(xs|sm|md|lg|xl|2xl|3xl|4xl|5xl|6xl|7xl|full)$/,
+    },
+
+    // Colors & Backgrounds - Full color scale
+    {
+      pattern: /^(bg|text|border|outline)-(transparent|current|black|white|gray|zinc|slate|neutral|red|orange|amber|yellow|lime|green|emerald|teal|cyan|sky|blue|indigo|violet|purple|fuchsia|pink|rose)(-50|-100|-200|-300|-400|-500|-600|-700|-800|-900|-950)?$/,
+    },
+    
+    // Typography
+    {
+      pattern: /^text-(xs|sm|base|lg|xl|2xl|3xl|4xl|5xl|6xl|7xl|8xl|9xl)$/,
+    },
+    {
+      pattern: /^font-(thin|extralight|light|normal|medium|semibold|bold|extrabold|black)$/,
+    },
+    {
+      pattern: /^tracking-(tighter|tight|normal|wide|wider|widest)$/,
+    },
+    {
+      pattern: /^leading-(3|4|5|6|7|8|9|10|none|tight|snug|normal|relaxed|loose)$/,
+    },
+    
+    // Flex & Grid
+    {
+      pattern: /^(flex|grid|gap|space)-([xy])?(0|0\.5|1|2|3|4|5|6|7|8|9|10|11|12|14|16)$/,
+    },
+    {
+      pattern: /^(justify|items|content)-(start|end|center|between|around|evenly)$/,
+    },
+    
+    // Borders & Rounded
+    {
+      pattern: /^rounded(-none|-sm|-md|-lg|-xl|-2xl|-3xl|-full)?$/,
+    },
+    {
+      pattern: /^(border(-[trbl])?)-([0-9]+|none)$/,
+    },
+    
+    // Interactive States
+    {
+      pattern: /^(hover|focus|active|disabled|visited|group-hover|focus-within|focus-visible):/,
+      variants: ['hover', 'focus', 'active', 'disabled', 'visited', 'group-hover', 'focus-within', 'focus-visible'],
+    },
+    
+    // Effects & Transitions
+    {
+      pattern: /^(shadow(-sm|-md|-lg|-xl|-2xl|-inner|-none)?)$/,
+    },
+    {
+      pattern: /^(transition(-none|-all|-colors|-opacity|-shadow|-transform)?|duration-([0-9]+)|ease-(linear|in|out|in-out))$/,
+    },
+    
+    // Common Utility Classes
+    ...[
+      'container',
+      'prose',
+      'aspect-video',
+      'aspect-square',
+      'object-cover',
+      'object-contain',
+      'object-fill',
+      'object-none',
+      'overflow-hidden',
+      'overflow-x-auto',
+      'overflow-y-auto',
+      'relative',
+      'absolute',
+      'fixed',
+      'sticky',
+      'cursor-pointer',
+      'cursor-default',
+      'cursor-not-allowed',
+      'select-none',
+      'select-text',
+      'sr-only',
+      'not-sr-only'
+    ]
+]
 };

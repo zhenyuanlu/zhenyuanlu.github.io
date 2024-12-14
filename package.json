@@ -4,7 +4,7 @@
   "main": "postcss.config.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build:css": "npx tailwindcss -i ./assets/css/input.css -o ./assets/css/styles.css --minify",
+    "build:css": "NODE_ENV=production npx tailwindcss -i ./assets/css/input.css -o ./assets/css/styles.css --minify",
     "watch:css": "npx tailwindcss -i ./assets/css/input.css -o ./assets/css/styles.css --watch",
     "build": "npm run build:css && jekyll build",
     "start": "concurrently \"npm run watch:css\" \"jekyll serve\""
@@ -12,7 +12,7 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "description": "Certainly! Below is the updated `README.md` for your Jekyll-based GitHub Pages project with Tailwind CSS. This version includes the directory structure and an acknowledgements section thanking ChatGPT and Claude for their assistance.",
+  "description": "ZenLu",
   "devDependencies": {
     "@tailwindcss/forms": "^0.5.9",
     "@tailwindcss/typography": "^0.5.15",

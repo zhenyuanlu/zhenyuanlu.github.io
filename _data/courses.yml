@@ -33,4 +33,59 @@
     - "Seattle"
     - "Vancourver"
   status: "active"
-  url: "/teaching/algorithms"
+  url: "/courses/"
+
+
+- code: "IE7945"
+  title: "AI/ML Master Project"
+  level: "Graduate"
+  institution: "Northeastern University"
+  description: "This course offers students a culminating experience to demonstrate proficiency in AI/ML."
+  technologies:
+    - python
+    - latex
+  semesters:
+    - term: "Fall 2024"
+      season: "fall"
+    - term: "Summer 2024"
+      season: "summer"
+  campuses:
+    - "Boston"
+    - "Vancourver"
+  status: "past"
+  url: "/courses/"
+
+
+
+- code: "IE7275"
+  title: "Data Mining in Engineering"
+  level: "Graduate"
+  institution: "Northeastern University"
+  description: "This course covers the theory and applications of data mining in engineering."
+  technologies:
+    - python
+    - r
+    - pytorch
+  semesters:
+    - term: "Summer 2024"
+      season: "summer"
+  campuses:
+    - "Boston"
+  status: "past"
+  url: "/courses/"
+
+
+- code: "IE5976"
+  title: "Python for Object-Oriented Programming"
+  level: "Graduate"
+  institution: "Northeastern University"
+  description: "This course is designed for those with little or no Python programming experience."
+  technologies:
+    - python
+  semesters:
+    - term: "Summer 2023"
+      season: "summer"
+  campuses:
+    - "Vancourver"
+  status: "past"
+  url: "/courses/"

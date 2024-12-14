@@ -1,7 +1,7 @@
 <section id="teaching" x-cloak class="py-8 px-4"
   :class="darkMode ? 'bg-gray-950 text-gray-100' : 'bg-gray-50 text-gray-900'"
 >
-  <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+  <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
     <div class="mb-6">
       <h2 class="text-3xl font-bold mb-2"
       :class="darkMode ? 'text-white'">Teachings & Resources</h2>
@@ -17,8 +17,8 @@
       <h3 class="text-lg font-semibold mb-4" :class="darkMode ? 'text-white'">Books</h3>
       <div class="space-y-6">
         {% for resource in site.data.course_materials %}
-          <article 
-            class="relative flex flex-col md:flex-row gap-6 rounded-xl p-6 shadow-md border border-gray-100 transition-all duration-300"
+          <div 
+            class="relative flex flex-col md:flex-row gap-6 rounded-xl p-6 shadow-md transition-all duration-300"
             :class="darkMode ? 'bg-gray-900' : 'bg-white'"
           >
             <!-- Resource Image (Mobile: Overlaps, Desktop: Side) -->
@@ -39,7 +39,7 @@
               <div class="flex items-start justify-between mb-2">
                 <h4 class="text-xl font-bold" :class="darkMode ? 'text-white'">{{ resource.title }}</h4>
                 <span class="px-3 py-1 rounded-full text-sm font-medium"
-                  :class="darkMode ? 'bg-purple-50 text-purple-700' : 'bg-purple-950 text-purple-400'">
+                  :class="darkMode ? 'bg-purple-950 text-purple-400' : 'bg-purple-50 text-purple-700'">
                   {{ resource.type }}
                 </span>
               </div>
@@ -79,12 +79,12 @@
                   {% else %}
                     <i data-lucide="{{ icons[link.type].lucide }}" class="w-4 h-4"></i>
                   {% endif %}
-                  {{ link.type | capitalize }}
+                  {{ link.type | downcase }}
                 </a>
                 {% endfor %}
               </div>
             </div>
-          </article>
+          </div>
         {% endfor %}
       </div>
     </div>
@@ -97,73 +97,87 @@
         {% for course in site.data.courses %}
           <a
             href="{{ course.url }}"
-            class="group block rounded-xl p-6 shadow-md border border-gray-100"
+            class="group block rounded-xl p-6 shadow-md transition-all duration-300"
             :class="darkMode ? 'bg-gray-900' : 'bg-white'"
           >
-            <div class="flex items-start justify-between mb-3">
-              <div>
-                <div class="flex items-center gap-2 mb-1">
-                  <span class="text-sm font-medium"
-                  :class="darkMode ? 'text-gray-400' : 'text-gray-500'">
-                    {{ course.code }}
+      
+            <!-- Top Row: Left side (code, level, status), Right side (tech badges) -->
+            <div class="flex items-center justify-between mb-1 w-full">
+              <!-- Left Side: Code, Level, Status -->
+              <div class="flex items-center gap-2">
+                <span class="text-sm font-medium" :class="darkMode ? 'text-gray-400' : 'text-gray-500'">
+                  {{ course.code }}
+                </span>
+                {% if course.level == 'Graduate' %}
+                  <span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-xs font-medium"
+                    :class="darkMode ? 'bg-purple-950 text-purple-400' : 'bg-purple-50 text-purple-700'">
+                    <i data-lucide="graduation-cap" class="w-3 h-3"></i>
+                    {{ course.level | downcase}}
                   </span>
-                  {% if course.level == 'Graduate' %}
-                    <span class="inline-flex items-center gap-1 px-2 py-0.5 
-                                 rounded-full text-xs font-medium"
-                            :class="darkMode ? 'bg-purple-950 text-purple-400' : 'bg-purple-50 text-purple-700'">
-                      <i data-lucide="graduation-cap" class="w-3 h-3"></i>
-                      {{ course.level }}
-                    </span>
+                {% endif %}
+      
+                <span class="px-2 py-0.5 rounded-full text-xs font-medium"
+                  {% if course.status == 'active' %}
+                    :class="darkMode ? 'bg-green-950 text-green-400' : 'bg-green-50 text-green-700'"
+                  {% else %}
+                    :class="darkMode ? 'bg-gray-900 text-gray-300' : 'bg-gray-100 text-gray-700'"
                   {% endif %}
-
-                  <span class="px-2 py-0.5 rounded-full text-xs font-medium"
-                  :class="darkMode ? {% if course.status == 'active' %}
-                                 'bg-green-950 text-green-400' : 'bg-green-50 text-green-700'
-                               {% else %}
-                                 'bg-gray-900 text-gray-300' : 'bg-gray-100 text-gray-700'
-                               {% endif %}">
-                    {% if course.status == 'active' %}Active{% else %}Past{% endif %}
-                  </span>
-                </div>
-                <h4 class="text-lg font-bold"
-                :class="darkMode ? 'text-white group-hover:text-blue-400' : 'group-hover:text-blue-600'">
-                  {{ course.title }}
-                </h4>
+                >
+                  {% if course.status == 'active' %}active{% else %}past{% endif %}
+                </span>
               </div>
+      
+              <!-- Right Side: Technology Badges -->
+              <!-- {% assign tech_colors = site.data.tech_colors %}
+              {% if course.technologies %}
+                <div class="flex flex-wrap gap-2">
+                  {% for tech in course.technologies %}
+                    {% assign tech_class = tech_colors[tech] | default: 'bg-gray-100 text-gray-800' %}
+                    <span class="px-2 py-0.5 rounded-full text-xs font-medium {{ tech_class }}">
+                      {{ tech | downcase }}
+                    </span>
+                  {% endfor %}
+                </div>
+              {% endif %} -->
             </div>
-
+      
+            <!-- Title -->
+            <h4 class="text-lg font-bold">
+              {{ course.title }}
+            </h4>
+      
+            <!-- Description -->
             <p class="mb-4" :class="darkMode ? 'text-gray-300' : 'text-gray-600'">
               {{ course.description }}
             </p>
-
+      
             <!-- Semester and Campus Info -->
-            <div class="space-y-4 text-sm"
-            :class="darkMode ? 'text-gray-400' : 'text-gray-600'">
+            <div class="space-y-4 text-sm" :class="darkMode ? 'text-gray-400' : 'text-gray-600'">
               <div class="flex items-center gap-2">
                 <i data-lucide="calendar" class="w-4 h-4 flex-shrink-0"
-                :class="darkMode ? 'text-gray-400' : 'text-gray-500'"></i>
+                   :class="darkMode ? 'text-gray-400' : 'text-gray-500'"></i>
                 <div class="flex flex-wrap gap-2">
                   {% for sem in course.semesters %}
                     <div class="flex items-center gap-1 text-xs">
                       {% if sem.season == 'spring' %}
                         <i data-lucide="snowflake" class="w-4 h-4"
-                        :class="darkMode ? 'text-blue-400' : 'text-blue-500'"></i>
+                           :class="darkMode ? 'text-blue-400' : 'text-blue-500'"></i>
                       {% elsif sem.season == 'summer' %}
                         <i data-lucide="sun" class="w-4 h-4"
-                        :class="darkMode ? 'text-yellow-400' : 'text-yellow-500'"></i>
+                           :class="darkMode ? 'text-yellow-400' : 'text-yellow-500'"></i>
                       {% elsif sem.season == 'fall' %}
                         <i data-lucide="leaf" class="w-4 h-4"
-                        :class="darkMode ? 'text-orange-400' : 'text-orange-500'"></i>
+                           :class="darkMode ? 'text-orange-400' : 'text-orange-500'"></i>
                       {% endif %}
                       <span>{{ sem.term }}</span>
                     </div>
                   {% endfor %}
                 </div>
               </div>
-
+      
               <div class="flex items-center gap-2">
                 <i data-lucide="map-pin" class="w-4 h-4"
-                :class="darkMode ? 'text-gray-400' : 'text-gray-500'"></i>
+                   :class="darkMode ? 'text-gray-400' : 'text-gray-500'"></i>
                 <p class="text-xs">
                   {{ course.institution }}{% if course.campuses.size > 0 %} · {{ course.campuses | join: ' · ' }}{% endif %}
                 </p>
@@ -172,6 +186,7 @@
           </a>
         {% endfor %}
       </div>
+      
     </div>
   </div>
 </section>

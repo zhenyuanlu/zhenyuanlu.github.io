@@ -2,7 +2,7 @@
   :class="darkMode ? 'bg-gray-950 text-gray-100' : 'bg-gray-50 text-gray-900'"
   x-data="{ showBibtex: false, currentBibtex: '', copied: false }"
 >
-  <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+  <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
     <div class="mb-8">
       <h2 class="text-3xl font-bold mb-2">Software/Tools</h2>
       <p :class="darkMode ? 'text-gray-300 italic' : 'text-gray-600 italic'">For the open-source spirit.</p>
@@ -67,11 +67,11 @@
                     {% endif %}
                   </div>
                 </div>
-          
+
                 <!-- Tech Badges Line -->
                 <div class="flex flex-wrap gap-1.5">
                   {% for tech in item.technologies %}
-                  <span class="inline-flex items-center px-2 py-0.5 rounded text-xs font-medium"
+                  <span class="inline-flex items-center px-2 py-0.5 rounded-full text-xs font-medium"
                     :class="darkMode ? 'bg-blue-900/50 text-blue-200' : 'bg-blue-50 text-blue-700'">
                     {{ tech | downcase}}
                   </span>

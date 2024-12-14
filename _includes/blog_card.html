@@ -5,7 +5,7 @@
 
 <section id="blog" x-cloak class="py-8 px-4"
   :class="darkMode ? 'bg-gray-950 text-gray-100' : 'bg-gray-50 text-gray-900'">
-  <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+  <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
     <div class="mb-6">
       <h2 class="text-3xl font-bold mb-2">Blog & Projects</h2>
       <p :class="darkMode ? 'text-gray-300 italic' : 'text-gray-600 italic'">For work, research, or fun</p>
@@ -82,7 +82,7 @@
 
       <a
         href="{{ post.url | relative_url }}"
-        class="block group rounded-xl p-6 shadow-md transition-all duration-300 border border-gray-100"
+        class="block group rounded-xl p-6 shadow-md transition-all duration-300"
         :class="darkMode ? 'bg-gray-900' : 'bg-white'"
       >
         <!-- 
