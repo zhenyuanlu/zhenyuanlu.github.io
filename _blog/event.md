@@ -1,6 +1,6 @@
 ---
 layout: event
-title: "Advances in Self-Supervised Learning"
+title: "event example"
 description: "A comprehensive guide on self-supervised learning for medical imaging."
 author: "Zhenyuan Lu"
 date: 2024-01-15
@@ -11,7 +11,7 @@ tags:
   - "Medical Imaging"
   - "Self-supervised Learning"
 type: "talk"
-image: "/api/placeholder/800/400"
+image: 
 registration_link: "https://northeastern.zoom.us/j/123456789"
 event_date: "March 15, 2024"
 event_time: "2:00 PM - 3:30 PM EST"

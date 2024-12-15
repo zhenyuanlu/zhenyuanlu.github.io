@@ -7,7 +7,18 @@ layout: default
 {% assign read_time = word_count | divided_by:200 %}
 {% if read_time == 0 %}{% assign read_time = 1 %}{% endif %}
 
-<div x-cloak class="max-w-3xl mx-auto px-4" x-data="{ openShare: false, showShareToast: false }">
+{% assign icons = site.data.resource_icons %}
+{% assign icon_set = site.icon_set | default: 'lucide' %}
+
+<div x-cloak 
+     class="max-w-3xl mx-auto px-4"
+     x-data="{ 
+       openShare: false, 
+       showShareToast: false, 
+       showBibtex: false, 
+       currentBibtex: '', 
+       copied: false 
+     }">
     <div class="py-12">
         <div class="mb-8">
             <a 
@@ -78,16 +89,13 @@ layout: default
                             Share
                         </button>
 
-                        {% include share_menu.html %}
+                        {% include shared/share_menu.html %}
                     </div>
                 </div>
 
                 <!-- Resources -->
                 {% if page.links %}
                 <div class="flex flex-wrap gap-2">
-                  {% assign icons = site.data.resource_icons %}
-                  {% assign icon_set = site.icon_set | default: 'lucide' %}
-
                   {% for resource_type in page.links %}
                     {% assign rtype = resource_type.type %}
                     {% assign link = resource_type.href %}
@@ -99,20 +107,28 @@ layout: default
                       {% assign icon_class = this_icon.lucide %}
                       {% capture resource_icon %}<i data-lucide="{{ icon_class }}" class="w-4 h-4"></i>{% endcapture %}
                     {% endif %}
-                    {% assign label = rtype %}
 
-                    <a
-                      href="{{ link }}"
-                      class="inline-flex items-center px-3 py-1.5 rounded-lg text-sm gap-1.5
-                             transition-colors group"
-                      :class="darkMode ?
-                        'bg-blue-950 text-blue-300 hover:bg-blue-900' :
-                        'bg-blue-50 text-blue-700 hover:bg-blue-100'"
-                      target="_blank" rel="noopener noreferrer"
-                    >
-                      {{ resource_icon }}
-                      {{ label }}
-                    </a>
+                    {% if rtype == "bibtex" %}
+                      <!-- Cite Button -->
+                      <button
+                        @click="showBibtex = true; currentBibtex = `{{ link }}`; copied = false;"
+                        class="inline-flex items-center px-3 py-1.5 rounded-lg text-sm gap-1.5 transition-colors group"
+                        :class="darkMode ? 'bg-blue-950 text-blue-300 hover:bg-blue-900' : 'bg-blue-50 text-blue-700 hover:bg-blue-100'"
+                      >
+                        {{ resource_icon }}
+                        cite
+                      </button>
+                    {% else %}
+                      <a
+                        href="{{ link }}"
+                        class="inline-flex items-center px-3 py-1.5 rounded-lg text-sm gap-1.5 transition-colors group"
+                        :class="darkMode ? 'bg-blue-950 text-blue-300 hover:bg-blue-900' : 'bg-blue-50 text-blue-700 hover:bg-blue-100'"
+                        target="_blank" rel="noopener noreferrer"
+                      >
+                        {{ resource_icon }}
+                        {{ rtype }}
+                      </a>
+                    {% endif %}
                   {% endfor %}
                 </div>
                 {% endif %}
@@ -148,3 +164,5 @@ layout: default
   <i data-lucide="copy" class="w-4 h-4"></i>
   Link copied to clipboard
 </div>
+
+{% include shared/bibtex_modal.html icon_set=icon_set %}

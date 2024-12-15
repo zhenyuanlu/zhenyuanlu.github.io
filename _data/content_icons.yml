@@ -21,3 +21,9 @@ conference:
   label: "Conference"
   display_event_fields: true
   display_read_time: false
+
+project:
+  icon: "pencil-ruler"
+  label: "Project"
+  display_event_fields: false
+  display_read_time: true

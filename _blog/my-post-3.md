@@ -1,6 +1,7 @@
 ---
 layout: blog
-title: "testtest"
+type: blog
+title: "blog example"
 description: "A comprehensive guide on self-supervised learning for medical imaging."
 author: "Zhenyuan Lu"
 date: 2024-01-15
@@ -19,8 +20,8 @@ links:
     href: "#"
   - type: arxiv
     href: "#"
-image: "/api/placeholder/800/400"
-type: "blog"
+image: 
+
 
 toc: true
 ---

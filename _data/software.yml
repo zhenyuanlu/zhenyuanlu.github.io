@@ -7,7 +7,7 @@
   description: "pyKCN is a Python-based tool for analyzing co-occurrence keywords in literature reviews."
   technologies: 
     - "python"
-  image: "/assets/images/projects/pykcn/logo.png"
+  image: "/assets/images/software/pykcn/logo.png"
   links:
   - type: github
     href: "https://github.com/zhenyuanlu/pyKCN"
@@ -34,11 +34,11 @@
     - "PyTorch"
     - "Transformers"
     - "Deep Learning"
-  image: "/assets/images/projects/pan/cover.webp"
+  image: "/assets/images/software/attnnet/cover.webp"
   links:
   - type: github
     href: "https://github.com/zhenyuanlu/PainAttnNet"
-  - type: journal
+  - type: paper
     href: "https://www.frontiersin.org/journals/physiology/articles/10.3389/fphys.2023.1294577/full"
   - type: data
     href: "https://www.nit.ovgu.de/BioVid.html"
@@ -54,3 +54,33 @@
         publisher={Frontiers Media SA}
       }
         
+
+- title: "hierAlytics"
+  highlight: 0  # Priority ordering (optional, lower number = higher priority)
+  hide: false   # Whether to hide from display
+  status: "archived" # Options: stable, beta, alpha, development, archived, deprecated
+  version: "0.9.0"
+  description: "An easy-to-use analytics web app for exploring and analyzing data based on hierarchical tree."
+  technologies: 
+    - "Python"
+    - "R"
+    - "Shiny"
+    - "d3.js"
+  image: "/assets/images/software/hieralytics/hieralytics.png"
+
+
+- title: "MealthUp"
+  highlight: 0  # Priority ordering (optional, lower number = higher priority
+  hide: false   # Whether to hide from display
+  status: "archived" # Options: stable, beta, alpha, development, archived, deprecated
+  version: "1.0.0"
+  description: "A new era of health consultant & personalized meal plan implemented machine learning techniques."
+  technologies: 
+    - "Python"
+    - "MySQL"
+    - "Machine Learning"
+    - "html"
+    - "css"
+  image: "/assets/images/software/mealthup/mealthup.png"
+  abstract: >
+    "One of the most prevalent and popular subjects is how to get enough nutrition, how to make the right dietary choices for one's physical condition, and how to match different people's tastes and lifestyles. In today's world, there is a shortage of advanced nutrition consultants or tailored meal systems to process suitable dietary recommendations to adjust our health status. As a result, there is a need to build low-cost, easy-to-use, quick, and convenient consultant systems that do not require a nutritionist or other high-cost service. To meet this demand, we created an unique customizable meal plan web app that integrates a basic database, data science algorithm, user preferences, and other technologies, allowing us to create an intelligent system that outputs accurate recommendations for our consumers."

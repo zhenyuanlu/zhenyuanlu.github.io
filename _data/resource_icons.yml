@@ -7,7 +7,7 @@ pdf:
   fontawesome: "fa fa-file-pdf"
   lucide: "file"
 
-journal:
+paper:
   fontawesome: "fa fa-book"
   lucide: "book"
 
@@ -46,4 +46,8 @@ poster:
 bibtex:
   fontawesome: "fa fa-quote-right"
   lucide: "quote"
+
+patent: 
+  fontawesome: "fa fa-file-signature"
+  lucide: "settings"
 

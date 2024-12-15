@@ -35,7 +35,7 @@ exclude:
 collections:
   blog:
     output: true
-    permalink: /blog/:slug/
+    permalink: /:collection/:slug/
 
 sass:
   style: compressed

@@ -1,81 +1,450 @@
 # _data/publications.yml
-- title: "Self-supervised Learning for Medical Image Analysis"
-  hide: false
-  highlight: true
-  authors: "Zhenyuan Lu, James Smith, Maria Garcia"
-  year: 2024
-  journal: "Nature Machine Intelligence"
-  image: "/assets/images/publications/clVR/cover.webp"
-  links:
-  - type: github
-    href: "https://github.com/zhenyuanlu/pyKCN"
-  - type: pdf
-    href: "#"
-  - type: journal
-    href: "#"
-  - type: arxiv
-    href: "#"
-  - type: slides
-    href: "#"
-  - type: demo
-    href: "#"
-  - type: video
-    href: "#"
-  - type: website
-    href: "#"
-  - type: blog
-    href: "#"
-  - type: data
-    href: "#"
-  - type: poster
-    href: "#"
-  - type: bibtex
-    href: |
-      @article{lu2024self,
-        title={Self-supervised Learning for Medical Image Analysis},
-        author={Lu, Zhenyuan and Smith, James and Garcia, Maria},
-        journal={Nature Machine Intelligence},
-        year={2024}
-      }
 
-- title: "test"
+# =================================================================================================
+# 2024
+# =================================================================================================
+
+- title: "Uncertainty quantification in neural-network based pain intensity estimation"
   hide: false
   highlight: false
-  authors: "Zhenyuan Lu, James Smith, Maria Garcia"
+  featured: false
+  authors: 
+    - name: Burcu Ozek
+      url: 
+      affiliations: 
+        - Northeastern University
+    - name: Zhenyuan Lu
+      url: /
+      affiliations: 
+        - Northeastern University
+    - name: Srinivasan Radhakrishnan
+      url: 
+      affiliations: 
+        - Northeastern University
+    - name: Sagar Kamarthi
+      url: 
+      affiliations: 
+        - Northeastern University
   year: 2024
-  journal: "Nature Machine Intelligence"
-  image: "/assets/images/publications/ssl-medical.jpg"
+  journal: "PloS"
+  image: "/assets/images/publications/uncertainty/cover.png"
   links:
-  - type: github
-    href: "https://github.com/zhenyuanlu/pyKCN"
-  - type: bibtex
+  - type: "paper"
+    href: "https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0307970"
+  - type: "bibtex"
     href: |
-      @article{lu2024self,
-        title={Self-supervised Learning for Medical Image Analysis},
-        author={Lu, Zhenyuan and Smith, James and Garcia, Maria},
-        journal={Nature Machine Intelligence},
-        year={2024}
+      @article{ozek2024uncertainty,
+        title={Uncertainty quantification in neural-network based pain intensity estimation},
+        author={Ozek, Burcu and Lu, Zhenyuan and Radhakrishnan, Srinivasan and Kamarthi, Sagar},
+        journal={PloS one},
+        volume={19},
+        number={8},
+        pages={e0307970},
+        year={2024},
+        publisher={Public Library of Science San Francisco, CA USA}
       }
 
-- title: "Deep Learning Framework for Healthcare"
+
+- title: "Navigating the Evolution of Digital Twins Research through Keyword Co-Occurence Network Analysis"
   hide: false
-  highlight: true
-  authors: "Zhenyuan Lu, Robert Johnson"
-  year: 2023
-  journal: "IEEE Transactions on Medical Imaging"
-  image: "/assets/images/publications/dl-healthcare.jpg"
+  highlight: false
+  featured: false
+  authors: 
+    - name: Wei Li
+      url: 
+      affiliations: 
+        - Northeastern University
+    - name: Haozhou Zhou
+      url: 
+      affiliations: 
+        - Northeastern University
+    - name: Zhenyuan Lu
+      url: /
+      affiliations: 
+        - Northeastern University
+    - name: Sagar Kamarthi
+      url: 
+      affiliations: 
+        - Northeastern University
+  year: 2024
+  journal: "Sensors"
+  image: "/assets/images/publications/digitalTwins/digital.webp"
   links:
-  - type: github
-    href: "#"
-  - type: pdf
-    href: "#"
-  - type: journal
-    href: "#"
+  - type: paper
+    href: "https://www.mdpi.com/1424-8220/24/4/1202"
   - type: bibtex
     href: |
-      @article{lu2023deep,
-        title={Deep Learning Framework for Healthcare},
-        author={Lu, Zhenyuan and Johnson, Robert},
-        journal={IEEE TMI},
-        year={2023}
+      @article{li2024navigating,
+        title={Navigating the Evolution of Digital Twins Research through Keyword Co-Occurence Network Analysis},
+        author={Li, Wei and Zhou, Haozhou and Lu, Zhenyuan and Kamarthi, Sagar},
+        journal={Sensors},
+        volume={24},
+        number={4},
+        pages={1202},
+        year={2024},
+        publisher={MDPI}
       }
+
+
+# =================================================================================================
+# 2023
+# =================================================================================================
+
+- title: "Transformer encoder with multiscale deep learning for pain classification using physiological signals"
+  hide: false
+  highlight: true
+  featured: true
+  authors: 
+    - name: Zhenyuan Lu
+      url: /
+      affiliations: 
+        - Northeastern University
+    - name: Burcu Ozek
+      url: 
+      affiliations: 
+        - Northeastern University
+    - name: Sagar Kamarthi
+      url: 
+      affiliations: 
+        - Northeastern University
+
+  year: 2023
+  journal: "Frontiers in Physiology"
+  image: "/assets/images/publications/attnnet/cover.webp"
+  links:
+  - type: paper
+    href: https://www.frontiersin.org/articles/10.3389/fphys.2023.1294577/full
+  - type: github
+    href: https://github.com/zhenyuanlu/PainAttnNet
+  - type: bibtex
+    href: |
+      @article{lu2023transformer,
+        title={Transformer encoder with multiscale deep learning for pain classification using physiological signals},
+        author={Lu, Zhenyuan and Ozek, Burcu and Kamarthi, Sagar},
+        journal={Frontiers in Physiology},
+        volume={14},
+        pages={1294577},
+        year={2023},
+        publisher={Frontiers Media SA}
+      }
+
+- title: "Analysis of Pain Research Literature through Keyword Co-occurrence Networks"
+  hide: false
+  highlight: false
+  featured: false
+  authors: 
+    - name: Burcu Ozek
+      url: 
+      affiliations: 
+        - Northeastern University
+    - name: Zhenyuan Lu
+      url: /
+      affiliations: 
+        - Northeastern University
+    - name: Fatemeh Pouromran
+      url: 
+      affiliations: 
+        - Northeastern University
+    - name: Srinivasan Radhakrishnan
+      url: 
+      affiliations: 
+        - Northeastern University
+    - name: Sagar Kamarthi
+      url: 
+      affiliations: 
+        - Northeastern University
+  year: 2023
+  journal: "PloS Digital Health"
+  image: "/assets/images/publications/pain/nsf.svg"
+  links:
+  - type: paper
+    href: "https://journals.plos.org/digitalhealth/article?id=10.1371/journal.pdig.0000331"
+  - type: bibtex
+    href: |
+      @article{ozek2023analysis,
+        title={Analysis of pain research literature through keyword co-occurrence networks},
+        author={Ozek, Burcu and Lu, Zhenyuan and Pouromran, Fatemeh and Radhakrishnan, Srinivasan and Kamarthi, Sagar},
+        journal={PLOS Digital Health},
+        volume={2},
+        number={9},
+        pages={e0000331},
+        year={2023},
+        publisher={Public Library of Science San Francisco, CA USA}
+      }
+
+# =================================================================================================
+# 2022
+# =================================================================================================
+
+- title: "Trends in adopting industry 4.0 for asset life cycle management for sustainability: a keyword co-occurrence network review and analysis"
+  hide: false
+  highlight: false
+  featured: false
+  authors: 
+    - name: Sachini Weerasekara
+      url: 
+      affiliations: 
+        - Northeastern University
+    - name: Zhenyuan Lu
+      url: /
+      affiliations: 
+        - Northeastern University
+    - name: Burcu Ozek
+      url: 
+      affiliations: 
+        - Northeastern University
+    - name: Jacqueline Isaacs
+      url: 
+      affiliations: 
+        - Northeastern University
+    - name: Sagar Kamarthi
+      url: 
+      affiliations: 
+        - Northeastern University
+  year: 2022
+  journal: "Sustainability"
+  image: "/assets/images/publications/sustain/cover.jpg"
+  links:
+  - type: paper
+    href: "https://www.mdpi.com/2071-1050/14/19/12233/htm"
+  - type: bibtex
+    href: |
+      @article{weerasekara2022trends,
+        title={Trends in adopting industry 4.0 for asset life cycle management for sustainability: a keyword co-occurrence network review and analysis},
+        author={Weerasekara, Sachini and Lu, Zhenyuan and Ozek, Burcu and Isaacs, Jacqueline and Kamarthi, Sagar},
+        journal={Sustainability},
+        volume={14},
+        number={19},
+        pages={12233},
+        year={2022},
+        publisher={MDPI}
+      }
+
+- title: "Keyword Co-occurrence Network For Pain Research Literature Review"
+  hide: false
+  highlight: false
+  featured: false
+  authors: 
+    - name: Burcu Ozek
+      url: 
+      affiliations: 
+        - Northeastern University
+    - name: Zhenyuan Lu
+      url: /
+      affiliations: 
+        - Northeastern University
+    - name: Fatemeh Pouromran
+      url: 
+      affiliations: 
+        - Northeastern University
+    - name: Sagar Kamarthi
+      url: 
+      affiliations: 
+        - Northeastern University
+  year: 2022
+  journal: "INFORMS"
+  image: "/assets/images/publications/informs/2022.png"
+  links:
+  - type: paper
+    href: "https://www.abstractsonline.com/pp8/?__hstc=194041586.c723525928a81bf032515185c4643e37.1650997648314.1663680015875.1663682721064.48&__hssc=194041586.5.1663682721064&__hsfp=3500831946&hsCtaTracking=025ee829-9db5-4f89-95dc-637573ec15db%7Cea016d7d-8b17-4156-8c3b-c1c801f2ba1f#!/10693/presentation/7640"
+
+
+# =================================================================================================
+# 2018
+# =================================================================================================
+
+
+- title: "Point-of-care Diagnostic Cartridge Having A Programmable Fluidic Wicking Network"
+  hide: false
+  hightlight: false
+  featured: false
+  authors: 
+    - name: Zhenyuan Lu
+      url: /
+      affiliations: 
+        - Texas State University
+        - Paratus Diagnostics, LLC
+    - name: Jacob Carrano
+      affiliations: 
+        - Paratus Diagnostics, LLC
+    - name: Roland Schneider
+      affiliations: 
+        - Paratus Diagnostics, LLC
+    - name: John Carrano
+      affiliations: 
+        - Paratus Diagnostics, LLC
+  year: 2018
+  journal: "Patent US20180214865A1"
+  image: "/assets/images/publications/patents/cartridge.png"
+  links:
+  - type: patent
+    href: "https://patentcenter.uspto.gov/applications/15885478"
+  - type: pdf
+    href: "https://patentimages.storage.googleapis.com/9d/ec/a1/07767fef233412/US20180214865A1.pdf"
+
+
+# =================================================================================================
+# 2017
+# =================================================================================================
+
+
+- title: "Thickening Agent Composition And Applications In Cosmetics"
+  type: patent
+  hide: false
+  hightlight: false
+  featured: false
+  authors: 
+    - name: Shubiao Pan
+      affiliations: 
+        - Shanghai Jahwa United Co Ltd
+    - name: Zhenyuan Lu
+      url: /
+      affiliations: 
+        - Shanghai Jahwa United Co Ltd
+    - name: Risheng jin
+      affiliations: 
+        - Shanghai Jahwa United Co Ltd
+    - name: Jun Lv
+      affiliations: 
+        - Shanghai Jahwa United Co Ltd
+  year: 2017
+  granted_year: 2017
+  expired_year: 2033
+  journal: "Patent CN104069024B"
+  image: "/assets/images/publications/patents/sceleroglucan.png"
+  links:
+    - type: patent
+      href: "https://patents.google.com/patent/CN104069024B/en"
+    - type: pdf
+      href: "https://patentimages.storage.googleapis.com/62/33/2c/f30532002200d2/CN104069024B.pdf"
+
+- title: "Development of a paper-based diagnostic platform for the detection of diarrhea causing pathogens"
+  hide: false
+  hightlight: false
+  featured: false
+  authors: 
+    - name: Kshitij Ranjan
+      url: 
+      affiliations: 
+        - Texas State University
+    - name: Zhenyuan Lu
+      url: /
+      affiliations: 
+        - Texas State University
+    - name: Shannon Weigum
+      url: 
+      affiliations: 
+        - Texas State University
+  year: 2017
+  journal: "Biological and Medical Engineering Society (BMES), Phoenix, AZ"
+  image: "/assets/images/publications/bmes/lfia_17.webp"
+  links:
+  - type: paper
+    href: "docs/publications/2017-bmes.pdf"
+
+
+
+
+# =================================================================================================
+# 2016
+# =================================================================================================
+
+
+- title: "Thickener Blend Composition And Its Application"
+  type: patent
+  hide: false
+  hightlight: false
+  featured: false
+  authors: 
+    - name: Shubiao Pan
+      affiliations: 
+        - Shanghai Jahwa United Co Ltd
+    - name: Zhenyuan Lu
+      url: /
+      affiliations: 
+        - Shanghai Jahwa United Co Ltd
+    - name: Risheng jin
+      affiliations: 
+        - Shanghai Jahwa United Co Ltd
+    - name: Ying Wang
+      affiliations: 
+        - Shanghai Jahwa United Co Ltd
+    - name: Jun Lv
+      affiliations: 
+        - Shanghai Jahwa United Co Ltd
+  year: 2016
+  granted_year: 2016
+  expired_year: 2033
+  journal: "Patent CN104069023B"
+  image: "/assets/images/publications/patents/sceleroglucan.png"
+  links:
+    - type: patent
+      href: "https://patents.google.com/patent/CN104069023B/en"
+    - type: pdf
+      href: "https://patentimages.storage.googleapis.com/55/5d/0c/2ca988eba57d8e/CN104069023B.pdf"
+
+- title: "Paper-based Device For Gastroenteritis Detection Integrated With Sample Preparation Cartridge"
+  hide: false
+  hightlight: false
+  featured: false
+  authors: 
+    - name: Zhenyuan Lu
+      url: /
+      affiliations: 
+        - Texas State University
+        - Paratus Diagnostics, LLC
+    - name: Kshitij Ranjan
+      url: 
+      affiliations: 
+        - Texas State University
+    - name: J. Carrano
+      affiliations: 
+        - Paratus Diagnostics, LLC
+    - name: J. Carrano
+      affiliations: 
+        - Paratus Diagnostics, LLC
+    - name: Roland Schneider
+      affiliations: 
+        - Paratus Diagnostics, LLC
+    - name: Shannon Weigum
+      url: 
+      affiliations: 
+        - Texas State University
+  year: 2016
+  journal: "Biological and Medical Engineering Society (BMES) 2016, Minneapolis, MN"
+  image: "/assets/images/publications/bmes/paper_16.webp"
+  links:
+  - type: paper
+    href: "docs/publications/2016-bmes.pdf"
+
+
+# =================================================================================================
+# 2015
+# =================================================================================================
+
+- title: "Paper Microfluidic Platform for Detection of Viral Gastroenteritis"
+  hide: false
+  hightlight: false
+  featured: false
+  authors: 
+    - name: Shannon Weigum
+      url: 
+      affiliations: 
+        - Texas State University
+    - name: Kshitij Ranjan
+      url: 
+      affiliations: 
+        - Texas State University
+    - name: Zhenyuan Lu
+      url: /
+      affiliations: 
+        - Texas State University
+  year: 2015
+  journal: "Biological and Medical Engineering Society (BMES) 2015, Tampa, FL"
+  image: "/assets/images/publications/bmes/vlps_15.webp"
+  links:
+  - type: paper
+    href: "docs/publications/2015-bmes.pdf"
+
+
+

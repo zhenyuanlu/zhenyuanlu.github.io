@@ -1,0 +1,222 @@
+{% assign hero_data = site.data.hero %}
+{% assign hero_name = hero_data.name %}
+
+<section id="publications" x-cloak class="py-8 px-4"
+  :class="darkMode ? 'bg-gray-950 text-gray-100' : 'bg-gray-50 text-gray-900'"
+  x-data="{ showBibtex: false, currentBibtex: '', copied: false }"
+>
+  <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="mb-6">
+      <h2 class="text-3xl font-bold mb-2">Research Publications</h2>
+      <p :class="darkMode ? 'text-gray-300 italic' : 'text-gray-600 italic'">For understanding the difficulty</p>
+    </div>
+
+    {% assign icons = site.data.resource_icons %}
+    {% assign icon_set = site.icon_set | default: 'lucide' %}
+
+    {% assign all_pubs = site.data.publications %}
+    {% assign visible_pubs = all_pubs | where_exp:'item','item.hide != true' %}
+    {% assign featured_pubs = visible_pubs | where: 'featured', true %}
+    {% assign non_featured_pubs = visible_pubs | where_exp:'item','item.featured != true' %}
+    
+    <!-- Featured Section -->
+    {% if featured_pubs.size > 0 %}
+      <h3 class="text-lg font-semibold mb-4 mt-4" :class="darkMode ? 'text-white' : 'text-gray-900'">Featured</h3>
+      <div class="grid gap-6 items-center">
+        {% for paper in featured_pubs %}
+          <div 
+            class="rounded-xl p-6 shadow-md"
+            :class="darkMode ? 'bg-gray-900' : 'bg-white border border-gray-100'"
+          >
+            <div class="flex flex-col md:flex-row gap-6 md:items-center">
+              <div class="sm:w-full md:w-64 h-32 flex-shrink-0 rounded-lg overflow-hidden border"
+                :class="darkMode ? 'border-gray-800' : 'border-gray-200'">
+                <div class="w-full h-full bg-cover bg-center transition-[background-position] duration-[1500ms] hover:bg-[position:100%_100%]"
+                     style="background-image: url('{{ paper.image | relative_url }}');">
+                </div>
+              </div>
+
+              <div class="flex-1">
+                {% assign jlink = paper.links | where: 'type', 'journal' | first %}
+                <h4 class="text-xl font-bold mb-2 transition-colors"
+                    :class="darkMode ? 'text-white' : 'text-gray-900'">
+                  {% if jlink %}
+                    <a href="{{ jlink.href }}" target="_blank" rel="noopener noreferrer">{{ paper.title }}</a>
+                  {% else %}
+                    {{ paper.title }}
+                  {% endif %}
+                </h4>
+
+                <!-- Authors line -->
+                <p class="mb-1" :class="darkMode ? 'text-gray-300' : 'text-gray-600'">
+                  {% for author in paper.authors -%}
+                    {% if author.url -%}
+                      <a href="{{ author.url }}" class="underline">
+                        {% if author.name == hero_name -%}
+                          <strong>{{ author.name }}</strong>
+                        {%- else -%}
+                          {{ author.name }}
+                        {%- endif -%}
+                      </a>
+                    {%- else -%}
+                      {% if author.name == hero_name -%}
+                        <strong>{{ author.name }}</strong>
+                      {%- else -%}
+                        {{ author.name }}
+                      {%- endif -%}
+                    {%- endif %}{% unless forloop.last %}, {% endunless %}
+                  {%- endfor %}
+                </p>
+
+                <!-- Journal line with details -->
+                <p class="text-gray-500 dark:text-gray-400 text-sm mb-4">
+                  {{ paper.journal }}{% if paper.volume %} (Vol. {{ paper.volume }}){% endif %}{% if paper.pages %}, p. {{ paper.pages }}{% endif %}{% if paper.year %}, {{ paper.year }}{% endif %}{% if paper.publisher %}, {{ paper.publisher }}{% endif %}
+                </p>
+
+                <div class="flex flex-wrap gap-2">
+                  {% for link in paper.links %}
+                    {% if link.type == "bibtex" %}
+                      <button
+                        @click="showBibtex = true; currentBibtex = `{{ link.href }}`; copied = false;"
+                        class="inline-flex items-center px-3 py-1 rounded-lg text-sm gap-1.5 transition-colors group"
+                        :class="darkMode ? 'bg-blue-950 text-blue-300 hover:bg-blue-900' : 'bg-blue-50 text-blue-700 hover:bg-blue-100'"
+                      >
+                        {% if icon_set == 'fontawesome' %}
+                          <i class="{{ icons[link.type].fontawesome }}"></i>
+                        {% else %}
+                          <i data-lucide="{{ icons[link.type].lucide }}" class="w-4 h-4"></i>
+                        {% endif %}
+                        Cite
+                      </button>
+                    {% else %}
+                      <a
+                        href="{{ link.href }}"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        class="inline-flex items-center px-3 py-1 rounded-lg text-sm gap-1.5 transition-colors group"
+                        :class="darkMode ? 'bg-blue-950 text-blue-300 hover:bg-blue-900' : 'bg-blue-50 text-blue-700 hover:bg-blue-100'"
+                      >
+                        {% if icon_set == 'fontawesome' %}
+                          <i class="{{ icons[link.type].fontawesome }}"></i>
+                        {% else %}
+                          <i data-lucide="{{ icons[link.type].lucide }}" class="w-4 h-4"></i>
+                        {% endif %}
+                        {{ link.type | downcase }}
+                      </a>
+                    {% endif %}
+                  {% endfor %}
+                </div>
+              </div>
+            </div>
+          </div>
+        {% endfor %}
+      </div>
+    {% endif %}
+
+    <!-- Now handle non-featured pubs by year -->
+    {% assign pubs_by_year = non_featured_pubs | sort: "year" | group_by: "year" %}
+    {% assign groups_sorted = pubs_by_year | reverse %}
+    {% for group in groups_sorted %}
+      {% assign pubs_for_year = group.items %}
+      {% assign highlighted_pubs = pubs_for_year | where_exp:'item','item.highlight == true' %}
+      {% assign normal_pubs = pubs_for_year | where_exp:'item','item.highlight != true' %}
+      {% assign combined_pubs = highlighted_pubs | concat: normal_pubs %}
+
+      {% if combined_pubs.size > 0 %}
+        <h3 class="text-lg font-semibold mb-4 mt-4" :class="darkMode ? 'text-white' : 'text-gray-900'">{{ group.name }}</h3>
+        <div class="grid gap-6 items-center">
+          {% for paper in combined_pubs %}
+            <div 
+              class="rounded-xl p-6 shadow-md"
+              :class="darkMode ? 'bg-gray-900' : 'bg-white border border-gray-100'"
+            >
+              <div class="flex flex-col md:flex-row gap-6 md:items-center">
+                <div class="sm:w-full md:w-64 h-32 flex-shrink-0 rounded-lg overflow-hidden border"
+                  :class="darkMode ? 'border-gray-800' : 'border-gray-200'">
+                  <div 
+                    class="w-full h-full bg-cover bg-center transition-[background-position] duration-[1500ms] hover:bg-[position:100%_100%]"
+                    style="background-image: url('{{ paper.image | relative_url }}');">
+                  </div>
+                </div>
+
+                <div class="flex-1">
+                  {% assign jlink = paper.links | where: 'type', 'journal' | first %}
+                  <h4 class="text-xl font-bold mb-2 transition-colors"
+                      :class="darkMode ? 'text-white' : 'text-gray-900'">
+                    {% if jlink %}
+                      <a href="{{ jlink.href }}" target="_blank" rel="noopener noreferrer">{{ paper.title }}</a>
+                    {% else %}
+                      {{ paper.title }}
+                    {% endif %}
+                  </h4>
+
+                  <!-- Authors line -->
+                  <p class="mb-1" :class="darkMode ? 'text-gray-300' : 'text-gray-600'">
+                    {% for author in paper.authors -%}
+                      {% if author.url -%}
+                        <a href="{{ author.url }}" class="underline">
+                          {% if author.name == hero_name -%}
+                            <strong>{{ author.name }}</strong>
+                          {%- else -%}
+                            {{ author.name }}
+                          {%- endif -%}
+                        </a>
+                      {%- else -%}
+                        {% if author.name == hero_name -%}
+                          <strong>{{ author.name }}</strong>
+                        {%- else -%}
+                          {{ author.name }}
+                        {%- endif -%}
+                      {%- endif %}{% unless forloop.last %}, {% endunless %}
+                    {%- endfor %}
+                  </p>
+
+                  <p class="text-gray-500 dark:text-gray-400 text-sm mb-4">
+                    {{ paper.journal }}{% if paper.type == "patent" %}{% if paper.granted_year %}, Granted: {{ paper.granted_year }}{% endif %}{% if paper.expired_year %}, Expires: {{ paper.expired_year }}{% endif %}
+                    {% else %}{% if paper.volume %} (Vol. {{ paper.volume }}){% endif %}{% if paper.pages %}, p. {{ paper.pages }}{% endif %}{% if paper.year %}, {{ paper.year }}{% endif %}{% if paper.publisher %}, {{ paper.publisher }}{% endif %}
+                    {% endif %}
+                  </p>
+
+                  <div class="flex flex-wrap gap-2">
+                    {% for link in paper.links %}
+                      {% if link.type == "bibtex" %}
+                        <button
+                          @click="showBibtex = true; currentBibtex = `{{ link.href }}`; copied = false;"
+                          class="inline-flex items-center px-3 py-1 rounded-lg text-sm gap-1.5 transition-colors group"
+                          :class="darkMode ? 'bg-blue-950 text-blue-300 hover:bg-blue-900' : 'bg-blue-50 text-blue-700 hover:bg-blue-100'"
+                        >
+                          {% if icon_set == 'fontawesome' %}
+                            <i class="{{ icons[link.type].fontawesome }}"></i>
+                          {% else %}
+                            <i data-lucide="{{ icons[link.type].lucide }}" class="w-4 h-4"></i>
+                          {% endif %}
+                          cite
+                        </button>
+                      {% else %}
+                        <a
+                          href="{{ link.href }}"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          class="inline-flex items-center px-3 py-1 rounded-lg text-sm gap-1.5 transition-colors group"
+                          :class="darkMode ? 'bg-blue-950 text-blue-300 hover:bg-blue-900' : 'bg-blue-50 text-blue-700 hover:bg-blue-100'"
+                        >
+                          {% if icon_set == 'fontawesome' %}
+                            <i class="{{ icons[link.type].fontawesome }}"></i>
+                          {% else %}
+                            <i data-lucide="{{ icons[link.type].lucide }}" class="w-4 h-4"></i>
+                          {% endif %}
+                          {{ link.type | downcase }}
+                        </a>
+                      {% endif %}
+                    {% endfor %}
+                  </div>
+                </div>
+              </div>
+            </div>
+          {% endfor %}
+        </div>
+      {% endif %}
+    {% endfor %}
+  </div>
+  {% include shared/bibtex_modal.html icon_set=icon_set %}
+</section>

@@ -146,12 +146,6 @@ module.exports = {
       pattern: /^(border(-[trbl])?)-([0-9]+|none)$/,
     },
     
-    // Interactive States
-    {
-      pattern: /^(hover|focus|active|disabled|visited|group-hover|focus-within|focus-visible):/,
-      variants: ['hover', 'focus', 'active', 'disabled', 'visited', 'group-hover', 'focus-within', 'focus-visible'],
-    },
-    
     // Effects & Transitions
     {
       pattern: /^(shadow(-sm|-md|-lg|-xl|-2xl|-inner|-none)?)$/,

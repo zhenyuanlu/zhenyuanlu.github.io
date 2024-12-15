@@ -10,7 +10,7 @@
     - iterable, iterator, generator
     - error handling
 
-  image: /assets/images/projects/pynote/logo.webp
+  image: /assets/images/books/pynote/logo.webp
   links:
   - type: github
     href: "https://github.com/zhenyuanlu/pyKCN"
@@ -19,18 +19,18 @@
   - type: pdf
     href: "https://github.com/zhenyuanlu/python-notebook/blob/main/python_from_zero_to_advance_ZL.pdf"
 
+
 - title: "Data Visualization/Transformation Tutorial in R "
   type: book
   description: This book is designed for those with little or no Python programming experience, and it is filled with concise, easy-to-understand examples that will help you learn quickly and effectively.
   author: "Zhenyuan Lu"
   topics: 
-    - OOP
-    - advanced formatting
-    - loops and comprehensions
-    - iterable, iterator, generator
-    - error handling
+    - data visualization
+    - data transformation
+    - tidyverse
+    - data wrangling
 
-  image: /assets/images/projects/vizr/logo.webp
+  image: /assets/images/books/vizr/logo.webp
   links:
   - type: github
     href: "https://github.com/zhenyuanlu/r-comput-viz"

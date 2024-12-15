@@ -1,3 +1,28 @@
+# applyh the following color
+# slate
+# gray
+# zinc
+# neutral
+# stone
+# red
+# orange
+# amber
+# yellow
+# lime
+# green
+# emerald
+# teal
+# cyan
+# sky
+# blue
+# indigo
+# violet
+# purple
+# fuchsia
+# pink
+# rose
+
+
 python: "bg-blue-100 text-blue-800"
 java: "bg-orange-100 text-orange-800"
 latex: "bg-purple-100 text-purple-800"
@@ -25,26 +50,3 @@ supplementary:
   text: 'text-purple-800'
   label: 'Supplementary'
 
-# applyh the following color
-# slate
-# gray
-# zinc
-# neutral
-# stone
-# red
-# orange
-# amber
-# yellow
-# lime
-# green
-# emerald
-# teal
-# cyan
-# sky
-# blue
-# indigo
-# violet
-# purple
-# fuchsia
-# pink
-# rose
