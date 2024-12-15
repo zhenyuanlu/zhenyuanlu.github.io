@@ -1,0 +1,159 @@
+
+<!-- Set a dynamic title tag -->
+
+{% if page.url == "/" %}
+  <title>{{ site.title | escape }}</title>
+  <link rel="canonical" href="{{ site.url }}{{ site.baseurl }}/" />
+{% else %}
+  <title>{{ page.title | escape }} | {{ site.title | escape }}</title>
+  <link rel="canonical" href="{{ site.url }}{{ site.baseurl }}{{ page.url | remove:'index.html' }}" />
+{% endif %}
+
+<!-- Meta Basics -->
+<meta name="description" content="{{ page.description | default: site.description | strip_html | truncate: 160 }}">
+<meta name="keywords" content="{% if page.keywords %}{{ page.keywords | join: ', ' }}{% else %}Machine Learning, Deep Learning, Artificial Intelligence, Research{% endif %}">
+<meta name="author" content="{{ site.author.name | escape }}">
+<meta name="robots" content="index, follow">
+
+{% assign default_thumbnail = '/assets/images/thumbnails/landing-page.png' %}
+{% if page.layout == 'home' %}
+  {% assign page_thumbnail = '/assets/images/thumbnails/landing-page.png' %}
+{% else %}
+  {% assign page_thumbnail = page.thumbnail | default: default_thumbnail %}
+{% endif %}
+
+{% assign og_title = page.title | default: site.title %}
+{% assign og_description = page.description | default: site.description %}
+{% assign og_url = site.url | append: site.baseurl | append: page.url | remove:'index.html' %}
+{% assign og_image = page_thumbnail | prepend: site.baseurl | prepend: site.url %}
+
+<!-- Open Graph / Facebook / LinkedIn -->
+<meta property="og:title" content="{{ og_title | escape }}">
+<meta property="og:description" content="{{ og_description | strip_html | truncate: 200 | escape }}">
+<meta property="og:image" content="{{ og_image }}">
+<meta property="og:url" content="{{ og_url }}">
+<meta property="og:site_name" content="{{ site.title | escape }}">
+<meta property="og:locale" content="en_US">
+
+
+{% if page.layout == 'home' %}
+  <meta property="og:type" content="website">
+{% elsif page.layout == 'blog' %}
+  <meta property="og:type" content="article">
+  {% if page.date %}
+    <meta property="article:published_time" content="{{ page.date | date_to_xmlschema }}">
+  {% endif %}
+  {% if page.tags %}
+    {% for tag in page.tags %}
+    <meta property="article:tag" content="{{ tag | escape }}">
+    {% endfor %}
+  {% endif %}
+{% elsif page.layout == 'event' %}
+  <meta property="og:type" content="article">
+{% else %}
+  <meta property="og:type" content="website">
+{% endif %}
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="{{ og_title | escape }}">
+<meta name="twitter:description" content="{{ og_description | strip_html | truncate: 200 | escape }}">
+<meta name="twitter:image" content="{{ og_image }}">
+
+<!-- LinkedIn meta tags -->
+<meta property="linkedin:title" content="{{ og_title | escape }}">
+<meta property="linkedin:description" content="{{ og_description | strip_html | truncate: 200 | escape }}">
+<meta property="linkedin:image" content="{{ og_image }}">
+<meta property="linkedin:url" content="{{ og_url }}">
+
+
+<!-- Structured Data -->
+{% if page.layout == 'home' %}
+<!-- Home Page: WebSite Schema -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "name": "{{ site.title | escape }}",
+  "url": "{{ site.url }}{{ site.baseurl }}/",
+  "description": "{{ site.description | strip_html }}",
+  "publisher": {
+    "@type": "Person",
+    "name": "{{ site.author.name | escape }}"
+  }
+}
+</script>
+
+{% elsif page.layout == 'blog' %}
+<!-- Blog Post: Article Schema -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "{{ page.title | escape }}",
+  "description": "{{ page.description | default: site.description | strip_html }}",
+  "image": "{{ og_image }}",
+  "url": "{{ og_url }}",
+  {% if page.date %}
+  "datePublished": "{{ page.date | date_to_xmlschema }}",
+  {% endif %}
+  "author": {
+    "@type": "Person",
+    "name": "{{ site.author.name | escape }}"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "{{ site.title | escape }}",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "{{ site.url }}{{ site.baseurl }}/assets/images/logo.png"
+    }
+  }
+}
+</script>
+
+{% elsif page.layout == 'event' %}
+<!-- Event Page: Event Schema -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Event",
+  "name": "{{ page.title | escape }}",
+  "description": "{{ page.description | default: site.description | strip_html }}",
+  "image": "{{ og_image }}",
+  "url": "{{ og_url }}",
+  {% if page.event_date %}
+  "startDate": "{{ page.event_date }}{% if page.event_time %}T{{ page.event_time | replace: ' ', '' }}{% endif %}",
+  {% endif %}
+  "location": {
+    "@type": "Place",
+    "name": "{{ page.location | escape }}",
+    "address": "{{ page.location | escape }}"
+  },
+  {% if page.speaker.name %}
+  "performer": {
+    "@type": "Person",
+    "name": "{{ page.speaker.name | escape }}",
+    "description": "{{ page.speaker.title | default: '' }} at {{ page.speaker.affiliation | default: '' }}",
+    "image": "{{ page.speaker.image | default: '' }}"
+  },
+  {% endif %}
+  "organizer": {
+    "@type": "Organization",
+    "name": "{{ site.title | escape }}"
+  }
+}
+</script>
+{% else %}
+<!-- Default fallback: WebPage Schema -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  "name": "{{ page.title | default: site.title | escape }}",
+  "description": "{{ page.description | default: site.description | strip_html }}",
+  "url": "{{ og_url }}",
+  "image": "{{ og_image }}"
+}
+</script>
+{% endif %}

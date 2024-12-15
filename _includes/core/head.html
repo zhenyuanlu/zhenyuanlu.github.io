@@ -1,7 +1,11 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>{% if page.title %}{{ page.title }} | {% endif %}{{ site.title }}</title>
-<meta name="description" content="{{ site.description }}">
+
+<!-- Google tag (gtag.js) -->
+{% include core/google_tag.html %}
+
+<!-- SEO -->
+{% include core/head_seo.html %}
 
 <!-- Favicon -->
 <link rel="icon" href="{{ '/assets/images/favicon.ico' | relative_url }}">
@@ -14,10 +18,9 @@
 <script src="https://unpkg.com/lucide@latest"></script>
 
 <!-- Alpine.js -->
-<script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
 
-<!-- Alpine.js for reactivity -->
-<script src="//unpkg.com/alpinejs" defer></script>
+
 
 <!-- For filtering Blog  -->
 <script src="{{ '/assets/js/filter-blog.js' | relative_url }}"></script>

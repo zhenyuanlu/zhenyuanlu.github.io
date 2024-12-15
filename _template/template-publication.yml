@@ -29,7 +29,7 @@
     # Paper resources
     - type: pdf       # PDF version
       href: "#"
-    - type: journal   # Publisher page
+    - type: paper   # Publisher page
       href: "#"
     - type: arxiv     # ArXiv preprint
       href: "#"

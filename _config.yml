@@ -11,6 +11,8 @@ kramdown:
 
 icon_set: "lucide"  # options: lucide or fontawesome
 
+google_analytics_id: G-YKJ7CXRCW1 
+
 author:
   name: "Zhenyuan Lu"
   email: "lu.zhenyua@northeastern.edu"
@@ -39,3 +41,4 @@ collections:
 
 sass:
   style: compressed
+

@@ -105,7 +105,7 @@ module.exports = {
 
     // Width & Height - Full scale
     {
-      pattern: /^(w|h|min-w|min-h|max-w|max-h)-(0|0\.25|0\.3|0\.5|0\.75|1|1\.5|2|2\.5|3|3\.5|4|5|6|7|8|9|10|11|12|14|16|20|24|28|32|36|40|44|48|auto|full|screen)$/,
+      pattern: /^(w|h|min-w|min-h|max-w|max-h)-(0|0\.25|0\.3|0\.5|0\.75|1|1\.5|2|2\.5|3|3\.5|4|5|6|7|8|9|10|11|12|14|16|20|24|28|32|34|36|38|40|42|44|48|50|52|54|58|60|auto|full|screen)$/,
     },
     {
       pattern: /^max-w-(xs|sm|md|lg|xl|2xl|3xl|4xl|5xl|6xl|7xl|full)$/,

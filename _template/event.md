@@ -11,6 +11,7 @@ tags:
   - "Medical Imaging"
   - "Self-supervised Learning"
 type: "talk"
+thumbnail: "/api/placeholder/1200/628"
 image: 
 registration_link: "https://northeastern.zoom.us/j/123456789"
 event_date: "March 15, 2024"

@@ -1,9 +1,9 @@
-items:
-  - name: Publications
-    href: "#publications"
-  - name: Blog
-    href: "#blog"
-  - name: Teachings
-    href: "https://zhenyuanlu.com/courses/"
-  - name: Art Life
-    href: "https://zhenyuanlu.com/artLife/"
+
+- name: Publications
+  href: "#publications"
+- name: Blog
+  href: "#blog"
+- name: Teachings
+  href: "https://zhenyuanlu.com/courses/"
+- name: Art Life
+  href: "https://zhenyuanlu.com/artLife/"

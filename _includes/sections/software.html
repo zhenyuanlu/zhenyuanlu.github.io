@@ -86,7 +86,8 @@
             {{ item.description }}
           </p>
 
-          <!-- Links -->
+          <!-- Links section - only rendered if links exist -->
+          {% if item.links.size > 0 %}
           <div class="flex flex-wrap gap-2">
             {% for link in item.links %}
               {% if link.type == "bibtex" %}
@@ -119,54 +120,12 @@
               {% endif %}
             {% endfor %}
           </div>
+          {% endif %}
         </div>
       </div>
       {% endfor %}
     </div>
   </div>
-
-  <!-- BibTeX Modal -->
-  <div 
-    class="fixed inset-0 flex items-center justify-center p-4 z-50 bg-black/10"
-    x-show="showBibtex"
-    x-cloak
-    @click="showBibtex = false; currentBibtex = ''; copied = false;"
-    style="background:none;"
-  >
-    <div 
-      class="rounded-xl p-6 max-w-2xl w-full shadow-2xl"
-      :class="darkMode ? 'bg-gray-900' : 'bg-white'"
-      @click.stop
-    >
-      <div class="flex justify-between items-center mb-4">
-        <h3 class="text-lg font-bold" :class="darkMode ? 'text-white' : 'text-gray-900'">BibTeX Citation</h3>
-        <button 
-          @click="showBibtex = false; currentBibtex = ''; copied = false;"
-          class="p-1 rounded-lg transition-colors"
-          :class="darkMode ? 'hover:bg-gray-800 text-gray-400' : 'hover:bg-gray-100 text-gray-500'"
-        >
-          {% if icon_set == 'fontawesome' %}
-            <i class="fa fa-times"></i>
-          {% else %}
-            <i data-lucide="x" class="w-5 h-5"></i>
-          {% endif %}
-        </button>
-      </div>
-
-      <pre 
-        class="p-4 rounded-lg overflow-x-auto mb-6 text-sm"
-        :class="darkMode ? 'bg-black text-gray-300' : 'bg-gray-50 text-gray-700'"
-        x-text="currentBibtex"
-      ></pre>
-
-      <button
-        @click="navigator.clipboard.writeText(currentBibtex).then(() => { copied = true; })"
-        class="w-full py-2 rounded-lg transition-colors text-center"
-        :class="darkMode ? 'bg-blue-700 text-white hover:bg-blue-600' : 'bg-blue-600 text-white hover:bg-blue-700'"
-      >
-        <span x-show="!copied">Copy to Clipboard</span>
-        <span x-show="copied">Copied!</span>
-      </button>
-    </div>
-  </div>
+<!-- Include shared BibTeX Modal -->
+{% include shared/bibtex_modal.html icon_set=icon_set %}
 </section>
