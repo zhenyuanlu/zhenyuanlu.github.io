@@ -1,211 +1,307 @@
-<style>
-    .share-dropdown {
-      position: relative;
-    }
-    
-    .share-menu {
-      position: absolute;
-      right: 0;
-      margin-top: 8px;
-      background: white;
-      border-radius: 12px;
-      width: 280px;
-      opacity: 0;
-      transform: translateY(-10px);
-      visibility: hidden;
-      transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
-      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
-      z-index: 50;
-    }
-    
-    .share-menu.open {
-      opacity: 1;
-      transform: translateY(0);
-      visibility: visible;
-    }
-    
-    .qr-container {
-      background: white;
-      padding: 12px;
-      border-radius: 8px;
-      margin: 0 auto 16px;
-      width: fit-content;
-    }
-    
-    /* Dark mode styles */
-    @media (prefers-color-scheme: dark) {
-      .share-menu {
-        background: #1a1a1a;
-      }
-      .share-menu .divider {
-        border-color: #333;
-      }
-    }
-  </style>
-  
-  <div class="share-dropdown" id="shareDropdown">
-    <!-- Share Button Trigger -->
-    <button onclick="toggleShareMenu(event)" 
-            class="flex items-center gap-2 px-4 py-2 rounded-lg bg-gray-100 hover:bg-gray-200 dark:bg-gray-800 dark:hover:bg-gray-700 transition-colors">
-      <i class="fa-solid fa-share-nodes"></i>
-      <span class="text-sm">Share</span>
-    </button>
-  
-    <!-- Dropdown Menu -->
-    <div class="share-menu" id="shareMenu" onclick="event.stopPropagation()">
-      <!-- Menu Header -->
-      <div class="px-4 py-3 border-b border-gray-200 dark:border-gray-700">
-        <h3 class="text-sm font-medium">Share via</h3>
-      </div>
-      
-      <!-- Primary Share Options -->
-      <div class="p-2">
-        <div class="grid grid-cols-4 gap-2">
-          <a href="https://twitter.com/share?url={{ page.url | absolute_url }}&text={{ page.title | uri_escape }}" 
-             target="_blank" rel="noopener noreferrer" 
-             class="flex flex-col items-center p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors">
-            <i class="fa-brands fa-x-twitter text-lg mb-1"></i>
-            <span class="text-xs">Twitter</span>
-          </a>
-  
-          <a href="https://www.facebook.com/sharer/sharer.php?u={{ page.url | absolute_url }}" 
-             target="_blank" rel="noopener noreferrer"
-             class="flex flex-col items-center p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors">
-            <i class="fa-brands fa-facebook text-lg mb-1"></i>
-            <span class="text-xs">Facebook</span>
-          </a>
-  
-          <a href="https://www.linkedin.com/shareArticle?mini=true&url={{ page.url | absolute_url }}" 
-             target="_blank" rel="noopener noreferrer"
-             class="flex flex-col items-center p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors">
-            <i class="fa-brands fa-linkedin text-lg mb-1"></i>
-            <span class="text-xs">LinkedIn</span>
-          </a>
-  
-          <button onclick="toggleWeChatQR()"
-                  class="flex flex-col items-center p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors">
-            <i class="fa-brands fa-weixin text-lg mb-1"></i>
-            <span class="text-xs">WeChat</span>
-          </button>
-        </div>
-  
-        <!-- WeChat QR Section (Initially Hidden) -->
-        <div id="wechatQR" class="hidden mt-2">
-          <div class="qr-container">
-            <div id="qrCode"></div>
+<div class="relative" 
+     x-data="shareMenu"
+     @keydown.escape.window="close"
+     role="dialog"
+     aria-label="Share options">
+     
+  <!-- Share Button -->
+  <button 
+    @click="toggle"
+    class="inline-flex items-center gap-2 px-4 py-2 rounded-lg transition-colors"
+    :class="darkMode ? 'bg-gray-900 text-gray-300 hover:bg-gray-800' : 'bg-gray-100 text-gray-700 hover:bg-gray-200'"
+    aria-expanded="isOpen"
+    aria-controls="share-menu"
+  >
+    <i data-lucide="share-2" class="w-4 h-4"></i>
+    <span class="text-sm">Share</span>
+  </button>
+
+  <!-- Dropdown Menu -->
+  <div 
+    id="share-menu"
+    x-show="isOpen"
+    @click.away="close"
+    x-transition:enter="transition ease-out duration-200"
+    x-transition:enter-start="opacity-0 translate-y-1"
+    x-transition:enter-end="opacity-100 translate-y-0"
+    x-transition:leave="transition ease-in duration-150"
+    x-transition:leave-start="opacity-100 translate-y-0"
+    x-transition:leave-end="opacity-0 translate-y-1"
+    class="absolute right-0 mt-2 w-56 rounded-lg overflow-hidden shadow-lg ring-1 z-50"
+    :class="darkMode ? 'bg-gray-900 ring-white/10' : 'bg-white ring-black/5'"
+    style="display: none;"
+    role="menu"
+  >
+    <!-- Header -->
+    <div class="px-4 py-3 border-b"
+         :class="darkMode ? 'border-gray-800' : 'border-gray-200'">
+      <h3 class="text-sm font-medium"
+          :class="darkMode ? 'text-gray-300' : 'text-gray-700'">
+        Share via
+      </h3>
+    </div>
+
+    <!-- Share Options -->
+    <div class="py-2">
+      <!-- Social Share Links -->
+      <div class="space-y-1">
+        <!-- Twitter -->
+        <a 
+          href="https://twitter.com/share?url={{ page.url | absolute_url }}"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="flex items-center gap-3 px-4 py-2.5 text-sm transition-colors"
+          :class="darkMode ? 'text-gray-300 hover:bg-gray-800' : 'text-gray-700 hover:bg-gray-100'"
+          role="menuitem"
+        >
+          <i data-lucide="twitter" class="w-4 h-4"></i>
+          <span>Twitter</span>
+          <i data-lucide="external-link" class="w-3 h-3 ml-auto opacity-50"></i>
+        </a>
+
+        <!-- Facebook -->
+        <a 
+          href="https://www.facebook.com/sharer/sharer.php?u={{ page.url | absolute_url }}"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="flex items-center gap-3 px-4 py-2.5 text-sm transition-colors"
+          :class="darkMode ? 'text-gray-300 hover:bg-gray-800' : 'text-gray-700 hover:bg-gray-100'"
+          role="menuitem"
+        >
+          <i data-lucide="facebook" class="w-4 h-4"></i>
+          <span>Facebook</span>
+          <i data-lucide="external-link" class="w-3 h-3 ml-auto opacity-50"></i>
+        </a>
+
+        <!-- LinkedIn -->
+        <a 
+          href="https://www.linkedin.com/sharing/share-offsite/?url={{ page.url | absolute_url }}"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="flex items-center gap-3 px-4 py-2.5 text-sm transition-colors"
+          :class="darkMode ? 'text-gray-300 hover:bg-gray-800' : 'text-gray-700 hover:bg-gray-100'"
+          role="menuitem"
+        >
+          <i data-lucide="linkedin" class="w-4 h-4"></i>
+          <span>LinkedIn</span>
+          <i data-lucide="external-link" class="w-3 h-3 ml-auto opacity-50"></i>
+        </a>
+
+        <!-- WeChat -->
+        <template x-if="hasQRLibrary">
+          <div>
+            <button 
+              @click="toggleQR"
+              class="w-full flex items-center gap-3 px-4 py-2.5 text-sm transition-colors"
+              :class="darkMode ? 'text-gray-300 hover:bg-gray-800' : 'text-gray-700 hover:bg-gray-100'"
+              role="menuitem"
+              aria-expanded="showQR"
+              aria-controls="wechat-qr-section"
+            >
+              <i class="fa fa-weixin w-4 h-4"></i>
+              <span>WeChat</span>
+              <i class="ml-auto w-4 h-4" :data-lucide="showQR ? 'chevron-up' : 'chevron-down'"></i>
+            </button>
+
+            <!-- WeChat QR Section -->
+            <div 
+              id="wechat-qr-section"
+              x-show="showQR"
+              x-transition
+              class="px-4 py-3 border-t"
+              :class="darkMode ? 'border-gray-800' : 'border-gray-200'"
+            >
+              <div class="bg-white p-3 rounded-lg w-fit mx-auto">
+                <div id="wechat-qr"></div>
+              </div>
+              <p class="text-xs text-center mt-2"
+                 :class="darkMode ? 'text-gray-400' : 'text-gray-500'">
+                Scan with WeChat to share
+              </p>
+            </div>
           </div>
-          <p class="text-xs text-center text-gray-600 dark:text-gray-400 mb-2">
-            Scan with WeChat to share
-          </p>
-        </div>
+        </template>
+
+        <!-- Native Share -->
+        <template x-if="hasNativeShare">
+          <button
+            @click="nativeShare"
+            class="w-full flex items-center gap-3 px-4 py-2.5 text-sm transition-colors"
+            :class="darkMode ? 'text-gray-300 hover:bg-gray-800' : 'text-gray-700 hover:bg-gray-100'"
+            :disabled="sharing"
+            role="menuitem"
+          >
+            <i data-lucide="share" class="w-4 h-4"></i>
+            <span x-text="sharing ? 'Opening...' : 'More options'"></span>
+            <template x-if="sharing">
+              <i data-lucide="loader-2" class="w-4 h-4 ml-auto animate-spin"></i>
+            </template>
+          </button>
+        </template>
       </div>
-  
-      <div class="divider border-t dark:border-gray-800"></div>
-  
-      <!-- Copy Link -->
-      <div class="p-2">
-        <button onclick="copyShareLink()" id="copyButton"
-                class="w-full flex items-center justify-center gap-2 py-2 px-4 bg-gray-100
-                       hover:bg-gray-200 rounded-lg transition-colors">
-          <i class="fa-solid fa-copy"></i>
-          <span class="text-sm">Copy link</span>
+
+      <!-- Divider -->
+      <div class="h-px my-2" :class="darkMode ? 'bg-gray-800' : 'bg-gray-200'"></div>
+
+      <!-- Copy Link Button - Centered at Bottom -->
+      <div class="px-4">
+        <button
+          @click="copyLink"
+          class="w-full flex items-center justify-center gap-3 px-4 py-2.5 rounded-lg text-sm font-medium transition-all duration-200"
+          :class="copied ? 
+            (darkMode ? 'bg-green-900/50 text-green-400' : 'bg-green-50 text-green-600') :
+            (darkMode ? 'bg-gray-800 text-gray-300 hover:bg-gray-700' : 'bg-gray-100 text-gray-700 hover:bg-gray-200')"
+          :disabled="copying"
+          role="menuitem"
+        >
+          <template x-if="!copied && !copying">
+            <i data-lucide="copy" class="w-4 h-4"></i>
+          </template>
+          <template x-if="copying">
+            <i data-lucide="loader-2" class="w-4 h-4 animate-spin"></i>
+          </template>
+          <template x-if="copied">
+            <i data-lucide="check" class="w-4 h-4 text-green-500"></i>
+          </template>
+          <span x-text="copying ? 'Copying...' : (copied ? 'Copied!' : 'Copy link')"></span>
         </button>
       </div>
     </div>
   </div>
-  
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
-  
-  <script>
-    let isWeChatOpen = false;
-  
-    function toggleShareMenu(event) {
-      event.stopPropagation();
-      const menu = document.getElementById('shareMenu');
-      const isOpen = menu.classList.contains('open');
-      
-      if (!isOpen) {
-        menu.classList.add('open');
-        document.addEventListener('click', closeShareMenu);
-      } else {
-        closeShareMenu();
+</div>
+
+<script>
+document.addEventListener('alpine:init', () => {
+  Alpine.data('shareMenu', () => ({
+    isOpen: false,
+    showQR: false,
+    copied: false,
+    copying: false,
+    sharing: false,
+    hasQRLibrary: false,
+    hasNativeShare: false,
+    qr: null,
+
+    async init() {
+      this.hasNativeShare = 'share' in navigator;
+
+      try {
+        await this.loadQRLibrary();
+        this.hasQRLibrary = true;
+      } catch (err) {
+        console.warn('QR code library failed to load:', err);
+        this.hasQRLibrary = false;
       }
-    }
-  
-    function closeShareMenu() {
-      const menu = document.getElementById('shareMenu');
-      menu.classList.remove('open');
-      document.removeEventListener('click', closeShareMenu);
-      
-      // Reset WeChat section if open
-      if (isWeChatOpen) {
-        toggleWeChatQR();
-      }
-    }
-  
-    function toggleWeChatQR() {
-      const qrSection = document.getElementById('wechatQR');
-      const isHidden = qrSection.classList.contains('hidden');
-      
-      if (isHidden) {
-        qrSection.classList.remove('hidden');
-        isWeChatOpen = true;
-        
-        // Clear and regenerate QR code
-        const qrContainer = document.getElementById('qrCode');
-        qrContainer.innerHTML = '';
-        new QRCode(qrContainer, {
-          text: window.location.href,
-          width: 180,
-          height: 180,
-          colorDark: "#000000",
-          colorLight: "#ffffff",
-          correctLevel: QRCode.CorrectLevel.H
-        });
-      } else {
-        qrSection.classList.add('hidden');
-        isWeChatOpen = false;
-      }
-    }
-  
-    function copyShareLink() {
-      navigator.clipboard.writeText(window.location.href).then(() => {
-        const button = document.getElementById('copyButton');
-        const originalContent = button.innerHTML;
-        button.innerHTML = '<i class="fa-solid fa-check text-green-600"></i><span class="text-sm">Copied!</span>';
-        setTimeout(() => {
-          button.innerHTML = originalContent;
-        }, 2000);
+
+      this.$watch('showQR', (value) => {
+        if (value && this.hasQRLibrary) {
+          this.$nextTick(() => {
+            this.generateQR();
+          });
+        }
       });
-    }
-  
-    // Add native share if supported
-    if (navigator.share) {
-      const shareGrid = document.querySelector('.grid');
-      const nativeShareButton = document.createElement('button');
-      nativeShareButton.className = 'flex flex-col items-center p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors';
-      nativeShareButton.innerHTML = `
-        <i class="fa-solid fa-share-nodes text-lg mb-1"></i>
-        <span class="text-xs">More</span>
-      `;
-      nativeShareButton.onclick = () => {
-        navigator.share({
-          title: '{{ page.title }}',
-          text: '{{ page.description }}',
-          url: '{{ page.url | absolute_url }}'
-        }).catch(err => {
-          if (err.name !== 'AbortError') {
-            console.error('Share failed:', err);
-          }
-        });
-      };
-      shareGrid.appendChild(nativeShareButton);
-    }
-  
-    // Add keyboard support
-    document.addEventListener('keydown', (event) => {
-      if (event.key === 'Escape') {
-        closeShareMenu();
+
+      // Re-generate QR code when dark mode changes
+      this.$watch('darkMode', () => {
+        if (this.showQR) {
+          this.$nextTick(() => {
+            this.generateQR();
+          });
+        }
+      });
+    },
+
+    async loadQRLibrary() {
+      return new Promise((resolve, reject) => {
+        if (window.QRCode) {
+          resolve();
+          return;
+        }
+
+        const script = document.createElement('script');
+        script.src = 'https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js';
+        script.onload = resolve;
+        script.onerror = reject;
+        document.head.appendChild(script);
+      });
+    },
+
+    generateQR() {
+      const container = document.getElementById('wechat-qr');
+      if (!container) return;
+
+      container.innerHTML = '';
+      new QRCode(container, {
+        text: window.location.href,
+        width: 120,
+        height: 120,
+        colorDark: this.darkMode ? "#FFFFFF" : "#000000",
+        colorLight: "#FFFFFF",
+        correctLevel: QRCode.CorrectLevel.H
+      });
+    },
+
+    toggle() {
+      this.isOpen = !this.isOpen;
+      if (!this.isOpen) {
+        this.resetState();
       }
-    });
-  </script>
+    },
+
+    close() {
+      this.isOpen = false;
+      this.resetState();
+    },
+
+    resetState() {
+      this.showQR = false;
+      this.copied = false;
+      this.copying = false;
+      this.sharing = false;
+    },
+
+    toggleQR() {
+      if (!this.hasQRLibrary) return;
+      this.showQR = !this.showQR;
+    },
+
+    async copyLink() {
+      if (this.copying) return;
+      
+      this.copying = true;
+      try {
+        await navigator.clipboard.writeText(window.location.href);
+        this.copied = true;
+        setTimeout(() => {
+          this.copied = false;
+        }, 2000);
+      } catch (err) {
+        console.error('Failed to copy link:', err);
+      } finally {
+        this.copying = false;
+      }
+    },
+
+    async nativeShare() {
+      if (this.sharing || !this.hasNativeShare) return;
+
+      this.sharing = true;
+      try {
+        const shareData = {
+          title: document.title,
+          text: document.querySelector('meta[name="description"]')?.content || '',
+          url: window.location.href
+        };
+
+        await navigator.share(shareData);
+      } catch (err) {
+        if (err.name !== 'AbortError') {
+          console.error('Share failed:', err);
+        }
+      } finally {
+        this.sharing = false;
+      }
+    }
+  }));
+});
+</script>

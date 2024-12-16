@@ -167,6 +167,11 @@
                 <div class="flex items-center gap-1.5">
                   <i data-lucide="calendar" class="w-3.5 h-3.5 opacity-75"></i>
                   <span>{{ post.date | date: "%b %d, %Y" }}</span>
+                  {% if post.last_modified_at and post.layout == "blog" %}
+                  <span>•</span>
+                  <span>Updated {{ post.last_modified_at | date: "%b %d, %Y" }}</span>
+
+                  {% endif %}
                 </div>
                 {% endif %}
 

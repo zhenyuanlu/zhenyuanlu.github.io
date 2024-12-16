@@ -1,3 +1,10 @@
+<style>
+  /* Initially disable transitions for the underline */
+  .no-transition .underline {
+    transition: none !important;
+  }
+  </style>
+
 <nav 
   x-cloak 
   x-data="{ 
@@ -15,7 +22,7 @@
           const rect = el.getBoundingClientRect();
           // Check if this section is currently within the viewport area of interest
           if (rect.top <= offset && rect.bottom > offset) {
-            current = '#' + id;
+            current = '/#' + id;
             break;
           }
         }
@@ -73,7 +80,7 @@
             {{ item.name }}
             <!-- Hover/Active Underline (Desktop Only) -->
             <span 
-              class="absolute inset-x-0 bottom-0 h-0.5 origin-right transition-transform duration-300 ease-out"
+              class="absolute inset-x-0 bottom-0 h-0.5 origin-right group-hover:origin-left transition-transform duration-300 ease-out"
               :class="(currentPage === '{{ item.href }}') 
                 ? (darkMode ? 'scale-x-100 bg-white' : 'scale-x-100 bg-black') 
                 : ('scale-x-0 group-hover:scale-x-100 ' + (darkMode ? 'bg-gray-400' : 'bg-gray-600'))"

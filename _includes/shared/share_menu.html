@@ -1,117 +1,267 @@
-{% comment %}
-  share_menu.html
-  Added logic for WeChat: On mobile show a simple link, on desktop show QR code and copy link option.
-  Uses `isMobile` determined by screen width in `x-init`.
-  Also uses `toastMessage` and `showShareToast` defined in parent.
-{% endcomment %}
-<div
-  class="absolute right-0 mt-2 w-48 rounded-lg bg-white dark:bg-gray-800 
-         shadow-lg ring-1 ring-black/5 dark:ring-white/10 py-1 z-50"
-  x-cloak
-  x-show="openShare"
-  @click.outside="openShare = false"
-  x-transition
-  x-data="{ isMobile: false, showWeChatPanel: false }"
-  x-init="
-    isMobile = window.innerWidth < 768;
-  "
->
-  <!-- Twitter -->
-  <button
-    @click="window.open('https://twitter.com/intent/tweet?text={{ page.title | url_encode }}&url={{ page.url | absolute_url | url_encode }}'); openShare=false;"
-    class="flex items-center w-full px-4 py-2 text-sm text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-700"
-  >
-    <i data-lucide="twitter" class="w-4 h-4 mr-3"></i>
-    Twitter
+<div class="relative"
+     x-data="shareMenu"
+     @keydown.escape.window="close">
+  <!-- Share Button -->
+  <button 
+    @click="toggle"
+    class="inline-flex items-center gap-2 px-4 py-2 rounded-lg transition-colors"
+    :class="darkMode ? 'bg-gray-900 text-gray-300 hover:bg-gray-800' : 'bg-gray-100 text-gray-700 hover:bg-gray-200'">
+    <i data-lucide="share-2" class="w-4 h-4"></i>
+    <span class="text-sm">Share</span>
   </button>
 
-  <!-- LinkedIn -->
-  <button
-    @click="window.open('https://www.linkedin.com/sharing/share-offsite/?url={{ page.url | absolute_url | url_encode }}'); openShare=false;"
-    class="flex items-center w-full px-4 py-2 text-sm text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-700"
+  <!-- Dropdown Menu -->
+  <div 
+    x-show="isOpen"
+    @click.away="close"
+    x-transition:enter="transition ease-out duration-200"
+    x-transition:enter-start="opacity-0 translate-y-1"
+    x-transition:enter-end="opacity-100 translate-y-0"
+    x-transition:leave="transition ease-in duration-150"
+    x-transition:leave-start="opacity-100 translate-y-0"
+    x-transition:leave-end="opacity-0 translate-y-1"
+    class="absolute right-0 mt-2 w-56 rounded-lg overflow-hidden shadow-lg ring-1 z-50"
+    :class="darkMode ? 'bg-gray-900 ring-white/10' : 'bg-white ring-black/5'"
+    style="display: none;"
   >
-    <i data-lucide="linkedin" class="w-4 h-4 mr-3"></i>
-    LinkedIn
-  </button>
+    <!-- Header -->
+    <div class="px-4 py-3 border-b"
+         :class="darkMode ? 'border-gray-800' : 'border-gray-200'">
+      <h3 class="text-sm font-medium"
+          :class="darkMode ? 'text-gray-300' : 'text-gray-700'">
+        Share via
+      </h3>
+    </div>
 
-  <!-- Facebook -->
-  <button
-    @click="window.open('https://www.facebook.com/sharer/sharer.php?u={{ page.url | absolute_url | url_encode }}'); openShare=false;"
-    class="flex items-center w-full px-4 py-2 text-sm text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-700"
-  >
-    <i data-lucide="facebook" class="w-4 h-4 mr-3"></i>
-    Facebook
-  </button>
+    <!-- Share Options -->
+    <div class="py-2 flex flex-col">
+      <!-- Twitter -->
+      <a 
+        href="https://twitter.com/share?url={{ page.url | absolute_url }}"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="flex items-center gap-3 px-4 py-2.5 text-sm transition-colors w-full"
+        :class="darkMode ? 'text-gray-300 hover:bg-gray-800' : 'text-gray-700 hover:bg-gray-100'">
+        <i class="fa-brands fa-x-twitter w-4 h-4"></i>
+        <span>Twitter</span>
+        <i class="fa-solid fa-up-right-from-square w-3 h-3 ml-auto opacity-50"></i>
+      </a>
 
-  <!-- WeChat -->
-  <template x-if="isMobile">
-    <button
-      @click="window.open('https://www.wechat.com/', '_blank'); openShare=false;"
-      class="flex items-center w-full px-4 py-2 text-sm text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-700"
-    >
-      <i data-lucide="message-circle" class="w-4 h-4 mr-3"></i>
-      WeChat
-    </button>
-  </template>
-  <template x-if="!isMobile">
-    <div class="relative">
-      <button
-        @click="showWeChatPanel = !showWeChatPanel"
-        class="flex items-center w-full px-4 py-2 text-sm text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-700"
-      >
-        <i data-lucide="message-circle" class="w-4 h-4 mr-3"></i>
-        WeChat
-      </button>
-      <div
-        class="absolute left-full top-0 ml-2 w-56 bg-white dark:bg-gray-700 rounded-lg shadow-lg p-4"
-        x-show="showWeChatPanel"
-        @click.outside="showWeChatPanel=false"
-        x-transition
-      >
-        <!-- QR Code placeholder -->
-        <div class="mb-3 flex justify-center">
-          <img src="/assets/images/wechat_qr.png" alt="WeChat QR Code" class="w-32 h-32 object-cover">
+      <!-- Facebook -->
+      <a 
+        href="https://www.facebook.com/sharer/sharer.php?u={{ page.url | absolute_url }}"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="flex items-center gap-3 px-4 py-2.5 text-sm transition-colors w-full"
+        :class="darkMode ? 'text-gray-300 hover:bg-gray-800' : 'text-gray-700 hover:bg-gray-100'">
+        <i class="fa-brands fa-facebook-f w-4 h-4"></i>
+        <span>Facebook</span>
+        <i class="fa-solid fa-up-right-from-square w-3 h-3 ml-auto opacity-50"></i>
+      </a>
+
+      <!-- LinkedIn -->
+      <a 
+        href="https://www.linkedin.com/sharing/share-offsite/?url={{ page.url | absolute_url }}"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="flex items-center gap-3 px-4 py-2.5 text-sm transition-colors w-full"
+        :class="darkMode ? 'text-gray-300 hover:bg-gray-800' : 'text-gray-700 hover:bg-gray-100'">
+        <i class="fa-brands fa-linkedin-in w-4 h-4"></i>
+        <span>LinkedIn</span>
+        <i class="fa-solid fa-up-right-from-square w-3 h-3 ml-auto opacity-50"></i>
+      </a>
+
+      <!-- WeChat -->
+      <template x-if="hasQRLibrary">
+        <div>
+          <button 
+            @click="toggleQR"
+            class="flex items-center gap-3 px-4 py-2.5 text-sm transition-colors w-full text-left"
+            :class="darkMode ? 'text-gray-300 hover:bg-gray-800' : 'text-gray-700 hover:bg-gray-100'">
+            <i class="fa-brands fa-weixin w-4 h-4"></i>
+            <span>WeChat</span>
+            <i class="ml-auto w-4 h-4" :class="showQR ? 'fa-solid fa-chevron-up' : 'fa-solid fa-chevron-down'"></i>
+          </button>
+
+          <!-- WeChat QR Section -->
+          <div 
+            x-show="showQR"
+            x-transition
+            class="px-4 py-3 border-t"
+            :class="darkMode ? 'border-gray-800' : 'border-gray-200'">
+            <div class="bg-white p-3 rounded-lg w-fit mx-auto">
+              <div id="wechat-qr"></div>
+            </div>
+            <p class="text-xs text-center mt-2"
+               :class="darkMode ? 'text-gray-400' : 'text-gray-500'">
+              Scan with WeChat to share
+            </p>
+          </div>
         </div>
+      </template>
+
+      <!-- More Options -->
+      <template x-if="hasNativeShare">
         <button
-          @click="navigator.clipboard.writeText('{{ page.url | absolute_url }}'); toastMessage='Copied!'; showShareToast=true; setTimeout(()=>showShareToast=false,2000);"
-          class="w-full text-left flex items-center gap-2 px-3 py-2 rounded-lg text-sm
-                 hover:bg-gray-100 dark:hover:bg-gray-600 transition-colors text-gray-700 dark:text-gray-200"
-        >
-          <i data-lucide="copy" class="w-4 h-4"></i>
-          Copy Link
+          @click="nativeShare"
+          class="flex items-center gap-3 px-4 py-2.5 text-sm transition-colors w-full text-left"
+          :class="darkMode ? 'text-gray-300 hover:bg-gray-800' : 'text-gray-700 hover:bg-gray-100'"
+          :disabled="sharing">
+          <template x-if="!sharing">
+            <i class="fa-solid fa-ellipsis-h w-4 h-4"></i>
+          </template>
+          <template x-if="sharing">
+            <i class="fa-solid fa-spinner w-4 h-4 fa-spin"></i>
+          </template>
+          <span x-text="sharing ? 'Opening...' : 'More options'"></span>
+        </button>
+      </template>
+
+      <!-- Divider -->
+      <div class="h-px my-2"
+           :class="darkMode ? 'bg-gray-800' : 'bg-gray-200'"></div>
+
+      <!-- Copy Link (Bottom, Centered) -->
+      <div class="flex justify-center px-4">
+        <button
+          @click="copyLink"
+          class="flex rounded-xl items-center gap-3 px-10 py-2.5 text-sm transition-colors w-auto rounded"
+          :class="darkMode ? 'text-gray-300 hover:bg-gray-800' : 'text-gray-700 hover:bg-gray-100'"
+          :disabled="copying">
+          <template x-if="!copied && !copying">
+            <i class="fa-regular fa-copy w-4 h-4"></i>
+          </template>
+          <template x-if="copying">
+            <i class="fa-solid fa-spinner fa-spin w-4 h-4"></i>
+          </template>
+          <template x-if="copied">
+            <i class="fa-solid fa-check w-4 h-4 text-green-500"></i>
+          </template>
+          <span x-text="copying ? 'Copying...' : (copied ? 'Copied!' : 'Copy link')"></span>
         </button>
       </div>
     </div>
-  </template>
-
-  <!-- More (Web Share API) -->
-  <button
-    @click="
-      if (navigator.share) {
-        navigator.share({ title: '{{ page.title }}', url: '{{ page.url | absolute_url }}' }).then(() => { openShare=false; });
-      } else {
-        alert('Web Share API not supported on this browser.');
-        openShare=false;
-      }
-    "
-    class="flex items-center w-full px-4 py-2 text-sm text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-700"
-  >
-    <i data-lucide="share" class="w-4 h-4 mr-3"></i>
-    More
-  </button>
-
-  <!-- Copy Link (Main) -->
-  <button
-    @click="
-      navigator.clipboard.writeText('{{ page.url | absolute_url }}'); 
-      toastMessage='Copied!'; 
-      showShareToast=true; 
-      setTimeout(()=>showShareToast=false,2000); 
-      openShare=false;
-    "
-    class="flex items-center w-full px-4 py-2 text-sm text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-700"
-  >
-    <i data-lucide="link-2" class="w-4 h-4 mr-3"></i>
-    Copy Link
-  </button>
+  </div>
 </div>
+
+<script>
+document.addEventListener('alpine:init', () => {
+  Alpine.data('shareMenu', () => ({
+    isOpen: false,
+    showQR: false,
+    copied: false,
+    copying: false,
+    sharing: false,
+    hasQRLibrary: false,
+    hasNativeShare: false,
+    qr: null,
+
+    async init() {
+      // Check for native share support
+      this.hasNativeShare = 'share' in navigator;
+
+      // Load QR library
+      try {
+        await this.loadQRLibrary();
+        this.hasQRLibrary = true;
+      } catch (err) {
+        console.warn('QR code library failed to load:', err);
+        this.hasQRLibrary = false;
+      }
+
+      // Watch QR section visibility
+      this.$watch('showQR', (value) => {
+        if (value && this.hasQRLibrary) {
+          this.$nextTick(() => {
+            this.generateQR();
+          });
+        }
+      });
+    },
+
+    async loadQRLibrary() {
+      return new Promise((resolve, reject) => {
+        if (window.QRCode) {
+          resolve();
+          return;
+        }
+
+        const script = document.createElement('script');
+        script.src = 'https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js';
+        script.onload = resolve;
+        script.onerror = reject;
+        document.head.appendChild(script);
+      });
+    },
+
+    generateQR() {
+      const container = document.getElementById('wechat-qr');
+      if (!container) return;
+
+      container.innerHTML = '';
+      new QRCode(container, {
+        text: window.location.href,
+        width: 120,
+        height: 120,
+        colorDark: this.darkMode ? "#FFFFFF" : "#000000",
+        colorLight: this.darkMode ? "#000000" : "#FFFFFF",
+        correctLevel: QRCode.CorrectLevel.H
+      });
+    },
+
+    toggle() {
+      this.isOpen = !this.isOpen;
+      if (!this.isOpen) {
+        this.showQR = false;
+      }
+    },
+
+    close() {
+      this.isOpen = false;
+      this.showQR = false;
+    },
+
+    toggleQR() {
+      if (!this.hasQRLibrary) return;
+      this.showQR = !this.showQR;
+    },
+
+    async copyLink() {
+      if (this.copying) return;
+      
+      this.copying = true;
+      try {
+        await navigator.clipboard.writeText(window.location.href);
+        this.copied = true;
+        setTimeout(() => {
+          this.copied = false;
+        }, 2000);
+      } catch (err) {
+        console.error('Failed to copy link:', err);
+      } finally {
+        this.copying = false;
+      }
+    },
+
+    async nativeShare() {
+      if (this.sharing || !this.hasNativeShare) return;
+
+      this.sharing = true;
+      try {
+        await navigator.share({
+          title: '{{ page.title }}',
+          text: '{{ page.description }}',
+          url: window.location.href
+        });
+        // Removed this.close() so the menu stays open after sharing
+      } catch (err) {
+        if (err.name !== 'AbortError') {
+          console.error('Share failed:', err);
+        }
+      } finally {
+        this.sharing = false;
+      }
+    }
+  }));
+});
+</script>

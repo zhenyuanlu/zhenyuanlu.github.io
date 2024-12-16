@@ -11,7 +11,7 @@ layout: default
 {% assign icon_set = site.icon_set | default: 'lucide' %}
 
 <div x-cloak 
-     class="max-w-3xl mx-auto px-4"
+     class="max-w-3xl mx-auto px-4 relative"
      x-data="{ 
        openShare: false, 
        showShareToast: false, 
@@ -23,8 +23,7 @@ layout: default
         <div class="mb-8">
             <a 
                 href="/#blog" 
-                class="inline-flex items-center px-3 py-1.5 rounded-lg
-                       transition-colors"
+                class="inline-flex items-center px-3 py-1.5 rounded-lg transition-colors"
                 :class="darkMode ? 
                   'text-gray-300 hover:text-white hover:bg-gray-800/80' : 
                   'text-gray-600 hover:text-gray-900 hover:bg-gray-100/80'"
@@ -51,88 +50,76 @@ layout: default
             </div>
             {% endif %}
 
-            <div class="space-y-6">
-                <div class="flex flex-wrap items-center justify-between gap-4">
-                    <div class="flex flex-wrap items-center gap-x-6 gap-y-2 text-sm"
-                         :class="darkMode ? 'text-gray-400' : 'text-gray-600'">
-                        {% if page.author %}
-                        <div class="font-medium"
-                             :class="darkMode ? 'text-white' : 'text-gray-900'">
-                            {{ page.author }}
-                        </div>
+            <div class="flex flex-wrap items-center gap-4">
+                <div class="flex flex-wrap items-center gap-x-6 gap-y-2 text-sm"
+                     :class="darkMode ? 'text-gray-400' : 'text-gray-600'">
+                    {% if page.author %}
+                    <div class="font-medium"
+                         :class="darkMode ? 'text-white' : 'text-gray-900'">
+                        {{ page.author }}
+                    </div>
+                    {% endif %}
+
+                    <div class="flex items-center gap-1.5">
+                        <i data-lucide="calendar" class="w-4 h-4"></i>
+                        <span>Published {{ page.date | date: "%b %d, %Y" }}</span>
+                        {% if page.last_modified_at %}
+                        <span class="mx-2">•</span>
+                        <span>Updated {{ page.last_modified_at | date: "%b %d, %Y" }}</span>
                         {% endif %}
-
-                        <div class="flex items-center gap-1.5">
-                            <i data-lucide="calendar" class="w-4 h-4"></i>
-                            <span>Published {{ page.date | date: "%b %d, %Y" }}</span>
-                            {% if page.last_modified_at %}
-                            <span class="mx-2">•</span>
-                            <span>Updated {{ page.last_modified_at | date: "%b %d, %Y" }}</span>
-                            {% endif %}
-                        </div>
-
-                        <div class="flex items-center gap-1.5">
-                            <i data-lucide="clock" class="w-4 h-4"></i>
-                            <span>{{ read_time }} min read</span>
-                        </div>
                     </div>
 
-                    <div class="relative">
-                        <button
-                          @click="openShare = !openShare"
-                          class="inline-flex items-center px-3 py-1.5 rounded-lg transition-colors"
-                          :class="darkMode ? 
-                            'text-gray-400 hover:text-white hover:bg-gray-800/80' : 
-                            'text-gray-600 hover:text-gray-900 hover:bg-gray-100/80'"
-                        >
-                            <i data-lucide="share-2" class="w-4 h-4 mr-1.5"></i>
-                            Share
-                        </button>
-
-                        {% include shared/share_menu.html %}
+                    <div class="flex items-center gap-1.5">
+                        <i data-lucide="clock" class="w-4 h-4"></i>
+                        <span>{{ read_time }} min read</span>
                     </div>
                 </div>
 
-                <!-- Resources -->
-                {% if page.links %}
-                <div class="flex flex-wrap gap-2">
-                  {% for resource_type in page.links %}
-                    {% assign rtype = resource_type.type %}
-                    {% assign link = resource_type.href %}
-                    {% assign this_icon = icons[rtype] %}
-                    {% if icon_set == 'fontawesome' %}
-                      {% assign icon_class = this_icon.fontawesome %}
-                      {% capture resource_icon %}<i class="{{ icon_class }}"></i>{% endcapture %}
-                    {% else %}
-                      {% assign icon_class = this_icon.lucide %}
-                      {% capture resource_icon %}<i data-lucide="{{ icon_class }}" class="w-4 h-4"></i>{% endcapture %}
-                    {% endif %}
-
-                    {% if rtype == "bibtex" %}
-                      <!-- Cite Button -->
-                      <button
-                        @click="showBibtex = true; currentBibtex = `{{ link }}`; copied = false;"
-                        class="inline-flex items-center px-3 py-1.5 rounded-lg text-sm gap-1.5 transition-colors group"
-                        :class="darkMode ? 'bg-blue-950 text-blue-300 hover:bg-blue-900' : 'bg-blue-50 text-blue-700 hover:bg-blue-100'"
-                      >
-                        {{ resource_icon }}
-                        cite
-                      </button>
-                    {% else %}
-                      <a
-                        href="{{ link }}"
-                        class="inline-flex items-center px-3 py-1.5 rounded-lg text-sm gap-1.5 transition-colors group"
-                        :class="darkMode ? 'bg-blue-950 text-blue-300 hover:bg-blue-900' : 'bg-blue-50 text-blue-700 hover:bg-blue-100'"
-                        target="_blank" rel="noopener noreferrer"
-                      >
-                        {{ resource_icon }}
-                        {{ rtype }}
-                      </a>
-                    {% endif %}
-                  {% endfor %}
+                <!-- Share Menu aligned to the right -->
+                <div class="ml-auto flex items-center">
+                  {% include shared/share_menu.html %}
                 </div>
-                {% endif %}
             </div>
+
+            <!-- Resources -->
+            {% if page.links %}
+            <div class="flex flex-wrap gap-2 mt-4">
+              {% for resource_type in page.links %}
+                {% assign rtype = resource_type.type %}
+                {% assign link = resource_type.href %}
+                {% assign this_icon = icons[rtype] %}
+                {% if icon_set == 'fontawesome' %}
+                  {% assign icon_class = this_icon.fontawesome %}
+                  {% capture resource_icon %}<i class="{{ icon_class }}"></i>{% endcapture %}
+                {% else %}
+                  {% assign icon_class = this_icon.lucide %}
+                  {% capture resource_icon %}<i data-lucide="{{ icon_class }}" class="w-4 h-4"></i>{% endcapture %}
+                {% endif %}
+
+                {% if rtype == "bibtex" %}
+                  <!-- Cite Button -->
+                  <button
+                    @click="showBibtex = true; currentBibtex = `{{ link }}`; copied = false;"
+                    class="inline-flex items-center px-3 py-1.5 rounded-lg text-sm gap-1.5 transition-colors group"
+                    :class="darkMode ? 'bg-blue-950 text-blue-300 hover:bg-blue-900' : 'bg-blue-50 text-blue-700 hover:bg-blue-100'"
+                  >
+                    {{ resource_icon }}
+                    cite
+                  </button>
+                {% else %}
+                  <a
+                    href="{{ link }}"
+                    class="inline-flex items-center px-3 py-1.5 rounded-lg text-sm gap-1.5 transition-colors group"
+                    :class="darkMode ? 'bg-blue-950 text-blue-300 hover:bg-blue-900' : 'bg-blue-50 text-blue-700 hover:bg-blue-100'"
+                    target="_blank" rel="noopener noreferrer"
+                  >
+                    {{ resource_icon }}
+                    {{ rtype }}
+                  </a>
+                {% endif %}
+              {% endfor %}
+            </div>
+            {% endif %}
         </div>
       </div>
 

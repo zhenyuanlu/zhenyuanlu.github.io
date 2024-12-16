@@ -23,8 +23,12 @@ event_date: "Sep 5th, 2023"
 event_time: "10:00 AM - 11:30 AM PST"
 location: "School of Medicine, University of Washington, Seattle"
 capacity: "No limit"
-virtual_link: "Zoom Link"
-registration_link: "Not Required"
+virtual_link: 
+  - name: "zoom"
+    url: "https://www.zoom.com"
+registration_link: 
+  - name: "eventbrite"
+    url: "https://www.eventbrite.com"
 
 # Speaker details
 speaker:
@@ -37,8 +41,44 @@ speaker:
 # Resources
 image: "/assets/images/blog/events/uw_talk/cover.webp"
 links:
-  - type: "slides"
+  # Code resources
+  - type: github    # Repository
     href: "#"
+  - type: demo      # Live demo
+    href: "#"
+  - type: data      # Dataset
+    href: "#"
+
+  # Paper resources
+  - type: pdf       # PDF version
+    href: "#"
+  - type: paper   # Publisher page
+    href: "#"
+  - type: arxiv     # ArXiv preprint
+    href: "#"
+
+  # Presentation resources
+  - type: slides    # Presentation slides
+    href: "#"
+  - type: video     # Talk recording
+    href: "#"
+  - type: poster    # Conference poster
+    href: "#"
+
+  # Additional resources
+  - type: website   # Project website
+    href: "#"
+  - type: blog      # Blog post
+    href: "#"
+
+# Citation (separate from regular links)
+bibtex: |
+  @article{lu2024self,
+    title={Self-supervised Learning for Medical Image Analysis},
+    author={Lu, Zhenyuan and Smith, James and Garcia, Maria},
+    journal={Nature Machine Intelligence},
+    year={2024}
+  }
 
 ---
 

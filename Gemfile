@@ -9,6 +9,7 @@ group :jekyll_plugins do
   gem "jekyll-seo-tag"
   gem "jekyll-sitemap"
   gem "jekyll-last-modified-at"
+  gem "jekyll-email-protect"
 end
 
 platforms :mingw, :x64_mingw, :mswin, :jruby do
