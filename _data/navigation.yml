@@ -1,4 +1,6 @@
 
+- name: Software
+  href: "/#software"
 - name: Publications
   href: "/#publications"
 - name: Blog

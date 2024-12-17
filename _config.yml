@@ -23,9 +23,11 @@ plugins:
   - jekyll-sitemap
   - jekyll-last-modified-at
   - jekyll-email-protect
+  - jekyll-scholar 
   
 include:
   - _blog
+  - section/blog_card.html
 
 
 exclude:
@@ -43,3 +45,21 @@ collections:
 sass:
   style: compressed
 
+
+# KaTeX Configuration
+katex:
+  js_path: "https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"
+  css_path: "https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css"
+  auto_render_path: "https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"
+  rendering_options:
+    throw_error: true
+    error_color: "#cc0000"
+
+# Jekyll Scholar settings
+scholar:
+  style: apa
+  locale: en
+  source: "assets/docs/bibliography"
+  bibliography: "assets/docs/bibliography/references.bib"
+  sort_by: author
+  order: descending

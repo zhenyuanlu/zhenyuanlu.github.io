@@ -1,3 +1,83 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+
+@layer base {
+    d-title {
+      @apply block text-4xl font-bold my-8 leading-tight text-gray-900 dark:text-white;
+    }
+  
+    d-byline {
+      @apply block text-sm text-gray-600 dark:text-gray-400 mb-4;
+    }
+  
+    d-abstract {
+      @apply block bg-gray-50 dark:bg-gray-800 p-4 my-6 rounded;
+      @apply text-base text-gray-700 dark:text-gray-200 leading-relaxed;
+    }
+  
+    d-article {
+      @apply block prose prose-lg dark:prose-invert max-w-none;
+      /* You can customize further, e.g., spacing, typography */
+    }
+  
+    /* Math block styling is handled by MathJax or KaTeX. Just ensure display: block. */
+    d-math {
+      @apply block my-4;
+    }
+  
+    /* Code blocks: We'll rely on <pre><code> inside <d-code> */
+    d-code {
+      @apply block my-4;
+    }
+  
+    d-figure {
+      @apply block my-8;
+    }
+    d-figure img {
+      @apply rounded shadow;
+    }
+    d-figure figcaption {
+      @apply text-sm text-gray-500 mt-2;
+    }
+  
+    d-cite {
+      @apply text-blue-600 dark:text-blue-400 cursor-help;
+      /* Might add tooltip behavior with JS */
+    }
+  
+    d-bibliography {
+      @apply block mt-12 border-t border-gray-200 pt-6;
+    }
+  
+    d-footnote {
+      @apply text-sm text-gray-500 inline-block cursor-help;
+      /* We'll show footnote text in tooltips or a footnote list at bottom. */
+    }
+  
+    d-footnote-list {
+      @apply text-sm text-gray-500 mt-8 border-t border-gray-200 pt-4;
+    }
+  
+    d-citation-list {
+      @apply text-sm text-gray-700 dark:text-gray-300 mt-8 border-t border-gray-200 pt-4;
+    }
+  
+    /* Layout utility classes (we can define custom classes in HTML elements) */
+    .l-page {
+      @apply w-full;
+    }
+  
+    .l-body {
+      @apply max-w-3xl mx-auto px-4 md:px-6 lg:px-8;
+    }
+  
+    .l-screen-inset {
+      @apply w-screen px-4 md:px-6 lg:px-8;
+    }
+  
+    .l-gutter {
+      @apply mx-4 md:mx-6 lg:mx-8;
+    }
+  }

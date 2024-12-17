@@ -255,7 +255,7 @@
 
 
 - title: "Point-of-care Diagnostic Cartridge Having A Programmable Fluidic Wicking Network"
-  hide: false
+  hide: true
   hightlight: false
   featured: false
   authors: 
@@ -290,7 +290,7 @@
 
 - title: "Thickening Agent Composition And Applications In Cosmetics"
   type: patent
-  hide: false
+  hide: true
   hightlight: false
   featured: false
   authors: 
@@ -319,7 +319,7 @@
       href: "https://patentimages.storage.googleapis.com/62/33/2c/f30532002200d2/CN104069024B.pdf"
 
 - title: "Development of a paper-based diagnostic platform for the detection of diarrhea causing pathogens"
-  hide: false
+  hide: true
   hightlight: false
   featured: false
   authors: 
@@ -352,7 +352,7 @@
 
 - title: "Thickener Blend Composition And Its Application"
   type: patent
-  hide: false
+  hide: true
   hightlight: false
   featured: false
   authors: 
@@ -384,7 +384,7 @@
       href: "https://patentimages.storage.googleapis.com/55/5d/0c/2ca988eba57d8e/CN104069023B.pdf"
 
 - title: "Paper-based Device For Gastroenteritis Detection Integrated With Sample Preparation Cartridge"
-  hide: false
+  hide: true
   hightlight: false
   featured: false
   authors: 
@@ -423,7 +423,7 @@
 # =================================================================================================
 
 - title: "Paper Microfluidic Platform for Detection of Viral Gastroenteritis"
-  hide: false
+  hide: true
   hightlight: false
   featured: false
   authors: 

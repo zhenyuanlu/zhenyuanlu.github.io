@@ -33,43 +33,28 @@ registration_link:
 # Speaker details
 speaker:
   name: "Zhenyuan Lu"
-  title: "Faculty"
+  title: "Deep Learning Scientist and Adjunct Faculty"
   affiliation: "Northeastern University"
-  bio: "Representation Learning."
+  bio: "Expertise in representation learning."
   image: "/assets/images/z.png"
+  social:
+    - icon: github
+      href: https://github.com/zhenyuanlu
+      label: GitHub Profile
+    - icon: linkedin
+      href: https://linkedin.com/in/zhenyuanlu
+      label: LinkedIn Profile
+    - icon: twitter
+      href: https://twitter.com/zhenyuanlu
+      label: Twitter Profile
+    - icon: mail
+      href: mailto:zh.lu@northeastern.edu
+      label: Email Contact
+
+
 
 # Resources
 image: "/assets/images/blog/events/uw_talk/cover.webp"
-links:
-  # Code resources
-  - type: github    # Repository
-    href: "#"
-  - type: demo      # Live demo
-    href: "#"
-  - type: data      # Dataset
-    href: "#"
-
-  # Paper resources
-  - type: pdf       # PDF version
-    href: "#"
-  - type: paper   # Publisher page
-    href: "#"
-  - type: arxiv     # ArXiv preprint
-    href: "#"
-
-  # Presentation resources
-  - type: slides    # Presentation slides
-    href: "#"
-  - type: video     # Talk recording
-    href: "#"
-  - type: poster    # Conference poster
-    href: "#"
-
-  # Additional resources
-  - type: website   # Project website
-    href: "#"
-  - type: blog      # Blog post
-    href: "#"
 
 # Citation (separate from regular links)
 bibtex: |
@@ -107,7 +92,7 @@ This presentation dive into applications of AI, progressing from modern machine 
 
 <center>
   <figure style="max-width:100%;">
-    <img src="{{ '/assets/projects/rl/intro.webp' | relative_url }}"  />
+    <img src="{{ '/assets/images/blog/events/uw_talk/intro.webp' | relative_url }}"  />
     <figcaption>
       <strong></strong>
     </figcaption>

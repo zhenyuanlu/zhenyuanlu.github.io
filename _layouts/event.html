@@ -6,217 +6,211 @@ layout: default
 {% assign icons = site.data.resource_icons %}
 {% assign navItems = site.data.navigation %}
 
+<!-- Event Layout Template -->
+<div x-cloak class="min-h-screen" :class="darkMode ? 'bg-gray-950' : 'bg-white'"
+  x-data="{ openShare: false, showShareToast: false }">
 
- <!-- Main Content -->
- <div x-cloak class="max-w-3xl mx-auto px-4" x-data="{ openShare: false, showShareToast: false }">
-    <div class="py-12">
-        <!-- Back Button -->
-        <div class="mb-8">
-          <a 
-            href="/"
-            class="inline-flex items-center px-3 py-1.5 rounded-lg transition-colors"
-            :class="darkMode ? 'text-gray-400 hover:text-white hover:bg-gray-800/80' : 'text-gray-600 hover:text-gray-900 hover:bg-gray-100/80'"
-          >
-            <i data-lucide="chevron-left" class="w-4 h-4 mr-1"></i>
-            Back to Home
+  <!-- Main Content -->
+  <div class="max-w-3xl mx-auto px-4 sm:px-6 py-6 sm:py-8">
+    <!-- Header Section -->
+    <section class="space-y-6 mb-12">
+      <!-- Navigation -->
+      <nav aria-label="Breadcrumb" class="flex items-center space-x-2 text-sm">
+        <div class="flex items-center">
+          <a href="/" class="text-gray-600 hover:text-gray-900"
+            :class="darkMode ? 'text-gray-400 hover:text-white' : 'text-gray-600 hover:text-gray-900'">
+            Home
           </a>
         </div>
-  
-        <!-- Title -->
-        <h1 class="text-4xl font-bold mb-4"
-            :class="darkMode ? 'text-white' : 'text-gray-900'">
+
+        <i data-lucide="chevron-right" class="w-4 h-4 text-gray-400"></i>
+
+        <div class="flex items-center">
+          <a href="/{{ page.collection }}" class="text-gray-600 hover:text-gray-900"
+            :class="darkMode ? 'text-gray-400 hover:text-white' : 'text-gray-600 hover:text-gray-900'">
+            {{ page.collection | capitalize }}
+          </a>
+        </div>
+
+        <i data-lucide="chevron-right" class="w-4 h-4 text-gray-400"></i>
+
+        <div class="flex items-center">
+          <span class="italic" :class="darkMode ? 'text-gray-300' : 'text-gray-700'">
+            <!-- {{ page.title }} -->
+            Current Page
+          </span>
+        </div>
+      </nav>
+
+      <!-- Title & Tags -->
+      <div class="space-y-6">
+        <h1 class="text-4xl font-bold leading-tight" :class="darkMode ? 'text-white' : 'text-gray-900'">
           {{ page.title }}
         </h1>
-  
-        <!-- Tags under Title -->
-        {% if page.tags %}
-        <div class="flex flex-wrap gap-2 mb-8">
-          {% for topic in page.tags %}
-          <span 
-            class="inline-flex items-center px-3 py-1.5 rounded-lg text-sm"
-            :class="darkMode ? 'bg-blue-950 text-blue-300' : 'bg-blue-50 text-blue-700'"
-          >
-            <i data-lucide="tag" class="w-4 h-4 mr-1.5"></i>
-            {{ topic }}
-          </span>
-          {% endfor %}
-        </div>
-        {% endif %}
-  
-        <!-- Event Details -->
-        <div class="space-y-4 mb-8 text-lg"
-             :class="darkMode ? 'text-gray-300' : 'text-gray-600'">
-          {% if page.event_date %}
-          <div class="flex items-center gap-2">
-            <i data-lucide="calendar" class="w-5 h-5"></i>
-            <span>{{ page.event_date }}</span>
+
+        <!-- Container for tags and share menu -->
+        <div class="relative w-full">
+          <!-- Add padding on the right to ensure tags won't overlap the share menu -->
+          <div class="flex flex-wrap gap-2 pr-16">
+            {% if page.tags %}
+            {% for topic in page.tags %}
+            <span class="inline-flex items-center px-3 py-1 rounded-full text-sm transition-colors"
+              :class="darkMode ? 'bg-blue-900/40 text-blue-300 ring-1 ring-blue-700' : 'bg-blue-50 text-blue-700'">
+              <i data-lucide="tag" class="w-3 h-3 mr-1.5 opacity-50"></i>
+              {{ topic }}
+            </span>
+            {% endfor %}
+            {% endif %}
           </div>
-          {% endif %}
-  
-          {% if page.event_time %}
-          <div class="flex items-center gap-2">
-            <i data-lucide="clock" class="w-5 h-5"></i>
-            <span>{{ page.event_time }}</span>
-          </div>
-          {% endif %}
-  
-          {% if page.location %}
-          <div class="flex items-center gap-2">
-            <i data-lucide="map-pin" class="w-5 h-5"></i>
-            <span>{{ page.location }}</span>
-          </div>
-          {% endif %}
-  
-          {% if page.capacity %}
-          <div class="flex items-center gap-2">
-            <i data-lucide="users" class="w-5 h-5"></i>
-            <span>{{ page.capacity }}</span>
-          </div>
-          {% endif %}
-        </div>
-  
-        <hr :class="darkMode ? 'border-gray-800' : 'border-gray-200'">
-  
-        <!-- Actions & Share Row -->
-        <div class="flex flex-wrap gap-3 mt-8 mb-8 items-center">
-          {% if page.registration_link and page.registration_link != '' %}
-          <!-- Registration Button -->
-          <a
-            href="{{ page.registration_link }}"
-            class="flex items-center px-6 py-2 rounded-lg font-medium transition-colors"
-            :class="darkMode ? 'bg-blue-950 text-blue-300 hover:bg-blue-900' : 'bg-blue-50 text-blue-700 hover:bg-blue-100'"
-            target="_blank" rel="noopener noreferrer"
-          >
-            Register Now
-          </a>
-          {% endif %}
-  
-          {% if page.virtual_link %}
-          <!-- Virtual Join Link -->
-          <a 
-            href="{{ page.virtual_link }}"
-            class="flex items-center px-4 py-2 rounded-lg transition-colors"
-            :class="darkMode ? 'bg-gray-800 text-gray-300 hover:bg-gray-700' : 'bg-gray-100 text-gray-700 hover:bg-gray-200'"
-            target="_blank" rel="noopener noreferrer"
-          >
-            <i data-lucide="video" class="w-4 h-4 mr-2"></i>
-            Join Virtually
-          </a>
-          {% endif %}
-  
-          <!-- Share Menu Trigger -->
-          <div class="relative">
-            <button
-              @click="openShare = !openShare"
-              class="flex items-center px-4 py-2 rounded-lg transition-colors"
-              :class="darkMode ? 'bg-gray-800 text-gray-300 hover:bg-gray-700' : 'bg-gray-100 text-gray-700 hover:bg-gray-200'"
-              aria-label="Share options"
-              aria-expanded="openShare"
-              aria-haspopup="true"
-            >
-              <i data-lucide="share-2" class="w-4 h-4 mr-2"></i>
-              Share
-            </button>
-  
-            <!-- Include share_menu.html -->
+
+          <!-- Absolutely positioned share menu -->
+          <div class="absolute top-0 right-0">
             {% include shared/share_menu.html %}
           </div>
         </div>
-  
-        {% if page.links %}
-        <!-- Resource Links -->
-        <div class="flex flex-wrap gap-2 mb-8">
-          {% for resource_type in page.links %}
-            {% assign rtype = resource_type.type %}
-            {% assign link = resource_type.href %}
-            {% assign this_icon = icons[rtype] %}
-            {% if icon_set == 'fontawesome' %}
-              {% assign icon_class = this_icon.fontawesome %}
-              {% capture resource_icon %}<i class="{{ icon_class }}"></i>{% endcapture %}
-            {% else %}
-              {% assign icon_class = this_icon.lucide %}
-              {% capture resource_icon %}<i data-lucide="{{ icon_class }}" class="w-4 h-4"></i>{% endcapture %}
-            {% endif %}
-            {% assign label = rtype | capitalize %}
-  
-            <a
-              href="{{ link }}"
-              class="inline-flex items-center px-3 py-1.5 rounded-lg text-sm gap-1.5 transition-colors group"
-              :class="darkMode ?
-                'bg-blue-950 text-blue-300 hover:bg-blue-900' :
-                'bg-blue-50 text-blue-700 hover:bg-blue-100'"
-              target="_blank" rel="noopener noreferrer"
-            >
-              {{ resource_icon }}
-              {{ label }}
-            </a>
-          {% endfor %}
+      </div>
+
+
+      <!-- Event Details -->
+      <div class="space-y-4 mb-8 text-md" :class="darkMode ? 'text-gray-300' : 'text-gray-600'">
+        {% if page.event_date %}
+        <div class="flex items-center gap-2">
+          <i data-lucide="calendar" class="w-5 h-5"></i>
+          <span>{{ page.event_date }}</span>
         </div>
         {% endif %}
-  
-        {% if page.speaker %}
-        <!-- Speaker Info -->
-        <div class="rounded-xl p-6 mb-8"
-             :class="darkMode ? 'bg-gray-900' : 'bg-gray-50'">
-          <div class="flex gap-6 items-start">
-            {% if page.speaker.image %}
-            <img 
-              src="{{ page.speaker.image | relative_url }}"
-              alt="{{ page.speaker.name }}"
-              class="w-24 h-24 rounded-full object-cover"
-            />
-            {% endif %}
-            <div>
-              <h2 class="text-xl font-bold mb-1"
-                  :class="darkMode ? 'text-white' : 'text-gray-900'">
-                {{ page.speaker.name }}
-              </h2>
-              {% if page.speaker.title %}
-              <p class="mb-1"
-                 :class="darkMode ? 'text-gray-300' : 'text-gray-700'">
-                {{ page.speaker.title }}
-              </p>
-              {% endif %}
-              {% if page.speaker.affiliation %}
-              <p class="mb-4"
-                 :class="darkMode ? 'text-gray-400' : 'text-gray-600'">
-                {{ page.speaker.affiliation }}
-              </p>
-              {% endif %}
-              {% if page.speaker.bio %}
-              <p class="text-sm"
-                 :class="darkMode ? 'text-gray-400' : 'text-gray-600'">
-                {{ page.speaker.bio }}
-              </p>
-              {% endif %}
-            </div>
-          </div>
+
+        {% if page.event_time %}
+        <div class="flex items-center gap-2">
+          <i data-lucide="clock" class="w-5 h-5"></i>
+          <span>{{ page.event_time }}</span>
         </div>
         {% endif %}
-  
-        {% if page.abstract %}
-        <!-- Abstract -->
-        <div class="prose prose-gray max-w-none mb-8"
-             :class="darkMode ? 'dark:prose-invert' : ''">
-          <h2>Abstract</h2>
-          <p>{{ page.abstract }}</p>
+
+        {% if page.location %}
+        <div class="flex items-center gap-2">
+          <i data-lucide="map-pin" class="w-5 h-5"></i>
+          <span>{{ page.location }}</span>
+        </div>
+        {% endif %}
+
+        {% if page.capacity %}
+        <div class="flex items-center gap-2">
+          <i data-lucide="users" class="w-5 h-5"></i>
+          <span>{{ page.capacity }}</span>
         </div>
         {% endif %}
       </div>
-  
-      <article class="prose prose-lg prose-headings:font-semibold max-w-none pb-12"
-               :class="darkMode ? 'dark:prose-invert dark:prose-a:text-blue-400' : 'prose-a:text-blue-600'">
-        {{ content }}
-      </article>
+
+      <!-- Action Buttons -->
+      <div class="flex flex-col sm:flex-row gap-4">
+        {% if page.registration_link %}
+        {% for link in page.registration_link %}
+        <a href="{{ link.url }}"
+          class="flex-1 inline-flex items-center justify-center px-6 py-3 rounded-2xl font-medium transition-all duration-200"
+          :class="darkMode ? 'bg-blue-600 text-white hover:bg-blue-500' : 'bg-blue-600 text-white hover:bg-blue-500'"
+          target="_blank" rel="noopener noreferrer">
+          Register via {{ link.name | capitalize }}
+        </a>
+        {% endfor %}
+        {% endif %}
+
+        {% if page.virtual_link %}
+        {% for link in page.virtual_link %}
+        <a href="{{ link.url }}"
+          class="flex-1 sm:flex-none inline-flex rounded-xl p-6 border shadow-sm items-center justify-center px-6 py-3 rounded-2xl transition-colors gap-2"
+          :class="darkMode ? 'bg-gray-800 text-gray-300 hover:bg-gray-700 border border-gray-700' : 'bg-white text-gray-700 hover:bg-gray-50 border border-gray-200'"
+          target="_blank" rel="noopener noreferrer">
+          <i data-lucide="video" class="w-4 h-4"></i>
+          Join via {{ link.name | capitalize }}
+          <i data-lucide="arrow-up-right" class="w-4 h-4 opacity-50"></i>
+        </a>
+        {% endfor %}
+        {% endif %}
+      </div>
+    </section>
+
+    <!-- Speaker Section -->
+    <section class="mb-12">
+      <div class="rounded-xl p-6 border shadow-sm"
+        :class="darkMode ? 'bg-gray-900 border-gray-800 text-white' : 'bg-white border-gray-200 text-gray-900'">
+        <div class="flex items-center gap-6">
+          {% if page.speaker.image %}
+          <img src="{{ page.speaker.image | relative_url }}" alt="{{ page.speaker.name }}"
+            class="w-16 h-16 rounded-full object-cover border"
+            :class="darkMode ? 'border-gray-700' : 'border-gray-100'" />
+          {% endif %}
+
+          <div class="flex-1 min-w-0">
+            <h2 class="text-xl font-bold mb-1">
+              {{ page.speaker.name }}
+            </h2>
+            <p class="text-sm" :class="darkMode ? 'text-gray-400' : 'text-gray-600'">
+              {{ page.speaker.title }}{% if page.speaker.affiliation %} · {{ page.speaker.affiliation }}{% endif %}
+            </p>
+          </div>
+
+          <div class="flex gap-2">
+            {% for link in site.data.social %}
+            <a href="{{ link.href }}" class="p-2 rounded-lg transition-colors"
+              :class="darkMode ? 'text-gray-400 hover:bg-gray-800' : 'text-gray-600 hover:bg-gray-50'"
+              aria-label="{{ link.label }}">
+              <i data-lucide="{{ link.icon }}" class="w-5 h-5"></i>
+            </a>
+            {% endfor %}
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+
+    <!-- Resource Links -->
+    {% if page.links %}
+    <section class="mb-12">
+      <h2 class="text-lg font-semibold mb-4" :class="darkMode ? 'text-white' : 'text-gray-900'">
+        Materials & Resources
+      </h2>
+
+      <div class="grid gap-3 sm:grid-cols-2 md:grid-cols-3">
+        {% for resource in page.links %}
+        <a href="{{ resource.href }}" class="group flex items-center gap-4 p-4 rounded-2xl transition-all"
+          :class="darkMode ? 'bg-gray-900 border border-gray-800 hover:border-gray-700' : 'bg-white border border-gray-100 hover:border-gray-200'"
+          target="_blank" rel="noopener noreferrer">
+          <div class="w-12 h-12 rounded-xl flex items-center justify-center transition-colors"
+            :class="darkMode ? 'bg-gray-800 group-hover:bg-gray-700' : 'bg-gray-50 group-hover:bg-gray-100'">
+            <i data-lucide="{{ icons[resource.type].lucide }}" class="w-6 h-6"
+              :class="darkMode ? 'text-gray-400' : 'text-gray-600'"></i>
+          </div>
+
+          <div class="flex-1 min-w-0">
+            <div class="font-medium" :class="darkMode ? 'text-gray-200' : 'text-gray-900'">
+              {{ resource.type | capitalize }}
+            </div>
+            <div class="text-sm flex items-center gap-2" :class="darkMode ? 'text-gray-500' : 'text-gray-500'">
+              <span>View Resource</span>
+            </div>
+          </div>
+
+          <i data-lucide="arrow-up-right" class="w-5 h-5 transition-all"
+            :class="darkMode ? 'text-gray-600 group-hover:text-gray-400' : 'text-gray-400 group-hover:text-gray-600'"></i>
+        </a>
+        {% endfor %}
+      </div>
+    </section>
+    {% endif %}
+
+    <!-- Content -->
+    {% if page.abstract %}
+    <div class="prose max-w-none" :class="darkMode ? 'prose-invert' : ''">
+      <h2>Abstract</h2>
+      <p>{{ page.abstract }}</p>
     </div>
-  
-    <!-- Toast Notification -->
-    <div
-      class="fixed bottom-4 right-4 bg-gray-900 text-white px-4 py-2 rounded-lg shadow-lg flex items-center gap-2 z-50"
-      x-show="showShareToast"
-      x-transition
-      style="display:none;"
-    >
-      <i data-lucide="copy" class="w-4 h-4"></i>
-      Link copied to clipboard
-    </div>
+    {% endif %}
+
+    <article class="prose max-w-none"
+      :class="darkMode ? 'prose-invert prose-a:text-blue-400' : 'prose-a:text-blue-600'">
+      {{ content }}
+    </article>
+  </div>
+</div>  

@@ -1,5 +1,5 @@
 ---
-layout: blog
+layout: blog_page
 type: blog
 title: "Artifacts Analysis and Mitigation in NLP"
 description: "Machine learning models can reach high performance on benchmark natural language processing (NLP) datasets but fail in more challenging settings. We study this issue when pre-trained model learns dataset artifacts in natural language inference (NLI), the topic of studying the logical relationship between a pair of text sequences."
