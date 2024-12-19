@@ -130,13 +130,13 @@ layout: default
   </section>
 
   <!-- Main Article Content -->
-  <z-body id='blog-content' class="max-w-3xl mx-auto px-4 sm:px-6 pb-12">
+  <section y id='blog-content' class="max-w-3xl mx-auto px-4 sm:px-6 pb-12">
     <!-- TOC Placeholder -->
     <z-toc data-toc="{{ page.toc | default:false }}" data-toc-level="3"></z-toc>
-    <z-article class="prose prose-lg prose-headings:font-semibold max-w-none"
+    <div class="prose prose-lg prose-headings:font-semibold max-w-none"
       :class="darkMode ? 'prose-invert prose-a:text-blue-400' : 'prose-a:text-blue-600'">
       {{ content }}
-    </z-article>
+    </div>
     
 
     <!-- Appendices -->
@@ -148,7 +148,7 @@ layout: default
     <z-bibliography
       src="{{ page.bibliography | prepend: '/assets/docs/bibliography/' | relative_url }}"></z-bibliography>
 
-  </z-body>
+  </section>
 
 
   {% include shared/bibtex_modal.html icon_set=icon_set %}
