@@ -11,16 +11,19 @@ tags:
   - "Deep Learning"
   - "Transformer"
   - "Signal Processing"
+
 highlight: 0
 
 hide: false
 toc: true
 
+thumbnail: "/assets/images/thumbnails/posts/gesture.png"
 image: "/assets/images/blog/projects/gesture/zl_motion_short.gif"
 links:
   - type: github
     href: "https://github.com/zhenyuanlu/WristMotion-Gesture-Detection"
 
+biliography: 2023-05-16-gesture.bib
 ---
 
 
@@ -38,7 +41,7 @@ links:
 
 # Abstract
 
-In this report, we adapt our previous work PainAttnNet model <d-cite key="lu2023transformer"></d-cite>, a novel transformer-encoder deep learning framework for classifying pain intensities using physiological signals. PainAttnNet model integrates convolutional networks to capture multimodal features, a squeeze-and-excitation residual network emphasizing interdependencies among relevant features, and a transformer encoder block for optimal feature extraction and temporal dependency analysis. Supplemental information and source code are available at: <a>https://github.com/zhenyuanlu/WristMotion-Gesture-Detection</a>
+In this report, we adapt our previous work PainAttnNet model <z-cite key="lu2023transformer"></z-cite>, a novel transformer-encoder deep learning framework for classifying pain intensities using physiological signals. PainAttnNet model integrates convolutional networks to capture multimodal features, a squeeze-and-excitation residual network emphasizing interdependencies among relevant features, and a transformer encoder block for optimal feature extraction and temporal dependency analysis. Supplemental information and source code are available at: <a>https://github.com/zhenyuanlu/WristMotion-Gesture-Detection</a>
 
 
 
@@ -89,7 +92,7 @@ Next, we have implemented a strategy to segregate data based on body movement la
 
 # Methodology
 
-Please check out our previous work PainAttnNet model <d-cite key="lu2023transformer"></d-cite> for more details.
+Please check out our previous work PainAttnNet model <z-cite key="lu2023transformer"></z-cite> for more details.
 
 ***
 
@@ -107,15 +110,3 @@ The wrist motion data is provided by Pison Technology.
 
 ***
 
-<!-- arxiv
-
-```bibtex
-@misc{lu2022multiscales,
-      title={Multi-Scales Data Augmentation Approach In Natural Language Inference For Artifacts Mitigation And Pre-Trained Model Optimization}, 
-      author={Zhenyuan Lu},
-      year={2022},
-      eprint={2212.08756},
-      archivePrefix={arXiv},
-      primaryClass={cs.CL}
-}
-``` -->

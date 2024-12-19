@@ -20,13 +20,24 @@
 <!-- Alpine.js -->
 <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
 
-<!-- For filtering Blog  -->
-<script src="{{ '/assets/js/filter-blog.js' | relative_url }}"></script>
+<!-- Javascript min js  -->
+<script src="{{ '/assets/js/filter-blog.min.js' | relative_url }}" defer></script>
+<script src="{{ '/assets/js/toc.min.js' | relative_url }}" defer></script>
+<script src="{{ '/assets/js/zenlu.min.js' | relative_url }}" defer></script>
 
 
 <!-- For MathJax -->
 <script async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js"></script>
-
+<script>
+  window.MathJax = {
+    tex: {
+      inlineMath: [['$', '$'], ['\\(', '\\)']]
+    },
+    svg: {
+      fontCache: 'global'
+    }
+  };
+</script>
 
 <!-- FontAwesome CDN -->
 <link
@@ -37,5 +48,7 @@
   referrerpolicy="no-referrer"
 />
 
-<!-- Academic JS (citations, code blocks, math, toc) -->
-<script src="{{ '/assets/js/academic.js' | relative_url }}" defer></script>
+<!-- add page style if has -->
+{% if page.style %}
+  {{ page.style | strip_newlines }}
+{% endif %}

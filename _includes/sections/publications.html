@@ -28,7 +28,8 @@
           <!-- Image Section -->
           <div class="relative md:w-64 h-40 md:h-auto flex-shrink-0">
             {% if paper.image %}
-                <div class="border border-gray-100 w-full h-full bg-cover rounded-t-xl md:rounded-l-xl md:rounded-r-none bg-[position:0%_50%] transition-[background-position] duration-[1500ms] hover:bg-[position:100%_100%]"
+                <div class="w-full h-full bg-cover rounded-t-xl md:rounded-l-xl md:rounded-r-none bg-[position:0%_50%] transition-[background-position] duration-[1500ms] hover:bg-[position:100%_100%]"
+                :class="darkMode ? 'border border-gray-900' : 'border border-gray-100'"
                 style="background-image: url('{{ paper.image | relative_url }}');"
                 alt="{{ post.title }}">
                 </div>
@@ -126,7 +127,8 @@
             <!-- Image Section  -->
             <div class="relative md:w-64 h-40 md:h-auto flex-shrink-0">
               {% if paper.image %}
-                  <div class="border border-gray-100 w-full h-full bg-cover rounded-t-xl md:rounded-l-xl md:rounded-r-none bg-[position:0%_50%] transition-[background-position] duration-[1500ms] hover:bg-[position:100%_100%]"
+                  <div class="w-full h-full bg-cover rounded-t-xl md:rounded-l-xl md:rounded-r-none bg-[position:0%_50%] transition-[background-position] duration-[1500ms] hover:bg-[position:100%_100%]"
+                  :class="darkMode ? 'border border-gray-900' : 'border border-gray-100'"
                   style="background-image: url('{{ paper.image | relative_url }}');"
                   alt="{{ post.title }}">
                   </div>

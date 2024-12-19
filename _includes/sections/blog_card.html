@@ -1,12 +1,26 @@
-{% assign all_contents = site.blog | where_exp:'item','item.type != nil and item.hide != true' %}
+{% assign typed_visible = "" | split: "" %}
+{% for item in site.blog %}
+  {% if item.type and item.hide != true %}
+    {% assign typed_visible = typed_visible | push: item %}
+  {% endif %}
+{% endfor %}
 
-{% assign highlighted_present = all_contents | where_exp:'item','item.highlight > 0' | sort: 'highlight' %}
-{% assign highlighted_with_dates = highlighted_present | sort: 'date' | reverse %}
+{% assign highlighted_posts = "" | split: "" %}
+{% assign non_highlighted = "" | split: "" %}
 
-{% assign non_highlighted = all_contents | where_exp:'item','item.highlight == null or item.highlight == 0' %}
-{% assign non_highlighted_sorted = non_highlighted | sort: 'date' | reverse %}
+{% for item in typed_visible %}
+  {% if item.highlight > 0 %}
+    {% assign highlighted_posts = highlighted_posts | push: item %}
+  {% else %}
+    {% assign non_highlighted = non_highlighted | push: item %}
+  {% endif %}
+{% endfor %}
 
-{% assign combined = highlighted_with_dates | concat: non_highlighted_sorted %}
+{% assign highlighted_posts = highlighted_posts | sort: "highlight" %}
+{% assign non_highlighted = non_highlighted | sort: "date" | reverse %}
+
+{% assign combined = highlighted_posts | concat: non_highlighted %}
+
 
 <section id="blog" x-cloak class="py-8 px-4"
   :class="darkMode ? 'bg-gray-950 text-gray-100' : 'bg-gray-50 text-gray-900'">
@@ -100,7 +114,8 @@
             <!-- Image Container -->
             <div class="relative md:w-64 h-40 md:h-auto flex-shrink-0">
               {% if post.image %}
-                <div class="border border-gray-100 w-full h-full bg-cover rounded-t-xl md:rounded-l-xl md:rounded-r-none bg-[position:0%_0%] transition-[background-position] duration-[1500ms] hover:bg-[position:100%_100%]"
+                <div class="w-full h-full bg-cover rounded-t-xl md:rounded-l-xl md:rounded-r-none bg-[position:0%_0%] transition-[background-position] duration-[1500ms] hover:bg-[position:100%_100%]"
+                :class="darkMode ? 'border border-gray-900' : 'border border-gray-100'"
                 style="background-image: url('{{ post.image | relative_url }}');"
                 alt="{{ post.title }}">
                 </div>

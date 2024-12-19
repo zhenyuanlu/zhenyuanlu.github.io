@@ -116,6 +116,7 @@ DEPENDENCIES
   jekyll-scholar
   jekyll-seo-tag
   jekyll-sitemap
+  kramdown
   tzinfo (>= 1, < 3)
   tzinfo-data
   wdm

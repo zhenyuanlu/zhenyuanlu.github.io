@@ -13,7 +13,9 @@
     
     {% assign visible_software = site.data.software | where_exp: "item", "item.hide != true" %}
     {% assign highlighted_items = visible_software | where_exp: "item", "item.highlight > 0" | sort: "highlight" %}
-    {% assign regular_items = visible_software | where_exp: "item", "item.highlight == null or item.highlight == 0" %}
+    {% assign non_highlighted_nil = visible_software | where_exp: "item", "item.highlight == nil" %}
+    {% assign non_highlighted_zero = visible_software | where_exp: "item", "item.highlight == 0" %}
+    {% assign regular_items = non_highlighted_nil | concat: non_highlighted_zero %}
     {% assign all_sorted_items = highlighted_items | concat: regular_items %}
 
     <div class="grid grid-cols-1 md:grid-cols-2 gap-6">

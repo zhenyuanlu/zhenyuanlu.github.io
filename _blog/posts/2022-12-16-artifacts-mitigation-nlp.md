@@ -13,8 +13,7 @@ tags:
   - "Dataset Artifacts"
   - "Mitiagation"
 
-highlight: 0
-
+highlight: 2
 hide: false
 toc: true
 
@@ -33,13 +32,15 @@ links:
         journal={arXiv preprint arXiv:2212.08756},
         year={2022}
       }
+
+bibliography: 2022-12-16-artifacts.bib
 ---
 
 
 <div class="l-page">
 <center>
   <figure>
-    <img src="{{ '/assets/blog/posts/artifacts/electra.jpg' | relative_url }}" />
+    <img src="{{ '/assets/images/blog/posts/artifacts/electra.webp' | relative_url }}" />
     <figcaption>
       <strong> Figure 1. A summary of techniques for detecting replaced tokens. Token distributions can be created by any model, but often a small masked language model is trained in conjunction with the discriminator. Even though the models are built up similarly to a GAN, we train the generator using maximum likelihood instead of adversarially because GANs are often challenging to apply to text. After pre-training, we discard the generator and just alter the discriminator (the ELECTRA model) for subsequent jobs.</strong>.
     </figcaption>
@@ -57,10 +58,10 @@ Machine learning models can reach high performance on benchmark natural language
 # Introduction
 ## Background
 
-Natural Language Inference (NLI) is a fundamental subset of Natural Language Processing (NLP) that investigates whether a natural language sequence premise $p$ can infer (entailment), not imply (contradiction), or remain undetermined (neutral) with respect to a natural language sequence hypothesis $h$. <d-cite key="maccartney2009,maccartney-manning-2008-modeling"></d-cite>. The challenge of NLI differs from that of other topics in that it highlights informal reasoning, lexical semantic knowledge, and the variety of language expression other than formal reasoning.
+Natural Language Inference (NLI) is a fundamental subset of Natural Language Processing (NLP) that investigates whether a natural language sequence premise $p$ can infer (entailment), not imply (contradiction), or remain undetermined (neutral) with respect to a natural language sequence hypothesis $h$. <z-cite key="maccartney2009,maccartney-manning-2008-modeling"></z-cite>. The challenge of NLI differs from that of other topics in that it highlights informal reasoning, lexical semantic knowledge, and the variety of language expression other than formal reasoning.
 
 ## Large-scale NLI Datasets
-To well-understand the semantic representation in NLI, and address the lack of large-scale materials, Stanford NLP groups have introduced the Stanford Natural Language Inference corpus <d-cite key="emnlp2015"></d-cite>; later, Williams et al. from New York University have introduced the Multi-Genre Natural Language Inference (MultiNLI) corpus with collection of 433k sentence pairs modeled on the SNLI corpus <d-cite key="N18-1101"></d-cite>. 
+To well-understand the semantic representation in NLI, and address the lack of large-scale materials, Stanford NLP groups have introduced the Stanford Natural Language Inference corpus <z-cite key="emnlp2015"></z-cite>; later, Williams et al. from New York University have introduced the Multi-Genre Natural Language Inference (MultiNLI) corpus with collection of 433k sentence pairs modeled on the SNLI corpus <z-cite key="N18-1101"></z-cite>. 
 
 |         |            |   |
 | ------------- |-------------| :-----|
@@ -74,7 +75,7 @@ To well-understand the semantic representation in NLI, and address the lack of l
 
 <br>
 
-SNLI includes 570 k (550 k training pairs, 10 k development pairs, and 10 k test pairs) human-labeled sentence pairs categorized as entailment, contradiction, or neutral for training NLP models in NLI subjects. For the premise of the SNLI corpus, the researchers used captions from the Flickr30k corpus <d-cite key="emnlp2015,young-etal-2014-image"></d-cite> from a collection of 160k crowdsourced captions. They utilized Amazon Mechanical Turk to gather hypotheses, gave crowd workers with a premise $p$, and requested them to construct three new hypotheses based on $p$, using one of the rules below <d-cite key="emnlp2015, gururangan-etal-2018-annotation"></d-cite> and one of the examples from SNLI (**Table 1**): 
+SNLI includes 570 k (550 k training pairs, 10 k development pairs, and 10 k test pairs) human-labeled sentence pairs categorized as entailment, contradiction, or neutral for training NLP models in NLI subjects. For the premise of the SNLI corpus, the researchers used captions from the Flickr30k corpus <z-cite key="emnlp2015,young-etal-2014-image"></z-cite> from a collection of 160k crowdsourced captions. They utilized Amazon Mechanical Turk to gather hypotheses, gave crowd workers with a premise $p$, and requested them to construct three new hypotheses based on $p$, using one of the rules below <z-cite key="emnlp2015, gururangan-etal-2018-annotation"></z-cite> and one of the examples from SNLI (**Table 1**): 
 
 > **Entailment**   &nbsp; &nbsp;&nbsp; &nbsp;$h$ is definitely true given $p$ \\
 > **Neutral** &nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; $h$ might be true given $p$ \\
@@ -84,7 +85,7 @@ SNLI includes 570 k (550 k training pairs, 10 k development pairs, and 10 k test
 
 
 ## Understand Dataset Artifacts
-Large-scale NLI datasets gathered through crowdsourcing are useful for training and evaluating NLU algorithms. Often, machine learning NLP models can achieve impressive results on these benchmark datasets. However, a new study has shown that NLP models can achieve incredibly high performance even without training on the premise corpus but on hypothesis baseline alone <d-cite key="poliak-etal-2018-hypothesis"></d-cite>, although this strategy is difficult for models to learn theoretically. This issue known as dataset artifacts caused by human bias and spurious correlations occurred in the crowdsourcing-generated hypothesis, producing a stylistic pattern in the corpus <d-cite key="gururangan-etal-2018-annotation"></d-cite>. 
+Large-scale NLI datasets gathered through crowdsourcing are useful for training and evaluating NLU algorithms. Often, machine learning NLP models can achieve impressive results on these benchmark datasets. However, a new study has shown that NLP models can achieve incredibly high performance even without training on the premise corpus but on hypothesis baseline alone <z-cite key="poliak-etal-2018-hypothesis"></z-cite>, although this strategy is difficult for models to learn theoretically. This issue known as dataset artifacts caused by human bias and spurious correlations occurred in the crowdsourcing-generated hypothesis, producing a stylistic pattern in the corpus <z-cite key="gururangan-etal-2018-annotation"></z-cite>. 
 
 
 |         |            | 
@@ -108,23 +109,23 @@ For instance, a closer examination of the SNLI corpus (**Table 2**) found that c
 # Related Work
 
 ## Detection on Dataset Artifacts
-Several strategies are developed to discover and analyze the dataset to understand its properties and identify any possible issues or dataset artifacts. Statistics such as the mean, standard deviation, minimum, and maximum values for each variable are computed to determine the shape of the data distribution and identify abnormalities. For instance, dataset artifacts may need to be addressed if the mean and standard deviation of a given corpus is significantly different from what statistical theory would predict <d-cite key="gardner2021"></d-cite>. 
+Several strategies are developed to discover and analyze the dataset to understand its properties and identify any possible issues or dataset artifacts. Statistics such as the mean, standard deviation, minimum, and maximum values for each variable are computed to determine the shape of the data distribution and identify abnormalities. For instance, dataset artifacts may need to be addressed if the mean and standard deviation of a given corpus is significantly different from what statistical theory would predict <z-cite key="gardner2021"></z-cite>. 
 
-One research develops a collection of contrast examples by perturbing the input in various ways and testing the model's classification of these examples. This highlights the region in which the model may be making incorrect decisions, allowing for the possible correction of dataset artifacts that contribute to these inaccuracies <d-cite key="gardner2020"></d-cite>. 
+One research develops a collection of contrast examples by perturbing the input in various ways and testing the model's classification of these examples. This highlights the region in which the model may be making incorrect decisions, allowing for the possible correction of dataset artifacts that contribute to these inaccuracies <z-cite key="gardner2020"></z-cite>. 
 
-Another way is the checklist test, which involves creating a series of tests that cover a wide variety of common behaviors that NLP models should be able to handle, and then evaluating the model on these trials to see whether it has any artifacts <d-cite key="ribeiro-etal-2020-beyond"></d-cite>. 
+Another way is the checklist test, which involves creating a series of tests that cover a wide variety of common behaviors that NLP models should be able to handle, and then evaluating the model on these trials to see whether it has any artifacts <z-cite key="ribeiro-etal-2020-beyond"></z-cite>. 
 
-To evaluate model performance and identify and fix the observed dataset artifacts, Poliak et al. <d-cite key="poliak-etal-2018-hypothesis"></d-cite> propose a hypothesis-only baseline by excluding the premise corpus from the dataset. Due to the unique method of producing NLI baseline datasets through crowdsourcing, related study suggests the model can also achieve good performance on hypothesis-only baseline dataset <d-cite key="gururangan-etal-2018-annotation"></d-cite>.
-
-
+To evaluate model performance and identify and fix the observed dataset artifacts, Poliak et al. <z-cite key="poliak-etal-2018-hypothesis"></z-cite> propose a hypothesis-only baseline by excluding the premise corpus from the dataset. Due to the unique method of producing NLI baseline datasets through crowdsourcing, related study suggests the model can also achieve good performance on hypothesis-only baseline dataset <z-cite key="gururangan-etal-2018-annotation"></z-cite>.
 
 
-Other studies set up adversarial examples that challenge the NLI model's reliance on syntactic heuristics <d-cite key="mccoy-etal-2019-right"></d-cite> or identify a set of universal triggers inserted into sentences to cause NLI model makes incorrect prediction <d-cite key="wallace2019"></d-cite>. Similarly, some researchers create adversarial examples with challenges on lexical inferences <d-cite key="glockner-etal-2018-breaking"></d-cite> and multiple choice questions requiring the NLI model to make challenging inferences <d-cite key="zellers-etal-2018-swag"></d-cite>. Some studies employ adversarial examples to evaluate the NLI model's use of syntactic heuristics <d-cite key="mccoy-etal-2019-right"></d-cite>, while others look for universal triggers that are inserted into sentences to cause the NLI model to make an incorrect prediction <d-cite key="wallace2019"></d-cite>. Similarly, the NLI model is evaluated using adversarial situations that include lexical inference challenges <d-cite key="glockner-etal-2018-breaking"></d-cite> and multiple-choice assessments <d-cite key="zellers-etal-2018-swag"></d-cite>
+
+
+Other studies set up adversarial examples that challenge the NLI model's reliance on syntactic heuristics <z-cite key="mccoy-etal-2019-right"></z-cite> or identify a set of universal triggers inserted into sentences to cause NLI model makes incorrect prediction <z-cite key="wallace2019"></z-cite>. Similarly, some researchers create adversarial examples with challenges on lexical inferences <z-cite key="glockner-etal-2018-breaking"></z-cite> and multiple choice questions requiring the NLI model to make challenging inferences <z-cite key="zellers-etal-2018-swag"></z-cite>. Some studies employ adversarial examples to evaluate the NLI model's use of syntactic heuristics <z-cite key="mccoy-etal-2019-right"></z-cite>, while others look for universal triggers that are inserted into sentences to cause the NLI model to make an incorrect prediction <z-cite key="wallace2019"></z-cite>. Similarly, the NLI model is evaluated using adversarial situations that include lexical inference challenges <z-cite key="glockner-etal-2018-breaking"></z-cite> and multiple-choice assessments <z-cite key="zellers-etal-2018-swag"></z-cite>
 
 
 ## Address Dataset Artifacts
 
-There is more than one approach for dealing with the artifacts in the dataset. When the available training data for a natural language processing (NLP) model is insufficient, it can be supplemented with "adversarial datasets," which are similar to "adversarial challenge sets" in that they are generated by perturbing and transforming the original corpus on various levels to generate additional sets for NLP model learning <d-cite key="morris2020textattack"></d-cite>. Another study presents ways for addressing two biases in the baseline dataset: contradiction - word bias and word - overlapping bias, by repeating training data and introducing synthetic data while applying a model - level debiases algorithm <d-cite key="zhou-bansal-2020-towards"></d-cite>. Liu et al. describe a method for "inoculating" a model by fine-tuning it on a small, problem-specific dataset <d-cite key="liu2019"></d-cite>, which helps the model learn to better handle the unique obstacles present in the dataset. One study collects and analyzes a huge number of human evaluations of samples in order to comprehend the difficulties and complexity of natural language inference. When comparing the capabilities of NLP models to that of 'collective' human intelligence, it is more appropriate to examine the models' ability to predict the whole range of human judgements, as opposed to only individual or majority opinions <d-cite key="ynie2020chaosnli, xzhou2022distnli"></d-cite>.
+There is more than one approach for dealing with the artifacts in the dataset. When the available training data for a natural language processing (NLP) model is insufficient, it can be supplemented with "adversarial datasets," which are similar to "adversarial challenge sets" in that they are generated by perturbing and transforming the original corpus on various levels to generate additional sets for NLP model learning <z-cite key="morris2020textattack"></z-cite>. Another study presents ways for addressing two biases in the baseline dataset: contradiction - word bias and word - overlapping bias, by repeating training data and introducing synthetic data while applying a model - level debiases algorithm <z-cite key="zhou-bansal-2020-towards"></z-cite>. Liu et al. describe a method for "inoculating" a model by fine-tuning it on a small, problem-specific dataset <z-cite key="liu2019"></z-cite>, which helps the model learn to better handle the unique obstacles present in the dataset. One study collects and analyzes a huge number of human evaluations of samples in order to comprehend the difficulties and complexity of natural language inference. When comparing the capabilities of NLP models to that of 'collective' human intelligence, it is more appropriate to examine the models' ability to predict the whole range of human judgements, as opposed to only individual or majority opinions <z-cite key="ynie2020chaosnli, xzhou2022distnli"></z-cite>.
 
 
 *** 
@@ -134,7 +135,7 @@ There is more than one approach for dealing with the artifacts in the dataset. W
 ## Pre-Trained Model
 
 
-We implement the Efficiently Learning an Encoder that Classifies Token Replacements Accurately (ELECTRA, small) as our pre-trained model in this paper. ELECTRA is designed to improve the performance of BERT <d-cite key="clark2020electra"></d-cite>. In the recent year, ELECTRA has gained popularity in the NLP area. It employs a training system distinct from BERT (**Figure 1**). Multiple studies have demonstrated that it considerably increases performance on NLP tasks, such as NLI and question answering.
+We implement the Efficiently Learning an Encoder that Classifies Token Replacements Accurately (ELECTRA, small) as our pre-trained model in this paper. ELECTRA is designed to improve the performance of BERT <z-cite key="clark2020electra"></z-cite>. In the recent year, ELECTRA has gained popularity in the NLP area. It employs a training system distinct from BERT (**Figure 1**). Multiple studies have demonstrated that it considerably increases performance on NLP tasks, such as NLI and question answering.
 
 The ELECTRA-small model is a variant of the original ELECTRA model that is more compact and needs fewer computing resources during training and deployment. Despite its small size, the ELECTRA-small model is capable of achieving the same performance as the standard ELECTRA model for certain jobs. Therefore, it is preferable for use cases with limited computer resources.
 
@@ -144,7 +145,7 @@ The ELECTRA-small model is a variant of the original ELECTRA model that is more 
 
 A hypothesis-only baseline, which only employs the hypothesis phrases of a dataset without the matching premise sentences, is one technique to investigate dataset artifacts in natural language inference. By analyzing the performance of a model trained on a hypothesis-only dataset, it is possible to identify potential artifacts or biases in the dataset that affects the model's performance.
 
-Poliak et al. <d-cite key="poliak-etal-2018-hypothesis"></d-cite> discovers that a hypothesis-only baseline model performed remarkably well on several natural language inference datasets, implying that the hypothesis sentences in these datasets included adequate information for the model to generate correct predictions. This finding implies that the hypothesis phrases in these datasets may contain redundant or unnecessary information that is not required for the job, potentially leading to dataset overfitting. Another research reveals that crowdsourcing commonly misclassifies specific types of annotations, such as negation and quantifiers, in natural language inference datasets <d-cite key="gururangan-etal-2018-annotation"></d-cite>.
+Poliak et al. <z-cite key="poliak-etal-2018-hypothesis"></z-cite> discovers that a hypothesis-only baseline model performed remarkably well on several natural language inference datasets, implying that the hypothesis sentences in these datasets included adequate information for the model to generate correct predictions. This finding implies that the hypothesis phrases in these datasets may contain redundant or unnecessary information that is not required for the job, potentially leading to dataset overfitting. Another research reveals that crowdsourcing commonly misclassifies specific types of annotations, such as negation and quantifiers, in natural language inference datasets <z-cite key="gururangan-etal-2018-annotation"></z-cite>.
 
 In our research, we propose to investigate dataset artifacts in natural language inference using a hypothesis-only SNLI dataset baseline. We will exclude all premise sentences from the dataset and only utilize hypothesis sentences for training and evaluation. To do this, the datasets.load dataset function from the datasets package will be used to load the SNLI dataset. Then, we will split the dataset into train and test sets and eliminate the premise sentences from the training and testing sets, leaving just the hypothesis sentences. Subsequently, the hypothesis-only training set will be employed to train the ELECTRA-small pre-trained model. We use the <code>AutoModelForSequenceClassification</code> class to fine-tune the ELECTRA-small model.
 
@@ -153,24 +154,24 @@ Once the model is trained, we will evaluate its performance on the hypothesis-on
 
 ### Behavioral Test
 
-To evaluate the efficacy of a model, we employ a suite of pre-defined tests as analytical metrics, and we've adopted the CheckList set from <d-cite key="ribeiro-etal-2020-beyond"></d-cite> to do so. This technique employs the Minimum Functionality test (MFT), the Invariance test (INV), and the Directional Expectation test (DIR) as its three analytical metrics. The MFT, e.g. negation test, is a tool for verifying a model's performance within a given set of constraints. This is achieved through the use of a library of generic instances annotated with generic labels. This helps find cases when models take short-cuts rather than mastering complicated inputs.
+To evaluate the efficacy of a model, we employ a suite of pre-defined tests as analytical metrics, and we've adopted the CheckList set from <z-cite key="ribeiro-etal-2020-beyond"></z-cite> to do so. This technique employs the Minimum Functionality test (MFT), the Invariance test (INV), and the Directional Expectation test (DIR) as its three analytical metrics. The MFT, e.g. negation test, is a tool for verifying a model's performance within a given set of constraints. This is achieved through the use of a library of generic instances annotated with generic labels. This helps find cases when models take short-cuts rather than mastering complicated inputs.
 
 The INV test requires the model's prediction to be steady despite the introduction of input perturbations, e.g. name entity recognition (NER) testing.  For example, the NER capability for Sentiment modifies place names using specific perturbation functions. The results of this test are crucial for measuring the robustness of a model.
 
-The DIR test is comparable to the INV test, however the label is anticipated to differ in a particular way. For instance, it is not expected that the sentiment of a sentence will become more positive if "I dread you." is added at the end of a comment "@JetBlue why won't YOU help them?! Ugh." <d-cite key="ribeiro-etal-2020-beyond"></d-cite>, which generates monotonic shifts from negative to neutral mood. This test is useful for evaluating the consistency of a model.
+The DIR test is comparable to the INV test, however the label is anticipated to differ in a particular way. For instance, it is not expected that the sentiment of a sentence will become more positive if "I dread you." is added at the end of a comment "@JetBlue why won't YOU help them?! Ugh." <z-cite key="ribeiro-etal-2020-beyond"></z-cite>, which generates monotonic shifts from negative to neutral mood. This test is useful for evaluating the consistency of a model.
 
 The CheckList set approach provides a standardized mechanism for assessing the capabilities and behavior of NLP models. These analytic metrics give particular checks for many areas of a NLP model's performance, enabling a more thorough evaluation. 
 
 
 ### Adversarial Challenge
 
-On our approach, we offer adversarial challenge as a second way for analyzing artifacts. In particular, we employ the Textattack framework to produce adversarial instances to attack our trained models using SNLI datasets in order to discover biases and spurious correlations <d-cite key="morris2020textattack"></d-cite>. Textattack is a technique for evaluating the resilience of NLP models against adversarial attacks. This approach alters input data in such a fashion that a model makes erroneous predictions using a set of pre-defined adversarial instances. These adversarial examples are designed to be subtle and often go unnoticed by humans, yet they can cause a model to fail in certain ways.
+On our approach, we offer adversarial challenge as a second way for analyzing artifacts. In particular, we employ the Textattack framework to produce adversarial instances to attack our trained models using SNLI datasets in order to discover biases and spurious correlations <z-cite key="morris2020textattack"></z-cite>. Textattack is a technique for evaluating the resilience of NLP models against adversarial attacks. This approach alters input data in such a fashion that a model makes erroneous predictions using a set of pre-defined adversarial instances. These adversarial examples are designed to be subtle and often go unnoticed by humans, yet they can cause a model to fail in certain ways.
 
 ## Dataset Artifacts Mitigation
 
-We propose a data augmentation strategy to mitigate the model's dataet artifacts based on the findings from the previous section. On our SNLI dataset, we employ two different scales of data augmentation approaches. The first is based on the CheckListing set <d-cite key="ribeiro-etal-2020-beyond"></d-cite> and involves using a set of pre-defined rules to generate additional examples for a given dataset, such as adding positive phrases, altering names/locations, adding random URLs and handles, inserting temporal information, etc. This is connected to the preceding section's analysis of dataset artifacts; the extra step is to enrich data with such predefined collections. Using the checklist set, we generate two additional hypotheses for each initial premise in the SNLI dataset. This involves introducing label-preserving perturbations to the original corpus or expecting that the label will change dependent on the checklisting configuration or sentiment level. This will increase the quantity and variety of the dataset, which will help debias the original pattern established by crowdsourcing and decrease dataset artifacts. It can also aid in describing the model's core capabilities and behavior, leading to more precise predictions.
+We propose a data augmentation strategy to mitigate the model's dataet artifacts based on the findings from the previous section. On our SNLI dataset, we employ two different scales of data augmentation approaches. The first is based on the CheckListing set <z-cite key="ribeiro-etal-2020-beyond"></z-cite> and involves using a set of pre-defined rules to generate additional examples for a given dataset, such as adding positive phrases, altering names/locations, adding random URLs and handles, inserting temporal information, etc. This is connected to the preceding section's analysis of dataset artifacts; the extra step is to enrich data with such predefined collections. Using the checklist set, we generate two additional hypotheses for each initial premise in the SNLI dataset. This involves introducing label-preserving perturbations to the original corpus or expecting that the label will change dependent on the checklisting configuration or sentiment level. This will increase the quantity and variety of the dataset, which will help debias the original pattern established by crowdsourcing and decrease dataset artifacts. It can also aid in describing the model's core capabilities and behavior, leading to more precise predictions.
 
-Another method we implemented is the word-level augmentation, WordNet list <d-cite key="miller1995,fellbaum1998"></d-cite>. It utilize a lexical database of English words and their relationships. WordNet is designed to provide a rich thesaurus for word lexcial examples. It includes synonyms, antonyms, hyponyms, and hypernyms for each english word, as well as detailed definitions and examples of usage.
+Another method we implemented is the word-level augmentation, WordNet list <z-cite key="miller1995,fellbaum1998"></z-cite>. It utilize a lexical database of English words and their relationships. WordNet is designed to provide a rich thesaurus for word lexcial examples. It includes synonyms, antonyms, hyponyms, and hypernyms for each english word, as well as detailed definitions and examples of usage.
 
 To prevent overlapping augmentation from the checkList set, we simply employ the synonym rule from the wordNet in our implementation. We scan each hypothesis phrase and produce two additional sentences by replacing certain synonym terms according to wordNet rules, while the premise corpus remains unchanged. This perturbation preserves the original dataset's label, as we only substitute synonym occurrences from each hypothesis sentence, which should not affect the original dataset's sentiment.
 
@@ -197,8 +198,8 @@ Surprisingly, our model ablation research demonstrates that the hypothesis alone
 
 <div class="l-screen-inset">
 <center>
-  <figure style="max-width:70%" >
-    <img src='/assets/projects/artifacts/table.png' />
+  <figure style="max-width:100%" >
+    <img src='/assets/images/blog/posts/artifacts/table.webp' />
     <figcaption>
       <strong> Figure 2. Checklisting fine-tuned ELECTRA-small model trained on SNLI dataset. Left channel shows the testing type and its description; middel channel presents the number of failed cases out of 500 testing cases, and the failure rate (%); failure examples on the right channel.</strong>.
     </figcaption>
@@ -228,8 +229,8 @@ Following the addition of more data, the model's accuracy increases to 89.79 per
 
 <div class="l-page">
 <center>
-  <figure style="max-width:80%" >
-    <img src='/assets/projects/artifacts/table_2.png' />
+  <figure style="max-width:100%" >
+    <img src='/assets/images/blog/posts/artifacts/table_2.webp' />
     <figcaption>
       <strong> Figure 3. Checklisting fine-tuned ELECTRA-small model trained on SNLI dataset. Left channel shows the testing type and its description; middel channel presents the number of failed cases out of 500 testing cases, and the failure rate (%); failure examples on the right channel.</strong>.
     </figcaption>

@@ -5,9 +5,17 @@ url: "https://zhenyuanlu.com"
 
 markdown: kramdown
 kramdown:
+  input: GFM
   parse_block_html: true
   parse_span_html: true
   syntax_highlighter: rouge
+  syntax_highlighter_opts:
+    css_class: 'highlight'
+    span:
+      line_numbers: false
+    block:
+      line_numbers: false
+      start_line: 1
 
 icon_set: "lucide"  # options: lucide or fontawesome
 
@@ -23,9 +31,10 @@ plugins:
   - jekyll-sitemap
   - jekyll-last-modified-at
   - jekyll-email-protect
-  - jekyll-scholar 
+  - kramdown
   
 include:
+  - _pages
   - _blog
   - section/blog_card.html
 
@@ -54,12 +63,3 @@ katex:
   rendering_options:
     throw_error: true
     error_color: "#cc0000"
-
-# Jekyll Scholar settings
-scholar:
-  style: apa
-  locale: en
-  source: "assets/docs/bibliography"
-  bibliography: "assets/docs/bibliography/references.bib"
-  sort_by: author
-  order: descending

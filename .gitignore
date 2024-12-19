@@ -36,3 +36,7 @@ coverage/
 
 # Thumbnails Generator
 thumb_gen/
+
+# Installed pacakges
+installed_packages.txt
+installed_packages.json

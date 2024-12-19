@@ -1,0 +1,217 @@
+/* zenlu.css
+   Adjustments:
+   - References section text color set to a lighter gray (#666)
+   - Tooltip width set to half of the frame width (24rem instead of 48rem)
+   - Minimal spacing adjustments for DOI
+*/
+
+/* General body and typography */
+body {
+    transition: background-color 0.2s, color 0.2s;
+  }
+  
+  /* Frame width variable for tooltip and content layout */
+  :root {
+    --zenlu-frame-width: 48rem;
+    --body-padding: 1rem;
+  }
+  
+  /* z-body container */
+  z-body {
+    display: block;
+    max-width: var(--zenlu-frame-width);
+    margin: 0 auto;
+    padding-bottom: 3rem;
+  }
+  
+  /* z-article styling */
+  z-article {
+    display: block;
+  }
+  
+  /* Footnotes styling */
+  .footnotes-heading {
+    font-size: 1.25rem;
+    font-weight: 600;
+    margin-bottom: 1.5rem;
+    color: #111;
+  }
+  
+  .footnote-item {
+    display: flex;
+    gap: 0.75rem;
+    font-size: 1rem;
+    margin-bottom: 1rem;
+    color: #333;
+  }
+  
+  .footnote-label {
+    color: #555;
+    font-weight: 500;
+  }
+  
+  /* References styling */
+  .references-heading {
+    font-size: 1.25rem;
+    font-weight: 600;
+    margin-bottom: 1.5rem;
+    color: #111;
+  }
+  
+  .reference-item {
+    display: flex;
+    gap: 0.75rem;
+    font-size: 1rem;
+    margin-bottom: 1rem;
+  }
+  
+  .reference-label {
+    color: #555;
+    font-weight: 500;
+    white-space: nowrap;
+  }
+  
+  .reference-content {
+    flex: 1;
+    /* lighter gray for reference text */
+    color: #666;
+  }
+  
+  /* Reference formatting */
+  .ref-title {
+    font-weight: 600;
+    color: #444;
+    line-height: 1.4;
+  }
+  
+  .ref-details {
+    display: inline;
+    margin-top: 0.25rem;
+    color: #666;
+    line-height: 1.4;
+  }
+  
+  .ref-inline-extras {
+    display: inline-block;
+    margin-left: 0.5rem;
+    color: #666;
+    line-height: 1.4;
+  }
+  
+  .ref-inline-extras a {
+    text-decoration: none;
+    color: #666;
+    transition: color 0.2s;
+    font-size: 0.95em;
+  }
+  
+  .ref-inline-extras a:hover {
+    color: #555;
+  }
+  
+  /* Citation Tooltip */
+  .citation-tooltip {
+    max-width: 24rem; /* half of the frame width */
+    background: #fff;
+    color: #333;
+    border: 1px solid #ccc;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    border-radius: 0.5rem;
+    padding: 1rem;
+    transition: background-color 0.2s, border-color 0.2s;
+  }
+  
+  .citation-tooltip-ref {
+    color: #666;
+    line-height: 1.4;
+  }
+  
+  .citation-tooltip-item {
+    margin-bottom: 1rem;
+  }
+  
+  .citation-tooltip-item:last-child {
+    margin-bottom: 0;
+  }
+  
+  /* Dark mode adjustments */
+  html.dark .citation-tooltip {
+    background: #111827;
+    color: #d1d5db;
+    border-color: #374151;
+  }
+  
+  html.dark .footnotes-heading,
+  html.dark .references-heading {
+    color: #fff;
+  }
+  
+  html.dark .footnote-item,
+  html.dark .reference-content {
+    color: #d1d5db;
+  }
+  
+  html.dark .ref-title {
+    color: #e5e7eb;
+  }
+  
+  html.dark .ref-details {
+    color: #9ca3af;
+  }
+  
+  html.dark .ref-inline-extras {
+    color: #9ca3af;
+  }
+  
+  html.dark .ref-inline-extras a {
+    color: #9ca3af;
+  }
+  
+  html.dark .ref-inline-extras a:hover {
+    color: #e5e7eb;
+  }
+  
+  html.dark .citation-tooltip-ref {
+    color: #9ca3af;
+  }
+  
+  /* z-byline styling */
+  z-byline {
+    display: block;
+    margin: 1.5rem 0;
+    color: #555;
+    text-align: center;
+    font-style: italic;
+  }
+  
+  .z-byline-fullwidth {
+    margin-left: calc(-1 * var(--body-padding));
+    margin-right: calc(-1 * var(--body-padding));
+    padding: 0.75rem 1rem;
+    background: #f9fafb;
+    color: #444;
+  }
+  
+  .z-byline-framework {
+    margin-left: calc(-0.5 * var(--body-padding));
+    margin-right: calc(-0.5 * var(--body-padding));
+    padding: 0.5rem 0.75rem;
+    background: #f3f4f6;
+    color: #444;
+  }
+  
+  /* Dark mode for byline */
+  html.dark z-byline {
+    color: #9ca3af;
+  }
+  
+  html.dark .z-byline-fullwidth {
+    background: #1f2937;
+    color: #e5e7eb;
+  }
+  
+  html.dark .z-byline-framework {
+    background: #374151;
+    color: #d1d5db;
+  }
+  

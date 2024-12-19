@@ -31,8 +31,12 @@ event_date: "<Event Date, e.g., March 15, 2024>"
 event_time: "<Event Time, e.g., 2:00 PM - 3:30 PM EST>"
 location: "<Event location or 'Virtual'>"
 capacity: "<Number of available seats, e.g., '50 seats available'>"
-virtual_link: "<Insert virtual meeting link if applicable>"
-registration_link: "<Insert registration link>"
+virtual_link: 
+  - name: 
+    url: "<Insert virtual meeting link if applicable>"
+registration_link: 
+  - name: 
+    url: "<Insert registration link>"
 
 # Speaker details
 speaker:
