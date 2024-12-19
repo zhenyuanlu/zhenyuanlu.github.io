@@ -4,6 +4,28 @@ Well, this is a Jekyll theme that I actually have created for my own page, cours
 
 This theme heavily built on Tailwind CSS styling. 
 
+# Features, Tasks and Bugs
+
+## TODO:
+
+### &#128029; Bugs
+- [ ] Fix Navbar underline appearing when refreshing the page 
+- [ ] Fix reference styling 
+- [ ] Fix blog styling 
+- [ ] Fix dark mode issues 
+
+
+### &#10024; Features
+- [ ] Improve the navigation bar design 
+- [ ] Add overwidth image handling 
+
+
+###  &#128736; Tasks
+- [ ] Refactor the code 
+
+
+---
+
 ## Prerequisites
 
 - **Ruby:** 
