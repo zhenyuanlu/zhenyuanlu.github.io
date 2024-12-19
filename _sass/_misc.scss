@@ -3,7 +3,9 @@ html{
     /* scrollbar-gutter: stable both-edges; */
     overflow-y: scroll;
 }
-
+.no-transition .underline {
+    transition: none !important;
+  }
 
 [x-cloak] {
     display: none !important;
