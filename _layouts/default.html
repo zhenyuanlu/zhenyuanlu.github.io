@@ -1,13 +1,15 @@
 <!DOCTYPE html>
 <html lang="en" x-data="{ darkMode: false }" :class="{ 'dark': darkMode }">
+
 <head>
     {% include core/head.html %}
 </head>
 
-<body x-cloak class="min-h-screen transition-colors duration-200" x-data="{ darkMode: false, showBibtex: false, currentBibtex: '', copied: false }" 
-:class="darkMode ? 'bg-gray-950 text-gray-100' : 'bg-gray-50 text-gray-900'">
+<body x-cloak class="min-h-screen transition-colors duration-200"
+    x-data="{ darkMode: false, showBibtex: false, currentBibtex: '', copied: false }"
+    :class="darkMode ? 'bg-gray-950 text-gray-100' : 'bg-gray-50 text-gray-900'">
     {% include core/header.html %}
-    
+
     <main>
         {{ content }}
     </main>
@@ -15,9 +17,10 @@
     {% include core/footer.html %}
 
     <script>// Load Lucide icons
-        document.addEventListener("DOMContentLoaded", function() {
-          lucide.createIcons();
+        document.addEventListener("DOMContentLoaded", function () {
+            lucide.createIcons();
         });
     </script>
 </body>
+
 </html>
