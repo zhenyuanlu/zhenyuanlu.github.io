@@ -9,7 +9,7 @@
       // Adjustable Parameters for Snowflakes:
       // -------------------------------------------
       // Number of snowflakes (density)
-      const numberOfFlakes = 20; // Reduce/increase this number to change density
+      const numberOfFlakes = 10; // Reduce/increase this number to change density
       
       // Distribution probabilities:
       // We use weighted distribution:
@@ -20,14 +20,14 @@
 
       // Opacity range for snowflakes
       // Increase lower bound for more visible flakes (0.8 to 1.0 for higher opacity)
-      const minOpacity = 0.5;
-      const maxOpacity = 1.0;
+      const minOpacity = 0.2;
+      const maxOpacity = 0.5;
       
       // Animation duration (speed):
       // Higher numbers = slower speed
       // e.g., Math.random()*10 + 10 gives 10-20s
-      const minDuration = 10; // minimum fall time in seconds
-      const maxDuration = 20; // maximum fall time in seconds
+      const minDuration = 20; // minimum fall time in seconds
+      const maxDuration = 30; // maximum fall time in seconds
       
       // Animation delay:
       // Controls when each flake starts animating after load
@@ -105,7 +105,7 @@
   @keydown.escape="mobileMenuOpen = false"
 >
   <!-- Snow Overlay -->
-  <div class="absolute inset-0 pointer-events-none overflow-visible">
+  <div class="max-w-8xl mx-auto px-4 relative">
     <template x-for="flake in snowflakes" :key="flake.id">
       <div 
         class="absolute pointer-events-none drop-shadow-lg filter blur-[0.2px] animate-snowfall"
@@ -244,14 +244,17 @@
 @keyframes snowfall {
   0% {
     transform: translateY(-100px) rotate(0deg);
-    opacity: 1;
+    opacity: 0.8;
   }
   50% {
-    opacity: 0.9;
+    opacity: 0.3;
+  }
+  80% {
+    opacity: 0.1;
   }
   100% {
     transform: translateY(100vh) rotate(360deg);
-    opacity: 0.7;
+    opacity: 0.0;
   }
 }
 
