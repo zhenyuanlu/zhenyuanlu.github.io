@@ -18,7 +18,7 @@ hide: false
 toc: true
 
 thumbnail: "/assets/images/thumbnails/artifacts.png"
-image: "/assets/images/blog/posts/artifacts/electra.jpg"
+image: "/assets/images/blog/posts/artifacts/electra.webp"
 links:
   - type: pdf
     href: "https://arxiv.org/pdf/2212.08756.pdf"
