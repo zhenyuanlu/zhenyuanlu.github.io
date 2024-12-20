@@ -1,4 +1,5 @@
-# ZenLu  Jekyll Theme
+
+# ZenLu
 
 Well, this is a Jekyll theme that I actually have created for my own page, courses and educational website working with ChatGPT and claude. I named it **Zenlu** as an scientific, and educational theme. If you like it feel free to use it.
 
@@ -26,6 +27,15 @@ This theme heavily built on Tailwind CSS styling.
 
 
 ---
+
+## Codebase Transition (12/19/2024)
+
+The old codebase and personal page will be deprecated in Dec 2024. The new codebase is now live and available on the `main` branch.  
+- **old codebase (legacy):** `old-version-archived` and tagged as `v1.0-old-version`.  
+- **new codebase (current):** the `main` branch now reflects the new version of the site.
+
+---
+
 
 ## Prerequisites
 
