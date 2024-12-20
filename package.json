@@ -4,10 +4,12 @@
   "main": "postcss.config.js",
   "dependencies": {
     "@tailwindcss/typography": "^0.5.15",
+    "alpinejs": "^3.14.7",
     "autoprefixer": "^10.4.20",
     "gray-matter": "^4.0.3",
     "handlebars": "^4.7.8",
     "js-yaml": "^4.1.0",
+    "lucide": "^0.469.0",
     "postcss": "^8.4.49",
     "puppeteer": "^23.11.1",
     "tailwindcss": "^3.4.16"

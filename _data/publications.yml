@@ -27,7 +27,7 @@
         - Northeastern University
   year: 2024
   journal: "PloS"
-  image: "/assets/images/publications/uncertainty/cover.png"
+  image: "/assets/images/publications/uncertainty/cover.webp"
   links:
   - type: "paper"
     href: "https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0307970"
@@ -243,7 +243,7 @@
         - Northeastern University
   year: 2022
   journal: "INFORMS"
-  image: "/assets/images/publications/informs/2022.png"
+  image: "/assets/images/publications/informs/2022.webp"
   links:
   - type: paper
     href: "https://www.abstractsonline.com/pp8/?__hstc=194041586.c723525928a81bf032515185c4643e37.1650997648314.1663680015875.1663682721064.48&__hssc=194041586.5.1663682721064&__hsfp=3500831946&hsCtaTracking=025ee829-9db5-4f89-95dc-637573ec15db%7Cea016d7d-8b17-4156-8c3b-c1c801f2ba1f#!/10693/presentation/7640"
@@ -275,7 +275,7 @@
         - Paratus Diagnostics, LLC
   year: 2018
   journal: "Patent US20180214865A1"
-  image: "/assets/images/publications/patents/cartridge.png"
+  image: "/assets/images/publications/patents/cartridge.webp"
   links:
   - type: patent
     href: "https://patentcenter.uspto.gov/applications/15885478"
@@ -311,7 +311,7 @@
   granted_year: 2017
   expired_year: 2033
   journal: "Patent CN104069024B"
-  image: "/assets/images/publications/patents/sceleroglucan.png"
+  image: "/assets/images/publications/patents/sceleroglucan.webp"
   links:
     - type: patent
       href: "https://patents.google.com/patent/CN104069024B/en"
@@ -376,7 +376,7 @@
   granted_year: 2016
   expired_year: 2033
   journal: "Patent CN104069023B"
-  image: "/assets/images/publications/patents/sceleroglucan.png"
+  image: "/assets/images/publications/patents/sceleroglucan.webp"
   links:
     - type: patent
       href: "https://patents.google.com/patent/CN104069023B/en"
