@@ -25,20 +25,9 @@
         :class="darkMode ? 'bg-gray-900' : 'bg-white border border-gray-100'">
         <div class="flex flex-col md:flex-row gap-1 md:gap-3">
 
-          <!-- Image Section -->
-          <div class="relative md:w-64 h-40 md:h-auto flex-shrink-0">
-            {% if paper.image %}
-                <div class="w-full h-full bg-cover rounded-t-xl md:rounded-l-xl md:rounded-r-none bg-[position:0%_50%] transition-[background-position] duration-[1500ms] hover:bg-[position:100%_100%]"
-                :class="darkMode ? 'border border-gray-900' : 'border border-gray-100'"
-                style="background-image: url('{{ paper.image | relative_url }}');"
-                alt="{{ post.title }}">
-                </div>
-              {% else %}
-                <div class="w-full h-full bg-gray-100 dark:bg-gray-800 rounded-t-xl md:rounded-l-xl md:rounded-r-none flex items-center justify-center">
-                  <i data-lucide="image" class="w-8 h-8 text-gray-400"></i>
-                </div>
-              {% endif %}
-          </div>
+          <!-- Image Container -->
+          {% include shared/image_container.html image=paper.image title=paper.title initial_pos='50%' %}
+
           
 
           <!-- Content Container -->

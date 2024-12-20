@@ -1,0 +1,22 @@
+<!-- _includes/image_container.html -->
+{% assign image_var = include.image %}
+{% assign title_var = include.title %}
+{% assign initial_pos = include.initial_pos | default:'50%' %}
+
+<div class="relative md:w-64 h-40 md:h-auto flex-shrink-0">
+  {% if image_var %}
+    <div 
+      class="w-full h-full bg-cover rounded-t-xl md:rounded-l-xl md:rounded-r-none 
+      bg-[position:0%_{{ initial_pos }}] 
+      transition-[background-position] duration-[1500ms] hover:bg-[position:100%_100%]"
+      :class="darkMode ? 'border border-gray-900' : 'border border-gray-100'"
+      style="background-image: url('{{ image_var | relative_url }}');"
+      alt="{{ title_var }}">
+    </div>
+  {% else %}
+    <div class="w-full h-full bg-gray-100 dark:bg-gray-800 rounded-t-xl md:rounded-l-xl md:rounded-r-none 
+    flex items-center justify-center">
+      <i data-lucide="image" class="w-8 h-8 text-gray-400"></i>
+    </div>
+  {% endif %}
+</div>

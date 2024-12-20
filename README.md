@@ -21,7 +21,8 @@ This theme heavily built on Tailwind CSS styling.
 
 
 ###  &#128736; Tasks
-- [ ] Refactor the code 
+- [x] Refactor the image container
+- [ ] Refactor the hiararchy of the page
 
 
 ---
