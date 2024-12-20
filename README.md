@@ -14,10 +14,11 @@ This theme heavily built on Tailwind CSS styling.
 - [ ] Fix reference styling 
 - [ ] Fix blog styling 
 - [ ] Fix dark mode issues 
+- [ ] Fix color transition issues switching from light mode to dark mode
 
 
 ### &#10024; Features
-- [ ] Add a holiday themes
+- [x] Add a holiday themes
 - [ ] Improve the navigation bar design 
 - [ ] Add overwidth image handling 
 
@@ -25,6 +26,7 @@ This theme heavily built on Tailwind CSS styling.
 ###  &#128736; Tasks
 - [x] Refactor the image container
 - [ ] Refactor the hiararchy of the page
+- [ ] Dark mode color scheme
 
 
 ---
