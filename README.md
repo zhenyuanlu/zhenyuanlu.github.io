@@ -17,6 +17,7 @@ This theme heavily built on Tailwind CSS styling.
 
 
 ### &#10024; Features
+- [ ] Add a holiday themes
 - [ ] Improve the navigation bar design 
 - [ ] Add overwidth image handling 
 
