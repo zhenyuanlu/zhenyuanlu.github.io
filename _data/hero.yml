@@ -8,3 +8,9 @@ bio:
 quotes: 
   - text: "Pain is inevitable, Suffering is a choice."
 image: "/assets/images/z.png"
+theme: 
+  christmas: "/assets/images/theme/reindeer.webp" #created by imaginationlol
+  newyear: "/assets/images/theme/happyny.webp" #ny.webp by freepik or happyny.webp by brick-stock
+  lunarnewyear: "/assets/images/theme/lantern.webp" #created by kerismaker
+
+
