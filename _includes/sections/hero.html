@@ -87,7 +87,7 @@
             {% for q in site.data.hero.quotes %}
             <div class="mb-4 text-left mx-auto">
                 <div class="flex items-center gap-2" :class="darkMode ? 'text-gray-400' : 'text-gray-500'">
-                    <i class="fa fa-quote-left w-4 h-4"></i>
+                    <i data-lucide="quote" class="w-5 h-6"></i>
                     <p class="text-md italic">{{ q.text }}</p>
                 </div>
                 {% if q.author %}
