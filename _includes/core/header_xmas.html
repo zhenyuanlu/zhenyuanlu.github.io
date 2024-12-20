@@ -5,15 +5,67 @@
     currentPage: '',
     snowflakes: [],
     initSnow() {
-      this.snowflakes = Array.from({ length: 50 }, (_, i) => ({
-        id: i,
-        left: `${Math.random() * 100}%`,
-        animationDuration: `${Math.random() * 10 + 5}s`,
-        animationDelay: `${Math.random() * 5}s`,
-        opacity: Math.random() * 0.3 + 0.7,
-        size: ['text-sm', 'text-base', 'text-lg', 'text-xl'][Math.floor(Math.random() * 4)],
-        rotation: Math.random() * 360
-      }));
+      // -------------------------------------------
+      // Adjustable Parameters for Snowflakes:
+      // -------------------------------------------
+      // Number of snowflakes (density)
+      const numberOfFlakes = 20; // Reduce/increase this number to change density
+      
+      // Distribution probabilities:
+      // We use weighted distribution:
+      //  - 60% on left side (0% to 30%)
+      //  - 30% on right side (70% to 100%)
+      //  - 10% in the center (30% to 70%)
+      // To adjust distribution, change these percentage checks or the ranges.
+      
+      // Opacity range for snowflakes
+      // Increase lower bound for more visible flakes (0.8 to 1.0 for higher opacity)
+      const minOpacity = 0.5;
+      const maxOpacity = 1.0;
+      
+      // Animation duration (speed):
+      // Higher numbers = slower speed
+      // e.g., Math.random()*10 + 10 gives 10-20s
+      const minDuration = 10; // minimum fall time in seconds
+      const maxDuration = 20; // maximum fall time in seconds
+      
+      // Animation delay:
+      // Controls when each flake starts animating after load
+      // Increase/decrease if you want flakes to start at different times
+      const maxDelay = 10; 
+      
+      // Possible sizes:
+      // Adjust array to more or fewer size classes
+      const sizes = ['text-sm', 'text-base', 'text-lg', 'text-xl'];
+      
+      // -------------------------------------------
+      this.snowflakes = Array.from({ length: numberOfFlakes }, (_, i) => {
+        const rnd = Math.random();
+        let leftVal;
+        if (rnd < 0.6) {
+          // Left side 60%
+          leftVal = Math.random() * 30; 
+        } else if (rnd < 0.9) {
+          // Right side 30%
+          leftVal = 70 + Math.random() * 30;
+        } else {
+          // Center 10%
+          leftVal = 30 + Math.random() * 40;
+        }
+
+        return {
+          id: i,
+          left: `${leftVal}%`,
+          // Random duration between minDuration and maxDuration
+          animationDuration: `${Math.random() * (maxDuration - minDuration) + minDuration}s`,
+          // Delay up to maxDelay seconds
+          animationDelay: `${Math.random() * maxDelay}s`,
+          // Random opacity between minOpacity and maxOpacity
+          opacity: Math.random() * (maxOpacity - minOpacity) + minOpacity,
+          size: sizes[Math.floor(Math.random() * sizes.length)],
+          rotation: Math.random() * 360
+        };
+      });
     }
   }"
   x-init="
@@ -52,33 +104,32 @@
   :class="darkMode ? 'bg-gradient-to-r from-gray-900 via-gray-900 to-gray-900/95 border-gray-800' : 'bg-gradient-to-r from-red-50/95 via-white/95 to-green-50/95 border-red-100/20'"
   @keydown.escape="mobileMenuOpen = false"
 >
-  <!-- Snow Overlay (Only in Light Mode) -->
-  <template x-if="!darkMode">
-    <div class="absolute inset-0 overflow-hidden pointer-events-none">
-      <template x-for="flake in snowflakes" :key="flake.id">
-        <div 
-          class="absolute pointer-events-none text-blue-100 drop-shadow-lg filter blur-[0.2px] animate-snowfall"
-          :class="flake.size"
-          :style="{
-            left: flake.left,
-            animationDuration: flake.animationDuration,
-            animationDelay: flake.animationDelay,
-            opacity: flake.opacity,
-            transform: `rotate(${flake.rotation}deg)`
-          }"
-        >
-          ❄
-        </div>
-      </template>
-    </div>
-  </template>
+  <!-- Snow Overlay -->
+  <div class="absolute inset-0 pointer-events-none overflow-visible">
+    <template x-for="flake in snowflakes" :key="flake.id">
+      <div 
+        class="absolute pointer-events-none drop-shadow-lg filter blur-[0.2px] animate-snowfall"
+        :class="flake.size"
+        :style="{
+          left: flake.left,
+          animationDuration: flake.animationDuration,
+          animationDelay: flake.animationDelay,
+          opacity: flake.opacity,
+          transform: `rotate(${flake.rotation}deg)`,
+          color: darkMode ? '#ccc' : '#bbf7d0'
+        }"
+      >
+        ❄
+      </div>
+    </template>
+  </div>
 
   <div class="max-w-7xl mx-auto px-4">
     <div class="flex items-center justify-between h-14">
       <!-- Logo and Dark Mode Toggle -->
       <div class="flex items-center gap-1">
         <a href="/" class="font-bold text-lg transition-colors"
-           :class="darkMode ? 'text-white' : 'bg-gradient-to-r from-red-600 to-green-600 bg-clip-text text-transparent'">
+           :class="darkMode ? 'text-white' : 'text-gray-900'">
           {{ site.author.name }}
         </a>
         <button 
@@ -102,16 +153,21 @@
             href="{{ item.href }}"
             class="relative text-sm font-medium group px-1"
             :aria-current="(currentPage === '{{ item.href }}') ? 'page' : false"
-            :class="darkMode 
-              ? 'text-gray-300 hover:text-white' 
-              : 'text-gray-600 hover:text-red-600'"
+            :class="
+              (['Software','Publications','Blog','Teachings','Art Life'].includes('{{ item.name }}')) 
+                ? (darkMode ? 'text-white hover:text-white' : 'bg-gradient-to-r from-red-600 to-green-600 bg-clip-text text-transparent hover:text-transparent') 
+                : (darkMode ? 'text-gray-300 hover:text-white' : 'text-gray-600 hover:text-red-600')
+            "
           >
             {{ item.name }}
-            <!-- Hover/Active Underline -->
             <span 
               class="absolute inset-x-0 bottom-0 h-0.5 origin-right group-hover:origin-left transition-transform duration-300 ease-out"
               :class="(currentPage === '{{ item.href }}') 
-                ? (darkMode ? 'scale-x-100 bg-white' : 'scale-x-100 bg-gradient-to-r from-red-500 to-green-500') 
+                ? (darkMode 
+                    ? 'scale-x-100 bg-white' 
+                    : (['Software','Publications','Blog','Teachings','Art Life'].includes('{{ item.name }}') 
+                        ? 'scale-x-100 bg-gradient-to-r from-red-500 to-green-500' 
+                        : 'scale-x-100 bg-gradient-to-r from-red-500 to-green-500'))
                 : ('scale-x-0 group-hover:scale-x-100 ' + (darkMode ? 'bg-gray-400' : 'bg-gradient-to-r from-red-500 to-green-500'))"
               aria-hidden="true"
             ></span>
@@ -166,8 +222,16 @@
           class="block px-3 py-2 rounded-md text-base font-medium transition-colors"
           :aria-current="(currentPage === '{{ item.href }}') ? 'page' : false"
           :class="(currentPage === '{{ item.href }}')
-            ? (darkMode ? 'text-white bg-gray-800' : 'text-red-600 bg-red-50')
-            : (darkMode ? 'text-gray-300 hover:text-white hover:bg-gray-800' : 'text-gray-600 hover:text-red-600 hover:bg-red-50/50')"
+            ? (
+                (['Software','Publications','Blog','Teachings','Art Life'].includes('{{ item.name }}')) 
+                  ? (darkMode ? 'text-white bg-gray-800' : 'bg-gradient-to-r from-red-600 to-green-600 bg-clip-text text-transparent') 
+                  : (darkMode ? 'text-white bg-gray-800' : 'text-red-600 bg-red-50')
+              )
+            : (
+                (['Software','Publications','Blog','Teachings','Art Life'].includes('{{ item.name }}'))
+                  ? (darkMode ? 'text-gray-100 hover:text-white hover:bg-gray-800' : 'bg-gradient-to-r from-red-600 to-green-600 bg-clip-text text-transparent hover:bg-red-50/50')
+                  : (darkMode ? 'text-gray-300 hover:text-white hover:bg-gray-800' : 'text-gray-600 hover:text-red-600 hover:bg-red-50/50')
+              )"
         >
           {{ item.name }}
         </a>
@@ -179,7 +243,7 @@
 <style>
 @keyframes snowfall {
   0% {
-    transform: translateY(-10px) rotate(0deg);
+    transform: translateY(-100px) rotate(0deg);
     opacity: 1;
   }
   50% {
@@ -193,11 +257,5 @@
 
 .animate-snowfall {
   animation: snowfall linear infinite;
-}
-
-@keyframes christmas-gradient {
-  0% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
 }
 </style>
