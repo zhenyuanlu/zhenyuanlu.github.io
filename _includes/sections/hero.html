@@ -1,6 +1,5 @@
 <!-- _includes/hero.html -->
-<section id="hero" x-cloak 
-  x-data="{ 
+<section id="hero" x-cloak x-data="{ 
     darkMode: false,
     currentTheme: 'none', 
     init() {
@@ -23,103 +22,82 @@
         this.currentTheme = 'none';
       }
     }
-  }"
-  :class="darkMode ? 'bg-gray-900 text-white' : 'bg-white text-gray-900'"
-  class="py-8 px-4"
->
-  <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-    <!-- Mobile Profile Image -->
-    <div class="flex justify-center md:hidden mb-8">
-      <div class="relative w-32 h-32">
-        <img
-          src="{{ '/assets/images/z.webp' | relative_url }}"
-          alt="{{ site.data.hero.name }}"
-          class="rounded-2xl shadow-lg object-cover w-32 h-32"
-        />
-      </div>
-    </div>
-
-    <!-- Main Content -->
-    <div class="flex flex-col md:flex-row items-center gap-12">
-      <!-- Desktop Profile Image -->
-      <div class="hidden md:block flex-shrink-0">
-        <div class="relative w-52 h-52">
-          <img
-            src="{{ '/assets/images/z.webp' | relative_url }}"
-            alt="{{ site.title }}"
-            class="rounded-2xl shadow-lg object-cover"
-          />
-        </div>
-      </div>
-
-      <div class="flex-1 space-y-6">
-        <h1 class="text-2xl md:text-3xl font-bold leading-tight text-center md:text-left flex items-center">
-            {{ site.data.hero.name }}
-            <span x-show="currentTheme === 'christmas'" class="ml-2">
-              <img 
-                src="{{ site.data.hero.theme.christmas | relative_url }}" 
-                alt="Christmas Theme" 
-                class="w-8 h-8"
-              >
-            </span>
-        <span x-show="currentTheme === 'newyear'" class="inline-block align-middle ml-2">
-            <img 
-            src="{{ site.data.hero.theme.newyear | relative_url }}" 
-            alt="New Year Theme" 
-            class="w-8 h-8 inline-block"
-            >
-            </span>
-          <span x-show="currentTheme === 'lunarnewyear'" class="inline-block align-middle ml-2">
-            <img 
-              src="{{ site.data.hero.theme.lunarnewyear | relative_url }}" 
-              alt="Lunar New Year Theme" 
-              class="w-8 h-8 inline-block"
-            >
-          </span>
-        </h1>
-
-        <div class="space-y-4 text-lg" :class="darkMode ? 'text-gray-300' : 'text-gray-600'">
-          {% for paragraph in site.data.hero.bio %}
-            <p>{{ paragraph | markdownify }}</p>
-          {% endfor %}
-        </div>
-
-        <!-- Social Links -->
-        <div class="flex gap-4 justify-center md:justify-start pb-6">
-          {% for link in site.data.social %}
-          <a
-            href="{{ link.href }}"
-            target="_blank"
-            rel="noopener noreferrer"
-            class="p-2 rounded-lg transition-colors"
-            :class="darkMode ? 'text-gray-400 hover:text-white hover:bg-gray-800' : 'text-gray-600 hover:bg-gray-100 hover:bg-gray-100'"
-            aria-label="{{ link.label }}"
-          >
-            <i data-lucide="{{ link.icon }}" class="w-6 h-6"></i>
-          </a>
-          {% endfor %}
-        </div>
-
-      </div>
-    </div>
-
-    <!-- Quote Section -->
-    {% if site.data.hero.quotes %}
-      <div class="pt-6 border-t w-full max-w-3xl" :class="darkMode ? 'border-white/10' : 'border-gray-200/80'">
-        {% for q in site.data.hero.quotes %}
-          <div class="mb-4 text-left mx-auto">
-            <div class="flex items-center gap-2" :class="darkMode ? 'text-gray-400' : 'text-gray-500'">
-              <i class="fa fa-quote-left w-4 h-4"></i>
-              <p class="text-md italic">{{ q.text }}</p>
+  }" :class="darkMode ? 'bg-gray-900 text-white' : 'bg-white text-gray-900'" class="py-8 px-4">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        <!-- Mobile Profile Image -->
+        <div class="flex justify-center md:hidden mb-8">
+            <div class="relative w-32 h-32">
+                <img src="{{ '/assets/images/z.webp' | relative_url }}" alt="{{ site.data.hero.name }}"
+                    class="rounded-2xl shadow-lg object-cover w-32 h-32" />
             </div>
-            {% if q.author %}
-            <div class="ml-6 text-sm" :class="darkMode ? 'text-gray-400' : 'text-gray-500'">
-              {{ q.author }}
+        </div>
+
+        <!-- Main Content -->
+        <div class="flex flex-col md:flex-row items-center gap-12">
+            <!-- Desktop Profile Image -->
+            <div class="hidden md:block flex-shrink-0">
+                <div class="relative w-52 h-52">
+                    <img src="{{ '/assets/images/z.webp' | relative_url }}" alt="{{ site.title }}"
+                        class="rounded-2xl shadow-lg object-cover" />
+                </div>
             </div>
-            {% endif %}
-          </div>
-        {% endfor %}
-      </div>
-    {% endif %}
-  </div>
+
+            <div class="flex-1 space-y-6">
+                <h1
+                    class="text-2xl md:text-3xl font-bold leading-tight text-center md:text-left flex md:flex items-center justify-center md:justify-start">
+                    {{ site.data.hero.name }}
+                    <span x-show="currentTheme === 'christmas'" class="ml-2">
+                        <img src="{{ site.data.hero.theme.christmas | relative_url }}" alt="Christmas Theme"
+                            class="w-8 h-8">
+                    </span>
+                    <span x-show="currentTheme === 'newyear'" class="inline-block align-middle ml-2">
+                        <img src="{{ site.data.hero.theme.newyear | relative_url }}" alt="New Year Theme"
+                            class="w-8 h-8 inline-block">
+                    </span>
+                    <span x-show="currentTheme === 'lunarnewyear'" class="inline-block align-middle ml-2">
+                        <img src="{{ site.data.hero.theme.lunarnewyear | relative_url }}" alt="Lunar New Year Theme"
+                            class="w-8 h-8 inline-block">
+                    </span>
+                </h1>
+
+                <div class="space-y-4 text-lg" :class="darkMode ? 'text-gray-300' : 'text-gray-600'">
+                    {% for paragraph in site.data.hero.bio %}
+                    <p>{{ paragraph | markdownify }}</p>
+                    {% endfor %}
+                </div>
+
+                <!-- Social Links -->
+                <div class="flex gap-4 justify-center md:justify-start pb-6">
+                    {% for link in site.data.social %}
+                    <a href="{{ link.href }}" target="_blank" rel="noopener noreferrer"
+                        class="p-2 rounded-lg transition-colors"
+                        :class="darkMode ? 'text-gray-400 hover:text-white hover:bg-gray-800' : 'text-gray-600 hover:bg-gray-100 hover:bg-gray-100'"
+                        aria-label="{{ link.label }}">
+                        <i data-lucide="{{ link.icon }}" class="w-6 h-6"></i>
+                    </a>
+                    {% endfor %}
+                </div>
+
+            </div>
+        </div>
+
+        <!-- Quote Section -->
+        {% if site.data.hero.quotes %}
+        <div class="pt-6 border-t w-full max-w-3xl" :class="darkMode ? 'border-white/10' : 'border-gray-200/80'">
+            {% for q in site.data.hero.quotes %}
+            <div class="mb-4 text-left mx-auto">
+                <div class="flex items-center gap-2" :class="darkMode ? 'text-gray-400' : 'text-gray-500'">
+                    <i class="fa fa-quote-left w-4 h-4"></i>
+                    <p class="text-md italic">{{ q.text }}</p>
+                </div>
+                {% if q.author %}
+                <div class="ml-6 text-sm" :class="darkMode ? 'text-gray-400' : 'text-gray-500'">
+                    {{ q.author }}
+                </div>
+                {% endif %}
+            </div>
+            {% endfor %}
+        </div>
+        {% endif %}
+    </div>
 </section>
