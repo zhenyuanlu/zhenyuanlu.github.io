@@ -9,15 +9,7 @@
     x-data="{ darkMode: false, showBibtex: false, currentBibtex: '', copied: false }"
     :class="darkMode ? 'bg-gray-950 text-gray-100' : 'bg-gray-50 text-gray-900'">
 
-     <!-- Conditionally show Xmas or normal header -->
-    <div>
-        <div x-show="isXmas">
-            {% include core/header_xmas.html %}
-        </div>
-        <div x-show="!isXmas">
-            {% include core/header.html %}
-        </div>
-    </div>
+    {% include core/header.html %}
 
     <main>
         {{ content }}
