@@ -8,7 +8,7 @@
 <body x-cloak class="min-h-screen transition-colors duration-200"
     x-data="{ darkMode: false, showBibtex: false, currentBibtex: '', copied: false }"
     :class="darkMode ? 'bg-gray-950 text-gray-100' : 'bg-gray-50 text-gray-900'">
-    {% include core/header.html %}
+    {% include core/header_xms.html %}
 
     <main>
         {{ content }}
@@ -22,6 +22,7 @@
         });
     </script>
     {% include core/body_scripts.html %}
+
 </body>
 
 </html>

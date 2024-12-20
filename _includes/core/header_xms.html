@@ -1,0 +1,203 @@
+<nav 
+  x-cloak 
+  x-data="{ 
+    mobileMenuOpen: false, 
+    currentPage: '',
+    snowflakes: [],
+    initSnow() {
+      this.snowflakes = Array.from({ length: 50 }, (_, i) => ({
+        id: i,
+        left: `${Math.random() * 100}%`,
+        animationDuration: `${Math.random() * 10 + 5}s`,
+        animationDelay: `${Math.random() * 5}s`,
+        opacity: Math.random() * 0.3 + 0.7,
+        size: ['text-sm', 'text-base', 'text-lg', 'text-xl'][Math.floor(Math.random() * 4)],
+        rotation: Math.random() * 360
+      }));
+    }
+  }"
+  x-init="
+    const sections = ['hero', 'software', 'teaching', 'blog', 'publications'];
+    const offset = window.innerHeight * 0.3;
+    const getCurrentSection = () => {
+      let current = '';
+      for (const id of sections) {
+        const el = document.getElementById(id);
+        if (el) {
+          const rect = el.getBoundingClientRect();
+          if (rect.top <= offset && rect.bottom > offset) {
+            current = '/#' + id;
+            break;
+          }
+        }
+      }
+
+      if (current === '') {
+        const heroEl = document.getElementById('hero');
+        if (heroEl && heroEl.getBoundingClientRect().top >= -100) {
+          current = '#hero';
+        }
+      }
+      return current;
+    };
+  
+    currentPage = getCurrentSection();
+    window.addEventListener('scroll', () => {
+      currentPage = getCurrentSection();
+    });
+    
+    initSnow();
+  "
+  class="border-b sticky top-0 z-50 transition-colors duration-200"
+  :class="darkMode ? 'bg-gradient-to-r from-gray-900 via-gray-900 to-gray-900/95 border-gray-800' : 'bg-gradient-to-r from-red-50/95 via-white/95 to-green-50/95 border-red-100/20'"
+  @keydown.escape="mobileMenuOpen = false"
+>
+  <!-- Snow Overlay (Only in Light Mode) -->
+  <template x-if="!darkMode">
+    <div class="absolute inset-0 overflow-hidden pointer-events-none">
+      <template x-for="flake in snowflakes" :key="flake.id">
+        <div 
+          class="absolute pointer-events-none text-blue-100 drop-shadow-lg filter blur-[0.2px] animate-snowfall"
+          :class="flake.size"
+          :style="{
+            left: flake.left,
+            animationDuration: flake.animationDuration,
+            animationDelay: flake.animationDelay,
+            opacity: flake.opacity,
+            transform: `rotate(${flake.rotation}deg)`
+          }"
+        >
+          ❄
+        </div>
+      </template>
+    </div>
+  </template>
+
+  <div class="max-w-7xl mx-auto px-4">
+    <div class="flex items-center justify-between h-14">
+      <!-- Logo and Dark Mode Toggle -->
+      <div class="flex items-center gap-1">
+        <a href="/" class="font-bold text-lg transition-colors"
+           :class="darkMode ? 'text-white' : 'bg-gradient-to-r from-red-600 to-green-600 bg-clip-text text-transparent'">
+          {{ site.author.name }}
+        </a>
+        <button 
+          @click="darkMode = !darkMode"
+          class="p-2 rounded-lg transition-colors relative group"
+          :class="darkMode ? 'hover:bg-gray-800 text-yellow-400' : 'hover:bg-red-50/50 text-gray-600'"
+          aria-label="Toggle dark mode"
+        >
+          <i data-lucide="sun" x-show="darkMode" class="w-5 h-5" aria-hidden="true"></i>
+          <i data-lucide="moon" x-show="!darkMode" class="w-5 h-5" aria-hidden="true"></i>
+          <template x-if="!darkMode">
+            <div class="absolute inset-0 bg-red-100/20 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity"></div>
+          </template>
+        </button>
+      </div>
+      
+      <!-- Desktop Navigation -->
+      <div class="hidden md:flex items-center gap-8">
+        {% for item in site.data.navigation %}
+          <a 
+            href="{{ item.href }}"
+            class="relative text-sm font-medium group px-1"
+            :aria-current="(currentPage === '{{ item.href }}') ? 'page' : false"
+            :class="darkMode 
+              ? 'text-gray-300 hover:text-white' 
+              : 'text-gray-600 hover:text-red-600'"
+          >
+            {{ item.name }}
+            <!-- Hover/Active Underline -->
+            <span 
+              class="absolute inset-x-0 bottom-0 h-0.5 origin-right group-hover:origin-left transition-transform duration-300 ease-out"
+              :class="(currentPage === '{{ item.href }}') 
+                ? (darkMode ? 'scale-x-100 bg-white' : 'scale-x-100 bg-gradient-to-r from-red-500 to-green-500') 
+                : ('scale-x-0 group-hover:scale-x-100 ' + (darkMode ? 'bg-gray-400' : 'bg-gradient-to-r from-red-500 to-green-500'))"
+              aria-hidden="true"
+            ></span>
+          </a>
+        {% endfor %}
+      </div>
+
+      <!-- Mobile Menu Button -->
+      <button 
+        @click="mobileMenuOpen = !mobileMenuOpen"
+        class="md:hidden inline-flex items-center justify-center p-2 rounded-md focus:outline-none transition-colors"
+        :class="darkMode ? 'text-gray-300 hover:bg-gray-800' : 'text-gray-600 hover:bg-red-50'"
+        aria-controls="mobile-menu"
+        :aria-expanded="mobileMenuOpen.toString()"
+      >
+        <span class="sr-only">
+          <span x-text="mobileMenuOpen ? 'Close menu' : 'Open menu'"></span>
+        </span>
+        <div class="relative">
+          <i 
+            data-lucide="menu" 
+            class="h-6 w-6 transition-all duration-300"
+            :class="{ 'opacity-0 -translate-y-2': mobileMenuOpen }"
+            aria-hidden="true"
+          ></i>
+          <i 
+            data-lucide="x"
+            class="h-6 w-6 absolute top-0 left-0 transition-all duration-300"
+            :class="{ 'opacity-100 translate-y-0': mobileMenuOpen, 'opacity-0 translate-y-2': !mobileMenuOpen }"
+            aria-hidden="true"
+          ></i>
+        </div>
+      </button>
+    </div>
+  </div>
+
+  <!-- Mobile Menu -->
+  <div 
+    id="mobile-menu"
+    class="md:hidden transition-all duration-300 ease-in-out absolute left-0 right-0 transform backdrop-blur-md"
+    :class="{ 
+      'opacity-100 translate-y-0 pointer-events-auto': mobileMenuOpen,
+      'opacity-0 -translate-y-4 pointer-events-none': !mobileMenuOpen,
+      'bg-gray-900/95 border-gray-800': darkMode,
+      'bg-gradient-to-r from-red-50/95 via-white/95 to-green-50/95 border-red-100/20': !darkMode
+    }"
+  >
+    <div class="px-4 pt-2 pb-4 space-y-2">
+      {% for item in site.data.navigation %}
+        <a 
+          href="{{ item.href }}"
+          class="block px-3 py-2 rounded-md text-base font-medium transition-colors"
+          :aria-current="(currentPage === '{{ item.href }}') ? 'page' : false"
+          :class="(currentPage === '{{ item.href }}')
+            ? (darkMode ? 'text-white bg-gray-800' : 'text-red-600 bg-red-50')
+            : (darkMode ? 'text-gray-300 hover:text-white hover:bg-gray-800' : 'text-gray-600 hover:text-red-600 hover:bg-red-50/50')"
+        >
+          {{ item.name }}
+        </a>
+      {% endfor %}
+    </div>
+  </div>
+</nav>
+
+<style>
+@keyframes snowfall {
+  0% {
+    transform: translateY(-10px) rotate(0deg);
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.9;
+  }
+  100% {
+    transform: translateY(100vh) rotate(360deg);
+    opacity: 0.7;
+  }
+}
+
+.animate-snowfall {
+  animation: snowfall linear infinite;
+}
+
+@keyframes christmas-gradient {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+</style>
