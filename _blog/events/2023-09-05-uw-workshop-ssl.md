@@ -53,7 +53,7 @@ speaker:
 
 
 
-# Resources
+thumbnail: "/assets/images/thumbnails/uw-workshop-ssl.png"
 image: "/assets/images/blog/events/uw_talk/cover.webp"
 
 # Citation (separate from regular links)

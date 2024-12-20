@@ -12,7 +12,6 @@ highlight: 0
 tags:
   - data visualization
   - data science
-highlight: 0  
 
 
 hide: false
@@ -41,10 +40,8 @@ links:
   - type: github
     href: "https://github.com/zhenyuanlu/Data-Visualization-In-A-Nutshell"
 
-thumbnail: "/assets/images/thumbnails/events/informs_talk.png"
+thumbnail: "/assets/images/thumbnails/informs-talk.png"
 image: "/assets/images/blog/events/informs_talk/cent.webp"
-
-
 
 ---
 

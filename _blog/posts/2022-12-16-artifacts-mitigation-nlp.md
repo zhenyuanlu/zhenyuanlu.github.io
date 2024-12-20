@@ -17,7 +17,7 @@ highlight: 2
 hide: false
 toc: true
 
-thumbnail: "/assets/images/thumbnails/posts/artifacts.png"
+thumbnail: "/assets/images/thumbnails/artifacts.png"
 image: "/assets/images/blog/posts/artifacts/electra.jpg"
 links:
   - type: pdf

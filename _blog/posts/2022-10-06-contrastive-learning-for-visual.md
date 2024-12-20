@@ -16,7 +16,7 @@ highlight: 1
 hide: false
 toc: true
 
-thumbnail: "/assets/images/thumbnails/posts/clvr.png"
+thumbnail: "/assets/images/thumbnails/clvr.png"
 image: "/assets/images/blog/posts/clVR/cover.webp"
 links:
   - type: pdf
@@ -33,7 +33,6 @@ links:
       }
       
 bibliography: 2022-10-06-clVR.bib
-toc: true
 ---
 
 <div class="l-page">

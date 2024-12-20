@@ -29,7 +29,7 @@ speaker:
   bio: "Expert in ML and medical image analysis."
   image: "/assets/images/z.png"
 
-thumbnail: "/assets/images/thumbnails/events/tufts-hia.png"
+thumbnail: "/assets/images/thumbnails/tufts-hia.png"
 image: "/assets/images/blog/events/tufts/cover.webp"
 
 

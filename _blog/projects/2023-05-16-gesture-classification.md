@@ -17,7 +17,7 @@ highlight: 0
 hide: false
 toc: true
 
-thumbnail: "/assets/images/thumbnails/posts/gesture.png"
+thumbnail: "/assets/images/thumbnails/gesture.png"
 image: "/assets/images/blog/projects/gesture/zl_motion_short.gif"
 links:
   - type: github
