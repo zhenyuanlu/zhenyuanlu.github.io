@@ -4,8 +4,8 @@
 - name: Publications
   href: "/#publications"
 - name: Blog
-  href: "/#blog"
+  href: "/blog/"
 - name: Teachings
-  href: "https://zhenyuanlu.com/courses/"
+  href: "/courses/"
 - name: Art Life
-  href: "https://zhenyuanlu.com/artLife/"
+  href: "/artLife/"

@@ -1,0 +1,37 @@
+<script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "name": "{{ site.title }}",
+      "url": "{{ site.url }}",
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target": "{{ site.url }}/search?q={search_term_string}",
+        "query-input": "required name=search_term_string"
+      }
+    }
+    </script>
+    
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "ItemList",
+      "itemListElement": [
+        {% for item in site.data.navigation %}
+        {
+          "@type": "SiteNavigationElement",
+          "position": {{ forloop.index }},
+          "name": "{{ item.name }}",
+          "description": "{{ item.name }} section",
+          {% if item.href contains "http" %}
+          "url": "{{ item.href }}"
+          {% else %}
+          "url": "{{ site.url }}{{ item.href }}"
+          {% endif %}
+        }{% unless forloop.last %},{% endunless %}
+        {% endfor %}
+      ]
+    }
+    </script>
+
+    
