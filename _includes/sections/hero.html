@@ -52,57 +52,18 @@
                             class="w-8 h-8 inline-block" loading="lazy">
                     </span>
                 </h1>
-
+                
+                <!-- Bio Section -->
                 <div class="space-y-4 text-lg" :class="darkMode ? 'text-gray-300' : 'text-gray-600'">
-                    <div class="space-y-4 text-lg min-h-[12rem]" :class="darkMode ? 'text-gray-300' : 'text-gray-600'">
-                        <p class="min-h-[4.5em] leading-relaxed">
-                          I am a deep learning scientist at 
-                          <a href="https://www.seurat.com/" 
-                             target="_blank" 
-                             rel="noopener noreferrer"
-                             class="hover-link">
-                            Seurat
-                          </a> 
-                          and an adjunct faculty member teaching AI/ML at 
-                          <a href="https://www.northeastern.edu/" 
-                             target="_blank" 
-                             rel="noopener noreferrer"
-                             class="hover-link">
-                            Northeastern University
-                          </a>. 
-                          I received my PhD from Northeastern, with research interests in representation learning and self-supervised learning. My journey was featured on the 
-                          <a href="https://phd.northeastern.edu/profile/zhenyuan-lu/" 
-                             target="_blank" 
-                             rel="noopener noreferrer"
-                             class="hover-link">
-                            University PhD Network
-                          </a> 
-                          and spotlighted by the College of Engineering as a 
-                          <a href="https://coe.northeastern.edu/news/ready-for-the-high-demand-field-of-data-analytics/" 
-                             target="_blank" 
-                             rel="noopener noreferrer"
-                             class="hover-link">
-                            Student Success Story
-                          </a>.
-                        </p>
-                                
-                        <p class="min-h-[3em] leading-relaxed">
-                          When I am not geeking out over machine learning, I enjoy DJing, snapping photos, or out on the water kayaking or paddleboarding.
-                        </p>
-                      </div>
-                </div>
-
-                <!-- Social Links -->
-                <div class="flex gap-4 justify-center md:justify-start pb-6">
-                    {% for link in site.data.social %}
-                    <a href="{{ link.href }}" target="_blank" rel="noopener noreferrer"
-                        class="p-2 rounded-lg transition-colors"
-                        :class="darkMode ? 'text-gray-400 hover:text-white hover:bg-gray-800' : 'text-gray-600 hover:bg-gray-100 hover:bg-gray-100'"
-                        aria-label="{{ link.label }}">
-                        <i data-lucide="{{ link.icon }}" class="w-6 h-6"></i>
-                    </a>
+                  <div class="space-y-4 text-lg min-h-[12rem]" :class="darkMode ? 'text-gray-300' : 'text-gray-600'">
+                    {% for paragraph in site.data.hero.bio %}
+                      <p class="leading-relaxed">
+                        {% include sections/hero_bio.html text=paragraph %}
+                      </p>
                     {% endfor %}
+                  </div>
                 </div>
+                
 
             </div>
             <!-- Desktop Profile Image -->

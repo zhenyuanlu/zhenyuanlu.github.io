@@ -1,0 +1,19 @@
+{% assign bio_text = include.text %}
+{% assign links = bio_text | split: '[' %}
+
+{% for part in links %}
+  {% if forloop.first %}
+    {{ part }}
+  {% else %}
+    {% assign link_parts = part | split: '](' %}
+    {% assign link_text = link_parts[0] %}
+    {% assign remaining = link_parts[1] | split: ')' %}
+    {% assign link_url = remaining[0] %}
+    {% assign rest = remaining[1] %}
+    
+    <a href="{{ link_url }}"
+       target="_blank"
+       rel="noopener noreferrer" 
+       class="hover-link">{{ link_text }}</a>{{ rest }}
+  {% endif %}
+{% endfor %}

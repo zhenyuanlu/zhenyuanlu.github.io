@@ -10,7 +10,7 @@ This theme heavily built on Tailwind CSS styling.
 ## TODO:
 
 ### &#128029; Bugs
-- [ ] Fix Navbar underline appearing when refreshing the page 
+- [x] Fix Navbar underline appearing when refreshing the page 
 - [ ] Fix reference styling 
 - [ ] Fix blog styling 
 - [ ] Fix dark mode issues 
@@ -25,8 +25,10 @@ This theme heavily built on Tailwind CSS styling.
 
 ###  &#128736; Tasks
 - [x] Refactor the image container
+- [ ] Update seo schema
 - [ ] Refactor the hiararchy of the page
 - [ ] Dark mode color scheme
+
 
 
 ---
