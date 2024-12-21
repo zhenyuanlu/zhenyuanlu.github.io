@@ -63,7 +63,17 @@
                     {% endfor %}
                   </div>
                 </div>
-                
+                <!-- Social Links -->
+                <div class="flex gap-4 justify-center md:justify-start pb-6">
+                  {% for link in site.data.social %}
+                  <a href="{{ link.href }}" target="_blank" rel="noopener noreferrer"
+                      class="p-2 rounded-lg transition-colors"
+                      :class="darkMode ? 'text-gray-400 hover:text-white hover:bg-gray-800' : 'text-gray-600 hover:bg-gray-100 hover:bg-gray-100'"
+                      aria-label="{{ link.label }}">
+                      <i data-lucide="{{ link.icon }}" class="w-6 h-6"></i>
+                  </a>
+                  {% endfor %}
+              </div>
 
             </div>
             <!-- Desktop Profile Image -->
