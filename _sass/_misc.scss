@@ -32,3 +32,51 @@ margin-left: -75vw; /* Half of 150vw */
     margin-left: -70vw; /* Half of 140vw */
 }
 
+
+.hover-link {
+    position: relative;
+    display: inline-block;
+    padding: 0 2px;
+    margin: 0 -2px;
+    color: inherit;   /* Inherit text color from parent */
+    text-decoration: none;
+    font-weight: 500; /* Slightly bolder */
+    font-style: italic; /* Subtle style difference */
+    transition: color 0.3s ease;
+  }
+  
+  .hover-link::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;    /* Aligned with bottom like nav */
+    width: 100%;
+    height: 2px;  /* Match nav thickness */
+    background-color: currentColor;
+    transform: scaleX(0);
+    transform-origin: right;
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  
+  .hover-link:hover::before {
+    transform: scaleX(1);
+    transform-origin: left;
+  }
+  
+  /* Dark mode colors matching nav */
+  .dark .hover-link::before {
+    background-color: #9CA3AF; /* gray-400 */
+  }
+  
+  .hover-link:hover.dark::before {
+    background-color: white;
+  }
+  
+  /* Light mode hover color */
+  .hover-link::before {
+    background-color: #4B5563; /* gray-600 */
+  }
+  
+  .hover-link:hover::before {
+    background-color: black;
+  }
