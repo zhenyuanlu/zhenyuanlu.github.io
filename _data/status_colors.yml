@@ -1,6 +1,6 @@
 # _data/status_colors.yml
-development:
-  label: "in development"
+dev:
+  label: "dev"
   light: "bg-purple-50 text-purple-700"
   dark: "bg-purple-900/50 text-purple-200"
 alpha:

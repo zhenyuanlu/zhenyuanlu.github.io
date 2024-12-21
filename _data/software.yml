@@ -2,7 +2,7 @@
 - title: "pyKCN"
   highlight: 0  # Priority ordering (optional, lower number = higher priority)
   hide: false   # Whether to hide from display
-  status: "development"  # stable, beta, alpha, development, archived, deprecated
+  status: "dev"  # stable, beta, alpha, development, archived, deprecated
   version: "0.1.0"  # (optional) semantic versioning
   description: "pyKCN is a Python-based tool for analyzing co-occurrence keywords in literature reviews."
   technologies: 

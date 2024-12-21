@@ -8,9 +8,9 @@ author: "Zhenyuan Lu"
 date: 2022-10-06
 
 tags:
-  - "Deep Learning"
-  - "Self-supervised Learning"
-  - "Contrastive Learning"
+  - machine learning
+  - self-supervised learning
+  - contrastive learning
 highlight: 1
 
 hide: false

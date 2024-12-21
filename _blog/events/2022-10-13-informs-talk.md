@@ -11,7 +11,7 @@ highlight: 0
 
 tags:
   - data visualization
-  - data science
+  - machine learning
 
 
 hide: false

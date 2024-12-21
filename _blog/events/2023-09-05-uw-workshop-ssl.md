@@ -10,9 +10,9 @@ date: 2023-09-05
 
 # Classification
 tags:
-  - "Deep Learning"
-  - "Medical Imaging"
-  - "Self-supervised Learning"
+  - machine learning
+  - healthcare
+  - self-supervised learning
 highlight: 0  
 
 

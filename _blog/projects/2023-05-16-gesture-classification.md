@@ -8,9 +8,8 @@ author: "Zhenyuan Lu"
 date: 2023-05-16
 
 tags:
-  - "Deep Learning"
-  - "Transformer"
-  - "Signal Processing"
+  - machine learning
+  - self-supervised learning
 
 highlight: 0
 
@@ -39,6 +38,7 @@ biliography: 2023-05-16-gesture.bib
 </div>
 
 
+
 # Abstract
 
 In this report, we adapt our previous work PainAttnNet model <z-cite key="lu2023transformer"></z-cite>, a novel transformer-encoder deep learning framework for classifying pain intensities using physiological signals. PainAttnNet model integrates convolutional networks to capture multimodal features, a squeeze-and-excitation residual network emphasizing interdependencies among relevant features, and a transformer encoder block for optimal feature extraction and temporal dependency analysis. Supplemental information and source code are available at: <a>https://github.com/zhenyuanlu/WristMotion-Gesture-Detection</a>
@@ -48,7 +48,7 @@ In this report, we adapt our previous work PainAttnNet model <z-cite key="lu2023
 <div class="l-page">
 <center>
   <figure>
-    <img src="{{ '/assets/images/blog/projects/gesture/quaternion.png' | relative_url }}"  />
+    <img src="{{ '/assets/images/blog/projects/gesture/quaternion.webp' | relative_url }}"  />
     <figcaption>
       <strong> The transformation of quaternion data to rotation objects: X,Y, Z. Three wrist motion patterns present in the chart. Left: repetition number 1 with movement 0. Middle: repetition number 2 with movement 0. Right: repetition number 3 with movement 0. </strong>.
     </figcaption>
@@ -66,7 +66,7 @@ The workflow is designed to handle multimodal data features such as timestamps, 
 
 <center>
   <figure style="max-width:100%" >
-    <img src='/assets/images/blog/projects/gesture/raw.png' />
+    <img src='/assets/images/blog/projects/gesture/raw.webp' />
     <figcaption>
       <strong> Different repetition numbers of raw data during different body movements. Here we only show the channel 0 raw signal. </strong>.
     </figcaption>
@@ -80,7 +80,7 @@ Next, we have implemented a strategy to segregate data based on body movement la
 <div class="l-page">
 <center>
   <figure>
-    <img src="{{ '/assets/images/blog/projects/gesture/results.png' | relative_url }}"  />
+    <img src="{{ '/assets/images/blog/projects/gesture/results.webp' | relative_url }}"  />
     <figcaption>
       <strong> Left: the performance between the number of encoder layer - 5 and 3. Middle: the performance between different sample segmentation - minimum length 967 and arbitrary length 900. Right: the performance between different number of attention heads - 1,3, and 5.</strong>.
     </figcaption>

@@ -8,10 +8,9 @@ author: "Zhenyuan Lu"
 date: 2022-12-16
 
 tags:
-  - "Natural Language Processing"
-  - "Data Augmentation"
-  - "Dataset Artifacts"
-  - "Mitiagation"
+  - nlp
+  - data augmentation
+  - artifacts
 
 highlight: 2
 hide: false

@@ -17,7 +17,6 @@
         <span class="inline-flex items-center px-3 py-1 rounded-full text-sm gap-1.5"
           :class="darkMode ? 'bg-purple-950 text-purple-300' : 'bg-purple-100 text-purple-700'"
         >
-          <i data-lucide="book-open" class="w-4 h-4"></i>
           {{ site.data.course_materials.size }} resources
         </span>
       </div>
@@ -37,6 +36,7 @@
                   src="{{ resource.image | relative_url }}" 
                   alt="{{ resource.title }} cover"
                   class="w-full h-full object-contain p-2"
+                  loading="lazy"
                 />
               </div>
 
