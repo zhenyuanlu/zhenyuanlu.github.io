@@ -54,8 +54,8 @@
                 </h1>
 
                 <div class="space-y-4 text-lg" :class="darkMode ? 'text-gray-300' : 'text-gray-600'">
-                    {% for paragraph in site.data.hero.bio %}
-                    <p>{{ paragraph | markdownify }}</p>
+                    {% for item in site.data.hero.bio %}
+                        <p>{{ item.text | safe }}</p>
                     {% endfor %}
                 </div>
 
