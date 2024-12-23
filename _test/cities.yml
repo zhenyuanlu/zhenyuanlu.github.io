@@ -1,0 +1,36 @@
+# _data/cities.yml
+
+- name: Shanghai
+  memory: where is the story begins
+  image_bw: /assets/images/cities/sh_bw.png # created by linector from Flaticon
+  image_color: /assets/images/cities/sh_color.png # created by linector from Flaticon
+  years: 2012-2015
+  order: 1
+
+- name: Okinawa
+  memory: part of my soul remains
+  image_bw: /assets/images/cities/ok_bw.png # created by smashicons from Flaticon
+  image_color: /assets/images/cities/ok_color.png # created by smashicons from Flaticon
+  years: 2015-2017
+  order: 2
+
+- name: Austin
+  memory: freedom awakened through bbq
+  image_bw: /assets/images/cities/austin_bw.png # created by good ware from Flaticon
+  image_color: /assets/images/cities/austin_color.png
+  years: 2017-2019
+  order: 3
+
+- name: Dallas
+  memory: temporary cowboy in the wild
+  image_bw: /assets/images/cities/dallas_bw.png # created by freepik from Flaticon
+  image_color: /assets/images/cities/dallas_color.png # created by max.icons from Flaticon
+  years: 2019-2021
+  order: 4
+
+- name: Boston
+  memory: winters forge wisdom through coffee
+  image_bw: /assets/images/cities/ma_bw.png # created by three musketeers from Flaticon
+  image_color: /assets/images/cities/ma_color.png # created by flaticons from Flaticon
+  years: 2021-present
+  order: 5

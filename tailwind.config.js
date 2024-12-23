@@ -156,6 +156,7 @@ module.exports = {
     
     // Common Utility Classes
     ...[
+      'animate-pulse',
       'container',
       'prose',
       'aspect-video',

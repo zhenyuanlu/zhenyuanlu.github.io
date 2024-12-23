@@ -19,6 +19,8 @@ This theme heavily built on Tailwind CSS styling.
 
 ### &#10024; Features
 - [x] Add a holiday themes
+- [x] Improve the footer design
+- [ ] Add city journey
 - [ ] Improve the navigation bar design 
 - [ ] Add overwidth image handling 
 

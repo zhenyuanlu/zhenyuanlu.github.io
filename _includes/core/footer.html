@@ -2,26 +2,44 @@
 
 <footer x-cloak class="w-full bg-gray-100 py-12"
 :class="darkMode ? 'bg-gray-950 text-gray-100' : 'bg-white text-gray-900'">
+
   <div class="max-w-7xl mx-auto px-4 text-sm text-gray-600 grid grid-cols-1 md:grid-cols-3 gap-4 items-center">
-    <div class="text-center md:text-left">
-      &copy; 2019 - {{ 'now' | date: "%Y" }} Zhenyuan Lu.
-      <br>
-      Last edited on {{ site.time | date: "%b %Y" }}.
+    
+    <!-- Copyright -->
+    <div class="text-center md:text-left space-y-1">
+      <p class="text-sm font-medium" 
+         :class="darkMode ? 'text-gray-300' : 'text-gray-700'">
+        &copy; 2019 - {{ 'now' | date: "%Y" }} Zhenyuan Lu
+      </p>
+      <p class="text-sm" 
+         :class="darkMode ? 'text-gray-400' : 'text-gray-600'">
+        Last edited on {{ site.time | date: "%b %Y" }}
+      </p>
     </div>
+    
+    <!-- Location -->
     <div class="text-center">
-      <span class="flex justify-center items-center">
-        <i class="fa-solid fa-map-marker-alt mr-2"></i>
-        Hello from Boston
-      </span>
+      <div class="inline-flex items-center space-x-2 text-sm"
+           :class="darkMode ? 'text-gray-300' : 'text-gray-700'">
+        <i data-lucide="map-pin" class="w-4 h-4"></i>
+        <span>Hello from Boston</span>
+      </div>
     </div>
-    <div class="text-center md:text-right">
-      <span class="flex justify-center md:justify-end items-center">
-        <!-- <i class="fa-solid fa-heart mr-2 text-red-500"></i> -->
+
+    <!-- Attribution -->
+    <div class="text-center md:text-right space-y-1">
+      <p class="text-sm font-medium"
+         :class="darkMode ? 'text-gray-300' : 'text-gray-700'">
         Crafted by Zhenyuan Lu
-        <br>
-          &#10084; with ChatGPT and Claude.
-      </span>
+      </p>
+      <p class="text-sm inline-flex items-center justify-center md:justify-end space-x-1"
+         :class="darkMode ? 'text-gray-400' : 'text-gray-600'">
+         <span class="text-red-500 animate-pulse">♥</span>
+        <span>with ChatGPT and Claude</span>
+        
+      </p>
     </div>
+
   </div>
 </footer>
   
