@@ -21,14 +21,16 @@
   },
   "scripts": {
     "build:css": "npx tailwindcss -i ./assets/css/input.css -o ./assets/css/styles.css --minify",
-    "build:js": "npx esbuild assets/js/filter-blog.js --bundle --minify --outfile=assets/js/filter-blog.min.js && npx esbuild assets/js/toc.js --bundle --minify --outfile=assets/js/toc.min.js && npx esbuild assets/js/zenlu.js --bundle --minify --outfile=assets/js/zenlu.min.js",
+    "build:js": "npx esbuild assets/js/filter-blog.js --bundle --minify --outfile=assets/js/filter-blog.min.js && npx esbuild assets/js/toc.js --bundle --minify --outfile=assets/js/toc.min.js && npx esbuild assets/js/zenlu.js --bundle --minify --outfile=assets/js/zenlu.min.js && npx esbuild assets/js/misc.js --bundle --minify --outfile=assets/js/misc.min.js",
     "build:thumbnails": "node thumb_gen/generate_thumbnails.js",
     "build": "npm run build:css && npm run build:js && bundle exec jekyll build && npm run build:thumbnails",
+
     "watch:css": "npx tailwindcss -i ./assets/css/input.css -o ./assets/css/styles.css --watch",
+    "watch:misc": "npx esbuild assets/js/misc.js --bundle --minify --outfile=assets/js/misc.min.js --watch",
     "watch:filter-blog": "npx esbuild assets/js/filter-blog.js --bundle --minify --outfile=assets/js/filter-blog.min.js --watch",
     "watch:toc": "npx esbuild assets/js/toc.js --bundle --minify --outfile=assets/js/toc.min.js --watch",
     "watch:zenlu": "npx esbuild assets/js/zenlu.js --bundle --minify --outfile=assets/js/zenlu.min.js --watch",
-    "watch:js": "concurrently \"npm run watch:filter-blog\" \"npm run watch:toc\" \"npm run watch:zenlu\"",
+    "watch:js": "concurrently \"npm run watch:filter-blog\" \"npm run watch:toc\" \"npm run watch:zenlu\" \"npm run watch:misc\"",
     "watch:thumbnails": "node thumb_gen/watch-thumbnails.js",
     "start": "concurrently \"npm run watch:css\" \"npm run watch:js\" \"bundle exec jekyll serve\" \"npm run watch:thumbnails\""
   },

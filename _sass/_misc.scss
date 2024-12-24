@@ -2,6 +2,8 @@
 html{
     /* scrollbar-gutter: stable both-edges; */
     overflow-y: scroll;
+    /* scroll smooth */
+    scroll-behavior: smooth;
 }
 .no-transition .underline {
     transition: none !important;
@@ -78,4 +80,11 @@ margin-left: -75vw; /* Half of 150vw */
   
   .hover-link:hover::before {
     background-color: #4B5563;
+  }
+
+
+  /* Scroll effect */
+  [id] {
+    scroll-margin-top: 3rem; /* 80px - accounts for nav height + padding */
+    scroll-behavior: smooth;
   }

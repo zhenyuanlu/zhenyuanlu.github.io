@@ -40,3 +40,12 @@ thumb_gen/
 # Installed pacakges
 installed_packages.txt
 installed_packages.json
+
+# Template
+template/
+
+# Testing folder on new features
+test/
+
+# Draft folder
+draft/

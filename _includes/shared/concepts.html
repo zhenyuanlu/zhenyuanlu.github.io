@@ -1,18 +1,18 @@
 
 <!-- _includes/concepts.html -->
 {% if site.data.concepts %}
-<section x-cloak class="pt-10 pb-4 px-4"
-  :class="darkMode ? 'bg-gray-950 text-gray-100' : 'bg-white text-gray-900'">
+<section x-cloak class="py-16 px-4"
+:class="darkMode ? 'bg-gray-950 text-gray-100' : 'bg-gray-50 text-gray-900'">
   <div class="max-w-lg mx-auto space-y-12 text-center">
     {% for q in site.data.concepts %}
     <div>
       <span class="inline-flex items-center gap-2">
         <i data-lucide="quote" class="w-5 h-5" :class="darkMode ? 'text-gray-400' : 'text-gray-500'"></i>
-        <span class="italic" :class="darkMode ? 'text-gray-300' : 'text-gray-700'">
+        <span class="italic text-md md:text-lg" :class="darkMode ? 'text-gray-300' : 'text-gray-700'">
           {{ q.text }}
         </span>
       </span>
-      <div class="mt-4 text-sm" :class="darkMode ? 'text-gray-400' : 'text-gray-500'">
+      <div class="mt-2 text-sm" :class="darkMode ? 'text-gray-400' : 'text-gray-500'">
         — {{ q.author }}
       </div>
     </div>
