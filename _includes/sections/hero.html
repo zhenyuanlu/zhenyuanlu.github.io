@@ -7,15 +7,15 @@
       const day = now.getDate();
 
       // Christmas: December 10 to December 30
-      if (month === 11 && day >= 15 && day <= 30) {
+      if (month === 11 && day >= 15 && day <= 26) {
         this.currentTheme = 'christmas';
       } 
       // New Year: Dec 31 to January 3
-      else if (month === 11 && day >= 31 || (month === 0 && day <= 3)) {
+      else if (month === 11 && day >= 31 || (month === 0 && day <= 2)) {
         this.currentTheme = 'newyear';
       }
       // Lunar New Year approx: Jan 20 - Feb 10 (adjust as needed)
-      else if ((month === 0 && day >= 20) || (month === 1 && day <= 10)) {
+      else if ((month === 0 && day >= 20) || (month === 1 && day <= 3)) {
         this.currentTheme = 'lunarnewyear';
       } else {
         this.currentTheme = 'none';

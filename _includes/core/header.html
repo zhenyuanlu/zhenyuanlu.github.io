@@ -1,7 +1,7 @@
 {% assign current_month = site.time | date: '%m' %}
 {% assign current_day = site.time | date: '%d' %}
 
-  {% if current_month == '12' and current_day >= '15' and current_day <= '31' %}
+  {% if current_month == '12' and current_day >= '15' and current_day <= '26' %}
     {% include core/header_xmas.html %}
   {% else %}
     {% include core/header_normal.html %}
