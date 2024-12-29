@@ -19,8 +19,8 @@
                    <div class="relative flex flex-col items-center" @mouseenter="hoveredCity = '{{ city.name }}'"
                        @mouseleave="hoveredCity = null">
                        <!-- City Icon -->
-                       <div class="relative w-8 h-8 rounded-full overflow-hidden transition-all duration-300 cursor-pointer transform hover:shadow-lg"
-                           :class="darkMode ? 'bg-gray-200 ring-gray-800 hover:ring-gray-700 z-10' : ' bg-white ring-gray-100 hover:ring-gray-200'">
+                       <div class="relative w-8 h-8 rounded-lg overflow-hidden transition-all duration-300 cursor-pointer transform hover:shadow-lg"
+                           :class="darkMode ? 'bg-gray-600 ring-gray-800 hover:ring-gray-700 z-10' : ' bg-white ring-gray-100 hover:ring-gray-200'">
                            <!-- B&W Image -->
                            <img src="{{ city.image_bw }}"
                                class="w-full h-full object-cover transition-opacity duration-500"
