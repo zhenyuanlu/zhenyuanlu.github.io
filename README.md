@@ -20,14 +20,14 @@ This theme heavily built on Tailwind CSS styling.
 ### &#10024; Features
 - [x] Add a holiday themes
 - [x] Improve the footer design
-- [ ] Add city journey
+- [x] Add city journey
 - [ ] Improve the navigation bar design 
 - [ ] Add overwidth image handling 
 
 
 ###  &#128736; Tasks
 - [x] Refactor the image container
-- [ ] Update seo schema
+- [x] Update seo schema
 - [ ] Refactor the hiararchy of the page
 - [ ] Dark mode color scheme
 
