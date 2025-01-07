@@ -26,7 +26,7 @@
 - title: "PainAttnNet"
   highlight: 0  # Priority ordering (optional, lower number = higher priority)
   hide: false   # Whether to hide from display
-  status: "stable" # Options: stable, beta, alpha, development, archived, deprecated
+  status: "archived" # Options: stable, beta, alpha, development, archived, deprecated
   version: "1.0.0"
   description: "PainAttnNet is composed transformer encoder with multiscale deep learning for signal classification."
   technologies: 
