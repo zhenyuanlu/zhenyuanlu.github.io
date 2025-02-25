@@ -17,7 +17,7 @@
   "devDependencies": {
     "concurrently": "^9.1.0",
     "cross-env": "^7.0.3",
-    "esbuild": "^0.24.0"
+    "esbuild": "^0.25.0"
   },
   "scripts": {
     "build:css": "npx tailwindcss -i ./assets/css/input.css -o ./assets/css/styles.css --minify",
