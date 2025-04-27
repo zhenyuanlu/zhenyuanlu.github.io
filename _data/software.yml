@@ -1,4 +1,19 @@
 # _data/software.yml
+
+- title: "HayBeat"
+  highlight: 0  # Priority ordering (optional, lower number = higher priority)
+  hide: false   # Whether to hide from display
+  status: "alpha"  # stable, beta, alpha, development, archived, deprecated
+  version: "0.3.1"  # (optional) semantic versioning
+  description: "Haybeat is a lightweight habit tracker I built to push my own limits in a fun side project."
+  technologies: 
+    - "kotlin"
+    - "android"
+  image: "/assets/images/software/haybeat/cover.webp"
+  links:
+  - type: github
+    href: "https://github.com/zhenyuanlu/haybeat"
+
 - title: "pyKCN"
   highlight: 0  # Priority ordering (optional, lower number = higher priority)
   hide: false   # Whether to hide from display
