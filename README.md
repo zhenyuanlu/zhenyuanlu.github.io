@@ -11,7 +11,7 @@ This theme heavily built on Tailwind CSS styling.
 
 ### &#128029; Bugs
 - [x] Fix Navbar underline appearing when refreshing the page 
-- [ ] Fix reference styling 
+- [x] Fix reference styling 
 - [ ] Fix blog styling 
 - [ ] Fix dark mode issues 
 - [ ] Fix color transition issues switching from light mode to dark mode
