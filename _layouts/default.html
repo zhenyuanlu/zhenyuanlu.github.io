@@ -23,6 +23,10 @@
         });
     </script>
     {% include core/body_scripts.html %}
+      <!-- SINGLE GLOBAL BIBTEX MODAL - Only include once here! -->
+  <div x-data="bibtexModal()" x-cloak>
+    {% include shared/bibtex_modal.html icon_set=site.icon_set %}
+  </div>
 
 </body>
 
