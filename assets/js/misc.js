@@ -42,7 +42,7 @@
             top: targetPosition,
             behavior: 'smooth'
           });
-        }, 0);
+        }, 300);
       }
     }
   });
