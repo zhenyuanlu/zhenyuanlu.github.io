@@ -6,7 +6,6 @@
 </head>
 
 <body x-cloak class="min-h-screen transition-colors duration-200"
-    x-data="{ darkMode: false, showBibtex: false, currentBibtex: '', copied: false }"
     :class="darkMode ? 'bg-gray-950 text-gray-100' : 'bg-gray-50 text-gray-900'">
 
     {% include core/header.html %}
@@ -17,9 +16,16 @@
     {% include shared/concepts.html %}
     {% include core/footer.html %}
 
-    <script>// Load Lucide icons
-        document.addEventListener("DOMContentLoaded", function () {
+    <script>
+        // Load Lucide icons after Alpine is ready
+        document.addEventListener("alpine:initialized", function () {
             lucide.createIcons();
+        });
+        // Fallback for pages without Alpine components
+        document.addEventListener("DOMContentLoaded", function () {
+            if (typeof lucide !== 'undefined') {
+                lucide.createIcons();
+            }
         });
     </script>
     {% include core/body_scripts.html %}
