@@ -1,7 +1,7 @@
 title: "Zhenyuan Lu, PhD | Personal Page"
 description: "I am a deep learning scientist at Seurat and an adjunct faculty member teaching AI/ML at Northeastern University. I received my PhD from Northeastern, with research interests in representation learning and self-supervised learning."
-baseurl: "" # Leave empty if deploying to username.github.io
-url: "https://zhenyuanlu.com" # Your custom domain or https://username.github.io
+baseurl: ""
+url: "https://zhenyuanlu.com"
 
 markdown: kramdown
 kramdown:
@@ -38,20 +38,13 @@ include:
   - _blog
   - section/blog_card.html
 
+
 exclude:
   - node_modules
   - Gemfile
   - Gemfile.lock
   - LICENSE
   - README.md
-  - thumb_gen
-  - "*.js"
-  - "*.json"
-  - "*.scss"
-  - tailwind.config.js
-  - postcss.config.js
-  - package.json
-  - package-lock.json
 
 collections:
   blog:
