@@ -1,43 +1,110 @@
+<!-- _includes/shared/bibtex_modal.html -->
 <div 
-  class="fixed inset-0 flex items-center justify-center p-4 z-50 bg-black/10 backdrop-blur-sm"
   x-show="showBibtex"
   x-cloak
-  @click="showBibtex = false; currentBibtex = ''; copied = false;"
-  style="background:none;"
+  @click="showBibtex = false; copied = false;"
+  @keydown.escape.window="showBibtex = false; copied = false;"
+  class="fixed inset-0 flex items-center justify-center p-4 z-50"
+  style="background: rgba(0,0,0,0.5); backdrop-filter: blur(4px);"
+  x-transition:enter="transition ease-out duration-300"
+  x-transition:enter-start="opacity-0"
+  x-transition:enter-end="opacity-100"
+  x-transition:leave="transition ease-in duration-200"
+  x-transition:leave-start="opacity-100"
+  x-transition:leave-end="opacity-0"
 >
   <div 
-    class="rounded-xl p-6 max-w-2xl w-full shadow-2xl"
-    :class="darkMode ? 'bg-gray-900' : 'bg-white'"
+    class="rounded-xl p-6 max-w-2xl w-full shadow-2xl relative"
+    :class="darkMode ? 'bg-gray-900 border border-gray-800' : 'bg-white border border-gray-200'"
     @click.stop
+    x-transition:enter="transition ease-out duration-300 transform"
+    x-transition:enter-start="opacity-0 scale-95 translate-y-4"
+    x-transition:enter-end="opacity-100 scale-100 translate-y-0"
+    x-transition:leave="transition ease-in duration-200 transform"
+    x-transition:leave-start="opacity-100 scale-100 translate-y-0"
+    x-transition:leave-end="opacity-0 scale-95 translate-y-4"
   >
+    <!-- Header -->
     <div class="flex justify-between items-center mb-4">
-      <h3 class="text-lg font-bold" :class="darkMode ? 'text-white' : 'text-gray-900'">BibTeX Citation</h3>
+      <h3 class="text-lg font-bold flex items-center gap-2" :class="darkMode ? 'text-white' : 'text-gray-900'">
+        <i data-lucide="quote" class="w-5 h-5"></i>
+        BibTeX Citation
+      </h3>
       <button 
-        @click="showBibtex = false; currentBibtex = ''; copied = false;"
-        class="p-1 rounded-lg transition-colors"
-        :class="darkMode ? 'hover:bg-gray-800 text-gray-400' : 'hover:bg-gray-100 text-gray-500'"
+        @click="showBibtex = false; copied = false;"
+        class="p-2 rounded-lg transition-colors"
+        :class="darkMode ? 'hover:bg-gray-800 text-gray-400 hover:text-gray-200' : 'hover:bg-gray-100 text-gray-500 hover:text-gray-700'"
+        aria-label="Close modal"
       >
-        {% if icon_set == 'fontawesome' %}
-          <i class="fa fa-times"></i>
-        {% else %}
-          <i data-lucide="x" class="w-5 h-5"></i>
-        {% endif %}
+        <i data-lucide="x" class="w-5 h-5"></i>
       </button>
     </div>
 
-    <pre 
-      class="p-4 rounded-lg overflow-x-auto mb-6 text-sm"
-      :class="darkMode ? 'bg-black text-gray-300' : 'bg-gray-50 text-gray-700'"
-      x-text="currentBibtex"
-    ></pre>
+    <!-- Content -->
+    <div class="mb-6">
+      <pre 
+        class="p-4 rounded-lg overflow-x-auto text-sm font-mono border max-h-96"
+        :class="darkMode ? 'bg-gray-950 text-gray-300 border-gray-700' : 'bg-gray-50 text-gray-700 border-gray-200'"
+        x-text="currentBibtex"
+        style="white-space: pre-wrap; word-wrap: break-word;"
+      ></pre>
+    </div>
 
-    <button
-      @click="navigator.clipboard.writeText(currentBibtex).then(() => { copied = true; })"
-      class="w-full py-2 rounded-lg transition-colors text-center"
-      :class="darkMode ? 'bg-blue-700 text-white hover:bg-blue-600' : 'bg-blue-600 text-white hover:bg-blue-700'"
-    >
-      <span x-show="!copied">Copy to Clipboard</span>
-      <span x-show="copied">Copied!</span>
-    </button>
+    <!-- Actions -->
+    <div class="flex gap-3">
+      <button
+        @click="
+          if (navigator.clipboard) {
+            navigator.clipboard.writeText(currentBibtex).then(() => { 
+              copied = true; 
+              setTimeout(() => copied = false, 2000);
+            }).catch(() => {
+              // Fallback
+              const textArea = document.createElement('textarea');
+              textArea.value = currentBibtex;
+              textArea.style.position = 'fixed';
+              textArea.style.left = '-999999px';
+              document.body.appendChild(textArea);
+              textArea.focus();
+              textArea.select();
+              document.execCommand('copy');
+              document.body.removeChild(textArea);
+              copied = true;
+              setTimeout(() => copied = false, 2000);
+            });
+          } else {
+            // Fallback for older browsers
+            const textArea = document.createElement('textarea');
+            textArea.value = currentBibtex;
+            textArea.style.position = 'fixed';
+            textArea.style.left = '-999999px';
+            document.body.appendChild(textArea);
+            textArea.focus();
+            textArea.select();
+            document.execCommand('copy');
+            document.body.removeChild(textArea);
+            copied = true;
+            setTimeout(() => copied = false, 2000);
+          }
+        "
+        class="flex-1 py-3 px-4 rounded-lg transition-colors text-center font-medium flex items-center justify-center gap-2"
+        :class="copied 
+          ? (darkMode ? 'bg-green-700 text-white' : 'bg-green-600 text-white')
+          : (darkMode ? 'bg-blue-700 text-white hover:bg-blue-600' : 'bg-blue-600 text-white hover:bg-blue-700')
+        "
+      >
+        <i data-lucide="copy" x-show="!copied" class="w-4 h-4"></i>
+        <i data-lucide="check" x-show="copied" class="w-4 h-4"></i>
+        <span x-text="copied ? 'Copied!' : 'Copy to Clipboard'"></span>
+      </button>
+      
+      <button
+        @click="showBibtex = false; copied = false;"
+        class="px-6 py-3 rounded-lg transition-colors font-medium"
+        :class="darkMode ? 'bg-gray-800 text-gray-300 hover:bg-gray-700' : 'bg-gray-200 text-gray-700 hover:bg-gray-300'"
+      >
+        Close
+      </button>
+    </div>
   </div>
 </div>

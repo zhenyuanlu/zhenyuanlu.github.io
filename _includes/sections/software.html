@@ -1,6 +1,5 @@
 <section id="software" x-cloak class="py-8 px-4"
   :class="darkMode ? 'bg-gray-950 text-gray-100' : 'bg-gray-50 text-gray-900'"
-  x-data="{ showBibtex: false, currentBibtex: '', copied: false }"
 >
   <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
     <div class="mb-8">
@@ -94,7 +93,7 @@
             {% for link in item.links %}
               {% if link.type == "bibtex" %}
               <button
-                @click="showBibtex = true; currentBibtex = `{{ link.href }}`; copied = false;"
+                @click="showBibtex = true; currentBibtex = `{{ link.href | escape }}`; copied = false;"
                 class="inline-flex items-center px-3 py-1 rounded-lg text-sm gap-1.5 transition-colors"
                 :class="darkMode ? 'bg-blue-950 text-blue-300 hover:bg-blue-900' : 'bg-blue-50 text-blue-700 hover:bg-blue-100'"
               >
@@ -128,5 +127,4 @@
       {% endfor %}
     </div>
   </div>
-
 </section>

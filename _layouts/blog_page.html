@@ -2,8 +2,6 @@
 layout: default
 ---
 
-
-
 {% capture stripped_content %}{{ content | strip_html | strip_newlines }}{% endcapture %}
 {% assign word_count = stripped_content | split:' ' | size %}
 {% assign read_time = word_count | divided_by:200 %}
@@ -12,14 +10,8 @@ layout: default
 {% assign icons = site.data.resource_icons %}
 {% assign icon_set = site.icon_set | default: 'lucide' %}
 
-
-
 <!-- Main container -->
-<article x-cloak class="min-h-screen" :class="darkMode ? 'bg-gray-950' : 'bg-white'" x-data="{ 
-           showBibtex: false, 
-           currentBibtex: '', 
-           copied: false 
-         }">
+<article x-cloak class="min-h-screen" :class="darkMode ? 'bg-gray-950' : 'bg-white'">
 
   <!-- Wrapping your title, metadata, and breadcrumbs in a section -->
   <section class="max-w-3xl mx-auto px-4 sm:px-6 py-6 sm:py-8 space-y-6">
@@ -104,7 +96,7 @@ layout: default
 
           {% if rtype == "bibtex" %}
           <!-- Cite Button -->
-          <button @click="showBibtex = true; currentBibtex = `{{ link }}`; copied = false;"
+          <button @click="currentBibtex = ''; showBibtex = true; currentBibtex = `{{ link | escape }}`; copied = false;"
             class="inline-flex items-center px-3 py-1.5 rounded-lg text-sm gap-1.5 transition-colors group"
             :class="darkMode ? 'bg-gray-950 text-gray-300 hover:bg-gray-900' : 'bg-gray-50 text-gray-700 hover:bg-gray-100'">
             {{ resource_icon }} cite
@@ -138,7 +130,6 @@ layout: default
       {{ content }}
     </div>
     
-
     <!-- Appendices -->
     <z-appendix>
       <z-footnote></z-footnote>
@@ -149,5 +140,4 @@ layout: default
       src="{{ page.bibliography | prepend: '/assets/docs/bibliography/' | relative_url }}"></z-bibliography>
 
   </section>
-
 </article>

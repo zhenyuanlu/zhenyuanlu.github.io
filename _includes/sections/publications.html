@@ -3,7 +3,7 @@
 
 <section id="publications" x-cloak class="py-8 px-4"
   :class="darkMode ? 'bg-gray-950 text-gray-100' : 'bg-gray-50 text-gray-900'"
-  x-data="{ showBibtex: false, currentBibtex: '', copied: false }">
+>
   <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
     <div class="mb-8">
       <h2 class="text-3xl font-bold mb-2">Research Publications</h2>
@@ -27,8 +27,6 @@
 
           <!-- Image Container -->
           {% include shared/image_container.html image=paper.image title=paper.title initial_pos='50%' %}
-
-          
 
           <!-- Content Container -->
           <div class="flex-1 p-5 flex flex-col">
@@ -73,7 +71,7 @@
               {% for link in paper.links %}
                 {% if link.type == "bibtex" %}
                 <button
-                  @click="showBibtex = true; currentBibtex = `{{ link.href }}`; copied = false;"
+                  @click="currentBibtex = ''; showBibtex = true; currentBibtex = `{{ link.href | escape }}`; copied = false;"
                   class="inline-flex items-center px-3 py-1.5 rounded-lg text-sm gap-1.5 transition-colors"
                   :class="darkMode ? 'bg-blue-950 text-blue-300 hover:bg-blue-900' : 'bg-blue-50 text-blue-700 hover:bg-blue-100'"
                 >
@@ -119,7 +117,7 @@
                   <div class="w-full h-full bg-cover rounded-t-xl md:rounded-l-xl md:rounded-r-none bg-[position:0%_50%] transition-[background-position] duration-[1500ms] hover:bg-[position:100%_100%]"
                   :class="darkMode ? 'border border-gray-900' : 'border border-gray-100'"
                   style="background-image: url('{{ paper.image | relative_url }}');"
-                  alt="{{ post.title }}">
+                  alt="{{ paper.title }}">
                   </div>
                 {% else %}
                   <div class="w-full h-full bg-gray-100 dark:bg-gray-800 rounded-t-xl md:rounded-l-xl md:rounded-r-none flex items-center justify-center">
@@ -128,7 +126,6 @@
                 {% endif %}
             </div>
             
-  
             <!-- Content Container -->
             <div class="flex-1 p-5 flex flex-col">
               <!-- Title -->
@@ -172,7 +169,7 @@
                 {% for link in paper.links %}
                   {% if link.type == "bibtex" %}
                   <button
-                    @click="showBibtex = true; currentBibtex = `{{ link.href }}`; copied = false;"
+                    @click="currentBibtex = ''; showBibtex = true; currentBibtex = `{{ link.href | escape }}`; copied = false;"
                     class="inline-flex items-center px-3 py-1.5 rounded-lg text-sm gap-1.5 transition-colors"
                     :class="darkMode ? 'bg-blue-950 text-blue-300 hover:bg-blue-900' : 'bg-blue-50 text-blue-700 hover:bg-blue-100'"
                   >
@@ -203,5 +200,4 @@
     {% endif %}
 
   </div>
-
 </section>

@@ -1,0 +1,112 @@
+# .github/workflows/deploy.yml
+name: Deploy Jekyll site to GitHub Pages
+
+on:
+  push:
+    branches: ["main"]
+  pull_request:
+    branches: ["main"]
+  workflow_dispatch:
+
+# Sets permissions of the GITHUB_TOKEN to allow deployment to GitHub Pages
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# Allow only one concurrent deployment, skipping runs queued between the run in-progress and latest queued.
+concurrency:
+  group: "pages"
+  cancel-in-progress: false
+
+jobs:
+  # Build job
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+          cache: 'npm'
+          
+      - name: Setup Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: '3.1'
+          bundler-cache: true
+          
+      - name: Setup Pages
+        id: pages
+        uses: actions/configure-pages@v3
+        
+      - name: Install Node.js dependencies
+        run: npm ci
+          
+      - name: Build CSS with Tailwind
+        run: |
+          echo "Building CSS..."
+          npm run build:css
+          ls -la assets/css/
+          
+      - name: Build JavaScript files
+        run: |
+          echo "Building JavaScript..."
+          npm run build:js
+          ls -la assets/js/
+          
+      - name: Generate thumbnails (optional)
+        run: |
+          echo "Generating thumbnails..."
+          npm run build:thumbnails || echo "Thumbnail generation failed, continuing..."
+          
+      - name: Verify built assets exist
+        run: |
+          echo "=== Verifying CSS files ==="
+          find assets/css -name "*.css" -type f -ls || echo "No CSS files found"
+          echo "=== Verifying JS files ==="
+          find assets/js -name "*.min.js" -type f -ls || echo "No minified JS files found"
+          echo "=== CSS Content Preview ==="
+          head -20 assets/css/styles.css || echo "Cannot preview CSS"
+          echo "=== JS File Sizes ==="
+          du -h assets/js/*.min.js || echo "Cannot check JS sizes"
+          
+      - name: Build with Jekyll
+        run: |
+          echo "Building with Jekyll..."
+          JEKYLL_ENV=production bundle exec jekyll build --baseurl "${{ steps.pages.outputs.base_path }}"
+        env:
+          JEKYLL_ENV: production
+          
+      - name: Verify Jekyll output
+        run: |
+          echo "=== Jekyll build verification ==="
+          ls -la _site/
+          echo "=== Checking assets in _site ==="
+          ls -la _site/assets/ || echo "No assets directory in _site"
+          ls -la _site/assets/css/ || echo "No CSS in _site"
+          ls -la _site/assets/js/ || echo "No JS in _site"
+          echo "=== Checking specific files ==="
+          ls -la _site/assets/css/styles.css || echo "styles.css not found in _site"
+          ls -la _site/assets/js/alpine.min.js || echo "alpine.min.js not found in _site"
+          echo "=== Sample HTML check ==="
+          head -50 _site/index.html || echo "Cannot preview index.html"
+          
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v2
+
+  # Deployment job
+  deploy:
+    if: github.ref == 'refs/heads/main'
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v2
