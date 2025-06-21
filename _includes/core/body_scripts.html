@@ -26,23 +26,3 @@
   crossorigin="anonymous"
   referrerpolicy="no-referrer"
 /> -->
-<!-- Initialize Alpine and Lucide after everything loads -->
-<script>
-    // Wait for DOM to be ready
-    document.addEventListener('DOMContentLoaded', function() {
-        // Initialize Lucide icons
-        if (typeof lucide !== 'undefined') {
-            lucide.createIcons();
-            
-            // Create a mutation observer to handle dynamic content
-            const observer = new MutationObserver(function(mutations) {
-                lucide.createIcons();
-            });
-            
-            observer.observe(document.body, {
-                childList: true,
-                subtree: true
-            });
-        }
-    });
-</script>
