@@ -54,6 +54,7 @@ collections:
 sass:
   style: compressed
 
+
 # KaTeX Configuration
 katex:
   js_path: "https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"
