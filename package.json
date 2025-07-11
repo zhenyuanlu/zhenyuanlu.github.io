@@ -32,7 +32,8 @@
     "watch:zenlu": "npx esbuild assets/js/zenlu.js --bundle --minify --outfile=assets/js/zenlu.min.js --watch",
     "watch:js": "concurrently \"npm run watch:filter-blog\" \"npm run watch:toc\" \"npm run watch:zenlu\" \"npm run watch:misc\"",
     "watch:thumbnails": "node thumb_gen/watch_thumbnails.js",
-    "start": "concurrently \"npm run watch:css\" \"npm run watch:js\" \"bundle exec jekyll serve\" \"npm run watch:thumbnails\""
+    "thumbnails": "npm run build:thumbnails && npm run watch:thumbnails",
+    "start": "concurrently \"npm run watch:css\" \"npm run watch:js\" \"bundle exec jekyll serve\""
   },
   "keywords": [],
   "author": "",
