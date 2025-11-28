@@ -1,8 +1,10 @@
 {% assign current_month = site.time | date: '%m' %}
 {% assign current_day = site.time | date: '%d' %}
 
-  {% if current_month == '12' and current_day >= '15' and current_day <= '26' | if current_month == '11' and current_day >= '25'%}
-    {% include core/header_xmas.html %}
-  {% else %}
-    {% include core/header_normal.html %}
-  {% endif %}
+{% if (current_month == '11' and current_day|int >= 25) or
+      (current_month == '12' and current_day|int <= 26) %}
+    {% include "core/header_xmas.html" %}
+{% else %}
+    {% include "core/header_normal.html" %}
+{% endif %}
+
