@@ -7,7 +7,7 @@
       const day = now.getDate();
 
       // Christmas: November 25 to December 30
-      if (month === 11 && day >= 10 && day <= 30 || (month === 10 && day >= 25)) {
+      if (month === 11 && day <= 30 || (month === 10 && day >= 25)) {
         this.currentTheme = 'christmas';
       } 
       // New Year: Dec 31 to January 5
