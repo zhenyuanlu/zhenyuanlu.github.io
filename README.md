@@ -9,6 +9,8 @@ This theme heavily built on Tailwind CSS styling.
 
 ## TODO:
 
+### 
+
 ### &#128029; Bugs
 - [x] Fix Navbar underline appearing when refreshing the page 
 - [x] Fix reference styling 
@@ -21,7 +23,7 @@ This theme heavily built on Tailwind CSS styling.
 - [x] Add a holiday themes
 - [x] Improve the footer design
 - [x] Add city journey
-- [ ] Improve the navigation bar design 
+- [x] Improve the navigation bar design 
 - [ ] Add overwidth image handling 
 
 
