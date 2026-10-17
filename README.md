@@ -130,7 +130,10 @@ the file you gave: each is made at the lightest setting whose result stays withi
 every 32px square, measured once, by the first build that meets the picture on your machine, and kept in
 `src/lib/image-choices.json`. Commit that file with the picture. The deploy never measures: a picture missing from
 it stops the deploy, naming the picture, and `npm run images` on your machine adds it. A picture is never drawn larger than its own pixels, counted in the screen's device pixels
-(a 437px picture stands 437 device pixels wide: 146 CSS px on a phone at 3x). Large originals are fine. Videos
+(a 437px picture stands 437 device pixels wide: 146 CSS px on a phone at 3x). The big-screen mode's larger places
+are in `sizes` as window sizes, so a window that large takes the mode's file even where the mode stays off (Safari,
+a touch desktop, `?wide=off`): the picture is drawn at its plain size from more pixels, more bytes and the same look
+(a cover at 2560 x 1440: a file for 1440px drawn at 960px). Large originals are fine. Videos
 (`.mp4`, `.webm`) are copied as they are, so keep them small (under a few MB); the build reads their size from the
 file, and stops, naming it, if it cannot.
 

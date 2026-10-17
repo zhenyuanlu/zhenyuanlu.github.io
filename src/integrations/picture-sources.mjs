@@ -101,11 +101,13 @@ export function finishPictures(outDir, base = '/') {
           n.pruned += A.length - A2.length;
           const own = new Set(B.map((x) => `${x.u} ${x.d || '1x'}`));
           if (A2.every((x) => own.has(`${x.u} ${x.d || '1x'}`))) { out = out.replace(st[0], ''); n.gone++; gone = true; }
-          else { set(sa, 'srcset', setOf(A2)); out = out.replace(st[0], tagOf('source', sa)); }
+          /* (the tags put back by a function, never as a replacement string: an alt or a srcset with $& or $1 in it
+             would be read as a pattern and garble the tag; the review, 2026-10-17) */
+          else { set(sa, 'srcset', setOf(A2)); const t = tagOf('source', sa); out = out.replace(st[0], () => t); }
         }
       }
       const B2 = prune(B, get(ia, 'sizes'));
-      if (B2.length < B.length && get(ia, 'srcset')) { n.pruned += B.length - B2.length; set(ia, 'srcset', setOf(B2)); out = out.replace(it[0], tagOf('img', ia)); }
+      if (B2.length < B.length && get(ia, 'srcset')) { n.pruned += B.length - B2.length; set(ia, 'srcset', setOf(B2)); const t = tagOf('img', ia); out = out.replace(it[0], () => t); }
       /* (no <source> left: the <img> alone, as a picture of one form is; the sheet styles both, styles/article.css) */
       if (gone) { const im = /<img\b[^>]*>/i.exec(out); if (im) return im[0]; }
       return out;

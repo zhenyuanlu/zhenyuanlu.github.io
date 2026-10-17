@@ -22,7 +22,12 @@ const SLOT = { text: 632, wide: 714, full: 960, see: 304 };
    1600k wide and 860k tall, the frame is 960k, k one of 1.125, 1.25, 1.375, 1.5, the largest that fits; a page is
    zoomed in it, and Chrome takes a srcset's file by sizes in the window's px, not the zoomed page's, so sizes names
    the slots the mode draws, in the window's px (the coordinator's: the frame's 960k for a cover or a figure on the
-   frame, nine columns, see's columns; the text's measure stays 632). Keep these in step with the mode's own steps */
+   frame, nine columns, see's columns; the text's measure stays 632). Keep these in step with the mode's own steps.
+   A media query knows only the window's size, so these slots hold wherever a window is that large, the mode on or
+   not: where it stays off (Safari, and any browser whose zoom early.js's probe does not trust; a touch desktop;
+   ?wide=off) a picture is drawn at the plain page's slot from the mode's larger file (a cover at 2560 x 1440: a file
+   for 1440px drawn at 960px). More bytes there, the same look, never a picture short of its pixels (the review,
+   2026-10-17; README.md, "Add a picture") */
 export const WIDE = [
   { k: 1.5, minW: 2400, minH: 1290, wide: 1073, full: 1440, see: 462 },
   { k: 1.375, minW: 2200, minH: 1182.5, wide: 983, full: 1320, see: 422 },
@@ -150,10 +155,21 @@ export function widthsFor(own, place = 'text', share = 1) {
   const needs = [...new Set(SCREENS.map((s) => Math.ceil(slotAt(sizes, s.w, s.h) * s.dpr - 1e-9) + OVER).filter((n) => n < own))].sort((a, b) => a - b);
   const set = new Set([own]);
   for (let i = 0; i < needs.length;) { let j = i; while (j + 1 < needs.length && needs[j + 1] <= needs[i] * (1 + SHARE)) j++; set.add(needs[j]); i = j + 1; }
-  for (let round = 0; round < 64; round++) {
-    const short = shortOf([...set], sizes, own);
-    if (!short.length) break;
-    for (const x of short) set.add(Math.min(own, Math.ceil(x.need - 1e-9) + OVER));
-  }
+  /* (a step: what it adds for each screen still short, round after round, until none is or a round adds nothing) */
+  const fix = (width) => {
+    for (let round = 0; round < 64; round++) {
+      const short = shortOf([...set], sizes, own);
+      if (!short.length) return true;
+      const before = set.size;
+      for (const x of short) set.add(width(x));
+      if (set.size === before) return false;
+    }
+    return !shortOf([...set], sizes, own).length;
+  };
+  /* first a file a device pixel over each need still short; then, where that leaves one short (Chrome's rule passing
+     that file over for a narrower one: the geometric mean of the two densities past the screen's), the widest file
+     the rule would take there instead, the need squared over the narrower file's width, and at least the need (the
+     review, 2026-10-17). A picture the first step settles, every picture made before it, keeps its widths */
+  if (!fix((x) => Math.min(own, Math.ceil(x.need - 1e-9) + OVER))) fix((x) => Math.min(own, Math.max(Math.ceil(x.need - 1e-9), Math.floor((x.need * x.need) / x.pick))));
   return [...set].sort((a, b) => a - b);
 }

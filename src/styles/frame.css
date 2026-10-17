@@ -3,7 +3,7 @@
    word in pixels is the loudest thing; the header only whispers. Nothing underlines in hand: a link brightens from
    grey to ink, a row shows the point beside it (a link in running text keeps its line at rest: article.css). No box
    marks a chosen or focused thing: the keyboard's focus is a line, a tone or the point. Nothing moves at rest but the
-   heart in the footer. Type 13 / 15 / 18; timings the motion tokens (tokens.css). (The big-screen mode, the draft's
+   heart in the footer (and, on the home, the walker's blink). Type 13 / 15 / 18; timings the motion tokens (tokens.css). (The big-screen mode, the draft's
    wide.css, is styles/wide.css: there the root is zoomed by --z, and this sheet's lengths that must stay the
    window's (the frame's least height, its place on the device grid, a cover's corner) are written again for it,
    under html[data-wide], so the plain page's sheet stays as it is; --vw / --vh are a hundredth of the window in the

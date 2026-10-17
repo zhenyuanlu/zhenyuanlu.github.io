@@ -16,11 +16,11 @@ permissions:
   contents: read
 
 # One run of main at a time, its build and its deploy together, so the last push is the last deployed; a newer push
-# waiting replaces an older one waiting, and a run in progress is never cancelled. Each pull request builds in a group
-# of its own and never waits on a deployment. (The group is the whole run's: a job of the run in the same group would
-# deadlock with it.)
+# waiting replaces an older one waiting, and a run in progress is never cancelled. Each pull request, and a manual run
+# on any other branch, builds in a group of its own and never waits on, or replaces, a deployment. (The group is the
+# whole run's: a job of the run in the same group would deadlock with it.)
 concurrency:
-  group: ${{ github.event_name == 'pull_request' && format('pr-{0}', github.event.pull_request.number) || 'pages' }}
+  group: ${{ github.event_name == 'pull_request' && format('pr-{0}', github.event.pull_request.number) || (github.ref == 'refs/heads/main' && 'pages' || format('ref-{0}', github.ref)) }}
   cancel-in-progress: false
 
 jobs:
@@ -41,11 +41,12 @@ jobs:
       - name: Install the packages the lockfile pins
         run: npm ci
 
-      # the picture files made before, so a deploy makes only new ones (every picture of the site is some 7-10 min of
-      # AVIF at effort 6 on a 4-core runner). Astro names each file by its source and its transform; what it does not
-      # name is in the key: the step each file is made at (image-choices.json), the encoders (src/lib/picture*.mjs,
-      # likeness*.mjs, image-service.mjs) and sharp's version (package-lock.json). An exact key, no restore-keys: a
-      # changed choice or encoder starts from nothing, never from files made the old way. After npm ci, which empties
+      # the picture files made before, so a deploy that changes no picture makes none (every picture of the site is
+      # some 7-10 min of AVIF at effort 6 on a 4-core runner). Astro names each file by its source and its transform;
+      # what it does not name is in the key: the step each file is made at (image-choices.json), the encoders
+      # (src/lib/picture*.mjs, likeness*.mjs, image-service.mjs) and sharp's version (package-lock.json). An exact key,
+      # no restore-keys: any change to those (a new picture or width among them) starts from nothing, all of it again,
+      # never from files made the old way. After npm ci, which empties
       # node_modules; a run restores only its own branch's caches or main's, so a pull request's never reaches main
       - name: Restore the picture files made before
         uses: actions/cache@55cc8345863c7cc4c66a329aec7e433d2d1c52a9 # v6.1.0

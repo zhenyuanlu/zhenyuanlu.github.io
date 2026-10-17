@@ -32,7 +32,7 @@ function setup() {
     const w = +el.getAttribute('data-w') || 600, h = +el.getAttribute('data-h') || 900, img = el.querySelector('img'), title = (el.querySelector('.s-t') || {}).textContent || '';
     return {
       el, n, name: el.id, title, kind: el.getAttribute('data-kind') || '', w, h, r: w / h, f: Math.min(1, 0.6 + 0.4 * w / 600),
-      avg: el.getAttribute('data-avg') || '#8a8580', full: (img && /\.avif(\?|$)/.test(img.currentSrc) && el.getAttribute('data-full-avif')) || el.getAttribute('data-full') || (img && img.currentSrc) || '', href: el.getAttribute('href'),
+      avg: el.getAttribute('data-avg') || '#8a8580', fullOwn: el.getAttribute('data-full') || '', fullAvif: el.getAttribute('data-full-avif') || '', href: el.getAttribute('href'),
       /* (the viewer's picture is named by the title, as the draft's was, or by the YAML's own alt: the wall's picture
          has none, its link and caption saying the title already) */
       alt: el.getAttribute('data-alt') || title, cap: el.querySelector('.s-cap').innerHTML, ph: el.querySelector('.s-ph'), img, on: false,
@@ -238,10 +238,22 @@ function setup() {
   /* as large as fits, never past its own pixels: its width and height over the screen's ratio, in CSS px */
   function fit(P) { return fitPhoto(P.w, P.h); }
   function setBox(el, r) { el.style.left = r.x + 'px'; el.style.top = r.y + 'px'; el.style.width = r.w + 'px'; el.style.height = r.h + 'px'; }
+  /* the viewer's picture in the form the browser took for the wall: AVIF where its <picture> gave it the AVIF (the
+     wall's own picture, data-full-avif), else the other (data-full). Decided as the viewer first opens, from the
+     photograph clicked (in view, so its picture is in), else from any wall picture the browser has taken by then; at
+     setup a wall picture not yet loaded said nothing, and the viewer took the heavier form (the review, 2026-10-17) */
+  let avif = null;
+  function fullOf(P) {
+    if (avif == null) {
+      const q = [P].concat(all).find((x) => x.img && x.img.currentSrc);
+      if (q) avif = /\.avif(\?|$)/.test(q.img.currentSrc);
+    }
+    return (avif && P.fullAvif) || P.fullOwn || (P.img && P.img.currentSrc) || '';
+  }
   function makeBig(P) {
     const el = document.createElement('img');
     el.className = 's-big';
-    el.src = P.full; el.alt = P.alt; el.decoding = 'async';
+    el.src = fullOf(P); el.alt = P.alt; el.decoding = 'async';
     el.style.setProperty('--avg', P.avg);
     const r = fit(P);
     setBox(el, r);
