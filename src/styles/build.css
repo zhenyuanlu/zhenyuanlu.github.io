@@ -1,0 +1,171 @@
+/* /build/ (the draft v2ac's build.css, with draft v2t's taste round of 2026-10-16; pages/build.astro says what
+   stands where). Desktop, on the column's twelve columns:
+     featured   its frame in columns 1-4 (the figure's own shape, --pf-ar from the data), featured research in 5-9,
+                featured software in 10-12, each face under its own small grey label;
+     software   the label, then the shelf: four cards, three columns each, a frame (the shared .pf, 222 x 151: HayBeat's
+                shape, so that picture fills it and the wider ones travel) with its words under it;
+     talks      the label, then the rows: a blog row each (blog.css), the picture in columns 1-3 and the words beside
+                it from column 4;
+     index      the label, the years as one bar across the column (a segment a year on the surface, the works as 2 x 2
+                pixel marks in ink, the year under it), then the borderless table: year, title, kind, where, its rows
+                a year's group at a time on the surface or the paper, no rule anywhere. The page ends with it.
+   Phone: one column; each frame at the left of its words (a third of the column, 104-168px), featured's two faces one
+   under the other, a talk as the blog's rows stand there; the bar stood on end, a row a year; the table as stacked
+   rows, the title over one grey line. Type 13 / 16 / 18 (a phone 13 / 16 / 17). A link's word is ink at rest and the
+   accent in hand, never underlined in hand; the keyboard's focus is the frame's line under it (frame.css), or the
+   point before a row's title; no box. Nothing is red.
+   (blog.css comes after this sheet in the page, as write.css did in the draft, so what changes its rules here says
+   #inner.) */
+.b-sec { position: relative; scroll-margin-top: 88px; }
+#inner .b-sec :is(button, a, .pf) { scroll-margin-top: 80px; }   /* focus lands clear of the sticky header (.pf: a card with no link, whose travelling picture is the keyboard's stop: frames.js) */
+.b-fr { display: block; min-width: 0; }
+.b-tx { min-width: 0; }
+/* the frames' corners (frame.css: --pf-rad, --pf-rr): round on the side away from the words. The featured figure
+   stands at the left of its words: its two left corners. A shelf's picture stands above its words: its two top
+   corners (on a phone it stands at their left, as the featured one: below) */
+.b-pf { --pf-rad: var(--pf-rr) 0 0 var(--pf-rr); }
+.b-shelf .b-pf { --pf-rad: var(--pf-rr) var(--pf-rr) 0 0; }
+
+/* ---------- featured ---------- */
+#inner .b-feat { display: block; }
+.b-fe { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: var(--gut); align-items: start; scroll-margin-top: 88px; }
+.b-fe + .b-fe { margin-top: 56px; }
+.b-fe-p { grid-column: 1 / 5; min-width: 0; }
+.b-fe-r { grid-column: 5 / 10; min-width: 0; }
+.b-fe-s { grid-column: 10 / 13; min-width: 0; }
+/* the two faces stand as tall as each other, their links on one line at the foot */
+.b-fe-r, .b-fe-s { align-self: stretch; display: flex; flex-direction: column; }
+.b-fe .b-lk { margin-top: auto; padding-top: 10px; }
+.b-fe .lab { margin-bottom: 8px; }
+.b-ft { font-size: 18px; line-height: 27px; font-weight: 400; text-wrap: pretty; }   /* (v2t, taste item 1: the scale's 18, was 19 / 28) */
+.b-fn { display: flex; flex-wrap: wrap; align-items: baseline; font-weight: 500; }
+.b-fe .b-au:first-of-type, .b-fe .b-ds { margin-top: 8px; }
+
+/* ---------- software: the shelf ---------- */
+#inner .b-sw { display: block; }
+:is(.b-sw, .b-tk) > .lab { margin-bottom: 14px; }
+.b-shelf { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); column-gap: var(--gut); row-gap: 48px; align-items: start; --pf-ar: 222 / 151; }
+.b-card { min-width: 0; scroll-margin-top: 88px; }
+.b-card .b-tx { margin-top: 14px; }
+.b-nm { display: flex; flex-wrap: wrap; align-items: baseline; font-size: 16px; line-height: 24px; font-weight: 500; }
+.b-nw { white-space: nowrap; }   /* "co-occurrence" never breaks at its hyphen */
+.b-yr { margin-left: 10px; font-size: 13px; font-weight: 400; color: var(--grey); white-space: nowrap; }
+.b-ds { margin-top: 4px; font-size: 13px; line-height: 20px; text-wrap: pretty; }
+.b-tl, .b-au { margin-top: 2px; font-size: 13px; line-height: 20px; color: var(--grey); text-wrap: pretty; }
+/* the tools: a list set as a line of words (it wraps as the text round it does: text-wrap, above). Each tool keeps
+   10px after it (the list reaches 10px further right, so the last on a line needs no room for it), and the dot
+   between two neighbours hangs in that gap before the second; the list cuts off what hangs past its left edge,
+   which is the dot of a tool that starts a line. So no line ends with a dot, and none begins with one */
+.b-tl { margin-right: -10px; overflow: hidden; }
+.b-tl > li { display: inline-block; position: relative; white-space: nowrap; margin-right: 10px; }
+.b-tl > li::before { content: "·"; position: absolute; right: 100%; top: 0; width: 10px; text-align: center; }
+.b-me { color: var(--ink); }
+
+/* ---------- the links: a small pixel sign, then the word: what a visitor does here (paper, data, code, blog, arXiv, a
+   talk's notes), ink at rest and the accent in hand (the article's links' own); same size, same signs, no line under
+   them ---------- */
+.b-lk { display: flex; flex-wrap: wrap; column-gap: 16px; margin-top: 8px; font-size: 13px; line-height: 20px; }
+#inner .b-lk .k { display: inline-flex; align-items: center; gap: 6px; margin-left: 0; white-space: nowrap; }
+#inner .b-sec .b-lk .k { color: var(--ink); }
+#inner .b-sec .b-lk .k:is(:hover, :focus-visible) { color: var(--accent); }
+/* (a sign's cell is a whole number of device pixels, --b-px, and scripts/build/index.js starts each sign on one; it
+   takes its word's colour) */
+.b-ic { flex: none; width: calc(9 * var(--b-px, 1px)); height: calc(9 * var(--b-px, 1px)); fill: currentColor; shape-rendering: crispEdges; transition: fill var(--t-hover) var(--ease-out); }
+
+/* ---------- in hand, the site's point before the title, as a blog row has it: a shelf card, a talk, and each face of
+   the featured work (its figure goes with its research). By a pointer that hovers (on the card's picture, words and
+   links), or the keyboard's focus in it; a touch screen leaves :hover behind after a tap, so there only the focus
+   shows it ---------- */
+.b-ft { --pt-y: 14px; }
+.b-nm { --pt-y: 12px; }
+@media (hover: hover) {
+  #inner :is(.b-card, .b-talk, .b-fe-r, .b-fe-s):hover .hpoint::before,
+  #inner .b-fe:has(.b-fe-p:hover) .b-fe-r .hpoint::before { opacity: 1; }
+}
+#inner :is(.b-card, .b-talk, .b-fe-r, .b-fe-s):has(:focus-visible) .hpoint::before,
+#inner .b-fe:has(.b-fe-p :focus-visible) .b-fe-r .hpoint::before { opacity: 1; }
+@media (hover: none) { #inner :is(.b-ft, .b-nm).hpoint:hover::before { opacity: 0; } }
+
+/* ---------- talks: under their label as the shelf is under its own, each talk a blog row (blog.css: .w-it and its
+   parts; the margin is the pictures' now), its title and its picture the links to its post as a blog row's are.
+   What is a talk's own is its last line, the year and its notes: one 20px line, 18px apart (a phone: on the
+   picture's bottom edge, where a blog row's date stands, and as one line). The title link does not reach over the
+   row's words as a blog row's does (blog.css .w-a::after): a box out of the flow inside the title's line turns its
+   pretty wrapping off, and the title would break as the draft's does not ("Introduction to Self-supervised /
+   Learning"); the row is in hand as the draft's is, by a pointer on its picture or its words ---------- */
+#inner .b-tk { display: block; }
+.b-talk { scroll-margin-top: 88px; }
+#inner .b-talk .w-a::after { content: none; }
+#inner .b-talk .w-m { align-items: center; column-gap: 18px; }
+#inner .b-talk .w-dt { line-height: 20px; }
+#inner .b-talk .b-lk { display: inline-flex; margin-top: 0; }
+/* (a row landed on from a talk's way back (scripts/build/index.js land) has the focus, as the draft's router gave it:
+   its mark is the point before its title, never a box. Followed by a pointer, the row shows no mark until a key is
+   pressed (.b-land), as the draft shows none) */
+#inner .b-talk:focus-visible:not(.b-land) .hpoint::before { opacity: 1; }
+
+/* ---------- the index (taste items 38 and 40, as draft v2t has them): the years as one bar in true time, then a
+   borderless table whose rows alternate by a tone step, the year printed once for its group. Written by the server
+   (pages/build.astro); the marks are its pixel drawings, drawn again on whole device pixels by the frame's script.
+   Its links are the page's own words: ink at rest, the accent in hand ---------- */
+#inner .b-ix { display: block; }
+.b-ix > .lab { margin-bottom: 14px; }
+.b-bar { display: grid; grid-template-columns: repeat(var(--n), minmax(0, 1fr)); column-gap: 6px; }
+.b-yb { display: flex; flex-direction: column; min-width: 0; }
+.b-seg { display: flex; align-items: center; height: 24px; padding: 0 6px; background: var(--surface); }
+.b-yl { margin-top: 6px; font-size: 13px; line-height: 20px; color: var(--grey); }
+.b-tb { width: 100%; margin-top: 32px; border-collapse: collapse; font-size: 16px; line-height: 24px; }
+.b-tb td { padding: 8px 12px; vertical-align: baseline; }
+.b-tb tr.b-o td { background: var(--surface); }
+.b-tb .b-y { width: 56px; font-size: 13px; color: var(--grey); }
+.b-tb .b-kd, .b-tb .b-w { font-size: 13px; color: var(--grey); }
+.b-tb .b-kd { width: 84px; }
+#inner .b-tb .k { color: var(--ink); }
+#inner .b-tb .k:is(:hover, :focus-visible) { color: var(--accent); }
+@media (forced-colors: active) { .b-seg { border: 1px solid CanvasText; } }
+@media (max-width: 999px) {
+  /* the bar stood on end: a row a year, its label first, then its segment */
+  .b-bar { grid-template-columns: minmax(0, 1fr); row-gap: 4px; }
+  .b-yb { flex-direction: row; align-items: center; gap: 12px; }
+  .b-yl { order: -1; flex: none; width: 40px; margin-top: 0; }
+  .b-seg { flex: 1; }
+  /* the table as stacked rows: the title, then the year (its group's first row), the kind and where on one grey line */
+  .b-tb, .b-tb tbody { display: block; }
+  .b-tb tr { display: flex; flex-wrap: wrap; align-items: baseline; padding: 8px 10px; }
+  .b-tb tr.b-o { background: var(--surface); }
+  .b-tb tr.b-o td { background: none; }
+  .b-tb td, .b-tb .b-y, .b-tb .b-kd { display: inline; width: auto; padding: 0; }
+  .b-tb .b-t { order: -1; flex-basis: 100%; margin-bottom: 2px; }
+  .b-tb tr.b-g .b-y::after, .b-tb .b-kd::after { content: "\00a0\00b7\00a0"; }
+}
+
+@media (max-width: 999px) {
+  .b-sec, .b-talk, .b-card, .b-fe { scroll-margin-top: 56px; }
+  #inner .b-sec :is(button, a, .pf) { scroll-margin-top: 60px; }
+  .b-fe, .b-card { display: grid; grid-template-columns: clamp(104px, 34%, 168px) minmax(0, 1fr); column-gap: 14px; align-items: start; }
+  .b-fe { row-gap: 22px; }
+  .b-fe-p { grid-column: 1; grid-row: 1; --pf-ar: 222 / 151 !important; }   /* one frame for every row of the column */
+  .b-fe-r { grid-column: 2; grid-row: 1; }
+  .b-fe-s { grid-column: 2; grid-row: 2; }
+  .b-fe .b-lk { margin-top: 8px; padding-top: 0; }
+  .b-fe .lab { margin-bottom: 4px; }
+  .b-ft { font-size: 17px; line-height: 25px; }   /* (v2t, taste item 1: the scale's 17, was 16 / 24) */
+  :is(.b-sw, .b-tk) > .lab { margin-bottom: 10px; }
+  .b-shelf { display: block; }
+  .b-shelf .b-pf { --pf-rad: var(--pf-rr) 0 0 var(--pf-rr); }   /* at the left of its words here */
+  #inner .b-card + .b-card { margin-top: 28px; }
+  .b-card .b-tx { margin-top: 0; }
+  .b-lk { column-gap: 18px; }
+  .b-lk .k { min-height: 44px; margin-top: -12px; margin-bottom: -12px; }
+  /* (the point in the 14px between a frame and its words) */
+  #inner :is(.b-fe, .b-card) .hpoint::before { left: -10px; }
+  /* a talk's last line: one line on its picture's bottom edge (its foot 5px down, as a blog row's date) */
+  #inner .b-talk .w-tx > .w-m { display: flex; grid-column: 2; grid-row: 3; align-self: end; margin: 0 0 -5px; padding: 0; }
+  #inner .b-talk .w-dt { margin: 0; }
+  #inner .b-talk.w-bare .w-tx > .w-m { margin: 8px 0 0; }
+}
+/* (a window under 1000px in a mouse's hand: the row's parts stand apart in its grid there, and the row has no box of
+   its own to the pointer, so crossing a gap between them let it go: here the row itself takes the pointer) */
+@media (max-width: 999px) and (hover: hover) {
+  #inner .b-talk { pointer-events: auto; }
+}

@@ -1,0 +1,62 @@
+---
+// /blog/: the blog (the draft v2ac's list). The title in the pixel lettering; one quiet line of topics and a
+// search (with script: the list follows them, and the address keeps them, ?topic= and ?q=); then the posts, newest
+// first. A row: the cover in the shared frame (rounded on the side away from its words), the words centred beside
+// it (title, first sentence, date and topics); in hand the point shows by the title and a wide cover travels; the
+// wrist-motion cover plays its short film. Talks are not here: build lists them (phase 2), their pages are /blog/<slug>/.
+import Base from '../../layouts/Base.astro';
+import TitleBlock from '../../components/TitleBlock.astro';
+import Frame from '../../components/Frame.astro';
+import { BUILT, firstLine, isoDate, listed, longDate, person, posts, topicsOf, TOPICS, url } from '../../lib/site';
+import { postFileUrl } from '../../lib/media';
+import '../../styles/blog.css';
+
+const all = listed(await posts());
+const used = [...new Set(all.flatMap((p) => topicsOf(p)))].sort((a, b) => (TOPICS.indexOf(a) < 0 ? 99 : TOPICS.indexOf(a)) - (TOPICS.indexOf(b) < 0 ? 99 : TOPICS.indexOf(b)));
+const facets = ['all', ...used];
+const DAY = 864e5;
+const fresh = (d: Date) => { const age = (+BUILT - +d) / DAY; return age >= 0 && age <= 30; };
+const nobreak = (s: string) => s.split(/(\S+-\S+)/g);
+const GLASS = 'M2 0h3v1h-3zM1 1h1v1h-1zM5 1h1v1h-1zM0 2h1v3h-1zM6 2h1v3h-1zM1 5h1v1h-1zM5 5h1v1h-1zM2 6h3v1h-3zM6 6h1v1h-1zM7 7h1v1h-1zM8 8h1v1h-1z';
+// the rows whose covers stand in the first view (the fourth's top at 870px at 1440 x 900, at 950px at 768 x 1024)
+// ask for their pictures at once; a later row's waits until its frame comes near (Frame.astro's eager)
+const FIRST = 4;
+// the line a search result shows: what the posts are about, the newest post's topics first, so it follows the blog
+// as posts come (his "blog 描述也是用最新的", 2026-10-17); as many as fit in 160 letters
+const me = await person();
+const SAY: Record<string, string> = { vision: 'computer vision', language: 'NLP', signals: 'signal processing', health: 'health', 'self-supervised': 'self-supervised learning', transformers: 'transformers', augmentation: 'data augmentation' };
+const said = [...new Set(all.flatMap((p) => topicsOf(p)))].map((t) => SAY[t] || t);
+const sayAll = (a: string[]) => `Posts by ${me.name}, ${me.suffix}, on ${a.length > 1 ? `${a.slice(0, -1).join(', ')} and ${a[a.length - 1]}` : a.join('')}.`;
+let description = sayAll(said);
+for (let n = said.length - 1; description.length > 160 && n > 0; n--) description = sayAll(said.slice(0, n));
+---
+<Base title="blog" description={description} path="/blog/" page="blog" ring="blog">
+  <TitleBlock word="blog" />
+  <div class="w-tools">
+    <div class="w-fl" role="group" aria-label="topics">{facets.map((f) => <button type="button" class="w-tg" data-f={f} aria-pressed={f === 'all' ? 'true' : 'false'}>{f}</button>)}</div>
+    <div class="w-sr"><label class="w-sl"><svg class="w-gl" viewBox="0 0 9 9" aria-hidden="true" focusable="false"><path d={GLASS}></path></svg><span class="sr">search the blog</span><input class="w-find" type="search" placeholder="search" autocomplete="off" spellcheck="false" enterkeyhint="search"></label><button class="w-x" type="button" aria-label="clear the search" hidden>×</button></div>
+  </div>
+  <p class="sr w-live" role="status"></p>
+  <div class="w-time">
+    <ol class="w-list" data-pf-row="222">
+      {all.map((p, i) => {
+        const d = p.data, ts = topicsOf(p), href = url(`/blog/${p.id}/`);
+        const pic = d.listCover || d.cover;
+        const film = d.listFilm ? postFileUrl(p.id, d.listFilm) : undefined;
+        const hay = [d.title, d.description, ts.join(' '), d.date.getUTCFullYear()].join(' ');
+        return (
+          <li class={`w-it pf-host${pic ? '' : ' w-bare'}`} data-slug={p.id} data-topics={ts.join(' ')} data-hay={hay}>
+            {pic && <a class="w-cv" href={href} tabindex="-1" aria-hidden="true"><Frame image={pic} cls="w-pf" pos={film ? '50% 50%' : d.listPos} to={film ? '50% 50%' : undefined} film={film} eager={i < FIRST} /></a>}
+            <div class="w-tx">
+              <h2 class="w-ti"><a class="w-a" href={href} aria-describedby={`w-ds-${p.id}`}><span class="w-tt hpoint">{nobreak(d.title).map((s, i) => (i % 2 ? <span class="w-nw">{s}</span> : s))}</span></a></h2>
+              <p class="w-ds" id={`w-ds-${p.id}`}>{firstLine(d.description)}</p>
+              <div class="w-m"><time class="w-dt num" datetime={isoDate(d.date)}>{longDate(d.date)}{fresh(d.date) && ' · new'}</time>{ts.length > 0 && <span class="w-tags" role="group" aria-label="topics">{ts.map((x) => <span class="w-tg" data-t={x}>{x}</span>)}</span>}</div>
+            </div>
+          </li>
+        );
+      })}
+    </ol>
+    <p class="w-none" role="status"></p>
+  </div>
+  <Fragment slot="scripts"><script>import '../../scripts/blog-list.js';</script></Fragment>
+</Base>

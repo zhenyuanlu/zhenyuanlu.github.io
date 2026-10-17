@@ -1,0 +1,143 @@
+# build · research: the papers, patents and abstracts, newest first (the page keeps this order).
+# One entry is one publication. To add one, copy an entry to its place by year and change its fields:
+#   title, year, venue, kind (paper, patent or abstract), authors (as published), links (each a type: paper, arxiv,
+#   github or data, and its href; patent or pdf only on a hidden entry: the page has no word for them), hidden: true
+#   to keep it off the page (and out of its source).
+# Optional: tier: featured pins it on top, beside the software it names in software: (a title in software.yaml);
+#   tier: more marks a paper kept off the page for now. img: a picture in img/ beside this file, with its alt text.
+# 中文提示：一条就是一篇论文、专利或摘要，按年份从新到旧；复制一条再改字段，hidden: true 就不显示。
+
+# The five papers with tier: more are off the site for now, kept so they can come back (the owner, 2026-10-11).
+- title: Uncertainty quantification in neural-network based pain intensity estimation
+  year: 2024
+  venue: PLOS ONE
+  kind: paper
+  tier: more
+  authors: [ Burcu Ozek, Zhenyuan Lu, Srinivasan Radhakrishnan, Sagar Kamarthi ]
+  links:
+    - { type: paper, href: https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0307970 }
+  hidden: true
+  img: ./img/uncertainty.webp
+  alt: Interval coverage (PICP) against interval width (MPIW) while tuning the softening factor and the Lagrangian constant
+
+# "Co-Occurence": the published title's own spelling (Sensors 24(4), 1202, 2024), kept so a citation matches it
+- title: Navigating the Evolution of Digital Twins Research through Keyword Co-Occurence Network Analysis
+  year: 2024
+  venue: Sensors
+  kind: paper
+  tier: more
+  authors: [ Wei Li, Haozhou Zhou, Zhenyuan Lu, Sagar Kamarthi ]
+  links:
+    - { type: paper, href: https://www.mdpi.com/1424-8220/24/4/1202 }
+  hidden: true
+
+- title: Transformer encoder with multiscale deep learning for pain classification using physiological signals
+  year: 2023
+  venue: Frontiers in Physiology
+  kind: paper
+  tier: featured
+  software: PainAttnNet
+  authors: [ Zhenyuan Lu, Burcu Ozek, Sagar Kamarthi ]
+  links:
+    - { type: paper, href: https://www.frontiersin.org/articles/10.3389/fphys.2023.1294577/full }
+    - { type: github, href: https://github.com/zhenyuanlu/PainAttnNet }
+  hidden: false
+  img: ./img/transformer.webp
+  alt: "The paper’s transformer encoder: multi-head attention, normalization and MLP blocks, then the softmax output"
+
+- title: Analysis of Pain Research Literature through Keyword Co-occurrence Networks
+  year: 2023
+  venue: PLOS Digital Health
+  kind: paper
+  tier: more
+  authors: [ Burcu Ozek, Zhenyuan Lu, Fatemeh Pouromran, Srinivasan Radhakrishnan, Sagar Kamarthi ]
+  links:
+    - { type: paper, href: https://journals.plos.org/digitalhealth/article?id=10.1371/journal.pdig.0000331 }
+  hidden: true
+  img: ./img/pain-kcn.jpg
+  alt: Box plots of keyword degree, strength and weight across four five-year windows, 2002–2021
+
+- title: "Trends in adopting industry 4.0 for asset life cycle management for sustainability: a keyword co-occurrence network review and analysis"
+  year: 2022
+  venue: Sustainability
+  kind: paper
+  tier: more
+  authors: [ Sachini Weerasekara, Zhenyuan Lu, Burcu Ozek, Jacqueline Isaacs, Sagar Kamarthi ]
+  links:
+    - { type: paper, href: https://www.mdpi.com/2071-1050/14/19/12233/htm }
+  hidden: true
+  img: ./img/sustainability.jpg
+  alt: "Industry 4.0 keywords flowing into the technologies they co-occur with: autonomous robots, IoT, big data, cloud computing, system integration"
+
+- title: Keyword Co-occurrence Network For Pain Research Literature Review
+  year: 2022
+  venue: INFORMS
+  kind: paper
+  tier: more
+  authors: [ Burcu Ozek, Zhenyuan Lu, Fatemeh Pouromran, Sagar Kamarthi ]
+  links:
+    - { type: paper, href: https://www.abstractsonline.com/pp8/?__hstc=194041586.c723525928a81bf032515185c4643e37.1650997648314.1663680015875.1663682721064.48&__hssc=194041586.5.1663682721064&__hsfp=3500831946&hsCtaTracking=025ee829-9db5-4f89-95dc-637573ec15db%7Cea016d7d-8b17-4156-8c3b-c1c801f2ba1f#!/10693/presentation/7640 }
+  hidden: true
+  img: ./img/informs-kcn.webp
+  alt: Edge weights of the pain research keyword network in four five-year windows, 2002–2021
+
+# The 2015-2018 patents and abstracts stay hidden, as the old site hides them (the owner, 2026-10-05).
+- title: Point-of-care Diagnostic Cartridge Having A Programmable Fluidic Wicking Network
+  year: 2018
+  venue: Patent US20180214865A1
+  kind: patent
+  authors: [ Zhenyuan Lu, Jacob Carrano, Roland Schneider, John Carrano ]
+  links:
+    - { type: patent, href: https://patentcenter.uspto.gov/applications/15885478 }
+    - { type: pdf, href: https://patentimages.storage.googleapis.com/9d/ec/a1/07767fef233412/US20180214865A1.pdf }
+  hidden: true
+
+- title: Thickening Agent Composition And Applications In Cosmetics
+  year: 2017
+  venue: Patent CN104069024B
+  kind: patent
+  authors: [ Shubiao Pan, Zhenyuan Lu, Risheng Jin, Jun Lv ]
+  links:
+    - { type: patent, href: https://patents.google.com/patent/CN104069024B/en }
+    - { type: pdf, href: https://patentimages.storage.googleapis.com/62/33/2c/f30532002200d2/CN104069024B.pdf }
+  hidden: true
+
+# The three BMES abstracts link their PDFs at the old site's own address, /assets/docs/publications/ (the draft
+# wrote https://zhenyuanlu.com/docs/publications/, where there is no file); the site keeps the files there.
+- title: Development of a paper-based diagnostic platform for the detection of diarrhea causing pathogens
+  year: 2017
+  venue: Biological and Medical Engineering Society (BMES), Phoenix, AZ
+  kind: abstract
+  authors: [ Kshitij Ranjan, Zhenyuan Lu, Shannon Weigum ]
+  links:
+    - { type: paper, href: /assets/docs/publications/2017-bmes.pdf }
+  hidden: true
+
+- title: Thickener Blend Composition And Its Application
+  year: 2016
+  venue: Patent CN104069023B
+  kind: patent
+  authors: [ Shubiao Pan, Zhenyuan Lu, Risheng Jin, Ying Wang, Jun Lv ]
+  links:
+    - { type: patent, href: https://patents.google.com/patent/CN104069023B/en }
+    - { type: pdf, href: https://patentimages.storage.googleapis.com/55/5d/0c/2ca988eba57d8e/CN104069023B.pdf }
+  hidden: true
+
+- title: Paper-based Device For Gastroenteritis Detection Integrated With Sample Preparation Cartridge
+  year: 2016
+  venue: Biological and Medical Engineering Society (BMES) 2016, Minneapolis, MN
+  kind: abstract
+  # two authors share a family name: their full names, in the abstract's own order (checked against its PDF, 2026-10-17)
+  authors: [ Zhenyuan Lu, Kshitij Ranjan, John Carrano, Shannon Weigum, Jacob Carrano, Roland Schneider ]
+  links:
+    - { type: paper, href: /assets/docs/publications/2016-bmes.pdf }
+  hidden: true
+
+- title: Paper Microfluidic Platform for Detection of Viral Gastroenteritis
+  year: 2015
+  venue: Biological and Medical Engineering Society (BMES) 2015, Tampa, FL
+  kind: abstract
+  authors: [ Shannon Weigum, Kshitij Ranjan, Zhenyuan Lu ]
+  links:
+    - { type: paper, href: /assets/docs/publications/2015-bmes.pdf }
+  hidden: true

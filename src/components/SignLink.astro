@@ -1,0 +1,19 @@
+---
+// A link with its small pixel sign before its word (the draft v2ac's build.js link()): build's paper, code, data,
+// app, a write-up and a talk's notes. The sign is 9 x 9 cells (lib/signs.ts), an SVG of whole cells; the page's
+// script sets its cell to whole device pixels and starts it on one (scripts/build/index.js). A link to another site
+// opens in a new tab, without the referrer.
+import { signPath, type Sign } from '../lib/signs';
+
+interface Props {
+  href: string;
+  word: string;
+  sign: Sign;
+  /** what the link is of (the paper's title, the software's name): read before its word */
+  label: string;
+  /** an address on this site */
+  own?: boolean;
+}
+const { href, word, sign, label, own = false } = Astro.props;
+---
+<a class="k" data-k={sign} href={href} {...(own ? {} : { target: '_blank', rel: 'noopener noreferrer' })} aria-label={`${label}, ${word}`}><svg class="b-ic" viewBox="0 0 9 9" aria-hidden="true" focusable="false"><path d={signPath(sign)}></path></svg><span>{word}</span></a>

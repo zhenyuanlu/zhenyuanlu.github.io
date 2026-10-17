@@ -1,0 +1,295 @@
+---
+// /build/: research, software and talks (the draft v2ac's build.js, its render, with draft v2t's taste round of
+// 2026-10-16, written here at build time from content/build/ and the blog's talks; scripts/build/index.js adds the
+// frames' behaviour and puts the signs on whole device pixels). Under the page's word its small aside, "All papers on
+// Google Scholar" (content/site.yaml's Google Scholar link: the owner, 2026-10-16, "不要放cv，只要scholar，不要email"),
+// then four parts on the column's twelve columns:
+//   featured   pinned on top: the paper research.yaml marks tier: featured, with the software it names, as the one work
+//              it is: its figure in a frame of the figure's own shape (columns 1-4), then its two faces side by side,
+//              "featured research" (title, venue and year, authors, paper and data) and "featured software" (the
+//              name and year, one line, the tools, code and the write-up);
+//   software   the shelf, four to a row, the featured one not repeated: a frame (with the big-screen mode's taller
+//              file, 720 device px where the source has them: components/Frame.astro, wide), the name and year, one
+//              line, the tools, the links;
+//   talks      rows as the blog's, newest first: each talk's own list picture beside its words, the title, one grey
+//              line (where), then the year and its notes. The notes are the row's one keyboard stop, as the draft's
+//              are its one link; the title and the picture are links to the talk's post for a pointer, as a blog
+//              row's are (tabindex -1; the picture's hidden from a screen reader, the title's heard);
+//   index      (taste items 38 and 40, as v2t has them; /build/#index) every work this page shows at a glance: first
+//              the years as one bar in true time, a segment a year, each work a 2 x 2 pixel mark in its year's
+//              segment (a phone stands the bar on end), then a borderless table, newest first: the year once for its
+//              group, the title (to its card, its row or a talk's notes), the kind, where. Its rows alternate by a
+//              tone step, a year's group at a time, with no rules. v2t writes it in the browser after the page is up;
+//              here the server writes it, so nothing moves when the script runs (the marks: svg[data-rows], which the
+//              frame's script draws again on whole device pixels).
+// Hidden research never reaches the page, nor its source; research with no tier is not drawn (no list of papers).
+// The links: a small pixel sign before each word, ink at rest, the accent in hand; a card, a talk or a featured face in
+// hand shows the site's point before its title. Phone: one column; every frame at the left of its words.
+// Structured data: a ScholarlyArticle for each paper shown, a SoftwareSourceCode for each software, an EducationEvent
+// for each talk (its post is its page).
+import type { ImageMetadata } from 'astro';
+import Base from '../layouts/Base.astro';
+import TitleBlock from '../components/TitleBlock.astro';
+import Frame from '../components/Frame.astro';
+import SignLink from '../components/SignLink.astro';
+import { FILES, readBuild, toBuildTables, type Research, type Software } from '../schemas/build.ts';
+import { beside, slug } from '../schemas/common.ts';
+import { absolute, isoDate, person, posts, url } from '../lib/site';
+import type { Sign } from '../lib/signs';
+import '../styles/build.css';
+import '../styles/blog.css';
+
+// the pictures beside content/build/ (the films are served as they are: pages/build/[film].webp.ts)
+const IMG = import.meta.glob<ImageMetadata>('/content/build/img/*.{webp,png,jpg,jpeg,gif,avif}', { eager: true, import: 'default' });
+function picture(file: string): ImageMetadata {
+  const m = IMG[`/${file}`];
+  if (!m) throw new Error(`${file}: no such picture (content/build/img/)`);
+  return m;
+}
+
+const B = readBuild();
+const me = await person();
+const ME = me.name;
+const canonical = absolute('/build/');
+const PERSON = { '@id': absolute('/#person') };
+
+const research = B.research.map((e) => e.data).filter((r) => !r.hidden);
+const software = B.software.map((e) => e.data);
+const T = toBuildTables(software, B.talks.map((e) => e.data), (p) => url(`/blog/${p}/`));
+const featured = research.filter((r) => r.tier === 'featured');
+const paired = new Set(featured.flatMap((r) => (r.software ? [r.software] : [])));
+const shelf = software.filter((s) => !paired.has(s.title));
+
+/* ---------- the links: each kind its word and sign; research reads first, software runs first ---------- */
+const WORD: Record<string, string> = { github: 'code', paper: 'paper', arxiv: 'arXiv', data: 'data', app: 'app' };
+const SIGN: Record<string, Sign> = { github: 'code', paper: 'page', arxiv: 'box', data: 'table', app: 'app' };
+const ORDER = ['paper', 'arxiv', 'github', 'data'], SW_ORDER = ['github', 'app', 'paper', 'arxiv', 'data'];
+const RS_KINDS = ['paper', 'arxiv', 'data'], SW_KINDS = ['github'];
+interface Lk { type?: string; href: string; word: string; sign: Sign; own: boolean }
+/** an address of the data as the page writes it: a path on this site under the build's base, else as it is */
+const addr = (href: string) => (href.startsWith('/') && !href.startsWith('//') ? url(href) : href);
+/** one of a kind, in the order given; ready ones (a write-up: word and sign of their own) after the kinds */
+function links(list: Array<{ type: string; href: string } | Lk>, order: string[] = ORDER): Lk[] {
+  const seen = new Set<string>();
+  return list
+    .map((l): Lk | null => ('word' in l ? l : WORD[l.type] ? { type: l.type, href: addr(l.href), word: WORD[l.type], sign: SIGN[l.type], own: l.href.startsWith('/') } : null))
+    .filter((l): l is Lk => !!l && !!l.href)
+    .filter((l) => { const k = l.type || l.word; if (seen.has(k)) return false; seen.add(k); return true; })
+    .sort((a, b) => (a.type ? order.indexOf(a.type) : 99) - (b.type ? order.indexOf(b.type) : 99));
+}
+const ofKinds = (list: Array<{ type: string; href: string }>, kinds: string[]) => list.filter((l) => kinds.includes(l.type));
+const more = (s: Software): Lk[] => (T.MORE[s.title] || []).map((m) => ({ href: m.href, word: m.word, sign: m.sign as Sign, own: true }));
+/** "co-occurrence" never breaks at its hyphen: the words with one, apart */
+const nobreak = (s: string) => s.split(/(\S+-\S+)/g);
+
+/* ---------- featured: the one work, its picture and its two faces ---------- */
+const feats = featured.map((r) => {
+  const p = software.find((x) => x.title === r.software) || null;
+  // its figure: the software's picture, else the paper's; never cut (whole) unless it says it is a mark
+  const fig = p && p.img ? { file: beside(FILES.software, p.img), alt: p.alt || '', pos: p.pos, to: p.to, fit: p.fit || 'whole' }
+    : r.img ? { file: beside(FILES.research, r.img), alt: r.alt || '', pos: undefined, to: undefined, fit: 'whole' as const } : null;
+  const img = fig ? picture(fig.file) : null;
+  // the figure's own shape, within reason
+  const shape = img ? Math.max(1.4, Math.min(2, img.width / img.height)) : 1.5;
+  const all = [...r.links, ...(p ? p.links : [])];
+  return {
+    r, p, img, fig, shape: shape.toFixed(4),
+    rs: links(ofKinds(all, RS_KINDS)),
+    sw: p ? links([...ofKinds(all, SW_KINDS), ...more(p)]) : [],
+    name: p ? p.title : r.title,
+  };
+});
+
+/* ---------- software: the shelf ---------- */
+/** a film's address: pages/build/[film].webp.ts serves it as it is */
+const filmUrl = (name: string) => url(`/build/${name.replace(/^.*\//, '').replace(/\.webp$/i, '')}.webp`);
+const cards = shelf.map((p) => ({
+  p, id: slug(p.title),
+  img: p.img ? picture(beside(FILES.software, p.img)) : null,
+  film: p.film ? filmUrl(p.film) : undefined,
+  lk: links([...p.links, ...more(p)], SW_ORDER),
+}));
+
+/* ---------- talks: the posts with kind: talk, newest first; each its list picture, else its cover ---------- */
+const talks = (await posts())
+  .filter((w) => w.data.kind === 'talk')
+  .map((w) => ({ slug: w.id, title: w.data.title, date: w.data.date, where: T.PLACE[w.id] || w.data.where || '', pic: w.data.listCover || w.data.cover, pos: w.data.listPos, cover: !!w.data.cover }))
+  .sort((a, b) => +b.date - +a.date);
+
+/* ---------- Google Scholar, where every paper is (this page shows the featured one): the title's small aside ---------- */
+const scholar = me.social.find((s) => /scholar\.google\./.test(s.href || '')) || null;
+
+/* ---------- the index: every work the page shows, newest first; of one year the paper, the software, then the talks,
+   each by its title (v2t's order) ---------- */
+type Kind = 'paper' | 'software' | 'talk';
+const KORD: Record<Kind, number> = { paper: 0, software: 1, talk: 2 };
+const works = [
+  ...featured.map((r) => ({ y: r.year, title: r.title, kind: 'paper' as Kind, where: r.venue || '', href: url('/build/#research') })),
+  ...software.map((s) => ({ y: s.year, title: s.title, kind: 'software' as Kind, where: s.technologies.slice(0, 3).join(', '), href: url(`/build/#${slug(s.title)}`) })),
+  ...talks.map((x) => ({ y: x.date.getUTCFullYear(), title: x.title, kind: 'talk' as Kind, where: x.where, href: url(`/blog/${x.slug}/`) })),
+]
+  .filter((x) => x.y > 1900)
+  .sort((a, b) => b.y - a.y || KORD[a.kind] - KORD[b.kind] || (a.title < b.title ? -1 : 1));
+/* the years as one bar, oldest first: a segment a year, gaps and all, its works as 2 x 2 marks one cell apart */
+const y0 = works.length ? works[works.length - 1].y : 0, y1 = works.length ? works[0].y : 0;
+const bar = works.length ? Array.from({ length: y1 - y0 + 1 }, (_, k) => {
+  const y = y0 + k, n = works.filter((x) => x.y === y).length;
+  const row = Array.from({ length: n }, () => '##').join('.');
+  return { y, n, rows: n ? [row, row] : [] };
+}) : [];
+/* the marks as the server draws them (the frame's script puts a canvas of whole device pixels in each one's place) */
+const MARK_CELL = 2;
+function markPath(rows: string[]): string {
+  let d = '';
+  rows.forEach((r, y) => {
+    for (let x = 0; x < r.length; x++) {
+      if (r[x] !== '#') continue;
+      const x0 = x;
+      while (x + 1 < r.length && r[x + 1] === '#') x++;
+      d += `M${x0} ${y}h${x - x0 + 1}v1h-${x - x0 + 1}z`;
+    }
+  });
+  return d;
+}
+/* the table's rows: a year's group one tone, the next the other; the year printed on its group's first row (and
+   said on every row, out of sight) */
+let lastY: number | null = null, odd = false;
+const rows = works.map((x) => {
+  const first = x.y !== lastY;
+  if (first) odd = !odd;
+  lastY = x.y;
+  return { ...x, first, odd };
+});
+
+/* ---------- the structured data ---------- */
+const swId = (s: Software) => `${canonical}#${slug(s.title)}`;
+const authorsLd = (r: Research) => r.authors.map((a) => (a === ME ? { ...PERSON, '@type': 'Person', name: a } : { '@type': 'Person', name: a }));
+const ld: Record<string, unknown>[] = [
+  ...feats.map(({ r, p }) => {
+    const paper = r.links.find((l) => l.type === 'paper');
+    return {
+      '@type': 'ScholarlyArticle',
+      '@id': `${canonical}#paper-${slug(r.title)}`,
+      headline: r.title,
+      name: r.title,
+      author: authorsLd(r),
+      datePublished: String(r.year),
+      isPartOf: { '@type': 'Periodical', name: r.venue },
+      ...(paper ? { url: paper.href } : {}),
+      ...(p ? { about: { '@id': swId(p) } } : {}),
+      inLanguage: 'en',
+    };
+  }),
+  ...[...feats.flatMap((f) => (f.p ? [f.p] : [])), ...shelf].map((s) => {
+    const code = s.links.find((l) => l.type === 'github'), app = s.links.find((l) => l.type === 'app');
+    return {
+      '@type': 'SoftwareSourceCode',
+      '@id': swId(s),
+      name: s.title,
+      description: s.line || s.description,
+      dateCreated: String(s.year),
+      author: PERSON,
+      url: app?.href || code?.href || swId(s),
+      ...(code ? { codeRepository: code.href } : {}),
+      ...(s.version ? { softwareVersion: s.version } : {}),
+      ...(s.technologies.length ? { keywords: s.technologies.join(', ') } : {}),
+    };
+  }),
+  ...talks.map((x) => ({
+    '@type': 'EducationEvent',
+    '@id': `${absolute(`/blog/${x.slug}/`)}#talk`,
+    name: x.title,
+    startDate: isoDate(x.date),
+    ...(x.where ? { location: { '@type': 'Place', name: x.where, address: x.where } } : {}),
+    performer: { ...PERSON, '@type': 'Person', name: ME },
+    url: absolute(`/blog/${x.slug}/`),
+    ...(x.cover ? { image: [absolute(`/og/${x.slug}.png`)] } : {}),
+    inLanguage: 'en',
+  })),
+];
+const names = [...feats.map((f) => f.name), ...shelf.map((s) => s.title)];
+const description = `Research, software and talks by ${ME}, ${me.suffix}: ${names.join(', ')}.`;
+---
+<Base title="build" description={description} path="/build/" page="build" ring="build" ld={ld}>
+  <TitleBlock word="build">{scholar && <div class="tb-d"><p class="tb-aside">All papers on <a href={scholar.href} target="_blank" rel="noopener noreferrer">Google Scholar</a></p></div>}</TitleBlock>
+  {feats.length > 0 && (
+    <section class="sec b-sec b-feat" id="research">
+      {feats.map((f) => (
+        <article class="b-fe pf-host" id={f.p ? slug(f.p.title) : undefined}>
+          <div class="b-fe-p" data-pf-row="304" style={`--pf-ar:${f.shape}`}><span class="b-fr">{f.img && f.fig && <Frame image={f.img} cls="b-pf" alt={f.fig.alt} pos={f.fig.pos} to={f.fig.to} fit={f.fig.fit} eager />}</span></div>
+          <div class="b-fe-r">
+            <h2 class="lab">featured research</h2>
+            <h3 class="b-ft hpoint">{f.r.title}</h3>
+            <p class="b-au">{f.r.venue}{f.r.year && <>, <span class="num">{f.r.year}</span></>}</p>
+            <p class="b-au">{f.r.authors.map((a, i) => <>{i > 0 && ', '}{a === ME ? <span class="b-me">{a}</span> : a}</>)}</p>
+            <p class="b-lk">{f.rs.map((l) => <SignLink href={l.href} word={l.word} sign={l.sign} label={f.r.title} own={l.own} />)}</p>
+          </div>
+          {f.p && (
+            <div class="b-fe-s">
+              <h2 class="lab">featured software</h2>
+              <h3 class="b-ft b-fn hpoint">{f.p.title}<span class="b-yr num">{f.p.year}</span></h3>
+              <p class="b-ds">{nobreak(T.LINE[f.p.title] || f.p.description || '').map((s, i) => (i % 2 ? <span class="b-nw">{s}</span> : s))}</p>
+              {f.p.technologies.length > 0 && <ul class="b-tl">{f.p.technologies.map((x) => <li>{x}</li>)}</ul>}
+              <p class="b-lk">{f.sw.map((l) => <SignLink href={l.href} word={l.word} sign={l.sign} label={f.name} own={l.own} />)}</p>
+            </div>
+          )}
+        </article>
+      ))}
+    </section>
+  )}
+  <section class="sec b-sec b-sw" id="software">
+    <h2 class="lab">software</h2>
+    <ol class="b-shelf" data-pf-row="222">
+      {cards.map(({ p, id, img, film, lk }) => (
+        <li class="b-card pf-host" id={id}>
+          <span class="b-fr">{img && <Frame image={img} cls="b-pf" alt={p.alt} pos={p.pos} to={p.to} fit={p.fit} film={film} wide={720} />}</span>
+          <div class="b-tx">
+            <h3 class="b-nm hpoint">{p.title}<span class="b-yr num">{p.year}</span></h3>
+            <p class="b-ds">{nobreak(T.LINE[p.title] || p.description || '').map((s, i) => (i % 2 ? <span class="b-nw">{s}</span> : s))}</p>
+            {p.technologies.length > 0 && <ul class="b-tl">{p.technologies.map((x) => <li>{x}</li>)}</ul>}
+            {lk.length > 0 && <p class="b-lk">{lk.map((l) => <SignLink href={l.href} word={l.word} sign={l.sign} label={p.title} own={l.own} />)}</p>}
+          </div>
+        </li>
+      ))}
+    </ol>
+  </section>
+  {talks.length > 0 && (
+    <section class="sec b-sec b-tk" id="talks">
+      <h2 class="lab">talks</h2>
+      <ol class="w-list" data-pf-row="222">
+        {talks.map((x) => {
+          const href = url(`/blog/${x.slug}/`);
+          return (
+            <li class={`w-it b-talk pf-host${x.pic ? '' : ' w-bare'}`} id={x.slug}>
+              {x.pic && <a class="w-cv" href={href} tabindex="-1" aria-hidden="true"><Frame image={x.pic} cls="w-pf" pos={x.pos} /></a>}
+              <div class="w-tx">
+                <h3 class="w-ti"><a class="w-a" href={href} tabindex="-1" aria-describedby={x.where ? `b-ds-${x.slug}` : undefined}><span class="w-tt hpoint">{nobreak(x.title).map((s, i) => (i % 2 ? <span class="w-nw">{s}</span> : s))}</span></a></h3>
+                {x.where && <p class="w-ds" id={`b-ds-${x.slug}`}>{x.where}</p>}
+                <div class="w-m"><time class="w-dt num" datetime={isoDate(x.date)}>{x.date.getUTCFullYear()}</time><span class="b-lk"><SignLink href={href} word="notes" sign="lines" label={x.title} own /></span></div>
+              </div>
+            </li>
+          );
+        })}
+      </ol>
+    </section>
+  )}
+  {works.length > 0 && (
+    <section class="sec b-sec b-ix" id="index">
+      <h2 class="lab">index</h2>
+      <ol class="b-bar" style={`--n:${bar.length}`} aria-label={`works by year, ${y0} to ${y1}`}>
+        {bar.map((s) => (
+          <li class="b-yb"><span class="b-seg" data-n={s.n}>{s.n > 0 && <svg class="b-mk" width={s.rows[0].length * MARK_CELL} height={s.rows.length * MARK_CELL} viewBox={`0 0 ${s.rows[0].length} ${s.rows.length}`} shape-rendering="crispEdges" fill="currentColor" aria-hidden="true" focusable="false" data-rows={s.rows.join('/')} data-cell={String(MARK_CELL)} data-colour="ink" data-cls="b-mk"><path d={markPath(s.rows)}></path></svg>}</span><span class="b-yl num">{s.y}</span><span class="sr">{s.n ? `${s.n} ${s.n > 1 ? 'works' : 'work'}` : 'none'}</span></li>
+        ))}
+      </ol>
+      <table class="b-tb">
+        <thead class="sr"><tr><th>year</th><th>title</th><th>kind</th><th>where</th></tr></thead>
+        <tbody>
+          {rows.map((x) => (
+            <tr class={`${x.odd ? 'b-o' : 'b-e'}${x.first ? ' b-g' : ''}`}><td class="b-y num">{x.first ? x.y : <span class="sr">{x.y}</span>}</td><td class="b-t"><a class="k" href={x.href}>{x.title}</a></td><td class="b-kd">{x.kind}</td><td class="b-w">{x.where}</td></tr>
+          ))}
+        </tbody>
+      </table>
+    </section>
+  )}
+  <Fragment slot="scripts"><script>import '../scripts/build/index.js';</script></Fragment>
+</Base>

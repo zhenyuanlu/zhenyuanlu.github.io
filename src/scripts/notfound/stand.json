@@ -1,0 +1,56 @@
+{
+  "name": "standing",
+  "w": 9,
+  "h": 13,
+  "still": "stand",
+  "frames": {
+    "stand": [
+      "..kkkkk..",
+      ".kkkkkkk.",
+      "kkkkkkkkk",
+      ".k.....k.",
+      ".kieieik.",
+      ".k.....k.",
+      "..kkkkk..",
+      "..sssss..",
+      ".k.kkk.k.",
+      ".k.kkk.k.",
+      "...kkk...",
+      "...k.k...",
+      "..kk.kk.."
+    ]
+  },
+  "framesHD": {
+    "stand": [
+      ".....kkkkkkkk.....",
+      "....kkkkkkkkkk....",
+      "...kkkkkkkkkkkk...",
+      "..kkkkkkkkkkkkkk..",
+      "kkkkkkkkkkkkkkkkkk",
+      ".kkkkkkkkkkkkkkkk.",
+      "..kk..........kk..",
+      "..kk..ii..ii..kk..",
+      "..kkiieeiieeiikk..",
+      "..kk.ieeiieei.kk..",
+      "..kk..ii..ii..kk..",
+      "..kk..........kk..",
+      "...kkkkkkkkkkkk...",
+      "....kkkkkkkkkk....",
+      "....ssssssssss....",
+      "....ssssssssss....",
+      "..kk..kkkkkk..kk..",
+      "..kk..kkkkkk..kk..",
+      "..kk..kkkkkk..kk..",
+      "..kk..kkkkkk..kk..",
+      "......kkkkkk......",
+      "......kkkkkk......",
+      "......kk..kk......",
+      "......kk..kk......",
+      "....kkkk..kkkk....",
+      "....kkkk..kkkk...."
+    ]
+  },
+  "palette": {"i":"#8a94a6"},
+  "paletteDusk": {"i":"#8f8378"},
+  "paletteNight": {"i":"#7d879c"}
+}

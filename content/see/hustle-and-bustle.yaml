@@ -1,0 +1,12 @@
+# see · one photograph. This file and the photograph beside it share a name, its address: /see/<name>/.
+# To add one, put the photograph here as <name>.jpg (its own pixels, not resized) and copy this file as <name>.yaml:
+#   title (it also names the photograph for a reader who cannot see it), date (the day it was taken, YYYY-MM-DD),
+#   place (as the caption writes it), kind (road trip or portrait: the wall's filters), file (./<name>.jpg).
+#   The wall hangs the newest first, two of one day in their names' order.
+# 中文提示：一张照片配一个同名的 yaml；date 写拍摄那天；标题也是看不见图的读者听到的名字。
+
+title: Hustle and Bustle
+date: 2019-07-22
+place: Seattle, WA
+kind: road trip
+file: ./hustle-and-bustle.jpg

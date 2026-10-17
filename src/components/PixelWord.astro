@@ -1,0 +1,36 @@
+---
+// A word in the site's pixel lettering. The server draws it as an SVG of whole cells (what a reader without
+// script sees, and the box the drawing takes); in the browser scripts/lettering/index.js puts a canvas fitted to the
+// screen's device pixels in its place (the draft's V1K.word).
+//   cell   CSS px a cell (the title's 1.99: 2 device px at 100% and 125%, never rounded up)
+//   ui     a control's word: the size it has at 100% on every screen
+//   set    'door': the home's door words' own set (23 cells tall), else the name's
+import { wordBits, wordPath, PIXEL, DOOR_SET } from '../scripts/lettering/bits.js';
+
+interface Props {
+  text: string;
+  cell?: number;
+  ui?: boolean;
+  set?: 'pixel' | 'door';
+  class?: string;
+  colour?: 'ink' | 'grey' | 'accent';
+}
+const { text, cell = 2, ui = false, set = 'pixel', class: cls = '', colour = 'ink' } = Astro.props;
+const B = wordBits(text, set === 'door' ? DOOR_SET : PIXEL);
+const c = Math.round(cell);
+---
+<svg
+  class={cls || undefined}
+  data-word={text}
+  data-cell={String(cell)}
+  data-ui={ui ? '' : undefined}
+  data-set={set === 'door' ? 'door' : undefined}
+  data-cls={cls || undefined}
+  data-colour={colour !== 'ink' ? colour : undefined}
+  width={B.w * c}
+  height={B.h * c}
+  viewBox={`0 0 ${B.w} ${B.h}`}
+  shape-rendering="crispEdges"
+  fill="currentColor"
+  aria-hidden="true"
+  focusable="false"><path d={wordPath(B)}></path></svg>

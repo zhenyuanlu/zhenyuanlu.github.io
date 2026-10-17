@@ -1,0 +1,33 @@
+---
+// The home's page (the draft v2ac's document at its home): the home is the whole page, so it has no header, no
+// footer and no ring of its own (its name, its fader, its footer line and its doors are the home's, scripts/home/).
+// The head is every page's, components/DocHead.astro (as layouts/Base.astro has it): the Content-Security-Policy first
+// after the charset, the light set before the first paint by the one inline script, whose hash that policy carries,
+// then components/Head.astro (title, description, canonical, cards, the Person). The sheets: the site's Figtree,
+// tokens and frame (the fader and the footer's heart are styled there), then the home's own. The script: site.js,
+// then the home's engine (scripts/home/page.js); and the home's net, a file of its own (scripts/home/watch.js: the
+// engine not started once the page has loaded, the home as a reader without script has it).
+import '@fontsource/figtree/400.css';
+import '@fontsource/figtree/500.css';
+import '../styles/tokens.css';
+import '../styles/frame.css';
+import '../styles/home.css';
+import '../styles/wide.css';   // the big-screen mode (scripts/early.js decides; every rule under html[data-wide])
+import DocHead from '../components/DocHead.astro';
+
+interface Props {
+  title: string;
+  description?: string;
+  path: string;
+}
+const { title, description, path } = Astro.props;
+---
+<!doctype html>
+<html lang="en" data-page="home">
+  <head><DocHead title={title} description={description} path={path} /></head>
+  <body>
+    <slot />
+    <script>import '../scripts/home/page.js';</script>
+    <script>import '../scripts/home/watch.js';</script>
+  </body>
+</html>

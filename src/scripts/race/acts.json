@@ -1,0 +1,108 @@
+{
+  "notes": "The traveller and what he does at a race (race.js; the 404 page reads stand). sports maps a race's sport to an act; a sport not listed has none: he walks there and stands. stand and walk are the home's walker (9 x 13). boat, sled and run are inner-v7's acts7: the small one-person dragon boat (mini), the sled push (redrawn 2026-10-06: his back near flat from the shoulders to the hips, the head up over it, a short arm (3 cells) to the pole at chest height; 2026-10-07, the owner: frame p7 is the pose (the lean, the short bent arm, the scarf up, the back foot lifting), so every frame has p7's upper body and the sled where p7 has it, and only his legs (four poses twice over) and a dashed ground going by move; p7 is the still and the first frame of a pass; the sled (2026-10-07, round 5, the owner: '正经的sled push（一个平板，上面plates）'): a Hyrox push sled, a low flat deck on two feet, two upright poles at its back (the near one in m, the one beyond in p, a mid grey (round 5's check: in the ground's pale g it was too faint), a row taller), three weight plates stacked on its horn (d and D, amber, a darker amber between), the deck and the near pole in m: the pictures' grey, so at night he is not one slate shape with it) and the run (run2's runner, v2a: the street dropped, a dashed ground going by). Each act: frames (rows of cells; k, e, s and n are his ink, eyes, scarf and bib, coloured by the map; i his glasses, the cells either side of each eye, in a mid tone of their own (stand's palette, paletteDusk, paletteNight); m a prop of metal, in the pictures' grey; other letters from palette, graded for dusk and night), ax (his feet column), seq and ms (one pass), loops (passes per visit), still (the frame for reduced motion), icon (the picture by the venue's name, always shown: inner-v8's family of small pictures, about 13 x 6 cells, k in one colour (the pictures' grey at rest, ink while its venue or sport is in hand) and one accent letter from iconPalette, drawn only while in hand (2026-10-07: the owner likes inner-v8's simple pictures): boat: inner-v8's m_boat as it is (a dragon boat, its head curled up at the bow, the tail up at the stern, four paddles in the water; r the bow); sled (round 5, the owner: '更加小和精致'): the scene's sled small, 10 x 6: its two poles, the deck on its feet, the plates on their horn, the plates (d) amber while in hand (a stack, not a disc: no medal to mistake it for); run (round 5, the owner: '终点的线？冲线的线和门？'): a finish gantry, 11 x 7: a banner of two rows of chequers over two posts five rows tall (round 5's check: the gate taller, so it reads as a gate), the tape across between them (t: at rest a lighter grey, iconRest's mix of the ink, so it reads as a tape and the gantry not as a bench (round 5's check); blue while in hand), the B.A.A.'s unicorn being a third-party logo). race.js keeps an act playing while it is in hand. iconHD (boat, sled, run) and framesHD (stand, walk): the same drawings by hand at twice the detail (2x grids), which race.js draws in half cells where a cell of the map comes to 4 device px or more (big screens, 2026-10-09, the owner: 'yes，scale up，你可以用更好的像素图来表示'): each picture's silhouette, colours and character kept, only finer: the boat's oars with blades and its head a rounder curl, the sled's poles slim and its plates rounded on the horn, the finish tape a thin tape that sags a little and the gantry's posts on feet; him with his hat's crown and brim rounded and his glasses two round lenses with their temples, so they read (by night his face is the 1x drawing's; the 404 page draws him so too). r13 (the owner, 2026-10-15: '龙舟像素动画的那个龙舟的头有点像鸟'): the scene boat's head is a dragon's now, not a round head with a beak: a horn swept back (y), a pale eye (q, a palette letter of its own), the jaw open on its red mouth, a red mane down the back of the neck, and the neck rising thick from a prow a cell higher; the oar's cells are as they were in every frame. r14 (the owner, 2026-10-15: '小龙舟图标也换成新龙头'): the small picture by a venue's name has the dragon's head too, at its size: a horn swept back, the head and its jaw open forward (the red in hand is its mouth now, where the bow was), and in its HD drawing an eye.",
+  "sports": {"dragonboat":"boat","hyrox":"sled","run":"run"},
+  "stand": {
+    "name": "standing",
+    "w": 9,
+    "h": 13,
+    "ax": 4,
+    "frames": {
+      "stand": ["..kkkkk..",".kkkkkkk.","kkkkkkkkk",".k.....k.",".kieieik.",".k.....k.","..kkkkk..","..sssss..",".k.kkk.k.",".k.kkk.k.","...kkk...","...k.k...","..kk.kk.."]
+    },
+    "framesHD": {"stand": [".....kkkkkkkk.....","....kkkkkkkkkk....","...kkkkkkkkkkkk...","..kkkkkkkkkkkkkk..","kkkkkkkkkkkkkkkkkk",".kkkkkkkkkkkkkkkk.","..kk..........kk..","..kk..ii..ii..kk..","..kkiieeiieeiikk..","..kk.ieeiieei.kk..","..kk..ii..ii..kk..","..kk..........kk..","...kkkkkkkkkkkk...","....kkkkkkkkkk....","....ssssssssss....","....ssssssssss....","..kk..kkkkkk..kk..","..kk..kkkkkk..kk..","..kk..kkkkkk..kk..","..kk..kkkkkk..kk..","......kkkkkk......","......kkkkkk......","......kk..kk......","......kk..kk......","....kkkk..kkkk....","....kkkk..kkkk...."]},
+    "sequence": [{"f":"stand","ms":1000,"dx":0,"dy":0}],
+    "still": "stand",
+    "palette": {"i":"#8a94a6"},
+    "paletteDusk": {"i":"#8f8378"},
+    "paletteNight": {"i":"#7d879c"},
+    "notes": "Him standing still (to mark today): an exact copy of the home walker SPRITE.idle (9 x 13) from the v1h-scenes.html script, the source all the acts are matched to (hat, 6-cell face, scarf, cell). Letters k / s / e are the traveller's own (ink, scarf, eyes), drawn as v1h drawW does: day k and e in the stage ink, s #c4381b; night k #2b3040 with #606a84 where it touches empty cells, the face (empty cells the eyes reach) #d6ccbb, e #131418, s #e2604a. Props never use k, s or e. The bottom row sits just above the map line."
+  },
+  "walk": {
+    "name": "walking",
+    "w": 9,
+    "h": 13,
+    "ax": 4,
+    "frames": {
+      "a": ["..kkkkk..",".kkkkkkk.",".kkkkkkkk","..k....k.","..kiieik.","..k....k.","...kkkkk.",".ssss....","kk.kkkk..","kk.kkk.k.","kk.kkk...","..k...k..",".kk...kk."],
+      "b": ["..kkkkk..",".kkkkkkk.",".kkkkkkkk","..k....k.","..kiieik.","..k....k.","...kkkkk.","sssss....","kk.kkkk..","kk.kkkk..","kk.kkk...","...kk....","...kkk..."]
+    },
+    "framesHD": {
+      "a": [".....kkkkkkkk.....","....kkkkkkkkkk....","...kkkkkkkkkkkk...","..kkkkkkkkkkkkkk..","..kkkkkkkkkkkkkkkk","...kkkkkkkkkkkkkk.","....kk........kk..","....kk....ii..kk..","....kkiiiieei.kk..","....kk...ieei.kk..","....kk....ii..kk..","....kk........kk..",".....kkkkkkkkkkk..","......kkkkkkkkkk..","....ssssss........","..ssssss..........","kkkk..kkkkkkkk....","kkkk..kkkkkkkk....","kkkk..kkkkkk..kk..","kkkk..kkkkkk..kk..","kkkk..kkkkkk......",".kk...kkkkkk......",".....kk....kk.....","....kk......kk....","..kkkk......kkkk..","..kkkk......kkkk.."],
+      "b": [".....kkkkkkkk.....","....kkkkkkkkkk....","...kkkkkkkkkkkk...","..kkkkkkkkkkkkkk..","..kkkkkkkkkkkkkkkk","...kkkkkkkkkkkkkk.","....kk........kk..","....kk....ii..kk..","....kkiiiieei.kk..","....kk...ieei.kk..","....kk....ii..kk..","....kk........kk..",".....kkkkkkkkkkk..","......kkkkkkkkkk..","..ssssssss........","ssssss............","kkkk..kkkkkkkk....","kkkk..kkkkkkkk....","kkkk..kkkkkkkk....","kkkk..kkkkkkkk....","kkkk..kkkkkk......",".kk...kkkkkk......","......kkkk........","......kkkk........","......kkkkkk......","......kkkkkk......"]
+    },
+    "palette": {"i":"#8a94a6"}
+  },
+  "boat": {
+    "name": "one-person dragon boat",
+    "w": 22,
+    "h": 15,
+    "ax": 9,
+    "frames": {
+      "f0": [".......kkkkk...yy.....","......kkkkkkk....ykkk.","......kkkkkkkk..kvvvvk",".......k....k..rkvqvvv",".......kiieik...kvvkkk",".......k....k..rkvkrr.","........kkkkk...kvvvvk","..k.sssskkko...rkvvkk.",".ky.....kkk.o....kvvk.",".kr.....kkk..o....kvk.","..kkkkkkkkkkkkokkkkk..",".krryrryrryrryroyrk...","...kkkkkkkkkkkkko.....","wwwbbbwwwbbbwwwbhhwwwb","l.......l.......l....."],
+      "f1": [".......kkkkk...yy.....","......kkkkkkk....ykkk.","......kkkkkkkk..kvvvvk",".......k....k..rkvqvvv",".......kiieik...kvvkkk",".......k....k..rkvkrr.","........kkkkk...kvvvvk","..k.sssskkko...rkvvkk.",".ky.....kkko.....kvvk.",".kr.....kkk.o.....kvk.","..kkkkkkkkkkokkkkkkk..",".krryrryrryroyrryrk...","...kkkkkkkkkokkkk.....","wwbbbwwwbbbwhhbbbwwwbb","......l.......l......."],
+      "f2": [".......kkkkk...yy.....","......kkkkkkk....ykkk.","......kkkkkkkk..kvvvvk",".......k....k..rkvqvvv",".......kiieik...kvvkkk",".......k....k..rkvkrr.","........kkkkk...kvvvvk","..k.sssskkk....rkvvkk.",".ky.....kko......kvvk.",".kr.....kok.......kvk.","..kkkkkkokkkkkkkkkkk..",".krryrrorryrryrryrk...","...kkkokkkkkkkkkk.....","wbbbwwhhbbwwwbbbwwwbbb","....l.......l.......l."],
+      "f3": [".......kkkkk...yy.....","......kkkkkkk....ykkk.","......kkkkkkkk..kvvvvk",".......k....k..rkvqvvv",".......kiieik...kvvkkk",".......k....k..rkvkrr.","........kkkkk...kvvvvk","..k.sssskkkoo..rkvvkk.",".ky.....kkk..oo..kvvk.",".kr.....kkk....ohhkvk.","..kkkkkkkkkkkkkkkkkk..",".krryrryrryrryrryrk...","...kkkkkkkkkkkkkk.....","bbbwwwbbbwwwbbbwwwbbbw","..l.......l.......l..."],
+      "f4": [".......kkkkk...yy.....","......kkkkkkk....ykkk.","......kkkkkkkk..kvvvvk",".......k....k..rkvqvvv",".......kiieik...kvvkkk",".......k....k..rkvkrr.","........kkkkk...kvvvvk","..k.sssskkko...rkvvkk.",".ky.....kkk.o....kvvk.",".kr.....kkk..o....kvk.","..kkkkkkkkkkkkokkkkk..",".krryrryrryrryroyrk...","...kkkkkkkkkkkkko.....","bbwwwbbbwwwbbbwwhhbbww","l.......l.......l....."],
+      "f5": [".......kkkkk...yy.....","......kkkkkkk....ykkk.","......kkkkkkkk..kvvvvk",".......k....k..rkvqvvv",".......kiieik...kvvkkk",".......k....k..rkvkrr.","........kkkkk...kvvvvk","..k.sssskkko...rkvvkk.",".ky.....kkko.....kvvk.",".kr.....kkk.o.....kvk.","..kkkkkkkkkkokkkkkkk..",".krryrryrryroyrryrk...","...kkkkkkkkkokkkk.....","bwwwbbbwwwbbhhwwbbbwww","......l.......l......."],
+      "f6": [".......kkkkk...yy.....","......kkkkkkk....ykkk.","......kkkkkkkk..kvvvvk",".......k....k..rkvqvvv",".......kiieik...kvvkkk",".......k....k..rkvkrr.","........kkkkk...kvvvvk","..k.sssskkk....rkvvkk.",".ky.....kko......kvvk.",".kr.....kok.......kvk.","..kkkkkkokkkkkkkkkkk..",".krryrrorryrryrryrk...","...kkkokkkkkkkkkk.....","wwwbbbhhwbbbwwwbbbwwwb","....l.......l.......l."],
+      "f7": [".......kkkkk...yy.....","......kkkkkkk....ykkk.","......kkkkkkkk..kvvvvk",".......k....k..rkvqvvv",".......kiieik...kvvkkk",".......k....k..rkvkrr.","........kkkkk...kvvvvk","..k.sssskkkoo..rkvvkk.",".ky.....kkk..oo..kvvk.",".kr.....kkk....ohhkvk.","..kkkkkkkkkkkkkkkkkk..",".krryrryrryrryrryrk...","...kkkkkkkkkkkkkk.....","wwbbbwwwbbbwwwbbbwwwbb","..l.......l.......l..."]
+    },
+    "seq": ["f0","f1","f2","f3","f4","f5","f6","f7"],
+    "ms": [130,115,130,165,130,115,130,165],
+    "loops": 2,
+    "still": "f1",
+    "palette": {"r":"#c8392c","y":"#e8a23a","v":"#3f9a58","o":"#6b4528","h":"#d29a55","w":"#7fb2d6","b":"#4f86b3","l":"#b6d6ec","i":"#8a94a6","q":"#f2ece0"},
+    "icon": [".......k....","........kkkk","k.......kr..",".kkkkkkkkkkk","..k.k.k.k...",".k.k.k.k...."],
+    "iconHD": ["..............kk........","................kk......",".................kkkkkk.","................kk.kkkkk","kk..............kkkk....",".kk.............kkkrrr..","..kkkkkkkkkkkkkkkkkkkkkk","...kkkkkkkkkkkkkkkkkkkk.",".....k...k...k...k......","....k...k...k...k.......","..kk..kk..kk..kk........","..kk..kk..kk..kk........"],
+    "iconPalette": {"r":"#d9472f"}
+  },
+  "sled": {
+    "name": "sled push",
+    "w": 25,
+    "h": 13,
+    "ax": 9,
+    "frames": {
+      "p0": [".......kkkkk.............","......kkkkkkk............","......kkkkkkkk...........",".......k....k............",".......kiieik...p........",".......k....k.m.p........","...ss...kkkkk.m.p....m...",".....ssskkkk..m.p..DDmDD.",".....kkkk..kkkk.p..ddddd.","....kkkk......m.p.DDDDDDD","..kkk...kk....mmmmmmmmmmm","kk.......kk....m.......m.","gggggg..gggggg..gggggg..g"],
+      "p1": [".......kkkkk.............","......kkkkkkk............","......kkkkkkkk...........",".......k....k............",".......kiieik...p........",".......k....k.m.p........","...ss...kkkkk.m.p....m...",".....ssskkkk..m.p..DDmDD.",".....kkkk..kkkk.p..ddddd.","....kkkk......m.p.DDDDDDD","..kk..kk......mmmmmmmmmmm","kk.....kk......m.......m.","ggggg..gggggg..gggggg..gg"],
+      "p2": [".......kkkkk.............","......kkkkkkk............","......kkkkkkkk...........",".......k....k............",".......kiieik...p........",".......k....k.m.p........","...ss...kkkkk.m.p....m...",".....ssskkkk..m.p..DDmDD.",".....kkkk..kkkk.p..ddddd.","....kkkk......m.p.DDDDDDD","..kk..kk......mmmmmmmmmmm",".......kk......m.......m.","gggg..gggggg..gggggg..ggg"],
+      "p3": [".......kkkkk.............","......kkkkkkk............","......kkkkkkkk...........",".......k....k............",".......kiieik...p........",".......k....k.m.p........","...ss...kkkkk.m.p....m...",".....ssskkkk..m.p..DDmDD.",".....kkkk..kkkk.p..ddddd.","....kkkk......m.p.DDDDDDD","...kk...kk....mmmmmmmmmmm",".kk.......k....m.......m.","ggg..gggggg..gggggg..gggg"],
+      "p4": [".......kkkkk.............","......kkkkkkk............","......kkkkkkkk...........",".......k....k............",".......kiieik...p........",".......k....k.m.p........","...ss...kkkkk.m.p....m...",".....ssskkkk..m.p..DDmDD.",".....kkkk..kkkk.p..ddddd.","....kkkk......m.p.DDDDDDD","..kkk...kk....mmmmmmmmmmm","kk.......kk....m.......m.","gg..gggggg..gggggg..ggggg"],
+      "p5": [".......kkkkk.............","......kkkkkkk............","......kkkkkkkk...........",".......k....k............",".......kiieik...p........",".......k....k.m.p........","...ss...kkkkk.m.p....m...",".....ssskkkk..m.p..DDmDD.",".....kkkk..kkkk.p..ddddd.","....kkkk......m.p.DDDDDDD","..kk..kk......mmmmmmmmmmm","kk.....kk......m.......m.","g..gggggg..gggggg..gggggg"],
+      "p6": [".......kkkkk.............","......kkkkkkk............","......kkkkkkkk...........",".......k....k............",".......kiieik...p........",".......k....k.m.p........","...ss...kkkkk.m.p....m...",".....ssskkkk..m.p..DDmDD.",".....kkkk..kkkk.p..ddddd.","....kkkk......m.p.DDDDDDD","..kk..kk......mmmmmmmmmmm",".......kk......m.......m.","..gggggg..gggggg..gggggg."],
+      "p7": [".......kkkkk.............","......kkkkkkk............","......kkkkkkkk...........",".......k....k............",".......kiieik...p........",".......k....k.m.p........","...ss...kkkkk.m.p....m...",".....ssskkkk..m.p..DDmDD.",".....kkkk..kkkk.p..ddddd.","....kkkk......m.p.DDDDDDD","...kk...kk....mmmmmmmmmmm",".kk.......k....m.......m.",".gggggg..gggggg..gggggg.."]
+    },
+    "seq": ["p7","p0","p1","p2","p3","p4","p5","p6"],
+    "ms": [170,170,130,130,170,170,130,130],
+    "loops": 2,
+    "still": "p7",
+    "palette": {"d":"#e8a23a","D":"#bf7d24","g":"#c3c8d0","p":"#9aa0aa","i":"#8a94a6"},
+    "icon": ["k.k.......","k.k...k...","k.k..ddd..","k.k.ddddd.","kkkkkkkkkk",".k......k."],
+    "iconHD": [".k..k...............",".k..k...............",".k..k.......kk......",".k..k.......kk......",".k..k......dddd.....",".k..k.....dddddd....",".k..k...dddddddddd..",".k..k....dddddddd...","kkkkkkkkkkkkkkkkkkkk",".kkkkkkkkkkkkkkkkkk.","..kk............kk..","..kk............kk.."],
+    "iconPalette": {"d":"#e8a23a"}
+  },
+  "run": {
+    "name": "run",
+    "w": 13,
+    "h": 14,
+    "ax": 6,
+    "frames": {
+      "r0": ["....kkkkk....","...kkkkkkk...","...kkkkkkkk..","....k....k...","....kiieik...","....k....k...",".....kkkkk...","...ssss......","..kk.knnk....","..kk.knnk.k..","..kk.kkk.....","....k...k....","...kk...kk...","gggggg..ggggg"],
+      "r1": ["....kkkkk....","...kkkkkkk...","...kkkkkkkk..","....k....k...","....kiieik...","....k....k...",".....kkkkk...","..sssss......","..kk.knnk....","..kk.knnkk...","..kk.kkk.....",".....kk......",".....kkk.....","ggggg..gggggg"],
+      "r2": ["....kkkkk....","...kkkkkkk...","...kkkkkkkk..","....k....k...","....kiieik...","....k....k...",".....kkkkk...","...ssss......","..kk.knnk....","..kk.knnk.k..","..kk.kkk.....","....k...k....","...kk...kk...","gggg..gggggg."],
+      "r3": ["....kkkkk....","...kkkkkkk...","...kkkkkkkk..","....k....k...","....kiieik...","....k....k...",".....kkkkk...","..sssss......","..kk.knnk....","..kk.knnkk...","..kk.kkk.....",".....kk......",".....kkk.....","ggg..gggggg.."],
+      "r4": ["....kkkkk....","...kkkkkkk...","...kkkkkkkk..","....k....k...","....kiieik...","....k....k...",".....kkkkk...","...ssss......","..kk.knnk....","..kk.knnk.k..","..kk.kkk.....","....k...k....","...kk...kk...","gg..gggggg..g"],
+      "r5": ["....kkkkk....","...kkkkkkk...","...kkkkkkkk..","....k....k...","....kiieik...","....k....k...",".....kkkkk...","..sssss......","..kk.knnk....","..kk.knnkk...","..kk.kkk.....",".....kk......",".....kkk.....","g..gggggg..gg"],
+      "r6": ["....kkkkk....","...kkkkkkk...","...kkkkkkkk..","....k....k...","....kiieik...","....k....k...",".....kkkkk...","...ssss......","..kk.knnk....","..kk.knnk.k..","..kk.kkk.....","....k...k....","...kk...kk...","..gggggg..ggg"],
+      "r7": ["....kkkkk....","...kkkkkkk...","...kkkkkkkk..","....k....k...","....kiieik...","....k....k...",".....kkkkk...","..sssss......","..kk.knnk....","..kk.knnkk...","..kk.kkk.....",".....kk......",".....kkk.....",".gggggg..gggg"]
+    },
+    "seq": ["r0","r1","r2","r3","r4","r5","r6","r7"],
+    "ms": [95,95,95,95,95,95,95,95],
+    "loops": 1,
+    "still": "r0",
+    "palette": {"g":"#c3c8d0","i":"#8a94a6"},
+    "icon": ["k.k.k.k.k.k",".k.k.k.k.k.",".k.......k.",".k.......k.",".ktttttttk.",".k.......k.",".k.......k."],
+    "iconHD": ["kk..kk..kk..kk..kk..kk","kk..kk..kk..kk..kk..kk","..kk..kk..kk..kk..kk..","..kk..kk..kk..kk..kk..","..kk..............kk..","..kk..............kk..","..kk..............kk..","..kk..............kk..","..kktt..........ttkk..","..kk..tttttttttt..kk..","..kk..............kk..","..kk..............kk..","..kk..............kk..",".kkkk............kkkk."],
+    "iconPalette": {"t":"#5b93c9"},
+    "iconRest": {"t":0.4}
+  }
+}

@@ -1,0 +1,12 @@
+---
+// A page's word (the draft's V1K.title): the door's word in pixels, alone on its row, the loudest thing on the
+// page; its words for a screen reader beside it.
+import PixelWord from './PixelWord.astro';
+
+interface Props { word: string; label?: string }
+const { word, label = word } = Astro.props;
+---
+<section class="tb">
+  <h1 class="tb-h" tabindex="-1"><PixelWord text={word} cell={1.99} ui class="tb-word" /><span class="sr">{label}</span></h1>
+  <slot />
+</section>

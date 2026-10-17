@@ -1,0 +1,24 @@
+---
+// The footer (the draft's .if, on one line as v2t's, taste item 39, the owner's wish of 2026-10-16): who made it, with
+// a beating heart; where he is, and what race is next, at the column's centre; when it was last edited (the build's
+// own month), at its right. On a phone three short lines, the years moved down beside the last edit, so who made it
+// fits one. What race is next is the day's the page is shown on (Boston's, scripts/today.js), not the build's: from
+// three weeks before the next race and while it is under way, " · next: B.A.A. Half, Nov 8 →" after "Hello from
+// Boston" (on a phone the race's tiny name, "next: B.A.A. Half →"), " · now: Hyrox Boston →", a link to that race on
+// its map (/race/#next). The races not yet over come with the footer as a small data block (#zl-next: their days and
+// the names shown, race/next.js footerData), and the frame's script writes the words (scripts/site.js, footerNext);
+// without script there is no next, and the words read as they are.
+import { BUILT, monthYear, person, url } from '../lib/site';
+import { raceShapeOf, readRace } from '../schemas/race.ts';
+import { footerData } from '../scripts/race/next.js';
+import { bostonDay } from '../scripts/today.js';
+
+const me = await person();
+const built = bostonDay(BUILT);
+const years = `© ${me.started}–${built.slice(0, 4)} · `;
+const races = JSON.stringify(footerData(raceShapeOf(readRace()), built)).replace(/</g, '\\u003c');
+---
+<footer class="if">
+  <p class="f1"><span><span class="fy">{years}</span>Designed by {me.name}, made with <span class="hb"><svg viewBox="0 0 9 8" aria-hidden="true" focusable="false"><path d="M2 1h2v1h-2zM5 1h2v1h-2zM1 2h7v2h-7zM2 4h5v1h-5zM3 5h3v1h-3zM4 6h1v1h-1z"></path><path class="big" d="M1 0h2v1h-2zM6 0h2v1h-2zM0 1h4v1h-4zM5 1h4v1h-4zM0 2h9v2h-9zM1 4h7v1h-7zM2 5h5v1h-5zM3 6h3v1h-3zM4 7h1v1h-1z"></path></svg><span class="sr">love</span></span> and Claude</span><span class="fh">Hello from {me.location}</span><span><span class="fy2">{years}</span>Last edited {monthYear(BUILT)}</span></p>
+  <script type="application/json" id="zl-next" is:inline data-href={`${url('/race/')}#next`} set:html={races}></script>
+</footer>

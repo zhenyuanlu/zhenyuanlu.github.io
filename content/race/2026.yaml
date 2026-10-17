@@ -1,0 +1,216 @@
+# race · the 2026 season: one entry is one race, in date order.
+# To add one, copy an entry and change its fields:
+#   id (lowercase with hyphens, unique across the seasons: the race's address, /race/#<id>; never next, a year or
+#   the name of another venue on the map), date (YYYY-MM-DD; or
+#   YYYY-MM/MM while only the months are known), end (the last day of a race over days), sport (run, hyrox or
+#   dragonboat), name, short and tiny (shorter names, for the home's race line), place, lat and lon (the venue;
+#   approx: true where they are rough), water (the river or lake), status (raced once run; registered or planned
+#   before), results (each an event and a place, or finisher: true, or qualified: true; a note), crews (each a name,
+#   a note, club: an id in clubs.yaml, a division), medley (its leg of the series in medley.yaml: 1, 2 or 3), weather
+#   (sun, sun-cloud, cloud, overcast-wind or rain: his word for the venue's day), note.
+# 中文提示：一条就是一场比赛，按日期排；比完把 status 改成 raced，再填 results。
+
+# Crews per race and the club rows are the owner's (2026-10-05/06). Not raced, so not here: the Boston Triathlon,
+# Aug 23, and the Bay State Games OC 10K, Quincy, Jul 26.
+
+- id: baa-5k
+  date: 2026-04-18
+  sport: run
+  name: B.A.A. 5K
+  short: B.A.A. 5K
+  tiny: 5K
+  place: Boston, MA
+  lat: 42.355
+  lon: -71.066
+  status: raced
+  results:
+    - { finisher: true }
+  medley: 1
+  weather: sun
+
+- id: hyrox-nyc
+  date: 2026-05-28
+  sport: hyrox
+  name: Hyrox New York
+  short: Hyrox New York
+  tiny: Hyrox
+  place: New York, NY
+  lat: 40.757
+  lon: -74.002
+  status: raced
+  results:
+    - { finisher: true }
+  weather: overcast-wind
+
+- id: bhkdbf
+  date: 2026-06-13
+  end: 2026-06-14
+  sport: dragonboat
+  name: Boston Hong Kong Dragon Boat Festival
+  short: Boston Dragon Boat Festival
+  tiny: dragon boat
+  place: Charles River, Cambridge, MA
+  water: charles
+  lat: 42.369
+  lon: -71.121
+  status: raced
+  results:
+    - { event: 500m, place: 6, note: 1st alumni crew }
+    - { event: 200m, place: 3 }
+  crews:
+    - { name: THAA Tsinghua, club: tsinghua }
+  weather: sun
+
+- id: baa-10k
+  date: 2026-06-21
+  sport: run
+  name: B.A.A. 10K
+  short: B.A.A. 10K
+  tiny: 10K
+  place: Boston, MA
+  lat: 42.352
+  lon: -71.072
+  status: raced
+  results:
+    - { finisher: true }
+  medley: 2
+  weather: sun
+
+- id: nyidbf
+  date: 2026-07-11
+  sport: dragonboat
+  name: New York International Dragon Boat Festival
+  short: New York Dragon Boat
+  tiny: dragon boat
+  place: Rockland Lake, Valley Cottage, NY
+  water: rockland
+  lat: 41.147
+  lon: -73.917
+  status: raced
+  results:
+    - { event: 2km, qualified: true }
+  crews:
+    - { name: QingQing Fast Boat, club: tsinghua, division: mixed }
+  weather: sun
+
+- id: springfield
+  date: 2026-07-18
+  sport: dragonboat
+  name: Springfield Dragon Boat Festival
+  short: Springfield Dragon Boat
+  tiny: dragon boat
+  place: Connecticut River, Springfield, MA
+  water: connecticut
+  lat: 42.1
+  lon: -72.59
+  status: raced
+  results: []
+  crews:
+    - { name: QingQing Fast Boat, club: tsinghua, division: mixed }
+  weather: rain
+
+- id: flushing
+  date: 2026-08-09
+  sport: dragonboat
+  name: Flushing Meadows Dragon Boat Festival
+  short: Flushing Dragon Boat
+  tiny: dragon boat
+  place: Flushing Meadows, Queens, NY
+  water: meadow-lake
+  lat: 40.736
+  lon: -73.842
+  status: raced
+  results:
+    - { event: "?", place: 1 }
+    - { event: "?", place: 1 }
+    - { event: "?", place: 3 }
+    - { event: "?", place: 3 }
+    - { event: "?", place: 3 }
+  note: events to confirm
+  crews:
+    - { name: joint crew led by Lianjiang Dragon Boat Team }
+  weather: sun
+
+- id: hartford
+  date: 2026-08-15
+  sport: dragonboat
+  name: Riverfront Dragon Boat Races
+  short: Hartford Dragon Boat
+  tiny: dragon boat
+  place: Hartford, CT
+  water: connecticut
+  lat: 41.766
+  lon: -72.668
+  status: raced
+  results:
+    - { event: 500m, place: 2 }
+  crews:
+    - { name: QingQing Fast Boat, club: tsinghua, division: mixed }
+  weather: cloud
+
+- id: pawtucket
+  date: 2026-09-05
+  sport: dragonboat
+  name: Rhode Island Chinese Dragon Boat Race
+  short: Rhode Island Dragon Boat
+  tiny: dragon boat
+  place: Pawtucket, RI
+  water: seekonk
+  lat: 41.878
+  lon: -71.382
+  status: raced
+  results:
+    - { event: Division C, place: 1 }
+  crews:
+    - { name: QingQing Fast Boat, club: tsinghua, division: mixed }
+  weather: sun-cloud
+
+- id: mercer
+  date: 2026-09-19
+  sport: dragonboat
+  name: Mercer County Dragon Boat Festival
+  short: Mercer County Dragon Boat
+  tiny: dragon boat
+  place: West Windsor, NJ
+  water: mercer-lake
+  lat: 40.276
+  lon: -74.639
+  status: raced
+  results:
+    - { event: 2km, qualified: true }
+  crews:
+    - { name: QingQing Fast Boat, club: tsinghua, division: mixed }
+    - { name: 22 Wolves, note: WRC × Catch22, club: wolfpack, division: open }
+  weather: sun-cloud
+
+# Raced Oct 8, a finisher medal (the owner, 2026-10-11). The event ran Oct 8-11; its date is his race day alone, so
+# the page does not say "now" until the 11th. Sunny (the owner, 2026-10-12; the draft's older note says no weather).
+- id: hyrox-boston
+  date: 2026-10-08
+  sport: hyrox
+  name: Hyrox Boston
+  short: Hyrox Boston
+  tiny: Hyrox
+  place: Boston, MA
+  lat: 42.346
+  lon: -71.045
+  approx: true
+  status: raced
+  results:
+    - { finisher: true }
+  weather: sun
+
+# The medley's last leg, to come.
+- id: baa-half
+  date: 2026-11-08
+  sport: run
+  name: B.A.A. Half Marathon
+  short: B.A.A. Half
+  tiny: B.A.A. Half
+  place: Boston, MA
+  lat: 42.302
+  lon: -71.092
+  approx: true
+  status: registered
+  results: []
+  medley: 3

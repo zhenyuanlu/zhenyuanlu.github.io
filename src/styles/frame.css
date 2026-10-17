@@ -1,0 +1,264 @@
+/* Every page's frame (the draft v2t's inner.css: v2ac's with the taste round of 2026-10-16, and the home sheet's
+   fader): one quiet frame, a 960px column of twelve columns with 24px gutters; under 1000px one column. The page's
+   word in pixels is the loudest thing; the header only whispers. Nothing underlines in hand: a link brightens from
+   grey to ink, a row shows the point beside it (a link in running text keeps its line at rest: article.css). No box
+   marks a chosen or focused thing: the keyboard's focus is a line, a tone or the point. Nothing moves at rest but the
+   heart in the footer. Type 13 / 15 / 18; timings the motion tokens (tokens.css). (The big-screen mode, the draft's
+   wide.css, is styles/wide.css: there the root is zoomed by --z, and this sheet's lengths that must stay the
+   window's (the frame's least height, its place on the device grid, a cover's corner) are written again for it,
+   under html[data-wide], so the plain page's sheet stays as it is; --vw / --vh are a hundredth of the window in the
+   page's px: scripts/early.js.) */
+:root { --cw: min(960px, calc(var(--vw, 1vw) * 100) - 64px); --gut: 24px; }
+/* the scrollbar's room is kept on both edges, so the column stays in the middle of the window (on a screen only: a
+   printed page has no scrollbar, and the room kept for one pushed every line's end off the page) */
+@media screen { html { scrollbar-gutter: stable both-edges; } }
+html.in, html.in body { overflow-x: clip; }
+html.in { scroll-padding-top: 76px; }   /* anchors and keyboard focus land clear of the sticky header (61px) */
+#inner { min-height: 100vh; min-height: 100dvh; font-family: var(--f-text); font-size: 16px; line-height: 1.55; color: var(--ink); display: flex; flex-direction: column; }
+#inner .wrap { width: var(--cw); margin: 0 auto; }
+/* the frame on the device grid: each part takes the left margin auto would give it, to the nearest whole device
+   pixel (--dwx: a device pixel in px, scripts/site.js; not on a touch screen, not without script; on a screen only:
+   a printed page has its own margins, and this one pushed the text 20mm off its left) */
+@media screen {
+  html[data-grid] :is(.ih, .ip, .ring, .close, .if) { margin-left: calc(round(nearest, calc((100% - var(--cw)) / 2 + .01px), var(--dwx)) + .002px); }
+}
+/* resets at zero specificity, so a page's own class always wins */
+:where(#inner) :where(h1, h2, h3, p, ul, ol, figure) { margin: 0; padding: 0; }
+:where(#inner) :where(ul, ol) { list-style: none; }
+:where(#inner) a { color: inherit; text-decoration: none; transition: color var(--t-hover) var(--ease-out); }
+:where(#inner) a:hover { color: var(--ink); }
+#inner a:hover { text-decoration: none; }
+/* the keyboard's focus: never a box (the owner, 2026-10-16: no box marks a chosen thing). A link, a button or a
+   summary: a line under its words in the focus colour (never drawn for a pointer's hover); a row with the home's
+   point shows the point; the header's name and the fader have a line of their own under them; a page says where it
+   marks a control otherwise (a tone, a line) */
+#inner :is(a, button, summary):focus-visible { outline: none; text-decoration-line: underline; text-decoration-thickness: 1px;
+  text-decoration-color: var(--focus, var(--line)); text-underline-offset: .25em; }
+#inner :is([tabindex]:not(a, button, summary), input):focus-visible { outline: none; }
+#inner h1[tabindex="-1"]:focus, #inner .ip:focus { outline: none; }
+:where(#inner) button { font: inherit; color: inherit; background: none; border: 0; padding: 0; margin: 0; cursor: pointer; text-align: inherit; }
+:where(#inner) canvas { display: block; image-rendering: pixelated; }
+#inner svg[data-word] { display: block; overflow: visible; }
+#inner .sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+.num { font-variant-numeric: tabular-nums; }
+.grey, .lab { color: var(--grey); }
+.lab { font-size: 13px; line-height: 20px; font-weight: 400; }
+/* the home's point: a row or link with .hpoint shows a 5px ink dot 15px to its left while it is in hand */
+#inner .hpoint { position: relative; }
+#inner .hpoint::before { content: ""; position: absolute; left: -15px; top: var(--pt-y, .78em); width: 5px; height: 5px; margin-top: -2.5px;
+  border-radius: 50%; background: var(--ink); opacity: 0; transition: opacity var(--t-hover) var(--ease-out); pointer-events: none; }
+#inner .hpoint:hover::before, #inner .hpoint:focus-visible::before, #inner .hpoint.on::before { opacity: 1; }
+
+/* ---------- the picture frame (blog; scripts/frames.js): one box per row, the picture its background, as tall
+   as the frame, never past its own pixels, travelling sideways in hand. Paper behind, a hairline round the box;
+   by day and at dusk the picture is multiplied into the paper; at night it stands on a white plate, as it is (no
+   dimming, no line round it: taste item 24) ---------- */
+#inner .pf { position: relative; display: block; overflow: hidden; width: var(--pf-fw, 100%); height: var(--pf-fh, auto); aspect-ratio: var(--pf-ar, 3 / 2);
+  background-color: var(--bg); background-repeat: no-repeat; background-blend-mode: multiply;
+  background-size: var(--pf-w, 0) var(--pf-h, 0); background-position: var(--pf-x, 0) var(--pf-y, 0);
+  border-radius: var(--pf-rad, 0);
+  transition: background-position var(--pf-t, 1.5s) cubic-bezier(.4, 0, .2, 1), filter .4s ease, background-color .4s ease; }
+#inner .pf::after { content: ""; position: absolute; inset: 0; pointer-events: none; border-radius: inherit;
+  box-shadow: inset 0 0 0 var(--pf-hl, 1px) color-mix(in srgb, var(--ink) 10%, transparent); }
+/* without script the frame shows its picture as it can: as tall as the frame, from its rest (a mark small and whole
+   in the middle, a picture that is never cut whole). A picture that waits in --pf-img for its frame to come near
+   (Frame.astro; frames.js puts it in) comes in at once; a frame's own inline picture outranks this one */
+html:not(.js) #inner .pf { background-image: var(--pf-img); background-size: auto 100%; background-position: var(--pf-rest, 50% 50%); }
+html:not(.js) #inner .pf[data-fit="mark"] { background-size: auto 72%; background-position: 50% 50%; }
+html:not(.js) #inner .pf[data-fit="whole"] { background-size: contain; background-position: 50% 50%; }
+/* (and where the page's script runs but the frames' never does, a module blocked or failed: a frame its script has
+   not laid out, no --pf-w in its own style, shows its picture so too, after 3s, rather than a blank plate. Laid out in
+   time it never does, so nothing moves as a page opens. A waiting picture comes in then too, zl-pf-img; an animation
+   outranks the inline style, so only a frame that has one, [style*="--pf-img"], is given it: one with only an inline
+   picture keeps it) */
+html.js #inner .pf:not([style*="--pf-w"]) { animation: zl-pf-late 0s 3s forwards; }
+html.js #inner .pf[data-fit="mark"]:not([style*="--pf-w"]) { animation-name: zl-pf-mark; }
+html.js #inner .pf[data-fit="whole"]:not([style*="--pf-w"]) { animation-name: zl-pf-whole; }
+html.js #inner .pf[style*="--pf-img"]:not([style*="--pf-w"]) { animation-name: zl-pf-late, zl-pf-img; }
+html.js #inner .pf[data-fit="mark"][style*="--pf-img"]:not([style*="--pf-w"]) { animation-name: zl-pf-mark, zl-pf-img; }
+html.js #inner .pf[data-fit="whole"][style*="--pf-img"]:not([style*="--pf-w"]) { animation-name: zl-pf-whole, zl-pf-img; }
+@keyframes zl-pf-late { to { background-size: auto 100%; background-position: var(--pf-rest, 50% 50%); } }
+@keyframes zl-pf-mark { to { background-size: auto 72%; background-position: 50% 50%; } }
+@keyframes zl-pf-whole { to { background-size: contain; background-position: 50% 50%; } }
+@keyframes zl-pf-img { to { background-image: var(--pf-img); } }
+#inner { --pf-rr: var(--pf-r, 0px); }
+/* a cover that is a short film: the still is the picture; in hand the film plays over it, at its place and size */
+#inner .pf[data-film] { isolation: isolate; }
+#inner .pf > :is(video, .pf-film) { position: absolute; left: var(--pf-x, 0); top: var(--pf-y, 0); width: var(--pf-w, 0); height: var(--pf-h, 0); max-width: none;
+  opacity: 0; pointer-events: none; mix-blend-mode: multiply; }
+#inner .pf.pf-run { background-image: none !important; }
+#inner .pf.pf-run > :is(video, .pf-film) { opacity: 1; }
+html[data-stage="night"] #inner .pf > :is(video, .pf-film) { mix-blend-mode: normal; }
+@media (hover: hover) {
+  #inner .pf-host:hover .pf[data-pan="x"] { background-position: var(--pf-x1, 0) var(--pf-y, 0); }
+}
+#inner :is(.pf-host:focus-visible, .pf-host:has(:focus-visible)) .pf[data-pan="x"] { background-position: var(--pf-x1, 0) var(--pf-y, 0); }
+#inner .pf[data-pan="x"] { touch-action: pan-y pinch-zoom; }
+#inner .pf.pf-drag, #inner.pf-still .pf { transition-property: filter, background-color; }
+html[data-stage="night"] #inner .pf { background-color: var(--plate); background-blend-mode: normal; filter: none; }
+@media (hover: hover) {
+  html[data-stage="night"] #inner .pf-host:hover .pf { filter: none; }
+}
+html[data-stage="night"] #inner :is(.pf-host:focus-visible, .pf-host:has(:focus-visible)) .pf { filter: none; }
+/* (without script the night is the system's: the same plate) */
+@media (prefers-color-scheme: dark) { html:not(.js) #inner .pf { background-color: var(--plate); background-blend-mode: normal; filter: none; } }
+@media (prefers-reduced-motion: reduce) {
+  #inner .pf { transition: none; }
+}
+#inner .pf::after { box-shadow: none; }
+
+/* ---------- the header: the way home and the fader, nothing else; level with the home's own column ---------- */
+.ih { position: sticky; top: 0; z-index: 20; background: var(--bg); width: var(--cw); margin: 0 auto; height: 61px; }
+.ih::after { content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 1px; background: var(--line); opacity: 0;
+  transition: opacity var(--t-hover) var(--ease-out); pointer-events: none; }
+.ih.lined::after { opacity: .3; }
+.ih-name { position: absolute; left: 0; top: 17px; height: 44px; display: flex; align-items: center; gap: 6px; }
+.ih-nm { margin-top: 2px; }
+.ih-ar { display: inline-flex; align-items: center; font-size: 15px; line-height: 1; transition: transform var(--t-press) steps(2); will-change: transform; }
+#inner .ih-name:focus-visible::after { content: ""; position: absolute; left: 0; right: 0; bottom: 6px; height: 1px; background: var(--ink); }
+.ih-name:hover .ih-ar, .ih-name:focus-visible .ih-ar { transform: translateX(-3px); }
+.ih-fade { display: contents; }
+#inner .skip { position: absolute; left: 0; top: 10px; padding: 0 8px; height: 44px; display: flex; align-items: center; font-size: 15px;
+  background: var(--bg); color: var(--ink); transform: translateY(-200%); }
+#inner .skip:focus-visible { transform: none; z-index: 2; }
+
+/* ---------- the fader: ● ─┃─ ☾, the setting sun over its middle (112 x 44); drawn by scripts/fader.js ---------- */
+.fader { position: absolute; z-index: 3; top: 17px; right: -4px; display: flex; align-items: center; height: 44px; }
+html:not(.js) .fader { display: none; }
+.fw { position: relative; display: flex; align-items: center; justify-content: center; height: 44px; padding: 0 5px; -webkit-tap-highlight-color: transparent; }
+.fw[data-stop="day"] { width: 19px; }
+.fw[data-stop="night"] { width: 21px; }
+.fw canvas { width: calc(var(--iw, 11) * var(--fc, 2px)); height: calc(var(--ih, 11) * var(--fc, 2px)); margin-top: 5px; image-rendering: pixelated; }
+.fw:not(.fd)::before { content: ""; position: absolute; top: 0; bottom: 0; left: -12px; right: -12px; }
+.fw:focus-visible::after {
+  content: ""; position: absolute; left: calc(50% - var(--f5, 5px) / 2); top: calc(24.5px + var(--ih, 11) * var(--fc, 1px) / 2 + 2 * var(--f1, 1px));
+  width: var(--f5, 5px); height: var(--f1, 1px); background: var(--ink);
+}
+#inner .fw:focus-visible { outline: none; }
+.fader .ft { position: relative; display: block; }
+.fw.fd { position: absolute; left: calc(50% - var(--iw, 9) * var(--fc, 2px) / 2 - 2px); top: auto; bottom: 27px; height: auto; padding: 0 2px; }
+.fw.fd canvas { margin-top: 0; }
+.fw.fd:focus-visible::after { top: auto; bottom: -23px; }
+.fader input {
+  -webkit-appearance: none; appearance: none; display: block;
+  width: 72px; height: 44px; margin: 0; padding: 0; background: none;
+  cursor: pointer; touch-action: none; -webkit-tap-highlight-color: transparent;
+}
+#inner .fader input:focus-visible { outline: none; }
+.fader input::-webkit-slider-runnable-track { height: 44px; border: 0; background: linear-gradient(var(--line), var(--line)) var(--ftx, 12px) var(--fty, 24px) / var(--ftw, 48px) var(--f1, 1px) no-repeat; }
+.fader input::-moz-range-track { height: 44px; border: 0; background: linear-gradient(var(--line), var(--line)) var(--ftx, 12px) var(--fty, 24px) / var(--ftw, 48px) var(--f1, 1px) no-repeat; }
+.fader input::-webkit-slider-thumb {
+  -webkit-appearance: none; appearance: none; box-sizing: content-box;
+  width: 4px; height: 12px; border: solid transparent; border-width: 19px 10px 13px; border-radius: 0;
+  background: var(--ink) content-box;
+}
+.fader input::-moz-range-thumb {
+  box-sizing: content-box;
+  width: 4px; height: 12px; border: solid transparent; border-width: 19px 10px 13px; border-radius: 0;
+  background: var(--ink) content-box;
+}
+.fader:has(input:focus-visible)::after { content: ""; position: absolute; left: 4px; right: 4px; bottom: 6px; height: 1px; background: var(--ink); }
+
+/* ---------- the page: the title block, sections, the ring, the closing line, the footer ---------- */
+.ip { flex: 1 0 auto; width: var(--cw); margin: 0 auto; padding-bottom: 24px; }
+.ip:focus { outline: none; }
+.g12 { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: var(--gut); }
+.tb { padding-top: 40px; }
+.tb-h { display: block; }
+.tb-d { margin-top: 18px; max-width: 600px; }
+.lede { font-size: 18px; line-height: 28px; text-wrap: pretty; }
+/* a page's small aside under its word (build: "All papers on Google Scholar"): a link in words, so the accent and its
+   line at rest, the ink in hand (taste items 15 and 17) */
+.tb-aside { margin-top: 12px; font-size: 13px; line-height: 20px; color: var(--grey); }
+#inner .tb-aside a { color: var(--accent); text-decoration-line: underline; text-decoration-thickness: 1px; text-underline-offset: .18em;
+  text-decoration-color: color-mix(in srgb, currentColor 45%, transparent);
+  transition: color var(--t-hover) var(--ease-out), text-decoration-color var(--t-hover) var(--ease-out); }
+#inner .tb-aside a:is(:hover, :focus-visible) { color: var(--ink); text-decoration-color: currentColor; }
+#inner .tb-aside a:focus-visible { text-decoration-thickness: 2px; }
+#inner .lede a { white-space: nowrap; }   /* a way on ("The blog is ready →") never breaks */
+.sec { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: var(--gut); margin-top: 96px; scroll-margin-top: 88px; }
+.tb + .sec { margin-top: 56px; }
+.sec-m { grid-column: 1 / 4; }
+.sec-b { grid-column: 4 / 13; min-width: 0; }
+/* the ring: the doors before and after, as a road goes on; the arrow takes a step toward where it leads */
+.ring { width: var(--cw); margin: 120px auto 0; display: flex; justify-content: space-between; font-size: 18px; line-height: 26px; }
+.ring a { color: var(--ink); display: inline-flex; gap: .35em; align-items: baseline; }
+.ring .ar { display: inline-block; transition: transform var(--t-press) steps(2); }
+.ring a:hover .ar.l, .ring a:focus-visible .ar.l { transform: translateX(-4px); }
+.ring a:hover .ar.r, .ring a:focus-visible .ar.r { transform: translateX(4px); }
+.ring .go { margin-left: auto; }
+/* the 404's road (no other page has the line on its footer's top edge) */
+.close { position: relative; width: var(--cw); margin: 28px auto 0; height: 1px; background: var(--line); }
+.close i { position: absolute; right: -2px; top: -2px; width: 5px; height: 5px; border-radius: 50%; background: var(--ink); }
+/* the footer, one line on one baseline in three parts (v2t, taste item 39; the owner, 2026-10-16): who made it, with
+   a beating heart; where he is and what is next, at the column's centre; when it was last edited, at its right */
+.if { width: var(--cw); margin: 32px auto 0; padding-bottom: 48px; font-size: 13px; line-height: 20px; color: var(--grey); }
+.if .f1 { display: grid; grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr); align-items: baseline; column-gap: 24px; }
+.if .f1 > :nth-child(2) { text-align: center; }
+.if .f1 > :nth-child(3) { text-align: right; pointer-events: none; }   /* (plain words: on a phone they never cover the next link's tap room over them) */
+.if a { color: var(--grey); }
+.if a:hover, .if a:focus-visible { color: var(--ink); }
+.if .fn-s, .if .fy2 { display: none; }
+/* (the next race, written by the frame's script for the visitor's day (scripts/site.js, .fn), runs on to the right of
+   "Hello from Boston", out of the grid's measure: in it, as v2t has it, each side's column is narrower than who made
+   it (334px for its 361px with "next: B.A.A. Half, Nov 8"), which then broke onto a second line at every width. So
+   "Hello from Boston" stands at the column's centre on every day, and writing the next moves nothing) */
+@media not all and (max-width: 999px) {
+  .if .fh { position: relative; white-space: nowrap; }
+  .if .fn { position: absolute; left: 100%; top: 0; white-space: nowrap; }
+  .if .fn-t .fn-l { display: none; }   /* (a name too long for the line: its tiny one, scripts/site.js fitNext) */
+  .if .fn-t .fn-s { display: inline; }
+}
+/* (at 13px who made it measures 388.9px, and 392.2 at 150%, where the heart's cells are two device pixels and it is
+   3.3px wider; under 1024px wide the column is under its 960 and leaves it 391.2 at 1000, beside Hello centred and
+   24px between, so at 150% it broke onto a second line. There it is set .005em closer, 3.9px, and keeps its one line
+   at every scale; from 1024px it is as v2t has it) */
+@media (min-width: 1000px) and (max-width: 1023.98px) { .if .f1 > :first-child { letter-spacing: -.005em; } }
+/* the heart: 7 x 6 cells, a 9 x 8 beat over it, lub-dub once a second and a bit. Its cells are 1px, or on a screen
+   of 125%, 150% or 175% the whole device pixels nearest (--hb-z, scripts/site.js, which also sets it on the device
+   grid: the draft's zoom engine did the same with its --zk) */
+.hb { display: inline-block; position: relative; width: calc(9px * var(--hb-z, 1)); height: calc(8px * var(--hb-z, 1));
+  margin: 0 calc(.04em * var(--hb-z, 1)); vertical-align: calc(-1px * var(--hb-z, 1)); }
+.hb svg { position: absolute; left: 0; top: 0; width: 100%; height: 100%; shape-rendering: crispEdges; fill: var(--red); overflow: visible; }
+.hb .big { animation: zl-beat 1.2s step-end infinite; }
+@keyframes zl-beat { 0% { opacity: 1; } 12% { opacity: 0; } 24% { opacity: 1; } 36% { opacity: 0; } 100% { opacity: 0; } }
+@media (prefers-reduced-motion: reduce) { .hb .big { animation: none; opacity: 0; } }
+
+/* ---------- phone: one column; the header's row scrolls with the page under 1000px as the home's does ---------- */
+@media (max-width: 999px) {
+  :root { --cw: min(calc(var(--vw, 1vw) * 100) - 40px, 520px); --gut: 16px; }
+  html.in { scroll-padding-top: 60px; }
+  .ih { height: 47px; }
+  .ih-name { top: 3px; }
+  .fader { top: 3px; }
+  .fw[data-stop="day"]::before { left: -13px; }   /* the sun's target stays 44px wide (its button is 19px at every screen scale) */
+  .tb { padding-top: 13px; }
+  .tb-d { margin-top: 14px; }
+  .lede { font-size: 17px; line-height: 26px; }
+  .sec { display: block; margin-top: 64px; scroll-margin-top: 56px; }
+  .tb + .sec { margin-top: 40px; }
+  .g12 { display: block; }
+  .ring { margin-top: 80px; font-size: 17px; }
+  .ring a { min-height: 44px; align-items: center; }
+  .if a { display: inline-block; padding: 13px 0; margin: -13px 0; }
+  .if .f1 { display: block; }
+  .if .f1 > span { display: block; }
+  .if .f1 > :nth-child(2), .if .f1 > :nth-child(3) { text-align: left; }
+  .if .fn-l { display: none; }
+  .if .fn-s, .if .fy2 { display: inline; }
+  .if .fy { display: none; }
+}
+@media (max-width: 374.98px) { .ih-name { top: -3px; } .ih { height: 41px; } .fader { top: -3px; } }
+
+/* ---------- a page load is softened, where the browser can, as the draft's door was: a short cross-fade ---------- */
+@view-transition { navigation: auto; }
+::view-transition-old(root), ::view-transition-new(root) { animation-duration: .15s; animation-timing-function: cubic-bezier(.2, .7, .2, 1); }
+@media (prefers-reduced-motion: reduce) {
+  @view-transition { navigation: none; }
+  ::view-transition-group(*), ::view-transition-old(*), ::view-transition-new(*) { animation: none !important; }
+}
+@media (forced-colors: active) {
+  .ih::after, .close { background: CanvasText; }
+  .close i, #inner .hpoint::before { background: CanvasText; forced-color-adjust: none; }
+  .hb svg { fill: CanvasText; }
+}

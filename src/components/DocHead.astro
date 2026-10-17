@@ -1,0 +1,81 @@
+---
+// The head every page opens with, in one place (layouts/Base.astro for the frame's pages, layouts/Home.astro for the
+// home): the charset; the Content-Security-Policy right after it, so it governs everything after it; the viewport;
+// the phone's browser bar (theme-color: the day's paper here, the light's script keeps it the paper of the hour);
+// the light, set before the first paint by a small inline script whose hash that policy carries (and nothing else: no
+// other script or style is written into a page); then components/Head.astro (title, description, canonical, cards,
+// structured data), with the page's own props.
+// The policy (integrations/csp.mjs has the rest): scripts are files from this site, and the light's own by its hash;
+// stylesheets are files from this site; style attributes (KaTeX's layout, a figure's own size) are allowed. Only in the
+// built site: the dev server writes its own styles into the page.
+// Two things more, for speed (the speed round, 2026-10-16), neither changing a pixel:
+//   the type: the page's own Figtree faces asked for at once (a preload each), not once the stylesheet has been read
+//     and the text laid out: race's map waits for its type (scripts/race/page.js, FONT_WAIT), and on a cold load
+//     waited ~54ms for it on his screen, ~300ms on a phone. Which faces a page uses: 400 everywhere; 500 on the
+//     frame's pages but a photograph's and the 404 (none of their words is set in it); the home's latin-ext 400 (the
+//     name's syllables, yuān). A face preloaded and not used would be fetched for nothing, and Chrome says so.
+//   the next page: speculation rules, so Chromium makes the page a link leads to ready before the click (prerender:
+//     the draft's way of making race ready out of sight, inner.js V1K.warm, for every page and by the browser).
+//     How eager, by what Chrome did with the built site (2026-10-16: each door's page left alone 8s, then a door
+//     hovered and pressed; Chrome's own account of its attempts, the server's of the bytes). Chrome 155, on a desk and
+//     in its phone emulation, makes nothing ready while a page is left alone, eager or moderate; eager starts as the
+//     pointer rests on a link (within 25 to 45ms), moderate after 200ms of it or at the press. Chrome 131 makes every
+//     eager link's page ready at once, on a phone too: with the doors, the ring and every link to race eager, the home
+//     pulled 1005 KB before anything was touched (its own: 113), teach 800 (55), blog 845 (141), race 143 (129; its
+//     hidden season list's /race/2025/ among them), and the home made race ready twice, /race/ as the server prints
+//     the door and /race/#next once its script names the next race. A phone's own Chrome (not at hand; Chrome's
+//     docs): eager 50ms after a link comes into view, moderate 500ms after a scroll stops, for the large links near
+//     where the finger last went down (so teach, scrolled to its foot, could make see's 800 KB and blog's ready
+//     untouched). So: eager for one link, race's door on the home (its map takes longest to lay out), once its
+//     address is settled (scripts/home/doors.js marks it, data-eager: one address, one prerender): on a desk race is
+//     as instant as it was (its 98 KB ready within a 150ms hover, shown from its prerender at the press); at most
+//     those 98 KB before a touch (Chrome 131; a phone's as the door comes into view), on the home alone. Moderate for
+//     every other page of the site where the pointer hovers (html[data-grid]: scripts/early.js sets it before the
+//     first paint, and never on a touch screen, where nothing else is made ready). Never a link that opens elsewhere
+//     ([target]) nor a file ([download], an address with a dot), a hidden one, see's wall (a photograph opens in the
+//     viewer, on the page: its own page would be made for nothing), nor the other sites the domain serves (the
+//     owner's /courses/ and the rest).
+//     The rules are an inline script, so the policy carries their hash too: 'inline-speculation-rules' does not do
+//     here, a policy with a hash in it ignores that word (as it ignores 'unsafe-inline'). Other browsers ignore them.
+// And the visitor stats (the owner's decision, 2026-10-16; README.md, "Analytics"): on the real site's pages (a
+// production build at /, not the dev server nor the LAN preview), where content/site.yaml names the measurement id,
+// the id in a meta (zl-ga4) for scripts/ga.js, which loads gtag.js once the page has loaded and is idle, and counts it
+// once it is shown. The home alone has gtag.js's tag itself, static, as Google Search Console looks for it (asked for
+// at low priority: Google's 165 KB, which a phone otherwise fetched with the page's own first files); with
+// analytics.verify set the home has Search Console's own verification meta instead, and loads gtag.js as the other
+// pages do. The policy lets that one script and its counts' hosts in on every page (integrations/csp.mjs).
+import { createHash } from 'node:crypto';
+import early from '../scripts/early.js?raw';
+import fig400 from '@fontsource/figtree/files/figtree-latin-400-normal.woff2?url';
+import fig500 from '@fontsource/figtree/files/figtree-latin-500-normal.woff2?url';
+import fig400ext from '@fontsource/figtree/files/figtree-latin-ext-400-normal.woff2?url';
+import Head from './Head.astro';
+import { GA_SCRIPT, cspDirectives } from '../integrations/csp.mjs';
+import { person } from '../lib/site';
+
+type Props = Parameters<typeof Head>[0];
+const { path = '' } = Astro.props;
+const BASE = import.meta.env.BASE_URL;
+const sha = (s: string) => `'sha256-${createHash('sha256').update(s).digest('base64')}'`;
+// (its comments stay in the source; the page carries the code alone)
+const EARLY = early.replace(/\/\*[\s\S]*?\*\//g, '').split('\n').map((l) => l.trim()).filter(Boolean).join('\n');
+// (the other sites the domain serves, the owner's own GitHub Pages: scripts/check-dist.mjs OTHERS)
+const OTHERS = ['courses', 'teachings', 'artLife', 'python-notebook', 'r-comput-viz', 'waycine'];
+const OWN = [{ href_matches: `${BASE}*` }, { not: { href_matches: [`${BASE}*.*`, ...OTHERS.map((p) => `/${p}*`)] } }];
+const NEVER = '[target], [download], [hidden] a, a[hidden], .s-it';
+const RULES = JSON.stringify({
+  prerender: [
+    { where: { and: [...OWN, { selector_matches: 'a[data-eager]' }, { not: { selector_matches: NEVER } }] }, eagerness: 'eager' },
+    { where: { and: [...OWN, { selector_matches: ':root[data-grid] a' }, { not: { selector_matches: `a[data-eager], ${NEVER}` } }] }, eagerness: 'moderate' },
+  ],
+});
+const me = await person();
+const GA = import.meta.env.PROD && BASE === '/' && me.analytics ? me.analytics.ga4 : null;
+const VERIFY = GA && me.analytics && me.analytics.verify ? me.analytics.verify : null;
+const CSP = [...cspDirectives({ ga: !!GA }), `script-src 'self'${GA ? ` ${GA_SCRIPT}` : ''} ${sha(EARLY)} ${sha(RULES)}`, "style-src 'self'", "style-src-elem 'self'", "style-src-attr 'unsafe-inline'"].join('; ');
+const home = path === '/', bare = /^\/see\/[^/]+\/$/.test(path) || /404/.test(path);
+const FACES = [fig400, ...(home ? [fig400ext] : bare ? [] : [fig500])];
+// (the template is one line, and the layouts write <head><DocHead /></head>: the head's first elements stand with
+// nothing between them, as they did when each layout wrote them itself)
+---
+<meta charset="utf-8">{import.meta.env.PROD && <meta http-equiv="content-security-policy" content={CSP}>}<meta name="viewport" content="width=device-width, initial-scale=1"><meta name="theme-color" content="#fcfcfa"><script is:inline set:html={EARLY}></script>{FACES.map((href) => <link rel="preload" href={href} as="font" type="font/woff2" crossorigin />)}{GA && <meta name="zl-ga4" content={GA}>}{GA && home && VERIFY && <meta name="google-site-verification" content={VERIFY}>}{GA && home && !VERIFY && <script async fetchpriority="low" src={`${GA_SCRIPT}/gtag/js?id=${GA}`}></script>}<script>import '../scripts/ga.js';</script>{import.meta.env.PROD && <script type="speculationrules" is:inline set:html={RULES}></script>}<Head {...Astro.props} />

@@ -1,0 +1,49 @@
+---
+// /blog/<slug>/: one page a post or a talk, at the address the old site gave it.
+import { render } from 'astro:content';
+import Base from '../../layouts/Base.astro';
+import Article from '../../components/Article.astro';
+import LiveFigure from '../../components/LiveFigure.astro';
+import { absolute, listed, posts, topicsOf, type Post } from '../../lib/site';
+import '../../styles/blog.css';
+import '../../styles/article.css';
+import 'katex/dist/katex-swap.min.css';
+
+export async function getStaticPaths() {
+  const all = await posts();
+  return all.map((post) => {
+    // older at the left, newer at the right: a post among the blog's posts, a talk among the talks
+    const seq = post.data.kind === 'talk' ? all.filter((x) => x.data.kind === 'talk') : listed(all);
+    const i = seq.indexOf(post);
+    const older = i < 0 ? null : seq[i + 1] || null;
+    const newer = i < 1 ? null : seq[i - 1] || null;
+    return { params: { slug: post.id }, props: { post, older, newer } };
+  });
+}
+interface Props { post: Post; older: Post | null; newer: Post | null }
+const { post, older, newer } = Astro.props;
+const { Content, remarkPluginFrontmatter } = await render(post);
+const zl = remarkPluginFrontmatter.zl;
+const d = post.data;
+const words = zl?.words || undefined;
+// the social card's text: the cover's own (its alt), else its caption's words, else the title
+const plain = (s?: string) => String(s || '').replace(/\s*\[[^\]]*@[^\]]*\]/g, '').replace(/[*_`]/g, '').replace(/\s+/g, ' ').trim();
+const cardAlt = d.coverAlt || plain(d.coverCaption) || d.title;
+---
+<Base
+  title={d.title}
+  description={d.description}
+  path={`/blog/${post.id}/`}
+  page="blog"
+  ring={d.kind === 'talk' ? 'build' : 'blog'}
+  noindex={d.draft}
+  image={d.cover ? absolute(`/og/${post.id}.png`) : undefined}
+  imageAlt={d.cover ? cardAlt : undefined}
+  article={{ published: d.date, modified: d.updated, authors: d.authors, topics: topicsOf(post), words }}
+  talk={d.kind === 'talk' ? { date: d.date, where: d.where } : undefined}
+>
+  <Article post={post} zl={zl} older={older} newer={newer}>
+    <Content components={{ LiveFigure }} />
+  </Article>
+  <Fragment slot="scripts"><script>import '../../scripts/article.js';</script></Fragment>
+</Base>

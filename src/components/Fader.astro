@@ -1,0 +1,13 @@
+---
+// The light, day to night (the draft's fader, 112 x 44, in the header's top right corner). Its stops are pixel
+// pictures drawn by scripts/fader.js; their words stay for screen readers. Without script it is not shown: the
+// page then follows the system's light or dark (styles/tokens.css).
+---
+<div class="fader" role="group" aria-label="light">
+  <button class="fw" type="button" data-to="0" data-stop="day"><span class="sr">day</span><canvas aria-hidden="true"></canvas></button>
+  <span class="ft">
+    <input type="range" min="0" max="100" step="1" value="0" aria-label="light, from day to night" aria-valuetext="day">
+    <button class="fw fd" type="button" data-to="50" data-stop="dusk"><span class="sr">dusk</span><canvas aria-hidden="true"></canvas></button>
+  </span>
+  <button class="fw" type="button" data-to="100" data-stop="night"><span class="sr">night</span><canvas aria-hidden="true"></canvas></button>
+</div>

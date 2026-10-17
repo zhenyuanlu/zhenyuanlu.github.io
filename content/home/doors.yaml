@@ -1,0 +1,18 @@
+# home · the five doors, in the order the line reaches them: id (its page) and line (the grey words under its word).
+# race's line is what it says while no race is near; near one, it names that race (from content/race/).
+# 中文提示：首页的五扇门，按顺序；line 是门下面那行灰色小字。
+
+- id: build
+  line: software, research
+
+- id: teach
+  line: courses, open books
+
+- id: see
+  line: photographs
+
+- id: blog
+  line: technical, personal
+
+- id: race
+  line: on water, on land

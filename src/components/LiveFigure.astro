@@ -1,0 +1,30 @@
+---
+// A live figure (the format guide's <LiveFigure name="sine" .../>): a drawing with its own controls and caption
+// that moves only when asked. At rest it is a still (its frame at t = 0); it runs once play is pressed, a slider
+// redraws it, it stops when it leaves the window, and under reduced motion there is no play at all
+// (scripts/live.js). Its code is a small module beside the post, content/blog/<post>/<name>.live.js, whose default
+// export says { label, ratio, min, max, controls: [{ id, label, min, max, step, value, unit }], draw(g) }.
+// The Markdown step (remark-dialect.mjs) numbers it as a figure and gives it its caption (the slot).
+interface Control { id: string; label: string; min: number; max: number; step: number; value: number; unit?: string }
+interface Def { label?: string; controls?: Control[] }
+interface Props { name: string; post: string; figid?: string; cls?: string; id?: string; width?: string; caption?: string }
+const { name, post, figid = '', cls = '' } = Astro.props;
+const mods = import.meta.glob<{ default: Def }>('/content/blog/*/*.live.js', { eager: true });
+const mod = mods[`/content/blog/${post}/${name}.live.js`];
+if (!mod) throw new Error(`<LiveFigure name="${name}"/>: there is no ${name}.live.js beside the post ${post}`);
+const D = mod.default;
+const fmt = (v: number, c: Control) => (c.step < 1 ? (+v).toFixed(1) : String(+v)) + (c.unit ? ` ${c.unit}` : '');
+// (each slider's id: the figure's own number, or its name where it has none)
+const uid = `lf-${figid || name}`;
+const PLAY = 'M2 1h1v7h-1zM3 2h1v5h-1zM4 3h1v3h-1zM5 4h1v1h-1z', PAUSE = 'M2 1h2v7h-2zM5 1h2v7h-2z';
+---
+<figure class={['w-fig', 'a-live', cls].filter(Boolean).join(' ')} data-live={name} data-post={post} id={figid || undefined} tabindex={figid ? -1 : undefined}>
+  <div class="a-live-s"><canvas class="a-live-c" role="img" aria-label={D.label || name}></canvas></div>
+  <div class="a-live-k">
+    <button type="button" class="a-play" aria-pressed="false" hidden><svg class="b-ic a-pl" viewBox="0 0 9 9" aria-hidden="true" focusable="false"><path d={PLAY}></path></svg><svg class="b-ic a-pa" viewBox="0 0 9 9" aria-hidden="true" focusable="false"><path d={PAUSE}></path></svg><span class="a-pw">play</span></button>
+    {(D.controls || []).map((c) => (
+      <span class="a-ctl"><label class="a-ctl-l" for={`${uid}-${c.id}`}>{c.label}</label><input type="range" id={`${uid}-${c.id}`} min={c.min} max={c.max} step={c.step} value={c.value} data-c={c.id} disabled /><output class="num" for={`${uid}-${c.id}`}>{fmt(c.value, c)}</output></span>
+    ))}
+  </div>
+  <slot />
+</figure>

@@ -1,0 +1,401 @@
+/* The home (site/src/scripts/home/): ported from the draft v2ac (design/home/v2ac-article.html, the home's own style
+   block), its own words below. The site's tokens (styles/tokens.css): --ink, --grey, --line, --bg, --red, --accent and
+   the stage's, set by scripts/early.js; the base rules are tokens.css's and the fader's frame.css's (it stands in the
+   home's top right corner, as on every page). What the draft set inline (the places of its page without script at
+   1440 x 900) is set here, so the page carries no style attribute. html.lt of the draft is main.lt here (the home's
+   own element, the same weight), and its variables are the home's (.flow), not the page's. The draft's single-page
+   rules (html.in, html.to: the home hidden while an inner page is shown) are gone: every page is its own.
+   The big-screen mode (html[data-wide], the draft's wide.css) is phase 5.
+   From the draft:
+   home v1k · five doors / 五扇门 · 内页
+   The owner reopened the doors on 2026-10-05 (docs/11-decisions.md#d-20261005-home-v1k; spec in
+   docs/plans/2026-10-05-home-v1k.md). build and teach stay down the first run; past the bend, on see's row,
+   see stands over Shanghai, write is centred over Austin and race ends over Boston. lift() and spread() move
+   the whole row; write's and race's pictures open above their own words. Boston's empty caption slot shows one
+   grey line of what is new (next / now / new / updated, by date; ?today= to try other days), and a footer line
+   sits at the bottom when there is room.
+   From v1h: the cities stand a little further apart (140 of 960 on a desktop, 67 of 350 on a phone), so the scenes
+   have room. A scene's subject may be larger than the city icon (an altIcons entry with w x h, bottom-centred on the
+   icon's foot; the city's canvas is the largest of its drawings).
+   From v1g: the name and the door words are true pixel lettering, a hand-drawn lowercase alphabet: each word, and
+   each syllable of the name, is a canvas of whole cells, a cell being a whole number of device pixels, set on the
+   device grid and drawn in the stage's ink, so it is as crisp as the city icons. The real words stay in the page as
+   transparent text over them. The small text is a webfont at whole px.
+   From v1f: no streetlights anywhere. The light has three stages on one fader (day 0..33, dusk 34..66, night
+   67..100), each with its own paper, ink, grey and hairline; day to dusk is one continuous blend, dusk to night the
+   one cut (a 200ms crossfade). Each city has its own hover scene for each stage, drawn in that stage's own palettes
+   so nothing glares on dusk or night paper. No year under the cities, only the names.
+   From v1e: one line leaves the point after "Northeastern.", passes build and teach, swings across to see,
+   and turns into the level road; the five original line-art cities (36 x 36 cells) stand on it, equally
+   spaced; a small traveller walks to the city in hand and does its thing; the colour cools back to line
+   art like coffee. The name splits and says itself; there is no about. Three sizes; ink + grey; the line turns
+   amber at dusk. */
+.flow {
+  /* the type (the draft's ?type=pixel, its one option now): the name and the door words are drawn in pixel letters
+     over their transparent words; everything else is the site's sans at whole px */
+  --f-name: var(--f-text);
+  --f-word: var(--f-text);
+  --f-small: var(--f-text);
+  --f-word-style: normal;
+  --f-word-weight: 400;
+  --f-name-weight: 400;
+  --f-track: 0;
+  --l: 34px;                 /* name + the door words (without script) */
+  --s: 14px;                 /* everything small */
+  --xs: 13px;                /* pinyin */
+  /* one pixel for the whole road: the traveller, the city icons and the weather all use cells of --u
+     (set by the script to whole device pixels: 2px on desktop, about 1.3px on a phone) */
+  --u: 2px;
+  --icon: calc(36 * var(--u));   /* 36 x 36 cells, standing on the road */
+  --bw: none;                /* no-script only: filter for the black line icons */
+  --co: saturate(1);         /* no-script only: filter for the colour icons */
+}
+/* night without the script (or before it): the colour icons' near-black outlines in the light ink (the filter #night-ink) */
+html[data-theme="dark"] .flow { --bw: invert(1); --co: url(#night-ink); }
+@media (prefers-color-scheme: dark) {
+  html:not([data-theme="light"]) .flow { --bw: invert(1); --co: url(#night-ink); }
+}
+.nf { position: absolute; }
+/* focus is an underline everywhere, never a box; no underline on hover (the owner, twice); the keyboard's focus
+   still draws one, as the home has no outline */
+:where(.flow) a:focus-visible { text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: .2em; }
+
+/* one screen: every element sits on the line's coordinate system, x in 960ths of the width, y in 900ths of the height */
+.flow {
+  --fw: min(960px, calc(var(--vw, 1vw) * 100) - 64px);
+  position: relative; width: var(--fw); height: calc(var(--vh, 1vh) * 100); height: calc(var(--vh, 1dvh) * 100); min-height: 620px; margin: 0 auto;
+}
+/* the frame on the device grid (the owner's leftovers, 2026-10-13). Centred by auto margins, the frame's left edge fell
+   between two device pixels wherever the window's width less the frame's is odd in device px (at 100%: a window 1365
+   or 1367px wide; any window not maximised, half the time), and the browser then puts every box on the grid by
+   itself: the line's drawing stood half a pixel beside where the script had worked it out (2px of half-tone for the
+   upright runs), the stations' beads half a pixel off it; and a page's header, once painted on such a half, kept
+   that half for its "←" after the window was dragged on (the browser's own saving). So the frame's left margin is
+   what auto would give, taken to the nearest whole device pixel (a half goes right, as the browser puts a box; the
+   .01px says so for the boxes zoomed back too, whose width is a hair over), once, and everything in the frame
+   follows; the right margin takes the rest. Where auto gives a whole device pixel the sum gives the same one (the
+   .002px: a length is kept in 64ths, cut down, and the sum must not come out a hair under). --dwx: a device pixel in
+   the window's px, from the script (frameGrid, with html[data-grid]: not on a touch screen, not without script: there
+   auto, as ever); --z: the root's zoom in the big-screen mode. The pages' frame the same: frame.css */
+html[data-grid] .flow { margin-left: calc(round(nearest, calc((100% - var(--fw)) / 2 + .01px), calc(var(--dwx) / var(--z, 1))) + .002px); }
+.flow > svg { position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible; pointer-events: none; }
+.m { display: none; }
+.p { position: absolute; left: calc(var(--x) / 960 * 100%); top: calc(var(--y) / 900 * 100%); }
+.line { fill: none; stroke: var(--line); stroke-width: 1; vector-effect: non-scaling-stroke; stroke-linecap: round; stroke-linejoin: round; }
+/* the places, in the line's units, of the page without script at 1440 x 900 (the draft's own; the script seats the
+   doors and the road for the window there is): the name and the sentence, the five doors on the line, the five cities
+   equally spaced on the road (140 of 960 on a desktop, 67 of 350 on a phone), the traveller at its corner */
+.hero { --x: 0; --y: 100; --mx: 0; --my: 60; }
+.flow > .door:nth-of-type(1) { --x: 660; --y: 279.5; --mx: var(--rm, 214); --my: 277; }
+.flow > .door:nth-of-type(2) { --x: 660; --y: 353.5; --mx: var(--rm, 214); --my: 339; }
+.flow > .door:nth-of-type(3) { --x: 575.6; --y: 437.5; --sh: 19px; --mx: var(--lm, 8); --my: 465; }
+.flow > .door:nth-of-type(4) { --x: 438.7; --y: 511.5; --sh: 20px; --mx: var(--lm, 8); --my: 527; }
+.flow > .door:nth-of-type(5) { --x: 307.6; --y: 585.5; --sh: 15px; --mx: var(--lm, 8); --my: 589; }
+.road > .city { --y: 748; --my: 720; }
+.road > .city:nth-child(1) { --x: 360; --mx: 68; }
+.road > .city:nth-child(2) { --x: 500; --mx: 135; }
+.road > .city:nth-child(3) { --x: 640; --mx: 202; }
+.road > .city:nth-child(4) { --x: 780; --mx: 269; }
+.road > .city:nth-child(5) { --x: 920; --mx: 336; }
+.walk { --x: 0; --y: 748; --mx: 0; --my: 720; }
+/* a short window (the owner's leftovers, 2026-10-13). The frame was never under 620px tall, so in a window of 580 to
+   619px (a 1366 x 768 laptop's browser window is 600 to 660px tall) the home scrolled by up to 40px. With a mouse, on
+   a desktop's page, it is one screen from 580px up, as race is; under 580 it keeps its 620px and scrolls, as ever (a
+   touch screen and a phone too). Nothing is made smaller for it: the fader and the footer keep their places from the
+   frame's edges, the road its 70px over the frame's foot (srcRY) with the cities on it, and the name the 68.9px under
+   the frame's top it has at 620 (its place is 100 of the height's 900ths: left to that it would rise with every
+   pixel the window loses). What gives is air, by the script's own steps (lift), the door words at the tight step
+   they have under 623px (doorsShort): the air above the icons (40px at 620, 24 at 580), the air between the
+   blocks (17px at 620; 12 from 595 down, where every short page has them) and, last, the air under the run (build's
+   word 16px under it, 12 at 580). These two rules are for the windows of 580 to 619px alone: from 620 up, and
+   under 580, the sheet is what it was */
+@media (min-width: 1000px) and (min-height: 580px) and (max-height: 619.98px) and (any-hover: hover) {
+  .flow { min-height: 580px; }
+  .hero { top: calc(var(--y) / 900 * 620px); }
+}
+/* the home is shown once the engine has set it on its line (mountHome marks it, data-live): the page as printed is
+   laid out for a window of 1440 x 900, and the first frame is then the home in its place, never that for a moment.
+   Had the engine not come, the page as printed is shown after all, a moment later (2s), and as a reader without
+   script has it (html:not(.js), below). Where the engine's file came and threw, page.js says so at once, and where it
+   did not come, watch.js once the page has loaded, each by taking the js class off; where no module runs at all (each
+   one blocked or failed, watch.js too) this sheet does it alone, from 2s, for as long as the home is not live: the
+   four marks' names for their blank canvases, the cities' line art at rest, the footer line and, on a phone, the
+   names wrapped and the doors lower, where the printed line has them, without the motto. A city in hand says its
+   line but keeps its line art (its colour icon is never fetched for it), and there is no fader: without its script
+   it moves nothing, and the early script has set the light already. An engine that comes later sets data-live and
+   takes all of it away; one that comes in time (the home's every visit) meets none of it */
+html.js .flow:not([data-live]) { visibility: hidden; animation: zl-home-show 0s 2s forwards; }
+@keyframes zl-home-show { to { visibility: visible; --net-ic: block; --net-on: 1; } }
+html.js .flow:not([data-live]) > .fader { visibility: hidden; }
+/* (two of them come from the frame, inherited (--net-ic, --net-on), not from an animation of their own: an element
+   that is display: none runs none, the line art, and one whose opacity an animation holds is drawn on a layer of its
+   own, its words in grey shades rather than the screen's sharper ones, the footer line. Where a browser animates no
+   custom property, these two stay out, as they were) */
+html.js .flow:not([data-live]) .city .ic .bw { display: var(--net-ic, none); }
+html.js .flow:not([data-live]) .foot { opacity: var(--net-on, 0); }
+html.js .flow:not([data-live]) .city .c:is(:hover, :focus-visible) .mem { opacity: 1; }
+html.js .flow:not([data-live]) .soc canvas { animation: zl-net-out 0s 2s forwards; }
+html.js .flow:not([data-live]) .soc .sr { animation: zl-net-name 0s 2s forwards; }
+html.js .flow:not([data-live]) .soc a { animation: zl-net-mark 0s 2s forwards; }
+@media (max-width: 999px) {
+  html.js .flow:not([data-live]) .soc { animation: zl-net-marks-m 0s 2s forwards; }
+  html.js .flow:not([data-live]) .soc a { animation-name: zl-net-mark-m; }
+  html.js .flow:not([data-live]) .door { animation: zl-net-door-m 0s 2s forwards; }
+  html.js .flow:not([data-live]) .mot { animation: zl-net-hide 0s 2s forwards; }
+}
+/* (the rules without script, below, one for one; but a canvas out of the flow rather than not displayed, and a motto
+   out of sight rather than out of the flow, which look the same and which older browsers animate too. The name is
+   made inline again: a box once positioned stays a block in Chromium when an animation takes its position away) */
+@keyframes zl-net-out { to { position: absolute; } }
+@keyframes zl-net-name { to { position: static; display: inline; width: auto; height: auto; overflow: visible; clip-path: none; font-family: var(--f-small); font-size: var(--s); color: var(--grey); } }
+@keyframes zl-net-mark { to { padding-right: 4px; } }
+@keyframes zl-net-hide { to { visibility: hidden; } }
+@keyframes zl-net-marks-m { to { flex-wrap: wrap; max-width: 170px; margin-left: 0; margin-top: 2px; gap: 0 14px; } }
+@keyframes zl-net-mark-m { to { padding: 0; line-height: 1.1; } }
+@keyframes zl-net-door-m { to { top: calc((var(--my) + 56) / 844 * 100%); } }
+
+/* (the crossfader, the fader in the frame's top right corner, is every page's: frame.css, scripts/fader.js; its
+   phone sun's 44px target too) */
+
+/* ---------- the name and the sentence the line leaves from ---------- */
+.hero { left: 0; z-index: 1; }
+.name { font-family: var(--f-name); font-size: var(--l); font-weight: var(--f-name-weight); line-height: 1.1; letter-spacing: var(--f-track); }
+.intro { margin-top: 20px; max-width: 24em; text-wrap: balance; }
+.intro .nb { white-space: nowrap; }
+/* the hairline's origin: a point at the end of the sentence; the line leaves from here */
+.o { display: inline-block; width: 5px; height: 5px; margin-left: .5em; border-radius: 50%; background: var(--ink); vertical-align: middle; }
+
+/* zhen · yuan · lu: at rest simply the name; a slow look (or a click) splits it and says it */
+.say {
+  position: relative; display: inline-block;
+  font: inherit; line-height: inherit; letter-spacing: inherit; white-space: nowrap;
+  -webkit-tap-highlight-color: transparent; cursor: default;
+}
+/* the name carries no underline; only keyboard focus draws one, under the syllables (and no box: the engine makes
+   the printed words its button, tabindex 0) */
+.say:hover, .say:focus-visible { text-decoration: none; }
+.say:focus-visible { outline: none; }
+.say:focus-visible::after { content: ""; position: absolute; left: 0; right: 0; bottom: .02em; height: 1px; background: currentColor; }
+/* two equal gaps of .5em: "lu" already has the word space (--sp, measured) before it, so it moves that much less */
+.say.open:focus-visible::after { right: calc(var(--sp, .25em) - 1em); }
+.nmr { display: flex; align-items: baseline; gap: 18px; }
+.tk { position: relative; }
+.say.split .tk { display: inline-block; transition: transform .2s ease; }
+.say.open .tk { transition: transform .26s cubic-bezier(.2, .7, .2, 1); }
+.say.open .tk:nth-child(2) { transform: translateX(.5em); }
+.say.open .tk:nth-child(3) { transform: translateX(calc(1em - var(--sp, .25em))); }
+/* the middle dots ride with the syllable after them, centred in its .5em gap */
+.tk::before {
+  content: "·"; position: absolute; top: 0; right: 100%; margin-right: .25em; transform: translateX(50%);
+  color: var(--grey); opacity: 0; transition: opacity .2s ease;
+}
+.tk:first-child::before { content: none; }
+.say.open .tk::before { opacity: 1; }
+.py, .hz {
+  position: absolute; left: 50%; transform: translateX(-50%);
+  color: var(--grey); letter-spacing: 0; line-height: 1; white-space: nowrap; font-style: normal;
+  opacity: 0; pointer-events: none; transition: opacity .2s ease;
+}
+.py { bottom: calc(100% + 2px); font-family: var(--f-small); font-size: var(--xs); }
+.hz { top: calc(100% + 4px); font: 400 13px/1 "Noto Serif SC", "Songti SC", "SimSun", serif; }   /* (v2t, taste item 3: 13px, was 12) */
+.say.open .py { opacity: 1; pointer-events: auto; transition-delay: .06s; }
+.say.open .hz { opacity: 1; pointer-events: auto; transition-delay: .14s; }
+
+/* ---------- the pixel letters: the script draws the name and the door words as canvases of whole cells on the
+   device-pixel grid (.lx; the name's middle dots .dt); the words stay as transparent text over them ---------- */
+main.lt .name, main.lt .door h2 { font-size: 0; line-height: 0; letter-spacing: 0; }
+main.lt .door h2 a, main.lt .say .tk { position: relative; display: inline-block; }
+main.lt .lx { display: inline-block; image-rendering: pixelated; }
+main.lt .tx {
+  position: absolute; left: 0; top: 0; width: 100%; height: 100%; overflow: hidden; white-space: nowrap;
+  font: 400 var(--lt-fs, 24px)/var(--lt-h, 36px) var(--f-small); color: transparent;
+}
+/* the underline is drawn in cells, under the letters */
+main.lt .door h2 a { text-decoration: none !important; }
+main.lt .say:focus-visible::after, main.lt .tk::before { content: none; }
+/* the space before lu is whole cells; open, both gaps are whole cells too (set by the script) */
+main.lt .say .tk:nth-child(2) { margin-left: var(--ltr, 4px); }
+main.lt .say .tk:nth-child(3) { margin-left: var(--lsp, 10px); }
+main.lt .say.open .tk:nth-child(2) { transform: translateX(var(--g2, 16px)); }
+main.lt .say.open .tk:nth-child(3) { transform: translateX(var(--g3, 22px)); }
+main.lt .dt { position: absolute; top: 0; right: 100%; image-rendering: pixelated; pointer-events: none; opacity: 0; transition: opacity .2s ease; }
+main.lt .say.open .dt { opacity: 1; }
+/* the name's suffix (the default since 2026-10-11, the owner: "?phd=name 可以"): a small "phd" after the name, in the
+   name's own letters at about half its cell (the script: whole device pixels), in the grey of the page's second
+   words, on the name's baseline, six of the name's cells after "lu" (a little more than its word space: it is a
+   suffix, not a fourth syllable). Not part of the name's button; it steps aside with "lu" when the name opens.
+   Without the pixel letters, small grey words */
+.sfx { margin-left: .4em; font-size: .5em; letter-spacing: 0; color: var(--grey); pointer-events: none; }
+main.lt .sfx { position: relative; display: inline-block; margin-left: var(--sfx-gap, 12px); font-size: 0; transition: transform .2s ease; }
+main.lt .say.open ~ .sfx { transform: translateX(var(--g3, 18px)); transition: transform .26s cubic-bezier(.2, .7, .2, 1); }
+@media (prefers-reduced-motion: reduce) { main.lt .sfx, main.lt .say.open ~ .sfx { transition: none; } }
+
+/* ---------- four small marks under the intro: 11 x 11 cells, grey; resting on one, it dissolves into its colour ---------- */
+/* each link's box is 8px bigger than its mark on every side (a ~38px target); the row is pulled left so the marks align with the text */
+.soc { display: flex; gap: 2px; margin: 8px 0 0 calc(-1 * var(--sp-soc)); --sp-soc: 8px; --su: 2px; }
+.soc a { position: relative; display: block; padding: var(--sp-soc); -webkit-tap-highlight-color: transparent; }
+.soc a:hover, .soc a:focus-visible { text-decoration: none; }
+.soc canvas { width: calc(11 * var(--su)); height: calc(11 * var(--su)); image-rendering: pixelated; }
+.soc a:focus-visible::after { content: ""; position: absolute; left: var(--sp-soc); right: var(--sp-soc); bottom: calc(var(--sp-soc) - 5px); height: 1px; background: var(--ink); }
+/* no script: the four names in grey instead of the marks (and the net's, from 2s, where no module ran: above) */
+html:not(.js) .soc canvas { display: none; }
+html:not(.js) .soc .sr { position: static; width: auto; height: auto; overflow: visible; clip-path: none; font-family: var(--f-small); font-size: var(--s); color: var(--grey); }
+html:not(.js) .soc a { padding-right: 4px; }
+/* r13: his motto under the four marks (the owner, 2026-10-15: his two mottos stand on the home only): one quiet line in
+   the grey of the doors' small words, at the small text's size. Nothing on a desk is measured from it (the line leaves
+   from the point after the sentence, and the doors are chained from that point), so nothing else moves; on a phone the
+   doors are chained from its foot (spread). It takes no pointer, so no door's or mark's target changes */
+.mot { margin-top: 6px; font-family: var(--f-small); font-size: 14px; line-height: 20px; color: var(--grey); pointer-events: none; }
+.mot span { white-space: nowrap; }   /* (where it must break, a phone: after the comma) */
+
+/* ---------- doors e2: five stations along the one line, C's quiet words, what is next on race's own line ----------
+   E (the owner's B and C hybrid, kept, 2026-10-07) with H's "next". B's composition: each door stands on the line, its
+   section a station where the line passes the middle of its grey line (--x/--y); the word and its grey line sit
+   beside it, right-aligned. build and teach hang on the first run down; see, blog and race on the long slant back to
+   the left, each block moved off the slant just enough (--sh), so they step down with the line; on a phone those
+   three hang right of the left run. C's look: the words are the name's own pixel letters (a little bigger than E's, a
+   little smaller than H's), a shade under the ink, their grey lines small (E's 12px, 13px since v2t's 13px floor); no
+   mark on the line at rest.
+   race's grey line is what comes next ("next: Hyrox Boston · Oct 8–11" after a small red dot, the one red), always,
+   so nothing pops up. In hand (a resting pointer, keyboard focus) the door comes to full ink, word and grey line, and
+   a small filled bead appears on the line at its station (80ms). No arrow, no underline, no motion, no typing, no
+   picture, no red, no fading of the others. */
+/* the whole block is one target: it reaches up to 6px above and below the words (less where the next block or the
+   marks are nearer: --pt, --pb, set by the script so no two targets overlap), 12px before them and 8px past the line */
+.door { z-index: 2; }
+.door .db {
+  position: absolute; top: calc(-1 * var(--wc, 30px)); right: -8px;
+  padding: var(--pt, 6px) calc(var(--g, 16px) + var(--sh, 0px) + 8px) var(--pb, 6px) 12px;
+  white-space: nowrap; text-align: right; cursor: pointer; -webkit-tap-highlight-color: transparent;
+}
+.door h2 { font: var(--f-word-style) var(--f-word-weight) 17px/18px var(--f-word); letter-spacing: var(--f-track); }
+.door h2 a { -webkit-tap-highlight-color: transparent; }
+/* without the pixel letters (the page without script) the words keep the same rest and hand */
+main:not(.lt) .door h2 a { color: color-mix(in srgb, var(--ink) 78%, var(--bg)); transition: color .15s ease; }
+main:not(.lt) .door.in h2 a { color: var(--ink); transition-duration: .05s; }
+/* E's grey line, 13px on 17 (race's line of what is next too; v2t, taste item 3: 13px, was 12 on 16) */
+.what { position: relative; margin-top: 4px; font-family: var(--f-small); font-size: 13px; line-height: 17px; color: var(--grey); }
+/* in hand the grey line comes to the ink with the word (50ms), and eases back with it (150ms) */
+.what .wd { transition: color .15s ease; }
+.door.in .what .wd { color: var(--ink); transition-duration: .05s; }
+/* race's red dot: 5 cells, whole device pixels (drawn and placed by the script), on the middle of the grey line's
+   small letters; it stays red in hand. A line too long for its room (never, at the sizes drawn) is cut */
+.what .rd { position: relative; display: inline-block; vertical-align: middle; margin-right: 5px; image-rendering: pixelated; }
+.what .rd[hidden] { display: none; }
+.what.cut { overflow: hidden; text-overflow: ellipsis; }
+@media (prefers-reduced-motion: reduce) { .what .wd, main:not(.lt) .door h2 a { transition: none !important; } }
+/* the station: a canvas of whole device pixels, centred on the line (sized, placed and drawn by the script) */
+.door .st { position: absolute; left: 0; top: 0; width: 0; height: 0; pointer-events: none; image-rendering: pixelated; }
+html:not(.js) .door .st { display: none; }
+
+/* ---------- the cities: equally spaced, standing on the line; line art until you visit, then the colour cools ---------- */
+/* above the traveller (who passes behind them) and above the weather; the line under them stays whole */
+.city .c {
+  position: absolute; z-index: 3; left: 0; top: calc(-1 * var(--icon)); transform: translateX(-50%);
+  display: flex; flex-direction: column; align-items: center; white-space: nowrap;
+  font-family: var(--f-small); font-size: var(--s); line-height: 1.45; text-align: center;
+  -webkit-tap-highlight-color: transparent;
+}
+.city .ic { position: relative; display: block; width: var(--icon); height: var(--icon); }
+.city .ic > * { position: absolute; left: 0; top: 0; width: var(--icon); height: var(--icon); }
+/* the pixel icon: 28 x 28 cells of --u, the line art at m1b's strength (.72) and the colour cell by cell */
+.city .ic canvas { image-rendering: pixelated; }
+/* the canvas is the city's frame: the icon's box, or larger when a scene's subject is, standing on the same foot.
+   Only the icon's own box takes the pointer */
+.js .city .ic canvas {
+  width: calc(var(--cw, 36) * var(--u)); height: calc(var(--ch, 36) * var(--u));
+  left: calc((36 - var(--cw, 36)) / 2 * var(--u)); top: calc((36 - var(--ch, 36)) * var(--u)); pointer-events: none;
+}
+/* the original icons stay as the no-script page: m1b's plain swap (the net's, above: the line art alone) */
+.city .ic .bw { opacity: .72; filter: var(--bw); }
+.city .ic .co { opacity: 0; filter: var(--co); }
+.js .city .ic img, html:not(.js) .city .ic canvas { display: none; }
+html:not(.js) .city .c:is(:hover, :focus-visible) .co { opacity: 1; }
+html:not(.js) .city .c:is(:hover, :focus-visible) .bw { opacity: 0; }
+.city .nm { margin-top: 5px; text-decoration: underline transparent 1px; text-underline-offset: .22em; transition: text-decoration-color .2s ease; }
+.city .c:focus-visible .nm { text-decoration-color: currentColor; }
+.city .mem {
+  position: absolute; top: calc(100% + 2px); left: 50%; transform: translateX(-50%);
+  font-style: var(--f-word-style); color: var(--grey); opacity: 0;   /* italic only where the option loads one (no faked slant) */ pointer-events: none; transition: opacity .12s ease;
+}
+/* the outgoing line is gone before the incoming one appears, so two memories never overlap */
+.city.on .mem { transition: opacity .25s ease .1s; }
+.city:last-child .mem { left: auto; right: 0; transform: none; }
+.city.on .mem, html:not(.js) .city .c:is(:hover, :focus-visible) .mem { opacity: 1; }
+
+/* the weather: one small canvas round each city, cells hidden behind the paper disc; never in the way */
+.city .wx { position: absolute; z-index: 2; image-rendering: pixelated; pointer-events: none; }
+html:not(.js) .wx { display: none; }
+
+/* ---------- the traveller: 9 x 13 pixels, on the level road; behind the cities as he passes them ---------- */
+.walk { z-index: 1; pointer-events: none; }
+html:not(.js) .walk { display: none; }
+.walker { position: absolute; left: 0; top: calc(-13 * var(--u)); width: calc(9 * var(--u)); height: calc(13 * var(--u)); image-rendering: pixelated; }   /* the script sizes him per sprite */
+.walker.hop { animation: hop .2s steps(1) both; }
+/* 2, 3 and 1 of his pixels up, whole device pixels (--h1..--h3, set by the script) */
+@keyframes hop { 0% { translate: 0 var(--h1, -4px); } 35% { translate: 0 var(--h2, -6px); } 70% { translate: 0 var(--h3, -2px); } 100% { translate: none; } }
+/* footprints: faint dots just under the line at each of his steps; they fade within 8 s */
+.prints { position: absolute; left: 0; top: 0; }
+
+/* ---------- phone (and tablet): the line leaves the sentence, turns down past build and teach (they hang
+   to its left, their windows open to its right), swings to the left edge, where see hangs to its right
+   (its window beside its words), and turns into the road ---------- */
+@media (max-width: 999px) {
+  .flow { --s: 13px; --xs: 13px; --u: 1px; }   /* (v2t, taste item 3: the pinyin 13px, was 12) the script picks the largest whole-device-pixel --u that fits the cities' spacing */
+  .flow { --fw: min(calc(var(--vw, 1vw) * 100) - 40px, 520px); min-height: 560px; }
+  .d { display: none; }
+  .m { display: block; }
+  .p { left: calc(var(--mx) / 350 * 100%); top: calc(var(--my) / 844 * 100%); }
+  .intro { margin-top: 16px; max-width: 250px; }
+  .soc { --sp-soc: 9px; margin-top: 6px; }
+  .nmr { gap: 14px; }
+  .hz { font-size: 13px; }   /* (v2t, taste item 3: was 11) */
+  /* see, blog and race hang to the right of the left run, left-aligned (the run is upright: no slant to follow) */
+  .door.v .db { right: auto; left: -8px; padding: var(--pt, 6px) 12px var(--pb, 6px) calc(var(--g, 16px) + 8px); text-align: left; }
+  /* a wide face on a narrow phone: build's and teach's grey line wraps rather than run off the left edge */
+  .door.l .what { white-space: normal; width: max-content; max-width: calc(var(--fw) * var(--rm, 214) / 350 - var(--g, 16px)); margin-left: auto; }
+  .city .nm { margin-top: 4px; }
+  .city:first-child .mem, .city:nth-child(2) .mem { left: 0; transform: none; }
+  .city:nth-child(4) .mem { left: auto; right: 0; transform: none; }
+  /* no script: the four names wrap into a narrow block left of the line, and the words leave room under them */
+  html:not(.js) .soc { flex-wrap: wrap; max-width: 170px; margin-left: 0; gap: 0 14px; }
+  html:not(.js) .soc a { padding: 0; line-height: 1.1; }
+  html:not(.js) .soc { margin-top: 2px; }
+  html:not(.js) .door { top: calc((var(--my) + 56) / 844 * 100%); }
+}
+/* narrow phones: the city labels stay clear of each other (the fader rises there: frame.css) */
+@media (max-width: 374.98px) { .city .c { font-size: 12px; } }
+@media (max-width: 359.98px) { .city .c { font-size: 11px; } }
+/* forced colours: the drawn focus underlines become borders, which the system colours keep visible */
+@media (forced-colors: active) { .say::after, .soc a::after, .flow .fader::after { border-top: 1px solid; } }
+/* forced colours: the drawn letters give way to the words themselves, in the system's colours */
+@media (forced-colors: active) {
+  main.lt .lx, main.lt .dt { display: none; }
+  main.lt .tx { position: static; font: 400 30px/1.2 var(--f-small); }
+}
+/* ---------- v1k: the footer line. doors h, e2: no line under Boston (what is next is race's own grey line) ---------- */
+.foot { position: absolute; left: 0; bottom: 16px; margin: 0; font-family: var(--f-small); font-size: 13px; line-height: 1.5;   /* (v2t, taste item 3: 13px, was 12) */
+  color: var(--grey); opacity: 0; pointer-events: none; white-space: nowrap; }
+.foot.show { opacity: 1; }
+html:not(.js) .foot { opacity: 1; }   /* (F4: without script, or with an engine that never started, the line is there; the net's too) */
+/* the heart stands where its line puts it, as the draft's home has it. Every page's script (site.js) moves each heart
+   onto the device grid by its left and top; its cells already are (the drawing is crispEdges: the same device pixels
+   either way at every scale), so here that move only takes the heart's box up to .4px off the draft's */
+.foot .hb { left: 0 !important; top: 0 !important; }
+@media (max-width: 999px) { .foot .fa { display: none; } }   /* a phone keeps who made it, and the heart */
+/* r13: his other motto, the footer row's right end on a desk, in the row's own type; on a phone a line of its own over
+   who made it (the quote, and its author after it or under it). Shown, as the row is, only with room under the road */
+.foot.fmh { left: auto; right: 0; text-align: right; }
+.foot.fmh .fmb { white-space: nowrap; }
+@media (max-width: 999px) {
+  .foot.fmh { right: auto; left: 0; bottom: 36px; max-width: 100%; white-space: normal; text-align: left; }
+  .mot { margin-top: 2px; max-width: calc(var(--fw) * 196 / 350); font-size: 13px; line-height: 18px; }   /* (clear of the line's first run, x 214) */
+  html:not(.js) .mot { display: none; }   /* (no script: the doors stand where the page's own markup puts them, too close for it) */
+}
+
+@media (prefers-reduced-motion: reduce) {
+  /* the door pictures are simply there or not (the script skips the dissolve) */
+  .say.split .tk, .say.open .tk, .tk::before, .py, .hz, main.lt .dt { transition: none !important; }
+  .city .mem, .city.on .mem, .city .nm { transition: none; }
+  .walker { animation: none !important; }
+}

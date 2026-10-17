@@ -1,0 +1,459 @@
+/* An article (the draft v2t's write.css, its article part: v2ac's with the taste round of 2026-10-16;
+   content/blog/format-guide shows every part).
+   On a desk, on the frame's twelve columns: the head and the text in the first eight at a reading measure
+   (--a-meas: never past 632px, 18px type), the ninth air, the contents' rail in the last three. The byline under its
+   hairlines on all twelve (Distill's). The foot is a band of its own after the text, under a hairline across the
+   frame: each part's title in columns 1-2, its content in 3-10. Widths: the measure; .a-wide nine columns; .a-full the
+   frame; .a-win the window.
+   Type (taste items 1 and 3): five sizes, far enough apart: 13 the small words (the head's lines, tags, the rail, a
+   code's head, a note's number), 15 what is small in the text (captions, cards, code, tables, references, the foot's
+   titles on a desk), 18 the text and a neighbour's title, 22 the headings and the dek, 42 the title (30 past 60
+   letters); a phone 13 / 15 / 17 / 20 / 31 (24). Nothing under 13px.
+   Colour (items 15, 17, 18): the accent has one job, a clickable word in the text (links, citation and footnote
+   marks), and those links keep an underline at rest so they read without it; panels (cards, code, the folded
+   contents, the share menu, a call-out) are one tone step off the paper, --surface, with no hairline and no shadow.
+   No box marks a chosen or focused thing (the owner, 2026-10-16): focus is a line, a tone or the dots.
+   Formulas are KaTeX's, set at build time; its fonts are served from the site. */
+
+/* ---------- the title, the cover, the text ---------- */
+.w-h { font-size: 42px; line-height: 48px; font-weight: 500; letter-spacing: -.012em; text-wrap: balance; hyphens: none; }
+/* a title over 60 letters a size down, two lines on a desk (Article.astro gives it .w-long) */
+.w-h.w-long { font-size: 30px; line-height: 38px; letter-spacing: -.008em; }
+.w-art { --mono: ui-monospace, "SF Mono", "Cascadia Mono", Consolas, "Liberation Mono", Menlo, monospace; --meas: 632px; }
+#inner .w-cover { max-width: var(--meas); }
+/* (a picture's place, until it comes, is the surface, as every panel's) */
+.w-cover :is(img, video), .w-fig :is(img, video) { display: block; width: min(100%, var(--w), var(--mw, 100%)); height: auto;
+  background: var(--surface); }
+/* a picture is never drawn past its own pixels, counted in the screen's device pixels (--a-dpr: the screen's ratio,
+   scripts/article.js; without script the nearest step below it, at the end of this sheet): a 437px file stands at
+   437 device pixels, 146 CSS px on a phone at 3x. (A video keeps its CSS size: its controls need the room.) */
+.w-cover img, .w-fig img { width: min(100%, calc(var(--w) / var(--a-dpr, 1)), var(--mw, 100%)); aspect-ratio: var(--ar, auto); }
+/* (the picture's own shape, --ar, holds its height: a smaller file from its srcset, its height rounded to a whole
+   pixel, never moves the text under it by a fraction of one) */
+.w-cover .w-cap, .w-fig .w-cap { margin-top: 10px; }
+/* a picture narrower than its place (never past its own pixels) stands in the middle of it; its caption keeps to
+   the text's column */
+#inner .w-art :is(.w-cover, .w-fig) > :is(img, video), #inner .w-art :is(.w-cover, .w-fig) > picture > img { margin-left: auto; margin-right: auto; }
+.w-body { max-width: var(--meas); margin-top: 40px; font-size: 18px; line-height: 30px; overflow-wrap: break-word; }
+#inner .w-body > * + * { margin-top: 18px; }
+.w-body h2 { font-size: 22px; line-height: 30px; font-weight: 500; }
+.w-body :is(h3, h4, h5) { font-size: 18px; line-height: 30px; font-weight: 500; }
+/* a heading never hyphenates, and never leaves one word alone on its last line (item 13) */
+.w-body :is(h2, h3, h4, h5) { hyphens: none; text-wrap: balance; }
+/* the sections, as Distill's: every h2 stands under a hairline across the text's column; an h3 has none. The space
+   over a heading is more than twice the space under it (64 + 26 over, 10 under) */
+#inner .w-body > h2 { margin-top: 64px; padding-top: 26px; border-top: 1px solid color-mix(in srgb, var(--line) 50%, transparent); }
+#inner .w-body > :is(h3, h4, h5) { margin-top: 36px; }
+#inner .w-body > :first-child { margin-top: 0; }
+#inner .w-body > :is(h2, h3, h4, h5) + * { margin-top: 10px; }
+/* the chapter picture (items 26 and 27): the post's own small pixel picture stands on the rule that opens each chapter
+   after the first, its foot on the line, at the column's left edge, in the grey (plugins/rehype-article.mjs draws it,
+   lettering/index.js puts it on whole device pixels); its box keeps the drawing's height at 2px a cell, so a canvas a
+   little taller at 125% or 175% grows upward, into the air, and nothing under it moves */
+#inner .w-body > .a-brk { position: relative; display: flex; align-items: flex-end; margin-top: 64px; line-height: 0; color: var(--grey); }
+#inner .w-body > .a-brk > :is(svg, canvas) { display: block; flex: none; }
+#inner .w-body > .a-brk + h2 { margin-top: 0; }
+.w-body :is(strong, em) { font-weight: 500; font-style: normal; }
+.w-body a, #inner .w-cap a { color: var(--accent); }
+.w-body a:hover, .w-body a:focus-visible, #inner .w-cap a:hover, #inner .w-cap a:focus-visible { color: var(--ink); }
+.w-body code { font-family: var(--mono); font-size: .84em; line-height: 1; }
+.w-cap { font-size: 15px; line-height: 23px; color: var(--grey); }
+#inner .w-body > .w-fig { margin-top: 32px; }
+#inner .w-body > .w-fig + * { margin-top: 32px; }
+#inner .w-body > .w-tw + .w-cap { margin-top: 10px; }
+#inner .w-body > .w-cap + * { margin-top: 24px; }
+#inner .w-out { display: inline-block; padding: 12px 0; margin: -12px 0; }
+.w-code { font-family: var(--mono); font-size: 15px; line-height: 23px; white-space: pre-wrap; overflow-wrap: anywhere; }
+.w-code code { font-size: inherit; font-family: inherit; line-height: inherit; }
+#inner .w-body > .w-code { margin-top: 20px; }
+.w-q { margin: 0; padding-left: 20px; color: var(--grey); }
+#inner .w-q p + p { margin-top: 10px; }
+.w-ls li { position: relative; padding-left: 22px; }
+.w-ls li + li { margin-top: 8px; }
+.w-ls li::before { content: "\2013"; position: absolute; left: 0; color: var(--grey); }
+ol.w-ls { counter-reset: w-n; }
+ol.w-ls li::before { counter-increment: w-n; content: counter(w-n) "."; }
+#inner .w-ls li > p { margin: 0; }
+.w-tbl { width: 100%; border-collapse: collapse; font-size: 15px; line-height: 23px; }
+#inner .w-body > .w-tw { margin-top: 24px; }
+.w-tw { overflow-x: auto; }
+.w-tbl :is(th, td) { padding: 8px 16px 8px 0; text-align: left; vertical-align: top; overflow-wrap: break-word; }
+.w-tbl :is(th, td):last-child { padding-right: 0; }
+.w-tbl th { font-size: 13px; line-height: 20px; font-weight: 400; color: var(--grey); }
+.w-tbl tbody td { border-top: 1px solid color-mix(in srgb, var(--line) 35%, transparent); }
+.w-tbl thead + tbody tr:first-child td { border-top-color: var(--line); }
+.w-tbl :is(strong, b) { font-weight: 500; }
+
+/* older at the left, newer at the right, then the ring */
+.w-pn { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: var(--gut); margin-top: 96px; }
+.w-pn a { display: block; padding: 6px 0; }
+.w-pn .lab { display: block; transition: color var(--t-hover) var(--ease-out); }
+.w-pn a:hover .lab, .w-pn a:focus-visible .lab { color: var(--ink); }
+/* (focus: the label and the title take the ink, and a line stands under the title: no box) */
+#inner .w-pn a:focus-visible { outline: none; text-decoration-line: none; }
+#inner .w-pn a:focus-visible .w-pt { text-decoration: underline 1px var(--focus); text-underline-offset: .22em; }
+.w-next { text-align: right; }
+.w-pt { display: block; max-width: 420px; margin-top: 2px; font-size: 18px; line-height: 26px; text-wrap: pretty; }
+.w-next .w-pt { margin-left: auto; }
+
+@media (max-width: 999px) {
+  .w-h { font-size: 31px; line-height: 36px; }
+  .w-h.w-long { font-size: 24px; line-height: 31px; }
+  .w-body { margin-top: 28px; font-size: 17px; line-height: 28px; }
+  #inner .w-body > * + * { margin-top: 16px; }
+  .w-body h2 { font-size: 20px; line-height: 28px; }
+  .w-body :is(h3, h4, h5) { font-size: 17px; line-height: 28px; }
+  #inner .w-body > h2 { margin-top: 52px; padding-top: 20px; }
+  #inner .w-body > .a-brk { margin-top: 52px; }
+  .w-pn { display: block; margin-top: 64px; }
+  .w-pn a { padding: 10px 0; }
+  .w-next { margin-top: 16px; }
+  .w-pt { font-size: 17px; line-height: 25px; }
+}
+/* (at night a figure stands as it is, as every picture does: no dimming, taste item 24) */
+
+/* ---------- the article's frame: the grid, the head, the byline, share ---------- */
+.a-art { position: relative;
+  --a-col: calc((var(--cw) - 11 * var(--gut)) / 12);
+  --a-text: calc(var(--a-col) * 8 + var(--gut) * 7);
+  --a-wide: calc(var(--a-col) * 9 + var(--gut) * 8);
+  --a-rail: calc(var(--a-col) * 3 + var(--gut) * 2);
+  --a-meas: min(var(--a-text), var(--meas));
+  --a-winw: var(--a-vw, calc(var(--vw, 1vw) * 100));
+  --a-top: 92px; }
+/* the head: the way back where a page's word stands (40px under the header), in the door lettering, in ink, with
+   its arrow; in hand the arrow steps 3px home (the word stays ink: the accent is for words in the text). Then the
+   title, its dek and the byline between its hairlines */
+.a-head { position: relative; padding-top: 40px; }
+.a-head > :is(.w-h, .a-desc) { max-width: var(--a-meas); }
+#inner .a-bk2 { position: relative; display: inline-flex; align-items: center; gap: 11px; min-height: 44px; margin: -10px 0; color: var(--ink); }
+.a-bka { display: inline-flex; align-items: center; font-size: 22px; line-height: 1; transition: transform var(--t-press) steps(2); }
+.a-bkw { position: relative; display: block; }
+.a-bkw > :is(svg, canvas) { display: block; }
+#inner .a-bk2:is(:hover, :focus-visible) { color: var(--ink); }
+#inner .a-bk2:is(:hover, :focus-visible) .a-bka { transform: translateX(-3px); }
+/* (focus: a line under the word, the fader's own mark of it, never a box) */
+#inner .a-bk2:focus-visible { outline: none; text-decoration-line: none; }
+#inner .a-bk2:focus-visible::after { content: ""; position: absolute; left: 0; right: 0; bottom: 5px; height: 1px; background: var(--ink); }
+@media (prefers-reduced-motion: reduce) { .a-bka { transition: none; } }
+.a-head .w-h { margin: 30px 0 0; }
+.a-desc { margin-top: 16px; font-size: 22px; line-height: 31px; color: color-mix(in srgb, var(--ink) 72%, var(--bg)); text-wrap: pretty; }
+#inner .a-head > .a-desc { margin-top: 16px; }
+/* the byline, as Distill's, between two hairlines on the frame's twelve columns: small grey labels over their values,
+   authors 1-2, affiliations 3-4 (when any author has one: a line each, level with its name; a talk's place stands
+   there when none has), published 5-6 with its update under it, the DOI or the reading time 7-8, the topics 9-11 as
+   the list's tags, share 12 */
+.a-meta { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: var(--gut); row-gap: 14px; align-items: start;
+  margin-top: 30px; padding: 16px 0 18px; border-top: 1px solid color-mix(in srgb, var(--line) 50%, transparent);
+  border-bottom: 1px solid color-mix(in srgb, var(--line) 50%, transparent); font-size: 13px; line-height: 20px; }
+.a-meta > .a-mau { grid-column: 1 / 3; }
+.a-meta > .a-maf { grid-column: 3 / 5; }
+.a-meta > .a-mpd { grid-column: 5 / 7; }
+.a-meta > .a-mdo { grid-column: 7 / 9; }
+.a-meta > .a-mtg { grid-column: 9 / 12; }
+.a-meta > .a-mi { min-width: 0; }
+.a-ml { color: var(--grey); }
+#inner .a-mv { margin-top: 4px; color: var(--ink); }
+.a-au { display: flex; flex-direction: column; }
+.a-au > .a-a1 { min-height: 20px; }   /* (an author with no affiliation keeps the line, so the rows stay level) */
+.a-an { color: var(--ink); }
+.a-mup { display: block; }
+#inner .a-mup .a-ml { margin-right: 4px; }
+/* the DOI: a link in words, so the accent and its line at rest (item 15); a long one may break anywhere */
+#inner .a-meta .a-doi { color: var(--accent); overflow-wrap: anywhere; text-decoration-line: underline; text-decoration-thickness: 1px;
+  text-underline-offset: .18em; text-decoration-color: color-mix(in srgb, currentColor 45%, transparent);
+  transition: color var(--t-hover) var(--ease-out), text-decoration-color var(--t-hover) var(--ease-out); }
+#inner .a-meta .a-doi:is(:hover, :focus-visible) { color: var(--ink); text-decoration-color: currentColor; }
+#inner .a-meta .a-doi:focus-visible { outline: none; text-decoration-thickness: 2px; }
+#inner .a-meta .a-tg { margin-top: 3px; }
+/* the share: one button, its pixel sign and its word; its menu: words on the surface, no line round it, no shadow,
+   no logos, each grey and ink in hand. In the big-screen mode it stands in the window's px with the tags (wide.css: .b-lk) */
+.b-lk { display: flex; flex-wrap: wrap; column-gap: 16px; margin-top: 8px; font-size: 13px; line-height: 20px; }
+.b-ic { flex: none; width: calc(9 * var(--b-px, 1px)); height: calc(9 * var(--b-px, 1px)); fill: currentColor; shape-rendering: crispEdges; transition: fill var(--t-hover) var(--ease-out); }
+#inner .a-meta > .a-share { display: block; position: relative; z-index: 12; grid-column: 12 / 13; justify-self: end; margin-top: 18px; font-size: 13px; line-height: 20px; }
+html:not(.js) #inner .a-meta > .a-share { display: none; }
+#inner .a-sh { display: inline-flex; align-items: center; gap: 7px; min-height: 32px; color: var(--grey); white-space: nowrap; transition: color var(--t-hover) var(--ease-out); }
+#inner .a-sh:is(:hover, :focus-visible), #inner .a-sh[aria-expanded="true"] { color: var(--ink); }
+#inner .a-sh:focus-visible { outline: none; text-decoration-line: none; box-shadow: inset 0 -1px 0 var(--ink); }
+#inner .a-art .a-copied, #inner .a-art .a-copied:hover { color: var(--ink); }
+.a-shm { position: absolute; right: -13px; top: calc(100% + 2px); min-width: 152px; padding: 5px 0; background: var(--surface); }
+.a-shm[hidden] { display: none; }
+#inner .a-shm ul { margin: 0; padding: 0; list-style: none; }
+#inner .a-shi { display: block; width: 100%; box-sizing: border-box; padding: 6px 12px; text-align: left; color: var(--grey); white-space: nowrap; transition: color var(--t-hover) var(--ease-out), background-color var(--t-hover) var(--ease-out); }
+#inner .a-shi:is(:hover, :focus-visible) { color: var(--ink); }
+#inner .a-shi:focus-visible { outline: none; text-decoration-line: none; background-color: color-mix(in srgb, var(--ink) 8%, var(--surface)); }
+/* the post's own links under the byline (the paper, its PDF, the code, the slides): the build page's action links, a
+   small pixel sign and its word, in ink at rest and in the accent in hand, never underlined */
+#inner .a-head > .a-lk { margin-top: 14px; }
+#inner .a-lk .k { display: inline-flex; align-items: center; gap: 6px; white-space: nowrap; color: var(--ink); }
+#inner .a-lk .k:is(:hover, :focus-visible) { color: var(--accent); }
+#inner .a-lk .k:focus-visible { outline: none; text-decoration-line: none; box-shadow: inset 0 -1px 0 currentColor; }
+/* the article's links: the accent at rest, ink in hand */
+#inner .a-art :is(.w-body, .a-foot, .a-card) a { color: var(--accent); }
+#inner .a-art :is(.w-body, .a-foot, .a-card) a:is(:hover, :focus-visible) { color: var(--ink); }
+/* (item 15) a link in the text keeps a 1px line at rest, set under the letters in half its own colour; in hand the
+   word and its line take the ink, and the keyboard's focus makes the line 2px. Nothing appears in hand that was not
+   there: no underline is ever added on hover */
+#inner .a-art :is(.w-body, .a-foot, .a-card) a:not(.a-hl, .a-back),
+#inner .w-art .w-body a:not(.a-hl, .a-back), #inner .w-cap a {
+  text-decoration-line: underline; text-decoration-thickness: 1px; text-underline-offset: .18em;
+  text-decoration-color: color-mix(in srgb, currentColor 45%, transparent);
+  transition: color var(--t-hover) var(--ease-out), text-decoration-color var(--t-hover) var(--ease-out); }
+#inner .a-art :is(.w-body, .a-foot, .a-card) a:not(.a-hl, .a-back):is(:hover, :focus-visible),
+#inner .w-art .w-body a:not(.a-hl, .a-back):is(:hover, :focus-visible), #inner .w-cap a:is(:hover, :focus-visible) {
+  text-decoration-line: underline; text-decoration-color: currentColor; }
+#inner .a-art :is(.w-body, .a-foot, .a-card) a:not(.a-hl, .a-back):focus-visible,
+#inner .w-art .w-body a:not(.a-hl, .a-back):focus-visible, #inner .w-cap a:focus-visible { outline: none; text-decoration-thickness: 2px; }
+/* citation and footnote marks are never underlined, at rest or in hand (these outrank the two rules above: 1,4,1 and
+   1,5,1); the keyboard's focus there is a tone under the mark, and its card */
+#inner .a-art :is(.w-body, .a-foot, .a-card, .w-cap) :is(.a-cite, .a-fm) a:not(.a-hl, .a-back),
+#inner .a-art :is(.w-body, .a-foot, .a-card, .w-cap) :is(.a-cite, .a-fm) a:not(.a-hl, .a-back):is(:hover, :focus-visible) { text-decoration-line: none; }
+#inner .a-art :is(.w-body, .a-foot, .a-card, .w-cap) :is(.a-cite, .a-fm) a:not(.a-hl, .a-back):focus-visible { outline: none; background: var(--surface); }
+#inner .a-art .w-body .a-hl, #inner .a-art .a-foot .a-back { color: var(--grey); }
+#inner .a-art .w-body .a-hl:hover, #inner .a-art .a-foot .a-back:is(:hover, :focus-visible) { color: var(--ink); }
+#inner .a-art .a-foot .a-back:focus-visible { outline: none; text-decoration-line: none; box-shadow: inset 0 -1px 0 currentColor; }
+#inner .a-art [tabindex="-1"]:focus { outline: none; }
+/* a heading's own link: a small grey mark after it, shown in hand (the pointer's only: it is no keyboard stop,
+   aria-hidden and tabindex -1, plugins/remark-dialect.mjs) */
+.a-hl { display: inline-block; margin-left: 8px; padding: 0 4px; font-size: 13px; font-weight: 400; opacity: 0; transition: opacity var(--t-hover) var(--ease-out), color var(--t-hover) var(--ease-out); }
+.w-body :is(h2, h3, h4, h5):hover .a-hl { opacity: 1; }
+@media (hover: none) { .a-hl { display: none; } }
+.w-body :is(h2, h3, h4, h5) { scroll-margin-top: var(--a-top); }
+:is(.w-fig, .a-eq, .a-tfig, .w-cover)[id] { scroll-margin-top: var(--a-top); }
+
+/* ---------- the contents: the rail's, which stays in view while the text passes; the entry being read in ink with
+   the home's point (the accent is for words in the text) ---------- */
+.a-toch { margin-bottom: 10px; }
+.a-tl { font-size: 13px; line-height: 20px; }
+#inner .a-tl li + li { margin-top: 6px; }
+.a-tl .a-t3 { padding-left: 12px; }
+#inner .a-te { display: inline-block; color: var(--grey); --pt-y: 10px; }
+#inner .a-te:is(:hover, :focus-visible) { color: var(--ink); }
+#inner .a-te:focus-visible { outline: none; text-decoration-line: none; }   /* (the point shows: frame.css .hpoint) */
+#inner .a-te[aria-current] { color: var(--ink); }
+#inner .a-te[aria-current].hpoint::before { opacity: 1; background: var(--ink); }
+.a-toc { transition: opacity var(--t-hover) var(--ease-out); }
+.a-rail.a-away .a-toc { opacity: 0; pointer-events: none; }
+/* the folded contents (a phone, a narrow window): a panel of the surface's tone */
+.a-tocf { margin-top: 20px; padding: 0 16px; background: var(--surface); }
+.a-tocf > summary { display: flex; align-items: center; justify-content: space-between; min-height: 44px; list-style: none; font-size: 13px; line-height: 20px; color: var(--grey); cursor: pointer; }
+.a-tocf > summary::-webkit-details-marker { display: none; }
+.a-tocf > summary::after { content: "+"; font-size: 15px; }
+.a-tocf[open] > summary::after { content: "\2013"; }
+.a-tocf > summary:hover { color: var(--ink); }
+#inner .a-tocf > summary:focus-visible { outline: none; text-decoration-line: none; color: var(--ink); box-shadow: inset 0 -1px 0 var(--ink); }
+.a-tocf .a-tl { padding: 0 0 14px; }
+#inner .a-tocf .a-te { padding: 4px 0; }
+
+/* ---------- the text ---------- */
+#inner .w-art.a-art .w-body { max-width: var(--a-meas); }
+#inner .w-art.a-art .w-body > :is(.a-wide, .a-full, .a-win) { max-width: none; }
+#inner .a-art .w-body > :is(.a-eq, .a-code, .a-call, .a-tfig, .a-aside) + *, #inner .a-art .w-body > * + :is(.a-eq, .a-code, .a-call, .a-tfig, .a-aside) { margin-top: 28px; }
+/* figures: numbered captions; a picture never past its own pixels: beyond the measure only where its file holds
+   the device pixels of the width asked for (and it is no taller than 60% of the window), else on the measure */
+.a-fn { color: var(--ink); }
+.a-art .a-wide { width: var(--a-wide); }
+.a-art .a-full { width: var(--cw); }
+.a-art .a-win { width: var(--a-winw); margin-left: calc(-1 * var(--a-winl, calc((var(--a-winw) - var(--cw)) / 2))); }
+#inner .a-art > .w-cover.a-full { max-width: none; }
+#inner .a-art :is(.a-wide, .a-full, .a-win) > :is(img, video), #inner .a-art :is(.a-wide, .a-full, .a-win) > picture > img {
+  width: clamp(min(var(--a-meas), var(--w)), calc((min(calc(var(--w) / var(--a-dpr, 1)), calc(var(--vh, 1vh) * 60 * var(--ar, 1.5))) - 100% + 1px) * 9999), 100%); }
+#inner .a-art :is(.a-wide, .a-full, .a-win) > img, #inner .a-art :is(.a-wide, .a-full, .a-win) > picture > img {
+  width: clamp(min(var(--a-meas), calc(var(--w) / var(--a-dpr, 1))), calc((min(calc(var(--w) / var(--a-dpr, 1)), calc(var(--vh, 1vh) * 60 * var(--ar, 1.5))) - 100% + 1px) * 9999), 100%); }
+#inner .a-art .a-win > :is(img, video), #inner .a-art .a-win > picture > img { margin: 0 auto; }
+#inner .a-art :is(.a-wide, .a-full, .a-win) > :is(.w-cap, .a-live-k) { max-width: var(--a-meas); }
+#inner .a-art .a-win > :is(.w-cap, .a-live-k) { margin-left: var(--a-winl, calc((var(--a-winw) - var(--cw)) / 2)); }
+.a-tfig .w-cap { margin-top: 10px; }
+/* citations: small numbered marks in the accent; the card: the surface's tone, no line round it, no shadow */
+.a-cite { font-size: 15px; white-space: nowrap; color: var(--accent); }
+.a-cite.a-cite-x { white-space: normal; }   /* one with words in it ([see 3, p. 4]) may break between them */
+/* (in a caption's grey the accent is as light as the words round it: there a mark is told from them by its weight too) */
+#inner .w-cap :is(.a-cite, .a-fm) a { font-weight: 500; }
+#inner .a-art .w-body .a-cite a, #inner .a-art .w-cap .a-cite a { color: var(--accent); }
+#inner .a-art .a-cite a:is(:hover, :focus-visible) { color: var(--ink); }
+.a-card { position: absolute; z-index: 10; width: min(360px, 100%); box-sizing: border-box; padding: 12px 16px 13px; background: var(--surface);
+  font-size: 15px; line-height: 23px; color: var(--grey); }
+.a-card[hidden] { display: none; }
+.a-card .a-rt { color: var(--ink); }
+.a-card .a-rn { margin-right: 8px; color: var(--accent); }
+.a-card .a-cl { margin-top: 6px; }
+.a-card .a-nt { color: var(--ink); }
+/* (item 31) a card grows from its mark: its opacity and a 4px slide, 240ms; under reduced motion it is simply there */
+@media (prefers-reduced-motion: no-preference) {
+  .a-card:not([hidden]), .a-shm:not([hidden]) { transition: opacity var(--t-ui) var(--ease-out), transform var(--t-ui) var(--ease-out); }
+  @starting-style {
+    .a-card:not([hidden]), .a-shm:not([hidden]) { opacity: 0; transform: translateY(-4px); }
+  }
+}
+/* footnotes: a raised number in the accent, 13px wherever it stands */
+.a-fm { font-size: 13px; line-height: 0; vertical-align: .55em; }
+#inner .a-art .a-fm a { color: var(--accent); padding: 0 1px; }
+#inner .a-art .a-fm a:is(:hover, :focus-visible) { color: var(--ink); }
+/* asides: a quiet block a step in; call-outs: a panel of the surface's tone with its small grey label */
+.a-aside { padding-left: 20px; font-size: 15px; line-height: 24px; color: var(--grey); }
+#inner .a-aside > * + * { margin-top: 8px; }
+.a-call { padding: 14px 18px; background: var(--surface); }
+.a-call-l { font-size: 13px; line-height: 20px; color: var(--grey); }
+#inner .a-call > * + * { margin-top: 6px; }
+#inner .a-call > .a-call-l + * { margin-top: 2px; }
+/* formulas (KaTeX): inline ones on the line; display ones centred on the measure in a box of their own, which
+   scrolls sideways when the formula is longer (a phone sets it smaller first: article.js); a number at the right */
+.w-body .katex, .w-cap .katex, .a-card .katex, .a-foot .katex { font-size: 1.1em; }
+.a-eq { display: grid; grid-template-columns: minmax(0, 1fr); align-items: center; }
+.a-eq.a-eqn { grid-template-columns: 3em minmax(0, 1fr) 3em; }
+.a-eq.a-eqn .a-eq-s { grid-column: 2; }
+.a-eq-n { grid-column: 3; justify-self: end; font-size: 13px; line-height: 20px; color: var(--grey); }
+.a-eq-s { display: flex; overflow-x: auto; overflow-y: hidden; padding: 10px 0; font-size: 18px; line-height: 30px; scrollbar-width: thin; scrollbar-color: color-mix(in srgb, var(--line) 50%, transparent) transparent; }
+.a-eq-s > .katex-display { flex: none; margin: 0 auto; text-align: center; }
+.a-eq-s > .katex-display > .katex { white-space: nowrap; }
+#inner .a-eq-s:focus-visible { outline: none; background: var(--surface); }
+/* code: a panel of the surface's tone, its language and a copy word over it; marked lines a step deeper */
+.a-code { padding: 0 16px 12px; background: var(--surface); }
+.a-code-h { display: flex; align-items: center; justify-content: space-between; height: 34px; font-size: 13px; line-height: 18px; color: var(--grey); }
+#inner .a-copy { padding: 8px 0 8px 12px; margin: -8px 0; color: var(--grey); }
+#inner .a-copy:is(:hover, :focus-visible) { color: var(--ink); }
+#inner .a-copy:focus-visible { outline: none; text-decoration: underline 1px currentColor; text-underline-offset: .25em; }
+#inner .a-copy[hidden] { display: none; }
+.a-ln { display: block; }
+.a-ln.a-on { margin: 0 -16px; padding: 0 16px; background: color-mix(in srgb, var(--ink) 7%, var(--surface)); }
+.a-tc { color: var(--grey); }
+.a-ts { color: color-mix(in srgb, var(--ink) 66%, var(--bg)); }
+/* (on a marked line the quiet tokens step a quarter toward the ink, so they keep 4.5:1 on its deeper tone: 5.3:1 at dusk's deepest) */
+.a-ln.a-on .a-tc { color: color-mix(in srgb, var(--grey) 75%, var(--ink)); }
+.a-ln.a-on .a-ts { color: color-mix(in srgb, var(--ink) 80%, var(--surface)); }
+/* a live figure (and an animation that waits for play): its stage, then its controls, then its caption */
+.a-live-c { image-rendering: auto; }
+.a-live-k { display: flex; flex-wrap: wrap; align-items: center; column-gap: 28px; row-gap: 6px; margin-top: 8px; font-size: 13px; line-height: 20px; color: var(--grey); }
+.a-live-k[hidden] { display: none; }
+#inner .a-play { display: inline-flex; align-items: center; gap: 7px; min-height: 36px; color: var(--grey); }
+#inner .a-play[hidden] { display: none; }
+#inner .a-play:is(:hover, :focus-visible), #inner .a-play[aria-pressed="true"] { color: var(--ink); }
+#inner .a-play:focus-visible { outline: none; text-decoration-line: none; box-shadow: inset 0 -1px 0 currentColor; }
+.a-play .a-pa, :is(.a-live, .a-anim).a-on .a-play .a-pl { display: none; }
+:is(.a-live, .a-anim).a-on .a-play .a-pa { display: block; }
+.a-ctl { display: inline-flex; align-items: center; gap: 10px; min-height: 36px; }
+.a-ctl output { min-width: 4.5em; color: var(--ink); }
+.a-ctl input[type="range"] { -webkit-appearance: none; appearance: none; width: 150px; height: 28px; margin: 0; background: transparent; cursor: pointer; }
+.a-ctl input[type="range"]:disabled { cursor: default; opacity: .5; }
+.a-ctl input[type="range"]::-webkit-slider-runnable-track { height: 1px; background: var(--line); }
+.a-ctl input[type="range"]::-webkit-slider-thumb { -webkit-appearance: none; width: 11px; height: 11px; margin-top: -5px; border: 0; border-radius: 50%; background: var(--ink); }
+.a-ctl input[type="range"]::-moz-range-track { height: 1px; background: var(--line); }
+.a-ctl input[type="range"]::-moz-range-thumb { width: 11px; height: 11px; border: 0; border-radius: 50%; background: var(--ink); }
+/* (a slider's focus: a tone under it, the track and thumb as they are) */
+#inner .a-ctl input[type="range"]:focus-visible { outline: none; background: var(--surface); }
+#inner .a-live .w-cap, #inner .a-anim .w-cap { margin-top: 4px; }
+/* an animation where it cannot play here (no script, or reduced motion): its still, and a plain way to the file */
+#inner .a-anim-l { margin-top: 8px; font-size: 13px; line-height: 20px; color: var(--grey); }
+#inner .a-anim .a-anim-l + .w-cap { margin-top: 4px; }
+@media (prefers-reduced-motion: no-preference) { html.js #inner .a-anim .a-anim-l { display: none; } }
+
+/* ---------- the foot: the author's end sections (:::appendix), the footnotes (each with its way back), the
+   references (each with its way back), the updates, "Cite this post". A band of its own after the text ---------- */
+.a-foot { clear: both; margin-top: 80px; max-width: var(--a-meas); }
+#inner .a-foot > section + section { margin-top: 48px; }
+.a-fh { font-size: 13px; line-height: 20px; font-weight: 400; color: var(--grey); scroll-margin-top: var(--a-top); }
+#inner .a-rl { margin-top: 14px; font-size: 15px; line-height: 23px; }
+.a-rl > li { display: grid; grid-template-columns: 30px minmax(0, 1fr); scroll-margin-top: var(--a-top); }
+#inner .a-rl > li + li { margin-top: 12px; }
+.a-rn { color: var(--grey); }
+.a-rt { display: block; color: var(--ink); }
+.a-ra { display: block; color: var(--grey); }
+.a-bk { margin-left: 12px; white-space: nowrap; }
+#inner .a-back { display: inline-block; padding: 0 3px; }
+#inner .a-rb > p { margin: 0; }
+#inner .a-rb > p + p { margin-top: 8px; }
+.a-ct { margin-top: 12px; font-size: 15px; line-height: 23px; color: var(--grey); }
+#inner .a-citeb .a-code { margin-top: 12px; }
+/* an end section: the author's words, set as the foot's (15px, grey; its links as the text's) */
+.a-apb { margin-top: 12px; font-size: 15px; line-height: 23px; color: var(--grey); }
+#inner .a-apb > * + * { margin-top: 8px; }
+/* the updates: each its day, then what changed */
+#inner .a-ul > li { grid-template-columns: auto minmax(0, 1fr); column-gap: 16px; }
+.a-ul .a-rb { color: var(--ink); }
+
+@media (min-width: 1000px) {
+  /* the text's eight columns (no wider than the measure), the air, the rail's three at the frame's right edge */
+  .a-art { display: grid; grid-template-columns: minmax(0, var(--a-meas)) minmax(var(--gut), 1fr) var(--a-rail); align-items: start; }
+  .a-head { grid-column: 1 / -1; grid-row: 1; }
+  #inner .a-art > .w-cover { grid-column: 1 / -1; grid-row: 2; margin-top: 40px; }
+  .a-main { grid-column: 1; grid-row: 3; min-width: 0; }
+  .a-rail { grid-column: 3; grid-row: 3; align-self: stretch; min-width: 0; }
+  .a-toc { position: sticky; top: var(--a-top); margin: 40px 0 0 -20px; padding-left: 20px; max-height: calc(100vh - var(--a-top) - 24px); overflow-y: auto; scrollbar-width: none; }
+  #inner .a-main > .w-cover { margin-top: 40px; max-width: var(--a-meas); }
+  .a-tocf { display: none; }
+  /* the foot, after the text and its rail (which ends with the text), under a hairline across the frame: each part
+     a row of its own, its title in columns 1-2 (15px, in ink), its content in columns 3-10 (the text's measure) */
+  #inner .a-art > .a-foot { grid-column: 1 / -1; grid-row: 4; max-width: none; margin-top: 72px; padding-top: 44px;
+    border-top: 1px solid color-mix(in srgb, var(--line) 50%, transparent); }
+  #inner .a-foot > section { display: grid; grid-template-columns: calc(var(--a-col) * 2 + var(--gut)) minmax(0, calc(var(--a-col) * 8 + var(--gut) * 7));
+    column-gap: var(--gut); align-items: start; }
+  #inner .a-foot > section > .a-fh { grid-column: 1; grid-row: 1 / span 12; font-size: 15px; line-height: 22px; font-weight: 500; color: var(--ink); }
+  #inner .a-foot > section > :not(.a-fh) { grid-column: 2; }
+  #inner .a-foot .a-rl, #inner .a-foot > section > .a-fh + * { margin-top: 0; }
+  #inner .a-foot > section + section { margin-top: 40px; }
+}
+@media (max-width: 999px) {
+  .a-art { --a-meas: 100%; }
+  .a-head { padding-top: 13px; }
+  .a-head .w-h { margin-top: 22px; }
+  #inner .a-head > .a-desc { margin-top: 12px; font-size: 20px; line-height: 28px; }
+  /* the byline in two columns: the authors (beside their affiliations, when any), the day and the DOI or the
+     reading time, the topics, share */
+  .a-meta { grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: 20px; margin-top: 24px; }
+  .a-meta > .a-mi, #inner .a-meta > .a-share { grid-column: auto; }
+  .a-meta > :is(.a-mau, .a-mtg), #inner .a-meta > .a-share { grid-column: 1 / -1; }
+  .a-meta.a-hasaf > .a-mau { grid-column: 1; }
+  .a-meta.a-hasaf > .a-maf { grid-column: 2; }
+  #inner .a-meta > .a-share { margin: 0; justify-self: start; }
+  #inner .a-sh { min-height: 44px; }
+  #inner .a-shi { padding: 12px 14px; }
+  .a-shm { right: auto; left: -15px; top: 100%; }
+  #inner .a-lk { column-gap: 18px; }
+  #inner .a-lk .k { min-height: 44px; margin-top: -12px; margin-bottom: -12px; }
+  .a-rail { display: none; }
+  #inner .a-art > .w-cover, #inner .a-main > .w-cover { margin-top: 28px; }
+  .a-art .a-wide, .a-art .a-full { width: auto; }
+  .a-aside { font-size: 15px; line-height: 23px; }
+  .a-eq-s { display: block; text-align: center; font-size: 17px; line-height: 28px; }
+  .a-eq.a-eqn { grid-template-columns: 2em minmax(0, 1fr) 2em; }
+  .a-foot { margin-top: 56px; }
+  .a-bka { font-size: 20px; }
+}
+@media (forced-colors: active) { :is(.a-card, .a-shm, .a-code, .a-call, .a-tocf) { border: 1px solid CanvasText; } }
+/* the screen's ratio for the pictures' size, where no script measures it (scripts/article.js sets the exact one):
+   the step at or below it, so a picture is never drawn past its own pixels by more than the step */
+@media (min-resolution: 1.25dppx) { .a-art { --a-dpr: 1.25; } }
+@media (min-resolution: 1.5dppx) { .a-art { --a-dpr: 1.5; } }
+@media (min-resolution: 1.75dppx) { .a-art { --a-dpr: 1.75; } }
+@media (min-resolution: 2dppx) { .a-art { --a-dpr: 2; } }
+@media (min-resolution: 2.5dppx) { .a-art { --a-dpr: 2.5; } }
+@media (min-resolution: 3dppx) { .a-art { --a-dpr: 3; } }
+
+/* ---------- print: the article alone, black on white, its links' addresses after them, the pages numbered ---------- */
+@media print {
+  @page {
+    margin: 18mm 16mm;
+    @bottom-right { content: counter(page) " / " counter(pages); font: 9pt/1 "Figtree", system-ui, sans-serif; color: #444; }
+  }
+  /* (!important: the light's own script sets these on the page itself) */
+  :root { --bg: #fff !important; --surface: #f1f1ee !important; --ink: #000 !important; --grey: #444 !important; --line: #888 !important; --accent: #000 !important; color-scheme: light; }
+  html, body { background: #fff; }
+  .ih, .ring, .if, .w-pn, .a-rail, .a-tocf, .a-share, .a-card, .a-copy, .a-hl, .a-live-k, .a-anim-l, .skip, .w-door { display: none !important; }
+  #inner { display: block; min-height: 0; }
+  .ip { width: auto; margin: 0; padding: 0; }
+  .a-art { display: block; }
+  .a-head { padding-top: 0; }
+  .w-h { font-size: 26pt; line-height: 1.15; }
+  .a-desc { font-size: 13pt; }
+  .w-body, #inner .w-art.a-art .w-body, .a-foot { max-width: none; font-size: 11pt; line-height: 1.5; }
+  .a-art :is(.a-wide, .a-full, .a-win), #inner .a-art > .w-cover.a-full { width: auto; margin-left: 0; }
+  .w-body :is(h2, h3, h4) { break-after: avoid; }
+  :is(.w-fig, .w-cover, .a-tfig, .a-eq, .a-code, .a-call, .a-aside) { break-inside: avoid; }
+  .w-body a[href^="http"]::after { content: " (" attr(href) ")"; font-size: 9pt; color: #444; overflow-wrap: anywhere; }
+  /* the post's own links, one a line, each with its address */
+  #inner .a-lk { display: block; margin-top: 10pt; }
+  #inner .a-lk li + li { margin-top: 2pt; }
+  #inner .a-lk .k { white-space: normal; }
+  #inner .a-lk .k::after { content: " " attr(href); font-size: 9pt; color: #444; overflow-wrap: anywhere; }
+  .a-eq-s { overflow: visible; }
+}

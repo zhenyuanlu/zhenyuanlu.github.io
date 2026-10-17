@@ -1,0 +1,60 @@
+---
+// /race/ and /race/<year>/: a season's races on its map (the draft v2ac's #/race; its engine, src/scripts/race/).
+// /race/ is the current season (scripts/race/address.js: the newest that has begun by the build's day), every other
+// season has its own page; what is pinned follows the # (#hyrox-boston, #boston/run, #next). The server prints
+// what a reader without script and a search engine get: the title, a way to the other seasons, the season's races as
+// a list (renderRaceList, the engine's own words) and each as a schema.org SportsEvent. The browser's script
+// (scripts/race/client.js) draws the season's map over it from the page's own data (#race-data), on one screen.
+import Base from '../../layouts/Base.astro';
+import TitleBlock from '../../components/TitleBlock.astro';
+import { raceShapeOf, readRace } from '../../schemas/race.ts';
+import { raceEvents, renderRaceList } from '../../scripts/race/list.js';
+import { currentOf, pathOf, seasonsOf } from '../../scripts/race/address.js';
+import { bostonDay } from '../../scripts/today.js';
+import { BUILT, absolute, person, url } from '../../lib/site';
+import '../../styles/race.css';
+
+export function getStaticPaths() {
+  const years = seasonsOf(raceShapeOf(readRace()));
+  const current = currentOf(years, bostonDay(BUILT).slice(0, 4));
+  return years.map((y) => ({ params: { season: y === current ? undefined : y }, props: { season: y } }));
+}
+
+const { season } = Astro.props as { season: string };
+const races = raceShapeOf(readRace());
+const years = seasonsOf(races);
+const today = bostonDay(BUILT);
+const current = currentOf(years, today.slice(0, 4));
+const path = pathOf('/', season, current);
+const labels: Record<string, string> = Object.fromEntries(years.map((y) => [y, y === current ? 'race' : `race ${y}`]));
+const me = await person();
+
+// the page's own line: the season, its sports, its count
+const list = races.seasons[season] || [];
+const SPORT_WORD: Record<string, string> = { dragonboat: 'dragon boat', hyrox: 'Hyrox', run: 'running' };
+const sports = ['dragonboat', 'hyrox', 'run'].filter((s) => list.some((r) => r.sport === s)).map((s) => SPORT_WORD[s]);
+const and = (a: string[]) => (a.length > 1 ? `${a.slice(0, -1).join(', ')} and ${a[a.length - 1]}` : a.join(''));
+const description = `The races of ${me.name}, ${me.suffix || 'PhD'}, in the ${season} season: ${list.length} ${list.length === 1 ? 'race' : 'races'} of ${and(sports)}, on one map with their results and medals.`;
+
+// what the browser's script reads (the engine's data and each season's title), and the structured data
+const data = JSON.stringify({ races, labels }).replace(/</g, '\\u003c');
+const who = { '@id': absolute('/#person'), '@type': 'Person', name: me.name };
+const ld = JSON.stringify({ '@context': 'https://schema.org', '@graph': raceEvents(races, season, { today, page: absolute(path), person: who }) }).replace(/</g, '\\u003c');
+---
+<Base title={labels[season]} description={description} path={path} page="race" ring="race">
+  <div data-race-static>
+    <TitleBlock word="race">
+      {years.length > 1 && (
+        <nav class="tb-d r-sy" aria-label="seasons">{years.map((y, i) => (
+          <Fragment>{i > 0 && <span class="r-sep" aria-hidden="true"> · </span>}{y === season ? <span class="on" aria-current="page">{y}</span> : <a href={url(pathOf('/', y, current))}>{y}</a>}</Fragment>
+        ))}</nav>
+      )}
+    </TitleBlock>
+  </div>
+  <Fragment set:html={renderRaceList(races, season, { today })} />
+  <script type="application/json" id="race-data" is:inline data-season={season} data-current={current} data-base={import.meta.env.BASE_URL} set:html={data}></script>
+  <script type="application/ld+json" is:inline set:html={ld}></script>
+  {/* (after the frame's own script in the page, as the blog's: modules run in the page's order, and the frame's
+      pixels, the fader and the way home, should not wait for the engine's larger file) */}
+  <Fragment slot="scripts"><script>import '../../scripts/race/client.js';</script></Fragment>
+</Base>

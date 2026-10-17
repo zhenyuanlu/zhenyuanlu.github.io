@@ -1,0 +1,56 @@
+---
+// Every page's frame (the draft's #inner): the head, the header (the way home and the fader), the page, the doors
+// before and after, the footer. The head is components/DocHead.astro, the home's too: the Content-Security-Policy
+// first after the charset, so it governs everything after it, then the light, set before the first paint by a small
+// inline script whose hash that policy carries (and nothing else: no other script or style is written into a page).
+// Everything else the browser runs is a file from this site. bare: the page alone, without the header, the doors and
+// the footer (a photograph's page, which is the photograph on the paper, as see's viewer shows it).
+// A page's own script comes in the scripts slot, after the frame's (<Fragment slot="scripts"><script>import ...</script>
+// </Fragment>): inside the body, where the browser has nothing to repair, and in that order (the frame first).
+import '@fontsource/figtree/400.css';
+import '@fontsource/figtree/500.css';
+import '../styles/tokens.css';
+import '../styles/frame.css';
+import '../styles/wide.css';   // the big-screen mode (scripts/early.js decides; every rule under html[data-wide])
+import DocHead from '../components/DocHead.astro';
+import type Head from '../components/Head.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import Ring from '../components/Ring.astro';
+import type { Door } from '../lib/site';
+
+interface Props {
+  title: string;
+  description?: string;
+  path: string;
+  page: string;
+  ring?: Door | null;
+  noindex?: boolean;
+  canonical?: boolean;
+  image?: string;
+  imageAlt?: string;
+  imageWidth?: number;
+  imageHeight?: number;
+  ld?: Record<string, unknown>[];
+  article?: Parameters<typeof Head>[0]['article'];
+  talk?: Parameters<typeof Head>[0]['talk'];
+  closeLine?: boolean;
+  bare?: boolean;
+}
+const { title, description, path, page, ring = null, noindex, canonical, image, imageAlt, imageWidth, imageHeight, ld, article, talk, closeLine = false, bare = false } = Astro.props;
+---
+<!doctype html>
+<html lang="en" class="in" data-page={page}>
+  <head><DocHead title={title} description={description} path={path} noindex={noindex} canonical={canonical} image={image} imageAlt={imageAlt} imageWidth={imageWidth} imageHeight={imageHeight} ld={ld} article={article} talk={talk} /></head>
+  <body>
+    <div id="inner">
+      {!bare && <Header />}
+      <main class="ip" id="ip" tabindex="-1"><slot /></main>
+      {!bare && <Ring door={ring} />}
+      {closeLine && <div class="close" aria-hidden="true"><i></i></div>}
+      {!bare && <Footer />}
+    </div>
+    <script>import '../scripts/site.js';</script>
+    <slot name="scripts" />
+  </body>
+</html>

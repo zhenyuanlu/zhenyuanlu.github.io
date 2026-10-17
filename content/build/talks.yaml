@@ -1,0 +1,14 @@
+# build · talks: the short place each talk shows on build, newest first.
+# A talk is a post with kind: talk in content/blog/<slug>/, which gives its title, date, picture and page; build lists
+# every such post, newest first. One entry here names a talk by its folder (slug) and gives where: the place in a few
+# words. A talk with no entry here shows its post's own where.
+# 中文提示：talk 本身写在 content/blog/ 里（kind: talk）；这里只写 build 页上那行简短的地点。
+
+- slug: uw-workshop-ssl
+  where: School of Medicine, University of Washington, Seattle
+
+- slug: informs-talk
+  where: Snell Library, Northeastern University, Boston
+
+- slug: tufts-hia-ai
+  where: Tufts University, Boston

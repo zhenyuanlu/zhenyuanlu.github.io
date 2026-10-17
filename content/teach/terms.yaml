@@ -1,0 +1,97 @@
+# teach · terms: every term taught, one entry each, under its course and oldest first: a book in the course's tally;
+# the latest term's url is the course's link. To add a term, copy one under its course and change its fields:
+#   slug (code_campus_term, lowercase), code (a course in courses.yaml), title (the course's, the same in each term),
+#   campus, semester (Spring, Summer or Fall, then the year: the page reads "teaching now" from it), url (its page).
+# 中文提示：每教一个学期加一条；semester 写成 "Fall 2026" 这样，页面据此判断是否正在上课。
+
+- slug: ie6600_sea_sp20
+  code: IE6600
+  title: Computation and Visualization for Analytics
+  campus: Seattle
+  semester: Spring 2020
+  url: https://zhenyuanlu.com/courses/ie6600-sea-sp20/
+
+- slug: ie6600_bos_fa20
+  code: IE6600
+  title: Computation and Visualization for Analytics
+  campus: Boston
+  semester: Fall 2020
+  url: https://zhenyuanlu.com/courses/ie6600-bos-fa20/
+
+- slug: ie6600_sea_sp21
+  code: IE6600
+  title: Computation and Visualization for Analytics
+  campus: Seattle
+  semester: Spring 2021
+  url: https://zhenyuanlu.com/courses/ie6600-sea-sp21/
+
+- slug: ie6600_bos_su21
+  code: IE6600
+  title: Computation and Visualization for Analytics
+  campus: Boston
+  semester: Summer 2021
+  url: https://zhenyuanlu.com/courses/ie6600-bos-su21/
+
+- slug: ie6600_bos_fa21
+  code: IE6600
+  title: Computation and Visualization for Analytics
+  campus: Boston
+  semester: Fall 2021
+  url: https://zhenyuanlu.com/courses/ie6600-bos-fa21/
+
+- slug: ie6600_sea_sp22
+  code: IE6600
+  title: Computation and Visualization for Analytics
+  campus: Seattle
+  semester: Spring 2022
+  url: https://zhenyuanlu.com/courses/ie6600-sea-sp22/
+
+- slug: ie6600_bos_su22
+  code: IE6600
+  title: Computation and Visualization for Analytics
+  campus: Boston
+  semester: Summer 2022
+  url: https://zhenyuanlu.com/courses/ie6600-bos-su22/
+
+- slug: ie6600_van_fa22
+  code: IE6600
+  title: Computation and Visualization for Analytics
+  campus: Vancouver
+  semester: Fall 2022
+  url: https://zhenyuanlu.com/courses/ie6600-van-fa22/
+
+- slug: ie6600_sea_sp23
+  code: IE6600
+  title: Computation and Visualization for Analytics
+  campus: Seattle
+  semester: Spring 2023
+  url: https://zhenyuanlu.com/courses/ie6600-sea-sp23/
+
+# Vancouver, as its campus and its page say (his answer, 2026-10-17; the draft's slug had said Boston)
+- slug: ie7945_van_su24
+  code: IE7945
+  title: AI/ML Master Project
+  campus: Vancouver
+  semester: Summer 2024
+  url: https://zhenyuanlu.com/courses/ie7945-van-su24/
+
+- slug: ie7945_van_fa24
+  code: IE7945
+  title: AI/ML Master Project
+  campus: Vancouver
+  semester: Fall 2024
+  url: https://zhenyuanlu.com/courses/ie7945-van-fa24/
+
+- slug: ie5976_van_su23
+  code: IE5976
+  title: Python for Object-Oriented Programming
+  campus: Vancouver
+  semester: Summer 2023
+  url: https://zhenyuanlu.com/courses/ie5976-van-su23/
+
+- slug: ie7275_bos_su20
+  code: IE7275
+  title: Data Mining in Engineering
+  campus: Boston
+  semester: Summer 2020
+  url: https://zhenyuanlu.com/courses/ie7275-bos-su20/

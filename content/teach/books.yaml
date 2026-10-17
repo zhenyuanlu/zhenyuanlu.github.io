@@ -1,0 +1,16 @@
+# teach · open books, in the page's order: title, topics, links (each a type: website, github or pdf, and its href).
+# The page draws each cover itself: Python's for a title with "Python", R's for one that ends "in R", else a plain one.
+# 中文提示：每本开源书一条；封面是页面自己画的。
+
+- title: Python Notebook from Zero to Advanced
+  topics: [ OOP, advanced formatting, loops and comprehensions, "iterable, iterator, generator", error handling ]
+  links:
+    - { type: github, href: https://github.com/zhenyuanlu/python-notebook }
+    - { type: website, href: https://zhenyuanlu.com/python-notebook/ }
+    - { type: pdf, href: https://github.com/zhenyuanlu/python-notebook/blob/main/python_from_zero_to_advance_ZL.pdf }
+
+- title: Data Visualization/Transformation Tutorial in R
+  topics: [ data visualization, data transformation, tidyverse, data wrangling ]
+  links:
+    - { type: github, href: https://github.com/zhenyuanlu/r-comput-viz }
+    - { type: website, href: https://zhenyuanlu.com/r-comput-viz/ }
