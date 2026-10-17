@@ -1,20 +1,17 @@
-_site
-.sass-cache
-.jekyll-cache
-.jekyll-metadata
-vendor
-
-# Node modules
+# Dependencies
 node_modules/
+
+# Build output and Astro's generated files
+dist/
+.astro/
 
 # Logs
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 
-# Build output
-dist/
-build/
+# This machine's own settings: the LAN preview's base and folder (lan.example.json shows the shape)
+lan.local.json
 
 # Environment files
 .env
@@ -23,29 +20,16 @@ build/
 .env.test.local
 .env.production.local
 
-# System files
+# System and editor files
 .DS_Store
-
-# Coverage reports
-coverage/
-
-# IDE files
+Thumbs.db
 .vscode/
 .idea/
 *.swp
 
-# Thumbnails Generator
-thumb_gen/
-
-# Installed pacakges
-installed_packages.txt
-installed_packages.json
-
-# Template
-template/
-
-# Testing folder on new features
-test/
-
-# Draft folder
-draft/
+# Legacy Jekyll output, should an old checkout build it
+_site
+.sass-cache
+.jekyll-cache
+.jekyll-metadata
+vendor

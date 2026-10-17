@@ -1,0 +1,28 @@
+# race · clubs: the clubs he races with, in his order (2026-10-05).
+# One entry is one club: id (what a crew's club: names), name (as the timeline shows it, 2026-10-07), long (its full
+# name), from (the month he joined, YYYY-MM), to (the month he left; none: to now), approx: true (the month is about),
+# aka (the words that name the club inside a crew's own name, so a crew's line does not repeat its club).
+# 中文提示：每个俱乐部一条；from、to 写成 年-月。
+
+# Joined Apr 2026; QingQing Fast Boat is Tsinghua's (the owner, 2026-10-06).
+- id: tsinghua
+  name: Tsinghua DB/QQFB
+  long: Tsinghua Dragon Boat / QingQing Fast Boat
+  from: 2026-04
+  aka: [ tsinghua, qingqing fast boat, qqfb ]
+
+# Joined Sep 2025 (the owner, 2026-10-06).
+- id: wolfpack
+  name: wolfpack (WRC)
+  long: Wolfpack Racing Club (WRC)
+  from: 2025-09
+  aka: [ wolfpack, wrc ]
+
+# Joined about Apr 2026; ended Aug 2026 (the owner, 2026-10-15).
+- id: bbb
+  name: BBB (Boston-Based Bao)
+  long: BBB (Boston-Based Bao)
+  from: 2026-04
+  to: 2026-08
+  approx: true
+  aka: [ bbb, boston-based bao ]

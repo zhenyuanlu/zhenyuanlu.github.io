@@ -1,0 +1,54 @@
+---
+// / : the home (the draft v2ac's, design/home/v2ac-article.html): the name that splits in hand, the sentence the line
+// leaves from, the four marks and the motto, the five doors on the line, the cities on the road and the traveller,
+// the footer line and the second motto, and the fader in the corner. Printed whole here (scripts/home/render.js), so
+// a search engine and a reader without script get it all and the doors are links; the home's engine
+// (scripts/home/, by layouts/Home.astro's script) then draws it. Its data: the person (content/site.yaml), the doors
+// and the cities (content/home/), and race's grey line, what comes next, from the races (content/race/).
+import Home from '../layouts/Home.astro';
+import Fader from '../components/Fader.astro';
+import { renderHomeParts } from '../scripts/home/render.js';
+import { homeRaces } from '../scripts/home/model.js';
+import { loadHome, toCitiesShape, toDoorsShape } from '../schemas/home.ts';
+import { raceShapeOf, readRace } from '../schemas/race.ts';
+import { BUILT, DOORS, person, url } from '../lib/site';
+import { bostonDay } from '../scripts/today.js';
+
+const me = await person();
+// the cities' plain icons, for a reader without script (with script they are drawn, and these are never loaded)
+const ICONS = import.meta.glob<{ default: ImageMetadata }>('/content/home/img/*.png', { eager: true });
+function icon(file: string): string {
+  const m = ICONS[`/${file}`];
+  if (!m) throw new Error(`${file}: not one of the home's pictures (content/home/img/*.png)`);
+  return m.default.src;
+}
+const home = await loadHome(process.cwd(), icon);
+const doors = home.doors.map((e) => e.data);
+// the doors go round in one order: the home's line and every page's ring (src/lib/site.ts DOORS)
+if (doors.map((d) => d.id).join() !== DOORS.join()) {
+  throw new Error(`content/home/doors.yaml: the doors are ${doors.map((d) => d.id).join(', ')}; the ring's order (src/lib/site.ts DOORS) is ${DOORS.join(', ')}`);
+}
+// the build's day and year in Boston (scripts/today.js, as every page takes it): race's grey line as printed (the
+// engine says it again for the day it is) and the footer's last year, as every page's footer has it
+const today = bostonDay(BUILT);
+const year = Number(today.slice(0, 4));
+
+const data = {
+  name: { text: me.name, syllables: me.syllables, hanzi: me.hanzi, suffix: me.suffix },
+  sentence: me.sentence,
+  social: me.social,
+  mottos: me.mottos,
+  // race's door names the next race while there is one: /race/#next, which pins it on the season's map
+  doors: toDoorsShape(doors, (id) => url(`/${id}/`)).map((d) => (d.art === 'race' ? { ...d, next: `${url('/race/')}#next` } : d)),
+  cities: toCitiesShape(home.cities.map((e) => e.data), home.picture),
+  races: homeRaces(raceShapeOf(readRace())),
+  footer: { from: me.started, to: year, by: me.name },
+  blink: me.home.blink,
+};
+const { head, tail } = renderHomeParts(data, { today });
+const races = JSON.stringify(data.races).replace(/</g, '\\u003c');
+---
+<Home title={me.name} path="/">
+  <Fragment set:html={head} /><Fader /><Fragment set:html={tail} />
+  <script type="application/json" id="home-races" is:inline set:html={races}></script>
+</Home>

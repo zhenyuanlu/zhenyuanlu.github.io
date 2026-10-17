@@ -1,0 +1,50 @@
+# The person and the site, in one place: the name, the sentence under it, the social links and the mottos.
+# Every page reads it (the head's description, the structured data, the footer); the home shows it all.
+# (One entry, "site": the file loader reads entries by key.)
+# 中文提示：名字、简介、社交链接和两句话都在这里；首页的名字拆开时显示的拼音和汉字在 syllables、hanzi。
+site:
+  name: Zhenyuan Lu
+  suffix: PhD
+  # the name as the home splits it in hand (zhen · yuan · lu, a space before the last), each syllable with its pinyin
+  # and its character over and under it; they spell the name. hanzi: the name in Chinese, family name first (a
+  # screen reader hears "zhèn yuān lù; in Chinese 陆振渊" as the name opens), the syllables' characters
+  syllables:
+    - { text: zhen, py: zhèn, hz: 振 }
+    - { text: yuan, py: yuān, hz: 渊 }
+    - { text: lu, py: lù, hz: 陆 }
+  hanzi: 陆振渊
+  sentence: Deep learning scientist at Seurat and AI/ML adjunct faculty at Northeastern.
+  # the line search engines and link previews show for the site's own pages (a post shows its own): the sentence and
+  # what he works on, within 160 letters (a search result shows about that many); the title above it says his name
+  description: "Deep learning scientist at Seurat and AI/ML adjunct faculty at Northeastern. Physics AI, LLMs for engineering, domain adaptation, quantization and HPC."
+  # what he works on, for the structured data (the Person's knowsAbout); the description names the same
+  areas: [ Physics AI, LLMs for engineering, Domain adaptation, Quantization, High-performance computing ]
+  location: Boston
+  # the first year in the footer's © line
+  started: 2019
+  # me: true marks the profile as his own (rel="me" where the link is shown, sameAs in the structured data).
+  # mark: the home's little pixel mark for it, under the sentence (github, linkedin, twitter: the bird, instagram);
+  # a link without one is not on the home
+  social:
+    - { label: GitHub, href: "https://github.com/zhenyuanlu", mark: github }
+    - { label: LinkedIn, href: "https://linkedin.com/in/zhenyuanlu", mark: linkedin }
+    - { label: X, href: "https://twitter.com/zyl_zhen", mark: twitter }
+    - { label: Google Scholar, href: "https://scholar.google.com/citations?user=Yml8fvsAAAAJ&hl=en" }
+    - { label: Instagram, href: "https://www.instagram.com/zylu_max/", mark: instagram }
+  mottos:
+    top: { text: "Pain is inevitable, Suffering is a choice." }
+    bottom: { text: "Difficulty means we have not understood", by: "Pierre Deligne, Mathematician" }
+  # the home: blink, the traveller on the road blinks now and then while he stands (false: he never does)
+  home:
+    blink: true
+  # the visitor stats: Google Analytics 4 (gtag.js), with the old site's own measurement id, so its numbers carry on
+  # without a gap (it is also what shows Google Search Console the site is his). On the real site's pages only, not
+  # in the dev server nor the LAN preview; README.md, "Analytics", says what loads and how to change the id. Take
+  # the block out and no page has the tag
+  analytics:
+    ga4: G-YKJ7CXRCW1
+    # Search Console's own proof the site is his, when he wants it: Search Console > Settings > Ownership
+    # verification > "HTML tag", and the content="…" of the tag it shows, here. The home then has that tag, and
+    # loads gtag.js once it has loaded, as every other page does (it is a little faster on a phone); empty: the home
+    # keeps gtag.js's own tag, which proves it now
+    verify: ""

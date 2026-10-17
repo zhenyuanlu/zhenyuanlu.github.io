@@ -1,0 +1,62 @@
+# race · the 2025 season: one entry is one race, in date order.
+# To add one, copy an entry and change its fields:
+#   id (lowercase with hyphens, unique across the seasons: the race's address, /race/#<id>; never next, a year or
+#   the name of another venue on the map), date (YYYY-MM-DD; or
+#   YYYY-MM/MM while only the months are known), end (the last day of a race over days), sport (run, hyrox or
+#   dragonboat), name, short and tiny (shorter names, for the home's race line), place, lat and lon (the venue;
+#   approx: true where they are rough), water (the river or lake), status (raced once run; registered or planned
+#   before), results (each an event and a place, or finisher: true, or qualified: true; a note), crews (each a name,
+#   a note, club: an id in clubs.yaml, a division), medley (its leg of the series in medley.yaml: 1, 2 or 3), weather
+#   (sun, sun-cloud, cloud, overcast-wind or rain: his word for the venue's day), note.
+# 中文提示：一条就是一场比赛，按日期排；比完把 status 改成 raced，再填 results。
+
+# 2025 (the owner, 2026-10-05): Hyrox Boston, the Boston dragon boat festival and Hartford; their crews left blank on
+# purpose. Festival dates from the public listings. Hartford 2025 a win, gold, its event not known (the owner, 2026-10-07).
+# Before 2025, not on the page: 2023–24, Boston HK Dragon Boat Festival, with another club (at 42.369, -71.121).
+
+- id: bhkdbf-2025
+  date: 2025-06-08
+  sport: dragonboat
+  name: Boston Hong Kong Dragon Boat Festival
+  short: Boston Dragon Boat
+  tiny: dragon boat
+  place: Charles River, Cambridge, MA
+  water: charles
+  lat: 42.369
+  lon: -71.121
+  status: raced
+  results: []
+  crews: []
+  weather: sun
+
+- id: hartford-2025
+  date: 2025-08-16
+  sport: dragonboat
+  name: Riverfront Dragon Boat Races
+  short: Hartford Dragon Boat
+  tiny: dragon boat
+  place: Hartford, CT
+  water: connecticut
+  lat: 41.766
+  lon: -72.668
+  status: raced
+  results:
+    - { event: "?", place: 1 }
+  crews: []
+  weather: cloud
+
+- id: hyrox-boston-2025
+  date: 2025-09-26
+  end: 2025-09-28
+  sport: hyrox
+  name: Hyrox Boston
+  short: Hyrox Boston
+  tiny: Hyrox
+  place: Boston, MA
+  lat: 42.346
+  lon: -71.045
+  approx: true
+  status: raced
+  results:
+    - { finisher: true }
+  weather: sun

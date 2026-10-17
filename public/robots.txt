@@ -1,0 +1,5 @@
+# zhenyuanlu.com: every page may be read. (The 404 page says noindex itself; the sitemap leaves it out.)
+User-agent: *
+Allow: /
+
+Sitemap: https://zhenyuanlu.com/sitemap-index.xml

@@ -1,42 +1,49 @@
 {
-  "name": "zenlu",
-  "version": "1.0.0",
-  "main": "postcss.config.js",
-  "dependencies": {
-    "@tailwindcss/typography": "^0.5.15",
-    "alpinejs": "^3.14.7",
-    "autoprefixer": "^10.4.20",
-    "gray-matter": "^4.0.3",
-    "handlebars": "^4.7.8",
-    "js-yaml": "^4.1.0",
-    "lucide": "^0.469.0",
-    "postcss": "^8.4.49",
-    "puppeteer": "^23.11.1",
-    "tailwindcss": "^3.4.16"
-  },
-  "devDependencies": {
-    "concurrently": "^9.1.0",
-    "cross-env": "^7.0.3",
-    "esbuild": "^0.25.0"
+  "name": "zhenyuanlu-com",
+  "version": "3.0.0",
+  "private": true,
+  "description": "zhenyuanlu.com: the personal site of Zhenyuan Lu, built with Astro from the content/ folder.",
+  "type": "module",
+  "license": "MIT",
+  "engines": {
+    "node": ">=22.22.0"
   },
   "scripts": {
-    "build:css": "npx tailwindcss -i ./assets/css/input.css -o ./assets/css/styles.css --minify",
-    "build:js": "npx esbuild assets/js/filter-blog.js --bundle --minify --outfile=assets/js/filter-blog.min.js && npx esbuild assets/js/toc.js --bundle --minify --outfile=assets/js/toc.min.js && npx esbuild assets/js/zenlu.js --bundle --minify --outfile=assets/js/zenlu.min.js && npx esbuild assets/js/misc.js --bundle --minify --outfile=assets/js/misc.min.js",
-    "build:thumbnails": "node thumb_gen/generate_thumbnails.js",
-    "build": "npm run build:css && npm run build:js && bundle exec jekyll build && npm run build:thumbnails",
-
-    "watch:css": "npx tailwindcss -i ./assets/css/input.css -o ./assets/css/styles.css --watch",
-    "watch:misc": "npx esbuild assets/js/misc.js --bundle --minify --outfile=assets/js/misc.min.js --watch",
-    "watch:filter-blog": "npx esbuild assets/js/filter-blog.js --bundle --minify --outfile=assets/js/filter-blog.min.js --watch",
-    "watch:toc": "npx esbuild assets/js/toc.js --bundle --minify --outfile=assets/js/toc.min.js --watch",
-    "watch:zenlu": "npx esbuild assets/js/zenlu.js --bundle --minify --outfile=assets/js/zenlu.min.js --watch",
-    "watch:js": "concurrently \"npm run watch:filter-blog\" \"npm run watch:toc\" \"npm run watch:zenlu\" \"npm run watch:misc\"",
-    "watch:thumbnails": "node thumb_gen/watch_thumbnails.js",
-    "thumbnails": "npm run build:thumbnails && npm run watch:thumbnails",
-    "start": "concurrently \"npm run watch:css\" \"npm run watch:js\" \"bundle exec jekyll serve\""
+    "dev": "astro dev",
+    "build": "astro build",
+    "images": "node scripts/images.mjs",
+    "preview": "astro preview",
+    "build:lan": "node scripts/build-lan.mjs",
+    "new:post": "node scripts/new-post.mjs",
+    "check": "astro check && astro build --force && node scripts/check-dist.mjs && node scripts/check-budget.mjs"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "description": ""
+  "dependencies": {
+    "@astrojs/markdown-remark": "7.3.3",
+    "@astrojs/mdx": "8.1.0",
+    "@astrojs/rss": "4.0.19",
+    "@astrojs/sitemap": "3.7.4",
+    "@fontsource/figtree": "5.3.0",
+    "@shikijs/transformers": "4.5.0",
+    "astro": "7.4.0",
+    "hast-util-to-html": "9.0.5",
+    "katex": "0.19.0",
+    "rehype-katex": "7.0.1",
+    "remark-gfm": "4.0.1",
+    "remark-math": "6.0.0",
+    "remark-parse": "11.0.0",
+    "remark-smartypants": "3.0.3",
+    "sharp": "0.35.5",
+    "shiki": "4.5.0",
+    "unified": "11.0.5",
+    "yaml": "2.9.1"
+  },
+  "devDependencies": {
+    "@astrojs/check": "0.9.10",
+    "hast-util-from-html": "2.0.3",
+    "html-validate": "11.16.2",
+    "typescript": "6.0.3"
+  },
+  "overrides": {
+    "katex": "$katex"
+  }
 }

@@ -1,0 +1,217 @@
+---
+// An article (the draft v2ac's article(): the template; content/blog/format-guide shows every part).
+// On a desk, on the frame's twelve columns: the head and the text in the first eight at a reading measure (632px at
+// 18px), the ninth air, the contents' rail in the last three, which stays in view and steps aside while a block
+// wider than the text passes under it. Under 1000px one column, the contents folded after the head.
+// The head: the way back in the door lettering (a post's to the blog, a talk's to its row in build's talks,
+// /build/#<slug>, where scripts/build/index.js lands it as the draft's router did), the title (a size down past 60
+// letters, taste item 2), its sentence, and the byline between two hairlines on the frame's twelve columns, as
+// Distill's (authors 1-2, affiliations 3-4 when any author has one, published 5-6 with its update under it, the DOI
+// or the reading time 7-8, topics 9-11, share 12; a phone: two columns). The foot, a band of its own after the text
+// under a hairline across the frame (Distill's appendix): the author's own end sections (:::appendix), footnotes,
+// references, updates, "Cite this post"; on a desk each part's title in columns 1-2 beside it. Older and newer.
+// The arrows are drawn (lib/arrows.mjs). Behaviour (cards, the rail, share, copy, live figures) is
+// scripts/article.js; the page reads without it.
+import path from 'node:path';
+import { getImage } from 'astro:assets';
+import PixelWord from './PixelWord.astro';
+import { absolute, firstLine, isoDate, longDate, topicsOf, url, type Post } from '../lib/site';
+import { postDir, postFileUrl, videoSize } from '../lib/media';
+import { sizesFor, widthsFor } from '../lib/picture.mjs';
+import { pictureForms } from '../lib/picture-forms.mjs';
+import { LINK_KINDS, signPath } from '../lib/signs';
+import { arrowSvg } from '../lib/arrows.mjs';
+
+interface Zl {
+  toc: { depth: number; id: string; text: string }[];
+  minutes: number;
+  coverN: number;
+  coverCaptionHtml: string;
+  notes: { n: number; html: string; block: boolean }[];
+  refs: { n: number; key: string; title: string; authors: string[]; venue: string; year: number | null; url: string; uses: string[] }[];
+  appendix?: { id: string; title: string; html: string }[];
+}
+interface Props { post: Post; zl: Zl; older?: Post | null; newer?: Post | null }
+const { post, zl, older = null, newer = null } = Astro.props;
+const d = post.data;
+const talk = d.kind === 'talk';
+const slug = post.id;
+const canonical = absolute(`/blog/${slug}/`);
+
+// ---- the head ----
+const authors = d.authors;
+const topics = topicsOf(post);
+const WIDTH: Record<string, string> = { wide: 'a-wide', full: 'a-full', screen: 'a-win', text: '' };
+/** a title over 60 letters is set a size down (taste item 2): two lines on a desk. (lfia's, 107 letters, stays whole
+    and keeps three on a desk and four on a phone: the one exception to the line budget, DESIGN.md) */
+const long = d.title.length > 60;
+/** the byline's affiliations column, when any author has one; a talk's place takes it when none has */
+const hasAff = authors.some((a) => a.affiliation);
+const appendix = zl.appendix || [];
+const updates = d.updates || [];
+
+// ---- share (words, no logos): copy link, X, LinkedIn, Facebook, email, and the device's own sheet where it has one
+const u = encodeURIComponent(canonical), t = encodeURIComponent(d.title);
+const share = [
+  { word: 'X', href: `https://x.com/intent/post?url=${u}&text=${t}`, label: 'share on X' },
+  { word: 'LinkedIn', href: `https://www.linkedin.com/sharing/share-offsite/?url=${u}`, label: 'share on LinkedIn' },
+  { word: 'Facebook', href: `https://www.facebook.com/sharer/sharer.php?u=${u}`, label: 'share on Facebook' },
+  { word: 'email', href: `mailto:?subject=${t}&body=${u}`, label: 'share by email', mail: true },
+];
+
+// ---- the contents: the headings two levels deep, and the references ----
+const heads = d.toc ? [...zl.toc] : [];
+if (d.toc) appendix.forEach((a) => heads.push({ depth: 2, id: a.id, text: a.title }));
+if (d.toc && zl.refs.length) heads.push({ depth: 2, id: 'references', text: 'References' });
+const showToc = heads.length >= 2;
+
+// ---- the post's own links under the byline (front matter `links`): a sign and a word each, as build's ----
+const links = d.links.map((l) => {
+  const K = LINK_KINDS[l.kind];
+  const own = l.href.startsWith('/');
+  return { href: own ? url(l.href) : l.href, word: l.label || K.word, sign: signPath(K.sign), own };
+});
+
+// ---- the cover: on the measure, or as wide as the post says; a video plays only when asked. A picture comes in
+// the widths a screen may ask for (lib/picture.mjs), in its two forms (lib/picture-forms.mjs) ----
+let cover: null | { img?: { src: string; srcset?: string; avif?: string; sizes: string; w: number; h: number }; video?: { src: string; poster: string; w: number; h: number } } = null;
+if (d.cover) {
+  if (d.coverVideo) {
+    const pf = (d.cover as unknown as { fsPath?: string }).fsPath;
+    const pic = await getImage({ src: d.cover, ...(pf ? (await pictureForms(pf)).fallback : { format: 'webp' as const }) });
+    const v = videoSize(path.join(postDir(slug), d.coverVideo));
+    cover = { video: { src: postFileUrl(slug, d.coverVideo), poster: pic.src, w: v.w, h: v.h } };
+  } else {
+    const fsPath = (d.cover as unknown as { fsPath?: string }).fsPath;
+    /* (in its two forms, the speed round's picture policy, 2026-10-16: lib/picture-forms.mjs) */
+    const forms = fsPath ? await pictureForms(fsPath) : null;
+    const widths = widthsFor(d.cover.width, d.coverWidth), sizes = sizesFor(d.coverWidth);
+    const pic = await getImage({ src: d.cover, ...(forms ? forms.fallback : { format: 'webp' as const }), widths, sizes });
+    const av = forms ? await getImage({ src: d.cover, ...forms.avif, widths, sizes }) : null;
+    cover = { img: { src: pic.src, srcset: pic.srcSet.values.length ? pic.srcSet.attribute : undefined, avif: av ? (av.srcSet.values.length ? av.srcSet.attribute : av.src) : undefined, sizes, w: d.cover.width, h: d.cover.height } };
+  }
+}
+const coverWidth = cover?.video ? '' : WIDTH[d.coverWidth] || '';
+const coverAttrs = zl.coverN ? { id: `fig-${zl.coverN}`, tabindex: -1 } : {};
+
+// ---- the foot ----
+const host = (s: string) => { const m = /^https?:\/\/(?:www\.)?([^/]+)/.exec(s || ''); return m ? m[1] : 'link'; };
+const short = (a: string[]) => (a.length > 3 ? `${a.slice(0, 3).join(', ')} et al.` : a.join(', '));
+const venueYear = (r: Zl['refs'][number]) => { const v = r.venue || '', y = r.year ? String(r.year) : ''; return v && y && v.includes(y) ? v : [v, y].filter(Boolean).join(', '); };
+const MON = ['jan', 'feb', 'mar', 'apr', 'may', 'jun', 'jul', 'aug', 'sep', 'oct', 'nov', 'dec'];
+function autoCite() {
+  const names = authors.map((a) => { const w = a.name.trim().split(/\s+/); return w.length > 1 ? `${w[w.length - 1]}, ${w.slice(0, -1).join(' ')}` : a.name; });
+  const first = (d.title.toLowerCase().match(/[a-z0-9]+(?:-[a-z0-9]+)*/g) || []).filter((w) => w.length > 3)[0] || 'post';
+  const key = (names[0].split(',')[0] || 'post').toLowerCase().replace(/[^a-z]/g, '') + d.date.getUTCFullYear() + first.replace(/[^a-z0-9]/g, '');
+  return `@misc{${key},\n  author = {${names.join(' and ')}},\n  title = {${d.title}},\n  year = {${d.date.getUTCFullYear()}},\n  month = {${MON[d.date.getUTCMonth()]}},\n  howpublished = {\\url{${canonical}}},\n${d.doi ? `  doi = {${d.doi}},\n` : ''}  note = {Blog post}\n}`;
+}
+const cite = talk ? null : d.cite ? { text: d.cite.text || '', bibtex: d.cite.bibtex.trim() } : { text: '', bibtex: autoCite() };
+const SHARE_SVG = 'M4 0h1v1h-1zM3 1h3v1h-3zM2 2h1v1h-1zM4 2h1v4h-1zM6 2h1v1h-1zM0 5h1v3h-1zM8 5h1v3h-1zM1 8h7v1h-7z';
+---
+<article class="w-art a-art" aria-labelledby="w-h1">
+  <header class="a-head">
+    <a class="w-door a-bk2" href={talk ? url(`/build/#${slug}`) : url('/blog/')} aria-label={talk ? 'back to build: research and talks' : 'back to the blog'}><span class="a-bka" aria-hidden="true" set:html={arrowSvg('l')}></span><span class="a-bkw"><PixelWord text={talk ? 'build' : 'blog'} set="door" cell={1} ui class="a-bkc" /></span></a>
+    <h1 class={long ? 'w-h w-long' : 'w-h'} id="w-h1" tabindex="-1">{d.title}</h1>
+    <p class="a-desc">{firstLine(d.description)}</p>
+    <div class={hasAff || (talk && d.where) ? 'a-meta a-hasaf' : 'a-meta'}>
+      <div class="a-mi a-mau"><p class="a-ml">{authors.length > 1 ? 'authors' : 'author'}</p><p class="a-mv a-au">{authors.map((a) => (
+        <span class="a-a1 a-an">{a.url ? <a href={a.url} rel="noopener noreferrer" target="_blank">{a.name}</a> : a.name}</span>
+      ))}</p></div>
+      {hasAff
+        ? <div class="a-mi a-maf"><p class="a-ml">{authors.filter((a) => a.affiliation).length > 1 ? 'affiliations' : 'affiliation'}</p><p class="a-mv a-au">{authors.map((a) => <span class="a-a1 a-af">{a.affiliation || ''}</span>)}</p></div>
+        : talk && d.where && <div class="a-mi a-maf"><p class="a-ml">where</p><p class="a-mv">{d.where}</p></div>}
+      <div class="a-mi a-mpd"><p class="a-ml">{talk ? 'given' : 'published'}</p><p class="a-mv"><time class="num" datetime={isoDate(d.date)}>{longDate(d.date)}</time>{d.updated && <span class="a-mup"><span class="a-ml">updated</span> <time class="num" datetime={isoDate(d.updated)}>{longDate(d.updated)}</time></span>}{hasAff && talk && d.where && <span class="a-mup">{d.where}</span>}</p></div>
+      {d.doi
+        ? <div class="a-mi a-mdo"><p class="a-ml">DOI</p><p class="a-mv"><a class="a-doi" href={`https://doi.org/${d.doi}`} rel="noopener noreferrer" target="_blank">{d.doi.split('/')[0]}/<wbr />{d.doi.split('/').slice(1).join('/')}</a></p></div>
+        : <div class="a-mi a-mdo"><p class="a-ml">reading time</p><p class="a-mv num">{`${zl.minutes} min`}</p></div>}
+      {topics.length > 0 && <div class="a-mi a-mtg"><p class="a-ml">topics</p><div class="w-m a-tg"><span class="w-tags">{topics.map((x) => <a class="w-tg" href={url(`/blog/?topic=${encodeURIComponent(x)}`)}>{x}</a>)}</span></div></div>}
+      <div class="b-lk a-share">
+        <button type="button" class="a-sh" aria-expanded="false" aria-controls="a-shm"><svg class="b-ic" viewBox="0 0 9 9" aria-hidden="true" focusable="false"><path d={SHARE_SVG}></path></svg><span class="a-shw">share</span></button>
+        <div class="a-shm" id="a-shm" role="group" aria-label="share this post" hidden>
+          <ul>
+            <li><button type="button" class="a-shi" data-share="copy">copy link</button></li>
+            {share.map((s) => <li><a class="a-shi" href={s.href} aria-label={s.label} {...(s.mail ? {} : { target: '_blank', rel: 'noopener noreferrer' })}>{s.word}</a></li>)}
+            <li hidden><button type="button" class="a-shi" data-share="more">more…</button></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    {links.length > 0 && (
+      <ul class="b-lk a-lk" aria-label={talk ? 'the talk’s links' : 'the post’s links'}>{links.map((l) => (
+        <li><a class="k" href={l.href} {...(l.own ? {} : { target: '_blank', rel: 'noopener noreferrer' })}><svg class="b-ic" viewBox="0 0 9 9" aria-hidden="true" focusable="false"><path d={l.sign}></path></svg><span>{l.word}</span></a></li>
+      ))}</ul>
+    )}
+  </header>
+  {showToc && (
+    <details class="a-tocf"><summary><span>Contents</span></summary><ol class="a-tl">{heads.map((h) => <li class={`a-t${h.depth}`}><a class="a-te hpoint" href={`#${h.id}`}>{h.text}</a></li>)}</ol></details>
+  )}
+  {cover && coverWidth && (
+    <figure class={`w-cover ${coverWidth}`} {...coverAttrs}>
+      <picture style="display:contents">{cover.img!.avif && <source type="image/avif" srcset={cover.img!.avif} sizes={cover.img!.srcset ? cover.img!.sizes : undefined} />}<img src={cover.img!.src} srcset={cover.img!.srcset} sizes={cover.img!.srcset ? cover.img!.sizes : undefined} alt={d.coverAlt} width={cover.img!.w} height={cover.img!.h} decoding="async" fetchpriority="high" style={`--w:${cover.img!.w}px;--ar:${(cover.img!.w / cover.img!.h).toFixed(4)}`} /></picture>
+      {zl.coverCaptionHtml && <figcaption class="w-cap" set:html={zl.coverCaptionHtml} />}
+    </figure>
+  )}
+  <nav class="a-rail" aria-label="contents">{showToc && <div class="a-toc"><h2 class="lab a-toch">contents</h2><ol class="a-tl">{heads.map((h) => <li class={`a-t${h.depth}`}><a class="a-te hpoint" href={`#${h.id}`}>{h.text}</a></li>)}</ol></div>}</nav>
+  <div class="a-main">
+    {cover && !coverWidth && (
+      <figure class="w-cover" {...coverAttrs}>
+        {cover.video
+          ? <video src={cover.video.src} poster={cover.video.poster} width={cover.video.w} height={cover.video.h} controls playsinline preload="none" aria-label={d.coverAlt || undefined} style={`--w:${cover.video.w}px;--ar:${(cover.video.w / cover.video.h).toFixed(4)}`}>Your browser does not play this video here: <a href={cover.video.src}>open the file</a>.</video>
+          : <picture style="display:contents">{cover.img!.avif && <source type="image/avif" srcset={cover.img!.avif} sizes={cover.img!.srcset ? cover.img!.sizes : undefined} />}<img src={cover.img!.src} srcset={cover.img!.srcset} sizes={cover.img!.srcset ? cover.img!.sizes : undefined} alt={d.coverAlt} width={cover.img!.w} height={cover.img!.h} decoding="async" fetchpriority="high" style={`--w:${cover.img!.w}px;--ar:${(cover.img!.w / cover.img!.h).toFixed(4)}`} /></picture>}
+        {zl.coverCaptionHtml && <figcaption class="w-cap" set:html={zl.coverCaptionHtml} />}
+      </figure>
+    )}
+    <div class="w-body"><slot /></div>
+  </div>
+  {(appendix.length > 0 || zl.refs.length > 0 || zl.notes.length > 0 || updates.length > 0 || cite) && (
+    <footer class="a-foot">
+      {appendix.map((a) => (
+        <section class="a-app" aria-labelledby={a.id}>
+          <h2 class="a-fh" id={a.id} tabindex="-1">{a.title}</h2>
+          <div class="a-apb" set:html={a.html} />
+        </section>
+      ))}
+      {zl.notes.length > 0 && (
+        <section class="a-notes" aria-labelledby="notes">
+          <h2 class="a-fh" id="notes" tabindex="-1">Footnotes</h2>
+          <ol class="a-rl">{zl.notes.map((n) => (
+            <li id={`fn-${n.n}`} tabindex="-1"><span class="a-rn num">{n.n}</span>{n.block
+              ? <div class="a-rb"><Fragment set:html={n.html} /> <a class="a-back" href={`#fnref-${n.n}`} aria-label="back to the text" set:html={arrowSvg('u')}></a></div>
+              : <span class="a-rb"><Fragment set:html={n.html} /> <a class="a-back" href={`#fnref-${n.n}`} aria-label="back to the text" set:html={arrowSvg('u')}></a></span>}</li>
+          ))}</ol>
+        </section>
+      )}
+      {zl.refs.length > 0 && (
+        <section class="a-refs" aria-labelledby="references">
+          <h2 class="a-fh" id="references" tabindex="-1">References</h2>
+          <ol class="a-rl">{zl.refs.map((r) => (
+            <li id={`ref-${r.n}`} tabindex="-1" data-short={short(r.authors)}><span class="a-rn num">{r.n}</span><span class="a-rb"><span class="a-rt">{r.title}</span><span class="a-ra">{r.authors.join(', ')}</span><span class="a-ra"><span class="a-rv">{venueYear(r)}</span>{r.url && <Fragment> · <a class="a-ru" href={r.url} target="_blank" rel="noopener noreferrer">{host(r.url)}</a></Fragment>}<span class="a-bk">{r.uses.length === 1
+              ? <a class="a-back" href={`#${r.uses[0]}`} aria-label="back to where it is cited" set:html={arrowSvg('u')}></a>
+              : <Fragment><Fragment set:html={arrowSvg('u')} /> {r.uses.map((use, j) => <Fragment>{j > 0 && ' '}<a class="a-back" href={`#${use}`} aria-label={`back to citation ${j + 1}`}>{String.fromCharCode(97 + j)}</a></Fragment>)}</Fragment>}</span></span></span></li>
+          ))}</ol>
+        </section>
+      )}
+      {updates.length > 0 && (
+        <section class="a-ups" aria-labelledby="updates">
+          <h2 class="a-fh" id="updates" tabindex="-1">Updates</h2>
+          <ol class="a-rl a-ul">{updates.map((u) => (
+            <li><time class="a-rn num" datetime={isoDate(u.date)}>{longDate(u.date)}</time><span class="a-rb">{u.note}</span></li>
+          ))}</ol>
+        </section>
+      )}
+      {cite && (
+        <section class="a-citeb" aria-labelledby="cite-this-post">
+          <h2 class="a-fh" id="cite-this-post" tabindex="-1">Cite this post</h2>
+          {cite.text && <p class="a-ct">{cite.text}</p>}
+          <figure class="a-code"><div class="a-code-h"><span class="a-code-l">bibtex</span><button type="button" class="a-copy" hidden>copy</button></div><pre class="w-code"><code>{cite.bibtex.split('\n').map((l) => <span class="a-ln">{l || ' '}</span>)}</code></pre></figure>
+        </section>
+      )}
+    </footer>
+  )}
+  <div class="a-card" id="a-card" role="tooltip" hidden></div>
+  <p class="sr" role="status" aria-live="polite"></p>
+</article>
+<nav class="w-pn" aria-label="older and newer">
+  {older ? <a class="w-prev" href={url(`/blog/${older.id}/`)}><span class="lab"><Fragment set:html={arrowSvg('l')} /> older</span><span class="w-pt">{older.data.title}</span></a> : <span></span>}
+  {newer && <a class="w-next" href={url(`/blog/${newer.id}/`)}><span class="lab">newer <Fragment set:html={arrowSvg('r')} /></span><span class="w-pt">{newer.data.title}</span></a>}
+</nav>

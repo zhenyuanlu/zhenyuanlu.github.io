@@ -1,0 +1,79 @@
+/* The site's tokens (the draft v2t's: v2ac's home sheet with the taste round's role tokens, 2026-10-16; DESIGN.md
+   says what each is for). Colours go only through these roles; a component writes no colour of its own (the pixel
+   drawings' palettes are art, not roles). scripts/early.js sets each stage's own values on :root before the first
+   paint (day to dusk blended, dusk to night a cut); the values here are the day's, and the night's for a reader
+   without script whose system is dark.
+     --bg       the paper                      --surface  one tone step off the paper (lighter at night): every panel
+     --ink      text, titles, the pixel outlines  --grey / --muted  dates, tags, labels, captions: a softer ink, never a smaller size
+     --line     roads and rules                --accent   a burnt orange with one job: a clickable word in running text
+     --now      red, only for what is happening now (this term, today and the next race, the footer's heart)
+     --plate    the white a picture stands on at night (it is never dimmed) */
+@property --ink  { syntax: '<color>'; inherits: true; initial-value: #1b1b1b; }
+@property --grey { syntax: '<color>'; inherits: true; initial-value: #666666; }
+@property --bg   { syntax: '<color>'; inherits: true; initial-value: #fcfcfa; }
+@property --line { syntax: '<color>'; inherits: true; initial-value: #6b6b6b; }
+@property --accent { syntax: '<color>'; inherits: true; initial-value: #a65412; }
+@property --surface { syntax: '<color>'; inherits: true; initial-value: #f1f1ee; }
+:root {
+  --bg: #fcfcfa;
+  --surface: #f1f1ee;        /* 3.8 L* under the paper by day and at dusk; 5.5 over it at night */
+  --ink: #1b1b1b;
+  --grey: #666666;           /* 5.6:1 on day paper, 5.1:1 on its surface; dusk's #675d55 4.65:1 on its deepest surface */
+  --muted: var(--grey);
+  --line: #6b6b6b;
+  --accent: #a65412;         /* day 5.24:1 (4.76 on the surface), dusk #96490d 5.18:1 at its deepest (4.67), night #f0a860 9.18:1 (8.20) */
+  --accent-tint: color-mix(in srgb, var(--accent) 10%, transparent);
+  --red: #c8352b;
+  --now: var(--red);
+  --plate: #ffffff;
+  --pf-r: 10px;              /* a cover's corners on the side away from its words */
+  --f-text: "Figtree", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --m: 17px;
+  /* the motion tokens (taste item 29): a press, a colour in hand, a menu or a card; ease-out only, never ease-in */
+  --t-press: 140ms;
+  --t-hover: 180ms;
+  --t-ui: 240ms;
+  --ease-out: cubic-bezier(.22, 1, .36, 1);
+  color-scheme: light;
+}
+/* the cut from dusk to night (66/67): for 200ms the paper crossfades with the ink instead of jumping (the panels'
+   tone with it, so no panel is a stage behind its paper) */
+:root.xf { transition: --ink .2s linear, --grey .2s linear, --bg .2s linear, --surface .2s linear, --line .2s linear, --accent .2s linear; }
+html[data-theme="dark"] { --bg: #131418; --surface: #1e1f24; --ink: #e8e6e1; --grey: #8f9096; --line: #8f8f8f; --accent: #f0a860; color-scheme: dark; }
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) { --bg: #131418; --surface: #1e1f24; --ink: #e8e6e1; --grey: #8f9096; --line: #8f8f8f; --accent: #f0a860; color-scheme: dark; }
+}
+::selection { background: color-mix(in srgb, var(--accent) 26%, transparent); }
+/* the keyboard's focus: never a box (the owner, 2026-10-16: no box marks a chosen thing); a line, a tone or the
+   dots, each page's sheet saying which. --focus is the line's colour: the hairline's, 5.2:1 or more on its paper by
+   day and at night; dusk's warm hairline is only 3.2:1 to 3.5:1 on its deepening paper, so there it takes a little
+   of the ink and stays above 4:1 */
+:root { --focus: var(--line); }
+html[data-stage="dusk"] { --focus: color-mix(in srgb, var(--line) 72%, var(--ink)); }
+@media (prefers-reduced-motion: reduce) { :root, :root.xf { transition: none; } }
+/* taste item 30: under reduced motion the finished state is the page. Colour and opacity may still change; nothing
+   travels, scales or loops (each sheet says so too; this is the net under them) */
+@media (prefers-reduced-motion: reduce) {
+  #inner *, #inner *::before, #inner *::after {
+    transition-property: color, background-color, border-color, outline-color, text-decoration-color, opacity !important;
+    animation-iteration-count: 1 !important; animation-duration: 0s !important; }
+}
+
+* { box-sizing: border-box; }
+html, body { margin: 0; }
+html { background: var(--bg); overflow-x: clip; -webkit-text-size-adjust: 100%; text-size-adjust: 100%; }
+body { background: var(--bg); color: var(--ink); font: 400 var(--m)/1.5 var(--f-text); font-optical-sizing: auto; overflow-x: clip; }
+h1, h2, p, ol { margin: 0; padding: 0; }
+ol { list-style: none; }
+a { color: inherit; text-decoration: none; }
+button { font: inherit; color: inherit; background: none; border: 0; padding: 0; margin: 0; cursor: pointer; }
+a:focus-visible, button:focus-visible, input:focus-visible { outline: none; }
+.sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+canvas { display: block; }
+/* the arrows ← → ↑, drawn (lib/arrows.mjs): Figtree has no ← or →, and a system's own differ, so they are one
+   drawing on every system. An arrow is the size of its line's letters, in their colour, and says nothing to a
+   screen reader (the link's words or its label do) */
+.zl-ar { display: inline-block; width: .8em; height: .6em; vertical-align: 0; overflow: visible; flex: none; }
+.zl-ar.zl-u { width: .6em; height: .8em; vertical-align: -.06em; }
+@media (forced-colors: active) { .zl-ar { forced-color-adjust: auto; } }
+@media (max-width: 999px) { :root { --m: 16px; } }

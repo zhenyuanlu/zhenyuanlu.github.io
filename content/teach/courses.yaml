@@ -1,0 +1,20 @@
+# teach · courses: what the margin says of each course: its line, then its main tools (the AI-related first, then the
+# languages). The page shows a course once terms.yaml has a term of it, the most taught first (then the latest year);
+# this file keeps that order. To add a course, copy an entry: code (as terms.yaml writes it), line, tools.
+# 中文提示：每门课一条：一句介绍和主要工具；每个学期写在 terms.yaml 里。
+
+- code: IE6600
+  line: Visualizing data, from wrangling to interactive dashboards
+  tools: [ R, ggplot2, Shiny, Python, JavaScript ]
+
+- code: IE7945
+  line: The AI/ML master’s capstone, from proposal to paper
+  tools: [ Python, LLM ]
+
+- code: IE5976
+  line: From no programming experience to classes and decorators
+  tools: [ Python ]
+
+- code: IE7275
+  line: Data mining and machine learning, from regression to neural nets
+  tools: [ Python, PyTorch, CUDA, R ]

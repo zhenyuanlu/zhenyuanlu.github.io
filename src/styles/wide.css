@@ -1,0 +1,138 @@
+/* The selective big-screen mode's sheet (the draft's design/assets/zoom/wide.css, v2ab's mode, the owner's choice;
+   scripts/early.js decides and says what each variable is, scripts/wide.js does the rest). Every rule here starts with
+   html[data-wide], an attribute early.js sets only while the frame is a step wider than 960px (k > 1): with
+   ?wide=off, at k 1 (a window under 1800 x 968, a phone, a touch screen) and where the browser's zoom does not answer
+   as the standard's (Safari), nothing of this sheet applies and the page is the plain 960px page.
+   The variables: --z (the root's zoom on this page: k on a poster page, the text's step t on a reading page), --wi
+   (1 / z and a hair: a box zoomed back to the window's px), --wtz (t / z), --ww (the frame in the window's px), --cw
+   (the frame in the page's px), --zd (device px a page px), --wp (a control's px made whole device pixels).
+   As the draft's sheet, rule for rule, but for the draft's twin (race made ready out of sight on a reading page,
+   which the site's speculation rules do instead), with the controls' place on the device grid (the draft's
+   inner.css) and with the lengths the draft's own sheets wrote with var(--z, 1) here (frame.css's, article.css's and
+   see.css's, so those sheets stay the plain page's, rule for rule). On a screen only: a printed page is the plain page (its sheet, article.css, sets its own widths
+   and type), so the root's zoom, which early.js writes on the page itself, is taken off for print, with the variables
+   that carry it. */
+@media print {
+  html[data-wide] { zoom: 1 !important; --z: 1 !important; --vw: 1vw !important; --vh: 1vh !important; }
+}
+
+@media screen {
+/* ---------- 0. the frame on a zoomed root ----------
+   frame.css's lengths that must stay the window's, written again for the zoomed root (so the plain page's sheet is
+   frame.css's own, rule for rule, as the draft's inner.css wrote them with var(--z, 1)): the frame at least a window
+   tall (100vh under a zoomed root is the window times z), its parts' left edges on the device grid in the page's px
+   (a device pixel there is --dwx over z; the controls' own, below, in theirs), a cover's corner the same in the
+   window's px */
+html[data-wide] #inner { min-height: calc(var(--vh) * 100); --pf-rr: calc(var(--pf-r, 0px) / var(--z)); }
+html[data-grid][data-wide] :is(.ih, .ip, .ring, .close, .if) { margin-left: calc(round(nearest, calc((100% - var(--cw)) / 2 + .01px), calc(var(--dwx) / var(--z))) + .002px); }
+
+/* ---------- 1. the controls never grow ----------
+   Each stands in a box zoomed back to the window's px, so its type, its targets and its pixel drawings are what they
+   are at 960: the fader (on the home, and in a page's header with it), the home's footer line, a page's header,
+   footer and door links, the page's pixel word (the title's, and an article's way back), the blog's line of tags and
+   search, a row's and an article's tags, see's filter, build's and teach's link rows. None is inside another. */
+html[data-wide] .flow > .fader,
+html[data-wide] .flow > .foot,
+html[data-wide] #inner > .ih,
+html[data-wide] #inner > .if,
+html[data-wide] #inner > .ring,
+html[data-wide] #inner :is(.tb-h, .w-door),
+html[data-wide] #inner :is(.w-tools, .w-tags, .s-fl, .b-lk),
+html[data-wide] #inner :is(.t-all, .t-bl) > .k { zoom: var(--wi); }
+/* the three that are as wide as the frame take its width in the window's px (their own, now) */
+html[data-wide] #inner > :is(.ih, .if, .ring) { width: var(--ww); }
+/* (and their left edge on the device grid in their own px, as frame.css puts the page's: a device pixel there is
+   --dwx itself, not --dwx over z) */
+html[data-grid][data-wide] #inner > :is(.ih, .if, .ring) { margin-left: calc(round(nearest, calc((100% - var(--ww)) / 2 + .01px), var(--dwx)) + .002px); }
+/* build's link signs: a cell of whole device pixels in the links' own px (build's script sets the page's on main) */
+html[data-wide] #inner .b-lk { --b-px: var(--wp); }
+
+/* ---------- 2. the title block is one thing on every page ----------
+   The word keeps its size (above) and its place: 40 of the window's px under the header, whatever the page's zoom;
+   race keeps its own closer settings on a short screen (race.css, .r-tighter). His motto under it is the text's size
+   on every page: on race, a poster, it is held at the text's step instead of growing with the map */
+html[data-wide]:not([data-page="404"]) #inner .ip > .tb,
+html[data-wide] #inner .r-sea:not(.r-tighter) .r-grid > .tb { padding-top: calc(40px / var(--z)); }
+html[data-wide][data-wkind="poster"] #inner .r-grid > .tb .tb-d { zoom: var(--wtz); }
+/* (there it stands in race's narrow column, on two lines: broken evenly, as it falls at 960) */
+html[data-wide] #inner .r-grid > .tb .epi { text-wrap: balance; }
+
+/* ---------- 3. reading pages: the wider frame, not bigger everything ----------
+   The frame's twelve columns widen with it, so every page keeps its arrangement; running text is one small step
+   larger (the root's zoom). What is read keeps the measure it has at 960 wherever its column would now run longer,
+   and what cannot grow (a picture already at its own pixels) keeps the gaps it has at 960: the room stays paper, on
+   the right, and the page's left edge stays one line from the header's name down. */
+/* the blog's list: a row's title and its description share one measure, as at 960, where both fill the words' seven
+   columns (550px): here those 550 of the page's px, so each breaks exactly where it does at 960 and the two end on
+   one edge */
+html[data-wide] #inner :is(.w-ti, .w-ds) { max-width: 550px; }
+/* an article: one measure (--wm), the one it has at 960 (632px), in the window's px: the owner's approved measure,
+   with the text one step larger (the lines then come to fewer letters). The second edge is the frame's: a figure
+   the article does not set narrower (--mw) takes the frame's whole width when its file holds that many device
+   pixels (--w over --zd) and it is then no taller than 60% of the window (its shape, --ar); every other figure stands
+   on the measure, as wide as at 960. Nothing ends between the two. (The site writes a figure's --w, --ar and --mw on
+   the figure, the draft on its picture, so here the figure is asked; its picture may stand in a <picture>) */
+html[data-wide] #inner .w-atb .tb-d { max-width: calc(600px / var(--z, 1)); }
+html[data-wide] #inner .w-art { --wm: calc(var(--meas) / var(--z, 1)); }
+html[data-wide] #inner .w-cover { max-width: var(--wm); }
+html[data-wide] #inner .w-body { max-width: none; }
+html[data-wide] #inner .w-body > * { max-width: var(--wm); }
+html[data-wide] #inner .w-body > .w-fig:not([style*="--mw"]):has(> :is(img, video), > picture > img) { max-width: none; }
+/* (a step, not a slope: the measure, or its own width if that is less, until both conditions hold, then the frame.
+   A picture's own width is its device pixels, as on the plain page, the owner's choice B (article.css: --w over
+   --a-dpr); a video keeps its CSS size, its own width in the window's px, as the draft's every figure) */
+html[data-wide] #inner .w-body > .w-fig:not([style*="--mw"]) > video {
+  width: clamp(min(var(--wm), calc(var(--w) / var(--z, 1))),
+    calc((min(calc(var(--w) / var(--zd, 1)), calc(var(--vh, 1vh) * 60 * var(--ar, 1.5))) - 100% + 1px) * 9999), 100%); }
+html[data-wide] #inner .w-body > .w-fig:not([style*="--mw"]) > img,
+html[data-wide] #inner .w-body > .w-fig:not([style*="--mw"]) > picture > img {
+  width: clamp(min(var(--wm), calc(var(--w) / var(--zd, 1))),
+    calc((min(calc(var(--w) / var(--zd, 1)), calc(var(--vh, 1vh) * 60 * var(--ar, 1.5))) - 100% + 1px) * 9999), 100%); }
+html[data-wide] #inner .w-fig > .w-cap { max-width: var(--wm); }
+/* the article's own frame: article.css's lengths that must stay the window's, written again for the zoomed root (as
+   the draft's write.css wrote them with var(--z, 1)), so the plain page's sheet stays article.css's own. Its measure
+   the one above wherever the eight columns are wider; the way back 40 of the window's px under the header, as a
+   page's word; the room the contents keep under the header (92 of the window's px) and the contents at most a
+   window tall; and the device px a page px for the pictures' size (--a-dpr) from the first paint, until
+   scripts/article.js measures it (devicePixelRatio, which a script reads as the same on a zoomed page) */
+html[data-wide] #inner .a-art { --a-meas: min(var(--a-text), var(--wm)); --a-top: calc(92px / var(--z)); --a-dpr: var(--zd); }
+html[data-wide] #inner .a-head { padding-top: calc(40px / var(--z)); }
+html[data-wide] #inner .a-toc { max-height: calc(var(--vh) * 100 - var(--a-top) - 24px); }
+/* (a video, a cover's or a figure's, keeps its CSS size, its own width in the window's px, as at 960) */
+html[data-wide] #inner :is(.w-cover, .w-fig):not(.a-wide, .a-full, .a-win) > video { width: min(100%, calc(var(--w) / var(--z)), var(--mw, 100%)); }
+html[data-wide] #inner .a-art :is(.a-wide, .a-full, .a-win) > video {
+  width: clamp(min(var(--a-meas), calc(var(--w) / var(--z))), calc((min(calc(var(--w) / var(--a-dpr, 1)), calc(var(--vh, 1vh) * 60 * var(--ar, 1.5))) - 100% + 1px) * 9999), 100%); }
+/* build's featured row: its figure is never drawn past its own pixels (scripts/frames.js: --pf-fw, on its place), so
+   on a screen whose pixels the file cannot fill (a 4K screen at 175%) it stays narrower than its four columns and the
+   words would stand a hole away. Here the row is a line of three: the figure's place is as wide as the figure (its
+   four columns wherever the file fills them), featured research starts one gutter after it and takes the room up to
+   featured software, which keeps its three columns on the frame's right edge, over the shelf's last card. (The .004px:
+   a third of the row, taken as a percentage, comes out a hair under the four columns, which the browser cuts down to
+   the 64th of a px below; the hair on top is less than a 64th at either text step, so the place is the grid's four
+   columns exactly, a whole number of the window's px at every step: 343, 383, 422, 462) */
+html[data-wide] #inner .b-fe { display: flex; }
+html[data-wide] #inner .b-fe-p { flex: none; width: min(calc((100% - 11 * var(--gut)) / 12 * 4 + 3 * var(--gut) + .004px), var(--pf-fw, 100%)); }
+html[data-wide] #inner .b-fe-r { flex: 1 1 0; }
+html[data-wide] #inner .b-fe-r:last-child { flex: none; width: calc((100% - 11 * var(--gut)) / 12 * 5 + 4 * var(--gut)); }
+html[data-wide] #inner .b-fe-s { flex: none; width: calc((100% - 11 * var(--gut)) / 12 * 3 + 2 * var(--gut)); }
+/* see's wall: where the photographs' own pixels give out before the columns do (600px files on a 4K screen at 175%)
+   see's script keeps the frame's edges and puts what is left into the gaps. Here the wall is only as wide as three
+   such columns and the two gaps of 960 (--s-wall), so it is hung as at 960, the same photographs the same distance
+   apart. A column is the larger of a 600px file at its own pixels and its width at 960 (304 of the window's px), in
+   whole px; the wall stands on the frame's left edge, under the page's word; what is left of the frame is paper on
+   the right; the filter keeps to the wall's middle. On a screen whose pixels fill the columns --s-wall is wider than
+   the frame and nothing here binds */
+html[data-wide] #inner .ip { --s-wall: calc(3 * max(round(down, 600px / var(--zd, 1), 1px), round(down, 304px / var(--z, 1), 1px)) + 2 * 24px); }
+html[data-wide] #inner .s-gal { max-width: var(--s-wall); }
+html[data-wide] #inner .s-fl { max-width: calc(var(--s-wall) * var(--z, 1)); }
+/* (see.css's lengths that must stay the window's: the wall's wait out of sight a window tall, and a place no wider
+   than its file's own px, in the window's px, until the script sizes it) */
+html.js[data-wide] #inner .s-gal:not(.s-hung) { min-height: calc(var(--vh) * 100); max-height: calc(var(--vh) * 100); }
+html[data-wide] #inner .s-it { width: min(var(--f, 1) * 100%, var(--w) * 1px / var(--z)); }
+/* see's viewer: its caption, its arrows and its close stand on the frame's edges, as they do at 960 */
+html[data-wide] #inner .s-x { right: max(20px, (calc(var(--vw, 1vw) * 100) - var(--cw)) / 2 - 8px); }
+html[data-wide] #inner .s-vcap { left: max(32px, (calc(var(--vw, 1vw) * 100) - var(--cw)) / 2); }
+html[data-wide] #inner .s-vnav { right: max(20px, (calc(var(--vw, 1vw) * 100) - var(--cw)) / 2 - 12px); }
+/* (the pictures: a row's frames grow with their column as far as the pixels they hold, scripts/frames.js; see's wall
+   holds each photograph to its own pixels, see's script) */
+}

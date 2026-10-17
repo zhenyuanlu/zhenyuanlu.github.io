@@ -1,0 +1,116 @@
+---
+// /teach/: the courses and the open books (the draft v2ac's teach.js, its render, written here at build time from
+// content/teach/; scripts/teach/index.js paints the pictures and holds a course or a book in hand). Under the title,
+// one block on the twelve columns: the margin (columns 1-3) tells the course in hand in three short lines (its code,
+// its line, its main tools); from column 5, "courses", one line a course (the code and title, the link to its latest
+// term's page, its years in grey) with its tally of pixel books hanging to the left, flush with column 4, a book a
+// term; then all course pages; then the open books, whose drawn covers hang where the tallies hang.
+// Every picture is grey line art at rest; a course or a book in hand comes into its colour pixel by pixel, and the
+// site's point stands before its title, one point at a time. Red, the page's one red, only for a term running today.
+// The most taught course first (then the latest), its terms oldest first. Phone: no margin; each picture above its
+// words; a tap on a row opens the course under it. Without script: the pictures are the server's grey drawings, the
+// first course's plate is the margin's (a pointer on another course shows its own), and on a phone every plate is
+// open.
+import Base from '../layouts/Base.astro';
+import TitleBlock from '../components/TitleBlock.astro';
+import { readTeach, toBooksShape, toCoursesShape, toTermsShape } from '../schemas/teach.ts';
+import { person } from '../lib/site';
+import { arrowSvg } from '../lib/arrows.mjs';
+import { BW, CELL, GAP, HUE, SEASON, SPARE, TALL, coverOf, drawThing, parseSem, restPath, tallySize } from '../scripts/teach/art.js';
+import '../styles/teach.css';
+
+const T = readTeach();
+const me = await person();
+const ABOUT = toCoursesShape(T.courses.map((e) => e.data));
+const terms = toTermsShape(T.terms.map((e) => e.data))
+  .map((x) => ({ ...x, sem: parseSem(x.semester) }))
+  .filter((x): x is typeof x & { sem: { season: keyof typeof SEASON; year: number } } => !!x.sem);
+type Term = (typeof terms)[number];
+const byCode = new Map<string, { code: string; title: string; terms: Term[] }>();
+for (const x of terms) {
+  if (!byCode.has(x.code)) byCode.set(x.code, { code: x.code, title: x.title, terms: [] });
+  byCode.get(x.code)!.terms.push(x);
+}
+const courses = [...byCode.values()]
+  .map((c) => {
+    c.terms.sort((a, b) => a.sem.year - b.sem.year || SEASON[a.sem.season][4] - SEASON[b.sem.season][4]);
+    return { ...c, first: c.terms[0].sem.year, last: c.terms[c.terms.length - 1].sem.year };
+  })
+  .sort((a, b) => b.terms.length - a.terms.length || b.last - a.last)
+  .map((c, i) => {
+    const a = ABOUT[c.code] || { line: '', tools: [] };
+    return { ...c, line: a.line, tools: a.tools.filter(Boolean), hue: (HUE as Record<string, string>)[c.code] || SPARE[i % SPARE.length] };
+  });
+const books = toBooksShape(T.books.map((e) => e.data));
+const LINK: Record<string, string> = { website: 'read', github: 'source', pdf: 'pdf' }, ORDER = ['website', 'github', 'pdf'];
+
+/* the server's pictures: each one's grey line art, its cells as a path, at the cell's 2 CSS px (the browser paints
+   them again on whole device pixels) */
+const GREY = { ink: '', grey: 'g', red: '' };
+function tallySvg(n: number) {
+  const [w, h] = tallySize(n);
+  const d = restPath((put: (x: number, y: number) => void) => {
+    for (let k = 0; k < n; k++) for (let y = 0; y < TALL; y++) for (let j = 0; j < BW; j++) {
+      const band = y === 0 || y === TALL - 1 || y === 2;
+      if (band || j !== 1) put(k * (BW + GAP) + j, y);
+    }
+  });
+  return { w, h, d };
+}
+function coverSvg(title: string) {
+  const Th = coverOf(title);
+  const d = restPath((put: (x: number, y: number) => void) => drawThing(Th, 0, (x: number, y: number) => put(x, y), GREY, 'day'));
+  return { w: Th.w, h: Th.h, d };
+}
+const yrs = (c: (typeof courses)[number]) => (c.first === c.last ? String(c.first) : `${c.first}–${c.last}`);
+// (search's and a preview's line, 160 characters at most: the courses by their codes, the books by their languages, as
+// teach.js draws their covers: Python's for a title with "Python", R's for one that ends "in R")
+const and = (a: string[]) => (a.length > 1 ? `${a.slice(0, -1).join(', ')} and ${a[a.length - 1]}` : a.join(''));
+const langs = [...new Set(books.flatMap((b) => [/Python/.test(b.title) ? 'Python' : '', / in R$/.test(b.title) ? 'R' : ''].filter(Boolean)))];
+const description = `Courses taught by ${me.name}, ${me.suffix}, at Northeastern: ${and(courses.map((c) => c.code))}; and his open books${langs.length ? ` on ${and(langs)}` : ''}.`;
+---
+<Base title="teach" description={description} path="/teach/" page="teach" ring="teach">
+  <TitleBlock word="teach" />
+  <section class="sec t-sec" id="courses">
+    <div class="sec-m"></div>
+    <div class="sec-b">
+      <h2 class="lab t-in t-lab">courses</h2>
+      <ul class="t-list">
+        {courses.map((c, i) => {
+          const id = `t-${c.code.toLowerCase()}`, page = c.terms[c.terms.length - 1].url, s = tallySvg(c.terms.length);
+          return (
+            <li class={`t-c${i === 0 ? ' t-c0' : ''}`} data-code={c.code} data-hue={c.hue} data-terms={c.terms.map((x) => x.semester).join('|')}>
+              <div class="t-row">
+                <button class="t-hang" type="button" tabindex="-1" aria-expanded="false" aria-controls={id} aria-label={`${c.code}, about the course`}><svg class="t-px" width={s.w * CELL} height={s.h * CELL} viewBox={`0 0 ${s.w} ${s.h}`} shape-rendering="crispEdges" aria-hidden="true" focusable="false"><path d={s.d}></path></svg></button>
+                <span class="t-ti hpoint">{page ? <a class="t-a" href={page} target="_blank" rel="noopener noreferrer" aria-describedby={id}>{`${c.code} ${c.title}`}</a> : `${c.code} ${c.title}`}<span class="t-yr num">{yrs(c)}</span></span>
+              </div>
+              <div class="t-d" id={id}>
+                <p class="lab t-pc">{c.code}</p>
+                {c.line && <p class="t-pl">{c.line}</p>}
+                {c.tools.length > 0 && <p class="t-pt">{c.tools.map((x, k) => <>{k > 0 && ' '}<span>{x}</span></>)}</p>}
+              </div>
+            </li>
+          );
+        })}
+      </ul>
+      <p class="t-in t-all"><a class="k" href="https://zhenyuanlu.com/courses/" target="_blank" rel="noopener noreferrer">all course pages<span class="t-ar" aria-hidden="true" set:html={arrowSvg('r')}></span></a></p>
+      <h2 class="lab t-in t-lab t-lab2" id="books">open books</h2>
+      <ul class="t-books">
+        {books.map((b) => {
+          const links = b.links.filter((l) => l.href && LINK[l.type]).sort((a, c) => ORDER.indexOf(a.type) - ORDER.indexOf(c.type));
+          const s = coverSvg(b.title);
+          return (
+            <li class="t-bk" data-title={b.title}>
+              <span class="t-hang t-cv" aria-hidden="true"><svg class="t-px" width={s.w * CELL} height={s.h * CELL} viewBox={`0 0 ${s.w} ${s.h}`} shape-rendering="crispEdges" aria-hidden="true" focusable="false"><path d={s.d}></path></svg></span>
+              <div class="t-bt">
+                <p class="t-bn hpoint">{b.title.split('/').map((part, k) => <>{k > 0 && <>/<wbr></>}{part}</>)}</p>
+                <p class="t-bl">{links.map((l) => <a class="k" href={l.href} target="_blank" rel="noopener noreferrer" aria-label={`${LINK[l.type]}: ${b.title}`}>{LINK[l.type]}</a>)}</p>
+              </div>
+            </li>
+          );
+        })}
+      </ul>
+    </div>
+  </section>
+  <Fragment slot="scripts"><script>import '../scripts/teach/index.js';</script></Fragment>
+</Base>

@@ -1,0 +1,15 @@
+---
+// /404.html: an address that leads nowhere (GitHub Pages serves this page for it, and keeps the address typed).
+// The draft v2ac's 404: its sentence where a lede stands, with its way back at its end (no ring), and its road, the
+// closing line, at whose end the traveller stands (scripts/notfound/index.js; without script he is not there). No
+// canonical: the page answers for every address that leads nowhere, and is the canonical page of none of them; kept
+// out of search engines and out of the sitemap.
+import Base from '../layouts/Base.astro';
+import { url } from '../lib/site';
+import { arrowSvg } from '../lib/arrows.mjs';
+import '../styles/notfound.css';
+---
+<Base title="nowhere" path="/404.html" page="404" noindex canonical={false} closeLine>
+  <section class="tb n-tb"><div class="lede n-say"><h1 class="n-h" tabindex="-1">This road doesn’t go anywhere.</h1> <a href={url('/')}>Back to the line <Fragment set:html={arrowSvg('r')} /></a></div></section>
+  <Fragment slot="scripts"><script>import '../scripts/notfound/index.js';</script></Fragment>
+</Base>

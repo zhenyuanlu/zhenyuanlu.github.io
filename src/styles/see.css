@@ -1,0 +1,127 @@
+/* /see/ and /see/<name>/ (the draft v2ac's see.css, with draft v2t's taste round of 2026-10-16; pages/see.astro and
+   pages/see/[photo].astro say what stands where). Rules carry #inner: the frame's resets (#inner button / figure / p /
+   ol / a) outrank a class alone. The paper is the frame's at every stop (as on every page); the photographs never
+   change (no frame, no tint, untouched at night: taste item 24). Type 13 (the frame's lede and ring 18). Timings the
+   motion tokens (tokens.css), but the wall's own slow appearance, the owner's (1.2s, 1s and .8s). No box marks a
+   chosen or focused thing (the owner, 2026-10-16): the filter's word is chosen by its ink; the keyboard's focus is the
+   frame's line under a word (frame.css), a photograph's caption coming up to the ink with it, and a line under an
+   arrow that has no words. */
+html[data-page="see"] #inner .tb-h:focus-visible { outline: none; }
+
+/* the filter: small, centred; the current word in ink, the others grey until in hand; 44px tall targets (with
+   script only: it filters) */
+#inner .s-fl { display: flex; justify-content: center; align-items: center; margin-top: 46px; font-size: 13px; line-height: 20px; color: var(--grey); }
+html:not(.js) #inner .s-fl { display: none; }
+#inner .s-fl button { min-width: 44px; height: 44px; padding: 0 10px; text-align: center; color: var(--grey); transition: color var(--t-hover) var(--ease-out); }
+#inner .s-fl button:hover, #inner .s-fl button[aria-pressed="true"] { color: var(--ink); }
+#inner .s-dot { user-select: none; }
+
+/* the wall: columns --s-gap apart (the stagger, each column's start, is the script's); in each, a photograph, its
+   caption, --s-vgap, the next. The photographs stand in the page in reading order and the script sets each in its
+   column (left, top) and the wall's height (until it has, the wall waits out of sight, a window tall) */
+#inner .s-gal { --s-gap: 24px; --s-vgap: 28px; position: relative; margin-top: 18px; transition: opacity var(--t-hover) var(--ease-out); }
+#inner .s-gal.s-out { opacity: 0; }
+html.js #inner .s-gal.s-hung .s-it { position: absolute; }
+/* (until the script has hung it, the wall waits out of sight, a window tall, as the plain grid it is without script.
+   Should the script not come (a module blocked or failed), that grid is shown after 3s, as race shows its season's
+   words, and its photographs with it; the script ends the wait as it hangs the wall, s-hung) */
+html.js #inner .s-gal:not(.s-hung) { visibility: hidden; min-height: 100vh; max-height: 100vh; overflow: hidden; animation: s-late 0s 3s forwards; }
+html.js #inner .s-gal:not(.s-hung) .s-it { animation: s-late-at 0s 3s forwards; }
+html.js #inner .s-gal:not(.s-hung) .s-it :is(img, .s-cap) { animation: s-late-in 0s 3s forwards; }
+@keyframes s-late { to { visibility: visible; max-height: none; overflow: visible; } }
+@keyframes s-late-at { to { transform: none; } }
+@keyframes s-late-in { to { opacity: 1; } }
+/* a place: as wide as its file's share of the column (--f), never past its own pixels (the script's width: its own
+   pixels counted in the screen's device pixels), as tall as its photograph's own shape (every one whole). Quiet paper
+   from the start; as it comes into view it settles 8px while the photograph slowly appears (1s) and its caption
+   follows; --d holds them back alike, so those in view come one by one */
+#inner .s-it { display: block; width: min(var(--f, 1) * 100%, var(--w) * 1px); margin: 0; padding: 0; text-align: left; cursor: zoom-in;
+  -webkit-tap-highlight-color: transparent; transform: translateY(8px); transition: transform 1.2s cubic-bezier(.2, .6, .2, 1) var(--d, 0ms); }
+#inner .s-it.in { transform: none; }
+#inner .s-it img { opacity: 0; transition: opacity 1s cubic-bezier(.3, .1, .3, 1) var(--d, 0ms); }
+#inner .s-it.in img { opacity: 1; }
+#inner .s-it .s-cap { opacity: 0; transition: opacity .8s cubic-bezier(.3, .1, .3, 1) calc(var(--d, 0ms) + 200ms); }
+#inner .s-it.in .s-cap { opacity: 1; }
+#inner :is(.s-it.now, .s-gal.s-now .s-it) :is(img, .s-cap), #inner :is(.s-it.now, .s-gal.s-now .s-it) { transition: none; }
+#inner .s-it { scroll-margin-top: 80px; }   /* a photograph reached by the keyboard lands clear of the sticky header */
+/* the photograph fills its place; until it appears the place is paper, held by the faintest breath of its colour (3%:
+   by eye in day, dusk and night, more reads as a grey slab, a missing picture). Its focus point (--fp, the YAML's
+   focus) is where a place that cut it would keep it (taste item 22): every place is its own shape, so none does */
+#inner .s-ph { position: relative; display: block; width: 100%; aspect-ratio: var(--w) / var(--h);
+  background: color-mix(in srgb, var(--avg) 3%, var(--bg)); }
+#inner .s-ph img { display: block; width: 100%; height: 100%; object-fit: cover; object-position: var(--fp, 50% 50%); }
+#inner .s-ph.s-away { visibility: hidden; }
+/* the caption: the title in ink, the place and the year in grey. In hand (a pointer, or the keyboard's focus with its
+   line under the words) nothing lifts: the caption comes up to the ink (taste item 31) */
+#inner .s-cap { display: block; margin-top: 9px; font-size: 13px; line-height: 20px; color: var(--grey); }
+#inner .s-cap .s-t { color: var(--ink); }
+@media (hover: hover) { #inner .s-it:hover .s-cap { color: var(--ink); } }
+#inner .s-it:focus-visible .s-cap { color: var(--ink); }
+/* (the "|" between the title and the place: the grey itself; at 60% of it, as v2ac had it, it was 2.4:1) */
+#inner .s-sep { color: var(--grey); white-space: pre; }
+/* without script: the photographs in a plain grid, three to a row on a desk (two on a phone), each a link to its page */
+html:not(.js) #inner .s-gal, html.js #inner .s-gal:not(.s-hung) { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--s-vgap) var(--s-gap); align-items: start; }
+html:not(.js) #inner .s-it { transform: none; }
+html:not(.js) #inner .s-it :is(img, .s-cap) { opacity: 1; }
+
+/* ---------- the viewer (and a photograph's own page, .s-one): the photograph on the paper, its caption bottom-left,
+   the arrows bottom-right ---------- */
+#inner .s-view { position: fixed; inset: 0; z-index: 60; touch-action: pinch-zoom; overscroll-behavior: contain; cursor: zoom-out; }
+/* (two fingers pinch-zoom the screen, as on any page; one finger's swipe is the viewer's (scripts/see/view.js). Zoomed
+   in, one finger pans the zoomed screen, and steps and closes nothing until it is zoomed out) */
+#inner .s-view.s-zoomed { touch-action: pan-x pan-y pinch-zoom; }
+#inner .s-view[hidden] { display: none; }
+/* while the viewer is open the page under it neither scrolls nor keeps the frame's scrollbar room on both edges
+   (frame.css): with that room kept, a fixed layer starts one gutter in and runs a gutter past the right edge */
+html:has(#inner .s-view:not([hidden])) { scrollbar-gutter: auto; overflow: hidden; }
+#inner .s-view:focus, #inner .s-view:focus-visible { outline: none; }
+#inner .s-paper { position: absolute; inset: 0; background: var(--bg); }
+#inner .s-big { position: absolute; display: block; max-width: none; transform-origin: 0 0; background: var(--avg); user-select: none; -webkit-user-drag: none; }
+#inner .s-bar { position: absolute; inset: 0; pointer-events: none; font-size: 13px; line-height: 20px; color: var(--grey); }
+#inner .s-bar :is(button, a, .s-end) { pointer-events: auto; display: inline-flex; align-items: center; justify-content: center; color: var(--grey); min-width: 44px; height: 44px; text-align: center; cursor: pointer; transition: color var(--t-hover) var(--ease-out); }
+#inner .s-bar :is(button, a):hover { color: var(--ink); }
+/* (the arrows have no words for the frame's focus line to stand under: the line stands under the arrow itself, as
+   wide as it, in the same colour, a few px under its foot) */
+#inner .s-vnav :is(button, a) { position: relative; }
+#inner .s-vnav :is(button, a):focus-visible::after { content: ""; position: absolute; left: calc(50% - .4em); width: .8em; top: calc(50% + .3em + 4px); height: 1px; background: var(--focus, var(--line)); }
+#inner .s-bar button:disabled, #inner .s-bar .s-end { opacity: .35; cursor: default; }
+#inner .s-bar button:disabled:hover { color: var(--grey); }
+#inner .s-x { position: absolute; top: 10px; right: max(20px, (calc(var(--vw, 1vw) * 100) - 960px) / 2 - 8px); padding: 0 8px; }
+#inner .s-vcap { position: absolute; left: max(32px, (calc(var(--vw, 1vw) * 100) - 960px) / 2); bottom: 24px; max-width: calc(100% - 300px); }
+#inner .s-vcap .s-t { color: var(--ink); }
+#inner .s-vnav { position: absolute; right: max(20px, (calc(var(--vw, 1vw) * 100) - 960px) / 2 - 12px); bottom: 12px; display: flex; align-items: center; }
+#inner .s-vnav :is(button, a, .s-end) { font-size: 16px; }
+/* a photograph's own page: the same layers as the viewer's (the stage a layer of its own, the caption in it, so the
+   photograph and its words are one figure; the arrows and close a nav); the title is the page's heading, set as the
+   caption's words. Without script the sheet centres the photograph in the viewer's room (the script places it to the
+   pixel, as the viewer does) */
+#inner .s-one .s-stage { position: absolute; inset: 0; margin: 0; }
+#inner .s-one .s-vcap { font-size: 13px; line-height: 20px; color: var(--grey); }   /* (the bar's words, as in the viewer) */
+#inner .s-vcap h1.s-t { display: inline; font: inherit; }
+#inner .s-one .s-big { left: 50%; top: calc(64px + (100% - 136px) / 2); translate: -50% -50%; width: auto; height: auto;
+  max-width: min(calc(var(--w) * 1px), calc(100% - 96px)); max-height: min(calc(var(--h) * 1px), calc(100% - 136px)); }
+#inner .s-one .s-big.s-set { translate: none; max-width: none; max-height: none; }
+
+@media (prefers-reduced-motion: reduce) {
+  #inner .s-it, #inner .s-it img, #inner .s-it .s-cap, #inner .s-gal { transition: none; }
+  #inner .s-it { transform: none; }
+  #inner .s-it img, #inner .s-it .s-cap { opacity: 1; }
+}
+
+/* ---------- phone: two columns, the caption on two lines (the title, then the place and the year) ---------- */
+@media (max-width: 999px) {
+  #inner .s-fl { margin-top: 16px; }
+  #inner .s-it { scroll-margin-top: 60px; }
+  #inner .s-gal { --s-gap: 14px; --s-vgap: 22px; margin-top: 10px; }
+  html:not(.js) #inner .s-gal, html.js #inner .s-gal:not(.s-hung) { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  #inner .s-cap { margin-top: 7px; font-size: 13px; line-height: 20px; }   /* (v2t, taste item 3: 13px, was 12 on 18) */
+  #inner .s-cap :is(.s-t, .s-w) { display: block; }
+  #inner .s-cap .s-sep { display: none; }
+  #inner .s-x { top: 4px; right: 4px; }
+  #inner .s-vcap { left: 16px; bottom: 28px; max-width: calc(100% - 120px); }
+  #inner .s-vcap :is(.s-t, .s-w), #inner .s-vcap h1.s-t { display: block; }
+  #inner .s-vcap .s-sep { display: none; }
+  #inner .s-vnav { right: 4px; bottom: 16px; }
+  #inner .s-one .s-big { top: calc(52px + (100% - 128px) / 2); max-width: min(calc(var(--w) * 1px), 100%); max-height: min(calc(var(--h) * 1px), calc(100% - 128px)); }
+}
+@media (forced-colors: active) { #inner .s-bar .s-end { color: GrayText; } }

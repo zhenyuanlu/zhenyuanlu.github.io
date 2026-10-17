@@ -1,0 +1,309 @@
+/* The race page (site/src/scripts/race/): ported from the draft v2ac (design/assets/v2ac/race.css, round 14), its own
+   words below. The site's tokens: --ink, --grey, --line, --bg, --red, --accent and the stage's, set by scripts/early.js.
+   The draft's twin of the page made ready out of sight (.pre-race) and the big-screen mode (html[data-wide]) are
+   left for phases 6 and 5; a reader without script gets the season as a list (.r-static, list.js).
+   v2a · race, round 5: one screen on any monitor. The title (the frame's, where every page has it; r13: his motto
+   stands on the home only) leads the left column, then the season's counts (inner-v8's row: big pixel figures, small grey words), the season switch
+   and, at rest, the next race in one line. The map is the page's ground: as large as the screen allows, against the
+   column's right edge, its top at least level with the title's; where it is wider than the room beside the words it
+   runs under them, into its own blank west (race.js keeps the names, pictures, rooms, cards and terrain clear of them).
+   What is at hand comes up in a small card on the map's paper by its venue (race.js places it), the scene beside it;
+   where one card finds no place by its venue (a crowded small map), its details alone take the column; on a phone they
+   take the column (.r-col), docked under the map, its counts with the next race at rest. The one-line timeline under the
+   map; the medals' key in the map's open sea; the ring and the footer close the screen, with no rule over the footer.
+   Type (v2ac's, which draft v2t's taste round of 2026-10-16 changes at this sheet's end): 12px names on the map (11px
+   on a phone, or a short screen's crowded map; 14px on a large screen's coarse map, .r-big), the card 12 / 13px (11 /
+   12px on a map under 600px tall, .r-cmp; 13 / 15px with .r-big), 11px months and club names (12px with .r-big),
+   13 / 16px in the column. Nothing underlines: a name brightens grey to ink while it is in hand or pointed at (its
+   picture too, in its accent on a faint chip: race.js). A chosen season or sport is its ink, never a box; the
+   keyboard's focus is the frame's line under a word (frame.css) and the preview it brings up, a pointer's none. Red
+   only marks the living now (today and the next race) and his flag. */
+.r-sea { margin-top: 0; }
+.r-grid { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); grid-template-rows: auto 1fr; column-gap: var(--gut); }
+.r-grid > .tb { grid-column: 1 / 4; grid-row: 1; min-width: 0; position: relative; z-index: 5; pointer-events: none; }
+.r-grid > .tb .tb-d { max-width: none; }
+.r-info { grid-column: 1 / 4; grid-row: 2; min-width: 0; display: flex; flex-direction: column; padding-top: 16px; font-size: 13px; line-height: 20px; color: var(--grey);
+  position: relative; z-index: 5; align-self: start; pointer-events: none; }
+.r-info .r-years, .r-info .r-hand { pointer-events: auto; }
+/* the stage (the map, the timeline, the key) spans the whole column, under the words; race.js sets its top */
+.r-stage { position: relative; grid-column: 1 / 13; grid-row: 1 / 3; min-width: 0; padding-top: 40px; }
+/* the season's counts, under the title: each a number in the home's pixel figures (2px cells) and its word, small and
+   grey, on the figures' foot */
+.r-stats { display: flex; flex-wrap: nowrap; align-items: flex-end; gap: 6px 16px; margin-top: 24px; width: max-content; }   /* (r13: the title alone over them now, his motto on the home only: 24px, was 18 under the motto) */
+.r-st { display: inline-flex; align-items: flex-end; gap: 6px; }
+.r-st canvas { display: block; }
+.r-sw { font-size: 12px; line-height: 12px; color: var(--grey); padding-bottom: 1px; }
+/* a short screen: the column closes up (its gaps, then the title block's, then both again) so it still fits. The
+   page's word stays where every page has it (the owner's rule: the header's name, the fader, the inner titles and
+   the footer in one place on every screen; the draft moved it up, 22px and then 8px from the header): only the gaps
+   under it close */
+.r-sea.r-tight .r-info { padding-top: 8px; }
+.r-sea.r-tight .r-hand { margin-top: 8px; }
+.r-sea.r-tight .r-stats { margin-top: 12px; }
+.r-sea.r-tighter .r-grid > .tb .tb-d { margin-top: 14px; }
+.r-sea.r-tightest .r-grid > .tb .tb-d { margin-top: 8px; }
+.r-sea.r-tightest .r-stats { margin-top: 8px; }
+.r-sea.r-tightest .r-info { padding-top: 4px; }
+.r-sea.r-tightest .r-hand { margin-top: 4px; }
+/* the season switch: the year shown in ink, the others grey; each a 24px target */
+.r-years { display: flex; align-items: center; gap: 0; margin-left: -6px; }
+.r-y { color: var(--grey); padding: 2px 6px; min-height: 24px; transition: color var(--t-hover) var(--ease-out); }
+.r-sep { padding: 0 1px; }
+.r-y[aria-pressed="true"], .r-y.on { color: var(--ink); }
+#inner .r-y:hover, #inner .r-y:focus-visible { color: var(--ink); }
+/* at rest, the next race in one line (a click pins it on the map); where the details take the column, what is at hand,
+   the column held at its tallest state (race.js measures it in a hidden twin, .r-probe) */
+.r-hand { margin-top: 12px; }
+.r-probe { position: absolute; left: 0; top: 0; margin: 0; visibility: hidden; pointer-events: none; }
+#inner .r-hand[tabindex="-1"]:focus { outline: none; }   /* (the details, focused where they took the next line's place: race.js) */
+.r-nx { display: inline; text-align: left; color: var(--grey); line-height: 20px; white-space: nowrap; transition: color var(--t-hover) var(--ease-out); }
+#inner .r-nx:hover, #inner .r-nx:focus-visible { color: var(--ink); }
+.r-nx .r-dot { vertical-align: 2px; }
+.r-nn { color: var(--ink); }
+.r-lt .r-nn { color: inherit; }   /* (nothing ahead: the latest race run, all of its line in grey; in ink in hand, as the line is) */
+/* (the title's heading and the list for screen readers are words out of sight: at the page's own weight, so they ask
+   for no bold face. Round 7: that face, coming in after the page was up, had the whole map laid out a second time) */
+.r-sea .tb-h, .r-sea .r-list h2 { font-weight: 400; }
+.rh-s { display: flex; align-items: center; }
+.rh-m { color: var(--grey); }
+.rh-m .num { white-space: nowrap; }
+.rh-n { margin-top: 2px; font-size: 16px; line-height: 22px; color: var(--ink); text-wrap: pretty; }
+.rh-c { margin-top: 2px; color: var(--grey); text-wrap: pretty; }
+.rh-r { margin-top: 4px; color: var(--ink); }
+.rh-l { margin-top: 4px; }
+.rh-l li.dn { color: var(--ink); }
+.rh-l li.tc { color: var(--grey); }
+.rh-l .r-dot { margin-right: 4px; }
+/* words joined by middle dots: each part an item, its dot drawn in the gap before it; a part that wraps to a new line
+   starts at the line's left edge, where its dot falls outside the line and is clipped */
+.rh-m, .rh-c, .rh-r, .rh-l li { display: flex; flex-wrap: wrap; align-items: center; column-gap: 14px; overflow: hidden; }
+.rh-i { position: relative; min-width: 0; }
+.rh-i + .rh-i::before { content: "\00b7"; position: absolute; left: -14px; width: 14px; text-align: center; }
+/* a crew: its name alone on the first line, its club and division together under it */
+.rh-c > .rh-i:first-child { flex-basis: 100%; }
+.rh-y > .rh-i:first-child { flex-basis: auto; }   /* (the medley's leg runs on after its name) */
+#inner .rh-i canvas, #inner .rh-x canvas { display: inline-block; vertical-align: 0; }
+#inner .rh-i canvas { margin-left: 7px; }
+.r-dot { flex: none; display: inline-block; width: 5px; height: 5px; margin-right: 6px; border-radius: 50%; background: var(--red); vertical-align: 2px; }
+/* the medals' key: the map's legend, on a strip of paper in its open sea, bottom right (race.js places it) */
+.r-key { position: absolute; left: 0; top: 0; z-index: 3; display: flex; flex-wrap: wrap; gap: 2px 12px; padding: 0 3px; background: var(--bg); font-size: 12px; line-height: 16px; color: var(--grey); pointer-events: none; }
+.r-key[hidden], .r-k[hidden] { display: none; }
+.r-k { display: inline-flex; align-items: center; gap: 6px; }
+/* the map: one grid of whole cells that race.js sizes to the screen, against the column's right edge. Its layers: the
+   land and the roads, the scenes (each in its venue's room), him and his flag, the names (on a strip of paper; none on a
+   road), the buttons over a venue's pictures, and the card */
+.r-map { position: relative; margin: 0 0 0 auto; }
+.r-px { position: absolute; left: 0; top: 0; }
+.r-px > canvas { position: absolute; left: 0; top: 0; image-rendering: pixelated; pointer-events: none; }
+.r-labs, .r-cards { position: absolute; inset: 0; pointer-events: none; }
+/* the map's and the timeline's words on a layer of their own: grey type antialiased in grey (no coloured fringes) */
+.r-labs, .r-mo, .r-cards, .r-key { will-change: transform; }
+.r-sc, .r-tr { z-index: 1; }
+.r-labs { z-index: 2; }
+.r-cards { z-index: 3; }
+/* (walking, he goes over the cards; race.js clears the rows' boxes from him, so the names still lie over him) */
+.r-px > canvas.r-tr.r-up { z-index: 4; }
+.r-lab { position: absolute; left: 0; top: 0; padding: 0 2px; background: var(--bg); font-size: 12px; line-height: 15px; color: var(--grey); white-space: nowrap; pointer-events: auto; transition: color var(--t-hover) var(--ease-out); }
+.r-labs.r-sm .r-lab { font-size: 11px; line-height: 13px; }
+.r-lab.bare { background: transparent; }
+.r-ic { position: absolute; left: 0; top: 0; pointer-events: auto; }
+#inner .r-lab:hover, .r-lab.hov, .r-lab.on, .r-lab.cl { color: var(--ink); }
+.r-lab .r-dot { margin-right: 4px; vertical-align: 1px; }
+/* a button the pointer focused shows no keyboard mark, the frame's line under its words (Tab or the arrows bring it
+   back: race.js) */
+#inner .r-sea.r-ptr :is(.r-lab, .r-ic, .r-nx, .r-y, .r-fc):focus-visible { outline: none; text-decoration-line: none; }
+/* the card: what is at hand, by its venue, beside its scene; no box, the map's paper under it (as under the names); it
+   comes and goes softly */
+.r-card { position: absolute; left: 0; top: 0; width: max-content; max-width: 160px; padding: 2px 5px 3px; background: var(--bg); font-size: 12px; line-height: 16px; color: var(--grey); text-wrap: pretty;
+  opacity: 0; visibility: hidden; transition: opacity var(--t-hover) var(--ease-out), visibility 0s linear var(--t-hover); pointer-events: none; }
+.r-card.on { opacity: 1; visibility: visible; transition: opacity var(--t-hover) var(--ease-out), visibility 0s; pointer-events: auto; }
+.r-card.r-now { transition: none; }
+.r-cl { position: absolute; left: 0; top: 0; image-rendering: pixelated; opacity: 0; transition: opacity var(--t-hover) var(--ease-out); }
+.r-cl.on { opacity: 1; }
+.r-card.r-cprobe { visibility: hidden; transition: none; }
+.r-card .c-n, .r-dock .c-n { margin: 1px 0; font-size: 13px; line-height: 17px; color: var(--ink); }
+.r-card .c-r, .r-card .c-l.dn, .r-dock .c-r, .r-dock .c-l.dn { color: var(--ink); }
+.r-card .c-r, .r-dock .c-r { margin-top: 1px; }
+.r-card .num, .r-dock .num { white-space: nowrap; }
+.r-card .r-dot, .r-dock .r-dot { margin-right: 5px; }
+#inner .r-card canvas.r-md, #inner .r-dock canvas.r-md { display: inline-block; margin-left: 6px; vertical-align: 0; }
+#inner .r-card .rh-x canvas.r-md, #inner .r-dock .rh-x canvas.r-md { margin-left: 0; }   /* (a line of medals alone starts at the line's edge) */
+/* the card's and the dock's lines of several parts: the column's middle dots (each part an item, its dot in the gap
+   before it, clipped where the part starts a line), the gap the size of " · " in their type; on a desktop's card a
+   crew's name alone on its line, its club and division under it */
+.r-card :is(.c-s, .c-m, .c-c, .c-r, .c-l, .c-y), .r-dock :is(.c-s, .c-m, .c-c, .c-r, .c-l, .c-y) { display: flex; flex-wrap: wrap; align-items: center; column-gap: .8em; overflow: hidden; }
+.r-card .rh-i + .rh-i::before, .r-dock .rh-i + .rh-i::before { left: -.8em; width: .8em; }
+.r-card:not(.c-flow) .c-c > .rh-i:first-child { flex-basis: 100%; }   /* (.c-flow: a card that only fits so, race.js) */
+/* a small map's cards: a size smaller (race.js: a desktop's map under 600px tall), no paper over or under their words
+   (round 5: Mercer's card, two crews long, then lies on the 657px-tall laptop's map) */
+.r-cards.r-cmp .r-card { padding: 0 4px; font-size: 11px; line-height: 13px; }
+.r-cards.r-cmp .r-card .c-n { margin: 1px 0; font-size: 12px; line-height: 14px; }
+.r-cards.r-cmp .r-card .c-r { margin-top: 0; }
+/* a large screen's coarse map (race.js: cells of 2.6px or more, .r-big): its words a size larger, so a name keeps its
+   measure beside its pictures, as at 2px (round 5, "不同monitor的adaptive"); not where its cards would then not all
+   find their places by their venues (2560 x 1440 at 150%: race.js S.plain) */
+.r-sea.r-big .r-lab { font-size: 14px; line-height: 17px; }
+.r-sea.r-big .r-card { padding: 3px 6px 4px; font-size: 13px; line-height: 18px; }
+.r-sea.r-big .r-card .c-n { font-size: 15px; line-height: 20px; }
+.r-sea.r-big .r-key { font-size: 13px; line-height: 18px; gap: 2px 14px; }
+.r-sea.r-big .r-mo > span { font-size: 12px; }
+/* a phone's dock under the map: the card's words, a little larger */
+.r-dock { font-size: 13px; line-height: 18px; color: var(--grey); text-wrap: pretty; }
+.r-dock .c-n { font-size: 15px; line-height: 20px; }
+/* the timeline: one line, the season's months under it, his clubs' names over it at the months he joined (race.js) */
+.r-tl { position: relative; margin: 10px 0 0 auto; }
+.r-tpx { position: absolute; left: 0; top: 0; width: 100%; height: 100%; }
+.r-tcv { position: absolute; left: 0; top: 0; pointer-events: none; }
+.r-mo > span { position: absolute; font-size: 11px; line-height: 14px; color: var(--grey); white-space: nowrap; pointer-events: none; }
+.r-mo .r-mn { transform: translateX(-50%); }
+.r-fc { transition: color var(--t-hover) var(--ease-out), opacity var(--t-hover) var(--ease-out); }
+.r-fc.on, .r-fl.on .r-fd { color: var(--ink); }
+/* a club pointed at or focused: the other clubs step back (race.js draws its stretch of the line) */
+.r-mo.r-ck .r-fl:not(.on), .r-mo.r-ck .r-fl.on .r-fc:not(.on), .r-mo.r-ck .r-fl.on .r-fs { opacity: .4; }
+/* the ring and the footer at the screen's foot; no closing rule over the footer here */
+html[data-page="race"] .ip { padding-bottom: 0; }
+html[data-page="race"] .ring { margin-top: 0; }
+html[data-page="race"] .close { display: none; margin: 0; }
+/* (the footer, one line on a desk and three short ones under 1000px since v2t's item 39 (frame.css), was two lines and
+   a 2px gap, and three under 1000px with one: what it no longer takes stays room under it, 20px on a desk and 2px
+   under 1000px, so race's screen keeps its measure, and the map, the timeline and the ring their places and sizes.
+   Its type then went from 12 / 18px to 13 / 20px (v2t's item 3): 2px more as one line, 6px as three, taken back from
+   the room under it, so the footer is as tall as it was and the map keeps its size: 32px on a desk (was 34), 30 on a
+   desk's short window (32), 10 between 700 and 999px wide (16), 8 on a phone (14)) */
+html[data-page="race"] .if { margin-top: 14px; padding-bottom: 10px; }
+@media not all and (max-width: 999px) { html[data-page="race"] .if { padding-bottom: 32px; } }
+html[data-page="race"] .if .fm { margin-bottom: 4px; }
+/* a window between a phone and a desktop (700 to 999px wide and at least 580px tall): the desktop's arrangement, the
+   column a quarter of the width (a third under 900px), and the page as wide as a desktop's (--rw: its own width, the
+   map's). The frame keeps every page's places there (the owner's rule, over the draft's, which made the whole frame as
+   wide): the header, the ring and the footer in the frame's column (--cw), and the page's word where every page has
+   it, at the frame's left on the same device pixel (the frame's own rounding, frame.css). The rest of the column (the
+   counts, the season switch, what is at hand) keeps the page's own left edge, as the map and the timeline do: moved
+   with the word, it lay over the map's west, and a window as 800 x 600 then had its map at a third of its size (the
+   fit sweep: 286 x 206 for 472 x 338, and the placing broken) */
+@media (min-width: 700px) and (max-width: 999.98px) and (min-height: 580px) {
+  html[data-page="race"] { --rw: min(960px, calc(var(--vw, 1vw) * 100) - 64px); --gut: 24px; }
+  html[data-page="race"] .ip { width: var(--rw); }
+  html[data-page="race"] .r-grid > .tb .tb-h { position: relative; left: calc((var(--rw) - var(--cw)) / 2); }
+}
+@media screen and (min-width: 700px) and (max-width: 999.98px) and (min-height: 580px) {
+  html[data-grid][data-page="race"] .ip { margin-left: calc(round(nearest, calc((100% - var(--rw)) / 2 + .01px), var(--dwx)) + .002px); }
+  html[data-grid][data-page="race"] .r-grid > .tb .tb-h { left: round(nearest, calc((var(--rw) - var(--cw)) / 2 + .01px), var(--dwx)); }
+}
+@media (min-width: 700px) and (max-width: 899.98px) and (min-height: 580px) {
+  .r-grid > .tb, .r-info { grid-column: 1 / 5; }
+}
+/* phone: one screen too. The title (the season switch beside the page's word) and the counts, the map (its
+   key in its open sea), the timeline, then what is at hand (its tallest state held), the ring and the footer. Also a
+   window under 580px tall at any width (race.js narrow()), which scrolls */
+@media (max-width: 699.98px), (max-height: 579.98px) {
+  .r-grid { position: relative; display: flex; flex-direction: column; }
+  .r-grid > .tb { order: 0; }   /* (its top the frame's .tb has, as every page's word: the draft's 6px moved it up) */
+  .r-grid > .tb, .r-info { position: static; z-index: auto; pointer-events: auto; }
+  .r-grid > .tb .tb-d { margin-top: 8px; }
+  .r-grid > .tb .r-stats { display: none; }   /* (a phone's counts are docked under the map, over the next race) */
+  .r-stats { margin: 2px 0 8px; gap: 4px 14px; }
+  .r-sw { font-size: 11px; line-height: 11px; }
+  .r-years { position: absolute; right: -6px; top: 28px; margin-left: 0; }   /* (15px under the word's top, as the draft has it) */
+  .r-stage { order: 1; grid-column: auto; width: calc(var(--vw, 1vw) * 100); margin-left: calc(50% - calc(var(--vw, 1vw) * 50)); padding-top: 6px; }
+  .r-map { margin: 0 auto; }
+  .r-tl { margin: 4px auto 0; }
+  .r-key { gap: 0 8px; padding: 0 2px; font-size: 11px; line-height: 14px; }
+  .r-k { gap: 4px; }
+  .r-info { order: 2; padding-top: 0; line-height: 18px; align-self: stretch; }
+  .r-hand { margin-top: 4px; }
+  .rh-n { line-height: 20px; }
+  .rh-c > .rh-i:first-child { flex-basis: auto; }
+  .r-lab { padding: 0 1px; font-size: 11px; line-height: 13px; }
+  html[data-page="race"] .ring { margin-top: 6px; }
+  html[data-page="race"] .if { margin-top: 8px; padding-bottom: 8px; }   /* (8px and the 6px its 13px type took: a desk's short window, 30px, below) */
+}
+/* (a desktop's short window, one column too: the word 40px under the header, as on a desktop's every page, and the
+   season switch 15px under its top again) */
+@media (min-width: 1000px) and (max-height: 579.98px) { .r-years { top: 55px; } }
+@media not all and (max-width: 999px) { @media (max-height: 579.98px) { html[data-page="race"] .if { padding-bottom: 30px; } } }
+/* (a phone's map where the draft has it, and as large: the word stands 7px lower than the draft's, where every page
+   has it, and the stage takes the 7px back from the foot of the word's box, under its ink (68 to 88px of its 60 to
+   96), so the map, the timeline and what is under them keep the draft's places; one screen of 572 x 646 keeps its
+   388 x 278 map. A desktop's short window scrolls: its map is as large as before) */
+@media (max-width: 699.98px) { .r-stage { margin-top: -7px; } }
+/* a finger's targets, the look unchanged (round 5's check: the next line 20px tall, the clubs 14, the years 24): each
+   44px tall (a club's also 12px wider), its padding taken back by as much margin; race.js gives a mark on the line
+   the touch before a club's margin. The years also 44px wide (round 5's third look: 42 x 44), their words centred
+   in it, the pair a pixel further right so 2025's still ends on the page's margin */
+@media (max-width: 699.98px) and (pointer: coarse), (max-height: 579.98px) and (pointer: coarse) {
+  .r-nx { padding: 12px 0; margin: -12px 0; }
+  .r-y { min-height: 44px; min-width: 44px; padding-top: 12px; padding-bottom: 12px; margin: -10px 0; text-align: center; }
+  .r-years { right: -7px; }
+  .r-fc { padding: 15px 6px; margin: -15px -6px; }
+}
+@media (prefers-reduced-motion: reduce) { .r-y, .r-lab, .r-fc, .r-nx, .r-card, .r-card.on, .r-cl { transition: none; } }
+@media (forced-colors: active) {
+  .r-dot { background: CanvasText; forced-color-adjust: none; }
+  .r-card { border: 1px solid CanvasText; }
+}
+/* the season as plain words for a reader without script (list.js, under the title; the engine hides it while the
+   map is up and keeps its own list for screen readers) */
+/* (under the title, the way to the other seasons: the one shown in ink, the others grey, as the engine's switch) */
+.r-sy { font-size: 13px; line-height: 20px; color: var(--grey); }
+.r-sy .on { color: var(--ink); }
+#inner .r-sy a:hover, #inner .r-sy a:focus-visible { color: var(--ink); }
+/* (with script the engine draws the page over what the server printed: that is out of sight from the first paint,
+   the engine's module coming after it, folded to nothing so it moves nothing, and shown again after 3s should the
+   engine not have come; the engine marks it hidden as it mounts, which ends the wait. Not display: none, under which
+   no animation runs) */
+html.js #ip > [data-race-static]:not([hidden]) { visibility: hidden; max-height: 0; overflow: hidden; animation: r-late 0s 3s forwards; }
+@keyframes r-late { to { visibility: visible; max-height: none; overflow: visible; } }
+/* (put back by the engine, its map gone or never made (scripts/race/index.js: a throw as it is made): at once) */
+html.js #ip > [data-race-static].r-back { visibility: visible; max-height: none; overflow: visible; animation: none; }
+.r-static { margin: 24px 0 56px; max-width: 640px; font-size: 15px; line-height: 22px; color: var(--grey); }
+.r-static[hidden] { display: none; }
+.r-static h2 { font-size: 13px; line-height: 20px; font-weight: 400; }
+.r-static ol { margin: 8px 0 0; padding: 0; list-style: none; }
+.r-static li { margin-top: 10px; }
+.r-static strong { font-weight: 400; color: var(--ink); }
+.r-static p { margin-top: 12px; }
+
+/* ---------- draft v2t · the taste round (2026-10-16), as v2t's race.css has it, last, so it rules as there ----------
+   Item 3: nothing under 13px, on the map too: the names, the cards' words, the months and clubs, the medals' key and
+   the counts' words take 13px wherever they were 11 or 12 (a crowded map's .r-sm included); a card's venue a step up,
+   15px; a large screen's coarse map (.r-big) keeps its 14px names. The engine measures every word it places
+   (layout.js), so the placing follows the new sizes (the audit on .r-map[data-audit] says how it went).
+   The floor's three exceptions, all where 13px does not fit the map (the fit sweep and race's audit, 2026-10-16):
+   - a map under 1000px wide keeps its key and months at 11px, and its names too on a phone's map (at 13 or 12 they
+     left the map, crossed its roads or cut a row off: race's audit at 360 x 740 and 375 x 812). Between 700 and 999px
+     wide, where the map stands beside the column as on a desk, the names keep v2ac's 12px (11px on a crowded map): at
+     11px, as v2t has them, 778 x 777 (125%) lost its map from 640 x 464 to 352 x 256, 10 cards sent to the column;
+   - a small desktop map's cards (.r-cmp, a map under 600px tall) keep v2ac's 11px, their venue 12px (at 13px cards
+     found no place by their venues and went to the column: 8 at 815 x 818, whose map fell from 740 x 530 to 492 x 354);
+   - under 1000px the counts keep v2ac's own, below. Draft v2t has the first only, as 11px for all three under 1000px.
+   Item 41, a "try": the season's counts as a figure track, two rows of two, each figure right-aligned in its column, so
+   the digits stand one over another (the home's pixel figures; the words on their foot, as before), from 1000px wide.
+   Under 1000px the counts keep v2ac's one row and its words' 12px (11px on a phone), because the track's taller box,
+   and its 13px words' wider one, cost the map there: at 751 x 676 the counts lay on its roads, at 778 x 777 (125%) it
+   fell from 640 x 464 to 464 x 336 with 7 cards sent to the column. fit.js keeps the map's names and cards off the
+   counts' own box (.r-stats), whichever form it has: the track's parts are boxes no more (display: contents) */
+.r-key { font-size: 13px; line-height: 18px; }
+.r-lab, .r-labs.r-sm .r-lab { font-size: 13px; line-height: 16px; }
+.r-card { font-size: 13px; line-height: 18px; }
+.r-cards.r-cmp .r-card { font-size: 11px; line-height: 13px; }   /* (the floor's second exception, above) */
+.r-card .c-n, .r-dock .c-n { font-size: 15px; line-height: 20px; }
+.r-cards.r-cmp .r-card .c-n { font-size: 12px; line-height: 14px; }
+.r-mo > span, .r-sea.r-big .r-mo > span { font-size: 13px; line-height: 15px; }
+@media not all and (max-width: 999px) {
+  .r-sw { font-size: 13px; line-height: 13px; }
+  .r-stats { display: grid; grid-template-columns: repeat(2, auto minmax(0, auto)); align-items: end; column-gap: 6px; row-gap: 8px; }
+  .r-st { display: contents; }
+  .r-st canvas { justify-self: end; }
+  .r-st .r-sw:nth-child(2) { margin-right: 18px; }
+}
+@media (max-width: 999px) {
+  .r-key { font-size: 11px; line-height: 14px; }   /* (the key and the months stay at 11px under 1000px, with the names: the map is drawn for them) */
+  .r-mo > span { font-size: 11px; line-height: 14px; }
+  .r-lab, .r-labs.r-sm .r-lab { font-size: 11px; line-height: 13px; }
+}
+/* (between 700 and 999px wide, the map beside the column: the names at v2ac's 12px, a crowded map's 11px; above) */
+@media (min-width: 700px) and (max-width: 999.98px) and (min-height: 580px) {
+  .r-lab { font-size: 12px; line-height: 15px; }
+  .r-labs.r-sm .r-lab { font-size: 11px; line-height: 13px; }
+}

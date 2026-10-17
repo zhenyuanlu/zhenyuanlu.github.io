@@ -1,0 +1,91 @@
+# build · software: the shelf, in the page's order (the featured one, which research.yaml pairs with its paper, stands
+# on top instead). One entry is one piece of software. To add one, copy an entry and change its fields:
+#   title, year, line (the one line its card shows), technologies (as the page writes them), links (each a type:
+#   github, app, paper, arxiv or data, and its href).
+# Optional: description (the longer text: the card shows it where there is no line), status (active or archived),
+#   version, post (a post of this blog about it: its folder under content/blog/; a "blog" link after the others),
+#   img (a picture in img/) with its alt text, pos and to (where a wide picture rests and where it travels to, as
+#   "0% 50%"), fit: mark (a logo, small and whole), film (a moving picture in img/, played while the card is in hand).
+# 中文提示：一条就是一个软件；line 是卡片上显示的那一行字，图片放在 img/ 里。
+
+# Waycine (r14, the owner, 2026-10-15): created 2026-10-12, public, MIT; its app is its own repository's Pages at
+# /waycine/ (not this site's). The still and the moving demo are his own files (its docs/media/ and its README).
+- title: Waycine
+  year: 2026
+  line: Turns a list of stops into an animated map video of a trip, tour or race season.
+  description: Waycine (“way cinema”) turns a list of stops into an animated travel map video of your trip, road trip, tour or race season.
+  status: active
+  technologies: [ TypeScript, Preact, Node.js ]
+  links:
+    - { type: github, href: https://github.com/zhenyuanlu/waycine }
+    - { type: app, href: https://zhenyuanlu.com/waycine/ }
+  img: ./img/waycine-season-poster.png
+  alt: "Waycine’s season poster: a dark map of a race season, 7 races, 5 states, 4 months"
+  pos: 50% 50%
+  to: 50% 50%
+  film: ./img/demo-race-season.webp
+
+- title: HayBeat
+  year: 2025
+  line: A lightweight Android habit tracker, built to push my own limits.
+  description: Haybeat is a lightweight habit tracker I built to push my own limits in a fun side project.
+  status: archived
+  version: 0.3.1
+  technologies: [ Kotlin, Android ]
+  links:
+    - { type: github, href: https://github.com/zhenyuanlu/haybeat }
+  img: ./img/haybeat.webp
+  alt: "HayBeat on three phone screens: statistics, habit rankings with the week’s daily activity, and a new challenge"
+
+- title: pyKCN
+  year: 2024
+  line: A Python tool for analyzing keyword co-occurrence in literature reviews.
+  description: pyKCN is a Python-based tool for analyzing co-occurrence keywords in literature reviews.
+  status: archived
+  version: 0.1.0
+  technologies: [ Python ]
+  links:
+    - { type: github, href: https://github.com/zhenyuanlu/pyKCN }
+    - { type: arxiv, href: https://arxiv.org/abs/2403.16157 }
+  img: ./img/pykcn.webp
+  alt: The pyKCN mark, a network in a hexagon
+  fit: mark
+
+# Featured: research.yaml pairs it with its paper, so it stands on top beside it, not on the shelf.
+- title: PainAttnNet
+  year: 2023
+  line: A transformer encoder with multiscale deep learning for signal classification.
+  description: PainAttnNet is composed transformer encoder with multiscale deep learning for signal classification.
+  status: archived
+  version: 1.0.0
+  tier: featured
+  technologies: [ Python, PyTorch, Transformers, deep learning ]
+  links:
+    - { type: github, href: https://github.com/zhenyuanlu/PainAttnNet }
+    - { type: paper, href: https://www.frontiersin.org/journals/physiology/articles/10.3389/fphys.2023.1294577/full }
+    - { type: data, href: https://www.nit.ovgu.de/BioVid.html }
+  post: gesture-classification
+  img: ./img/painattnnet.webp
+  alt: "PainAttnNet: a 5.5-second EDA signal read through long, medium and short windows, a squeeze-and-excitation residual network, then a transformer encoder"
+
+- title: hierAlytics
+  year: 2019
+  line: An easy-to-use web app for exploring and analyzing data along a hierarchical tree.
+  description: An easy-to-use analytics web app for exploring and analyzing data based on hierarchical tree.
+  status: archived
+  version: 0.9.0
+  technologies: [ Python, R, Shiny, d3.js ]
+  links: []
+  img: ./img/hieralytics-frame.webp
+  alt: "hierAlytics on a desktop, a laptop, a tablet and a phone: a stacked bar chart of a hierarchy, a scatter plot, a histogram and box plots"
+
+- title: MealthUp
+  year: 2017
+  line: A health consultant and personalized meal planner, built with machine learning.
+  description: A new era of health consultant & personalized meal plan implemented machine learning techniques.
+  status: archived
+  version: 1.0.0
+  technologies: [ Python, MySQL, machine learning, HTML, CSS ]
+  links: []
+  img: ./img/mealthup-whole.webp
+  alt: "MealthUp: the app’s start screen, its profile and menu, and the meal-plan questions on the web"

@@ -1,0 +1,75 @@
+---
+// A picture frame (the draft's V1K.frame.html): the box is the row's to size; the picture is its background, laid
+// out by scripts/frames.js (as tall as the frame, never past its own pixels, travelling sideways in hand). The
+// picture is made by Astro's image step at the height the frame can use (at most 480 device px tall: a 159px
+// frame on a 3x screen), never larger than its own. A film (a short video, or an animated picture) plays over its
+// still while in hand. fit: 'mark', a logo held whole and small in the middle; 'whole', never cut, never travelling.
+// The picture loads as its frame comes near the window (frames.js: 800px ahead of it), so a long page asks for what
+// is in view first: its address waits in --pf-img, a custom property, which fetches nothing, and frames.js puts it
+// in the frame's background then. Only the page without script (frame.css, html:not(.js)) and the frame its script
+// never laid out (frame.css: after 3s) read --pf-img themselves. eager: a frame the page knows is in the first view
+// (build's featured figure, a list's first rows) has its picture in its background from the first style, as before.
+// wide: the big-screen mode's own file (main's call, 2026-10-16, on the wide builder's finding: build's shelf, 720),
+// where the source is taller than the frame's file, as tall as wide asks and never past the source's own pixels; a
+// mark has none (it is held small). Its address, its image-set() and its pixels wait in data-src-wide,
+// data-img-set-wide, data-w-wide and data-h-wide, which frames.js reads only while the mode is on (the row's caps,
+// the picture it shows): a plain screen and ?wide=off fetch nothing of it. The shelf: Waycine's 1280 x 720 (its
+// whole source) and HayBeat's 1058.6 x 720 (of 1210 x 823) let the row fill its column in the mode, as the draft's
+// whole files do; MealthUp's (444) and hierAlytics' (330) have no pixels more, and the row's rule leaves the 330 out.
+import { getImage } from 'astro:assets';
+import { pictureForms } from '../lib/picture-forms.mjs';
+import type { ImageMetadata } from 'astro';
+
+interface Props {
+  image: ImageMetadata;
+  cls?: string;
+  pos?: string;
+  to?: string;
+  film?: string;
+  alt?: string;
+  fit?: 'mark' | 'whole';
+  /** in the first view: its picture asked for at once, not when frames.js finds it near */
+  eager?: boolean;
+  /** the big-screen mode's height for its picture's own file (device px), where the source has more than 480 */
+  wide?: number;
+}
+const { image, cls = '', pos, to, film, alt, fit, eager = false, wide = 0 } = Astro.props;
+const H = 480;
+/* (in its two forms, the speed round's picture policy, 2026-10-16: lib/picture-forms.mjs) */
+const fsPath = (image as unknown as { fsPath?: string }).fsPath;
+const forms = fsPath ? await pictureForms(fsPath) : null;
+const pic = await getImage({ src: image, ...(forms ? forms.fallback : { format: 'webp' as const }), ...(image.height > H ? { height: H } : {}) });
+const av = forms ? await getImage({ src: image, ...forms.avif, ...(image.height > H ? { height: H } : {}) }) : null;
+// (a resized picture's width as its own shape gives it, not rounded: frames.js draws it from these, and Waycine's 1280
+// x 720 poster at 853 x 480 came out a device pixel narrower at 150% than the picture's own shape makes it)
+const w = image.height > H ? +(image.width * H / image.height).toFixed(3) : image.width;
+const h = Math.min(image.height, H);
+const rest = pos ? pos : '0% 50%';
+const img = `url("${pic.src}")`;
+const FT = forms && forms.fallback.format === 'jpg' ? 'image/jpeg' : 'image/webp';
+const set = av ? `image-set(url("${av.src}") type("image/avif"), url("${pic.src}") type("${FT}"))` : null;
+/* the mode's file, in the same two forms */
+const WH = wide && fit !== 'mark' && image.height > H ? Math.min(image.height, wide) : 0;
+const cut = WH && image.height > WH ? { height: WH } : {};
+const picW = WH ? await getImage({ src: image, ...(forms ? forms.fallback : { format: 'webp' as const }), ...cut }) : null;
+const avW = WH && forms ? await getImage({ src: image, ...forms.avif, ...cut }) : null;
+const wW = WH ? (image.height > WH ? +(image.width * WH / image.height).toFixed(3) : image.width) : undefined;
+const setW = picW && avW ? `image-set(url("${avW.src}") type("image/avif"), url("${picW.src}") type("${FT}"))` : null;
+---
+<span
+  class={['pf', cls].filter(Boolean).join(' ')}
+  data-src={pic.src}
+  data-img-set={set}
+  data-w={w}
+  data-h={h}
+  data-src-wide={picW ? picW.src : undefined}
+  data-img-set-wide={setW}
+  data-w-wide={wW}
+  data-h-wide={WH || undefined}
+  data-pos={pos}
+  data-to={to}
+  data-fit={fit}
+  data-film={film}
+  style={`${eager ? `background-image:${img};${set ? `background-image:${set};` : ''}` : ''}--pf-img:${img};--pf-rest:${rest}`}
+  {...(alt ? { role: 'img', 'aria-label': alt } : { 'aria-hidden': 'true' })}
+></span>

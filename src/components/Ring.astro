@@ -1,0 +1,17 @@
+---
+// The doors before and after (the draft's ring), as a road goes on; the arrow takes a step toward where it leads.
+import { DOORS, url, type Door } from '../lib/site';
+import { arrowSvg } from '../lib/arrows.mjs';
+
+interface Props { door?: Door | null }
+const { door = null } = Astro.props;
+const i = door ? DOORS.indexOf(door) : -1;
+const prev = i >= 0 ? DOORS[(i + DOORS.length - 1) % DOORS.length] : null;
+const next = i >= 0 ? DOORS[(i + 1) % DOORS.length] : null;
+---
+{prev && next && (
+  <nav class="ring" aria-label="the next door">
+    <a href={url(`/${prev}/`)}><span class="ar l" aria-hidden="true" set:html={arrowSvg('l')}></span>{prev}</a>
+    <a class="go" href={url(`/${next}/`)}>{next}<span class="ar r" aria-hidden="true" set:html={arrowSvg('r')}></span></a>
+  </nav>
+)}

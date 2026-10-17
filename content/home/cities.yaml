@@ -1,0 +1,34 @@
+# home · the cities on the road, left to right: id, name, memory (the words under the name in hand), and its icon for
+# a page without script, two pictures in img/ beside this file: bw (line art) and color.
+# Each city's pixel drawing, weather and figure are the home engine's own art, by id: a new city needs its art first.
+# 中文提示：首页路上的城市，从左到右；memory 是悬停时城市下面那句话。
+
+- id: shanghai
+  name: Shanghai
+  memory: where the story begins
+  bw: ./img/sh_bw.png
+  color: ./img/sh_color.png
+
+- id: okinawa
+  name: Okinawa
+  memory: part of my soul remains
+  bw: ./img/ok_bw.png
+  color: ./img/ok_color.png
+
+- id: austin
+  name: Austin
+  memory: freedom awakened through bbq
+  bw: ./img/austin_bw.png
+  color: ./img/austin_color.png
+
+- id: dallas
+  name: Dallas
+  memory: temporary cowboy in the wild
+  bw: ./img/dallas_bw.png
+  color: ./img/dallas_color.png
+
+- id: boston
+  name: Boston
+  memory: winters forge wisdom through coffee
+  bw: ./img/ma_bw.png
+  color: ./img/ma_color.png

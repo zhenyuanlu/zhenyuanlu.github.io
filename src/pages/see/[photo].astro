@@ -1,0 +1,67 @@
+---
+// /see/<name>/: one photograph, as see's viewer shows it (the draft v2ac's #/see/<name>): the photograph on the
+// paper, as large as the window allows and never past its own pixels (counted in the screen's device pixels), its
+// caption small at the bottom left (the title, the place and the year), the way to the photographs before and after
+// at the bottom right, and "close" back to the wall, at this photograph, at the top right. The page is the
+// photograph alone: no header, doors or footer (Base bare). With script (scripts/see/photo.js) it is placed to the
+// pixel as the viewer places it, the arrow keys, Escape, a swipe and a click on the paper do what the viewer's do;
+// without script the sheet places it near enough.
+// Structured data: its ImageObject (the photograph, its place and day, who made it). The photograph is named by its
+// title, here and in its link preview (og:image:alt), or by the YAML's own alt where it gives one; nothing describes it.
+import Base from '../../layouts/Base.astro';
+import { absolute, person, url } from '../../lib/site';
+import { arrowSvg } from '../../lib/arrows.mjs';
+import { photos } from '../../scripts/see/photos.mjs';
+import '../../styles/see.css';
+
+export async function getStaticPaths() {
+  const list = await photos();
+  return list.map((P, k) => ({ params: { photo: P.name }, props: { P, prev: list[k - 1] || null, next: list[k + 1] || null } }));
+}
+type Photo = Awaited<ReturnType<typeof photos>>[number];
+interface Props { P: Photo; prev: Photo | null; next: Photo | null }
+const { P, prev, next } = Astro.props;
+const me = await person();
+const path = `/see/${P.name}/`;
+const canonical = absolute(path);
+// (a picture's address as Astro writes it carries the build's base, /zhenyuanlu/site/v3/_astro/... in the LAN preview;
+// on the real site, where its card and its structured data point, it is under /: lib/site.ts absolute)
+const onSite = (src: string) => absolute(src.startsWith(url('')) ? src.slice(url('').length) : src);
+const description = `“${P.title}”, a photograph by ${me.name}: ${P.place}, ${P.day}.`;
+const ld = [{
+  '@type': 'ImageObject',
+  '@id': `${canonical}#photograph`,
+  name: P.title,
+  caption: `${P.title}, ${P.place}, ${P.year}`,
+  contentUrl: onSite(P.full),
+  thumbnailUrl: onSite(P.src),
+  encodingFormat: 'image/webp',
+  width: { '@type': 'QuantitativeValue', value: P.w, unitText: 'px' },
+  height: { '@type': 'QuantitativeValue', value: P.h, unitText: 'px' },
+  dateCreated: P.date,
+  contentLocation: { '@type': 'Place', name: P.place },
+  creator: { '@id': absolute('/#person'), '@type': 'Person', name: me.name },
+  creditText: me.name,
+  copyrightHolder: { '@id': absolute('/#person') },
+  copyrightNotice: `© ${P.year} ${me.name}`,
+  url: canonical,
+  mainEntityOfPage: { '@type': 'WebPage', '@id': canonical },
+  isPartOf: { '@type': 'CollectionPage', '@id': absolute('/see/'), name: 'see' },
+  representativeOfPage: true,
+  inLanguage: 'en',
+}];
+---
+<Base title={P.title} description={description} path={path} page="see" bare image={onSite(P.og)} imageAlt={P.alt} imageWidth={P.w} imageHeight={P.h} ld={ld}>
+  <div class="s-view s-one" data-w={P.w} data-h={P.h}>
+    <div class="s-paper"></div>
+    <figure class="s-stage">
+      <picture style="display:contents"><source type="image/avif" srcset={P.fullAvif}><img class="s-big" src={P.full} alt={P.alt} width={P.w} height={P.h} fetchpriority="high" style={`--avg:${P.avg};--w:${P.w};--h:${P.h}`}></picture>
+      <figcaption class="s-vcap" id="s-vcap"><h1 class="s-t">{P.title}</h1><span class="s-sep" aria-hidden="true"> | </span><span class="s-w">{P.place}{P.year && <> · <time datetime={P.date}>{P.year}</time></>}</span></figcaption>
+    </figure>
+    <nav class="s-bar" aria-label="photographs">
+      <a class="s-x" href={url(`/see/#${P.name}`)}>close</a>
+      <p class="s-vnav">{prev ? <a class="s-prev" href={url(`/see/${prev.name}/`)} aria-label={`previous photograph: ${prev.title}`} set:html={arrowSvg('l')}></a> : <span class="s-prev s-end" aria-hidden="true" set:html={arrowSvg('l')}></span>}{next ? <a class="s-next" href={url(`/see/${next.name}/`)} aria-label={`next photograph: ${next.title}`} set:html={arrowSvg('r')}></a> : <span class="s-next s-end" aria-hidden="true" set:html={arrowSvg('r')}></span>}</p>
+    </nav>
+  </div>
+  <Fragment slot="scripts"><script>import '../../scripts/see/photo.js';</script></Fragment>
+</Base>

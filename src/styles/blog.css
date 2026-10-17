@@ -1,0 +1,132 @@
+/* The blog list and the tags it shares with an article (the draft v2t's write.css, its list part: v2ac's with the
+   taste round of 2026-10-16). Margins on p / h / ul / ol carry #inner: the frame's reset outranks a class alone.
+   Type: 13 / 15 / 18 (a phone 13 / 15 / 17), nothing under 13px. No box marks a chosen or focused thing: a chosen
+   topic is a deeper tone, the keyboard's focus a line, a tone or the row's point (the owner, 2026-10-16). */
+
+/* ---------- one quiet line: all and the topics as tags, then the search (with script only: they filter) ---------- */
+#inner .w-tools { display: flex; flex-wrap: wrap; align-items: center; column-gap: 14px; margin-top: 46px; font-size: 13px; line-height: 20px; color: var(--grey); }
+html:not(.js) #inner .w-tools { display: none; }
+#inner .w-fl { display: flex; flex-wrap: wrap; align-items: center; gap: 0 6px; min-height: 44px; }
+/* a tag: a small grey word on a faint ground of the ink; in hand, or pointed at in the line above, it inks; the
+   one chosen stands in ink on a deeper ground (16 %); the keyboard's focus is a line along its foot */
+#inner .w-tg { position: relative; z-index: 1; flex: none; display: inline-block; box-sizing: border-box; height: 22px; padding: 0 8px;
+  border: 1px solid transparent; font-size: 13px; line-height: 20px; white-space: nowrap; text-align: center; color: var(--grey);
+  background-color: color-mix(in srgb, var(--ink) 6%, transparent); transition: color var(--t-hover) var(--ease-out), background-color var(--t-hover) var(--ease-out), box-shadow var(--t-hover) var(--ease-out); }
+#inner :is(a, button).w-tg:hover, #inner .w-tg:focus-visible, #inner .w-tg.w-hi { color: var(--ink); background-color: color-mix(in srgb, var(--ink) 11%, transparent); }
+#inner .w-tg[aria-pressed="true"], #inner :is(a, button).w-tg[aria-pressed="true"]:hover { color: var(--ink); background-color: color-mix(in srgb, var(--ink) 16%, transparent); }
+#inner .w-tg:focus-visible { outline: none; text-decoration-line: none; box-shadow: inset 0 -2px 0 var(--ink); }
+#inner .w-fl .w-tg::after { content: ""; position: absolute; left: -4px; right: -4px; top: -12px; bottom: -12px; }
+@media (forced-colors: active) { #inner .w-tg { border-color: GrayText; } #inner .w-tg[aria-pressed="true"] { border-color: Highlight; } }
+/* the search: a small pixel glass and the word "search", inking as the topics do; in use a hairline lies under it */
+#inner .w-sr { position: relative; display: flex; align-items: center; height: 44px; }
+#inner .w-sl { position: relative; display: flex; align-items: center; gap: 7px; height: 44px; padding: 0 0 0 9px; cursor: text; color: var(--grey); transition: color var(--t-hover) var(--ease-out); }
+#inner .w-sl:hover, #inner .w-sl:focus-within { color: var(--ink); }
+#inner .w-sl::after { content: ""; position: absolute; left: 9px; right: 0; bottom: 10px; border-top: 1px solid var(--grey); opacity: 0; transition: opacity var(--t-hover) var(--ease-out); pointer-events: none; }
+#inner .w-sl:focus-within::after { opacity: 1; }
+#inner .w-gl { flex: none; width: 9px; height: 9px; fill: currentColor; shape-rendering: crispEdges; }
+#inner .w-find { width: 7em; height: 44px; margin: 0; padding: 0; border: 0; border-radius: 0; background: none; font: inherit; color: var(--ink);
+  outline: none; -webkit-appearance: none; appearance: none; }
+#inner .w-find:focus-visible { outline: none; }
+#inner .w-find::placeholder { color: var(--grey); opacity: 1; transition: color var(--t-hover) var(--ease-out); }
+#inner .w-sl:hover .w-find::placeholder { color: var(--ink); }
+#inner .w-find::-webkit-search-cancel-button, #inner .w-find::-webkit-search-decoration { -webkit-appearance: none; display: none; }
+@media (forced-colors: active) { #inner .w-sl::after { border-top-color: CanvasText; } }
+#inner .w-x { position: absolute; left: 100%; top: 0; width: 30px; height: 44px; text-align: center; font-size: 15px; color: var(--grey); transition: color var(--t-hover) var(--ease-out), background-color var(--t-hover) var(--ease-out); }
+#inner .w-x:hover, #inner .w-x:focus-visible { color: var(--ink); }
+#inner .w-x:focus-visible { outline: none; text-decoration-line: none; background-color: var(--surface); }
+#inner .w-x[hidden] { display: none; }
+/* a phone's browser zooms into a field set under 16px: there it is set at 16px and drawn at the line's 13px */
+@media (hover: none) and (pointer: coarse) {
+  #inner .w-find { font-size: 16px; transform: scale(.8125); transform-origin: 0 50%; margin-right: -1.3125em; }
+}
+/* nothing found: one quiet grey line where the list would start, and the way back */
+#inner .w-none { margin-left: calc((100% + var(--gut)) * 3 / 12); font-size: 13px; line-height: 20px; color: var(--grey); }
+#inner .w-none:empty { display: none; }
+#inner .w-all { padding: 12px 0; margin: -12px 0; color: var(--grey); transition: color var(--t-hover) var(--ease-out); }
+#inner .w-all:hover, #inner .w-all:focus-visible { color: var(--ink); }
+#inner .w-all:focus-visible { outline: none; text-decoration: underline 1px var(--focus); text-underline-offset: .22em; }
+.w-time { position: relative; margin-top: 22px; transition: opacity var(--t-hover) var(--ease-out); }
+html:not(.js) .w-time { margin-top: 46px; }
+.w-time.w-out { opacity: 0; }
+.w-it[hidden] { display: none; }
+#inner .w-list { display: grid; grid-template-columns: minmax(0, 1fr); row-gap: 48px; }
+
+/* ---------- a row: the cover three of the twelve columns, the words seven ---------- */
+.w-it { position: relative; display: grid; column-gap: var(--gut);
+  grid-template-columns: min(calc((100% - 11 * var(--gut)) / 12 * 3 + 2 * var(--gut)), var(--pf-fw, 100%)) minmax(0, calc((100% - 11 * var(--gut)) / 12 * 7 + 6 * var(--gut))); }
+/* a row is in hand only where a click opens it, on its cover and on its words */
+.w-it { pointer-events: none; }
+.w-it > * { pointer-events: auto; }
+.w-cv { grid-column: 1; align-self: start; display: block; min-width: 0; }
+@media (hover: hover) {
+  .w-cv { position: relative; }
+  .w-cv::after { content: ""; position: absolute; left: 100%; top: 0; bottom: 0; width: calc(var(--gut) + 1px); }
+}
+/* the cover's box: 7:5 (222 x 159 on a desk); its two left corners round, away from its words */
+.w-pf { --pf-ar: 7 / 5; --pf-rad: var(--pf-rr) 0 0 var(--pf-rr); }
+.w-tx { grid-column: 2; position: relative; display: flex; flex-direction: column; min-width: 0; }
+.w-ti { margin-top: -6px; font-size: 18px; line-height: 26px; font-weight: 500; text-wrap: balance; hyphens: none; }
+#inner .w-a { color: var(--ink); scroll-margin-top: 80px; }
+#inner .w-a::after { content: ""; position: absolute; inset: 0; }
+#inner .w-a:focus-visible { outline: none; text-decoration-line: none; }
+/* (the keyboard's focus: the row's point and its title in ink, as the pointer's hand has it; never a box round the row) */
+.w-tt { --pt-y: 13px; }
+#inner .w-it:has(.w-a:focus-visible) .w-tt.hpoint::before { opacity: 1; }
+@media (hover: hover) { #inner .w-it:hover .w-tt.hpoint::before { opacity: 1; } }
+@media (hover: none) { #inner .w-tt.hpoint:hover::before { opacity: 0; } }
+.w-nw { white-space: nowrap; }
+/* the description: grey, cut with an ellipsis to the lines that fit (--w-n, blog-list.js; three until measured) */
+.w-ds { margin-top: 6px; font-size: 15px; line-height: 22px; color: var(--grey); text-wrap: pretty;
+  display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: var(--w-n, 3); line-clamp: var(--w-n, 3); overflow: hidden; }
+.w-ds.w-ds0 { display: none; }
+.w-m { display: flex; flex-wrap: wrap; align-items: flex-end; column-gap: 12px; row-gap: 6px; font-size: 13px; line-height: 20px; color: var(--grey); }
+.w-tx > .w-m { margin-top: auto; padding-top: 8px; }
+.w-dt { white-space: nowrap; line-height: 22px; }
+.w-tags { display: inline-flex; flex-wrap: wrap; gap: 6px; }
+.w-it.w-bare .w-ti { margin-top: 0; }
+.w-it.w-bare .w-tx > .w-m { margin-top: 0; padding-top: 10px; }
+
+@media (max-width: 999px) {
+  #inner .w-tools { margin-top: 16px; column-gap: 8px; }
+  #inner .w-fl { gap: 12px 8px; padding: 8px 0; }
+  #inner .w-fl .w-tg { height: 28px; padding: 0 10px; font-size: 13px; line-height: 26px; }
+  #inner .w-fl .w-tg::after { top: -6px; bottom: -6px; }
+  .w-time { margin-top: 14px; }
+  html:not(.js) .w-time { margin-top: 24px; }
+  #inner .w-none { margin-left: 0; }
+  #inner .w-list { row-gap: 40px; }
+  /* a row: the title first, at the column's width; under it the cover (126 x 90) with the description level with its
+     top edge and the date on its bottom edge; then the tags, a line of their own */
+  .w-it { grid-template-columns: 126px minmax(0, 1fr); grid-template-rows: auto auto 1fr auto; column-gap: 14px; }
+  .w-tx, .w-tx > .w-m { display: contents; }
+  .w-ti { grid-column: 1 / -1; grid-row: 1; margin: 0 0 12px; font-size: 17px; line-height: 25px; }
+  .w-cv { grid-column: 1; grid-row: 2 / 4; }
+  .w-cv::after { width: 15px; }
+  .w-ds { grid-column: 2; grid-row: 2; align-self: start; margin-top: -5px; }
+  .w-it .w-dt { grid-column: 2; grid-row: 3; align-self: end; margin-bottom: -5px; line-height: 20px; }
+  .w-it .w-tags { grid-column: 1 / -1; grid-row: 4; margin-top: 14px; }
+  .w-tags .w-tg::after { content: ""; position: absolute; left: -3px; right: -3px; top: -11px; bottom: -11px; }
+  #inner .w-a { scroll-margin-top: 60px; }
+  #inner .w-a::after { content: none; }
+  #inner .w-a:focus-visible { outline: none; text-decoration-line: none; }
+  .w-tt { --pt-y: 12px; }
+  .w-it.w-bare { display: block; }
+  .w-it.w-bare .w-ds { margin-top: 0; }
+  .w-it.w-bare .w-dt { display: block; margin: 8px 0 0; }
+  .w-it.w-bare .w-tags { margin-top: 8px; }
+}
+/* the one column in a mouse's hand (a narrow window on a desk): the title's link reaches over the whole row */
+@media (max-width: 999px) and (hover: hover) {
+  #inner .w-a::after { content: ""; }
+  #inner .w-a:focus-visible::after { outline: none; }
+  .w-cv { z-index: 1; }
+}
+/* ---------- v2ac: on a desk the words are one group, centred beside the cover ---------- */
+@media (min-width: 1000px) {
+  .w-it { align-items: center; }
+  .w-cv { align-self: center; }
+  .w-tx { align-self: center; margin-top: -6px; }
+  .w-ti { margin-top: 0; }
+  .w-tx > .w-m { margin-top: 0; padding-top: 12px; }
+  .w-it.w-bare .w-tx { margin-top: 0; }
+}

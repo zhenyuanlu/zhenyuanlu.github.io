@@ -1,0 +1,50 @@
+---
+// /see/: the photograph wall (the draft v2ac's see.js, its render, written here at build time from content/see/;
+// scripts/see/index.js hangs the wall and opens the viewer). The photographs newest first, hung in columns (three on a
+// desk, two on a phone) with their captions, each at its own size: a file's width sets its share of the column (a
+// 400px file about 87% of it, 600px and wider all of it; never past its own pixels), the smaller ones against the
+// wall's outer edges, the middle column starting lower. They stand in the page in reading order, newest first, so
+// Tab, a screen reader and the viewer walk them as the wall reads. Until it appears a photograph's place is quiet
+// paper, the faintest breath of its own colour (its average, from the file); in view it slowly appears; in hand
+// nothing lifts, its caption comes up to the ink (draft v2t, taste item 31). Every place is its photograph's own
+// shape, whole from top to bottom (the owner's rule; v2t cut Huh to 2:3), its focus point (the YAML's focus) kept for
+// a frame that must crop. The newest photograph is the page's main picture (fetchpriority high); the first row (three
+// on a desk; a phone's first two and its next) loads at once, the rest lazily (taste item 23).
+// Above the wall a small filter, all · road trip · portrait (with script; ?kind= keeps it in the address).
+// Each photograph is a link to its own page (/see/<name>/, pages/see/[photo].astro); with script it opens the viewer
+// here, the address following it. Without script the wall is a plain grid of the photographs and their links. A link
+// is named by the photograph's title, place and year, which its caption shows: its picture's alt is empty, so a
+// screen reader does not say the title twice (the draft's wall did the same); the viewer's picture is named by the
+// title (or the YAML's own alt, data-alt).
+import Base from '../layouts/Base.astro';
+import TitleBlock from '../components/TitleBlock.astro';
+import { KINDS } from '../schemas/see.ts';
+import { slug } from '../schemas/common.ts';
+import { person, url } from '../lib/site';
+import { photos } from '../scripts/see/photos.mjs';
+import { sizesFor } from '../lib/picture.mjs';
+import '../styles/see.css';
+
+const me = await person();
+const list = await photos();
+const FILTERS = [{ id: 'all', label: 'all' }, ...KINDS.map((k) => ({ id: slug(k), label: k }))];
+const where = (P: (typeof list)[number]) => [P.place, P.year].filter(Boolean).join(' · ');
+const years = list.map((P) => P.year), places = [...new Set(list.map((P) => P.place))];
+const description = `Photographs by ${me.name}, ${me.suffix}: ${KINDS.join('s and ')}s, ${Math.min(...years)}–${Math.max(...years)}, from ${places.join(', ')}.`;
+const SIZES = sizesFor('see');   /* (lib/picture.mjs: the wall's columns, the big-screen mode's among them) */
+/* the wall's first row: three on a desk (a phone's two, and the first of its second row, still in its first screen) */
+const FIRST_ROW = 3;
+---
+<Base title="see" description={description} path="/see/" page="see" ring="see">
+  <TitleBlock word="see" />
+  <div class="s-fl" role="group" aria-label="show">{FILTERS.map((f, n) => <>{n > 0 && <span class="s-dot" aria-hidden="true">·</span>}<button type="button" data-f={f.id} aria-pressed={f.id === 'all' ? 'true' : 'false'}>{f.label}</button></>)}</div>
+  <section class="s-gal" aria-label="photographs">
+    {list.map((P) => (
+      <a class="s-it" href={url(`/see/${P.name}/`)} id={P.name} data-n={P.n} data-kind={P.kind} data-w={P.w} data-h={P.h} data-full={P.full} data-full-avif={P.fullAvif} data-avg={P.avg} data-alt={P.ownAlt || undefined} aria-label={[P.title, P.place, P.year].filter(Boolean).join(', ')} style={`--w:${P.w};--f:${P.f.toFixed(4)}`}>
+        <span class="s-ph" style={`--avg:${P.avg};--w:${P.w};--h:${P.h}${P.focus !== '50% 50%' ? `;--fp:${P.focus}` : ''}`}><picture style="display:contents"><source type="image/avif" srcset={P.srcsetAvif} sizes={SIZES}><img src={P.src} srcset={P.srcset} sizes={SIZES} alt="" width={P.w} height={P.h} decoding="async" fetchpriority={P.n === 0 ? 'high' : undefined} loading={P.n >= FIRST_ROW ? 'lazy' : undefined}></picture></span>
+        <span class="s-cap"><span class="s-t">{P.title}</span><span class="s-sep" aria-hidden="true"> | </span><span class="s-w">{where(P)}</span></span>
+      </a>
+    ))}
+  </section>
+  <Fragment slot="scripts"><script>import '../scripts/see/index.js';</script></Fragment>
+</Base>

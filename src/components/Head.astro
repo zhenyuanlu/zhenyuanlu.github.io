@@ -1,0 +1,171 @@
+---
+// Everything a page says about itself: title and description (the person's line, with "PhD", where the page has
+// none of its own), the canonical address (always the real site's; none on the 404 page, which answers for every
+// address that leads nowhere), Open Graph and Twitter cards with a 1200 x 630 picture and its text, the icons and the
+// manifest, the referrer rule, and the structured data: the Person on every page (his name in Chinese its
+// alternateName, what he works on its knowsAbout), the WebSite on the home (the site's name a search result shows), a BlogPosting on a post, an
+// EducationEvent on a talk's page, and what a page adds of its own (ld: build's papers, software and talks, a
+// photograph's ImageObject); on a post's page Google Scholar's citation_* tags too. A description past 160 characters
+// (about what a search result shows) goes into the tags as its first sentence, as the list and the dek show it, and
+// where that sentence is still longer, cut at a word with an ellipsis; the structured data keeps it whole. (The
+// Content-Security-Policy is not here: components/DocHead.astro writes it first in
+// <head>, right after the charset, so it governs all of this.)
+import { getEntry, render } from 'astro:content';
+import { absolute, firstLine, person, url } from '../lib/site';
+
+interface Props {
+  title: string;
+  description?: string;
+  path: string;
+  canonical?: boolean;
+  image?: string;
+  imageAlt?: string;
+  /** the picture's own size, where it is not a 1200 x 630 card (a photograph's page) */
+  imageWidth?: number;
+  imageHeight?: number;
+  /** the page's own nodes for the structured data's graph, after the Person */
+  ld?: Record<string, unknown>[];
+  noindex?: boolean;
+  article?: {
+    published: Date;
+    modified?: Date;
+    authors: { name: string; affiliation?: string; url?: string }[];
+    topics: string[];
+    words?: number;
+  };
+  talk?: { date: Date; where?: string };
+}
+const { title, description, path, canonical: hasCanonical = true, image, imageAlt, imageWidth = 1200, imageHeight = 630, ld = [], noindex = false, article, talk } = Astro.props;
+const me = await person();
+const desc = description || me.description;
+const lead = (s: string) => (s.length > 160 ? firstLine(s) : s);
+const metaDesc = lead(desc).length > 160 ? `${lead(desc).slice(0, 159).replace(/\s+\S*$/, '').replace(/[\s,;:–—-]+$/, '')}…` : lead(desc);
+const canonical = absolute(path);
+const card = image || absolute('/social-card.png');
+const cardAlt = imageAlt || `${me.name}, ${me.suffix}: ${me.sentence}`;
+
+const personLd = {
+  '@type': 'Person',
+  '@id': absolute('/#person'),
+  name: me.name,
+  alternateName: me.hanzi,
+  honorificSuffix: me.suffix,
+  url: absolute('/'),
+  description: me.sentence,
+  jobTitle: 'Deep learning scientist',
+  ...(me.areas.length ? { knowsAbout: me.areas } : {}),
+  worksFor: [{ '@type': 'Organization', name: 'Seurat' }, { '@type': 'CollegeOrUniversity', name: 'Northeastern University' }],
+  alumniOf: { '@type': 'CollegeOrUniversity', name: 'Northeastern University' },
+  sameAs: me.social.filter((s) => s.me && /^https?:/.test(s.href)).map((s) => s.href),
+};
+const graph: Record<string, unknown>[] = [personLd];
+// the home: the site itself, whose name Google shows above its results (it reads it on the domain's root only)
+if (path === '/') {
+  graph.push({
+    '@type': 'WebSite',
+    '@id': absolute('/#website'),
+    name: me.name,
+    alternateName: [...(me.suffix ? [`${me.name}, ${me.suffix}`] : []), new URL(absolute('/')).host],
+    url: absolute('/'),
+    inLanguage: 'en',
+    publisher: { '@id': personLd['@id'] },
+  });
+}
+const day = (d: Date) => d.toISOString().slice(0, 10);
+if (talk) {
+  // a talk's page: the talk itself, given by him, on its day and at its place
+  graph.push({
+    '@type': 'EducationEvent',
+    '@id': `${canonical}#talk`,
+    name: title,
+    description: desc,
+    startDate: day(talk.date),
+    ...(talk.where ? { location: { '@type': 'Place', name: talk.where, address: talk.where } } : {}),
+    performer: { '@id': personLd['@id'], '@type': 'Person', name: me.name },
+    url: canonical,
+    mainEntityOfPage: { '@type': 'WebPage', '@id': canonical },
+    image: [card],
+    inLanguage: 'en',
+  });
+} else if (article) {
+  graph.push({
+    '@type': 'BlogPosting',
+    '@id': `${canonical}#post`,
+    headline: title,
+    description: desc,
+    url: canonical,
+    mainEntityOfPage: { '@type': 'WebPage', '@id': canonical },
+    datePublished: day(article.published),
+    dateModified: day(article.modified || article.published),
+    inLanguage: 'en',
+    image: [card],
+    keywords: article.topics,
+    author: article.authors.map((a) => (a.name === me.name ? { '@id': personLd['@id'], '@type': 'Person', name: a.name } : { '@type': 'Person', name: a.name, ...(a.url ? { url: a.url } : {}) })),
+    publisher: { '@id': personLd['@id'] },
+    ...(article.words ? { wordCount: article.words } : {}),
+  });
+}
+graph.push(...ld);
+const json = JSON.stringify({ '@context': 'https://schema.org', '@graph': graph }).replace(/</g, '\\u003c');
+// Google Scholar's own tags on a post's page (its inclusion guidelines: Highwire Press citation_*, as Distill's
+// articles carry them): the title, each author, the day, the DOI and the PDF where the post has them, and each
+// reference it cites. (A talk's page is the talk's: none.) Read from the post itself: the page gives its path
+let scholar: null | { authors: string[]; date: string; doi?: string; pdf?: string; refs: string[] } = null;
+const postPath = /^\/blog\/([^/]+)\/$/.exec(path);
+if (article && !talk && postPath) {
+  const post = await getEntry('blog', postPath[1]);
+  if (post) {
+    const zl = (await render(post)).remarkPluginFrontmatter?.zl as { refs?: { title: string; authors: string[]; venue: string; year: number | null }[] } | undefined;
+    const pdf = post.data.links.find((l) => l.kind === 'pdf' || /\.pdf(?:$|[?#])/i.test(l.href));
+    scholar = {
+      authors: post.data.authors.map((a) => a.name),
+      date: day(post.data.date).replace(/-/g, '/'),
+      doi: post.data.doi,
+      pdf: pdf ? (pdf.href.startsWith('/') ? absolute(pdf.href) : pdf.href) : undefined,
+      refs: (zl?.refs || []).map((r) => [
+        `citation_title=${r.title}`,
+        ...r.authors.map((a) => `citation_author=${a}`),
+        r.year ? `citation_publication_date=${r.year}` : '',
+        r.venue ? `citation_journal_title=${r.venue}` : '',
+      ].filter(Boolean).join('; ').replace(/;(?=;)/g, '')),
+    };
+  }
+}
+const fullTitle = title === me.name ? `${me.name}, ${me.suffix}` : `${title} · ${me.name}`;
+---
+<title>{fullTitle}</title>
+<meta name="description" content={metaDesc}>
+<meta name="author" content={me.name}>
+<meta name="referrer" content="strict-origin-when-cross-origin">
+{noindex && <meta name="robots" content="noindex">}
+{hasCanonical && <link rel="canonical" href={canonical}>}
+<link rel="icon" href={url('/favicon.ico')} sizes="32x32">
+<link rel="icon" href={url('/favicon.svg')} type="image/svg+xml">
+<link rel="apple-touch-icon" href={url('/apple-touch-icon.png')}>
+<link rel="manifest" href={url('/manifest.webmanifest')}>
+<link rel="alternate" type="application/rss+xml" title={`${me.name}: blog`} href={url('/feed.xml')}>
+<meta property="og:type" content={article ? 'article' : 'website'}>
+<meta property="og:site_name" content={me.name}>
+<meta property="og:title" content={title}>
+<meta property="og:description" content={metaDesc}>
+{hasCanonical && <meta property="og:url" content={canonical}>}
+<meta property="og:image" content={card}>
+<meta property="og:image:width" content={String(imageWidth)}>
+<meta property="og:image:height" content={String(imageHeight)}>
+<meta property="og:image:alt" content={cardAlt}>
+<meta property="og:locale" content="en_US">
+{article && <meta property="article:published_time" content={day(article.published)}>}
+{article && article.modified && <meta property="article:modified_time" content={day(article.modified)}>}
+{article && article.topics.map((t) => <meta property="article:tag" content={t}>)}
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content={title}>
+<meta name="twitter:description" content={metaDesc}>
+<meta name="twitter:image" content={card}>
+<meta name="twitter:image:alt" content={cardAlt}>
+{scholar && <meta name="citation_title" content={title}>}
+{scholar && scholar.authors.map((a) => <meta name="citation_author" content={a}>)}
+{scholar && <meta name="citation_publication_date" content={scholar.date}>}
+{scholar && scholar.doi && <meta name="citation_doi" content={scholar.doi}>}
+{scholar && scholar.pdf && <meta name="citation_pdf_url" content={scholar.pdf}>}
+{scholar && scholar.refs.map((r) => <meta name="citation_reference" content={r}>)}
+<script type="application/ld+json" is:inline set:html={json}></script>

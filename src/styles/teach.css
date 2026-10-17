@@ -1,0 +1,107 @@
+/* /teach/ (the draft v2ac's teach.css; pages/teach.astro says what stands where). Desktop: the plate in the margin
+   (columns 1-3), three short lines (code, description, tools) that end before the open books; everything else starts
+   at column 5 and the pictures (tallies, covers) hang flush right in column 4, the point centred in the gutter
+   between. Phone: one column, as build's: each picture above its words, the words at the column's full width; a tap
+   on a row beside its link opens the course under it. Type 13 / 16 (the frame's lede and ring 18), as draft v2t has it
+   (the taste round, 2026-10-16). Anchors and focus land clear of the sticky header (61px; 47px on a phone). The course
+   in hand is chosen by its tone (its books in their colour, its point, its plate), never by a box; a focused title,
+   book link or "all course pages" shows the frame's line under its words (frame.css). */
+/* link words (the draft's frame): grey, ink in hand; two side by side 12px apart */
+.k, #inner a.k { color: var(--grey); }
+#inner a.k:hover, #inner a.k:focus-visible { color: var(--ink); }
+.k + .k { margin-left: 12px; }
+
+.t-sec { position: relative; }
+.t-in { padding-left: calc((100% - 8 * var(--gut)) / 9 + var(--gut)); }
+.t-lab { margin-bottom: 6px; }
+.t-row { display: grid; width: 100%; grid-template-columns: calc((100% - 8 * var(--gut)) / 9) minmax(0, 1fr);
+  column-gap: var(--gut); align-items: baseline; padding: 5px 0; text-align: left; cursor: default; }
+/* a picture hangs flush right; a long tally reaches further left, never right (a row's tally is its button: it takes
+   the row, as pointing at the row does, so the pointer stays an arrow there) */
+.t-hang { display: flex; justify-content: flex-end; min-width: 0; }
+#inner button.t-hang { cursor: default; }
+.t-hang canvas { flex: none; position: relative; }   /* scripts/teach/index.js nudges it onto whole device pixels (left / top) */
+.t-hang svg.t-px { flex: none; display: block; fill: var(--grey); }   /* (the server's drawing, until the script paints the canvas) */
+.t-row .t-hang { margin-top: -6px; }   /* the books stand on the baseline and reach up into the row's padding */
+.t-ti { font-size: 16px; line-height: 24px; text-wrap: pretty; }
+#inner .t-c.on .t-ti::before { opacity: 1; }
+/* the title is the link to the course's latest page: ink as the titles are, no line; its target reaches into the
+   row's padding (inline padding: the line does not move) */
+#inner .t-a { padding: 5px 0; margin: -5px 0; }
+.t-yr { margin-left: 10px; font-size: 13px; color: var(--grey); white-space: nowrap; }
+.t-vh { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+/* the plate: every course's plate is laid out, only the one in hand is seen (so nothing below it jumps) */
+.t-d { position: absolute; left: 0; top: 0; width: calc((100% - 11 * var(--gut)) / 12 * 3 + 2 * var(--gut) - 16px); visibility: hidden; }
+.t-c.on .t-d { visibility: visible; }
+.t-pc { margin-bottom: 14.4px; }   /* the code on the label line; its description level with the first row */
+.t-pl { font-size: 13px; line-height: 20px; color: var(--ink); text-wrap: pretty; }
+/* the tools, in grey: a name never breaks. The dot between two names belongs to the later one: it stands in a 10px
+   box before the name, and the whole line is set 10px to the left with that strip cut away, so the name that starts a
+   line shows no dot and no line ends with one. The spaces between the names stay in the text, for a reader and a
+   copy, and take no room (the line's own type and leading are 0; a name's are 13 / 20px) */
+.t-pt { margin-top: 10px; margin-left: -10px; font-size: 0; line-height: 0; color: var(--grey); text-wrap: balance; clip-path: inset(0 0 0 10px); }
+.t-pt span { font-size: 13px; line-height: 20px; white-space: nowrap; }
+.t-pt span::before { content: "\00b7"; content: "\00b7" / ""; display: inline-block; width: 10px; text-align: center; }
+.t-all { margin-top: 14px; font-size: 13px; line-height: 20px; }
+.t-ar { display: inline-block; margin-left: 6px; transition: transform var(--t-press) steps(2); }   /* (the press token, taste item 29; the arrow drawn: lib/arrows.mjs) */
+.t-all a:hover .t-ar, .t-all a:focus-visible .t-ar { transform: translateX(3px); }
+
+/* the open books: a cover hangs where the tallies hang (40 x 56). In hand it brightens into its colour
+   (scripts/teach/index.js) and stays where it is, and the point stands before its title, as before a course's, while
+   the course's own point goes: one point at a time */
+.t-lab2 { margin-top: 56px; margin-bottom: 14px; scroll-margin-top: 88px; }
+#inner .t-sec :is(button, a) { scroll-margin-top: 80px; }
+.t-bk { display: grid; grid-template-columns: calc((100% - 8 * var(--gut)) / 9) minmax(0, 1fr); column-gap: var(--gut); align-items: start; }
+.t-bk + .t-bk { margin-top: 24px; }
+.t-bn { --pt-y: 12px; }
+#inner .t-bk.on .t-bn.hpoint::before { opacity: 1; }
+#inner .t-sec:has(.t-bk.on) .t-c.on .t-ti::before { opacity: 0; }
+.t-bt { min-width: 0; padding-top: 6px; }
+.t-bn { font-size: 16px; line-height: 24px; text-wrap: pretty; }
+.t-bl { margin-top: 4px; font-size: 13px; line-height: 20px; }
+/* (a book's links, read, source and pdf, are what a visitor does here, as build's paper, code and data are: ink at
+   rest and the accent in hand, as there) */
+#inner .t-bl .k { color: var(--ink); }
+#inner .t-bl .k:is(:hover, :focus-visible) { color: var(--accent); }
+
+/* without script: the first course is the margin's, as the page's own first state on a desk; a pointer or the
+   keyboard on another course shows that one's instead */
+html:not(.js) .t-c0 .t-d, html:not(.js) .t-c:is(:hover, :focus-within) .t-d { visibility: visible; }
+html:not(.js) .t-list:has(.t-c:is(:hover, :focus-within)) .t-c0:not(:hover, :focus-within) .t-d { visibility: hidden; }
+html:not(.js) #inner .t-c0 .t-ti::before { opacity: 1; }
+
+@media (max-width: 999px) {
+  .t-sec > .sec-m { margin-bottom: 10px; }   /* (the frame's margin column, empty here, above its block) */
+  .t-sec { min-height: 0 !important; }
+  .t-in { padding-left: 0; }
+  .t-row, .t-bk { display: block; }
+  .t-row { padding: 10px 0; min-height: 44px; }
+  #inner .t-a { padding: 10px 0; margin: -10px 0; }
+  .t-hang { justify-content: flex-start; }
+  /* the books' line is the tap that opens the row: the column's width, from the row's top edge to the title */
+  .t-row .t-hang { width: 100%; padding: 10px 0 6px; margin: -10px 0 0; }
+  .t-bk .t-hang { margin-bottom: 8px; }
+  .t-bt { padding-top: 0; }
+  .t-d { position: static; width: auto; visibility: visible; display: none; padding: 0 0 18px; }
+  .t-c.on .t-d { display: block; }
+  .t-pc { display: none; }
+  .t-pt { margin-top: 4px; }
+  .t-all { margin-top: 6px; }
+  .t-all .k, .t-bl .k { display: inline-flex; align-items: center; min-height: 44px; }
+  .t-bl { margin-top: -6px; }
+  .t-bl .k + .k { margin-left: 18px; }
+  .t-lab2 { margin-top: 40px; scroll-margin-top: 56px; }
+  #inner .t-sec :is(button, a) { scroll-margin-top: 60px; }
+  /* (without script every plate is open under its row, and no point is shown) */
+  html:not(.js) .t-d { display: block; }
+  html:not(.js) #inner .t-c0 .t-ti::before { opacity: 0; }
+}
+/* a touch leaves :hover behind after a tap; there only the open row keeps the point */
+@media (hover: none) {
+  #inner :is(.t-ti, .t-bn).hpoint:hover::before { opacity: 0; }
+  #inner .t-c.on .t-ti.hpoint::before { opacity: 1; }
+  #inner .t-bk.on .t-bn.hpoint::before { opacity: 1; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .t-ar { transition: none; }
+}

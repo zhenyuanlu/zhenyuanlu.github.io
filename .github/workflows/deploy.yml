@@ -1,5 +1,8 @@
 # .github/workflows/deploy.yml
-name: Deploy Jekyll site to GitHub Pages
+# Builds and checks the Astro site on every push and pull request to main; deploys to GitHub Pages only from main.
+# Each action is pinned to the commit SHA of a release, with that release's tag in a comment beside it; to update one,
+# read the new release's SHA on its GitHub releases page and change both together.
+name: Deploy the site to GitHub Pages
 
 on:
   push:
@@ -8,108 +11,79 @@ on:
     branches: ["main"]
   workflow_dispatch:
 
-# Sets permissions of the GITHUB_TOKEN to allow deployment to GitHub Pages
+# By default the GITHUB_TOKEN may only read the repository; the deploy job alone may publish to Pages
 permissions:
   contents: read
-  pages: write
-  id-token: write
-  actions: read
 
-# Allow only one concurrent deployment, skipping runs queued between the run in-progress and latest queued.
+# One run of main at a time, its build and its deploy together, so the last push is the last deployed; a newer push
+# waiting replaces an older one waiting, and a run in progress is never cancelled. Each pull request, and a manual run
+# on any other branch, builds in a group of its own and never waits on, or replaces, a deployment. (The group is the
+# whole run's: a job of the run in the same group would deadlock with it.)
 concurrency:
-  group: "pages"
+  group: ${{ github.event_name == 'pull_request' && format('pr-{0}', github.event.pull_request.number) || (github.ref == 'refs/heads/main' && 'pages' || format('ref-{0}', github.ref)) }}
   cancel-in-progress: false
 
 jobs:
-  # Build job
   build:
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
-        
-      - name: Setup Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: '20'
-          cache: 'npm'
-          
-      - name: Setup Ruby
-        uses: ruby/setup-ruby@v1
-        with:
-          ruby-version: '3.3'
-          bundler-cache: true
-          
-      - name: Setup Pages
-        id: pages
-        uses: actions/configure-pages@v5
-        
-      - name: Install Node.js dependencies
-        run: npm ci
-          
-      - name: Build CSS with Tailwind
-        run: |
-          echo "Building CSS..."
-          npm run build:css
-          ls -la assets/css/
-          
-      - name: Build JavaScript files
-        run: |
-          echo "Building JavaScript..."
-          npm run build:js
-          ls -la assets/js/
-          
-      - name: Generate thumbnails (optional)
-        run: |
-          echo "Generating thumbnails..."
-          npm run build:thumbnails || echo "Thumbnail generation failed, continuing..."
-          
-      - name: Verify built assets exist
-        run: |
-          echo "=== Verifying CSS files ==="
-          find assets/css -name "*.css" -type f -ls || echo "No CSS files found"
-          echo "=== Verifying JS files ==="
-          find assets/js -name "*.min.js" -type f -ls || echo "No minified JS files found"
-          echo "=== CSS Content Preview ==="
-          head -20 assets/css/styles.css || echo "Cannot preview CSS"
-          echo "=== JS File Sizes ==="
-          du -h assets/js/*.min.js || echo "Cannot check JS sizes"
-          
-      - name: Build with Jekyll
-        run: |
-          echo "Building with Jekyll..."
-          JEKYLL_ENV=production bundle exec jekyll build --baseurl "${{ steps.pages.outputs.base_path }}"
-        env:
-          JEKYLL_ENV: production
-          
-      - name: Verify Jekyll output
-        run: |
-          echo "=== Jekyll build verification ==="
-          ls -la _site/
-          echo "=== Checking assets in _site ==="
-          ls -la _site/assets/ || echo "No assets directory in _site"
-          ls -la _site/assets/css/ || echo "No CSS in _site"
-          ls -la _site/assets/js/ || echo "No JS in _site"
-          echo "=== Checking specific files ==="
-          ls -la _site/assets/css/styles.css || echo "styles.css not found in _site"
-          ls -la _site/assets/js/alpine.min.js || echo "alpine.min.js not found in _site"
-          echo "=== Sample HTML check ==="
-          head -50 _site/index.html || echo "Cannot preview index.html"
-          
-      - name: Upload artifact
-        uses: actions/upload-pages-artifact@v3
-        with:
-          path: _site
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4.4.0
 
-  # Deployment job
+      - name: Setup Node.js (the version in .nvmrc)
+        uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4.4.0
+        with:
+          node-version-file: ".nvmrc"
+          cache: "npm"
+
+      - name: Install the packages the lockfile pins
+        run: npm ci
+
+      # the picture files made before, so a deploy that changes no picture makes none (every picture of the site is
+      # some 7-10 min of AVIF at effort 6 on a 4-core runner). Astro names each file by its source and its transform;
+      # what it does not name is in the key: the step each file is made at (image-choices.json), the encoders
+      # (src/lib/picture*.mjs, likeness*.mjs, image-service.mjs) and sharp's version (package-lock.json). An exact key,
+      # no restore-keys: any change to those (a new picture or width among them) starts from nothing, all of it again,
+      # never from files made the old way. After npm ci, which empties
+      # node_modules; a run restores only its own branch's caches or main's, so a pull request's never reaches main
+      - name: Restore the picture files made before
+        uses: actions/cache@55cc8345863c7cc4c66a329aec7e433d2d1c52a9 # v6.1.0
+        with:
+          path: node_modules/.astro/assets
+          key: astro-images-${{ runner.os }}-${{ hashFiles('src/lib/image-choices.json', 'src/lib/picture*.mjs', 'src/lib/likeness*.mjs', 'src/lib/image-service.mjs', 'package-lock.json') }}
+
+      - name: Audit the packages the site runs on (fails on high or critical, not on low; the build's own tools aside)
+        run: npm audit --omit=dev --audit-level=high
+
+      - name: Check and build (astro check, a clean build into dist/, then the links, HTML, CSP and structured data)
+        run: npm run check
+        # ZL_BUDGET=strict: a page over its speed budget fails the deploy (scripts/check-budget.mjs; a local npm run check
+        # fails too), and no picture is measured here: each one's encoding comes from src/lib/image-choices.json
+        env:
+          ZL_BUDGET: strict
+
+      - name: Upload the built site
+        uses: actions/upload-pages-artifact@56afc609e74202658d3ffba0e8f6dda462b719fa # v3.0.1
+        with:
+          path: dist
+
   deploy:
     if: github.ref == 'refs/heads/main'
+    needs: build
+    runs-on: ubuntu-latest
+    # (one at a time: the run's own concurrency, above)
+    permissions:
+      pages: write
+      id-token: write
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
-    runs-on: ubuntu-latest
-    needs: build
     steps:
+      - name: Setup Pages
+        uses: actions/configure-pages@983d7736d9b0ae728b81ab479565c72886d7745b # v5.0.0
+
       - name: Deploy to GitHub Pages
         id: deployment
-        uses: actions/deploy-pages@v4
+        uses: actions/deploy-pages@d6db90164ac5ed86f2b6aed7e0febac5b3c0c03e # v4.0.5

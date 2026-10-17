@@ -1,0 +1,5 @@
+{
+  "base": "/preview/v3/",
+  "out": "../preview/v3",
+  "url": "http://this-machine.local/preview/v3/"
+}
