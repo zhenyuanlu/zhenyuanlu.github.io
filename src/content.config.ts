@@ -97,10 +97,10 @@ const site = defineCollection({
     // the home: blink, the traveller on the road blinks now and then while he stands
     home: z.strictObject({ blink: z.boolean().default(true) }).default({ blink: true }),
     // the visitor stats: Google Analytics 4's measurement id (G- and its letters and figures), on the real site's pages
-    // only (components/DocHead.astro); none: no tag on any page (README.md, "Analytics")
+    // only (components/DocHead.astro); none: no tag on any page (DEVELOPMENT.md, "Analytics")
     analytics: z.strictObject({
       ga4: z.string().regex(/^G-[A-Z0-9]{4,12}$/, 'a GA4 measurement id: G- and its letters and figures'),
-      // Search Console's verification tag's content, or empty (README.md, "Analytics")
+      // Search Console's verification tag's content, or empty (DEVELOPMENT.md, "Analytics")
       verify: z.union([z.literal(''), z.string().regex(/^[A-Za-z0-9_-]{10,100}$/, "the content of Search Console's HTML tag")]).default(''),
     }).optional(),
   }).superRefine((s, ctx) => {

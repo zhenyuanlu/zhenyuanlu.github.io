@@ -18,7 +18,7 @@ export const CSP_DIRECTIVES = [
   "base-uri 'self'",
   "form-action 'none'",
 ];
-// The visitor stats (Google Analytics 4, gtag.js; the owner's decision, 2026-10-16: README.md, "Analytics"), on the
+// The visitor stats (Google Analytics 4, gtag.js; the owner's decision, 2026-10-16: DEVELOPMENT.md, "Analytics"), on the
 // real site's pages where content/site.yaml names its measurement id: the one other origin a page loads a script from
 // (DocHead adds it to script-src), and the hosts its counts go to (connect-src: its requests and beacons; img-src:
 // the pixel it falls back to). Nothing broader; scripts/check-dist.mjs and check-budget.mjs allow these alone, and

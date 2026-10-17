@@ -17,7 +17,7 @@
 //   origin   a page asks another origin for anything: a script, a stylesheet, a font, a picture, a frame, a
 //            connection. One exception, by name: the visitor stats' tag (GA4's gtag.js, async, from
 //            www.googletagmanager.com: integrations/csp.mjs GA_SCRIPT), whose bytes are Google's, not the build's, so
-//            they are not in the page's numbers and are said on a line of their own (README.md, "Analytics")
+//            they are not in the page's numbers and are said on a line of their own (DEVELOPMENT.md, "Analytics")
 //   cap      a picture is wider than the most its place can show: its slot (sizes, or its width) on the screens the
 //            build makes pictures for (lib/picture.mjs SCREENS: a desk at up to 2x, the big-screen mode's among them, a
 //            tablet at 2x, a phone at up to 3x), past the srcset's file for that; a srcset's file at the picture's own width excepted (the picture
@@ -25,7 +25,7 @@
 //   preload  a module a page's scripts import is not preloaded (src/integrations/modulepreload.mjs)
 //   rules    a page of the site (one with its CSP) has no speculation rules, or more than one, or rules that do not
 //            parse or prerender nothing, or whose hash its CSP's script-src does not name
-// node scripts/check-budget.mjs [dir] [base]   (ZL_BUDGET=warn: an overrun is listed, not failed on; README.md,
+// node scripts/check-budget.mjs [dir] [base]   (ZL_BUDGET=warn: an overrun is listed, not failed on; DEVELOPMENT.md,
 // "Speed budget", says how a budget is raised, and when)
 import fs from 'node:fs';
 import path from 'node:path';
@@ -284,7 +284,7 @@ if (errors.length) {
   errors.forEach((e) => console.error('  ' + e));
 }
 /* (the visitor stats on a line of their own: gtag.js is Google's file, its size Google's to change, so it is not
-   in the pages' numbers; the round measured it in the browser: README.md, "Analytics") */
+   in the pages' numbers; the round measured it in the browser: DEVELOPMENT.md, "Analytics") */
 const gaN = pages.filter((p) => p.ga).length;
 const gaIds = walk(DIST).filter((f) => f.endsWith('.html') && /<meta name="zl-ga4"/.test(fs.readFileSync(f, 'utf8'))).length;
 console.log(gaIds || gaN ? `\nvisitor stats: GA4's gtag.js (from www.googletagmanager.com, Google's file: not in the numbers above), its static tag on ${gaN} page${gaN === 1 ? '' : 's'} (the home's, for Search Console), added once the page has loaded on the other ${gaIds - gaN}; a request a page more, and its counts'` : '\nvisitor stats: none in this build');

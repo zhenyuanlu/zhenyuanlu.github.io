@@ -27,7 +27,7 @@ const SLOT = { text: 632, wide: 714, full: 960, see: 304 };
    not: where it stays off (Safari, and any browser whose zoom early.js's probe does not trust; a touch desktop;
    ?wide=off) a picture is drawn at the plain page's slot from the mode's larger file (a cover at 2560 x 1440: a file
    for 1440px drawn at 960px). More bytes there, the same look, never a picture short of its pixels (the review,
-   2026-10-17; README.md, "Add a picture") */
+   2026-10-17; DEVELOPMENT.md, "Add a picture") */
 export const WIDE = [
   { k: 1.5, minW: 2400, minH: 1290, wide: 1073, full: 1440, see: 462 },
   { k: 1.375, minW: 2200, minH: 1182.5, wide: 983, full: 1320, see: 422 },

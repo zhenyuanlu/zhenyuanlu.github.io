@@ -2,7 +2,7 @@
 title: {{title}}
 description: One sentence that says what this post is about.
 date: {{date}}
-# Every line below is optional: take out the # to use one (README.md, "Write a post", says what each does; the
+# Every line below is optional: take out the # to use one (DEVELOPMENT.md, "Write a post", says what each does; the
 # format guide, /blog/format-guide/ under npm run dev, shows every part of a post).
 # updated: {{date}}                    # the day it was last changed
 authors:
