@@ -1,5 +1,5 @@
 // The visitor stats (the owner's decision, 2026-10-16): Google Analytics 4, as the old site counted them, with its
-// measurement id (content/site.yaml analytics.ga4; README.md, "Analytics"), which the head carries on every page of
+// measurement id (content/site.yaml analytics.ga4; DEVELOPMENT.md, "Analytics"), which the head carries on every page of
 // the real site (meta zl-ga4: components/DocHead.astro). The home also carries gtag.js's own tag, static, where
 // Google Search Console looks for it (asked for at low priority); every other page adds gtag.js itself once it has
 // loaded and the browser has an idle moment, so Google's 165 KB, and the ~200ms a phone takes to run it, never come

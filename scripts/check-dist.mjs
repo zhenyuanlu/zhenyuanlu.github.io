@@ -10,7 +10,7 @@
 //            AVIF <img> left unmade into its <source>; a frame's image-set() ending in its own picture; no <picture>
 //            without a <source>, no figure of more than one <img>, no "data" attribute without its hyphens.
 //            ZL_DRAFTS=1 (a build with its drafts, to check them too): the drafts' rule under files is not for it
-//   html     every page valid (html-validate, its recommended rules; README.md says what .htmlvalidate.json relaxes, and why)
+//   html     every page valid (html-validate, its recommended rules; DEVELOPMENT.md says what .htmlvalidate.json relaxes, and why)
 //   csp      the Content-Security-Policy is the head's first element after the charset, and its hashes are exactly
 //            those of the page's own inline scripts (the light's, and the speculation rules'): none missing, none
 //            that matches nothing; no other origin in it but the visitor stats' own, on a page that carries their id
@@ -359,7 +359,7 @@ for (const page of pages.values()) {
   }
 }
 
-// ---- the visitor stats (GA4; the owner's decision, 2026-10-16: README.md, "Analytics"). In the real site's build
+// ---- the visitor stats (GA4; the owner's decision, 2026-10-16: DEVELOPMENT.md, "Analytics"). In the real site's build
 // (base /), with content/site.yaml's measurement id: every page of the site carries the id (meta zl-ga4) and our
 // loader (scripts/ga.js, a module that adds gtag.js once the page has loaded); the home alone has gtag.js's own tag,
 // once, static and async in its head, where Search Console looks for it, or, with analytics.verify set, Search
