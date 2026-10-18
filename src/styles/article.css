@@ -8,7 +8,7 @@
    Type (taste items 1 and 3): five sizes, far enough apart: 13 the small words (the head's lines, tags, the rail, a
    code's head, a note's number), 15 what is small in the text (captions, cards, code, tables, references, the foot's
    titles on a desk), 18 the text and a neighbour's title, 22 the headings and the dek, 42 the title (30 past 60
-   letters); a phone 13 / 15 / 17 / 20 / 31 (24). Nothing under 13px.
+   letters); a phone 13 / 15 / 17 / 20 / 31 (24; 22 under 375px wide, 20 under 360). Nothing under 13px.
    Colour (items 15, 17, 18): the accent has one job, a clickable word in the text (links, citation and footnote
    marks), and those links keep an underline at rest so they read without it; panels (cards, code, the folded
    contents, the share menu, a call-out) are one tone step off the paper, --surface, with no hairline and no shadow.
@@ -55,7 +55,13 @@
 #inner .w-body > .a-brk + h2 { margin-top: 0; }
 .w-body :is(strong, em) { font-weight: 500; font-style: normal; }
 .w-body a, #inner .w-cap a { color: var(--accent); }
-.w-body a:hover, .w-body a:focus-visible, #inner .w-cap a:hover, #inner .w-cap a:focus-visible { color: var(--ink); }
+/* (in hand only where a pointer can rest: a finger's tap leaves :hover on what it touched until it touches
+   something else, in every touch browser, so a phone kept a link, a mark, a word or an arrow in hand after the tap
+   (the phone audit, 2026-10-17). A mouse or a trackpad hovers, so a desk keeps each :hover rule of this sheet as it
+   was and in its place; the keyboard's focus and every state (chosen, open, pressed, copied, current) keep their
+   own. As frame.css's) */
+@media (hover: hover) { .w-body a:hover, #inner .w-cap a:hover { color: var(--ink); } }
+.w-body a:focus-visible, #inner .w-cap a:focus-visible { color: var(--ink); }
 .w-body code { font-family: var(--mono); font-size: .84em; line-height: 1; }
 .w-cap { font-size: 15px; line-height: 23px; color: var(--grey); }
 #inner .w-body > .w-fig { margin-top: 32px; }
@@ -88,7 +94,8 @@ ol.w-ls li::before { counter-increment: w-n; content: counter(w-n) "."; }
 .w-pn { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: var(--gut); margin-top: 96px; }
 .w-pn a { display: block; padding: 6px 0; }
 .w-pn .lab { display: block; transition: color var(--t-hover) var(--ease-out); }
-.w-pn a:hover .lab, .w-pn a:focus-visible .lab { color: var(--ink); }
+@media (hover: hover) { .w-pn a:hover .lab { color: var(--ink); } }   /* (only where a pointer rests, as the text's links) */
+.w-pn a:focus-visible .lab { color: var(--ink); }
 /* (focus: the label and the title take the ink, and a line stands under the title: no box) */
 #inner .w-pn a:focus-visible { outline: none; text-decoration-line: none; }
 #inner .w-pn a:focus-visible .w-pt { text-decoration: underline 1px var(--focus); text-underline-offset: .22em; }
@@ -109,7 +116,15 @@ ol.w-ls li::before { counter-increment: w-n; content: counter(w-n) "."; }
   .w-pn a { padding: 10px 0; }
   .w-next { margin-top: 16px; }
   .w-pt { font-size: 17px; line-height: 25px; }
+  /* code in the small words of the text's tables, captions and asides keeps to the floor: 13px, not .84em of their
+     15 (12.6, a size of its own); a code block there keeps its 15, as code in a card or the foot does (it is no .84em
+     there, outside the text) */
+  #inner .a-art .w-body :is(.w-tbl, .w-cap, .a-aside) :not(pre) > code { font-size: 13px; }
 }
+/* a long title on a narrow phone (the draft v2t's, write.css): 22 / 29 under 375px wide, 20 / 26 under 360, so it
+   keeps three lines there (the lateral-flow post its four); no new size, 22 stands for the 24 and 20 is the h2's */
+@media (max-width: 374.98px) { .w-h.w-long { font-size: 22px; line-height: 29px; } }
+@media (max-width: 359.98px) { .w-h.w-long { font-size: 20px; line-height: 26px; } }
 /* (at night a figure stands as it is, as every picture does: no dimming, taste item 24) */
 
 /* ---------- the article's frame: the grid, the head, the byline, share ---------- */
@@ -130,8 +145,9 @@ ol.w-ls li::before { counter-increment: w-n; content: counter(w-n) "."; }
 .a-bka { display: inline-flex; align-items: center; font-size: 22px; line-height: 1; transition: transform var(--t-press) steps(2); }
 .a-bkw { position: relative; display: block; }
 .a-bkw > :is(svg, canvas) { display: block; }
-#inner .a-bk2:is(:hover, :focus-visible) { color: var(--ink); }
-#inner .a-bk2:is(:hover, :focus-visible) .a-bka { transform: translateX(-3px); }
+@media (hover: hover) { #inner .a-bk2:hover { color: var(--ink); } #inner .a-bk2:hover .a-bka { transform: translateX(-3px); } }   /* (only where a pointer rests) */
+#inner .a-bk2:focus-visible { color: var(--ink); }
+#inner .a-bk2:focus-visible .a-bka { transform: translateX(-3px); }
 /* (focus: a line under the word, the fader's own mark of it, never a box) */
 #inner .a-bk2:focus-visible { outline: none; text-decoration-line: none; }
 #inner .a-bk2:focus-visible::after { content: ""; position: absolute; left: 0; right: 0; bottom: 5px; height: 1px; background: var(--ink); }
@@ -163,7 +179,8 @@ ol.w-ls li::before { counter-increment: w-n; content: counter(w-n) "."; }
 #inner .a-meta .a-doi { color: var(--accent); overflow-wrap: anywhere; text-decoration-line: underline; text-decoration-thickness: 1px;
   text-underline-offset: .18em; text-decoration-color: color-mix(in srgb, currentColor 45%, transparent);
   transition: color var(--t-hover) var(--ease-out), text-decoration-color var(--t-hover) var(--ease-out); }
-#inner .a-meta .a-doi:is(:hover, :focus-visible) { color: var(--ink); text-decoration-color: currentColor; }
+@media (hover: hover) { #inner .a-meta .a-doi:hover { color: var(--ink); text-decoration-color: currentColor; } }   /* (only where a pointer rests) */
+#inner .a-meta .a-doi:focus-visible { color: var(--ink); text-decoration-color: currentColor; }
 #inner .a-meta .a-doi:focus-visible { outline: none; text-decoration-thickness: 2px; }
 #inner .a-meta .a-tg { margin-top: 3px; }
 /* the share: one button, its pixel sign and its word; its menu: words on the surface, no line round it, no shadow,
@@ -173,24 +190,28 @@ ol.w-ls li::before { counter-increment: w-n; content: counter(w-n) "."; }
 #inner .a-meta > .a-share { display: block; position: relative; z-index: 12; grid-column: 12 / 13; justify-self: end; margin-top: 18px; font-size: 13px; line-height: 20px; }
 html:not(.js) #inner .a-meta > .a-share { display: none; }
 #inner .a-sh { display: inline-flex; align-items: center; gap: 7px; min-height: 32px; color: var(--grey); white-space: nowrap; transition: color var(--t-hover) var(--ease-out); }
-#inner .a-sh:is(:hover, :focus-visible), #inner .a-sh[aria-expanded="true"] { color: var(--ink); }
+@media (hover: hover) { #inner .a-sh:hover { color: var(--ink); } }   /* (only where a pointer rests) */
+#inner .a-sh:focus-visible, #inner .a-sh[aria-expanded="true"] { color: var(--ink); }
 #inner .a-sh:focus-visible { outline: none; text-decoration-line: none; box-shadow: inset 0 -1px 0 var(--ink); }
 #inner .a-art .a-copied, #inner .a-art .a-copied:hover { color: var(--ink); }
 .a-shm { position: absolute; right: -13px; top: calc(100% + 2px); min-width: 152px; padding: 5px 0; background: var(--surface); }
 .a-shm[hidden] { display: none; }
 #inner .a-shm ul { margin: 0; padding: 0; list-style: none; }
 #inner .a-shi { display: block; width: 100%; box-sizing: border-box; padding: 6px 12px; text-align: left; color: var(--grey); white-space: nowrap; transition: color var(--t-hover) var(--ease-out), background-color var(--t-hover) var(--ease-out); }
-#inner .a-shi:is(:hover, :focus-visible) { color: var(--ink); }
+@media (hover: hover) { #inner .a-shi:hover { color: var(--ink); } }   /* (only where a pointer rests) */
+#inner .a-shi:focus-visible { color: var(--ink); }
 #inner .a-shi:focus-visible { outline: none; text-decoration-line: none; background-color: color-mix(in srgb, var(--ink) 8%, var(--surface)); }
 /* the post's own links under the byline (the paper, its PDF, the code, the slides): the build page's action links, a
    small pixel sign and its word, in ink at rest and in the accent in hand, never underlined */
 #inner .a-head > .a-lk { margin-top: 14px; }
 #inner .a-lk .k { display: inline-flex; align-items: center; gap: 6px; white-space: nowrap; color: var(--ink); }
-#inner .a-lk .k:is(:hover, :focus-visible) { color: var(--accent); }
+@media (hover: hover) { #inner .a-lk .k:hover { color: var(--accent); } }   /* (only where a pointer rests) */
+#inner .a-lk .k:focus-visible { color: var(--accent); }
 #inner .a-lk .k:focus-visible { outline: none; text-decoration-line: none; box-shadow: inset 0 -1px 0 currentColor; }
 /* the article's links: the accent at rest, ink in hand */
 #inner .a-art :is(.w-body, .a-foot, .a-card) a { color: var(--accent); }
-#inner .a-art :is(.w-body, .a-foot, .a-card) a:is(:hover, :focus-visible) { color: var(--ink); }
+@media (hover: hover) { #inner .a-art :is(.w-body, .a-foot, .a-card) a:hover { color: var(--ink); } }   /* (only where a pointer rests) */
+#inner .a-art :is(.w-body, .a-foot, .a-card) a:focus-visible { color: var(--ink); }
 /* (item 15) a link in the text keeps a 1px line at rest, set under the letters in half its own colour; in hand the
    word and its line take the ink, and the keyboard's focus makes the line 2px. Nothing appears in hand that was not
    there: no underline is ever added on hover */
@@ -199,8 +220,12 @@ html:not(.js) #inner .a-meta > .a-share { display: none; }
   text-decoration-line: underline; text-decoration-thickness: 1px; text-underline-offset: .18em;
   text-decoration-color: color-mix(in srgb, currentColor 45%, transparent);
   transition: color var(--t-hover) var(--ease-out), text-decoration-color var(--t-hover) var(--ease-out); }
-#inner .a-art :is(.w-body, .a-foot, .a-card) a:not(.a-hl, .a-back):is(:hover, :focus-visible),
-#inner .w-art .w-body a:not(.a-hl, .a-back):is(:hover, :focus-visible), #inner .w-cap a:is(:hover, :focus-visible) {
+@media (hover: hover) {   /* (only where a pointer rests) */
+  #inner .a-art :is(.w-body, .a-foot, .a-card) a:not(.a-hl, .a-back):hover,
+  #inner .w-art .w-body a:not(.a-hl, .a-back):hover, #inner .w-cap a:hover { text-decoration-line: underline; text-decoration-color: currentColor; }
+}
+#inner .a-art :is(.w-body, .a-foot, .a-card) a:not(.a-hl, .a-back):focus-visible,
+#inner .w-art .w-body a:not(.a-hl, .a-back):focus-visible, #inner .w-cap a:focus-visible {
   text-decoration-line: underline; text-decoration-color: currentColor; }
 #inner .a-art :is(.w-body, .a-foot, .a-card) a:not(.a-hl, .a-back):focus-visible,
 #inner .w-art .w-body a:not(.a-hl, .a-back):focus-visible, #inner .w-cap a:focus-visible { outline: none; text-decoration-thickness: 2px; }
@@ -210,13 +235,14 @@ html:not(.js) #inner .a-meta > .a-share { display: none; }
 #inner .a-art :is(.w-body, .a-foot, .a-card, .w-cap) :is(.a-cite, .a-fm) a:not(.a-hl, .a-back):is(:hover, :focus-visible) { text-decoration-line: none; }
 #inner .a-art :is(.w-body, .a-foot, .a-card, .w-cap) :is(.a-cite, .a-fm) a:not(.a-hl, .a-back):focus-visible { outline: none; background: var(--surface); }
 #inner .a-art .w-body .a-hl, #inner .a-art .a-foot .a-back { color: var(--grey); }
-#inner .a-art .w-body .a-hl:hover, #inner .a-art .a-foot .a-back:is(:hover, :focus-visible) { color: var(--ink); }
+@media (hover: hover) { #inner .a-art .w-body .a-hl:hover, #inner .a-art .a-foot .a-back:hover { color: var(--ink); } }   /* (only where a pointer rests) */
+#inner .a-art .a-foot .a-back:focus-visible { color: var(--ink); }
 #inner .a-art .a-foot .a-back:focus-visible { outline: none; text-decoration-line: none; box-shadow: inset 0 -1px 0 currentColor; }
 #inner .a-art [tabindex="-1"]:focus { outline: none; }
 /* a heading's own link: a small grey mark after it, shown in hand (the pointer's only: it is no keyboard stop,
    aria-hidden and tabindex -1, plugins/remark-dialect.mjs) */
 .a-hl { display: inline-block; margin-left: 8px; padding: 0 4px; font-size: 13px; font-weight: 400; opacity: 0; transition: opacity var(--t-hover) var(--ease-out), color var(--t-hover) var(--ease-out); }
-.w-body :is(h2, h3, h4, h5):hover .a-hl { opacity: 1; }
+@media (hover: hover) { .w-body :is(h2, h3, h4, h5):hover .a-hl { opacity: 1; } }
 @media (hover: none) { .a-hl { display: none; } }
 .w-body :is(h2, h3, h4, h5) { scroll-margin-top: var(--a-top); }
 :is(.w-fig, .a-eq, .a-tfig, .w-cover)[id] { scroll-margin-top: var(--a-top); }
@@ -228,7 +254,8 @@ html:not(.js) #inner .a-meta > .a-share { display: none; }
 #inner .a-tl li + li { margin-top: 6px; }
 .a-tl .a-t3 { padding-left: 12px; }
 #inner .a-te { display: inline-block; color: var(--grey); --pt-y: 10px; }
-#inner .a-te:is(:hover, :focus-visible) { color: var(--ink); }
+@media (hover: hover) { #inner .a-te:hover { color: var(--ink); } }   /* (only where a pointer rests) */
+#inner .a-te:focus-visible { color: var(--ink); }
 #inner .a-te:focus-visible { outline: none; text-decoration-line: none; }   /* (the point shows: frame.css .hpoint) */
 #inner .a-te[aria-current] { color: var(--ink); }
 #inner .a-te[aria-current].hpoint::before { opacity: 1; background: var(--ink); }
@@ -240,7 +267,7 @@ html:not(.js) #inner .a-meta > .a-share { display: none; }
 .a-tocf > summary::-webkit-details-marker { display: none; }
 .a-tocf > summary::after { content: "+"; font-size: 15px; }
 .a-tocf[open] > summary::after { content: "\2013"; }
-.a-tocf > summary:hover { color: var(--ink); }
+@media (hover: hover) { .a-tocf > summary:hover { color: var(--ink); } }   /* (only where a pointer rests) */
 #inner .a-tocf > summary:focus-visible { outline: none; text-decoration-line: none; color: var(--ink); box-shadow: inset 0 -1px 0 var(--ink); }
 .a-tocf .a-tl { padding: 0 0 14px; }
 #inner .a-tocf .a-te { padding: 4px 0; }
@@ -270,7 +297,8 @@ html:not(.js) #inner .a-meta > .a-share { display: none; }
 /* (in a caption's grey the accent is as light as the words round it: there a mark is told from them by its weight too) */
 #inner .w-cap :is(.a-cite, .a-fm) a { font-weight: 500; }
 #inner .a-art .w-body .a-cite a, #inner .a-art .w-cap .a-cite a { color: var(--accent); }
-#inner .a-art .a-cite a:is(:hover, :focus-visible) { color: var(--ink); }
+@media (hover: hover) { #inner .a-art .a-cite a:hover { color: var(--ink); } }   /* (only where a pointer rests) */
+#inner .a-art .a-cite a:focus-visible { color: var(--ink); }
 .a-card { position: absolute; z-index: 10; width: min(360px, 100%); box-sizing: border-box; padding: 12px 16px 13px; background: var(--surface);
   font-size: 15px; line-height: 23px; color: var(--grey); }
 .a-card[hidden] { display: none; }
@@ -288,7 +316,8 @@ html:not(.js) #inner .a-meta > .a-share { display: none; }
 /* footnotes: a raised number in the accent, 13px wherever it stands */
 .a-fm { font-size: 13px; line-height: 0; vertical-align: .55em; }
 #inner .a-art .a-fm a { color: var(--accent); padding: 0 1px; }
-#inner .a-art .a-fm a:is(:hover, :focus-visible) { color: var(--ink); }
+@media (hover: hover) { #inner .a-art .a-fm a:hover { color: var(--ink); } }   /* (only where a pointer rests) */
+#inner .a-art .a-fm a:focus-visible { color: var(--ink); }
 /* asides: a quiet block a step in; call-outs: a panel of the surface's tone with its small grey label */
 .a-aside { padding-left: 20px; font-size: 15px; line-height: 24px; color: var(--grey); }
 #inner .a-aside > * + * { margin-top: 8px; }
@@ -311,7 +340,8 @@ html:not(.js) #inner .a-meta > .a-share { display: none; }
 .a-code { padding: 0 16px 12px; background: var(--surface); }
 .a-code-h { display: flex; align-items: center; justify-content: space-between; height: 34px; font-size: 13px; line-height: 18px; color: var(--grey); }
 #inner .a-copy { padding: 8px 0 8px 12px; margin: -8px 0; color: var(--grey); }
-#inner .a-copy:is(:hover, :focus-visible) { color: var(--ink); }
+@media (hover: hover) { #inner .a-copy:hover { color: var(--ink); } }   /* (only where a pointer rests) */
+#inner .a-copy:focus-visible { color: var(--ink); }
 #inner .a-copy:focus-visible { outline: none; text-decoration: underline 1px currentColor; text-underline-offset: .25em; }
 #inner .a-copy[hidden] { display: none; }
 .a-ln { display: block; }
@@ -327,7 +357,8 @@ html:not(.js) #inner .a-meta > .a-share { display: none; }
 .a-live-k[hidden] { display: none; }
 #inner .a-play { display: inline-flex; align-items: center; gap: 7px; min-height: 36px; color: var(--grey); }
 #inner .a-play[hidden] { display: none; }
-#inner .a-play:is(:hover, :focus-visible), #inner .a-play[aria-pressed="true"] { color: var(--ink); }
+@media (hover: hover) { #inner .a-play:hover { color: var(--ink); } }   /* (only where a pointer rests) */
+#inner .a-play:focus-visible, #inner .a-play[aria-pressed="true"] { color: var(--ink); }
 #inner .a-play:focus-visible { outline: none; text-decoration-line: none; box-shadow: inset 0 -1px 0 currentColor; }
 .a-play .a-pa, :is(.a-live, .a-anim).a-on .a-play .a-pl { display: none; }
 :is(.a-live, .a-anim).a-on .a-play .a-pa { display: block; }
@@ -393,7 +424,9 @@ html:not(.js) #inner .a-meta > .a-share { display: none; }
   #inner .a-foot > section + section { margin-top: 40px; }
 }
 @media (max-width: 999px) {
-  .a-art { --a-meas: 100%; }
+  /* (a place in the text, from the contents or a link, lands 72px down, 25 under the header: the scroll padding's 60
+     and 12, not the desk's 92) */
+  .a-art { --a-meas: 100%; --a-top: 12px; }
   .a-head { padding-top: 13px; }
   .a-head .w-h { margin-top: 22px; }
   #inner .a-head > .a-desc { margin-top: 12px; font-size: 20px; line-height: 28px; }
@@ -411,6 +444,10 @@ html:not(.js) #inner .a-meta > .a-share { display: none; }
   #inner .a-lk { column-gap: 18px; }
   #inner .a-lk .k { min-height: 44px; margin-top: -12px; margin-bottom: -12px; }
   .a-rail { display: none; }
+  /* the folded contents: each entry a row as wide as the panel and 36px tall, the rows touching, its point level
+     with its words */
+  #inner .a-tocf .a-te { display: block; padding: 8px 0; --pt-y: 18px; }
+  #inner .a-tocf .a-tl li + li { margin-top: 0; }
   #inner .a-art > .w-cover, #inner .a-main > .w-cover { margin-top: 28px; }
   .a-art .a-wide, .a-art .a-full { width: auto; }
   .a-aside { font-size: 15px; line-height: 23px; }
@@ -418,6 +455,24 @@ html:not(.js) #inner .a-meta > .a-share { display: none; }
   .a-eq.a-eqn { grid-template-columns: 2em minmax(0, 1fr) 2em; }
   .a-foot { margin-top: 56px; }
   .a-bka { font-size: 20px; }
+}
+/* a finger's targets on a phone (pointer: coarse), larger than they are drawn: a padding a margin takes back, so no
+   line grows and nothing moves but a reference's letters, set further apart */
+@media (max-width: 999px) and (pointer: coarse) {
+  /* a citation's or a footnote's mark: 10px over and under, 3px at each side (9 x 18 drawn); the keyboard's tone
+     under it stays the mark's own size */
+  #inner .a-art .a-cite a.a-cm { padding: 10px 3px; margin: -10px -3px; }
+  #inner .a-art .a-fm a { padding: 10px 3px; margin: -10px -2px; }
+  #inner .a-art :is(.w-body, .a-foot, .a-card, .w-cap) :is(.a-cite, .a-fm) a:not(.a-hl, .a-back):focus-visible { background-clip: content-box; }
+  /* a reference's letters back to the text (a b c): 6px over and under, 5 at each side, and 6px more between them
+     (27-29px apart, not 17-19) */
+  #inner .a-art .a-bk .a-back { padding: 6px 5px; margin: -6px 0; }
+  #inner .a-art .a-bk .a-back + .a-back { margin-left: 6px; }
+  /* copy: 45 x 44, its word where it was */
+  #inner .a-copy { padding: 13px 0 13px 16px; margin: -13px 0; }
+  /* a live figure's slider: its thumb taken by 27px, the dot it draws still 11px */
+  .a-ctl input[type="range"]::-webkit-slider-thumb { box-sizing: content-box; border: 8px solid transparent; background-clip: content-box; margin-top: -13px; }
+  .a-ctl input[type="range"]::-moz-range-thumb { box-sizing: content-box; border: 8px solid transparent; background-clip: content-box; }
 }
 @media (forced-colors: active) { :is(.a-card, .a-shm, .a-code, .a-call, .a-tocf) { border: 1px solid CanvasText; } }
 /* the screen's ratio for the pictures' size, where no script measures it (scripts/article.js sets the exact one):

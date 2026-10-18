@@ -27,6 +27,7 @@ function setup(art) {
   let wides = [];
   function measures() {
     art.style.setProperty('--a-dpr', String(window.devicePixelRatio || 1));
+    held();
     const br = document.body.getBoundingClientRect(), tl = body ? body.getBoundingClientRect().left : br.left;
     art.style.setProperty('--a-vw', br.width + 'px');
     art.style.setProperty('--a-winl', (tl - br.left) + 'px');
@@ -47,17 +48,42 @@ function setup(art) {
     if (dy) backEl.style.top = dy + 'px';
     backEl.querySelectorAll('canvas').forEach((cv) => snap(cv));
   }
+  /* (a phone: of two files near a picture's need Chrome may take the narrower, and the sheet, which knows only the
+     largest, would draw it past the pixels of the one it took. There each picture is held to the width of the file
+     it took, in the screen's device pixels, once that file is known (its srcset's own width for it), and again
+     when one comes and at a new size: smaller, never soft, and whole, its shape keeping its height. A desk keeps
+     the sheet's width) */
+  const pics = [...art.querySelectorAll('.w-cover img, .w-fig img')];
+  function fileW(img) {
+    const u = img.currentSrc, pic = img.parentElement && img.parentElement.tagName === 'PICTURE' ? img.parentElement : null;
+    if (!u) return 0;
+    for (const set of [img.srcset, ...(pic ? [...pic.querySelectorAll('source')].map((s) => s.srcset) : [])]) {
+      for (const c of (set || '').split(',')) {
+        const [src, d] = c.trim().split(/\s+/);
+        if (src && /^\d+w$/.test(d || '') && new URL(src, location.href).href === u) return parseInt(d, 10);
+      }
+    }
+    return 0;
+  }
+  function held() {
+    const dpr = window.devicePixelRatio || 1, ph = phone();
+    pics.forEach((img) => {
+      const fw = ph ? fileW(img) : 0, v = fw ? `min(100%, ${Math.floor((fw / dpr) * 64) / 64}px)` : '';
+      if ((img.__held || '') !== v) { img.__held = v; img.style.maxWidth = v; }
+    });
+  }
+  pics.forEach((img) => img.addEventListener('load', held));
   measures();
 
   /* ---- formulas: a desk's scroll in their own box (and a keyboard stop where there is something to scroll); on a
-     phone each is set smaller until it fits, never below 10px ---- */
+     phone each is set smaller until it fits, never below 15px: a longer one scrolls in its box there too ---- */
   function fitMath() {
     art.querySelectorAll('.a-eq-s').forEach((m) => {
       m.style.fontSize = '';
       if (phone()) {
         for (let k = 0; k < 3 && m.scrollWidth > m.clientWidth + 1; k++) {
           const f = parseFloat(getComputedStyle(m).fontSize);
-          m.style.fontSize = Math.max(10, Math.floor(f * m.clientWidth / m.scrollWidth * 10) / 10) + 'px';
+          m.style.fontSize = Math.max(15, Math.floor(f * m.clientWidth / m.scrollWidth * 10) / 10) + 'px';
         }
       }
       const over = m.scrollWidth > m.clientWidth + 1;
@@ -120,7 +146,7 @@ function setup(art) {
     if (!t) return;
     if (markOf(a) === a && (lastPtr === 'touch' || lastPtr === 'pen')) {   // a finger: the card first
       e.preventDefault();
-      if (cardFor === a && !card.hidden) hideCard(); else showCard(a);
+      if (cardFor === a && !card.hidden) hideCard(); else showCard(a, true);
       return;
     }
     hideCard();
@@ -145,10 +171,27 @@ function setup(art) {
     } catch (err) { /* (storage refused: the row is landed on unfocused, as an address opened) */ }
   });
 
-  /* ---- a mark's card: a source (a citation) or the note itself (a footnote), on paper with a hairline ---- */
+  /* ---- a phone: a card or the share menu opened past the window's foot brings itself in, the page scrolled by as
+     much as it runs past (smoothly; at once under reduced motion), never so far that its head (a card's mark, the
+     menu's first word) goes under the header: a finger's scroll from off it would close it ---- */
+  function bring(top, bottom) {
+    const over = Math.min(bottom + 12 - window.innerHeight, top - headerBottom() - 8);
+    if (over > 0) window.scrollBy({ top: over, behavior: reduced() ? 'auto' : 'smooth' });
+  }
+
+  /* ---- a mark's card: a source (a citation) or the note itself (a footnote), on paper with a hairline; one a
+     finger or the keyboard opens (near) is brought in on a phone, one a pointer's hover opens is not ---- */
   let lastPtr = 'mouse', cardFor = null, cardT = 0;
   const markOf = (t) => (t && t.closest ? t.closest('.a-cm, .a-fm a') : null);
-  function showCard(a) {
+  /* (a mark's place: on a phone its box less the room a finger is given round it, article.css, a padding its
+     margin takes back, so its card stands 8px from its figures as before; on a desk its box) */
+  function placeOf(a) {
+    const r = a.getBoundingClientRect();
+    if (!phone()) return r;
+    const cs = getComputedStyle(a), m = (k) => parseFloat(cs[k]) || 0;
+    return { left: r.left - m('marginLeft'), top: r.top - m('marginTop'), bottom: r.bottom + m('marginBottom') };
+  }
+  function showCard(a, near) {
     clearTimeout(cardT);
     const fn = a.getAttribute('data-fn');
     card.textContent = '';
@@ -184,11 +227,12 @@ function setup(art) {
     if (cardFor && cardFor !== a) cardFor.removeAttribute('aria-describedby');
     cardFor = a;
     a.setAttribute('aria-describedby', 'a-card');
-    const ar = art.getBoundingClientRect(), mr = a.getBoundingClientRect(), cw = card.offsetWidth, ch = card.offsetHeight;
+    const ar = art.getBoundingClientRect(), mr = placeOf(a), cw = card.offsetWidth, ch = card.offsetHeight;
     const left = Math.max(0, Math.min(ar.width - cw, mr.left - ar.left - 16));
     let topY = mr.bottom - ar.top + 8;
     if (mr.bottom + 8 + ch > window.innerHeight - 8 && mr.top - ch - 8 > headerBottom()) topY = mr.top - ar.top - ch - 8;
     card.style.left = left + 'px'; card.style.top = topY + 'px';
+    if (near && phone()) bring(Math.min(mr.top, ar.top + topY), ar.top + topY + ch);
   }
   function hideCard() {
     clearTimeout(cardT);
@@ -215,7 +259,7 @@ function setup(art) {
   });
   art.addEventListener('focusin', (e) => {
     const a = markOf(e.target);
-    if (a && a.matches(':focus-visible')) showCard(a);
+    if (a && a.matches(':focus-visible')) showCard(a, true);
     else if (!(e.target.closest && e.target.closest('.a-card'))) hideCard();
   });
   art.addEventListener('focusout', (e) => {
@@ -229,7 +273,13 @@ function setup(art) {
   const shMore = shMenu.querySelector('[data-share="more"]');
   if (shMore && navigator.share) shMore.parentNode.hidden = false;
   const shItems = () => [...shMenu.querySelectorAll('.a-shi')].filter((x) => !x.closest('[hidden]'));
-  function shOpen(keys) { shMenu.hidden = false; shBtn.setAttribute('aria-expanded', 'true'); if (keys) { const f = shItems()[0]; if (f) f.focus(); } }
+  function shOpen(keys) {
+    shMenu.hidden = false; shBtn.setAttribute('aria-expanded', 'true');
+    if (keys) { const f = shItems()[0]; if (f) f.focus(); }
+    /* (a phone: brought in when it opens past the window's foot; measured by its place under the button, not its
+       box, which starts its 4px slide) */
+    if (phone()) { const t = shBox.getBoundingClientRect().top + shMenu.offsetTop; bring(t, t + shMenu.offsetHeight); }
+  }
   function shClose(back) { if (shMenu.hidden) return; shMenu.hidden = true; shBtn.setAttribute('aria-expanded', 'false'); if (back) shBtn.focus(); }
   function copyLink() {
     const s = location.origin + location.pathname;

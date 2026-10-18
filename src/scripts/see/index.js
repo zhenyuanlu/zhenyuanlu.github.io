@@ -7,11 +7,13 @@
 // right; the arrows, the keys or a swipe step through the filter's photographs; Escape, close, a click or a swipe
 // down closes back to its place; two fingers pinch-zoom (view.js, which a photograph's own page shares). The address
 // follows the open photograph (its own page, /see/<name>/, replaceState, the filter's ?kind= kept), and so does the
-// document's title; both come back to the wall's when it closes. Arriving at /see/#<name> (a photograph's page's
-// "close") brings that photograph into view, below the sticky header, and gives it the focus. A ?kind= the wall has
-// no filter for leaves the address. Reduced motion: everything at once. Should this script come later than see.css's
-// 3s wait for it (the wall shown as the plain grid it is without script), the wall is hung at once, nothing faded out
-// and in again.
+// document's title; both come back to the wall's when it closes. On a touch phone the open viewer is a step of its
+// own in the history (pushState): the phone's Back closes it and stays on the wall, Forward opens that photograph
+// again, and close, a swipe down or a tap on the paper go back through that step. Arriving at /see/#<name> (a
+// photograph's page's "close") brings that photograph into view, below the sticky header, and gives it the focus. A
+// ?kind= the wall has no filter for leaves the address. Reduced motion: everything at once. Should this script come
+// later than see.css's 3s wait for it (the wall shown as the plain grid it is without script), the wall is hung at
+// once, nothing faded out and in again.
 import { on, reduced as isReduced } from '../hub.js';
 import { clearHeader } from '../header.js';
 import { fitPhoto, handOn } from './view.js';
@@ -233,7 +235,13 @@ function setup() {
   main.appendChild(view);
   const paper = view.querySelector('.s-paper'), stageEl = view.querySelector('.s-stage'), bar = view.querySelector('.s-bar');
   const capEl = view.querySelector('.s-vcap'), prevB = view.querySelector('.s-prev'), nextB = view.querySelector('.s-next'), xB = view.querySelector('.s-x');
-  const S = { open: false, list: [], k: 0, big: null, r: null, busy: 0 };
+  const S = { open: false, list: [], k: 0, big: null, r: null, busy: 0, own: false, back: 0 };
+  /* a touch phone (under 1000px, nothing that hovers): the viewer opens as a step of its own in the history, marked
+     zlView, so the phone's Back (iOS's swipe from the left edge, Android's key) closes it and the wall stays. Its steps
+     replace that step's address, as on a desk. A desk, and a narrow window in a mouse's hand, never take this path:
+     the wall's one entry follows the photograph (replaceState), as before */
+  const mqTouch = window.matchMedia ? matchMedia('(max-width: 999px) and (hover: none)') : { matches: false };
+  const atView = () => !!(history.state && history.state.zlView);   // the history stands on the viewer's own step
 
   /* as large as fits, never past its own pixels: its width and height over the screen's ratio, in CSS px */
   function fit(P) { return fitPhoto(P.w, P.h); }
@@ -271,7 +279,7 @@ function setup() {
     swap(addr(P.href, filter));
     document.title = P.title + tail;
   }
-  function open(P, still) {
+  function open(P, still, again) {
     if (S.open || S.busy || !P) return;
     S.list = shown();
     if (S.list.indexOf(P) < 0) S.list = all;
@@ -281,6 +289,10 @@ function setup() {
     const B = makeBig(P);
     stageEl.appendChild(B.el);
     S.big = B.el; S.r = B.r;
+    /* (a touch phone: the viewer's own step in the history, pushed before its address and title are set on it;
+       opened again by Forward, it stands on that step already) */
+    S.own = !!again;
+    if (!again && mqTouch.matches) { try { history.pushState({ zlView: 1 }, '', addr(P.href, filter)); S.own = true; } catch (e) { /* the wall's entry, as on a desk */ } }
     texts();
     const r0 = hung(P) && P.on ? P.ph.getBoundingClientRect() : null;
     P.ph.classList.add('s-away');
@@ -291,7 +303,17 @@ function setup() {
     }
     view.focus({ preventScroll: true });
   }
+  /* close: on the viewer's own step the history goes back through it, and that step back closes the viewer (popstate,
+     below), one step however many taps; elsewhere it closes at once */
   function close() {
+    if (!S.open || S.busy) return;
+    if (S.own && atView()) {
+      if (!S.back) { S.back = setTimeout(() => { S.back = 0; }, 1000); history.back(); }
+      return;
+    }
+    shut();
+  }
+  function shut() {
     if (!S.open || S.busy) return;
     const P = S.list[S.k], el = S.big, r = S.r, home = hung(P);
     if (home) {   // bring its photograph into view first, below the sticky header, so it can fly back to it
@@ -304,10 +326,14 @@ function setup() {
       view.hidden = true;
       stageEl.textContent = '';
       all.forEach((x) => x.ph.classList.remove('s-away'));
-      S.open = false; S.busy = 0; S.big = null;
-      swap(addr(WALL, filter));
+      const own = S.own;
+      S.open = false; S.busy = 0; S.big = null; S.own = false;
+      /* (the wall's address on the wall's step; a Forward that came while it closed stands on the viewer's step,
+         whose address stays, and opens its photograph again) */
+      if (!own || !atView()) swap(addr(WALL, filter));
       document.title = title0;
       (home ? P.el : fl.querySelector('[aria-pressed="true"]')).focus({ preventScroll: true });
+      if (own && atView()) follow();
     }
     if (reduced) { done(); return; }
     S.busy = 1;
@@ -348,6 +374,18 @@ function setup() {
   prevB.addEventListener('click', () => step(-1));
   nextB.addEventListener('click', () => step(1));
   xB.addEventListener('click', close);
+  /* the history's steps on a touch phone: Back off the viewer's own step closes it, with no step more; Forward onto it
+     opens its photograph again, as it was left. A frame later, once the browser has put the wall's scroll back, so a
+     photograph flies home to where it stands. (A desk has no such step: nothing here acts there) */
+  function follow() {
+    if (S.busy) return;   // (closing: done() follows the history as it ends)
+    if (S.open) { if (S.own && !atView()) shut(); return; }
+    if (!atView()) return;
+    const P = all.find((x) => new URL(x.href, location.href).pathname === location.pathname);
+    if (P) open(P, true, true);
+    else try { history.replaceState(null, '', addr(WALL, filter)); } catch (e) { /* fine */ }
+  }
+  addEventListener('popstate', () => { clearTimeout(S.back); S.back = 0; requestAnimationFrame(follow); });
   /* the keys are heard on the document while the viewer is open, so they work wherever the focus has fallen */
   function onKey(e) {
     if (!S.open) return;

@@ -158,8 +158,18 @@ export function installCards(pg) {
     return 'v' + i;
   }
   /* what is at hand where the details take the column: on a short desktop screen as before; docked under a phone's
-     map, the card's own compact words (so the dock it holds is no taller than it need be) */
-  function handHTML(s) { return pg.narrow() ? '<div class="r-dock">' + cardHTML(s) + '</div>' : detailHTML(s); }
+     map, the card's own compact words (so the dock it holds is no taller than it need be), and on a phone (under
+     1000px wide) its lines of a venue's sports and of a sport's races buttons a finger pins (showHand): the map's
+     pictures for them are small and close together there (Boston's three, 2 to 6px apart: the phone audit,
+     2026-10-17). A desktop's short window keeps its dock as it was */
+  function handHTML(s) { return pg.narrow() ? '<div class="r-dock">' + cardHTML(s, dockPins()) + '</div>' : detailHTML(s); }
+  function dockPins() { return !!(window.matchMedia && matchMedia('(max-width: 999px)').matches); }
+  /* (what such a line pins: a venue's sport, or a sport's race; by its place in the card) */
+  function dockSel(s, j) {
+    if (!s || !s.P || s.R) return null;
+    if (s.slot) return s.slot.races[j] ? { P: s.P, slot: s.slot, R: s.slot.races[j] } : null;
+    return s.P.slots[j] ? { P: s.P, slot: s.P.slots[j], R: null } : null;
+  }
   /* what is at hand, in the column (as before) */
   function detailHTML(s) {
     if (s.R) return raceHTML(s.R);
@@ -177,23 +187,26 @@ export function installCards(pg) {
     if (pg.medleyWords(R)) h += '<p class="c-y">' + items(pg.medleyWords(R).split(' · ').map(E)) + '</p>';
     return h;
   }
-  function cardHTML(s) {
+  /* (pins: the dock's lines of a venue's sports and of a sport's races written as buttons, each as the line, its place
+     in the card its data-i; the cards on the map and every other dock keep them as words) */
+  function cardHTML(s, pins) {
     if (s.R) return cardRace(s.R);
     var sl = s.slot, h;
+    function line(cls, j, inner) { return pins ? '<button type="button" class="' + cls + ' r-dl" data-i="' + j + '">' + inner + '</button>' : '<p class="' + cls + '">' + inner + '</p>'; }
     if (sl && sl.races.length === 1) return cardRace(sl.races[0]);
     if (sl) {
       h = '<p class="c-n">' + E(pg.sportWord(sl)) + '</p>';
-      sl.races.forEach(function (R) {
+      sl.races.forEach(function (R, j) {
         var st = pg.statusOf(R), res = pg.done(R) ? pg.resultWords(R) : '';
-        h += '<p class="c-l ' + (pg.done(R) ? 'dn' : 'tc') + '">' + items([(pg.isNext(R) ? RDOT : '') + E(pg.shortOf(R, sl.races)), '<span class="num">' + E(R.w.label) + '</span>',
-          st ? E(st.red ? 'next' : st.text) : ''].concat(res ? res.split(' · ').map(E) : []), R.md) + '</p>';
+        h += line('c-l ' + (pg.done(R) ? 'dn' : 'tc'), j, items([(pg.isNext(R) ? RDOT : '') + E(pg.shortOf(R, sl.races)), '<span class="num">' + E(R.w.label) + '</span>',
+          st ? E(st.red ? 'next' : st.text) : ''].concat(res ? res.split(' · ').map(E) : []), R.md));
       });
       return h;
     }
     h = '<p class="c-n">' + E(cap(s.P.name)) + '</p>';
-    s.P.slots.forEach(function (sl2) {
-      h += '<p class="c-l ' + (sl2.races.every(pg.done) ? 'dn' : 'tc') + '">' + items([(sl2.races.some(pg.isNext) ? RDOT : '') + E(cap(pg.sportWord(sl2))),
-        '<span class="num">' + E(sl2.races.map(function (R) { return R.w.label; }).join(', ')) + '</span>']) + '</p>';
+    s.P.slots.forEach(function (sl2, j) {
+      h += line('c-l ' + (sl2.races.every(pg.done) ? 'dn' : 'tc'), j, items([(sl2.races.some(pg.isNext) ? RDOT : '') + E(cap(pg.sportWord(sl2))),
+        '<span class="num">' + E(sl2.races.map(function (R) { return R.w.label; }).join(', ')) + '</span>']));
     });
     return h;
   }
@@ -488,6 +501,11 @@ export function installCards(pg) {
     handEl.innerHTML = h;
     restFill(handEl);
     pg.drawDiscCanvases(handEl);
+    /* (a phone's dock: a tap on a line of a venue's sports or of a sport's races pins that sport or that race, as its
+       picture on the map or its mark on the timeline does) */
+    [].forEach.call(handEl.querySelectorAll('button.r-dl'), function (b) {
+      b.addEventListener('click', function () { var o = dockSel(pg.shown(), +b.getAttribute('data-i')); if (o) pg.pin(o, true); });
+    });
     var nb = handEl.querySelector('.r-nx');
     if (!nb) {
       if (had && h) { handEl.setAttribute('tabindex', '-1'); try { handEl.focus({ preventScroll: true }); } catch (err) {} }

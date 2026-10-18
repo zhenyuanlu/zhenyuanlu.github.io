@@ -63,6 +63,14 @@
    rest and the accent in hand, as there) */
 #inner .t-bl .k { color: var(--ink); }
 #inner .t-bl .k:is(:hover, :focus-visible) { color: var(--accent); }
+/* (a touch screen, where nothing hovers, keeps :hover on the link a finger last tapped (these open in a new tab, and the page
+   stays): there each keeps its rest look, "all course pages" its grey and its arrow in place, a book's link its ink;
+   the keyboard's focus keeps the hand's look) */
+@media (hover: none) {
+  #inner a.k:hover:not(:focus-visible) { color: var(--grey); }
+  .t-all a:hover:not(:focus-visible) .t-ar { transform: none; }
+  #inner .t-bl a.k:hover:not(:focus-visible) { color: var(--ink); }
+}
 
 /* without script: the first course is the margin's, as the page's own first state on a desk; a pointer or the
    keyboard on another course shows that one's instead */
@@ -78,8 +86,9 @@ html:not(.js) #inner .t-c0 .t-ti::before { opacity: 1; }
   .t-row { padding: 10px 0; min-height: 44px; }
   #inner .t-a { padding: 10px 0; margin: -10px 0; }
   .t-hang { justify-content: flex-start; }
-  /* the books' line is the tap that opens the row: the column's width, from the row's top edge to the title */
-  .t-row .t-hang { width: 100%; padding: 10px 0 6px; margin: -10px 0 0; }
+  /* the books' line is the tap that opens the row: the column's width, from the row's top edge to the title. It
+     stands over the title link's room above the words, so its lowest 8px open the row too, not the course's site */
+  .t-row .t-hang { width: 100%; padding: 10px 0 6px; margin: -10px 0 0; position: relative; z-index: 1; }
   .t-bk .t-hang { margin-bottom: 8px; }
   .t-bt { padding-top: 0; }
   .t-d { position: static; width: auto; visibility: visible; display: none; padding: 0 0 18px; }

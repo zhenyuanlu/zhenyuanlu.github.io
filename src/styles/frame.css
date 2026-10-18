@@ -26,7 +26,13 @@ html.in { scroll-padding-top: 76px; }   /* anchors and keyboard focus land clear
 :where(#inner) :where(h1, h2, h3, p, ul, ol, figure) { margin: 0; padding: 0; }
 :where(#inner) :where(ul, ol) { list-style: none; }
 :where(#inner) a { color: inherit; text-decoration: none; transition: color var(--t-hover) var(--ease-out); }
-:where(#inner) a:hover { color: var(--ink); }
+/* (a pointer brings a link into hand only where a pointer can rest: a finger's tap leaves :hover on what it touched
+   until it touches something else, in every touch browser, iOS Safari too, so the header's arrow stayed stepped, the
+   ring's too, and a footer or Scholar link stayed ink after the tap, as if still in hand (the phone audit,
+   2026-10-17). A mouse or a trackpad hovers, so a desk keeps each such rule as it was and in its place; the
+   keyboard's focus keeps its own. So too the point, the header's arrow, build's Scholar link, the ring and the
+   footer, below) */
+@media (hover: hover) { :where(#inner) a:hover { color: var(--ink); } }
 #inner a:hover { text-decoration: none; }
 /* the keyboard's focus: never a box (the owner, 2026-10-16: no box marks a chosen thing). A link, a button or a
    summary: a line under its words in the focus colour (never drawn for a pointer's hover); a row with the home's
@@ -36,6 +42,11 @@ html.in { scroll-padding-top: 76px; }   /* anchors and keyboard focus land clear
   text-decoration-color: var(--focus, var(--line)); text-underline-offset: .25em; }
 #inner :is([tabindex]:not(a, button, summary), input):focus-visible { outline: none; }
 #inner h1[tabindex="-1"]:focus, #inner .ip:focus { outline: none; }
+/* a finger's tap draws no box either: the browser's tap highlight over what was pressed is clear where nothing can
+   hover (the home's sheet clears its own). It is inherited, so #inner gives it to every control on an inner page and
+   to what listens for taps on its parts' behalf (race's map and timeline, the blog's topics, see's filters), which
+   iOS highlights whole when a tap lands between its controls */
+@media (hover: none) { #inner { -webkit-tap-highlight-color: transparent; } }
 :where(#inner) button { font: inherit; color: inherit; background: none; border: 0; padding: 0; margin: 0; cursor: pointer; text-align: inherit; }
 :where(#inner) canvas { display: block; image-rendering: pixelated; }
 #inner svg[data-word] { display: block; overflow: visible; }
@@ -47,7 +58,8 @@ html.in { scroll-padding-top: 76px; }   /* anchors and keyboard focus land clear
 #inner .hpoint { position: relative; }
 #inner .hpoint::before { content: ""; position: absolute; left: -15px; top: var(--pt-y, .78em); width: 5px; height: 5px; margin-top: -2.5px;
   border-radius: 50%; background: var(--ink); opacity: 0; transition: opacity var(--t-hover) var(--ease-out); pointer-events: none; }
-#inner .hpoint:hover::before, #inner .hpoint:focus-visible::before, #inner .hpoint.on::before { opacity: 1; }
+@media (hover: hover) { #inner .hpoint:hover::before { opacity: 1; } }   /* (only where a pointer rests: the links', above) */
+#inner .hpoint:focus-visible::before, #inner .hpoint.on::before { opacity: 1; }
 
 /* ---------- the picture frame (blog; scripts/frames.js): one box per row, the picture its background, as tall
    as the frame, never past its own pixels, travelling sideways in hand. Paper behind, a hairline round the box;
@@ -116,7 +128,8 @@ html[data-stage="night"] #inner :is(.pf-host:focus-visible, .pf-host:has(:focus-
 .ih-nm { margin-top: 2px; }
 .ih-ar { display: inline-flex; align-items: center; font-size: 15px; line-height: 1; transition: transform var(--t-press) steps(2); will-change: transform; }
 #inner .ih-name:focus-visible::after { content: ""; position: absolute; left: 0; right: 0; bottom: 6px; height: 1px; background: var(--ink); }
-.ih-name:hover .ih-ar, .ih-name:focus-visible .ih-ar { transform: translateX(-3px); }
+@media (hover: hover) { .ih-name:hover .ih-ar { transform: translateX(-3px); } }   /* (only where a pointer rests: the links', above) */
+.ih-name:focus-visible .ih-ar { transform: translateX(-3px); }
 .ih-fade { display: contents; }
 #inner .skip { position: absolute; left: 0; top: 10px; padding: 0 8px; height: 44px; display: flex; align-items: center; font-size: 15px;
   background: var(--bg); color: var(--ink); transform: translateY(-200%); }
@@ -173,8 +186,12 @@ html:not(.js) .fader { display: none; }
 #inner .tb-aside a { color: var(--accent); text-decoration-line: underline; text-decoration-thickness: 1px; text-underline-offset: .18em;
   text-decoration-color: color-mix(in srgb, currentColor 45%, transparent);
   transition: color var(--t-hover) var(--ease-out), text-decoration-color var(--t-hover) var(--ease-out); }
-#inner .tb-aside a:is(:hover, :focus-visible) { color: var(--ink); text-decoration-color: currentColor; }
+@media (hover: hover) { #inner .tb-aside a:hover { color: var(--ink); text-decoration-color: currentColor; } }   /* (only where a pointer rests: the links', above) */
+#inner .tb-aside a:focus-visible { color: var(--ink); text-decoration-color: currentColor; }
 #inner .tb-aside a:focus-visible { text-decoration-thickness: 2px; }
+/* (on a touch phone its words were a target 16px tall: it takes tap room as the footer's link does, 14px more above
+   and below, which its margins give back, so nothing moves) */
+@media (max-width: 999px) and (pointer: coarse) { #inner .tb-aside a { display: inline-block; padding: 14px 0; margin: -14px 0; } }
 #inner .lede a { white-space: nowrap; }   /* a way on ("The blog is ready →") never breaks */
 .sec { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: var(--gut); margin-top: 96px; scroll-margin-top: 88px; }
 .tb + .sec { margin-top: 56px; }
@@ -184,8 +201,12 @@ html:not(.js) .fader { display: none; }
 .ring { width: var(--cw); margin: 120px auto 0; display: flex; justify-content: space-between; font-size: 18px; line-height: 26px; }
 .ring a { color: var(--ink); display: inline-flex; gap: .35em; align-items: baseline; }
 .ring .ar { display: inline-block; transition: transform var(--t-press) steps(2); }
-.ring a:hover .ar.l, .ring a:focus-visible .ar.l { transform: translateX(-4px); }
-.ring a:hover .ar.r, .ring a:focus-visible .ar.r { transform: translateX(4px); }
+@media (hover: hover) {   /* (only where a pointer rests: the links', above) */
+  .ring a:hover .ar.l { transform: translateX(-4px); }
+  .ring a:hover .ar.r { transform: translateX(4px); }
+}
+.ring a:focus-visible .ar.l { transform: translateX(-4px); }
+.ring a:focus-visible .ar.r { transform: translateX(4px); }
 .ring .go { margin-left: auto; }
 /* the 404's road (no other page has the line on its footer's top edge) */
 .close { position: relative; width: var(--cw); margin: 28px auto 0; height: 1px; background: var(--line); }
@@ -197,7 +218,8 @@ html:not(.js) .fader { display: none; }
 .if .f1 > :nth-child(2) { text-align: center; }
 .if .f1 > :nth-child(3) { text-align: right; pointer-events: none; }   /* (plain words: on a phone they never cover the next link's tap room over them) */
 .if a { color: var(--grey); }
-.if a:hover, .if a:focus-visible { color: var(--ink); }
+@media (hover: hover) { .if a:hover { color: var(--ink); } }   /* (only where a pointer rests: the links', above) */
+.if a:focus-visible { color: var(--ink); }
 .if .fn-s, .if .fy2 { display: none; }
 /* (the next race, written by the frame's script for the visitor's day (scripts/site.js, .fn), runs on to the right of
    "Hello from Boston", out of the grid's measure: in it, as v2t has it, each side's column is narrower than who made
@@ -224,7 +246,8 @@ html:not(.js) .fader { display: none; }
 @keyframes zl-beat { 0% { opacity: 1; } 12% { opacity: 0; } 24% { opacity: 1; } 36% { opacity: 0; } 100% { opacity: 0; } }
 @media (prefers-reduced-motion: reduce) { .hb .big { animation: none; opacity: 0; } }
 
-/* ---------- phone: one column; the header's row scrolls with the page under 1000px as the home's does ---------- */
+/* ---------- phone: one column; the header stays at the top as the page scrolls, as on a desk, in a row of 47px
+   (41px under 375px) ---------- */
 @media (max-width: 999px) {
   :root { --cw: min(calc(var(--vw, 1vw) * 100) - 40px, 520px); --gut: 16px; }
   html.in { scroll-padding-top: 60px; }

@@ -50,14 +50,20 @@
 .r-y { color: var(--grey); padding: 2px 6px; min-height: 24px; transition: color var(--t-hover) var(--ease-out); }
 .r-sep { padding: 0 1px; }
 .r-y[aria-pressed="true"], .r-y.on { color: var(--ink); }
-#inner .r-y:hover, #inner .r-y:focus-visible { color: var(--ink); }
+#inner .r-y:focus-visible { color: var(--ink); }
+/* (a pointer resting on a year brightens it only where a pointer can rest: a finger's tap leaves :hover on what it
+   touched until it touches something else, in every touch browser, iOS Safari too, so a year, a name or the next
+   line it had let go of stayed ink, as if still chosen (the phone audit, 2026-10-17). A mouse or a trackpad hovers,
+   so a desk keeps the rule as it was, in its place; the names' and the next line's the same, below) */
+@media (hover: hover) { #inner .r-y:hover { color: var(--ink); } }
 /* at rest, the next race in one line (a click pins it on the map); where the details take the column, what is at hand,
    the column held at its tallest state (race.js measures it in a hidden twin, .r-probe) */
 .r-hand { margin-top: 12px; }
 .r-probe { position: absolute; left: 0; top: 0; margin: 0; visibility: hidden; pointer-events: none; }
 #inner .r-hand[tabindex="-1"]:focus { outline: none; }   /* (the details, focused where they took the next line's place: race.js) */
 .r-nx { display: inline; text-align: left; color: var(--grey); line-height: 20px; white-space: nowrap; transition: color var(--t-hover) var(--ease-out); }
-#inner .r-nx:hover, #inner .r-nx:focus-visible { color: var(--ink); }
+#inner .r-nx:focus-visible { color: var(--ink); }
+@media (hover: hover) { #inner .r-nx:hover { color: var(--ink); } }   /* (only where a pointer rests: the years', above) */
 .r-nx .r-dot { vertical-align: 2px; }
 .r-nn { color: var(--ink); }
 .r-lt .r-nn { color: inherit; }   /* (nothing ahead: the latest race run, all of its line in grey; in ink in hand, as the line is) */
@@ -107,7 +113,8 @@
 .r-labs.r-sm .r-lab { font-size: 11px; line-height: 13px; }
 .r-lab.bare { background: transparent; }
 .r-ic { position: absolute; left: 0; top: 0; pointer-events: auto; }
-#inner .r-lab:hover, .r-lab.hov, .r-lab.on, .r-lab.cl { color: var(--ink); }
+.r-lab.hov, .r-lab.on, .r-lab.cl { color: var(--ink); }
+@media (hover: hover) { #inner .r-lab:hover { color: var(--ink); } }   /* (only where a pointer rests: the years', above) */
 .r-lab .r-dot { margin-right: 4px; vertical-align: 1px; }
 /* a button the pointer focused shows no keyboard mark, the frame's line under its words (Tab or the arrows bring it
    back: race.js) */
@@ -230,13 +237,24 @@ html[data-page="race"] .if .fm { margin-bottom: 4px; }
 /* a finger's targets, the look unchanged (round 5's check: the next line 20px tall, the clubs 14, the years 24): each
    44px tall (a club's also 12px wider), its padding taken back by as much margin; race.js gives a mark on the line
    the touch before a club's margin. The years also 44px wide (round 5's third look: 42 x 44), their words centred
-   in it, the pair a pixel further right so 2025's still ends on the page's margin */
+   in it, the pair a pixel further right so 2025's still ends on the page's margin. The pair lies over the stage: the
+   stage comes after it in the page and lay over the years from 26px down, so only their top 24px took a tap and a
+   tap lower let go of the race pinned (the phone audit, 2026-10-17); over the map's layers, under the header's.
+   The dock's lines of a venue's sports and of a sport's races (buttons on a phone: cards.js) 24px tall at least */
 @media (max-width: 699.98px) and (pointer: coarse), (max-height: 579.98px) and (pointer: coarse) {
   .r-nx { padding: 12px 0; margin: -12px 0; }
   .r-y { min-height: 44px; min-width: 44px; padding-top: 12px; padding-bottom: 12px; margin: -10px 0; text-align: center; }
-  .r-years { right: -7px; }
+  .r-years { right: -7px; z-index: 6; }
   .r-fc { padding: 15px 6px; margin: -15px -6px; }
+  .r-dock .r-dl { min-height: 24px; }
 }
+/* (those dock lines, a phone's only: as wide as the dock, in the line's own words and colours, with no box, no line
+   round them and no paper of their own; the keyboard's focus is the frame's line under their words, and a tap draws
+   no box of the browser's over them) */
+@media (max-width: 999px) { .r-dock .r-dl { width: 100%; -webkit-tap-highlight-color: transparent; } }
+/* (a finger's taps on the map, the timeline, the season switch, the next line and the dock: two quick ones, as in
+   "tap again to let go", never zoom the page; its own pan and pinch stay, which manipulation keeps) */
+@media (pointer: coarse) { .r-lab, .r-ic, .r-y, .r-nx, .r-dl, .r-tl, .r-map { touch-action: manipulation; } }
 @media (prefers-reduced-motion: reduce) { .r-y, .r-lab, .r-fc, .r-nx, .r-card, .r-card.on, .r-cl { transition: none; } }
 @media (forced-colors: active) {
   .r-dot { background: CanvasText; forced-color-adjust: none; }
@@ -247,7 +265,8 @@ html[data-page="race"] .if .fm { margin-bottom: 4px; }
 /* (under the title, the way to the other seasons: the one shown in ink, the others grey, as the engine's switch) */
 .r-sy { font-size: 13px; line-height: 20px; color: var(--grey); }
 .r-sy .on { color: var(--ink); }
-#inner .r-sy a:hover, #inner .r-sy a:focus-visible { color: var(--ink); }
+#inner .r-sy a:focus-visible { color: var(--ink); }
+@media (hover: hover) { #inner .r-sy a:hover { color: var(--ink); } }   /* (only where a pointer rests: the years', above) */
 /* (with script the engine draws the page over what the server printed: that is out of sight from the first paint,
    the engine's module coming after it, folded to nothing so it moves nothing, and shown again after 3s should the
    engine not have come; the engine marks it hidden as it mounts, which ends the wait. Not display: none, under which

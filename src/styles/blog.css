@@ -15,6 +15,12 @@ html:not(.js) #inner .w-tools { display: none; }
 #inner :is(a, button).w-tg:hover, #inner .w-tg:focus-visible, #inner .w-tg.w-hi { color: var(--ink); background-color: color-mix(in srgb, var(--ink) 11%, transparent); }
 #inner .w-tg[aria-pressed="true"], #inner :is(a, button).w-tg[aria-pressed="true"]:hover { color: var(--ink); background-color: color-mix(in srgb, var(--ink) 16%, transparent); }
 #inner .w-tg:focus-visible { outline: none; text-decoration-line: none; box-shadow: inset 0 -2px 0 var(--ink); }
+/* (a touch screen, where nothing hovers, keeps :hover on the tag a finger last tapped: there a tag let go keeps its rest
+   look, not the hand's half-chosen ink. A chosen tag, one pointed at in the line above and the keyboard's focus keep
+   theirs) */
+@media (hover: none) {
+  #inner :is(a, button).w-tg:hover:not(:focus-visible, [aria-pressed="true"], .w-hi) { color: var(--grey); background-color: color-mix(in srgb, var(--ink) 6%, transparent); }
+}
 #inner .w-fl .w-tg::after { content: ""; position: absolute; left: -4px; right: -4px; top: -12px; bottom: -12px; }
 @media (forced-colors: active) { #inner .w-tg { border-color: GrayText; } #inner .w-tg[aria-pressed="true"] { border-color: Highlight; } }
 /* the search: a small pixel glass and the word "search", inking as the topics do; in use a hairline lies under it */
@@ -45,6 +51,12 @@ html:not(.js) #inner .w-tools { display: none; }
 #inner .w-all { padding: 12px 0; margin: -12px 0; color: var(--grey); transition: color var(--t-hover) var(--ease-out); }
 #inner .w-all:hover, #inner .w-all:focus-visible { color: var(--ink); }
 #inner .w-all:focus-visible { outline: none; text-decoration: underline 1px var(--focus); text-underline-offset: .22em; }
+/* (and so the search, its clear and "show all", as the tags above: let go by a finger, each keeps its rest grey; the
+   search in use and the keyboard's focus keep their ink) */
+@media (hover: none) {
+  #inner .w-sl:hover:not(:focus-within), #inner .w-sl:hover:not(:focus-within) .w-find::placeholder { color: var(--grey); }
+  #inner :is(.w-x, .w-all):hover:not(:focus-visible) { color: var(--grey); }
+}
 .w-time { position: relative; margin-top: 22px; transition: opacity var(--t-hover) var(--ease-out); }
 html:not(.js) .w-time { margin-top: 46px; }
 .w-time.w-out { opacity: 0; }
@@ -119,6 +131,12 @@ html:not(.js) .w-time { margin-top: 46px; }
 @media (max-width: 999px) and (hover: hover) {
   #inner .w-a::after { content: ""; }
   #inner .w-a:focus-visible::after { outline: none; }
+  .w-cv { z-index: 1; }
+}
+/* and under a finger on a phone, where nothing hovers: the description and the date open the post too, not only its
+   title's words and its cover (each tag keeps its own tap, standing over the link; the title's lines are as before) */
+@media (max-width: 999px) and (hover: none) {
+  #inner .w-a::after { content: ""; }
   .w-cv { z-index: 1; }
 }
 /* ---------- v2ac: on a desk the words are one group, centred beside the cover ---------- */

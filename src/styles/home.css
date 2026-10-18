@@ -237,6 +237,10 @@ main.lt .say.open ~ .sfx { transform: translateX(var(--g3, 18px)); transition: t
 .soc a:hover, .soc a:focus-visible { text-decoration: none; }
 .soc canvas { width: calc(11 * var(--su)); height: calc(11 * var(--su)); image-rendering: pixelated; }
 .soc a:focus-visible::after { content: ""; position: absolute; left: var(--sp-soc); right: var(--sp-soc); bottom: calc(var(--sp-soc) - 5px); height: 1px; background: var(--ink); }
+/* (a finger's: each mark takes a tap 4px over and under its box and 1px either side, which closes the 2px between
+   them, so a tap meant for one never falls in the gap and a mark is 45px tall (it was 37 x 37: the phone audit,
+   2026-10-17); nothing is drawn and nothing moves. --sp-soc 13px would give 44 x 44, but moves the doors) */
+@media (max-width: 999px) and (pointer: coarse) { .soc a::before { content: ""; position: absolute; inset: -4px -1px; } }
 /* no script: the four names in grey instead of the marks (and the net's, from 2s, where no module ran: above) */
 html:not(.js) .soc canvas { display: none; }
 html:not(.js) .soc .sr { position: static; width: auto; height: auto; overflow: visible; clip-path: none; font-family: var(--f-small); font-size: var(--s); color: var(--grey); }
@@ -363,9 +367,16 @@ html:not(.js) .walk { display: none; }
   html:not(.js) .soc { margin-top: 2px; }
   html:not(.js) .door { top: calc((var(--my) + 56) / 844 * 100%); }
 }
-/* narrow phones: the city labels stay clear of each other (the fader rises there: frame.css) */
-@media (max-width: 374.98px) { .city .c { font-size: 12px; } }
-@media (max-width: 359.98px) { .city .c { font-size: 11px; } }
+/* narrow phones: the city labels stay clear of each other (the fader rises there: frame.css). As draft v2t has it
+   (item 3): the names, and the memories with them, keep the 13px floor down to 360px wide, 9.5px apart at 360 and
+   every memory inside the window (the phone audit, 2026-10-17: they were 12px from 374px down, so at 360 x 800, the
+   most common Android phone, a city's line was 12px); under 360 the floor yields to their spacing, as on race's phone
+   map: 12px to 340, 11px under it (at 13px they close to 5.7px at 340 and 1.8px at 320) */
+@media (max-width: 359.98px) { .city .c { font-size: 12px; } }
+@media (max-width: 339.98px) { .city .c { font-size: 11px; } }
+/* (a finger's taps on the name, a city and the marks: two quick ones, as on a city visited and let go, never zoom
+   the page; its own pan and pinch stay, which manipulation keeps) */
+@media (pointer: coarse) { .city .c, .say, .soc a { touch-action: manipulation; } }
 /* forced colours: the drawn focus underlines become borders, which the system colours keep visible */
 @media (forced-colors: active) { .say::after, .soc a::after, .flow .fader::after { border-top: 1px solid; } }
 /* forced colours: the drawn letters give way to the words themselves, in the system's colours */

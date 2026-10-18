@@ -134,15 +134,22 @@ Nothing is under 13px.
   as a figure track, two rows of two, each figure right-aligned in its column (taste item 41, a "try"). Under 1000px
   the track's taller box cost the map: at 751 × 676 the counts lay on its roads, and at 778 × 777 (125%) the map fell
   from 640 × 464 to 464 × 336, with 7 cards in the column (the fit sweep, 2026-10-16).
+- Race's timeline under 1000px keeps its club names at 11px, with its months: at 13px they run past a 390px screen
+  (the phone round's audit, 2026-10-17).
+- The home's five city names, and a city's memory with them, keep 13px down to 360px wide (9.5px apart there). Under
+  360px the floor yields to their spacing, as on race's phone map: 12px, and 11px under 340 (at 13px they close to
+  5.7px at 340 and 1.8px at 320). This is draft v2t's rule, measured again on the site (the phone round, 2026-10-17).
 - The lateral-flow post's title is 107 characters and is kept whole. At its size it takes three lines on a desk and
   four on a phone, past the line budget of two and three.
+- Code in the words of an article's table, caption or aside is .84em of their 15px on a desk: 12.6px, under the floor.
+  A phone sets it at 13px; the desk keeps it as it is until a round that may change the desk.
 
 **The scale.** Desk is 1000px and wider. Phone is under 1000px.
 
 | Desk | Phone | Job |
 | --- | --- | --- |
 | 42 / 48 | 31 / 36 | an article's title, up to 60 characters |
-| 30 / 38 | 24 / 31 | a title over 60 characters: one step down, two lines on a desk |
+| 30 / 38 | 24 / 31 | a title over 60 characters: one step down, two lines on a desk (a phone under 375px wide 22 / 29, under 360 20 / 26: three lines down to 320) |
 | 22 / 30 | 20 / 28 | an article's h2; the dek under the title (22 / 31, phone 20 / 28) |
 | 18 / 30 | 17 / 28 | an article's text (632px, about 75 characters a line); h3-h5 |
 | 18 / 26-28 | 17 / 25-26 | a page's lede; the ring of doors; the blog list's titles; build's featured title; older and newer |
@@ -265,7 +272,9 @@ so a canvas a little taller at 125% or 175% grows into the air above it and noth
 link's visible text. There are no descriptions.
 
 **Rule (the owner's):** no picture is ever drawn past its device pixels. It stays sharp, even when that makes it
-smaller on a high-density screen (his choice "B").
+smaller on a high-density screen (his choice "B"). On a phone an article's picture is held to the file the browser
+took (Chrome may take the narrower of two near its need, at 320 and 340px wide and held sideways), once that file is
+known (`src/scripts/article.js`).
 
 **Rule (the owner's):** pictures show their whole height, and nothing is lost against the source. The see wall keeps
 every photograph whole, even the one that is not 2:3, 3:2 or 1:1.
@@ -317,7 +326,8 @@ point. It ends with the text. On a phone it is a folded "Contents" panel.
 **The text:**
 - 632px at 18 / 30, three widths beyond the measure (wide, full, window);
 - figures numbered and centred, never past their own pixels;
-- formulas in their own box, which scrolls sideways when a formula is longer;
+- formulas in their own box, which scrolls sideways when a formula is longer (a phone first sets a long one smaller,
+  never under 15px);
 - code on a surface with a 13px head (language and "copy");
 - call-outs as a surface with a small grey label.
 
@@ -363,6 +373,24 @@ build's "All papers on Google Scholar" and the byline's DOI.
 
 **Rule:** the selection is the accent at 26%.
 
+**Rule:** in hand means a pointer resting, so only a screen that can hover has it (`@media (hover: hover)`, every
+mouse and trackpad). A touch browser keeps `:hover` on the last thing tapped, which then looked still chosen or still
+in hand; there a tap leaves the look at rest, and the keyboard's focus and every state (chosen, open, pressed, copied,
+current) keep their own. Where nothing can hover, a tap draws no box of the browser's either (no tap highlight)
+(the phone round, 2026-10-17).
+
+**Rule:** on a touch phone a target is at least 24px each way (WCAG 2.5.8) and aims at 44px: a padding its margin takes
+back, so nothing it stands among moves. A row that opens one page opens it from anywhere on the row (the blog list,
+build's talks and index), and its tags and links keep their own taps. One costs room: race's dock, under a phone's map,
+writes a venue's sports and a sport's races as lines a finger pins, each at least 24px tall; at 320 × 568 the held dock
+is then 9px taller: 2025's map a step smaller (243 × 174, against 256 × 184), and the current season's page 13px further
+past the window (19px, against 6).
+
+**Rule:** on a touch phone see's viewer is a step of its own in the history: the phone's Back (iOS's swipe from the
+left edge) closes it and stays on the wall; a photograph's page steps to the one before or after in its own place,
+so Back leaves the photographs at once. A desk, and a window under 1000px in a mouse's hand, keep the history as it
+was: the wall's viewer one entry that follows the photograph, a photograph's page an entry a step.
+
 **Rule:** no CV link and no email address on any page. An article's "share by email" opens the reader's own mail
 and shows no address. The home's four profile marks stay: GitHub, LinkedIn, X and Instagram.
 
@@ -402,7 +430,9 @@ books do not jump.
 - every round: 1440 × 900 and 390 × 844;
 - laptops: 1366 × 768, and 1366 × 540 (short, which gives race's tight layout);
 - scales: 1536 × 864 at 125%, 1707 × 1067 at 150%, 2194 × 1100 and 2560 × 1440 at 175% (his screen);
-- phones: 360 × 740, 375 × 812, 390 × 844 (3×); tablet: 768 × 1024;
+- phones: 360 × 740, 375 × 812, 390 × 844, 430 × 932 (3×), touch-emulated; narrow: 340 × 740 and 320 × 640; held
+  sideways: 844 × 390 and 750 × 340; the browser's own windows (bars shown): 360 × 672, 375 × 635, 390 × 664;
+  tablet: 768 × 1024;
 - each at fader 0, 25, 50, 66 and 100, and once with reduced motion.
 
 ## Checks
@@ -423,8 +453,10 @@ sizes and stages above. It checks:
 - console errors.
 
 Its exceptions are kept, and they are warnings only:
-- race under 1000px (the map's key, months and names at 11 or 12px, the season counts at 12 or 11px), and the small
-  desktop race map's cards (11px, their venue 12px);
+- race under 1000px (the map's key, months and names at 11 or 12px, the season counts at 12 or 11px, the timeline's
+  club names at 11px), and the small desktop race map's cards (11px, their venue 12px);
+- the home's city names under 360px wide (12px, 11px under 340);
+- a desk's code in an article's table, caption or aside (12.6px);
 - running text under 7:1;
 - the beating heart;
 - a formula's own scroller;

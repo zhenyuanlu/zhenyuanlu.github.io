@@ -157,6 +157,14 @@ export function installFit(pg) {
     var Wa = document.documentElement.clientWidth, ptop = mapEl.getBoundingClientRect().top + window.scrollY;
     var fitH = window.innerHeight - ptop - (pg.tlHeight() + px(tlEl, 'marginTop')) - px(stageEl, 'paddingBottom') - infoEl.offsetHeight - below() - 2;
     Ha = Math.min(Wa * GH / GW + 2, Math.max(fitH, Math.min(0.56 * Wa * GH / GW, Math.max(window.innerHeight - 90, 200))));
+    /* (a touch screen under 1000px wide where the page scrolls whatever the map's size, a phone held sideways: the map
+       at its own size, its GW columns a CSS px each, or as wide as the window allows, whatever the window's height.
+       The browser's bar hiding or showing as the page scrolls changes that height alone, so the grid stays as it is
+       (same2) and the map is not laid out again under the finger: by the height, 750 x 340 and 750 x 390 had maps of
+       348 x 250 and 400 x 287, and each change of the bar laid the map out again, 185 to 347ms on a phone four times
+       slower (the phone audit, 2026-10-17). By the whole width, as a phone upright is, its cells would be 4 device
+       px at 3x, a map of 532 x 380, taller than the window the sticky header leaves) */
+    if (fitH < 0.56 * Wa * GH / GW && window.matchMedia && matchMedia('(max-width: 999px) and (hover: none)').matches) Ha = Math.min(Wa, GW) * GH / GW + 2;
     var g = pg.pickGrid(Wa, Math.max(Ha, 150), true, env());
     g.phone = true;
     return g;

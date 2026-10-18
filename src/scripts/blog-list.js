@@ -4,6 +4,7 @@
 // in one grey line, with a way back to all. Without script the line is not shown and every post is listed.
 import { phone, reduced } from './hub.js';
 import { mountFrames, layoutFrames } from './frames.js';
+import { snap } from './lettering/index.js';
 
 const tl = document.querySelector('.w-time');
 const tools = document.querySelector('.w-tools');
@@ -144,8 +145,19 @@ function setup() {
   fl.addEventListener('focusin', (e) => { const b = e.target.closest && e.target.closest('button[data-f]'); ink(b ? b.getAttribute('data-f') : null); });
   fl.addEventListener('focusout', () => ink(null));
 
-  addEventListener('resize', () => { clampAll(); soon(); });
-  if (document.fonts && document.fonts.ready) document.fonts.ready.then(() => { layoutFrames(); soon(); });
+  /* the search's glass, a 9 x 9 pixel sign, starts on a whole device pixel on a phone, as an article's signs do
+     (lettering's snap), once the line's words have their font, and again on a resize; a desk keeps it where it was */
+  const gl = tools.querySelector('.w-gl');
+  function glass() {
+    if (!gl) return;
+    if (phone()) snap(gl);
+    else if (gl.__sn) { gl.style.left = gl.__sn.l; gl.style.top = gl.__sn.t; gl.style.position = gl.__sn.p; gl.__sn = null; }
+  }
+  glass();
+  requestAnimationFrame(glass);
+
+  addEventListener('resize', () => { clampAll(); soon(); glass(); });
+  if (document.fonts && document.fonts.ready) document.fonts.ready.then(() => { layoutFrames(); soon(); glass(); });
 
   // back from an entry: the focus returns to its title, where nothing else took it (and that starts nothing)
   tl.addEventListener('click', (e) => {

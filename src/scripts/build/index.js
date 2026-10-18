@@ -29,6 +29,18 @@ function setup() {
   }
   grid();
   main.addEventListener('focusin', clearHeader);
+  /* a finger on a phone (under 1000px wide, nothing that hovers): a tap anywhere on a talk's row or an index row, off
+     its links, opens what its title opens; the picture and the notes keep their own taps. The tap is passed to the
+     title's link rather than the link drawn over the row (blog.css's way for a blog row): a box out of the flow in a
+     title's line turns its pretty wrapping off (build.css's note on talks), which Safari would show. A desk, and a
+     window under 1000px in a mouse's hand, keep the rows as they were */
+  const touchRows = window.matchMedia ? matchMedia('(max-width: 999px) and (hover: none)') : { matches: false };
+  main.addEventListener('click', (e) => {
+    if (!touchRows.matches || e.defaultPrevented || e.button !== 0 || !e.target.closest || e.target.closest('a, button, input, summary')) return;
+    const row = e.target.closest('.b-talk, .b-tb tbody tr');
+    const a = row && row.querySelector(row.classList.contains('b-talk') ? '.w-a' : '.b-t a');
+    if (a) a.click();
+  });
   requestAnimationFrame(grid);
   /* the web face moves every word, and so every sign after one: placed again each time a face has come (a face can
      come after fonts.ready has already answered, when its sheet was still on the way) */

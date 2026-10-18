@@ -1,8 +1,9 @@
 // /teach/'s behaviour (the draft v2ac's teach.js, after its markup, which pages/teach.astro writes): the tallies and
 // the covers painted on whole device pixels in the stage's colours (scripts/teach/art.js draws them), one course in
-// hand (on a desk told in the margin, on a phone open under its row), a book in hand, and the dissolve between grey
-// line art and colour. A row is in hand while pointed at (a moment's rest), or while its link has the focus; the
-// running term's course is in hand at first, else the first course on a desk, and nothing is open on a phone.
+// hand (on a desk told in the margin, on a phone open under its row), a book in hand (on a phone, by a tap), and the
+// dissolve between grey line art and colour. A row is in hand while pointed at (a moment's rest), or while its link has
+// the focus; the running term's course is in hand at first, else the first course on a desk, and nothing is open on a
+// phone.
 // Red, the page's one red, only for a term running today (Boston's day, or ?today=YYYY-MM-DD: scripts/today.js).
 import { on, phone, reduced, tok } from '../hub.js';
 import { clearHeader } from '../header.js';
@@ -117,18 +118,36 @@ function setup() {
      point stands before its title (teach.css); let go, it dissolves back ---------- */
   const covers = [...sec.querySelectorAll('.t-bk')].map((li) => {
     const Th = coverOf(li.getAttribute('data-title') || '');
-    const o = { li, p: 0, raf: 0 };
+    const o = { li, p: 0, raf: 0, held: false };
     o.pix = Pix(li.querySelector('.t-hang'), () => [Th.w, Th.h], CELL, (put, T, st) => drawThing(Th, o.p, put, T, st));
     function onIt() { if (li.classList.contains('on')) return; li.classList.add('on'); fade(o, 1); }
     function off() {
-      if (li.contains(document.activeElement) || li.matches(':hover')) return;
+      if (o.held || li.contains(document.activeElement) || li.matches(':hover')) return;
       li.classList.remove('on'); fade(o, 0);
     }
+    /* (a finger's: taken by a tap, let go by the next) */
+    o.take = () => { o.held = true; onIt(); };
+    o.drop = () => { if (!o.held && !li.classList.contains('on')) return; o.held = false; li.classList.remove('on'); fade(o, 0); };
     li.addEventListener('pointerenter', (e) => { if (e.pointerType === 'mouse') onIt(); });
     li.addEventListener('pointerleave', () => { setTimeout(off, 0); });
     li.addEventListener('focusin', onIt);
     li.addEventListener('focusout', () => { setTimeout(off, 0); });
     return o;
+  });
+  /* a finger on a phone (mode 'phone'), where nothing hovers: a tap on a book's cover or its title takes it in hand,
+     in its colour, and lets go of the one before; the same tap again, or a tap anywhere else, lets it go. Its links are
+     followed and change nothing; nothing moves but the colour (teach's books do not jump). A desk keeps the pointer's
+     way above */
+  /* (a finger's or a pen's only: a mouse in a window under 1000px wide, mode 'phone' too, keeps the pointer's way,
+     which its click would otherwise fight; the last press says which hand it is) */
+  let lastPress = 'mouse';
+  document.addEventListener('pointerdown', (e) => { lastPress = e.pointerType; }, true);
+  document.addEventListener('click', (e) => {
+    if (mode !== 'phone' || !e.target.closest || (lastPress !== 'touch' && lastPress !== 'pen')) return;
+    const bk = e.target.closest('.t-bk'), link = e.target.closest('a');
+    const o = bk && !link && e.target.closest('.t-hang, .t-bn') ? covers.find((x) => x.li === bk) : null;
+    covers.forEach((x) => { if (x !== o && !(link && x.li === bk)) x.drop(); });
+    if (o) { if (bk.classList.contains('on')) o.drop(); else o.take(); }
   });
 
   /* ---------- crisp: canvases on whole device pixels, moved in layout (position: relative), not with a transform (at
@@ -161,6 +180,10 @@ function setup() {
   requestAnimationFrame(() => { fit(); snapAll(); });
   if (document.fonts && document.fonts.ready) document.fonts.ready.then(() => { if (sec.isConnected) { fit(); snapAll(); } });
   on('stage', () => { all.forEach((P) => P.paint()); });
-  on('resize', () => { redpr(); setMode(); fit(); snapAll(); });
+  on('resize', () => {
+    redpr(); setMode();
+    if (mode !== 'phone') covers.forEach((o) => { if (o.held) o.drop(); });   // (a finger's book, let go where the pointer's way is)
+    fit(); snapAll();
+  });
 }
 
