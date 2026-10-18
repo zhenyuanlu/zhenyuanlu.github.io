@@ -14,6 +14,9 @@ html[data-page="see"] #inner .tb-h:focus-visible { outline: none; }
 html:not(.js) #inner .s-fl { display: none; }
 #inner .s-fl button { min-width: 44px; height: 44px; padding: 0 10px; text-align: center; color: var(--grey); transition: color var(--t-hover) var(--ease-out); }
 #inner .s-fl button:hover, #inner .s-fl button[aria-pressed="true"] { color: var(--ink); }
+/* (a touch screen, where nothing hovers, keeps :hover on the word a finger last tapped: there only the chosen one inks, and
+   the keyboard's focus keeps its own) */
+@media (hover: none) { #inner .s-fl button:hover:not(:focus-visible, [aria-pressed="true"]) { color: var(--grey); } }
 #inner .s-dot { user-select: none; }
 
 /* the wall: columns --s-gap apart (the stagger, each column's start, is the script's); in each, a photograph, its
@@ -80,6 +83,9 @@ html:has(#inner .s-view:not([hidden])) { scrollbar-gutter: auto; overflow: hidde
 #inner .s-bar { position: absolute; inset: 0; pointer-events: none; font-size: 13px; line-height: 20px; color: var(--grey); }
 #inner .s-bar :is(button, a, .s-end) { pointer-events: auto; display: inline-flex; align-items: center; justify-content: center; color: var(--grey); min-width: 44px; height: 44px; text-align: center; cursor: pointer; transition: color var(--t-hover) var(--ease-out); }
 #inner .s-bar :is(button, a):hover { color: var(--ink); }
+/* (a touch screen, where nothing hovers, keeps :hover on what a finger last tapped: there an arrow just tapped keeps its
+   grey, as at rest; one with the keyboard's focus is left as it was) */
+@media (hover: none) { #inner .s-bar :is(button, a):hover:not(:focus-visible) { color: var(--grey); } }
 /* (the arrows have no words for the frame's focus line to stand under: the line stands under the arrow itself, as
    wide as it, in the same colour, a few px under its foot) */
 #inner .s-vnav :is(button, a) { position: relative; }

@@ -4,4 +4,8 @@ html[data-page="404"] #inner .n-h:focus-visible { outline: none; }
 #inner .n-say { max-width: 640px; }
 #inner .n-h { display: inline; font: inherit; }
 #inner .n-say a { white-space: nowrap; }
+/* (a finger's: the way back takes a tap 12px over and under its words, as the footer's links do (frame.css), its
+   padding taken back by as much margin, so nothing moves; it took taps on 136 x 20 only (the phone audit,
+   2026-10-17)) */
+@media (max-width: 999px) { #inner .n-say a { display: inline-block; padding: 12px 0; margin: -12px 0; } }
 #inner .n-trav { position: absolute; right: 20px; bottom: 1px; }

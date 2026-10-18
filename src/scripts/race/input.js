@@ -61,15 +61,45 @@ export function installInput(pg) {
     show();
   }
   function pin(sel, fromUser) {
-    clearTimeout(S.dwell); clearTimeout(S.leaveT);
+    if (fromUser && performance.now() - (S.jumped || -1e9) < 250) return;   // (a tap landing as the page jumps: reveal)
+    clearTimeout(S.dwell); clearTimeout(S.leaveT); clearTimeout(S.revealT);
     if (!sel || !sel.P) return;
     if (same(sel, S.pin) && fromUser) { unpin(); return; }
     S.pin = sel; S.prev = null;
     show();
-    if (fromUser) sayEl.textContent = 'Pinned: ' + (sel.R ? sel.R.r.name : sel.slot && sel.slot.races.length === 1 ? sel.slot.races[0].r.name : cap(sel.P.name));
+    if (fromUser) { sayEl.textContent = 'Pinned: ' + said(sel); S.revealT = setTimeout(reveal, REVEAL); }
   }
+  /* (what the live line says of a pin: a race, a sport's one race, or the venue. On a phone a sport of several races,
+     which its dock line pins in one tap (cards.js), is named with its venue, so the line changes and is heard; a
+     desk says the venue, as before) */
+  function said(sel) {
+    if (sel.R) return sel.R.r.name;
+    if (sel.slot && sel.slot.races.length === 1) return sel.slot.races[0].r.name;
+    if (sel.slot && window.matchMedia && matchMedia('(max-width: 999px)').matches) return cap(pg.sportWord(sel.slot)) + ', ' + cap(sel.P.name);
+    return cap(sel.P.name);
+  }
+  /* (a phone held sideways scrolls, and the dock under the map, where what a tap pins is written, lay below the
+     window: every name's details at 844 x 390 and 750 x 340 (the phone audit, 2026-10-17). The page now brings the
+     dock into the window, by as little as it must, in one step; a phone upright, which fits one screen, has it in the
+     window already. Under 1000px wide only: a desktop's short window keeps its page. It waits REVEAL ms, and any
+     press on the page in that time (a finger tapping again to let go, or to pin another, or starting a scroll of its
+     own) takes the wait with it, so the page never moves under a finger that is pressing: moving at once, the map slid
+     under a second tap meant to let go, which pinned the venue under it instead (Hartford, after Boston, 120ms apart
+     at 844 x 390), and a scroll eased over 300ms more did the same to a second tap 450 and 550ms after the first (the
+     review, 2026-10-17). After the wait the page jumps, and a tap that lands in the 250ms after it pins nothing: a
+     second tap begun before the jump would otherwise land on what moved under it (the review's recheck: 4 of 8
+     venues at 640-700ms)) */
+  var REVEAL = 650;
+  function reveal() {
+    if (!S.pin || !pg.narrow() || !(window.matchMedia && matchMedia('(max-width: 999px)').matches)) return;
+    var r = pg.handEl.getBoundingClientRect();
+    if (r.top >= -1 && r.bottom <= window.innerHeight + 1) return;
+    pg.handEl.scrollIntoView({ block: 'nearest', behavior: 'auto' });
+    S.jumped = performance.now();
+  }
+  function pressed() { clearTimeout(S.revealT); }
   function unpin() {
-    clearTimeout(S.dwell); clearTimeout(S.leaveT);
+    clearTimeout(S.dwell); clearTimeout(S.leaveT); clearTimeout(S.revealT);
     if (!S.pin) { endPreview(); return; }
     S.pin = null; S.prev = null;
     show();
@@ -191,12 +221,14 @@ export function installInput(pg) {
   function arm() {
     document.addEventListener('keydown', onKey);
     document.addEventListener('keydown', onRingKey, true);
+    document.addEventListener('pointerdown', pressed, true);
     offs = [pg.on('stage', onStage), pg.on('resize', pg.onResize)];
   }
   function disarm() {
-    pg.stopMotion(); clearTimeout(S.dwell); clearTimeout(S.leaveT); cancelAnimationFrame(S.xf);
+    pg.stopMotion(); clearTimeout(S.dwell); clearTimeout(S.leaveT); clearTimeout(S.revealT); cancelAnimationFrame(S.xf);
     document.removeEventListener('keydown', onKey);
     document.removeEventListener('keydown', onRingKey, true);
+    document.removeEventListener('pointerdown', pressed, true);
     offs.forEach(function (off) { off(); }); offs = [];
   }
   /* the map's, the timeline's, the clubs' and the season switch's own listeners, on the page's own elements (made with

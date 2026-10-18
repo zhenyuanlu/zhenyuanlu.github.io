@@ -1,21 +1,30 @@
 // The photograph on the paper, as see's viewer (index.js) and a photograph's own page (photo.js) both show it (the
 // draft v2ac's see viewer): placed as large as the window's room allows, never past its own pixels counted in the
 // screen's device pixels; and the hand on it. A swipe sideways steps to the photograph before or after, a swipe down
-// closes, a plain tap or click on the paper closes (not on a control, not with a selection made); the wheel scrolls
-// nothing. Two fingers pinch-zoom as on any page (the browser's own: see.css gives the paper touch-action pinch-zoom),
-// and a gesture two fingers took part in steps and closes nothing; zoomed in, one finger pans the zoomed screen and
-// no gesture steps or closes, until the screen is zoomed out again. A trackpad's pinch (the wheel with ctrl) zooms too.
+// closes, a plain tap or click on the paper closes (not on a control, not with a selection made, and on a phone not a
+// finger's tap on the photograph); the wheel scrolls nothing. Two fingers pinch-zoom as on any page (the browser's
+// own: see.css gives the paper touch-action pinch-zoom), and a gesture two fingers took part in steps and closes
+// nothing; zoomed in, one finger pans the zoomed screen and no gesture steps or closes, until the screen is zoomed out
+// again. A trackpad's pinch (the wheel with ctrl) zooms too.
 import { phone } from '../hub.js';
 
 /** where a w x h photograph stands (CSS px): { x, y, w, h } */
 export function fitPhoto(w, h) {
   const vw = document.documentElement.clientWidth, vh = window.innerHeight, ph = phone(), d = window.devicePixelRatio || 1, r = w / h;
-  const top = ph ? 52 : 64, bot = ph ? 76 : 72, side = ph ? 0 : 48;
-  const aw = vw - 2 * side, ah = Math.max(80, vh - top - bot);
-  let fw = Math.min(aw, Math.floor(w / d)), fh = fw / r;
-  if (fh > ah) { fh = ah; fw = fh * r; }
-  fw = Math.floor(fw); fh = Math.min(Math.floor(h / d), Math.round(fw / r));
-  return { x: Math.round((vw - fw) / 2), y: Math.round(top + (ah - fh) / 2), w: fw, h: fh };
+  /* (the room the bars leave: top and bottom, and on a desk the sides) */
+  function room(top, bot, side) {
+    const aw = vw - 2 * side, ah = Math.max(80, vh - top - bot);
+    let fw = Math.min(aw, Math.floor(w / d)), fh = fw / r;
+    if (fh > ah) { fh = ah; fw = fh * r; }
+    fw = Math.floor(fw); fh = Math.min(Math.floor(h / d), Math.round(fw / r));
+    return { x: Math.round((vw - fw) / 2), y: Math.round(top + (ah - fh) / 2), w: fw, h: fh };
+  }
+  /* a phone on its side: the caption and the arrows stand in the bottom corners beside the photograph, close in the
+     top one, so the photograph takes the window's height but 16px above and the bars' 52px below (a portrait one as
+     large as on the wall, or larger; still never past its own pixels). One wide enough to reach into those corners
+     (more than the window less 172px a side: the caption's 16px and its words, the arrows' 92px) keeps the bars' room */
+  if (ph && vw > vh) { const f = room(16, 52, 0); if (f.w <= vw - 344) return f; }
+  return ph ? room(52, 76, 0) : room(64, 72, 48);
 }
 
 /** the hand on the paper (view, the viewer's or the page's element): o.step(dk) with -1 or 1, o.close(); o.skip the
@@ -48,7 +57,9 @@ export function handOn(view, o) {
     const dx = e.clientX - g.x, dy = e.clientY - g.y;
     if (Math.abs(dx) > 48 && Math.abs(dx) > Math.abs(dy)) o.step(dx < 0 ? 1 : -1);
     else if (dy > 64 && Math.abs(dy) > Math.abs(dx)) o.close();
-    else if (!g.moved && !(window.getSelection && String(window.getSelection()))) o.close();
+    /* (on a phone a finger's tap on the photograph itself closes nothing: a double tap, the habit that zooms a
+       photograph, closed it at its first tap. The paper, close, a swipe down and Back still close) */
+    else if (!g.moved && !(window.getSelection && String(window.getSelection())) && !(phone() && e.pointerType === 'touch' && e.target.closest && e.target.closest('.s-big'))) o.close();
   });
   view.addEventListener('pointercancel', (e) => { sw = null; up(e); });
 }

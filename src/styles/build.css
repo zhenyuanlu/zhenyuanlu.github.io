@@ -68,6 +68,9 @@
 #inner .b-lk .k { display: inline-flex; align-items: center; gap: 6px; margin-left: 0; white-space: nowrap; }
 #inner .b-sec .b-lk .k { color: var(--ink); }
 #inner .b-sec .b-lk .k:is(:hover, :focus-visible) { color: var(--accent); }
+/* (a touch screen, where nothing hovers, keeps :hover on the link a finger last tapped: there it keeps its ink at rest, its
+   sign with it; the keyboard's focus keeps the accent. So too the index's links, below) */
+@media (hover: none) { #inner .b-sec .b-lk .k:hover:not(:focus-visible) { color: var(--ink); } }
 /* (a sign's cell is a whole number of device pixels, --b-px, and scripts/build/index.js starts each sign on one; it
    takes its word's colour) */
 .b-ic { flex: none; width: calc(9 * var(--b-px, 1px)); height: calc(9 * var(--b-px, 1px)); fill: currentColor; shape-rendering: crispEdges; transition: fill var(--t-hover) var(--ease-out); }
@@ -122,6 +125,7 @@
 .b-tb .b-kd { width: 84px; }
 #inner .b-tb .k { color: var(--ink); }
 #inner .b-tb .k:is(:hover, :focus-visible) { color: var(--accent); }
+@media (hover: none) { #inner .b-tb .k:hover:not(:focus-visible) { color: var(--ink); } }
 @media (forced-colors: active) { .b-seg { border: 1px solid CanvasText; } }
 @media (max-width: 999px) {
   /* the bar stood on end: a row a year, its label first, then its segment */
@@ -164,8 +168,13 @@
   #inner .b-talk .w-dt { margin: 0; }
   #inner .b-talk.w-bare .w-tx > .w-m { margin: 8px 0 0; }
 }
-/* (a window under 1000px in a mouse's hand: the row's parts stand apart in its grid there, and the row has no box of
-   its own to the pointer, so crossing a gap between them let it go: here the row itself takes the pointer) */
-@media (max-width: 999px) and (hover: hover) {
+/* (a finger on a phone, where nothing hovers, opens a talk's post or an index row's work from anywhere on its row:
+   scripts/build/index.js, which passes the tap to the title's link. Not by the link reaching over the row as a blog
+   row's does: the note above, on a box out of the flow in a title's line) */
+/* (under 1000px the row's parts stand apart in its grid, and the row has no box of its own to the pointer
+   (blog.css .w-it): in a mouse's hand crossing a gap between them let it go, and a finger's tap in a gap reached the
+   list behind and opened nothing (the review, 2026-10-17: 78-83% of a talk's row at 390): here the row itself takes
+   the pointer, and the tap) */
+@media (max-width: 999px) {
   #inner .b-talk { pointer-events: auto; }
 }
