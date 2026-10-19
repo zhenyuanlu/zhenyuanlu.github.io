@@ -1,7 +1,8 @@
 // /see/'s behaviour (the draft v2ac's see.js, after its markup, which pages/see.astro writes): the wall hung in its
 // columns (three on a desk, two on a phone), dealt in turn as ArtLife deals them, the middle column (desk) or the
 // right one (phone) starting lower; each photograph at its share of the column, never past its own pixels counted in
-// the screen's device pixels; slowly appearing as each comes into view (a 1s fade while the place settles 8px, those
+// the screen's device pixels (on a phone, one nearer the column than the narrowest fills it, and each stands at its
+// column's left edge: hang()); slowly appearing as each comes into view (a 1s fade while the place settles 8px, those
 // in view one after another, 140ms apart). The filter takes the wall down (150ms) and hangs it again (?kind= keeps
 // it). A click opens the viewer on the paper: the photograph as large as fits, its caption bottom left, ← → bottom
 // right; the arrows, the keys or a swipe step through the filter's photographs; Escape, close, a click or a swipe
@@ -64,8 +65,9 @@ function setup() {
   gal.after(off);
   function shown() { return all.filter((P) => filter === 'all' || P.kind === filter); }
   let lay = null, lastW = -1, lastD = dpr();
-  /* how much lower a column starts, as a share of the column's width: the middle one of three, the right one of two */
-  const STAGGER = { 3: [0, 0.3, 0], 2: [0, 0.56] };
+  /* how much lower a column starts, as a share of the column's width: the middle one of three, the right one of two
+     (a phone's was 0.56 until the owner asked for its wall a little more even, 2026-10-18) */
+  const STAGGER = { 3: [0, 0.3, 0], 2: [0, 0.35] };
   function gapOf(name) { return parseFloat(getComputedStyle(gal).getPropertyValue(name)) || 0; }
   function hang() {
     const W = gal.getBoundingClientRect().width, n = W >= 700 ? 3 : 2;
@@ -90,22 +92,39 @@ function setup() {
       wOf = (P) => Math.max(Math.floor(plain(P) / z), grow(P));
       if (colW > full) { colW = cw = Math.max(full, Math.floor(cw0 / z)); gap = (W - n * colW) / (n - 1); }
     }
+    /* a phone's wall, two columns (the owner, 2026-10-18: "see里面的gallery有点过于没align好了，大小太过于层次不齐，可以稍微
+       修正一点点", a little more aligned and even). On a 3x screen a 400px file stops at its own pixels (133px), short
+       of its share, so the photographs came in three widths, and the narrower ones, against the outer edges, left
+       the gap between the columns anywhere from 14 to 84px wide (390px screen). Here a photograph nearer the column's
+       width than the wall's narrowest fills the column, as far as its own pixels go (Huh: 157px at 390 becomes 168,
+       504 of its 506 device px), so the wall keeps two widths where its files allow; and every photograph stands at
+       its column's left edge, where its caption starts, so each column has one straight left edge and only the right
+       edges vary. (Where none of the second column's photographs fills it, a phone held sideways, that edge stands
+       further right, until the widest meets the wall's right edge.) None is smaller than before, none past its
+       pixels, every one whole */
+    const phone = n === 2;
+    if (phone && list.length) {
+      const own = wOf, least = Math.min(...list.map(own));
+      wOf = (P) => { const w = own(P), full = Math.min(Math.floor(P.w / d), cw); return full - w <= w - least ? full : w; };
+    }
     list.forEach((P, k) => {   // in turn, as ArtLife deals them; into the page in reading order
-      /* a photograph narrower than its column keeps the wall's outer edges: left in the first column, right in the
-         last, and in the middle one alternately right and left */
+      /* a photograph narrower than its column keeps a desk's outer edges: left in the first column, right in the
+         last, and in the middle one alternately right and left (on a phone, left in both: above) */
       const c = k % n, narrow = wOf(P) < cw - 0.5;
-      P.el.classList.toggle('s-r', narrow && (c === n - 1 || (c > 0 && seen[c]++ % 2 === 0)));
+      P.el.classList.toggle('s-r', !phone && narrow && (c === n - 1 || (c > 0 && seen[c]++ % 2 === 0)));
       P.el.style.width = wOf(P) + 'px';   // whole pixels, so its edges stay crisp
       gal.appendChild(P.el);
     });
-    lay = { n, colW, gap, list, top: STAGGER[n].map((s) => Math.round(cw * s)) };
+    const w1 = phone ? Math.max(0, ...list.filter((P, k) => k % 2).map(wOf)) : cw;   // (a phone's second column's widest)
+    lay = { n, colW, gap, list, top: STAGGER[n].map((s) => Math.round(cw * s)), x1: w1 && w1 < cw - 0.5 ? colW - w1 : 0 };
     place();
     gal.classList.add('s-hung');
     if (keep && keep.parentNode !== off) keep.focus({ preventScroll: true });
     if (ro) { ro.disconnect(); ro.observe(gal); list.forEach((P) => ro.observe(P.el)); }
   }
-  /* each photograph in its column: the column's x (a narrower one against its right edge), under the one before it in
-     that column, --s-vgap below it; the wall as tall as its longest column */
+  /* each photograph in its column: the column's x (a narrower one against its right edge; a phone's second column
+     further right where none of its photographs fills it), under the one before it in that column, --s-vgap below
+     it; the wall as tall as its longest column */
   function place() {
     if (!lay) return;
     const vgap = gapOf('--s-vgap'), y = lay.top.slice();
@@ -114,6 +133,7 @@ function setup() {
       const c = k % lay.n;
       let x = c * (lay.colW + lay.gap);
       if (P.el.classList.contains('s-r')) x += lay.colW - parseFloat(P.el.style.width);
+      else if (c === 1 && lay.x1) x += lay.x1;
       P.el.style.left = x + 'px';
       P.el.style.top = y[c] + 'px';
       y[c] += hs[k] + vgap;
