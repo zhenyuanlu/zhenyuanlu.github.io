@@ -1,9 +1,8 @@
 # DESIGN.md -- zhenyuanlu.com
 
 > The site's design. It follows draft v2t, which applied the taste round of 2026-10-16, and the owner's standing rules,
-> which win over any taste item. Some parts are still being built in that round: the door pages' parts (build's index,
-> its Scholar link, see and race), the frame's focus lines and the footer's type. When this file and the code
-> disagree, the code is the place to look first, and this file is corrected in the same change.
+> which win over any taste item. When this file and the code disagree, the code is the place to look first, and this
+> file is corrected in the same change.
 >
 > The format follows the taste review's item 5:
 > - an atmosphere paragraph;
@@ -80,7 +79,6 @@ The dusk values are at 50. At 66 the paper and the surface deepen once more (the
   - the folded contents;
   - the share menu;
   - call-outs;
-  - the index table's odd rows and the year bar;
   - a picture's place before it loads;
   - the tone that marks a focused mark or control.
 - **Ink** (--ink; #1b1b1b, #1d1a18, #e8e6e1) -- text and titles. It is also the outline of every pixel word and
@@ -165,7 +163,7 @@ Nothing is under 13px.
 | 22 / 30 | 20 / 28 | an article's h2; the dek under the title (22 / 31, phone 20 / 28) |
 | 18 / 30 | 17 / 28 | an article's text (632px, about 75 characters a line); h3-h5 |
 | 18 / 26-28 | 17 / 25-26 | a page's lede; the ring of doors; the blog list's titles; build's featured title; older and newer |
-| 16 / 24 | 16 / 24 | build's and teach's entries (shelf names, courses, books, the index table) |
+| 16 / 24 | 16 / 24 | build's and teach's entries (shelf names, courses, books) |
 | 15 / 23 | 15 / 23 | what is small in a text: captions, cards, code, tables, references, the foot's parts and its titles on a desk (15 / 22, 500), asides (15 / 24), the list's description (15 / 22); the header's arrow; the skip link |
 | 13 / 20 | 13 / 20 | the small words: dates, tags, table heads, the byline, the rail, labels, see's captions, the footer, the code's head, a footnote's number, the home's door words and footer, race's map words, key, months and counts (see the exceptions) |
 
@@ -276,7 +274,6 @@ pixel. They were 48px from 375px wide and 72px held sideways until the owner ask
 - **Chapter pictures:** each article chapter after the first opens with the post's own small pixel picture, drawn from
   its subject, in grey, with a 2px cell. It stands with its foot on the section's rule. The rows are the post's
   front matter (`motif`). A post without them gets three dots; a talk gets a speech bubble.
-- **Index marks:** each work in build's year bar has a 2 × 2 mark.
 
 **Rule:** a pixel picture is drawn by the server as an SVG of whole cells. That is what a reader without script sees.
 The page's script puts a canvas of whole device pixels in its place. The picture's box keeps the drawing's height,
@@ -296,6 +293,14 @@ known (`src/scripts/article.js`).
 
 **Rule (the owner's):** pictures show their whole height, and nothing is lost against the source. The see wall keeps
 every photograph whole, even the one that is not 2:3, 3:2 or 1:1.
+
+**Rule:** see's wall hangs in three columns on a desk, the smaller photographs against its outer edges and the middle
+column starting lower. On a phone (two columns) every photograph stands at its column's left edge, under which its
+caption starts (held sideways, where none of the right column's photographs fills it, that column stands further right,
+its widest ending on the wall's right edge); one nearer the column's width than the wall's narrowest fills the column,
+as far as its own pixels go, so the wall has two widths where its files allow (three at 430px wide, where Huh stops at
+its own 168px); and the right column starts lower by 0.35 of a column. It is still hung, never a regular grid (the
+owner, 2026-10-18: "大小太过于层次不齐，可以稍微修正一点点").
 
 **Rule:** before it loads, an article's picture holds its place in the surface. See's wall and the frames keep v2t's
 placeholders, not the surface: a frame is the paper (a white plate at night), and a photograph's place on the wall
@@ -399,7 +404,7 @@ current) keep their own. Where nothing can hover, a tap draws no box of the brow
 
 **Rule:** on a touch phone a target is at least 24px each way (WCAG 2.5.8) and aims at 44px: a padding its margin takes
 back, so nothing it stands among moves. A row that opens one page opens it from anywhere on the row (the blog list,
-build's talks and index), and its tags and links keep their own taps. One costs room: race's dock, under a phone's map,
+build's talks), and its tags and links keep their own taps. One costs room: race's dock, under a phone's map,
 writes a venue's sports and a sport's races as lines a finger pins, each at least 24px tall; at 320 × 568 the held dock
 is then 9px taller: 2025's map a step smaller (243 × 174, against 256 × 184), and the current season's page 13px further
 past the window (19px, against 6).

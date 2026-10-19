@@ -1,15 +1,17 @@
 ---
 // /see/: the photograph wall (the draft v2ac's see.js, its render, written here at build time from content/see/;
 // scripts/see/index.js hangs the wall and opens the viewer). The photographs newest first, hung in columns (three on a
-// desk, two on a phone) with their captions, each at its own size: a file's width sets its share of the column (a
-// 400px file about 87% of it, 600px and wider all of it; never past its own pixels), the smaller ones against the
-// wall's outer edges, the middle column starting lower. They stand in the page in reading order, newest first, so
-// Tab, a screen reader and the viewer walk them as the wall reads. Until it appears a photograph's place is quiet
-// paper, the faintest breath of its own colour (its average, from the file); in view it slowly appears; in hand
-// nothing lifts, its caption comes up to the ink (draft v2t, taste item 31). Every place is its photograph's own
-// shape, whole from top to bottom (the owner's rule; v2t cut Huh to 2:3), its focus point (the YAML's focus) kept for
-// a frame that must crop. The newest photograph is the page's main picture (fetchpriority high); the first row (three
-// on a desk; a phone's first two and its next) loads at once, the rest lazily (taste item 23).
+// desk, two on a phone) with their captions, each at its own size: a file's width sets its share of the column (a 400px
+// file about 87% of it, 600px and wider all of it; never past its own pixels), on a desk the smaller ones against the
+// wall's outer edges, the middle column starting lower; on a phone each at its column's left edge, one near the
+// column's width filling it, the right column a little lower (the owner, 2026-10-18: scripts/see/index.js). They stand
+// in the page in reading order, newest first, so Tab, a screen reader and the viewer walk them as the wall reads. Until
+// it appears a photograph's place is quiet paper, the faintest breath of its own colour (its average, from the file);
+// in view it slowly appears; in hand nothing lifts, its caption comes up to the ink (draft v2t, taste item 31). Every
+// place is its photograph's own shape, whole from top to bottom (the owner's rule; v2t cut Huh to 2:3), its focus point
+// (the YAML's focus) kept for a frame that must crop. The newest photograph is the page's main picture (fetchpriority
+// high); the first row (three on a desk; a phone's first two and its next) loads at once, the rest lazily (taste item
+// 23).
 // Above the wall a small filter, all · road trip · portrait (with script; ?kind= keeps it in the address).
 // Each photograph is a link to its own page (/see/<name>/, pages/see/[photo].astro); with script it opens the viewer
 // here, the address following it. Without script the wall is a plain grid of the photographs and their links. A link

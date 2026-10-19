@@ -15,13 +15,8 @@
 //              line (where), then the year and its notes. The notes are the row's one keyboard stop, as the draft's
 //              are its one link; the title and the picture are links to the talk's post for a pointer, as a blog
 //              row's are (tabindex -1; the picture's hidden from a screen reader, the title's heard);
-//   index      (taste items 38 and 40, as v2t has them; /build/#index) every work this page shows at a glance: first
-//              the years as one bar in true time, a segment a year, each work a 2 x 2 pixel mark in its year's
-//              segment (a phone stands the bar on end), then a borderless table, newest first: the year once for its
-//              group, the title (to its card, its row or a talk's notes), the kind, where. Its rows alternate by a
-//              tone step, a year's group at a time, with no rules. v2t writes it in the browser after the page is up;
-//              here the server writes it, so nothing moves when the script runs (the marks: svg[data-rows], which the
-//              frame's script draws again on whole device pixels).
+//   (the index, the years as one bar and a table of every work, taste items 38 and 40, came out at the owner's word on
+//   2026-10-18, "去掉build里面的那个index table": the page ends with the talks)
 // Hidden research never reaches the page, nor its source; research with no tier is not drawn (no list of papers).
 // The links: a small pixel sign before each word, ink at rest, the accent in hand; a card, a talk or a featured face in
 // hand shows the site's point before its title. Phone: one column; every frame at the left of its words.
@@ -119,47 +114,6 @@ const talks = (await posts())
 /* ---------- Google Scholar, where every paper is (this page shows the featured one): the title's small aside ---------- */
 const scholar = me.social.find((s) => /scholar\.google\./.test(s.href || '')) || null;
 
-/* ---------- the index: every work the page shows, newest first; of one year the paper, the software, then the talks,
-   each by its title (v2t's order) ---------- */
-type Kind = 'paper' | 'software' | 'talk';
-const KORD: Record<Kind, number> = { paper: 0, software: 1, talk: 2 };
-const works = [
-  ...featured.map((r) => ({ y: r.year, title: r.title, kind: 'paper' as Kind, where: r.venue || '', href: url('/build/#research') })),
-  ...software.map((s) => ({ y: s.year, title: s.title, kind: 'software' as Kind, where: s.technologies.slice(0, 3).join(', '), href: url(`/build/#${slug(s.title)}`) })),
-  ...talks.map((x) => ({ y: x.date.getUTCFullYear(), title: x.title, kind: 'talk' as Kind, where: x.where, href: url(`/blog/${x.slug}/`) })),
-]
-  .filter((x) => x.y > 1900)
-  .sort((a, b) => b.y - a.y || KORD[a.kind] - KORD[b.kind] || (a.title < b.title ? -1 : 1));
-/* the years as one bar, oldest first: a segment a year, gaps and all, its works as 2 x 2 marks one cell apart */
-const y0 = works.length ? works[works.length - 1].y : 0, y1 = works.length ? works[0].y : 0;
-const bar = works.length ? Array.from({ length: y1 - y0 + 1 }, (_, k) => {
-  const y = y0 + k, n = works.filter((x) => x.y === y).length;
-  const row = Array.from({ length: n }, () => '##').join('.');
-  return { y, n, rows: n ? [row, row] : [] };
-}) : [];
-/* the marks as the server draws them (the frame's script puts a canvas of whole device pixels in each one's place) */
-const MARK_CELL = 2;
-function markPath(rows: string[]): string {
-  let d = '';
-  rows.forEach((r, y) => {
-    for (let x = 0; x < r.length; x++) {
-      if (r[x] !== '#') continue;
-      const x0 = x;
-      while (x + 1 < r.length && r[x + 1] === '#') x++;
-      d += `M${x0} ${y}h${x - x0 + 1}v1h-${x - x0 + 1}z`;
-    }
-  });
-  return d;
-}
-/* the table's rows: a year's group one tone, the next the other; the year printed on its group's first row (and
-   said on every row, out of sight) */
-let lastY: number | null = null, odd = false;
-const rows = works.map((x) => {
-  const first = x.y !== lastY;
-  if (first) odd = !odd;
-  lastY = x.y;
-  return { ...x, first, odd };
-});
 
 /* ---------- the structured data ---------- */
 const swId = (s: Software) => `${canonical}#${slug(s.title)}`;
@@ -271,24 +225,6 @@ const description = `Research, software and talks by ${ME}, ${me.suffix}: ${name
           );
         })}
       </ol>
-    </section>
-  )}
-  {works.length > 0 && (
-    <section class="sec b-sec b-ix" id="index">
-      <h2 class="lab">index</h2>
-      <ol class="b-bar" style={`--n:${bar.length}`} aria-label={`works by year, ${y0} to ${y1}`}>
-        {bar.map((s) => (
-          <li class="b-yb"><span class="b-seg" data-n={s.n}>{s.n > 0 && <svg class="b-mk" width={s.rows[0].length * MARK_CELL} height={s.rows.length * MARK_CELL} viewBox={`0 0 ${s.rows[0].length} ${s.rows.length}`} shape-rendering="crispEdges" fill="currentColor" aria-hidden="true" focusable="false" data-rows={s.rows.join('/')} data-cell={String(MARK_CELL)} data-colour="ink" data-cls="b-mk"><path d={markPath(s.rows)}></path></svg>}</span><span class="b-yl num">{s.y}</span><span class="sr">{s.n ? `${s.n} ${s.n > 1 ? 'works' : 'work'}` : 'none'}</span></li>
-        ))}
-      </ol>
-      <table class="b-tb">
-        <thead class="sr"><tr><th>year</th><th>title</th><th>kind</th><th>where</th></tr></thead>
-        <tbody>
-          {rows.map((x) => (
-            <tr class={`${x.odd ? 'b-o' : 'b-e'}${x.first ? ' b-g' : ''}`}><td class="b-y num">{x.first ? x.y : <span class="sr">{x.y}</span>}</td><td class="b-t"><a class="k" href={x.href}>{x.title}</a></td><td class="b-kd">{x.kind}</td><td class="b-w">{x.where}</td></tr>
-          ))}
-        </tbody>
-      </table>
     </section>
   )}
   <Fragment slot="scripts"><script>import '../scripts/build/index.js';</script></Fragment>
