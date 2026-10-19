@@ -70,7 +70,11 @@ const BUDGET = [
      its row is its own numbers, as each kind's is) */
   ['huh',       /^\/see\/huh\/$/,                [ 6.0,   8.0,  17.0,  13.0,      114.5,  114.5,  114.5,  114.5,        157.5,  157.5,  157.5,  157.5,         18,   18,   18,   18]],
   ['photo',     /^\/see\/[^/]+\/$/,              [ 6.0,   8.0,  17.0,  13.0,      177.5,  177.5,  177.5,  177.5,        220.5,  220.5,  220.5,  220.5,         18,   18,   18,   18]],
-  ['build',     /^\/build\/$/,                   [11.5,  10.0,  20.5,  25.5,      188.0,  188.0,  204.0,  204.0,        254.5,  254.5,  270.5,  270.5,         30,   30,   30,   30]],
+  /* (build, raised 2026-10-19 for the owner's pick A, its cards three to a row at 304px: the INFORMS talk's card now
+     takes its post's own cover (2816 x 744) for the 1200 x 317 copy, which a 207px frame on a screen at 1.75x or
+     more showed on a plate: its file 23.7 KB to 53.2, every other picture as it was; the row is the new build's
+     200.2 / 214.9 and 259.3 / 273.9 KB and about a tenth more) */
+  ['build',     /^\/build\/$/,                   [11.5,  10.0,  20.5,  25.5,      220.5,  220.5,  236.5,  236.5,        285.5,  285.5,  301.5,  301.5,         30,   30,   30,   30]],
   ['teach',     /^\/teach\/$/,                   [ 9.5,   7.5,  19.5,  25.5,        1.0,    1.0,    1.0,    1.0,         61.5,   61.5,   61.5,   61.5,         18,   18,   18,   18]],
   ['404',       /^\/404\.html$/,                 [ 6.5,   6.5,  17.0,  13.0,        1.0,    1.0,    1.0,    1.0,         42.5,   42.5,   42.5,   42.5,         15,   15,   15,   15]],
   ['other',     /./,                             [ 3.0,   7.0,  19.0,  25.5,        1.0,    1.0,    1.0,    1.0,         55.0,   55.0,   55.0,   55.0,         12,   12,   12,   12]],

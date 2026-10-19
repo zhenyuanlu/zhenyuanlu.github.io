@@ -1,47 +1,45 @@
 /* /build/ (the draft v2ac's build.css, with draft v2t's taste round of 2026-10-16; pages/build.astro says what
-   stands where). Desktop, on the column's twelve columns:
-     featured   its frame in columns 1-4 (the figure's own shape, --pf-ar from the data), featured research in 5-9,
-                featured software in 10-12, each face under its own small grey label;
-     software   the label, then the shelf: four cards, three columns each, a frame (the shared .pf, 222 x 151: HayBeat's
-                shape, so that picture fills it and the wider ones travel) with its words under it;
-     talks      the label, then the rows: a blog row each (blog.css), the picture in columns 1-3 and the words beside
-                it from column 4;
+   stands where). Desktop, on the column's twelve columns (the owner's pick A, 2026-10-19):
+     featured   one label over the one work ("featured · PainAttnNet"), its frame in columns 1-4 (the figure's own
+                shape, --pf-ar from the data), and from column 5 its two faces one under the other, each under its own
+                small grey word (research, software): the one figure stands for both;
+     software   the label, then the shelf: three cards to a row, four columns each, a frame (the shared .pf, 304 x 207:
+                HayBeat's shape, so that picture fills it and the wider ones travel) with its words under it;
+     talks      the label, then the talks as the shelf's cards, three to a row: the picture, the title and year, where,
+                its notes;
    The page ends with the talks (the index, its years' bar and table, came out at the owner's word, 2026-10-18).
-   Phone: one column; each frame at the left of its words (a third of the column, 104-168px), featured's two faces one
-   under the other, a talk as the blog's rows stand there. Type 13 / 16 / 18 (a phone 13 / 16 / 17). A link's word is
-   ink at rest and the accent in hand, never underlined in hand; the keyboard's focus is the frame's line under it
-   (frame.css), or the point before a row's title; no box. Nothing is red.
-   (blog.css comes after this sheet in the page, as write.css did in the draft, so what changes its rules here says
-   #inner.) */
+   Phone: one column; each card's frame at the left of its words (a third of the column, 104-168px), the featured
+   figure (168px at most) over its two faces. Type 13 / 16 / 18 (a phone 13 / 16 / 17). A link's word is ink at rest
+   and the accent in hand, never underlined in hand; the keyboard's focus is the frame's line under it (frame.css), or
+   the point before a card's title; no box. Nothing is red. */
 .b-sec { position: relative; scroll-margin-top: 88px; }
 #inner .b-sec :is(button, a, .pf) { scroll-margin-top: 80px; }   /* focus lands clear of the sticky header (.pf: a card with no link, whose travelling picture is the keyboard's stop: frames.js) */
 .b-fr { display: block; min-width: 0; }
 .b-tx { min-width: 0; }
 /* the frames' corners (frame.css: --pf-rad, --pf-rr): round on the side away from the words. The featured figure
-   stands at the left of its words: its two left corners. A shelf's picture stands above its words: its two top
-   corners (on a phone it stands at their left, as the featured one: below) */
+   stands at the left of its words: its two left corners. A card's picture stands above its words: its two top
+   corners (on a phone it stands at their left, and the featured one over them: below) */
 .b-pf { --pf-rad: var(--pf-rr) 0 0 var(--pf-rr); }
 .b-shelf .b-pf { --pf-rad: var(--pf-rr) var(--pf-rr) 0 0; }
 
-/* ---------- featured ---------- */
+/* ---------- featured: one label, the figure, and its two faces one under the other beside it ---------- */
 #inner .b-feat { display: block; }
 .b-fe { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: var(--gut); align-items: start; scroll-margin-top: 88px; }
 .b-fe + .b-fe { margin-top: 56px; }
+.b-fe > .lab { grid-column: 1 / -1; margin-bottom: 14px; }
 .b-fe-p { grid-column: 1 / 5; min-width: 0; }
-.b-fe-r { grid-column: 5 / 10; min-width: 0; }
-.b-fe-s { grid-column: 10 / 13; min-width: 0; }
-/* the two faces stand as tall as each other, their links on one line at the foot */
-.b-fe-r, .b-fe-s { align-self: stretch; display: flex; flex-direction: column; }
-.b-fe .b-lk { margin-top: auto; padding-top: 10px; }
-.b-fe .lab { margin-bottom: 8px; }
+.b-fe-t { grid-column: 5 / 13; min-width: 0; }
+.b-fe-s { margin-top: 28px; }
+.b-fe .b-lk { margin-top: 10px; }
+.b-k { margin-bottom: 2px; }   /* (a face's word, research or software, close over its title) */
 .b-ft { font-size: 18px; line-height: 27px; font-weight: 400; text-wrap: pretty; }   /* (v2t, taste item 1: the scale's 18, was 19 / 28) */
 .b-fn { display: flex; flex-wrap: wrap; align-items: baseline; font-weight: 500; }
-.b-fe .b-au:first-of-type, .b-fe .b-ds { margin-top: 8px; }
+.b-fe .b-ft + .b-au, .b-fe .b-ds { margin-top: 8px; }
 
 /* ---------- software: the shelf ---------- */
 #inner .b-sw { display: block; }
 :is(.b-sw, .b-tk) > .lab { margin-bottom: 14px; }
-.b-shelf { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); column-gap: var(--gut); row-gap: 48px; align-items: start; --pf-ar: 222 / 151; }
+.b-shelf { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); column-gap: var(--gut); row-gap: 48px; align-items: start; --pf-ar: 222 / 151; }
 .b-card { min-width: 0; scroll-margin-top: 88px; }
 .b-card .b-tx { margin-top: 14px; }
 .b-nm { display: flex; flex-wrap: wrap; align-items: baseline; font-size: 16px; line-height: 24px; font-weight: 500; }
@@ -72,48 +70,46 @@
    takes its word's colour) */
 .b-ic { flex: none; width: calc(9 * var(--b-px, 1px)); height: calc(9 * var(--b-px, 1px)); fill: currentColor; shape-rendering: crispEdges; transition: fill var(--t-hover) var(--ease-out); }
 
-/* ---------- in hand, the site's point before the title, as a blog row has it: a shelf card, a talk, and each face of
-   the featured work (its figure goes with its research). By a pointer that hovers (on the card's picture, words and
+/* ---------- in hand, the site's point before the title, as a blog row has it: a card (software or talk), and each
+   face of the featured work (its figure goes with both). By a pointer that hovers (on the card's picture, words and
    links), or the keyboard's focus in it; a touch screen leaves :hover behind after a tap, so there only the focus
    shows it ---------- */
 .b-ft { --pt-y: 14px; }
 .b-nm { --pt-y: 12px; }
 @media (hover: hover) {
-  #inner :is(.b-card, .b-talk, .b-fe-r, .b-fe-s):hover .hpoint::before,
-  #inner .b-fe:has(.b-fe-p:hover) .b-fe-r .hpoint::before { opacity: 1; }
+  #inner :is(.b-card, .b-fe-r, .b-fe-s):hover .hpoint::before,
+  #inner .b-fe:has(.b-fe-p:hover) .hpoint::before { opacity: 1; }
 }
-#inner :is(.b-card, .b-talk, .b-fe-r, .b-fe-s):has(:focus-visible) .hpoint::before,
-#inner .b-fe:has(.b-fe-p :focus-visible) .b-fe-r .hpoint::before { opacity: 1; }
+#inner :is(.b-card, .b-fe-r, .b-fe-s):has(:focus-visible) .hpoint::before,
+#inner .b-fe:has(.b-fe-p :focus-visible) .hpoint::before { opacity: 1; }
 @media (hover: none) { #inner :is(.b-ft, .b-nm).hpoint:hover::before { opacity: 0; } }
 
-/* ---------- talks: under their label as the shelf is under its own, each talk a blog row (blog.css: .w-it and its
-   parts; the margin is the pictures' now), its title and its picture the links to its post as a blog row's are.
-   What is a talk's own is its last line, the year and its notes: one 20px line, 18px apart (a phone: on the
-   picture's bottom edge, where a blog row's date stands, and as one line). The title link does not reach over the
-   row's words as a blog row's does (blog.css .w-a::after): a box out of the flow inside the title's line turns its
-   pretty wrapping off, and the title would break as the draft's does not ("Introduction to Self-supervised /
-   Learning"); the row is in hand as the draft's is, by a pointer on its picture or its words ---------- */
+/* ---------- talks: under their label as the shelf is under its own, each talk a card as a shelf's (2026-10-19, A:
+   they were a blog's rows), its title and its picture the links to its post as a blog row's are (for a pointer; the
+   notes are the keyboard's stop). The title runs on as a line of words with its year after it, so a title of two
+   lines keeps the year on its last. The title's link does not reach over the card as a blog row's does (blog.css
+   .w-a::after): a box out of the flow inside the title's line turns its pretty wrapping off; the card is in hand by
+   a pointer on its picture or its words ---------- */
 #inner .b-tk { display: block; }
-.b-talk { scroll-margin-top: 88px; }
-#inner .b-talk .w-a::after { content: none; }
-#inner .b-talk .w-m { align-items: center; column-gap: 18px; }
-#inner .b-talk .w-dt { line-height: 20px; }
-#inner .b-talk .b-lk { display: inline-flex; margin-top: 0; }
-/* (a row landed on from a talk's way back (scripts/build/index.js land) has the focus, as the draft's router gave it:
-   its mark is the point before its title, never a box. Followed by a pointer, the row shows no mark until a key is
-   pressed (.b-land), as the draft shows none) */
+#inner .b-talk .b-nm { display: block; text-wrap: pretty; }
+/* (a card landed on from a talk's way back (scripts/build/index.js land) has the focus, as the draft's router gave
+   it: its mark is the point before its title, never a box. Followed by a pointer, the card shows no mark until a key
+   is pressed (.b-land), as the draft shows none) */
 #inner .b-talk:focus-visible:not(.b-land) .hpoint::before { opacity: 1; }
 
 @media (max-width: 999px) {
-  .b-sec, .b-talk, .b-card, .b-fe { scroll-margin-top: 56px; }
+  .b-sec, .b-card, .b-fe { scroll-margin-top: 56px; }
   #inner .b-sec :is(button, a, .pf) { scroll-margin-top: 60px; }
-  .b-fe, .b-card { display: grid; grid-template-columns: clamp(104px, 34%, 168px) minmax(0, 1fr); column-gap: 14px; align-items: start; }
-  .b-fe { row-gap: 22px; }
-  .b-fe-p { grid-column: 1; grid-row: 1; --pf-ar: 222 / 151 !important; }   /* one frame for every row of the column */
-  .b-fe-r { grid-column: 2; grid-row: 1; }
-  .b-fe-s { grid-column: 2; grid-row: 2; }
-  .b-fe .b-lk { margin-top: 8px; padding-top: 0; }
-  .b-fe .lab { margin-bottom: 4px; }
+  .b-card { display: grid; grid-template-columns: clamp(104px, 34%, 168px) minmax(0, 1fr); column-gap: 14px; align-items: start; }
+  /* the featured work: its label, its figure as wide as its pixels allow and no wider (168px, a card's frame at its
+     widest, in a frame of the figure's own shape: the file's 510px fill that on a 3x phone, where a figure the
+     column's width would stand small on its plate), and its two faces under it */
+  .b-fe { display: block; }
+  .b-fe > .lab { margin-bottom: 10px; }
+  .b-fe-p { width: min(100%, 168px); margin-bottom: 16px; }
+  .b-fe .b-pf { --pf-rad: var(--pf-rr) var(--pf-rr) 0 0; }   /* over its words here */
+  .b-fe-s { margin-top: 24px; }
+  .b-fe .b-lk { margin-top: 8px; }
   .b-ft { font-size: 17px; line-height: 25px; }   /* (v2t, taste item 1: the scale's 17, was 16 / 24) */
   :is(.b-sw, .b-tk) > .lab { margin-bottom: 10px; }
   .b-shelf { display: block; }
@@ -123,19 +119,8 @@
   .b-lk { column-gap: 18px; }
   .b-lk .k { min-height: 44px; margin-top: -12px; margin-bottom: -12px; }
   /* (the point in the 14px between a frame and its words) */
-  #inner :is(.b-fe, .b-card) .hpoint::before { left: -10px; }
-  /* a talk's last line: one line on its picture's bottom edge (its foot 5px down, as a blog row's date) */
-  #inner .b-talk .w-tx > .w-m { display: flex; grid-column: 2; grid-row: 3; align-self: end; margin: 0 0 -5px; padding: 0; }
-  #inner .b-talk .w-dt { margin: 0; }
-  #inner .b-talk.w-bare .w-tx > .w-m { margin: 8px 0 0; }
+  #inner .b-card .hpoint::before { left: -10px; }
 }
-/* (a finger on a phone, where nothing hovers, opens a talk's post from anywhere on its row:
-   scripts/build/index.js, which passes the tap to the title's link. Not by the link reaching over the row as a blog
+/* (a finger on a phone, where nothing hovers, opens a talk's post from anywhere on its card:
+   scripts/build/index.js, which passes the tap to the title's link. Not by the link reaching over the card as a blog
    row's does: the note above, on a box out of the flow in a title's line) */
-/* (under 1000px the row's parts stand apart in its grid, and the row has no box of its own to the pointer
-   (blog.css .w-it): in a mouse's hand crossing a gap between them let it go, and a finger's tap in a gap reached the
-   list behind and opened nothing (the review, 2026-10-17: 78-83% of a talk's row at 390): here the row itself takes
-   the pointer, and the tap) */
-@media (max-width: 999px) {
-  #inner .b-talk { pointer-events: auto; }
-}

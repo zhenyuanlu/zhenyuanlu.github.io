@@ -159,9 +159,9 @@ function setup(art) {
     if (fd && phone()) fd.open = false;
   });
 
-  /* ---- a talk's way back (the head's word, to its row in build's talks, /build/#<slug>): followed in this tab, it
+  /* ---- a talk's way back (the head's word, to its card in build's talks, /build/#<slug>): followed in this tab, it
      leaves word of it and of how (a key, or a pointer) for build's landing (scripts/build/index.js), which gives the
-     row the focus as the draft's router did for a link followed (inner.js land) ---- */
+     card the focus as the draft's router did for a link followed (inner.js land) ---- */
   const back = art.querySelector('.a-bk2[href*="#"]');
   if (back) back.addEventListener('click', (e) => {
     if (e.defaultPrevented || e.button !== 0 || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;

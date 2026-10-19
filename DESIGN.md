@@ -408,7 +408,7 @@ current) keep their own. Where nothing can hover, a tap draws no box of the brow
 
 **Rule:** on a touch phone a target is at least 24px each way (WCAG 2.5.8) and aims at 44px: a padding its margin takes
 back, so nothing it stands among moves. A row that opens one page opens it from anywhere on the row (the blog list,
-build's talks), and its tags and links keep their own taps. One costs room: race's dock, under a phone's map,
+build's talk cards), and its tags and links keep their own taps. One costs room: race's dock, under a phone's map,
 writes a venue's sports and a sport's races as lines a finger pins, each at least 24px tall; at 320 × 568 the held dock
 is then 9px taller: 2025's map a step smaller (243 × 174, against 256 × 184), and the current season's page 13px further
 past the window (19px, against 6).
@@ -541,7 +541,8 @@ Pixel art and content:
 - a sled push with arms too long, twice (v2a race, third look, 2026-10-06);
 - highways knotted around New York (v2a's fourth look, 2026-10-07);
 - books drawn open (v2ab's second look, 2026-10-11);
-- a dragon head that reads as a bird (v2ac review, 2026-10-15).
+- a dragon head that reads as a bird (v2ac review, 2026-10-15), and its redraw, still a bird's, held in the seven
+  cells over the bow (2026-10-19: the head now reaches past the bow, the boat 25 cells wide).
 
 From the taste review itself, not borrowed:
 - a minimum of moving elements, and scroll or load entrances;

@@ -5,21 +5,26 @@
 // Google Scholar" (content/site.yaml's Google Scholar link: the owner, 2026-10-16, "不要放cv，只要scholar，不要email"),
 // then four parts on the column's twelve columns:
 //   featured   pinned on top: the paper research.yaml marks tier: featured, with the software it names, as the one work
-//              it is: its figure in a frame of the figure's own shape (columns 1-4), then its two faces side by side,
-//              "featured research" (title, venue and year, authors, paper and data) and "featured software" (the
-//              name and year, one line, the tools, code and the write-up);
-//   software   the shelf, four to a row, the featured one not repeated: a frame (with the big-screen mode's taller
-//              file, 720 device px where the source has them: components/Frame.astro, wide), the name and year, one
-//              line, the tools, the links;
-//   talks      rows as the blog's, newest first: each talk's own list picture beside its words, the title, one grey
-//              line (where), then the year and its notes. The notes are the row's one keyboard stop, as the draft's
-//              are its one link; the title and the picture are links to the talk's post for a pointer, as a blog
-//              row's are (tabindex -1; the picture's hidden from a screen reader, the title's heard);
+//              it is, under one label ("featured · PainAttnNet"): its figure in a frame of the figure's own shape
+//              (columns 1-4), and beside it its two faces one under the other, "research" (title, venue and year,
+//              authors, paper and data) and "software" (the name and year, one line, the tools, code and the
+//              write-up). The one figure stands for both (the owner, 2026-10-19, his pick A: on a phone "featured
+//              software" stood with no picture of its own beside it);
+//   software   the shelf, three to a row (2026-10-19, A), the featured one not repeated: a frame (with the big-screen
+//              mode's taller file, 720 device px where the source has them: components/Frame.astro, wide), the name
+//              and year, one line, the tools, the links;
+//   talks      cards as the shelf's (2026-10-19, A: they were a blog's rows), three to a row, newest first: each talk's
+//              own list picture over its words, the title and year, one grey line (where), then its notes. The notes
+//              are the card's one keyboard stop, as the draft's are its one link; the title and the picture are links
+//              to the talk's post for a pointer, as a blog row's are (tabindex -1; the picture's hidden from a screen
+//              reader, the title's heard). In the big-screen mode the shelf's frames and the talks' are one width
+//              (scripts/frames.js data-pf-with), as the cards of one grid;
 //   (the index, the years as one bar and a table of every work, taste items 38 and 40, came out at the owner's word on
 //   2026-10-18, "去掉build里面的那个index table": the page ends with the talks)
 // Hidden research never reaches the page, nor its source; research with no tier is not drawn (no list of papers).
 // The links: a small pixel sign before each word, ink at rest, the accent in hand; a card, a talk or a featured face in
-// hand shows the site's point before its title. Phone: one column; every frame at the left of its words.
+// hand shows the site's point before its title. Phone: one column; every frame of the shelf and the talks at the left
+// of its words, the featured figure over its two faces.
 // Structured data: a ScholarlyArticle for each paper shown, a SoftwareSourceCode for each software, an EducationEvent
 // for each talk (its post is its page).
 import type { ImageMetadata } from 'astro';
@@ -32,7 +37,6 @@ import { beside, slug } from '../schemas/common.ts';
 import { absolute, isoDate, person, posts, url } from '../lib/site';
 import type { Sign } from '../lib/signs';
 import '../styles/build.css';
-import '../styles/blog.css';
 
 // the pictures beside content/build/ (the films are served as they are: pages/build/[film].webp.ts)
 const IMG = import.meta.glob<ImageMetadata>('/content/build/img/*.{webp,png,jpg,jpeg,gif,avif}', { eager: true, import: 'default' });
@@ -170,30 +174,33 @@ const description = `Research, software and talks by ${ME}, ${me.suffix}: ${name
     <section class="sec b-sec b-feat" id="research">
       {feats.map((f) => (
         <article class="b-fe pf-host" id={f.p ? slug(f.p.title) : undefined}>
+          <h2 class="lab">featured{f.p && <> · {f.p.title}</>}</h2>
           <div class="b-fe-p" data-pf-row="304" style={`--pf-ar:${f.shape}`}><span class="b-fr">{f.img && f.fig && <Frame image={f.img} cls="b-pf" alt={f.fig.alt} pos={f.fig.pos} to={f.fig.to} fit={f.fig.fit} eager />}</span></div>
-          <div class="b-fe-r">
-            <h2 class="lab">featured research</h2>
-            <h3 class="b-ft hpoint">{f.r.title}</h3>
-            <p class="b-au">{f.r.venue}{f.r.year && <>, <span class="num">{f.r.year}</span></>}</p>
-            <p class="b-au">{f.r.authors.map((a, i) => <>{i > 0 && ', '}{a === ME ? <span class="b-me">{a}</span> : a}</>)}</p>
-            <p class="b-lk">{f.rs.map((l) => <SignLink href={l.href} word={l.word} sign={l.sign} label={f.r.title} own={l.own} />)}</p>
-          </div>
-          {f.p && (
-            <div class="b-fe-s">
-              <h2 class="lab">featured software</h2>
-              <h3 class="b-ft b-fn hpoint">{f.p.title}<span class="b-yr num">{f.p.year}</span></h3>
-              <p class="b-ds">{nobreak(T.LINE[f.p.title] || f.p.description || '').map((s, i) => (i % 2 ? <span class="b-nw">{s}</span> : s))}</p>
-              {f.p.technologies.length > 0 && <ul class="b-tl">{f.p.technologies.map((x) => <li>{x}</li>)}</ul>}
-              <p class="b-lk">{f.sw.map((l) => <SignLink href={l.href} word={l.word} sign={l.sign} label={f.name} own={l.own} />)}</p>
+          <div class="b-fe-t">
+            <div class="b-fe-r">
+              <p class="lab b-k">research</p>
+              <h3 class="b-ft hpoint">{f.r.title}</h3>
+              <p class="b-au">{f.r.venue}{f.r.year && <>, <span class="num">{f.r.year}</span></>}</p>
+              <p class="b-au">{f.r.authors.map((a, i) => <>{i > 0 && ', '}{a === ME ? <span class="b-me">{a}</span> : a}</>)}</p>
+              <p class="b-lk">{f.rs.map((l) => <SignLink href={l.href} word={l.word} sign={l.sign} label={f.r.title} own={l.own} />)}</p>
             </div>
-          )}
+            {f.p && (
+              <div class="b-fe-s">
+                <p class="lab b-k">software</p>
+                <h3 class="b-ft b-fn hpoint">{f.p.title}<span class="b-yr num">{f.p.year}</span></h3>
+                <p class="b-ds">{nobreak(T.LINE[f.p.title] || f.p.description || '').map((s, i) => (i % 2 ? <span class="b-nw">{s}</span> : s))}</p>
+                {f.p.technologies.length > 0 && <ul class="b-tl">{f.p.technologies.map((x) => <li>{x}</li>)}</ul>}
+                <p class="b-lk">{f.sw.map((l) => <SignLink href={l.href} word={l.word} sign={l.sign} label={f.name} own={l.own} />)}</p>
+              </div>
+            )}
+          </div>
         </article>
       ))}
     </section>
   )}
   <section class="sec b-sec b-sw" id="software">
     <h2 class="lab">software</h2>
-    <ol class="b-shelf" data-pf-row="222">
+    <ol class="b-shelf" data-pf-row="304" data-pf-with="cards">
       {cards.map(({ p, id, img, film, lk }) => (
         <li class="b-card pf-host" id={id}>
           <span class="b-fr">{img && <Frame image={img} cls="b-pf" alt={p.alt} pos={p.pos} to={p.to} fit={p.fit} film={film} wide={720} />}</span>
@@ -210,16 +217,16 @@ const description = `Research, software and talks by ${ME}, ${me.suffix}: ${name
   {talks.length > 0 && (
     <section class="sec b-sec b-tk" id="talks">
       <h2 class="lab">talks</h2>
-      <ol class="w-list" data-pf-row="222">
+      <ol class="b-shelf" data-pf-row="304" data-pf-with="cards">
         {talks.map((x) => {
           const href = url(`/blog/${x.slug}/`);
           return (
-            <li class={`w-it b-talk pf-host${x.pic ? '' : ' w-bare'}`} id={x.slug}>
-              {x.pic && <a class="w-cv" href={href} tabindex="-1" aria-hidden="true"><Frame image={x.pic} cls="w-pf" pos={x.pos} /></a>}
-              <div class="w-tx">
-                <h3 class="w-ti"><a class="w-a" href={href} tabindex="-1" aria-describedby={x.where ? `b-ds-${x.slug}` : undefined}><span class="w-tt hpoint">{nobreak(x.title).map((s, i) => (i % 2 ? <span class="w-nw">{s}</span> : s))}</span></a></h3>
-                {x.where && <p class="w-ds" id={`b-ds-${x.slug}`}>{x.where}</p>}
-                <div class="w-m"><time class="w-dt num" datetime={isoDate(x.date)}>{x.date.getUTCFullYear()}</time><span class="b-lk"><SignLink href={href} word="notes" sign="lines" label={x.title} own /></span></div>
+            <li class="b-card b-talk pf-host" id={x.slug}>
+              {x.pic ? <a class="b-fr" href={href} tabindex="-1" aria-hidden="true"><Frame image={x.pic} cls="b-pf" pos={x.pos} /></a> : <span class="b-fr"></span>}
+              <div class="b-tx">
+                <h3 class="b-nm hpoint"><a class="b-ta" href={href} tabindex="-1" aria-describedby={x.where ? `b-ds-${x.slug}` : undefined}>{nobreak(x.title).map((s, i) => (i % 2 ? <span class="b-nw">{s}</span> : s))}</a><time class="b-yr num" datetime={isoDate(x.date)}>{x.date.getUTCFullYear()}</time></h3>
+                {x.where && <p class="b-au" id={`b-ds-${x.slug}`}>{x.where}</p>}
+                <p class="b-lk"><SignLink href={href} word="notes" sign="lines" label={x.title} own /></p>
               </div>
             </li>
           );

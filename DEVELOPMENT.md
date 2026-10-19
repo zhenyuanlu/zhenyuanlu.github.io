@@ -79,7 +79,7 @@ race in the printed list.
    | `bibliography` | a BibTeX file beside the post, for `[@key]` | `bibliography: ./refs.bib` |
    | `links` | the post's own links under the byline, in this order: `kind` (paper, arxiv, pdf, code, slides, patent, data, video, web), `href` (`https://…` or `/…` on this site), `label` (the word shown, if not the kind's) | `links: [{ kind: arxiv, href: "https://arxiv.org/abs/2210.03163" }]` |
    | `cite` | "Cite this post", when it is not to be made from the title and the date (see [Cite](#cite)) | `cite: { text: "Lu, Z. (2026)…", bibtex: "@misc{…}" }` |
-   | `kind` | `talk` for a talk: build lists it, not the blog; its page is here all the same, and its way back leads to its row on build | `kind: talk` |
+   | `kind` | `talk` for a talk: build lists it, not the blog; its page is here all the same, and its way back leads to its card on build | `kind: talk` |
    | `where` | a talk's place, in its byline | `where: Snell Library, Boston, MA` |
    | `toc` | the contents, from the `##` and `###` headings (on by default) | `toc: false` |
    | `hidden` | off the blog's list and the feed; its address still works | `hidden: true` |
