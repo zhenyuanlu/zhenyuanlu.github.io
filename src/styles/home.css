@@ -44,7 +44,7 @@
   --s: 14px;                 /* everything small */
   --xs: 13px;                /* pinyin */
   /* one pixel for the whole road: the traveller, the city icons and the weather all use cells of --u
-     (set by the script to whole device pixels: 2px on desktop, about 1.3px on a phone) */
+     (set by the script to whole device pixels: 2px on desktop, 1px on a touch phone, 1.14px at 2.625x) */
   --u: 2px;
   --icon: calc(36 * var(--u));   /* 36 x 36 cells, standing on the road */
   --bw: none;                /* no-script only: filter for the black line icons */
