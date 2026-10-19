@@ -39,7 +39,7 @@ async function averageColour(file) {
 let made = null;
 /**
  * @returns {Promise<Array<{ name: string, title: string, date: string, year: number, day: string, place: string,
- *   kind: string, kindLabel: string, alt: string, ownAlt: string, w: number, h: number, f: number, avg: string, src: string,
+ *   kind: string, kindLabel: string, alt: string, ownAlt: string, w: number, h: number, avg: string, src: string,
  *   srcset: string, srcsetAvif: string, full: string, fullAvif: string, og: string, focus: string, n: number }>>}
  */
 export function photos() {
@@ -73,7 +73,7 @@ async function make() {
     const [y, mo, d] = p.date.split('-').map(Number);
     out.push({
       name: e.id, title: p.title, date: p.date, year: y, day: `${MON[mo - 1]} ${d}, ${y}`, place: p.place,
-      kind: slug(p.kind), kindLabel: p.kind, alt: e.data.alt || p.title, ownAlt: e.data.alt || '', w: p.w, h: p.h, f: Math.min(1, 0.6 + 0.4 * p.w / 600),
+      kind: slug(p.kind), kindLabel: p.kind, alt: e.data.alt || p.title, ownAlt: e.data.alt || '', w: p.w, h: p.h,
       avg: await averageColour(p.file),
       src: urls[Math.min(1, urls.length - 1)], srcset: widths.map((w, k) => `${urls[k]} ${w}w`).join(', '),
       srcsetAvif: widths.map((w, k) => `${avifs[k]} ${w}w`).join(', '), fullAvif: avifs[avifs.length - 1],

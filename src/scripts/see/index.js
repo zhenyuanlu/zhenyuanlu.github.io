@@ -1,9 +1,8 @@
 // /see/'s behaviour (the draft v2ac's see.js, after its markup, which pages/see.astro writes): the wall hung in its
 // columns (three on a desk, two on a phone), dealt in turn as ArtLife deals them, the middle column (desk) or the
-// right one (phone) starting lower; each photograph at its share of the column, never past its own pixels counted in
-// the screen's device pixels (on a phone, one nearer the column than the narrowest fills it, and each stands at its
-// column's left edge: hang()); slowly appearing as each comes into view (a 1s fade while the place settles 8px, those
-// in view one after another, 140ms apart). The filter takes the wall down (150ms) and hangs it again (?kind= keeps
+// right one (phone) starting lower; every photograph one width, its column's (no wider than a 600px file at its own
+// pixels in the screen's device pixels: hang()); slowly appearing as each comes into view (a 1s fade while the place
+// settles 8px, those in view one after another, 140ms apart). The filter takes the wall down (150ms) and hangs it again (?kind= keeps
 // it). A click opens the viewer on the paper: the photograph as large as fits, its caption bottom left, ← → bottom
 // right; the arrows, the keys or a swipe step through the filter's photographs; Escape, close, a click or a swipe
 // down closes back to its place; two fingers pinch-zoom (view.js, which a photograph's own page shares). The address
@@ -34,7 +33,7 @@ function setup() {
   const all = [...gal.querySelectorAll('.s-it')].map((el, n) => {
     const w = +el.getAttribute('data-w') || 600, h = +el.getAttribute('data-h') || 900, img = el.querySelector('img'), title = (el.querySelector('.s-t') || {}).textContent || '';
     return {
-      el, n, name: el.id, title, kind: el.getAttribute('data-kind') || '', w, h, r: w / h, f: Math.min(1, 0.6 + 0.4 * w / 600),
+      el, n, name: el.id, title, kind: el.getAttribute('data-kind') || '', w, h, r: w / h,
       avg: el.getAttribute('data-avg') || '#8a8580', fullOwn: el.getAttribute('data-full') || '', fullAvif: el.getAttribute('data-full-avif') || '', href: el.getAttribute('href'),
       /* (the viewer's picture is named by the title, as the draft's was, or by the YAML's own alt: the wall's picture
          has none, its link and caption saying the title already) */
@@ -68,73 +67,56 @@ function setup() {
   /* how much lower a column starts, as a share of the column's width: the middle one of three, the right one of two
      (a phone's was 0.56 until the owner asked for its wall a little more even, 2026-10-18) */
   const STAGGER = { 3: [0, 0.3, 0], 2: [0, 0.35] };
+  /* the wall's usual file: 600px wide (four of its ten; four are 400, Huh 506, Hustle and Bustle 900) */
+  const FILE = 600;
   function gapOf(name) { return parseFloat(getComputedStyle(gal).getPropertyValue(name)) || 0; }
   function hang() {
     const W = gal.getBoundingClientRect().width, n = W >= 700 ? 3 : 2;
     const had = document.activeElement, keep = had && had.closest && had.closest('.s-it');   // moving a photograph drops focus
     lastW = gal.clientWidth; lastD = dpr();
-    /* the columns share the wall's width, --s-gap apart; a column's whole pixels (cw) size its photographs, each at
-       most its own pixels: its width over the screen's ratio, in CSS px */
+    /* the columns share the wall's width, --s-gap apart; a column's whole pixels (cw) size its photographs */
     let gap = gapOf('--s-gap'), colW = (W - gap * (n - 1)) / n, cw = Math.round(colW);
     const d = lastD;
     all.forEach((P) => off.appendChild(P.el));
-    const list = shown(), seen = [0, 0, 0];
-    let wOf = (P) => Math.min(Math.floor(P.w / d), Math.round(cw * P.f));
-    /* the big-screen mode (scripts/wide.js; the draft's see.js): a photograph grows with its column in the wider
-       frame, but only as far as its own pixels on the screen itself (its width over the device px a page px holds:
-       the screen's ratio times z, which a script reads as devicePixelRatio on a zoomed page), and it is never smaller
-       than on the plain page (its width there, in the window's px). Where the files give out before the column does
+    const list = shown();
+    /* the big-screen mode (scripts/wide.js; the draft's see.js): where the files give out before the column does
        (the wall's 600px files on a 4K screen at 175%), the columns keep the width such a file fills and stand further
        apart, the outer two still on the frame's edges (styles/wide.css: --s-wall, the wall's own width there) */
-    if (zoom && zoom.k > 1 && list.length && n > 1) {
-      const z = zoom.z, real = zoom.dpr(), cw0 = Math.round((960 - gap * (n - 1)) / n), grow = wOf, full = Math.floor(600 / d);
-      const plain = (P) => Math.min(Math.floor(P.w / real), Math.round(cw0 * P.f));   // (its width on the plain page, window px)
-      wOf = (P) => Math.max(Math.floor(plain(P) / z), grow(P));
-      if (colW > full) { colW = cw = Math.max(full, Math.floor(cw0 / z)); gap = (W - n * colW) / (n - 1); }
+    const cap = Math.floor(FILE / d);   // (a 600px file at its own pixels: below. Never narrower than on the plain page)
+    if (zoom && zoom.k > 1 && colW > cap) { colW = cw = cap; gap = (W - n * colW) / (n - 1); }
+    /* every photograph one width, its column's (the owner, 2026-10-19: "让所有图片的宽度都一样", his pick A of
+       three). Until then each took a share of the column by its file's width and stopped at its own pixels, so the
+       wall came in three or four widths (a 3x phone: 133 and 168px, the gap between its columns 14 to 49px; his desk
+       215, 272 and 322). Now each fills its column, as far as a 600px file goes at its own pixels: the 400px files
+       (Keep Eyes On, Public Market, Golden Equinox, Along the Way) and Huh are drawn past theirs on a dense screen
+       (1.26x on a 390px phone at 3x, 1.5x at 2x and on his desk at 175%; Huh 1.18x), which he accepted; the others
+       never. Where that holds a column narrower than the wall gives it (a phone held sideways, a desk at 2x), the
+       gaps take up to twice their width and the rest is shared on both sides, so the wall stays centred */
+    let U = Math.min(cw, cap), x0 = 0;
+    if (U < cw) {
+      let spare = W - n * U - (n - 1) * gap;
+      const more = Math.min(spare / (n - 1), gap);
+      colW = U; gap += more; spare -= more * (n - 1); x0 = Math.floor(spare / 2);
     }
-    /* a phone's wall, two columns (the owner, 2026-10-18: "see里面的gallery有点过于没align好了，大小太过于层次不齐，可以稍微
-       修正一点点", a little more aligned and even). On a 3x screen a 400px file stops at its own pixels (133px), short
-       of its share, so the photographs came in three widths, and the narrower ones, against the outer edges, left
-       the gap between the columns anywhere from 14 to 84px wide (390px screen). Here a photograph nearer the column's
-       width than the wall's narrowest fills the column, as far as its own pixels go (Huh: 157px at 390 becomes 168,
-       504 of its 506 device px), so the wall keeps two widths where its files allow; and every photograph stands at
-       its column's left edge, where its caption starts, so each column has one straight left edge and only the right
-       edges vary. (Where none of the second column's photographs fills it, a phone held sideways, that edge stands
-       further right, until the widest meets the wall's right edge.) None is smaller than before, none past its
-       pixels, every one whole */
-    const phone = n === 2;
-    if (phone && list.length) {
-      const own = wOf, least = Math.min(...list.map(own));
-      wOf = (P) => { const w = own(P), full = Math.min(Math.floor(P.w / d), cw); return full - w <= w - least ? full : w; };
-    }
-    list.forEach((P, k) => {   // in turn, as ArtLife deals them; into the page in reading order
-      /* a photograph narrower than its column keeps a desk's outer edges: left in the first column, right in the
-         last, and in the middle one alternately right and left (on a phone, left in both: above) */
-      const c = k % n, narrow = wOf(P) < cw - 0.5;
-      P.el.classList.toggle('s-r', !phone && narrow && (c === n - 1 || (c > 0 && seen[c]++ % 2 === 0)));
-      P.el.style.width = wOf(P) + 'px';   // whole pixels, so its edges stay crisp
+    list.forEach((P) => {   // in turn, as ArtLife deals them; into the page in reading order
+      P.el.style.width = U + 'px';   // whole pixels, so its edges stay crisp
       gal.appendChild(P.el);
     });
-    const w1 = phone ? Math.max(0, ...list.filter((P, k) => k % 2).map(wOf)) : cw;   // (a phone's second column's widest)
-    lay = { n, colW, gap, list, top: STAGGER[n].map((s) => Math.round(cw * s)), x1: w1 && w1 < cw - 0.5 ? colW - w1 : 0 };
+    lay = { n, colW, gap, x0, list, top: STAGGER[n].map((s) => Math.round(U * s)) };
     place();
     gal.classList.add('s-hung');
     if (keep && keep.parentNode !== off) keep.focus({ preventScroll: true });
     if (ro) { ro.disconnect(); ro.observe(gal); list.forEach((P) => ro.observe(P.el)); }
   }
-  /* each photograph in its column: the column's x (a narrower one against its right edge; a phone's second column
-     further right where none of its photographs fills it), under the one before it in that column, --s-vgap below
-     it; the wall as tall as its longest column */
+  /* each photograph in its column: the column's x, under the one before it in that column, --s-vgap below it; the
+     wall as tall as its longest column */
   function place() {
     if (!lay) return;
     const vgap = gapOf('--s-vgap'), y = lay.top.slice();
     const hs = lay.list.map((P) => P.el.getBoundingClientRect().height);
     lay.list.forEach((P, k) => {
       const c = k % lay.n;
-      let x = c * (lay.colW + lay.gap);
-      if (P.el.classList.contains('s-r')) x += lay.colW - parseFloat(P.el.style.width);
-      else if (c === 1 && lay.x1) x += lay.x1;
-      P.el.style.left = x + 'px';
+      P.el.style.left = lay.x0 + c * (lay.colW + lay.gap) + 'px';
       P.el.style.top = y[c] + 'px';
       y[c] += hs[k] + vgap;
     });
@@ -263,8 +245,9 @@ function setup() {
   const mqTouch = window.matchMedia ? matchMedia('(max-width: 999px) and (hover: none)') : { matches: false };
   const atView = () => !!(history.state && history.state.zlView);   // the history stands on the viewer's own step
 
-  /* as large as fits, never past its own pixels: its width and height over the screen's ratio, in CSS px */
-  function fit(P) { return fitPhoto(P.w, P.h); }
+  /* as large as fits, never past its own pixels (its width and height over the screen's ratio, in CSS px), or past
+     its width on the wall where that is more: opened, a photograph never shrinks (view.js) */
+  function fit(P) { return fitPhoto(P.w, P.h, parseFloat(P.el.style.width) || 0); }
   function setBox(el, r) { el.style.left = r.x + 'px'; el.style.top = r.y + 'px'; el.style.width = r.w + 'px'; el.style.height = r.h + 'px'; }
   /* the viewer's picture in the form the browser took for the wall: AVIF where its <picture> gave it the AVIF (the
      wall's own picture, data-full-avif), else the other (data-full). Decided as the viewer first opens, from the

@@ -125,14 +125,12 @@ html[data-wide] #inner .b-fe-s { flex: none; width: calc((100% - 11 * var(--gut)
 html[data-wide] #inner .ip { --s-wall: calc(3 * max(round(down, 600px / var(--zd, 1), 1px), round(down, 304px / var(--z, 1), 1px)) + 2 * 24px); }
 html[data-wide] #inner .s-gal { max-width: var(--s-wall); }
 html[data-wide] #inner .s-fl { max-width: calc(var(--s-wall) * var(--z, 1)); }
-/* (see.css's lengths that must stay the window's: the wall's wait out of sight a window tall, and a place no wider
-   than its file's own px, in the window's px, until the script sizes it) */
+/* (see.css's length that must stay the window's: the wall's wait out of sight, a window tall) */
 html.js[data-wide] #inner .s-gal:not(.s-hung) { min-height: calc(var(--vh) * 100); max-height: calc(var(--vh) * 100); }
-html[data-wide] #inner .s-it { width: min(var(--f, 1) * 100%, var(--w) * 1px / var(--z)); }
 /* see's viewer: its caption, its arrows and its close stand on the frame's edges, as they do at 960 */
 html[data-wide] #inner .s-x { right: max(20px, (calc(var(--vw, 1vw) * 100) - var(--cw)) / 2 - 8px); }
 html[data-wide] #inner .s-vcap { left: max(32px, (calc(var(--vw, 1vw) * 100) - var(--cw)) / 2); }
 html[data-wide] #inner .s-vnav { right: max(20px, (calc(var(--vw, 1vw) * 100) - var(--cw)) / 2 - 12px); }
 /* (the pictures: a row's frames grow with their column as far as the pixels they hold, scripts/frames.js; see's wall
-   holds each photograph to its own pixels, see's script) */
+   holds its one width to a 600px file's own pixels, see's script) */
 }

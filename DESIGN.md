@@ -216,8 +216,9 @@ page. From a window of 1800 × 968 CSS px the frame is 1080px wide; from 2000 ×
 teach, see, the blog, an article, a photograph's page) widens its twelve columns and sets its text one small step
 larger: 1.0625×, and 1.125× from 2200 × 1183. An article keeps its 632px measure. The header, the footer, the fader,
 the page's pixel word, the tags and the link rows stay as they are at 960, and no picture grows past its device
-pixels. The mode is off where nothing can hover (a phone, a tablet), in Safari, in print and with `?wide=off`
-(`src/scripts/early.js`, `src/scripts/wide.js`, `src/styles/wide.css`).
+pixels (but see's 400px photographs and Huh, under the wall's one width). The mode is off where nothing can hover (a
+phone, a tablet), in Safari, in print and with `?wide=off` (`src/scripts/early.js`, `src/scripts/wide.js`,
+`src/styles/wide.css`).
 
 **The vertical steps:**
 - **Header:** 61px (47px on a phone, 41px under 375px).
@@ -289,18 +290,21 @@ link's visible text. There are no descriptions.
 **Rule (the owner's):** no picture is ever drawn past its device pixels. It stays sharp, even when that makes it
 smaller on a high-density screen (his choice "B"). On a phone an article's picture is held to the file the browser
 took (Chrome may take the narrower of two near its need, at 320 and 340px wide and held sideways), once that file is
-known (`src/scripts/article.js`).
+known (`src/scripts/article.js`). The one exception is see's wall, where one width for every photograph wins (below).
 
 **Rule (the owner's):** pictures show their whole height, and nothing is lost against the source. The see wall keeps
 every photograph whole, even the one that is not 2:3, 3:2 or 1:1.
 
-**Rule:** see's wall hangs in three columns on a desk, the smaller photographs against its outer edges and the middle
-column starting lower. On a phone (two columns) every photograph stands at its column's left edge, under which its
-caption starts (held sideways, where none of the right column's photographs fills it, that column stands further right,
-its widest ending on the wall's right edge); one nearer the column's width than the wall's narrowest fills the column,
-as far as its own pixels go, so the wall has two widths where its files allow (three at 430px wide, where Huh stops at
-its own 168px); and the right column starts lower by 0.35 of a column. It is still hung, never a regular grid (the
-owner, 2026-10-18: "大小太过于层次不齐，可以稍微修正一点点").
+**Rule (the owner's, 2026-10-19):** see's wall hangs in three columns on a desk, the middle one starting lower by 0.3
+of a column, and in two on a phone, the right one starting lower by 0.35. Every photograph is one width, its column's
+("让所有图片的宽度都一样", his pick A). The column is no wider than a 600px file at its own pixels. The four 400px files
+and Huh (506px) are drawn past theirs on a dense screen: 1.26× on a 390px phone at 3×, 1.41× at 430px, and 1.5× at 2×
+and on his desk at 175% (Huh 1.18×). He accepted that softness over a smaller wall. Where the 600px cap holds a column
+narrower than the wall would give it (a phone held sideways, a desk at 2×), the gaps widen up to twice their width and
+the wall is centred. The big-screen mode keeps its own wall width (`--s-wall`, `src/styles/wide.css`), standing on the
+frame's left edge. Opened in the viewer or on its own page, a photograph is never smaller than on the wall, where
+the window has the room (`src/scripts/see/view.js`). The photographs keep their own heights, so the wall stays hung
+and never becomes a regular grid (`src/scripts/see/index.js`).
 
 **Rule:** before it loads, an article's picture holds its place in the surface. See's wall and the frames keep v2t's
 placeholders, not the surface: a frame is the paper (a white plate at night), and a photograph's place on the wall

@@ -1,6 +1,7 @@
 // /see/<name>/'s behaviour (the draft v2ac's see viewer, on a photograph's own page, pages/see/[photo].astro): the
 // photograph placed to the pixel as the viewer places it (as large as the window's room allows, never past its own
-// pixels counted in the screen's device pixels), again on a resize; the arrow keys, a swipe sideways and the arrows
+// pixels counted in the screen's device pixels, or past the width it stands at on the wall where that is more:
+// view.js, wallWidth()), again on a resize; the arrow keys, a swipe sideways and the arrows
 // go to the photograph before or after, Escape, a swipe down, close and a click on the paper back to the wall, at
 // this photograph; two fingers pinch-zoom (view.js, which the viewer shares). Nothing scrolls. The wall's filter
 // (?kind=, as the viewer's address keeps it) stays on the ways out: close, before, after. The page reads without it.
@@ -8,7 +9,7 @@
 // photograph before or after takes this page's place in the history (location.replace), so Back leaves the
 // photographs at once, however many were seen; close is a step of its own. A desk, and a narrow window in a mouse's
 // hand, keep an entry a step, as before.
-import { fitPhoto, handOn } from './view.js';
+import { fitPhoto, handOn, wallWidth } from './view.js';
 
 const view = document.querySelector('.s-one');
 if (view) setup();
@@ -44,7 +45,7 @@ function setup() {
     a.href = u.pathname + u.search + u.hash;
   });
   function place() {
-    const r = fitPhoto(W, H), s = big.style;
+    const r = fitPhoto(W, H, wallWidth()), s = big.style;
     s.left = r.x + 'px'; s.top = r.y + 'px'; s.width = r.w + 'px'; s.height = r.h + 'px';
     big.classList.add('s-set');
   }
