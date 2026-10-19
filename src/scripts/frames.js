@@ -141,13 +141,15 @@ function frameDims(f) { const w = wideFile(f); return [+f.getAttribute(w ? 'data
    (frame.css; blog.css's column, wide.css's featured figure). A mark (fit "mark") holds no one back, nor does a
    picture far smaller than the row's others (under 0.6 of their median: one small diagram among the covers stands in
    the middle of its plate). A frame in a hidden row (the blog under a topic) counts too, by its shape, so the size
-   the rows share does not change with what is shown. Where the frame stays 960px (and with ?wide=off) nothing is set */
+   the rows share does not change with what is shown. Rows marked with one name (data-pf-with: build's shelf and its
+   talks, cards of one grid) take the least of their widths, so their cards stand as wide as each other. Where the
+   frame stays 960px (and with ?wide=off) nothing is set */
 let capsOn = false;
 function frameCaps() {
   const on = !!(zoom && zoom.k > 1);
   if (!on && !capsOn) return;
   capsOn = on;
-  const dpr = window.devicePixelRatio || 1;
+  const dpr = window.devicePixelRatio || 1, rows = [], least = {};
   (host || document).querySelectorAll('[data-pf-row]').forEach((g) => {
     if (!on) { g.style.removeProperty('--pf-fw'); return; }
     const ws = [];
@@ -165,9 +167,15 @@ function frameCaps() {
     const med = ws.length ? ws[ws.length >> 1] : 0;
     let cap = Infinity;
     ws.forEach((w) => { if (w >= 0.6 * med) cap = Math.min(cap, w); });
-    const least = (+g.getAttribute('data-pf-row') || 0) / zoom.z;
+    cap = Math.max((+g.getAttribute('data-pf-row') || 0) / zoom.z, cap);
+    const k = g.getAttribute('data-pf-with');
+    if (k) least[k] = Math.min(least[k] == null ? Infinity : least[k], cap);
+    rows.push([g, cap, k]);
+  });
+  rows.forEach(([g, cap, k]) => {
+    if (k) cap = least[k];
     if (cap === Infinity) g.style.removeProperty('--pf-fw');
-    else g.style.setProperty('--pf-fw', 'min(100%, ' + Math.max(least, cap).toFixed(3) + 'px)');
+    else g.style.setProperty('--pf-fw', 'min(100%, ' + cap.toFixed(3) + 'px)');
   });
 }
 function frameAll() {

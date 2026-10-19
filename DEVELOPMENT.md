@@ -30,7 +30,7 @@ how to add an entry; `npm run check` stops, naming the file and the line, at any
 | the blog, `/blog/` | `content/blog/<slug>/` | one folder a post: `index.md`, its pictures and videos, `refs.bib` ([Write a post](#write-a-post)) |
 | build, `/build/` | `content/build/` | `research.yaml` (papers, patents, abstracts), `software.yaml` (the shelf), `talks.yaml` (each talk's place; a talk itself is a post with `kind: talk`), `img/` |
 | teach, `/teach/` | `content/teach/` | `courses.yaml`, `terms.yaml` (every term taught), `books.yaml` |
-| see, `/see/` | `content/see/` | one photograph a pair: `<name>.jpg` and `<name>.yaml` (its title, which also names it for a reader who cannot see it, its day, place and kind); its page is `/see/<name>/` |
+| see, `/see/` | `content/see/` | one photograph a pair: `<name>.jpg` and `<name>.yaml` (its title, which also names it for a reader who cannot see it, its day, place and kind); its page is `/see/<name>/`. Give a file at least 600px wide (more is fine): the wall draws every photograph at one width, its column's, and a narrower file is drawn past its own pixels there (a 400px one at 1.26x on a phone at 3x, 1.5x on a desk at 2x) |
 | race, `/race/` | `content/race/` | one file a season, `<year>.yaml` (`2027.yaml` next year), `clubs.yaml`, `medley.yaml` |
 | the home, `/` | `content/home/` | `doors.yaml` (the five doors and their lines), `cities.yaml` (the road's cities), `img/` |
 | every page | `content/site.yaml` | the name, the sentence under it, the social links, the mottos, where he is (the footer's "Hello from") |
@@ -79,7 +79,7 @@ race in the printed list.
    | `bibliography` | a BibTeX file beside the post, for `[@key]` | `bibliography: ./refs.bib` |
    | `links` | the post's own links under the byline, in this order: `kind` (paper, arxiv, pdf, code, slides, patent, data, video, web), `href` (`https://…` or `/…` on this site), `label` (the word shown, if not the kind's) | `links: [{ kind: arxiv, href: "https://arxiv.org/abs/2210.03163" }]` |
    | `cite` | "Cite this post", when it is not to be made from the title and the date (see [Cite](#cite)) | `cite: { text: "Lu, Z. (2026)…", bibtex: "@misc{…}" }` |
-   | `kind` | `talk` for a talk: build lists it, not the blog; its page is here all the same, and its way back leads to its row on build | `kind: talk` |
+   | `kind` | `talk` for a talk: build lists it, not the blog; its page is here all the same, and its way back leads to its card on build | `kind: talk` |
    | `where` | a talk's place, in its byline | `where: Snell Library, Boston, MA` |
    | `toc` | the contents, from the `##` and `###` headings (on by default) | `toc: false` |
    | `hidden` | off the blog's list and the feed; its address still works | `hidden: true` |
@@ -130,9 +130,10 @@ the file you gave: each is made at the lightest setting whose result stays withi
 every 32px square, measured once, by the first build that meets the picture on your machine, and kept in
 `src/lib/image-choices.json`. Commit that file with the picture. The deploy never measures: a picture missing from
 it stops the deploy, naming the picture, and `npm run images` on your machine adds it. A picture is never drawn larger than its own pixels, counted in the screen's device pixels
-(a 437px picture stands 437 device pixels wide: 146 CSS px on a phone at 3x). The big-screen mode's larger places
-are in `sizes` as window sizes, so a window that large takes the mode's file even where the mode stays off (Safari,
-a touch desktop, `?wide=off`): the picture is drawn at its plain size from more pixels, more bytes and the same look
+(a 437px picture stands 437 device pixels wide: 146 CSS px on a phone at 3x), but on see's wall, where every
+photograph is its column's width and a file under 600px wide is drawn past its pixels ([DESIGN.md](DESIGN.md)).
+The big-screen mode's larger places are in `sizes` as window sizes, so a window that large takes the mode's file
+even where the mode stays off (Safari, a touch desktop, `?wide=off`): the picture is drawn at its plain size from more pixels, more bytes and the same look
 (a cover at 2560 x 1440: a file for 1440px drawn at 960px). Large originals are fine. Videos
 (`.mp4`, `.webm`) are copied as they are, so keep them small (under a few MB); the build reads their size from the
 file, and stops, naming it, if it cannot.

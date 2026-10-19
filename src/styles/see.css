@@ -34,11 +34,11 @@ html.js #inner .s-gal:not(.s-hung) .s-it :is(img, .s-cap) { animation: s-late-in
 @keyframes s-late { to { visibility: visible; max-height: none; overflow: visible; } }
 @keyframes s-late-at { to { transform: none; } }
 @keyframes s-late-in { to { opacity: 1; } }
-/* a place: as wide as its file's share of the column (--f), never past its own pixels (the script's width: its own
-   pixels counted in the screen's device pixels), as tall as its photograph's own shape (every one whole). Quiet paper
-   from the start; as it comes into view it settles 8px while the photograph slowly appears (1s) and its caption
-   follows; --d holds them back alike, so those in view come one by one */
-#inner .s-it { display: block; width: min(var(--f, 1) * 100%, var(--w) * 1px); margin: 0; padding: 0; text-align: left; cursor: zoom-in;
+/* a place: as wide as its column, every photograph one width (the owner, 2026-10-19; the script's width, in whole
+   pixels), as tall as its photograph's own shape (every one whole). Quiet paper from the start; as it comes into view
+   it settles 8px while the photograph slowly appears (1s) and its caption follows; --d holds them back alike, so
+   those in view come one by one */
+#inner .s-it { display: block; width: 100%; margin: 0; padding: 0; text-align: left; cursor: zoom-in;
   -webkit-tap-highlight-color: transparent; transform: translateY(8px); transition: transform 1.2s cubic-bezier(.2, .6, .2, 1) var(--d, 0ms); }
 #inner .s-it.in { transform: none; }
 #inner .s-it img { opacity: 0; transition: opacity 1s cubic-bezier(.3, .1, .3, 1) var(--d, 0ms); }

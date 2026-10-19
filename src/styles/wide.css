@@ -102,19 +102,17 @@ html[data-wide] #inner .a-toc { max-height: calc(var(--vh) * 100 - var(--a-top) 
 html[data-wide] #inner :is(.w-cover, .w-fig):not(.a-wide, .a-full, .a-win) > video { width: min(100%, calc(var(--w) / var(--z)), var(--mw, 100%)); }
 html[data-wide] #inner .a-art :is(.a-wide, .a-full, .a-win) > video {
   width: clamp(min(var(--a-meas), calc(var(--w) / var(--z))), calc((min(calc(var(--w) / var(--a-dpr, 1)), calc(var(--vh, 1vh) * 60 * var(--ar, 1.5))) - 100% + 1px) * 9999), 100%); }
-/* build's featured row: its figure is never drawn past its own pixels (scripts/frames.js: --pf-fw, on its place), so
+/* build's featured work: its figure is never drawn past its own pixels (scripts/frames.js: --pf-fw, on its place), so
    on a screen whose pixels the file cannot fill (a 4K screen at 175%) it stays narrower than its four columns and the
-   words would stand a hole away. Here the row is a line of three: the figure's place is as wide as the figure (its
-   four columns wherever the file fills them), featured research starts one gutter after it and takes the room up to
-   featured software, which keeps its three columns on the frame's right edge, over the shelf's last card. (The .004px:
-   a third of the row, taken as a percentage, comes out a hair under the four columns, which the browser cuts down to
-   the 64th of a px below; the hair on top is less than a 64th at either text step, so the place is the grid's four
-   columns exactly, a whole number of the window's px at every step: 343, 383, 422, 462) */
-html[data-wide] #inner .b-fe { display: flex; }
+   words would stand a hole away. Here the label has a line of its own, the figure's place is as wide as the figure
+   (its four columns wherever the file fills them), and its two faces start one gutter after it and take the rest.
+   (The .004px: a third of the row, taken as a percentage, comes out a hair under the four columns, which the browser
+   cuts down to the 64th of a px below; the hair on top is less than a 64th at either text step, so the place is the
+   grid's four columns exactly, a whole number of the window's px at every step: 343, 383, 422, 462) */
+html[data-wide] #inner .b-fe { display: flex; flex-wrap: wrap; align-items: flex-start; }
+html[data-wide] #inner .b-fe > .lab { flex: 0 0 100%; }
 html[data-wide] #inner .b-fe-p { flex: none; width: min(calc((100% - 11 * var(--gut)) / 12 * 4 + 3 * var(--gut) + .004px), var(--pf-fw, 100%)); }
-html[data-wide] #inner .b-fe-r { flex: 1 1 0; }
-html[data-wide] #inner .b-fe-r:last-child { flex: none; width: calc((100% - 11 * var(--gut)) / 12 * 5 + 4 * var(--gut)); }
-html[data-wide] #inner .b-fe-s { flex: none; width: calc((100% - 11 * var(--gut)) / 12 * 3 + 2 * var(--gut)); }
+html[data-wide] #inner .b-fe-t { flex: 1 1 0; }
 /* see's wall: where the photographs' own pixels give out before the columns do (600px files on a 4K screen at 175%)
    see's script keeps the frame's edges and puts what is left into the gaps. Here the wall is only as wide as three
    such columns and the two gaps of 960 (--s-wall), so it is hung as at 960, the same photographs the same distance
@@ -125,14 +123,12 @@ html[data-wide] #inner .b-fe-s { flex: none; width: calc((100% - 11 * var(--gut)
 html[data-wide] #inner .ip { --s-wall: calc(3 * max(round(down, 600px / var(--zd, 1), 1px), round(down, 304px / var(--z, 1), 1px)) + 2 * 24px); }
 html[data-wide] #inner .s-gal { max-width: var(--s-wall); }
 html[data-wide] #inner .s-fl { max-width: calc(var(--s-wall) * var(--z, 1)); }
-/* (see.css's lengths that must stay the window's: the wall's wait out of sight a window tall, and a place no wider
-   than its file's own px, in the window's px, until the script sizes it) */
+/* (see.css's length that must stay the window's: the wall's wait out of sight, a window tall) */
 html.js[data-wide] #inner .s-gal:not(.s-hung) { min-height: calc(var(--vh) * 100); max-height: calc(var(--vh) * 100); }
-html[data-wide] #inner .s-it { width: min(var(--f, 1) * 100%, var(--w) * 1px / var(--z)); }
 /* see's viewer: its caption, its arrows and its close stand on the frame's edges, as they do at 960 */
 html[data-wide] #inner .s-x { right: max(20px, (calc(var(--vw, 1vw) * 100) - var(--cw)) / 2 - 8px); }
 html[data-wide] #inner .s-vcap { left: max(32px, (calc(var(--vw, 1vw) * 100) - var(--cw)) / 2); }
 html[data-wide] #inner .s-vnav { right: max(20px, (calc(var(--vw, 1vw) * 100) - var(--cw)) / 2 - 12px); }
 /* (the pictures: a row's frames grow with their column as far as the pixels they hold, scripts/frames.js; see's wall
-   holds each photograph to its own pixels, see's script) */
+   holds its one width to a 600px file's own pixels, see's script) */
 }

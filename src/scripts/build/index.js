@@ -1,7 +1,7 @@
 // /build/'s behaviour (the draft v2ac's build.js, the end of its render): the pictures in hand (scripts/frames.js:
 // a wide one travels while its card, face or talk is in hand, Waycine's film plays, a finger drags; a card with no
 // link has its picture as the keyboard's stop), the links' signs on whole device pixels, the keyboard's focus
-// kept clear of the sticky header, and the landing on a talk's row from its way back. The page reads without it:
+// kept clear of the sticky header, and the landing on a talk's card from its way back. The page reads without it:
 // pages/build.astro writes everything.
 import { mountFrames, layoutFrames } from '../frames.js';
 import { on } from '../hub.js';
@@ -29,16 +29,16 @@ function setup() {
   }
   grid();
   main.addEventListener('focusin', clearHeader);
-  /* a finger on a phone (under 1000px wide, nothing that hovers): a tap anywhere on a talk's row, off its links,
+  /* a finger on a phone (under 1000px wide, nothing that hovers): a tap anywhere on a talk's card, off its links,
      opens what its title opens; the picture and the notes keep their own taps. The tap is passed to the
-     title's link rather than the link drawn over the row (blog.css's way for a blog row): a box out of the flow in a
+     title's link rather than a link drawn over the card (blog.css's way for a blog row): a box out of the flow in a
      title's line turns its pretty wrapping off (build.css's note on talks), which Safari would show. A desk, and a
-     window under 1000px in a mouse's hand, keep the rows as they were */
+     window under 1000px in a mouse's hand, keep the cards as they were */
   const touchRows = window.matchMedia ? matchMedia('(max-width: 999px) and (hover: none)') : { matches: false };
   main.addEventListener('click', (e) => {
     if (!touchRows.matches || e.defaultPrevented || e.button !== 0 || !e.target.closest || e.target.closest('a, button, input, summary')) return;
     const row = e.target.closest('.b-talk');
-    const a = row && row.querySelector('.w-a');
+    const a = row && row.querySelector('.b-ta');
     if (a) a.click();
   });
   requestAnimationFrame(grid);
@@ -54,7 +54,7 @@ function setup() {
   on('frames', grid);
 }
 
-/* the landing on a row from a talk's way back (/build/#<slug>, the article's head): the browser has brought the row
+/* the landing on a card from a talk's way back (/build/#<slug>, the article's head): the browser has brought the card
    up under the header by the sheet's scroll margins, as the draft's router did (inner.js land: scrollIntoView); the
    router then gave it the focus, for a link followed (not for an address opened, reloaded or gone back to). So here
    only for the way back just followed in this tab (article.js leaves word of it). The keyboard's mark shows as in

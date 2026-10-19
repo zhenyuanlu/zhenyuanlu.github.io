@@ -6,7 +6,6 @@ kind: talk
 where: Snell Library Classroom 017, Northeastern University, Boston, MA
 cover: ./cent3.webp
 coverAlt: "Three network graphs of countries on a dark ground, coloured dots joined by fine lines; the first and densest names the UK, France, the USA, China, Germany, Japan, Italy and Switzerland."
-listCover: ./frame.webp
 links:
   - { kind: slides, href: "https://github.com/zhenyuanlu/Data-Visualization-In-A-Nutshell/blob/main/zhenyuan_dataViz.pdf" }
   - { kind: code, href: "https://github.com/zhenyuanlu/Data-Visualization-In-A-Nutshell" }

@@ -1,10 +1,8 @@
 ---
 // /see/: the photograph wall (the draft v2ac's see.js, its render, written here at build time from content/see/;
 // scripts/see/index.js hangs the wall and opens the viewer). The photographs newest first, hung in columns (three on a
-// desk, two on a phone) with their captions, each at its own size: a file's width sets its share of the column (a 400px
-// file about 87% of it, 600px and wider all of it; never past its own pixels), on a desk the smaller ones against the
-// wall's outer edges, the middle column starting lower; on a phone each at its column's left edge, one near the
-// column's width filling it, the right column a little lower (the owner, 2026-10-18: scripts/see/index.js). They stand
+// desk, two on a phone) with their captions, every photograph one width, its column's (the owner, 2026-10-19), the
+// middle column (desk) or the right one (phone) starting lower (scripts/see/index.js). They stand
 // in the page in reading order, newest first, so Tab, a screen reader and the viewer walk them as the wall reads. Until
 // it appears a photograph's place is quiet paper, the faintest breath of its own colour (its average, from the file);
 // in view it slowly appears; in hand nothing lifts, its caption comes up to the ink (draft v2t, taste item 31). Every
@@ -42,7 +40,7 @@ const FIRST_ROW = 3;
   <div class="s-fl" role="group" aria-label="show">{FILTERS.map((f, n) => <>{n > 0 && <span class="s-dot" aria-hidden="true">·</span>}<button type="button" data-f={f.id} aria-pressed={f.id === 'all' ? 'true' : 'false'}>{f.label}</button></>)}</div>
   <section class="s-gal" aria-label="photographs">
     {list.map((P) => (
-      <a class="s-it" href={url(`/see/${P.name}/`)} id={P.name} data-n={P.n} data-kind={P.kind} data-w={P.w} data-h={P.h} data-full={P.full} data-full-avif={P.fullAvif} data-avg={P.avg} data-alt={P.ownAlt || undefined} aria-label={[P.title, P.place, P.year].filter(Boolean).join(', ')} style={`--w:${P.w};--f:${P.f.toFixed(4)}`}>
+      <a class="s-it" href={url(`/see/${P.name}/`)} id={P.name} data-n={P.n} data-kind={P.kind} data-w={P.w} data-h={P.h} data-full={P.full} data-full-avif={P.fullAvif} data-avg={P.avg} data-alt={P.ownAlt || undefined} aria-label={[P.title, P.place, P.year].filter(Boolean).join(', ')}>
         <span class="s-ph" style={`--avg:${P.avg};--w:${P.w};--h:${P.h}${P.focus !== '50% 50%' ? `;--fp:${P.focus}` : ''}`}><picture style="display:contents"><source type="image/avif" srcset={P.srcsetAvif} sizes={SIZES}><img src={P.src} srcset={P.srcset} sizes={SIZES} alt="" width={P.w} height={P.h} decoding="async" fetchpriority={P.n === 0 ? 'high' : undefined} loading={P.n >= FIRST_ROW ? 'lazy' : undefined}></picture></span>
         <span class="s-cap"><span class="s-t">{P.title}</span><span class="s-sep" aria-hidden="true"> | </span><span class="s-w">{where(P)}</span></span>
       </a>
