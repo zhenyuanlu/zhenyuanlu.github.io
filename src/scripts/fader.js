@@ -34,6 +34,7 @@ if (F && fader) {
   let fv = F.v, xfT = 0, stage = F.stage(fv);
   let fcell = 2;
   const fstops = [];
+  let dk = null;   // a finger's fader (a touch phone only, below): its line, its thumb and where things stand
   const FSTOP = {
     day: { col: { day: '#f2b33d', dusk: '#efa73a', night: '#ffc95a' },
       rows: ['...###...', '.#######.', '.#######.', '#########', '#########', '#########', '.#######.', '.#######.', '...###...'] },
@@ -54,6 +55,7 @@ if (F && fader) {
       const going = now - t0 < 260;
       live = going ? cssRGB(getComputedStyle(root).getPropertyValue('--grey'), rgb(F.colours(fv).grey)) : null;
       fstops.forEach(fDraw);
+      if (dk) dPaint();
       xfRaf = going ? requestAnimationFrame(f) : 0;
     });
   }
@@ -72,6 +74,7 @@ if (F && fader) {
     if (how === 'save') { try { localStorage.setItem('zl-fade', String(v)); } catch (e) { /* no storage: the light holds for this page */ } }
     if (sg !== stage) { stage = sg; fstops.forEach(fDraw); }
     else fstops.forEach(fDraw);
+    if (dk) { dPaint(); dThumb(); }
     try { document.dispatchEvent(new CustomEvent('zl:stage', { detail: { v, stage } })); } catch (e) { /* old browser */ }
     if (flip && !reduced()) xfRun();
   }
@@ -100,8 +103,8 @@ if (F && fader) {
     S.img = S.ctx.createImageData(S.w, S.h);
     b.addEventListener('pointerenter', (e) => { if (e.pointerType !== 'touch') { S.hov = true; fDraw(S); } });
     b.addEventListener('pointerleave', () => { if (S.hov) { S.hov = false; fDraw(S); } });
-    b.addEventListener('focus', () => { S.foc = b.matches(':focus-visible'); fDraw(S); });
-    b.addEventListener('blur', () => { S.foc = false; fDraw(S); });
+    b.addEventListener('focus', () => { S.foc = b.matches(':focus-visible'); fDraw(S); if (dk) dPaint(); });
+    b.addEventListener('blur', () => { S.foc = false; fDraw(S); if (dk) dPaint(); });
     fstops.push(S);
   });
   function fDraw(S) {
@@ -185,7 +188,7 @@ if (F && fader) {
       const lw = Math.round(parseFloat(getComputedStyle(line).width) * 64) / 64, fc = Math.round(fcell * 1e6) / 1e6;
       sun.style.left = (lw / 2 - S.w * fc / 2 - 2) + 'px';
     }
-    box.querySelectorAll('canvas').forEach((cv) => {
+    box.querySelectorAll('.fw canvas').forEach((cv) => {   // (the stops' own: on a phone the line and thumb are placed below)
       const s = cv.style;
       s.position = 'relative'; s.left = s.top = '0px';
       const b = rectOf(cv);
@@ -193,10 +196,111 @@ if (F && fader) {
     });
     fTrack();
   }
-  function layout() { fSize(); snapFader(); }
+  /* ---------- a finger's fader (a touch phone; styles/frame.css, the owner's design D, 2026-10-18): ●──⌓──☾, the
+     three stops on one line in three equal cells of 48px, the setting sun's own horizon row the line itself. Every
+     part asks the touch query first, at each event and at each layout (a resize, a turn of the phone, a pointer
+     added): a desk, and a narrow window in a mouse's hand, never get any of it, and their fader is the one above.
+     The glyphs' cells are one and a half of the desk's (round(1.5 x its cell) device px: 3 at 2x and 2.625x, 5 at
+     3x), each glyph put on the device grid from the line's row; the line (one cell thick) and the thumb (2 x 9
+     cells) are canvases of whole device pixels, painted in the stage's colours as the glyphs are */
+  const tq = window.matchMedia ? matchMedia('(max-width: 999px) and (hover: none) and (pointer: coarse)') : null;
+  const onTouch = () => !!(tq && tq.matches);
+  let P = null, gT = 0, gl = false;
+  function dLayout() {
+    const dpr = screenRatio(), cd = Math.round(1.5 * Math.max(1, Math.floor(dpr + 1e-6)));
+    if (!dk) {
+      dk = {};
+      ['tk', 'th'].forEach((k) => { const c = dk[k] = document.createElement('canvas'); c.className = 'f' + k; c.setAttribute('aria-hidden', 'true'); box.appendChild(c); });
+      dk.th.hidden = true;
+    }
+    box.style.setProperty('--dc', cd / dpr + 'px');
+    const b = rectOf(box), bx = b.left * dpr, by = b.top * dpr, yT = Math.round(by + 22 * dpr - cd / 2), at = [], px = (v) => v / dpr + 'px';
+    // each glyph in its cell, on the line: the sun's and the moon's middle row on it, the setting sun's horizon row it
+    fstops.forEach((S, i) => {
+      const w = S.w * cd, l = Math.round(bx + (24 + 48 * i) * dpr - w / 2), t = yT - (i === 1 ? S.h - 1 : (S.h - 1) >> 1) * cd;
+      const cs = S.cv.style, r = rectOf(S.cv);
+      cs.left = px(l - r.left * dpr + (parseFloat(cs.left) || 0) * dpr); cs.top = px(t - r.top * dpr + (parseFloat(cs.top) || 0) * dpr);
+      at[i] = [l, l + w];
+    });
+    const x1 = at[0][1] + 2 * cd, x2 = at[2][0] - 2 * cd, tw = 2 * cd, tk = dk.tk, th = dk.th;
+    tk.width = x2 - x1; tk.height = cd; th.width = tw; th.height = 9 * cd;
+    tk.style.cssText = 'left:' + px(x1 - bx) + ';top:' + px(yT - by) + ';width:' + px(x2 - x1) + ';height:' + px(cd);
+    th.style.top = px(yT - 4 * cd - by); th.style.width = px(tw); th.style.height = px(9 * cd);
+    // where the thumb may stand: the free line each side of the setting sun, a cell clear of each glyph
+    Object.assign(dk, { dpr, bx, tw, c: at.map((a) => (a[0] + a[1]) / 2), L0: x1 + tw / 2, L1: at[1][0] - cd - tw / 2, R0: at[1][1] + cd + tw / 2, R1: x2 - tw / 2 });
+    dPaint(); dThumb();
+  }
+  function dOff() {   // (no longer a touch phone: a tablet turned past 1000px, a mouse attached)
+    if (!dk) return;
+    dk.tk.remove(); dk.th.remove(); dk = P = null;
+    box.style.removeProperty('--dc');
+  }
+  /* the thumb between stops, on the free line at the light's place (device px); at a stop, or within 6 of it, it is
+     its glyph (null). And the light under a finger (client px): held at a stop while the finger is over its glyph
+     (the detents) */
+  const seg = (v) => (v < 7 || (v > 43 && v < 57) || v > 93 ? null : v < 50 ? dk.L0 + (v - 7) * (dk.L1 - dk.L0) / 36 : dk.R0 + (v - 57) * (dk.R1 - dk.R0) / 36);
+  function lightAt(x) {
+    const d = x * dk.dpr;
+    return d < dk.L0 ? 0 : d <= dk.L1 ? 7 + 36 * (d - dk.L0) / (dk.L1 - dk.L0) : d < dk.R0 ? 50 : d <= dk.R1 ? 57 + 36 * (d - dk.R0) / (dk.R1 - dk.R0) : 100;
+  }
+  /* the line in the setting sun's horizon colour (the line's at dusk, else the stops' grey, live in the cut), the thumb
+     in the ink */
+  function dPaint() {
+    const g = grey(), C = F.colours(fv);
+    [[dk.tk, stage === 'dusk' || fstops[1].foc ? cssRGB(C.line, g) : g], [dk.th, live ? cssRGB(getComputedStyle(root).getPropertyValue('--ink'), rgb(C.ink)) : rgb(C.ink)]].forEach(([c, v]) => {
+      const x = c.getContext('2d'); x.fillStyle = 'rgb(' + v + ')'; x.fillRect(0, 0, c.width, c.height);
+    });
+  }
+  const tX = (d) => 'translateX(' + (Math.round(d - dk.tw / 2) - dk.bx) / dk.dpr + 'px)';
+  function dThumb() {
+    const s = seg(fv), t = dk.th;
+    if (gl) return;
+    t.hidden = s === null;
+    if (s !== null) { t.classList.remove('glide'); t.style.transform = tX(s); }
+  }
+  /* a tap: the thumb glides from where it stood to the stop in the press's time, and is then its glyph; under reduced
+     motion it is there at once */
+  function dGlide(a, z) {
+    if (reduced() || Math.abs(a - z) < 1) return;
+    const t = dk.th;
+    clearTimeout(gT); gl = true;
+    t.classList.remove('glide'); t.style.transform = tX(a); t.hidden = false;
+    void t.offsetWidth;   // (laid out where it starts)
+    t.classList.add('glide'); t.style.transform = tX(z);
+    gT = setTimeout(() => { gl = false; if (dk) { t.classList.remove('glide'); dThumb(); } }, 170);
+  }
+  /* a finger: a tap is its cell's stop; a sideways drag past 8px, the light under the finger; an upright move, the
+     page's own (touch-action: pan-y), which takes the finger and leaves the light; a drag the browser takes over is
+     undone, so a swipe never leaves the light moved */
+  function dTouch(e) {
+    const T = e.type;
+    if (T === 'pointerdown') { if (onTouch() && dk && e.isPrimary && e.button < 1) P = { id: e.pointerId, x: e.clientX, y: e.clientY, v0: fv, m: 0 }; return; }
+    if (!P || e.pointerId !== P.id || !dk) return;
+    const dx = Math.abs(e.clientX - P.x), dy = Math.abs(e.clientY - P.y);
+    if (T === 'pointermove') {
+      if (!P.m) {
+        if (dy > 8 && dy >= dx) P.m = 2;
+        else if (dx > 8 && dx > dy) { P.m = 1; try { box.setPointerCapture(P.id); } catch (er) { /* none */ } }
+      }
+      const v = Math.round(lightAt(e.clientX));
+      if (P.m === 1 && v !== fv) setFade(v, 'save');
+      return;
+    }
+    const p = P; P = null;
+    if (T === 'pointercancel') { if (p.m === 1 && fv !== p.v0) setFade(p.v0, 'save'); return; }
+    if (p.m || Math.hypot(dx, dy) > 8) return;
+    const k = (p.x * dk.dpr - dk.bx) / (48 * dk.dpr), to = k < 1 ? 0 : k < 2 ? 50 : 100;
+    if (to === fv) return;
+    const s = seg(fv), from = s !== null ? s : dk.c[fv < 7 ? 0 : fv > 93 ? 2 : 1];
+    setFade(to, 'save');
+    dGlide(from, dk.c[to / 50]);
+  }
+  ['pointerdown', 'pointermove', 'pointerup', 'pointercancel'].forEach((t) => box.addEventListener(t, dTouch));
+  function layout() { fSize(); snapFader(); if (onTouch()) dLayout(); else dOff(); }
   layout();
   fstops.forEach(fDraw);
   addEventListener('resize', layout);
+  if (tq && tq.addEventListener) tq.addEventListener('change', layout);
   if (document.fonts && document.fonts.ready) document.fonts.ready.then(() => requestAnimationFrame(layout));
   // a page brought back from the cache (Back) shows the light another tab may have set since; and so does a page made
   // ready before he came (a prerender, components/DocHead.astro's speculation rules), as he arrives: the light was

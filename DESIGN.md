@@ -46,6 +46,18 @@ then the visitor's clock:
 **Rule:** a page never changes its light on its own once it is drawn. Only the fader, or another tab moving it,
 changes it.
 
+**Rule (the owner's, 2026-10-18):** on a touch phone (under 1000px wide, nothing that hovers, a coarse pointer) the
+fader is design D, a segmented fader with detents: ●──⌓──☾, the three stops on one line in three equal cells, to the
+touch 48px wide and as tall as the header (47px; 41px under 375px wide; 144px in all), the setting sun's own horizon
+row the line itself. The glyphs' cells are one and a half of the
+desk's, in whole device pixels (3 device px at 2× and 2.625×, 5 at 3×: on an iPhone the sun is 15px, the moon 18px);
+the line is one cell thick and the thumb 2 × 9 cells. At a stop the thumb is its glyph and is not drawn; between stops
+it stands on the line at the light's place. A tap on a cell sets its stop (the thumb glides there in the press's 140 ms;
+under reduced motion it is there at once); a sideways drag anywhere on it sets the light under the finger, held at 0, 50
+and 100 while the finger is over a glyph; an upright swipe scrolls the page and never moves the light. The slider stays,
+unseen, over the whole, for the keyboard and a screen reader. A desk, and a narrow window in a mouse's hand, keep the
+fader above (`src/styles/frame.css`, `src/scripts/fader.js`).
+
 **Rule:** the phone's browser bar takes the paper's colour at every fader position: the light's script keeps
 `<meta name="theme-color">` equal to `--bg`, and makes the tag when the page has none.
 
@@ -181,7 +193,7 @@ unit (42.2 km, 10 min). This is all done at build time:
 **Rule:** the pixel lettering is drawn, not set. Its cell is 2px (an inner page's word uses 1.99, so a half rounds
 down), always in whole device pixels. A control's word is the same size at every screen scale from 100% to 175%.
 
-**Rule:** these are one size and in one place on every screen:
+**Rule:** these are one size and in one place on every screen (on a touch phone the fader is design D, above):
 - the fader;
 - the header's name;
 - an inner page's title;
@@ -248,6 +260,12 @@ border.
 detail, and light as flat tone steps. A drawing that reads as a placeholder icon at its full size is unfinished.
 
 **Rule:** a pixel picture is never scaled in motion. In hand it moves by 1px or changes colour.
+
+**Rule:** the home's road has one pixel for its city icons (36 × 36 cells), the traveller and the weather: 2px on a
+desk, and on a touch phone (its short side under 600px) one CSS px in whole device pixels (36px icons; 41px at 2.625×,
+where one CSS px is not a whole number of them); a window under 1000px in a mouse's hand, and a tablet, keep their
+pixel. They were 48px from 375px wide and 72px held sideways until the owner asked for them smaller on a phone
+(2026-10-18; `src/scripts/home/fit.js`).
 
 **Rule:** the whole device pixel is the site's one motif, and it is carried into the small things:
 - **Signs:** link signs are 9 × 9 cells, in the word's colour. Their cell is a whole number of device pixels, and

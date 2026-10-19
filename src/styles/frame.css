@@ -273,6 +273,39 @@ html:not(.js) .fader { display: none; }
 }
 @media (max-width: 374.98px) { .ih-name { top: -3px; } .ih { height: 41px; } .fader { top: -3px; } }
 
+/* ---------- the fader in a finger's hand (a touch phone: under 1000px, no hover, a coarse pointer): ●──⌓──☾, the three
+   stops on one line in three equal cells, each 48px wide to the touch and as tall as the header (47px; 41 under 375px;
+   144px in all), the setting sun's own horizon row
+   the line itself (the owner's choice, design D, 2026-10-18). The glyphs' cells are one and a half of the desk's, in
+   whole device pixels (scripts/fader.js: 3 device px at 2x and 2.625x, 5 at 3x); the line is one cell thick, the
+   thumb 2 x 9 cells. At a stop the thumb is its glyph and is not drawn; between stops it stands on the line at the
+   light's place. A tap on a cell is its stop (the thumb glides there in the press's 140ms; under reduced motion it is
+   there at once); a sideways drag anywhere on it is the light under the finger, held at 0, 50 and 100 while the
+   finger is over a glyph; an upright swipe is the page's and never moves the light. The slider stays, unseen, over
+   the whole: the keyboard's and a screen reader's way, as on a desk. A desk, and a narrow window in a mouse's hand,
+   never match: their fader is the one above, unchanged ---------- */
+@media (max-width: 999px) and (hover: none) and (pointer: coarse) {
+  .fader { width: 144px; touch-action: pan-y pinch-zoom; -webkit-touch-callout: none; -webkit-user-select: none; user-select: none; }
+  /* (its touch room ends at the header's foot, never over the page under it: a link scrolled up there keeps its tap) */
+  .fader::before { content: ""; position: absolute; left: 0; right: 0; top: -3px; bottom: 0; }
+  .fader .ft { display: contents; }
+  .fader :is(.fw, input, canvas) { pointer-events: none; }
+  .fader input { position: absolute; left: 0; top: 0; width: 100%; height: 100%; opacity: 0; }
+  .fader .fw, .fader .fw.fd { position: relative; z-index: 1; left: auto; top: auto; bottom: auto; width: 48px; height: 44px; padding: 0; }
+  .fader .fw::before { content: none; }
+  .fader .fw canvas { width: calc(var(--iw, 11) * var(--dc, 1.5px)); height: calc(var(--ih, 11) * var(--dc, 1.5px)); margin: 0; }
+  /* (the line and the thumb: canvases of whole device pixels, placed and painted by the script as the glyphs are) */
+  .fader > canvas { position: absolute; left: 0; image-rendering: pixelated; }
+  .fader .fth { z-index: 2; }
+  .fader .fth[hidden] { display: none; }   /* (at a stop it is its glyph; canvas { display: block } would keep it) */
+  .fader .fth.glide { transition: transform var(--t-press) var(--ease-out); }
+  .fader .fw:focus-visible::after, .fader .fw.fd:focus-visible::after { top: 34px; bottom: auto; }   /* (2px under the moon, the tallest) */
+}
+/* (under 375px the fader stands 3px higher: its touch room still starts at the screen's top, and ends at the 41px
+   header's foot: 7px further down it lay over the page, where a link scrolled up under it lost its tap to the light) */
+@media (max-width: 374.98px) and (hover: none) and (pointer: coarse) { .fader::before { top: 3px; } }
+@media (max-width: 999px) and (hover: none) and (pointer: coarse) and (prefers-reduced-motion: reduce) { .fader .fth.glide { transition: none; } }
+
 /* ---------- a page load is softened, where the browser can, as the draft's door was: a short cross-fade ---------- */
 @view-transition { navigation: auto; }
 ::view-transition-old(root), ::view-transition-new(root) { animation-duration: .15s; animation-timing-function: cubic-bezier(.2, .7, .2, 1); }

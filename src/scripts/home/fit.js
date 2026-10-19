@@ -196,13 +196,18 @@ export function installFit(hm) {
        so the road has one pixel size. Nothing of the icons hangs below the road any more, so short screens need no cap */
     var dpr = window.devicePixelRatio || 1, pitch = hm.cx(1) - hm.cx(0);
     /* never under one CSS px (in whole device pixels): on the narrowest phones his city things may brush a neighbour */
-    /* phones fit a little tighter (43 cells a city), so a 3x phone gets 1.33px: icons ~48px and a walker you can read */
+    /* phones fit a little tighter (43 cells a city), and a touch phone (nothing that hovers, its short side under
+       600px) keeps one CSS px at most (the owner, 2026-10-18: the cities smaller on a phone): 3 device px at 3x, 2
+       at 2x, 3 at 2.625x, so the icons are 36px (41px at 2.625x) where they were 48 from 375px wide and 72 held
+       sideways, and the traveller and the weather with them. A window under 1000px in a mouse's hand, and a
+       tablet, keep their pixel */
     /* (the big-screen mode: that pixel as the plain page has it on this screen, grown with the page together with the
        name's cell: cellFor, by the doors' sizes. There it may come out a little over 2 of the page's px, as far as
        the road has room (roadRoom, in device px): the last city's drawing, 18 cells from its middle, is to end on the
        line, 40px on: 2.22px (a 150% screen at k 1.5: 5 device px), where the traveller at the corner still stands
        two cells clear of the first city (four at 2px). The pitch has room to 2.8) */
-    hm.roadCell = function (d) { return Math.max(Math.ceil(d - .01), Math.floor(Math.min(2, (pitch - 6) / (phone() ? 43 : 47)) * d + .01)); };
+    var hand = phone() && hm.mqTouch.matches && Math.min(innerWidth, innerHeight) < 600;
+    hm.roadCell = function (d) { return Math.max(Math.ceil(d - .01), Math.floor(Math.min(hand ? 1 : 2, (pitch - 6) / (phone() ? 43 : 47)) * d + .01)); };
     hm.roadRoom = Math.floor((hm.fx().width - hm.cx(hm.cities.length - 1)) / 18 * dpr + .01);
     hm.U = hm.cellFor(hm.roadCell, dpr, hm.LS ? hm.nameCell : null) / dpr;
     flow.style.setProperty('--u', hm.U + 'px');   /* big screens: in full, so 46 cells are whole device pixels at any z */
