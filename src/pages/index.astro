@@ -1,6 +1,6 @@
 ---
 // / : the home (the draft v2ac's, design/home/v2ac-article.html): the name that splits in hand, the sentence the line
-// leaves from, the four marks and the motto, the five doors on the line, the cities on the road and the traveller,
+// leaves from and the line under it of what Northeastern wrote about him, the four marks and the motto, the five doors on the line, the cities on the road and the traveller,
 // the footer line and the second motto, and the fader in the corner. Printed whole here (scripts/home/render.js), so
 // a search engine and a reader without script get it all and the doors are links; the home's engine
 // (scripts/home/, by layouts/Home.astro's script) then draws it. Its data: the person (content/site.yaml), the doors
@@ -36,6 +36,7 @@ const year = Number(today.slice(0, 4));
 const data = {
   name: { text: me.name, syllables: me.syllables, hanzi: me.hanzi, suffix: me.suffix },
   sentence: me.sentence,
+  featured: me.featured,
   social: me.social,
   mottos: me.mottos,
   // race's door names the next race while there is one: /race/#next, which pins it on the season's map

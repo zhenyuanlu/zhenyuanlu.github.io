@@ -7,7 +7,8 @@
 //   the light stands, for the page to print the fader itself between the two, where the draft has it: after the road,
 //   before the footer (<Fragment set:html={head} /><Fader /><Fragment set:html={tail} />, pages/index.astro). The name
 //   in its syllables (pinyin and hanzi beside each, shown in hand), its suffix, the sentence and the point the line
-//   leaves from, the social links (rel="me"), the motto under them, the five doors as links with their grey lines
+//   leaves from, the line under it with what Northeastern wrote about him, the social links (rel="me"), the motto under
+//   them, the five doors as links with their grey lines
 //   (race's: what comes next, as of opt.today or data.today: the build's day), the cities as a list with the line each
 //   says in hand, the traveller's place, the footer and the second motto
 // What the engine reads off it: the name's words (made its button, named by data-label; #said's data-say is what it
@@ -25,22 +26,32 @@ var HEART = '<span class="hb"><svg viewBox="0 0 9 8" aria-hidden="true"><path d=
 
 /* the name: a syllable each (its word, its pinyin, its hanzi), a space before the last; its suffix outside it. Plain
    words in the heading here: the engine makes them the button that splits the name (the draft's a[role=button],
-   named data-label), so a page without script has no control that does nothing */
+   named data-label), so a page without script has no control that does nothing. The pinyin and the hanzi are drawn
+   from their data-t (home.css), not written: the heading's own text is the name, "zhenyuan lu phd" (the space before
+   the suffix ends the name's box, where it takes no room), then the name in Chinese for a screen reader, "陆振渊";
+   that is what a search engine reads in it */
 function nameHTML(N) {
   var n = N.syllables.length;
   var tks = N.syllables.map(function (s, i) {
     return (i && i === n - 1 ? ' ' : '') + '<span class="tk"><span class="tx">' + esc(s.text) + '</span>' +
-      (s.py ? '<span class="py" aria-hidden="true">' + esc(s.py) + '</span>' : '') +
-      (s.hz ? '<span class="hz" lang="zh-Hans" aria-hidden="true">' + esc(s.hz) + '</span>' : '') + '</span>';
+      (s.py ? '<span class="py" aria-hidden="true" data-t="' + esc(s.py) + '"></span>' : '') +
+      (s.hz ? '<span class="hz" lang="zh-Hans" aria-hidden="true" data-t="' + esc(s.hz) + '"></span>' : '') + '</span>';
   }).join('');
-  return '<div class="nmr"><h1 class="name"><span class="say" data-label="' + esc(N.label) + '">' + tks + '</span>' +
-    (N.suffix ? '<span class="sfx" aria-hidden="true"><span class="tx">' + esc(N.suffix) + '</span></span>' : '') + '</h1></div>';
+  return '<div class="nmr"><h1 class="name"><span class="say" data-label="' + esc(N.label) + '">' + tks + (N.suffix ? ' ' : '') + '</span>' +
+    (N.suffix ? '<span class="sfx" aria-hidden="true"><span class="tx">' + esc(N.suffix) + '</span></span>' : '') +
+    (N.hanzi ? '<span class="sr" lang="zh-Hans"> ' + esc(N.hanzi) + '</span>' : '') + '</h1></div>';
 }
 /* the sentence; its last word holds the point the line leaves from, never apart from it */
 function introHTML(s) {
   var t = String(s || '').trim(), i = t.lastIndexOf(' ');
   var head = i < 0 ? '' : t.slice(0, i + 1), last = i < 0 ? t : t.slice(i + 1);
   return '<p class="intro">' + esc(head) + '<span class="nb">' + esc(last) + '<span class="o" aria-hidden="true"></span></span></p>';
+}
+/* under it, what Northeastern wrote about him: the lead, then each page's label as its link ("… A and B.") */
+function featuredHTML(F) {
+  if (!F) return '';
+  var a = F.pages.map(function (p) { return '<a href="' + esc(p.href) + '">' + esc(p.label) + '</a>'; });
+  return '<p class="fe">' + esc(F.lead) + ' ' + (a.length > 1 ? a.slice(0, -1).join(', ') + ' and ' + a[a.length - 1] : a[0]) + '.</p>';
 }
 /* a line that breaks only after its commas (the motto: "Pain is inevitable, / Suffering is a choice.") */
 function phrases(t) {
@@ -76,6 +87,7 @@ export function renderHomeParts(data, opt) {
     '<svg class="m" viewBox="0 0 350 844" preserveAspectRatio="none" aria-hidden="true" focusable="false"><path class="line" d="' + LINE_M + '"/></svg>\n' +
     '<header class="p hero">\n' + nameHTML(D.name) + '\n' +
     '<p class="sr" id="said" aria-live="polite" data-say="' + esc(D.name.said) + '"></p>\n' + introHTML(D.sentence) + '\n' +
+    (D.featured ? featuredHTML(D.featured) + '\n' : '') +
     '<nav class="soc" aria-label="elsewhere">' + D.social.map(function (s) {
       return '<a href="' + esc(s.href) + '"' + (s.me ? ' rel="me"' : '') + ' data-mark="' + esc(s.mark) + '"><canvas aria-hidden="true"></canvas><span class="sr">' + esc(s.label) + '</span></a>';
     }).join('') + '</nav>\n' +

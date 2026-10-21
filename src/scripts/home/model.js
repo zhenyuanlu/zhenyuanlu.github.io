@@ -115,8 +115,14 @@ export function homeData(d) {
   var label = n.label != null ? str(n.label) : text + (suf0 ? ', ' + suf0 : '');
   var mot = d.mottos || {};
   return {
-    name: { text: text, syllables: syl, suffix: suffix, said: said, label: label },
+    name: { text: text, syllables: syl, suffix: suffix, said: said, label: label, hanzi: str(n.hanzi) },
     sentence: str(d.sentence),
+    /* what Northeastern wrote about him: the line under the sentence (none: no line) */
+    featured: (function (f) {
+      var pages = f && f.pages ? f.pages.map(function (p) { return { label: str(p.label), href: str(p.href) }; })
+        .filter(function (p) { return p.label && p.href; }) : [];
+      return pages.length && f.lead ? { lead: str(f.lead), pages: pages } : null;
+    })(d.featured),
     social: (d.social || []).map(function (s) {
       var mark = s.mark || MARKS[str(s.label).toLowerCase()] || '';
       return { label: str(s.label), href: str(s.href), mark: mark, me: s.me !== false };

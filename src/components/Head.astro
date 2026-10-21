@@ -2,8 +2,11 @@
 // Everything a page says about itself: title and description (the person's line, with "PhD", where the page has
 // none of its own), the canonical address (always the real site's; none on the 404 page, which answers for every
 // address that leads nowhere), Open Graph and Twitter cards with a 1200 x 630 picture and its text, the icons and the
-// manifest, the referrer rule, and the structured data: the Person on every page (his name in Chinese its
-// alternateName, what he works on its knowsAbout), the WebSite on the home (the site's name a search result shows), a BlogPosting on a post, an
+// manifest, the referrer rule, a search result's pictures as large as Google will show them (max-image-preview), and the
+// structured data: the Person on every page (his name in Chinese and family name first its alternateName, what he works
+// on its knowsAbout, his profiles, ORCID, Wikidata and Northeastern's page about him its sameAs, Northeastern's story
+// its subjectOf), on the home as the mainEntity of a ProfilePage, with the WebSite (the site's name a search result
+// shows), a BlogPosting on a post, an
 // EducationEvent on a talk's page, and what a page adds of its own (ld: build's papers, software and talks, a
 // photograph's ImageObject); on a post's page Google Scholar's citation_* tags too. A description past 160 characters
 // (about what a search result shows) goes into the tags as its first sentence, as the list and the dek show it, and
@@ -44,23 +47,46 @@ const canonical = absolute(path);
 const card = image || absolute('/social-card.png');
 const cardAlt = imageAlt || `${me.name}, ${me.suffix}: ${me.sentence}`;
 
+const day = (d: Date) => d.toISOString().slice(0, 10);
+// each by its address and its Wikidata item: Northeastern never the university in Shenyang of the same English name,
+// Seurat never the painter
+const NEU = { '@type': 'CollegeOrUniversity', name: 'Northeastern University', url: 'https://www.northeastern.edu/', sameAs: 'https://www.wikidata.org/wiki/Q37548' };
+const SEURAT = { '@type': 'Organization', name: 'Seurat Technologies', alternateName: 'Seurat', url: 'https://www.seurat.com/', sameAs: 'https://www.wikidata.org/wiki/Q112775629' };
+const words = me.name.split(/\s+/), given = words.slice(0, -1).join(' '), family = words[words.length - 1];
+const featured = me.featured ? me.featured.pages : [];
+const stories = featured.filter((p) => p.kind === 'story');
 const personLd = {
   '@type': 'Person',
   '@id': absolute('/#person'),
   name: me.name,
-  alternateName: me.hanzi,
+  // his name in Chinese, and in letters family name first, as Chinese sources write it
+  alternateName: given ? [me.hanzi, `${family} ${given}`] : me.hanzi,
+  ...(given ? { givenName: given, familyName: family } : {}),
   honorificSuffix: me.suffix,
   url: absolute('/'),
   description: me.sentence,
   jobTitle: 'Deep learning scientist',
   ...(me.areas.length ? { knowsAbout: me.areas } : {}),
-  worksFor: [{ '@type': 'Organization', name: 'Seurat' }, { '@type': 'CollegeOrUniversity', name: 'Northeastern University' }],
-  alumniOf: { '@type': 'CollegeOrUniversity', name: 'Northeastern University' },
-  sameAs: me.social.filter((s) => s.me && /^https?:/.test(s.href)).map((s) => s.href),
+  worksFor: [SEURAT, NEU],
+  alumniOf: NEU,
+  // his own profiles (ORCID and Wikidata among them), then the page Northeastern keeps about him
+  sameAs: [...me.social.filter((s) => s.me && /^https?:/.test(s.href)).map((s) => s.href), ...featured.filter((p) => p.kind === 'profile').map((p) => p.href)],
+  ...(stories.length ? { subjectOf: stories.map((p) => ({ '@type': 'Article', headline: p.title || p.label, url: p.href, ...(p.date ? { datePublished: day(p.date) } : {}) })) } : {}),
 };
-const graph: Record<string, unknown>[] = [personLd];
-// the home: the site itself, whose name Google shows above its results (it reads it on the domain's root only)
+const graph: Record<string, unknown>[] = [];
 if (path === '/') {
+  // the home is his profile page (Google's ProfilePage: a page about one person of the site's own; the site has no
+  // about page), so the Person stands there as its mainEntity; every other page has him on his own
+  graph.push({
+    '@type': 'ProfilePage',
+    '@id': absolute('/#profile'),
+    url: absolute('/'),
+    name: me.suffix ? `${me.name}, ${me.suffix}` : me.name,
+    inLanguage: 'en',
+    isPartOf: { '@id': absolute('/#website') },
+    mainEntity: personLd,
+  });
+  // the site itself, whose name Google shows above its results (it reads it on the domain's root only)
   graph.push({
     '@type': 'WebSite',
     '@id': absolute('/#website'),
@@ -70,8 +96,7 @@ if (path === '/') {
     inLanguage: 'en',
     publisher: { '@id': personLd['@id'] },
   });
-}
-const day = (d: Date) => d.toISOString().slice(0, 10);
+} else graph.push(personLd);
 if (talk) {
   // a talk's page: the talk itself, given by him, on its day and at its place
   graph.push({
@@ -137,7 +162,7 @@ const fullTitle = title === me.name ? `${me.name}, ${me.suffix}` : `${title} · 
 <meta name="description" content={metaDesc}>
 <meta name="author" content={me.name}>
 <meta name="referrer" content="strict-origin-when-cross-origin">
-{noindex && <meta name="robots" content="noindex">}
+<meta name="robots" content={noindex ? 'noindex' : 'max-image-preview:large'}>
 {hasCanonical && <link rel="canonical" href={canonical}>}
 <link rel="icon" href={url('/favicon.ico')} sizes="32x32">
 <link rel="icon" href={url('/favicon.svg')} type="image/svg+xml">

@@ -18,7 +18,9 @@ Quiet and orderly, like a clean sheet of paper.
 - **Lettering:** the name, the page words and the words on the doors are hand-drawn pixel letters. Each cell is a whole
   number of device pixels, so they are hard-edged and never soft on any screen.
 - **Drawings:** the small pictures of cities, doors, books, races and each post's chapters use the same pixels.
-- **The home:** everything is on one screen. There is the name and one plain sentence. A road joins the five doors
+- **The home:** everything is on one screen. There is the name and one plain sentence, and under it one quiet line
+  of what Northeastern wrote about him (its PhD Network and College of Engineering, linked; on a phone window under
+  630px tall, 640 under 340px wide, it gives way so the home stays one screen). A road joins the five doors
   (build · teach · see · blog · race) and five cities that mean something to him.
 - **Light:** a fader at the top right takes the whole site from day to dusk to night. Paper, ink and drawings change
   colour together.
@@ -389,7 +391,8 @@ Older is at the left and newer at the right.
 
 **Rule:** outside running text a link is ink or grey, and in hand it brightens. Build's and a post's action links
 are ink at rest and the accent in hand. A link in words outside the text is underlined at rest in the accent, like
-build's "All papers on Google Scholar" and the byline's DOI.
+build's "All papers on Google Scholar", the byline's DOI and the home's line under the sentence ("Featured by its PhD
+Network and College of Engineering.").
 
 **Rule:** keyboard focus is never a box:
 - a link: its line, 2px in running text;
@@ -407,7 +410,8 @@ current) keep their own. Where nothing can hover, a tap draws no box of the brow
 (the phone round, 2026-10-17).
 
 **Rule:** on a touch phone a target is at least 24px each way (WCAG 2.5.8) and aims at 44px: a padding its margin takes
-back, so nothing it stands among moves. A row that opens one page opens it from anywhere on the row (the blog list,
+back, so nothing it stands among moves. A link inside a sentence of two lines or more (the home's line under the
+sentence) keeps its line's height, WCAG's inline exception: a taller target would reach into the other line. A row that opens one page opens it from anywhere on the row (the blog list,
 build's talk cards), and its tags and links keep their own taps. One costs room: race's dock, under a phone's map,
 writes a venue's sports and a sport's races as lines a finger pins, each at least 24px tall; at 320 × 568 the held dock
 is then 9px taller: 2025's map a step smaller (243 × 174, against 256 × 184), and the current season's page 13px further

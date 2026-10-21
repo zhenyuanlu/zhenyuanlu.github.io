@@ -31,6 +31,19 @@ site:
     - { label: X, href: "https://twitter.com/zyl_zhen", mark: twitter }
     - { label: Google Scholar, href: "https://scholar.google.com/citations?user=Yml8fvsAAAAJ&hl=en" }
     - { label: Instagram, href: "https://www.instagram.com/zylu_max/", mark: instagram }
+    # (shown nowhere: his ORCID iD and his Wikidata item tell a search engine these profiles are one person)
+    - { label: ORCID, href: "https://orcid.org/0000-0001-6730-8307" }
+    - { label: Wikidata, href: "https://www.wikidata.org/wiki/Q134881989" }
+  # what Northeastern wrote about him (the old site's first paragraph linked both, so a search engine ties them to the
+  # site): the home's line under the sentence, the lead and then each page's label as its link, "Featured by its PhD
+  # Network and College of Engineering." ("its": the sentence ends with Northeastern; so it is one line on a desk, two
+  # on a phone). kind: profile, a page about him (the structured data's sameAs), or story, an article about him (its
+  # subjectOf, with its title and day)
+  featured:
+    lead: Featured by its
+    pages:
+      - { label: PhD Network, href: "https://phd.northeastern.edu/profile/zhenyuan-lu/", kind: profile }
+      - { label: College of Engineering, href: "https://coe.northeastern.edu/news/ready-for-the-high-demand-field-of-data-analytics/", kind: story, title: Ready for the High Demand Field of Data Analytics, date: 2018-10-30 }
   mottos:
     top: { text: "Pain is inevitable, Suffering is a choice." }
     bottom: { text: "Difficulty means we have not understood", by: "Pierre Deligne, Mathematician" }

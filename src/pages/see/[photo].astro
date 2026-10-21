@@ -35,7 +35,8 @@ const ld = [{
   caption: `${P.title}, ${P.place}, ${P.year}`,
   contentUrl: onSite(P.full),
   thumbnailUrl: onSite(P.src),
-  encodingFormat: 'image/webp',
+  // (the format of the file contentUrl names: the fallback form, JPEG for a photograph; its AVIF is the <source>'s)
+  encodingFormat: /\.webp$/i.test(P.full) ? 'image/webp' : /\.png$/i.test(P.full) ? 'image/png' : 'image/jpeg',
   width: { '@type': 'QuantitativeValue', value: P.w, unitText: 'px' },
   height: { '@type': 'QuantitativeValue', value: P.h, unitText: 'px' },
   dateCreated: P.date,
