@@ -228,13 +228,14 @@ CSP.
 
 ### Analytics
 
-The visitor stats are Google Analytics 4, as on the old site, with the same measurement id, so the numbers carry on
-and Search Console still sees the site is his.
+The visitor stats are Google Analytics 4, as on the old site, with the same measurement id, so the numbers carry on.
+Search Console sees the site is his by its own HTML tag on the home (`analytics.verify`, set since 2026-10-21), not by
+the GA tag: an account that can edit the GA property can no longer verify as an owner through it.
 
-- What loads: Google's `gtag.js` from `www.googletagmanager.com`, set going by `src/scripts/ga.js`. The home has
-  its tag static in the head, as Search Console looks for it (asked for at low priority). Every other page adds it
-  itself once the page has loaded and the browser is idle, so it never holds up what a reader sees (race's map, a
-  phone's first paint). A page is counted once, when it is shown: one the browser made ready before a click and
+- What loads: Google's `gtag.js` from `www.googletagmanager.com`, set going by `src/scripts/ga.js`. Every page, the
+  home too while `analytics.verify` is set, adds it itself once the page has loaded and the browser is idle, so it
+  never holds up what a reader sees (race's map, a phone's first paint). With `analytics.verify` empty the home has
+  the tag static in the head instead, as Search Console then looks for it (asked for at low priority). A page is counted once, when it is shown: one the browser made ready before a click and
   never showed is not counted, and one put back by Back is not counted again. A visit that leaves another page
   within its first second or two is not counted. No cookie banner, as before.
 - What else counts as a page: GA4's own default for a web stream, "Page changes based on browser history events"
@@ -250,14 +251,16 @@ and Search Console still sees the site is his.
   `src/integrations/csp.mjs` (`GA_HOSTS`, the one list the policy's `img-src` and `connect-src` and `npm run check`
   all take them from).
 - What it costs: `gtag.js` is about 165 KB compressed on a first visit (Google's file, cached by the browser for a
-  while after), counted on its own line by the speed budget, not in the pages' numbers. On a phone's first visit
-  the home's static tag still makes its first paint about 70-80 ms later; the other pages lose nothing measurable.
+  while after), counted on its own line by the speed budget, not in the pages' numbers. No page loses anything
+  measurable now; with `analytics.verify` empty, the home's static tag makes a phone's first paint about 70-80 ms
+  later.
 - The id: `analytics.ga4` in `content/site.yaml`. Change it there; take the `analytics:` block out and no page
   has it. The dev server and the LAN preview never load it.
-- Search Console's own proof (optional, `analytics.verify`): in Search Console, open Settings, then Ownership
-  verification, then "HTML tag", and copy the `content="…"` of the tag it shows into `verify:`. The home then
-  carries that tag instead of gtag.js's own, and loads gtag.js after it has loaded, as the other pages do, which
-  takes the home's 70-80 ms back. Left empty, the home's gtag.js tag is what proves the site is his.
+- Search Console's own proof (`analytics.verify`, set since 2026-10-21): in Search Console, open Settings, then
+  Ownership verification, then "HTML tag", and copy the `content="…"` of the tag it shows into `verify:`. The home
+  then carries that tag instead of gtag.js's own, and loads gtag.js after it has loaded, as the other pages do. Once
+  it is live, press Verify there. Left empty, the home's gtag.js tag is what proves the site is his, for every account
+  that can edit the GA property.
 
 ### A preview copy
 
