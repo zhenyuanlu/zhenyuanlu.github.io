@@ -51,13 +51,13 @@ site:
   home:
     blink: true
   # the visitor stats: Google Analytics 4 (gtag.js), with the old site's own measurement id, so its numbers carry on
-  # without a gap (it is also what shows Google Search Console the site is his). On the real site's pages only, not
-  # in the dev server nor the LAN preview; DEVELOPMENT.md, "Analytics", says what loads and how to change the id. Take
-  # the block out and no page has the tag
+  # without a gap (Search Console's proof the site is his is verify, below). On the real site's pages only, not in the
+  # dev server nor the LAN preview; DEVELOPMENT.md, "Analytics", says what loads and how to change the id. Take the
+  # block out and no page has the tag
   analytics:
     ga4: G-YKJ7CXRCW1
-    # Search Console's own proof the site is his, when he wants it: Search Console > Settings > Ownership
-    # verification > "HTML tag", and the content="…" of the tag it shows, here. The home then has that tag, and
-    # loads gtag.js once it has loaded, as every other page does (it is a little faster on a phone); empty: the home
-    # keeps gtag.js's own tag, which proves it now
+    # Search Console's own proof the site is his, his account's HTML tag (since 2026-10-21): Search Console > Settings
+    # > Ownership verification > "HTML tag", and the content="…" of the tag it shows, here. The home has that tag, and
+    # loads gtag.js once it has loaded, as every other page does; empty: the home keeps gtag.js's own tag, which then
+    # proves it for every account that can edit the GA property
     verify: "IKHzMGmVFDpDZs3sjgfx9ZXuI4fLfphDvckK2KGmzoA"
