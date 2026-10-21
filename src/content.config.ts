@@ -102,6 +102,13 @@ const site = defineCollection({
         date: z.coerce.date().optional(),
       })).min(1),
     }).optional(),
+    // his photograph for search engines (the structured data's Person image; no page shows it): a .jpg or .png in
+    // public/ and its pixels (scripts/check-dist.mjs holds the file to them)
+    photo: z.strictObject({
+      src: z.string().regex(/^\/[\w./-]+\.(jpe?g|png)$/, 'a .jpg or .png in public/, as /assets/images/name.jpg'),
+      width: z.number().int().positive(),
+      height: z.number().int().positive(),
+    }).optional(),
     mottos: z.object({
       top: z.object({ text: z.string(), by: z.string().optional() }),
       bottom: z.object({ text: z.string(), by: z.string().optional() }),

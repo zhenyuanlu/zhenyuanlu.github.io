@@ -3,8 +3,8 @@
 // none of its own), the canonical address (always the real site's; none on the 404 page, which answers for every
 // address that leads nowhere), Open Graph and Twitter cards with a 1200 x 630 picture and its text, the icons and the
 // manifest, the referrer rule, a search result's pictures as large as Google will show them (max-image-preview), and the
-// structured data: the Person on every page (his name in Chinese and family name first its alternateName, what he works
-// on its knowsAbout, his profiles, ORCID, Wikidata and Northeastern's page about him its sameAs, Northeastern's story
+// structured data: the Person on every page (his name in Chinese and family name first its alternateName, his
+// photograph its image, what he works on its knowsAbout, his profiles, ORCID, Wikidata and Northeastern's page about him its sameAs, Northeastern's story
 // its subjectOf), on the home as the mainEntity of a ProfilePage, with the WebSite (the site's name a search result
 // shows), a BlogPosting on a post, an
 // EducationEvent on a talk's page, and what a page adds of its own (ld: build's papers, software and talks, a
@@ -65,6 +65,8 @@ const personLd = {
   honorificSuffix: me.suffix,
   url: absolute('/'),
   description: me.sentence,
+  // his photograph (content/site.yaml photo): for search engines only, no page shows it
+  ...(me.photo ? { image: { '@type': 'ImageObject', url: absolute(me.photo.src), contentUrl: absolute(me.photo.src), width: me.photo.width, height: me.photo.height, caption: me.name } } : {}),
   jobTitle: 'Deep learning scientist',
   ...(me.areas.length ? { knowsAbout: me.areas } : {}),
   worksFor: [SEURAT, NEU],

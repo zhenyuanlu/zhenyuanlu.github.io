@@ -59,6 +59,19 @@ function fileOf(address) {
   const f = path.join(DIST, rel);
   return fs.existsSync(f) && fs.statSync(f).isFile() ? f : null;
 }
+/** a JPEG's or PNG's pixels from its header ({ w, h }), or null */
+function pixelsOf(file) {
+  const b = fs.readFileSync(file);
+  if (b.length > 24 && b.readUInt32BE(0) === 0x89504e47) return { w: b.readUInt32BE(16), h: b.readUInt32BE(20) };
+  if (b[0] !== 0xff || b[1] !== 0xd8) return null;
+  for (let i = 2; i + 9 < b.length; ) {
+    if (b[i] !== 0xff) return null;
+    const m = b[i + 1];
+    if (m >= 0xc0 && m <= 0xcf && m !== 0xc4 && m !== 0xc8 && m !== 0xcc) return { w: b.readUInt16BE(i + 7), h: b.readUInt16BE(i + 5) };
+    i += 2 + b.readUInt16BE(i + 2);
+  }
+  return null;
+}
 /** a picture's address on a page to its file's bytes, or null */
 function sizeAt(url, page) {
   let u;
@@ -409,6 +422,15 @@ for (const page of pages.values()) {
   const person = graph.find((x) => x['@type'] === 'Person') || (profile && profile.mainEntity && profile.mainEntity['@type'] === 'Person' ? profile.mainEntity : null);
   if (!person || !person.name || !person.url || !Array.isArray(person.sameAs) || !person.sameAs.length) err(`${page.address}: no Person with name, url and sameAs`);
   if (page.address === BASE && (!profile || profile.mainEntity !== person || profile.url !== page.canonical)) err(`${page.address}: the home is not a ProfilePage about the Person at the canonical url`);
+  // his photograph (content/site.yaml photo), where the Person has one: a file the site serves, of the pixels it says
+  if (page.address === BASE && person && person.image) {
+    const img = typeof person.image === 'string' ? { url: person.image } : person.image;
+    let f = null;
+    try { const u = new URL(img.url); if (u.origin === SITE) f = fileOf(BASE + u.pathname.slice(1)); } catch { /* f stays null */ }
+    const px = f ? pixelsOf(f) : null;
+    if (!f) err(`${page.address}: the Person's image ${img.url} is no file of the site`);
+    else if (!px || (img.width && px.w !== img.width) || (img.height && px.h !== img.height)) err(`${page.address}: the Person's image is not the ${img.width} x ${img.height} JPEG or PNG its data says (${px ? `${px.w} x ${px.h}` : 'unread'})`);
+  }
   if (page.address !== BASE && profile) err(`${page.address}: a ProfilePage away from the home`);
   if (/^\/blog\/[^/]+\/$/.test(page.address.slice(BASE.length - 1))) {
     // a post is a BlogPosting; a talk's page, the talk: an Event (EducationEvent)
