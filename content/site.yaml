@@ -60,4 +60,4 @@ site:
     # verification > "HTML tag", and the content="…" of the tag it shows, here. The home then has that tag, and
     # loads gtag.js once it has loaded, as every other page does (it is a little faster on a phone); empty: the home
     # keeps gtag.js's own tag, which proves it now
-    verify: ""
+    verify: "IKHzMGmVFDpDZs3sjgfx9ZXuI4fLfphDvckK2KGmzoA"
