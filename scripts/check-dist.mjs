@@ -404,8 +404,12 @@ for (const page of pages.values()) {
     try { const d = JSON.parse(raw); graph = graph.concat(d['@graph'] || [d]); if (d['@context'] !== 'https://schema.org') err(`${page.address}: JSON-LD @context is not https://schema.org`); }
     catch (e) { err(`${page.address}: JSON-LD does not parse: ${e.message}`); }
   }
-  const person = graph.find((x) => x['@type'] === 'Person');
+  // the Person on every page: on its own, or on the home as the ProfilePage's mainEntity (the home is his profile)
+  const profile = graph.find((x) => x['@type'] === 'ProfilePage');
+  const person = graph.find((x) => x['@type'] === 'Person') || (profile && profile.mainEntity && profile.mainEntity['@type'] === 'Person' ? profile.mainEntity : null);
   if (!person || !person.name || !person.url || !Array.isArray(person.sameAs) || !person.sameAs.length) err(`${page.address}: no Person with name, url and sameAs`);
+  if (page.address === BASE && (!profile || profile.mainEntity !== person || profile.url !== page.canonical)) err(`${page.address}: the home is not a ProfilePage about the Person at the canonical url`);
+  if (page.address !== BASE && profile) err(`${page.address}: a ProfilePage away from the home`);
   if (/^\/blog\/[^/]+\/$/.test(page.address.slice(BASE.length - 1))) {
     // a post is a BlogPosting; a talk's page, the talk: an Event (EducationEvent)
     const post = graph.find((x) => x['@type'] === 'BlogPosting');

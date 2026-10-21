@@ -120,7 +120,8 @@ html[data-grid] .flow { margin-left: calc(round(nearest, calc((100% - var(--fw))
    did not come, watch.js once the page has loaded, each by taking the js class off; where no module runs at all (each
    one blocked or failed, watch.js too) this sheet does it alone, from 2s, for as long as the home is not live: the
    four marks' names for their blank canvases, the cities' line art at rest, the footer line and, on a phone, the
-   names wrapped and the doors lower, where the printed line has them, without the motto. A city in hand says its
+   names wrapped and the doors lower, where the printed line has them, without the motto and the line under the
+   sentence. A city in hand says its
    line but keeps its line art (its colour icon is never fetched for it), and there is no fader: without its script
    it moves nothing, and the early script has set the light already. An engine that comes later sets data-live and
    takes all of it away; one that comes in time (the home's every visit) meets none of it */
@@ -142,6 +143,7 @@ html.js .flow:not([data-live]) .soc a { animation: zl-net-mark 0s 2s forwards; }
   html.js .flow:not([data-live]) .soc a { animation-name: zl-net-mark-m; }
   html.js .flow:not([data-live]) .door { animation: zl-net-door-m 0s 2s forwards; }
   html.js .flow:not([data-live]) .mot { animation: zl-net-hide 0s 2s forwards; }
+  html.js .flow:not([data-live]) .fe { animation: zl-net-gone 0s 2s forwards; }   /* (over the marks: out of the flow too) */
 }
 /* (the rules without script, below, one for one; but a canvas out of the flow rather than not displayed, and a motto
    out of sight rather than out of the flow, which look the same and which older browsers animate too. The name is
@@ -150,6 +152,7 @@ html.js .flow:not([data-live]) .soc a { animation: zl-net-mark 0s 2s forwards; }
 @keyframes zl-net-name { to { position: static; display: inline; width: auto; height: auto; overflow: visible; clip-path: none; font-family: var(--f-small); font-size: var(--s); color: var(--grey); } }
 @keyframes zl-net-mark { to { padding-right: 4px; } }
 @keyframes zl-net-hide { to { visibility: hidden; } }
+@keyframes zl-net-gone { to { position: absolute; visibility: hidden; } }
 @keyframes zl-net-marks-m { to { flex-wrap: wrap; max-width: 170px; margin-left: 0; margin-top: 2px; gap: 0 14px; } }
 @keyframes zl-net-mark-m { to { padding: 0; line-height: 1.1; } }
 @keyframes zl-net-door-m { to { top: calc((var(--my) + 56) / 844 * 100%); } }
@@ -164,6 +167,16 @@ html.js .flow:not([data-live]) .soc a { animation: zl-net-mark 0s 2s forwards; }
 .intro .nb { white-space: nowrap; }
 /* the hairline's origin: a point at the end of the sentence; the line leaves from here */
 .o { display: inline-block; width: 5px; height: 5px; margin-left: .5em; border-radius: 50%; background: var(--ink); vertical-align: middle; }
+/* under it, what Northeastern wrote about him (the owner, 2026-10-21: the old site's first paragraph linked both): one
+   quiet line in the motto's grey and size; its two names are links in words, so the accent and its line at rest and
+   the ink in hand, as build's "All papers on Google Scholar". Nothing on a desk is measured from it (the line leaves
+   from the point, and the doors are chained from the point); on a phone the doors are chained from the motto's foot */
+.fe { margin-top: 6px; font-family: var(--f-small); font-size: 14px; line-height: 20px; color: var(--grey); text-wrap: balance; }
+.fe a { color: var(--accent); text-decoration-line: underline; text-decoration-thickness: 1px; text-underline-offset: .18em;
+  text-decoration-color: color-mix(in srgb, currentColor 45%, transparent); -webkit-tap-highlight-color: transparent;
+  transition: color var(--t-hover) var(--ease-out), text-decoration-color var(--t-hover) var(--ease-out); }
+@media (hover: hover) { .fe a:hover { color: var(--ink); text-decoration-color: currentColor; } }   /* (only where a pointer rests) */
+.fe a:focus-visible { color: var(--ink); text-decoration-color: currentColor; text-decoration-thickness: 2px; }
 
 /* zhen · yuan · lu: at rest simply the name; a slow look (or a click) splits it and says it */
 .say {
@@ -196,6 +209,8 @@ html.js .flow:not([data-live]) .soc a { animation: zl-net-mark 0s 2s forwards; }
   color: var(--grey); letter-spacing: 0; line-height: 1; white-space: nowrap; font-style: normal;
   opacity: 0; pointer-events: none; transition: opacity .2s ease;
 }
+.py::before, .hz::before { content: attr(data-t); }   /* (drawn from data-t: the heading's own text is the name, render.js) */
+.name .sr { font-size: 13px; }   /* (the name in Chinese, for a screen reader: its own size, not the pixel name's 0) */
 .py { bottom: calc(100% + 2px); font-family: var(--f-small); font-size: var(--xs); }
 .hz { top: calc(100% + 4px); font: 400 13px/1 "Noto Serif SC", "Songti SC", "SimSun", serif; }   /* (v2t, taste item 3: 13px, was 12) */
 .say.open .py { opacity: 1; pointer-events: auto; transition-delay: .06s; }
@@ -402,6 +417,24 @@ html:not(.js) .foot { opacity: 1; }   /* (F4: without script, or with an engine 
   .foot.fmh { right: auto; left: 0; bottom: 36px; max-width: 100%; white-space: normal; text-align: left; }
   .mot { margin-top: 2px; max-width: calc(var(--fw) * 196 / 350); font-size: 13px; line-height: 18px; }   /* (clear of the line's first run, x 214) */
   html:not(.js) .mot { display: none; }   /* (no script: the doors stand where the page's own markup puts them, too close for it) */
+  /* (as the motto; it and the marks under it 2px closer than the marks stood to the sentence, so a short phone keeps
+     its one screen: 375 x 635, the browser's own window on an iPhone, and 320 x 640) */
+  .fe { margin-top: 2px; max-width: calc(var(--fw) * 196 / 350); font-size: 13px; line-height: 18px; }
+  .fe + .soc { margin-top: 2px; }
+  html:not(.js) .fe { display: none; }
+}
+/* (under 340px wide it takes three lines: a pixel less between them keeps 320 x 640 on one screen) */
+@media (max-width: 339.98px) { .fe { line-height: 17px; } }
+/* (its two names are links in a sentence, each its line's height, as links in running text are (WCAG 2.5.8's inline
+   exception): taller targets would reach into the other line; the marks' finger room under it starts at its foot) */
+@media (max-width: 999px) and (pointer: coarse) { .fe + .soc a::before { top: -2px; } }
+/* (a phone's window shorter than the home needs with it, under 630px tall, or 640 under 340px wide, where the home was
+   one screen without it from 590 to 600 up: the line gives way, as the motto does without script, and the marks stand
+   where they stood, so the road and the cities stay on the first screen; its links stay in the page) */
+@media (max-width: 999px) and (max-height: 629.98px), (max-width: 339.98px) and (max-height: 639.98px) {
+  .fe { display: none; }
+  .fe + .soc { margin-top: 6px; }
+  .fe + .soc a::before { top: -4px; }
 }
 
 @media (prefers-reduced-motion: reduce) {

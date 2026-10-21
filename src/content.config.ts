@@ -90,6 +90,18 @@ const site = defineCollection({
     started: z.number().int(),
     // mark: the home's pixel mark for the link (the home engine's art has these four); without one it is not on the home
     social: z.array(z.object({ label: z.string(), href: z.url({ protocol: /^(https?|mailto)$/ }), me: z.boolean().default(true), mark: z.enum(MARKS).optional() })),
+    // what Northeastern wrote about him: the home's line under the sentence; a profile is the structured data's sameAs,
+    // a story its subjectOf (components/Head.astro)
+    featured: z.strictObject({
+      lead: z.string().min(1),
+      pages: z.array(z.strictObject({
+        label: z.string().min(1),
+        href: z.url({ protocol: /^https$/ }),
+        kind: z.enum(['profile', 'story']),
+        title: z.string().min(1).optional(),
+        date: z.coerce.date().optional(),
+      })).min(1),
+    }).optional(),
     mottos: z.object({
       top: z.object({ text: z.string(), by: z.string().optional() }),
       bottom: z.object({ text: z.string(), by: z.string().optional() }),

@@ -33,7 +33,7 @@ how to add an entry; `npm run check` stops, naming the file and the line, at any
 | see, `/see/` | `content/see/` | one photograph a pair: `<name>.jpg` and `<name>.yaml` (its title, which also names it for a reader who cannot see it, its day, place and kind); its page is `/see/<name>/`. Give a file at least 600px wide (more is fine): the wall draws every photograph at one width, its column's, and a narrower file is drawn past its own pixels there (a 400px one at 1.26x on a phone at 3x, 1.5x on a desk at 2x) |
 | race, `/race/` | `content/race/` | one file a season, `<year>.yaml` (`2027.yaml` next year), `clubs.yaml`, `medley.yaml` |
 | the home, `/` | `content/home/` | `doors.yaml` (the five doors and their lines), `cities.yaml` (the road's cities), `img/` |
-| every page | `content/site.yaml` | the name, the sentence under it, the social links, the mottos, where he is (the footer's "Hello from") |
+| every page | `content/site.yaml` | the name, the sentence under it, the line under that (`featured`: what Northeastern wrote about him), the social links (ORCID and Wikidata among them, for search engines only), the mottos, where he is (the footer's "Hello from") |
 
 ## Race's addresses
 
@@ -167,8 +167,8 @@ cite:
   link and `#place`; every old address (see [The old addresses](#the-old-addresses)), and nothing built where
   another repository's site is served; every page's HTML (html-validate); the Content-Security-Policy (first in the
   head, and its hashes exactly the page's inline scripts'); the structured data (a Person on every page, a
-  BlogPosting on a post, an Event on a talk, and on the home alone a WebSite with its name and canonical address,
-  the name a search result shows above the site); the pictures (each in its two forms, AVIF in a `<source>` and its
+  BlogPosting on a post, an Event on a talk, and on the home alone a ProfilePage about the Person and a WebSite with
+  its name and canonical address, the name a search result shows above the site); the pictures (each in its two forms, AVIF in a `<source>` and its
   fallback in the `<img>`, with the same sizes and widest width, no file as heavy as a wider one, and on every screen
   the site is checked on the file Chrome takes at least as wide as the picture is drawn there); the feed, the
   sitemap, `robots.txt`, `CNAME` and `security.txt` (not expired); and that no draft is in the build.
