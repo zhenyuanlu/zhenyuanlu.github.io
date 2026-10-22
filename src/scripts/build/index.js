@@ -54,7 +54,7 @@ function setup() {
   on('frames', grid);
 }
 
-/* the landing on a card from a talk's way back (/build/#<slug>, the article's head): the browser has brought the card
+/* the landing on a card from a talk's way back (/build/#<slug>, beside the way home in the post's header): the browser has brought the card
    up under the header by the sheet's scroll margins, as the draft's router did (inner.js land: scrollIntoView); the
    router then gave it the focus, for a link followed (not for an address opened, reloaded or gone back to). So here
    only for the way back just followed in this tab (article.js leaves word of it). The keyboard's mark shows as in

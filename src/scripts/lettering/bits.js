@@ -12,7 +12,7 @@ import LET from './letters.json' with { type: 'json' };
 /** the name's and the titles' alphabet */
 /** @type {LetterStyle & { doors: LetterStyle[] }} */
 export const PIXEL = LET.pixel;
-/** the home's door words' own set (an article's "← blog") */
+/** the home's door words' own set (23 cells tall; a post's way back used it until 2026-10-21) */
 /** @type {LetterStyle} */
 export const DOOR_SET = LET.pixel.doors[0];
 /** the rows of a set: the height of every word in cells */

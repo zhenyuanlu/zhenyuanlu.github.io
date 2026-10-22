@@ -44,6 +44,10 @@ site:
     pages:
       - { label: PhD Network, href: "https://phd.northeastern.edu/profile/zhenyuan-lu/", kind: profile }
       - { label: College of Engineering, href: "https://coe.northeastern.edu/news/ready-for-the-high-demand-field-of-data-analytics/", kind: story, title: Ready for the High Demand Field of Data Analytics, date: 2018-10-30 }
+  # his photograph, for search engines only: the structured data's Person image (on the home, the ProfilePage's); no
+  # page shows it, as the design keeps no portrait. A .jpg in public/ at an address of its own, never renamed: the one
+  # to give Google when his knowledge panel asks for a featured image. width and height: its pixels
+  photo: { src: /assets/images/zhenyuan-lu.jpg, width: 1200, height: 1200 }
   mottos:
     top: { text: "Pain is inevitable, Suffering is a choice." }
     bottom: { text: "Difficulty means we have not understood", by: "Pierre Deligne, Mathematician" }

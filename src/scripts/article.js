@@ -8,7 +8,6 @@
 //   live figures (scripts/live.js) and animations that wait for play
 import { on, phone, reduced } from './hub.js';
 import { snap } from './lettering/index.js';
-import { zoom } from './wide.js';
 import { mountLive } from './live.js';
 import { arrowSvg } from '../lib/arrows.mjs';
 
@@ -23,7 +22,9 @@ function setup(art) {
   const body = art.querySelector('.w-body');
 
   /* ---- measures for the sheet: device px a page px (pictures never past their own pixels), the window's width,
-     how far the text's column stands from the window's left (a .a-win block reaches the window's edges) ---- */
+     how far the text's column stands from the window's left (a .a-win block reaches the window's edges), and the
+     room that leaves on the text's left, in the article's own px, less a 32px margin (a wide figure stands evenly on
+     both sides of the text: article.css --a-room) ---- */
   let wides = [];
   function measures() {
     art.style.setProperty('--a-dpr', String(window.devicePixelRatio || 1));
@@ -31,22 +32,10 @@ function setup(art) {
     const br = document.body.getBoundingClientRect(), tl = body ? body.getBoundingClientRect().left : br.left;
     art.style.setProperty('--a-vw', br.width + 'px');
     art.style.setProperty('--a-winl', (tl - br.left) + 'px');
+    const k = art.offsetWidth ? art.getBoundingClientRect().width / art.offsetWidth : 1;
+    art.style.setProperty('--a-room', Math.max(0, tl / (k || 1) - 32) + 'px');   /* (from the window's own left edge, not the body's) */
     const rr = rail ? rail.getBoundingClientRect() : null;
     wides = !body || !rr || !rr.width ? [] : [...body.children].filter((k) => k.getBoundingClientRect().right > rr.left - 8);
-    backPlace();
-  }
-  /* (the big-screen mode: the way back is a control, a box zoomed back to the window's px, wide.css .w-door, but
-     it stands in the zoomed page, whose px come out a fraction off the window's: 91.41 for the plain page's 91 at
-     100%, so its arrow, an antialiased drawing, was drawn a fraction lower than there. It is moved to the whole px
-     of the window the plain page gives it, in its own px, and its word, a pixel drawing, is put on the grid again) */
-  const backEl = art.querySelector('.a-head > .a-bk2');
-  function backPlace() {
-    if (!backEl) return;
-    backEl.style.top = '';
-    if (!(zoom && zoom.k > 1)) return;
-    const y = zoom.rawRect(backEl).top + window.scrollY * zoom.z, dy = Math.round((Math.round(y) - y) * 64) / 64;
-    if (dy) backEl.style.top = dy + 'px';
-    backEl.querySelectorAll('canvas').forEach((cv) => snap(cv));
   }
   /* (a phone: of two files near a picture's need Chrome may take the narrower, and the sheet, which knows only the
      largest, would draw it past the pixels of the one it took. There each picture is held to the width of the file
@@ -159,10 +148,11 @@ function setup(art) {
     if (fd && phone()) fd.open = false;
   });
 
-  /* ---- a talk's way back (the head's word, to its card in build's talks, /build/#<slug>): followed in this tab, it
-     leaves word of it and of how (a key, or a pointer) for build's landing (scripts/build/index.js), which gives the
-     card the focus as the draft's router did for a link followed (inner.js land) ---- */
-  const back = art.querySelector('.a-bk2[href*="#"]');
+  /* ---- a talk's way back (the header's word beside the way home, to its card in build's talks, /build/#<slug>):
+     followed in this tab, it leaves word of it and of how (a key, or a pointer) for build's landing
+     (scripts/build/index.js), which gives the card the focus as the draft's router did for a link followed (inner.js
+     land) ---- */
+  const back = document.querySelector('.ih-up[href*="#"]');
   if (back) back.addEventListener('click', (e) => {
     if (e.defaultPrevented || e.button !== 0 || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
     try {

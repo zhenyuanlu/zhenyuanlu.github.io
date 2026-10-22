@@ -130,6 +130,20 @@ html[data-stage="night"] #inner :is(.pf-host:focus-visible, .pf-host:has(:focus-
 #inner .ih-name:focus-visible::after { content: ""; position: absolute; left: 0; right: 0; bottom: 6px; height: 1px; background: var(--ink); }
 @media (hover: hover) { .ih-name:hover .ih-ar { transform: translateX(-3px); } }   /* (only where a pointer rests: the links', above) */
 .ih-name:focus-visible .ih-ar { transform: translateX(-3px); }
+/* a post's page: the way home runs on to the post's section on one line, "← zhenyuan lu / blog" (a talk's "/ build";
+   Header.astro up), the slash grey, the section a link of its own. The arrow is the way back's: it steps home with
+   either word in hand */
+.ih-way { position: absolute; left: 0; top: 17px; height: 44px; display: flex; align-items: center; gap: 7px; }
+.ih-way > .ih-name { position: relative; top: auto; }
+.ih-sl { margin-top: 2px; color: var(--grey); }   /* (grey before the lettering's canvas comes, too) */
+/* (a post's wide figures stand out past the frame on the text's left: the header's paper reaches the window's edges
+   there, so none shows beside the way home as it passes under; a shadow, so the page grows no wider) */
+.ih:has(.ih-way) { box-shadow: 0 0 0 100vmax var(--bg); clip-path: inset(0 -100vmax -16px); }   /* (open 16px below: the skip link, focused, reaches 54px, past a phone's 47) */
+.ih-up { position: relative; height: 44px; display: flex; align-items: center; gap: 6px; }
+.ih-uar { display: none; }
+#inner .ih-up:focus-visible::after { content: ""; position: absolute; left: 0; right: 0; bottom: 6px; height: 1px; background: var(--ink); }
+@media (hover: hover) { .ih-way:has(.ih-up:hover) .ih-ar { transform: translateX(-3px); } }
+.ih-way:has(.ih-up:focus-visible) .ih-ar { transform: translateX(-3px); }
 .ih-fade { display: contents; }
 #inner .skip { position: absolute; left: 0; top: 10px; padding: 0 8px; height: 44px; display: flex; align-items: center; font-size: 15px;
   background: var(--bg); color: var(--ink); transform: translateY(-200%); }
@@ -252,7 +266,8 @@ html:not(.js) .fader { display: none; }
   :root { --cw: min(calc(var(--vw, 1vw) * 100) - 40px, 520px); --gut: 16px; }
   html.in { scroll-padding-top: 60px; }
   .ih { height: 47px; }
-  .ih-name { top: 3px; }
+  .ih-name, .ih-way { top: 3px; }
+  .ih-way > .ih-name { top: auto; }
   .fader { top: 3px; }
   .fw[data-stop="day"]::before { left: -13px; }   /* the sun's target stays 44px wide (its button is 19px at every screen scale) */
   .tb { padding-top: 13px; }
@@ -272,6 +287,14 @@ html:not(.js) .fader { display: none; }
   .if .fy { display: none; }
 }
 @media (max-width: 374.98px) { .ih-name { top: -3px; } .ih { height: 41px; } .fader { top: -3px; } }
+@media (max-width: 374.98px) { .ih-way { top: -3px; } }
+/* (under 360px "← zhenyuan lu / blog" would run into the fader (at 360 its glyphs stand 30px off, its touch room 13px;
+   "/ build" 9px): the section's way back stands alone, "← blog", with an arrow of its own; home is the blog's own way
+   home) */
+@media (max-width: 359.98px) {
+  .ih-way > .ih-name, .ih-sl { display: none; }
+  .ih-uar { display: inline-flex; }
+}
 
 /* ---------- the fader in a finger's hand (a touch phone: under 1000px, no hover, a coarse pointer): ●──⌓──☾, the three
    stops on one line in three equal cells, each 48px wide to the touch and as tall as the header (47px; 41 under 375px;

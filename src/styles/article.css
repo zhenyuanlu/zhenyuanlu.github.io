@@ -4,7 +4,7 @@
    (--a-meas: never past 632px, 18px type), the ninth air, the contents' rail in the last three. The byline under its
    hairlines on all twelve (Distill's). The foot is a band of its own after the text, under a hairline across the
    frame: each part's title in columns 1-2, its content in 3-10. Widths: the measure; .a-wide nine columns; .a-full the
-   frame; .a-win the window.
+   frame's width; .a-win the window (a wide one in the text stands evenly on both sides of it: below, --a-room).
    Type (taste items 1 and 3): five sizes, far enough apart: 13 the small words (the head's lines, tags, the rail, a
    code's head, a note's number), 15 what is small in the text (captions, cards, code, tables, references, the foot's
    titles on a desk), 18 the text and a neighbour's title, 22 the headings and the dek, 42 the title (30 past 60
@@ -136,23 +136,11 @@ ol.w-ls li::before { counter-increment: w-n; content: counter(w-n) "."; }
   --a-meas: min(var(--a-text), var(--meas));
   --a-winw: var(--a-vw, calc(var(--vw, 1vw) * 100));
   --a-top: 92px; }
-/* the head: the way back where a page's word stands (40px under the header), in the door lettering, in ink, with
-   its arrow; in hand the arrow steps 3px home (the word stays ink: the accent is for words in the text). Then the
-   title, its dek and the byline between its hairlines */
+/* the head: the title where a page's word stands (40px under the header; the way back is the header's, beside the
+   way home: frame.css .ih-way), its dek and the byline between its hairlines */
 .a-head { position: relative; padding-top: 40px; }
 .a-head > :is(.w-h, .a-desc) { max-width: var(--a-meas); }
-#inner .a-bk2 { position: relative; display: inline-flex; align-items: center; gap: 11px; min-height: 44px; margin: -10px 0; color: var(--ink); }
-.a-bka { display: inline-flex; align-items: center; font-size: 22px; line-height: 1; transition: transform var(--t-press) steps(2); }
-.a-bkw { position: relative; display: block; }
-.a-bkw > :is(svg, canvas) { display: block; }
-@media (hover: hover) { #inner .a-bk2:hover { color: var(--ink); } #inner .a-bk2:hover .a-bka { transform: translateX(-3px); } }   /* (only where a pointer rests) */
-#inner .a-bk2:focus-visible { color: var(--ink); }
-#inner .a-bk2:focus-visible .a-bka { transform: translateX(-3px); }
-/* (focus: a line under the word, the fader's own mark of it, never a box) */
-#inner .a-bk2:focus-visible { outline: none; text-decoration-line: none; }
-#inner .a-bk2:focus-visible::after { content: ""; position: absolute; left: 0; right: 0; bottom: 5px; height: 1px; background: var(--ink); }
-@media (prefers-reduced-motion: reduce) { .a-bka { transition: none; } }
-.a-head .w-h { margin: 30px 0 0; }
+.a-head .w-h { margin: 0; }
 .a-desc { margin-top: 16px; font-size: 22px; line-height: 31px; color: color-mix(in srgb, var(--ink) 72%, var(--bg)); text-wrap: pretty; }
 #inner .a-head > .a-desc { margin-top: 16px; }
 /* the byline, as Distill's, between two hairlines on the frame's twelve columns: small grey labels over their values,
@@ -290,6 +278,20 @@ html:not(.js) #inner .a-meta > .a-share { display: none; }
 #inner .a-art .a-win > :is(img, video), #inner .a-art .a-win > picture > img { margin: 0 auto; }
 #inner .a-art :is(.a-wide, .a-full, .a-win) > :is(.w-cap, .a-live-k) { max-width: var(--a-meas); }
 #inner .a-art .a-win > :is(.w-cap, .a-live-k) { margin-left: var(--a-winl, calc((var(--a-winw) - var(--cw)) / 2)); }
+/* a wide figure in the text stands on the text's own axis, as the figures on the measure do (the owner, 2026-10-21:
+   "图都应该居中，特别是那种超宽的图，不要和文字左对齐"): as wide as its class asks (nine columns, the frame), but no
+   wider than the room the window leaves on the text's left lets it reach evenly on both sides (--a-room, measured by
+   scripts/article.js; without script the frame's own margin), its picture in the middle of it, its caption on the
+   text's column. A desk only: under 1000px the text is the column's width. (The cover, over the text, keeps the
+   frame's width, level with the byline's hairlines) */
+@media screen and (min-width: 1000px) {
+  #inner .a-art .w-body > :is(.a-wide, .a-full) {
+    --a-fw: min(var(--a-cls), calc(var(--a-meas) + 2 * var(--a-room, max(0px, (var(--vw, 1vw) * 100 - var(--cw)) / 2 - 32px))));
+    width: var(--a-fw); margin-left: calc((var(--a-meas) - var(--a-fw)) / 2); }
+  #inner .a-art .w-body > .a-wide { --a-cls: var(--a-wide); }
+  #inner .a-art .w-body > .a-full { --a-cls: var(--cw); }
+  #inner .a-art .w-body > :is(.a-wide, .a-full) > :is(.w-cap, .a-live-k, .a-anim-l) { margin-left: calc((var(--a-fw) - var(--a-meas)) / 2); }
+}
 .a-tfig .w-cap { margin-top: 10px; }
 /* citations: small numbered marks in the accent; the card: the surface's tone, no line round it, no shadow */
 .a-cite { font-size: 15px; white-space: nowrap; color: var(--accent); }
@@ -428,7 +430,6 @@ html:not(.js) #inner .a-meta > .a-share { display: none; }
      and 12, not the desk's 92) */
   .a-art { --a-meas: 100%; --a-top: 12px; }
   .a-head { padding-top: 13px; }
-  .a-head .w-h { margin-top: 22px; }
   #inner .a-head > .a-desc { margin-top: 12px; font-size: 20px; line-height: 28px; }
   /* the byline in two columns: the authors (beside their affiliations, when any), the day and the DOI or the
      reading time, the topics, share */
@@ -454,7 +455,6 @@ html:not(.js) #inner .a-meta > .a-share { display: none; }
   .a-eq-s { display: block; text-align: center; font-size: 17px; line-height: 28px; }
   .a-eq.a-eqn { grid-template-columns: 2em minmax(0, 1fr) 2em; }
   .a-foot { margin-top: 56px; }
-  .a-bka { font-size: 20px; }
 }
 /* a finger's targets on a phone (pointer: coarse), larger than they are drawn: a padding a margin takes back, so no
    line grows and nothing moves but a reference's letters, set further apart */
@@ -493,7 +493,7 @@ html:not(.js) #inner .a-meta > .a-share { display: none; }
   /* (!important: the light's own script sets these on the page itself) */
   :root { --bg: #fff !important; --surface: #f1f1ee !important; --ink: #000 !important; --grey: #444 !important; --line: #888 !important; --accent: #000 !important; color-scheme: light; }
   html, body { background: #fff; }
-  .ih, .ring, .if, .w-pn, .a-rail, .a-tocf, .a-share, .a-card, .a-copy, .a-hl, .a-live-k, .a-anim-l, .skip, .w-door { display: none !important; }
+  .ih, .ring, .if, .w-pn, .a-rail, .a-tocf, .a-share, .a-card, .a-copy, .a-hl, .a-live-k, .a-anim-l, .skip { display: none !important; }
   #inner { display: block; min-height: 0; }
   .ip { width: auto; margin: 0; padding: 0; }
   .a-art { display: block; }

@@ -333,8 +333,11 @@ without script, and with the 3 s fallback when the frames' script fails.
 ## Long-form: the article
 
 **The head:**
-- the way back, "← blog" in the door lettering (a talk's way back goes to build);
-- the title (one step down past 60 characters) and the dek.
+- the way back is the header's, on one line with the way home: "← zhenyuan lu / blog" (a talk's "/ build", to its
+  card), the slash grey, each word its own link, the one arrow stepping home with either in hand. Under 360px, where
+  that line would meet the fader, "← blog" stands alone (the owner's pick A, 2026-10-21; it was a second "← blog"
+  under the header, in the door lettering);
+- the title, where a page's word stands (40px under the header; one step down past 60 characters), and the dek.
 
 **The byline:** it sits between two hairlines on the frame's twelve columns, as Distill's does. Small grey labels
 (13px) stand over their values:
@@ -354,7 +357,10 @@ point. It ends with the text. On a phone it is a folded "Contents" panel.
 
 **The text:**
 - 632px at 18 / 30, three widths beyond the measure (wide, full, window);
-- figures numbered and centred, never past their own pixels;
+- figures numbered and centred on the text, never past their own pixels. A wide one (nine columns, or the frame)
+  stands evenly on both sides of the text, as wide as its class asks but no wider than the window's room on the
+  text's left allows (32px from the window's edge), its caption on the text's column (2026-10-21: "不要和文字左对齐").
+  A cover set `coverWidth: full` keeps the frame's width, level with the byline;
 - formulas in their own box, which scrolls sideways when a formula is longer (a phone first sets a long one smaller,
   never under 15px);
 - code on a surface with a 13px head (language and "copy");
@@ -499,7 +505,8 @@ Layout and structure:
 - a formal, severe academic layout (first concepts, 2026-09-28);
 - busy decoration with many elements (round 1, expressive, 2026-09-28);
 - an about page (v1k inner pages, 2026-10-05);
-- a header that competes with the page's word, or door names in the header (v1k's two inner-page reviews, 2026-10-05);
+- a header that competes with the page's word, or door names in the header (v1k's two inner-page reviews, 2026-10-05;
+  one exception since 2026-10-21, his pick A: a post's section after the way home, "← zhenyuan lu / blog");
 - mentors' names (inner pages and doors, 2026-10-05);
 - a regular photo grid (v1k's second review, 2026-10-05);
 - photo numbers and topic counts (v1k inner pages, 2026-10-05);
