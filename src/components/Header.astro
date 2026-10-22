@@ -2,13 +2,30 @@
 // The header (the draft's .ih): the way home ("← zhenyuan lu" in the pixel lettering) and the fader, nothing
 // else. It stays at the top while the page scrolls; a faint rule appears under it once the page has gone beneath
 // it (scripts/site.js). Skip to the page: out of sight until the keyboard reaches it.
+// up: a post's page, where the way home runs on to the post's own section on one line, "← zhenyuan lu / blog" (a
+// talk's, "/ build"), the section a link of its own (the owner's pick A, 2026-10-21; it was a second "← blog" under
+// the header, in the door lettering). Under 360px, where that line would meet the fader, the section's way back
+// stands alone, "← blog" (frame.css).
 import PixelWord from './PixelWord.astro';
 import Fader from './Fader.astro';
 import { url } from '../lib/site';
 import { arrowSvg } from '../lib/arrows.mjs';
+
+interface Props {
+  up?: { href: string; word: string; label: string };
+}
+const { up } = Astro.props;
 ---
 <header class="ih">
   <a class="skip" href="#ip">skip to the page</a>
-  <a class="ih-name" href={url('/')} aria-label="zhenyuan lu, home"><span class="ih-ar" aria-hidden="true" set:html={arrowSvg('l')}></span><PixelWord text="zhenyuan lu" cell={1} ui class="ih-nm" /></a>
+  {up ? (
+    <div class="ih-way">
+      <a class="ih-name" href={url('/')} aria-label="zhenyuan lu, home"><span class="ih-ar" aria-hidden="true" set:html={arrowSvg('l')}></span><PixelWord text="zhenyuan lu" cell={1} ui class="ih-nm" /></a>
+      <PixelWord text="/" cell={1} ui colour="grey" class="ih-sl" />
+      <a class="ih-up" href={up.href} aria-label={`back to ${up.label}`}><span class="ih-ar ih-uar" aria-hidden="true" set:html={arrowSvg('l')}></span><PixelWord text={up.word} cell={1} ui class="ih-nm" /></a>
+    </div>
+  ) : (
+    <a class="ih-name" href={url('/')} aria-label="zhenyuan lu, home"><span class="ih-ar" aria-hidden="true" set:html={arrowSvg('l')}></span><PixelWord text="zhenyuan lu" cell={1} ui class="ih-nm" /></a>
+  )}
   <div class="ih-fade"><Fader /></div>
 </header>

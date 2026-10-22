@@ -29,14 +29,14 @@ html[data-grid][data-wide] :is(.ih, .ip, .ring, .close, .if) { margin-left: calc
 /* ---------- 1. the controls never grow ----------
    Each stands in a box zoomed back to the window's px, so its type, its targets and its pixel drawings are what they
    are at 960: the fader (on the home, and in a page's header with it), the home's footer line, a page's header,
-   footer and door links, the page's pixel word (the title's, and an article's way back), the blog's line of tags and
+   footer and door links, the page's pixel word (the title's), the blog's line of tags and
    search, a row's and an article's tags, see's filter, build's and teach's link rows. None is inside another. */
 html[data-wide] .flow > .fader,
 html[data-wide] .flow > .foot,
 html[data-wide] #inner > .ih,
 html[data-wide] #inner > .if,
 html[data-wide] #inner > .ring,
-html[data-wide] #inner :is(.tb-h, .w-door),
+html[data-wide] #inner .tb-h,
 html[data-wide] #inner :is(.w-tools, .w-tags, .s-fl, .b-lk),
 html[data-wide] #inner :is(.t-all, .t-bl) > .k { zoom: var(--wi); }
 /* the three that are as wide as the frame take its width in the window's px (their own, now) */
@@ -91,7 +91,7 @@ html[data-wide] #inner .w-body > .w-fig:not([style*="--mw"]) > picture > img {
 html[data-wide] #inner .w-fig > .w-cap { max-width: var(--wm); }
 /* the article's own frame: article.css's lengths that must stay the window's, written again for the zoomed root (as
    the draft's write.css wrote them with var(--z, 1)), so the plain page's sheet stays article.css's own. Its measure
-   the one above wherever the eight columns are wider; the way back 40 of the window's px under the header, as a
+   the one above wherever the eight columns are wider; the title 40 of the window's px under the header, as a
    page's word; the room the contents keep under the header (92 of the window's px) and the contents at most a
    window tall; and the device px a page px for the pictures' size (--a-dpr) from the first paint, until
    scripts/article.js measures it (devicePixelRatio, which a script reads as the same on a zoomed page) */

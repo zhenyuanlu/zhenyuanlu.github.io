@@ -3,8 +3,8 @@
 // On a desk, on the frame's twelve columns: the head and the text in the first eight at a reading measure (632px at
 // 18px), the ninth air, the contents' rail in the last three, which stays in view and steps aside while a block
 // wider than the text passes under it. Under 1000px one column, the contents folded after the head.
-// The head: the way back in the door lettering (a post's to the blog, a talk's to its card in build's talks,
-// /build/#<slug>, where scripts/build/index.js lands it as the draft's router did), the title (a size down past 60
+// The head (its way back, to the blog or a talk's to its card in build's talks at /build/#<slug>, is the header's,
+// beside the way home: Header.astro up, pages/blog/[slug].astro): the title (a size down past 60
 // letters, taste item 2), its sentence, and the byline between two hairlines on the frame's twelve columns, as
 // Distill's (authors 1-2, affiliations 3-4 when any author has one, published 5-6 with its update under it, the DOI
 // or the reading time 7-8, topics 9-11, share 12; a phone: two columns). The foot, a band of its own after the text
@@ -14,7 +14,6 @@
 // scripts/article.js; the page reads without it.
 import path from 'node:path';
 import { getImage } from 'astro:assets';
-import PixelWord from './PixelWord.astro';
 import { absolute, firstLine, isoDate, longDate, topicsOf, url, type Post } from '../lib/site';
 import { postDir, postFileUrl, videoSize } from '../lib/media';
 import { sizesFor, widthsFor } from '../lib/picture.mjs';
@@ -110,7 +109,6 @@ const SHARE_SVG = 'M4 0h1v1h-1zM3 1h3v1h-3zM2 2h1v1h-1zM4 2h1v4h-1zM6 2h1v1h-1zM
 ---
 <article class="w-art a-art" aria-labelledby="w-h1">
   <header class="a-head">
-    <a class="w-door a-bk2" href={talk ? url(`/build/#${slug}`) : url('/blog/')} aria-label={talk ? 'back to build: research and talks' : 'back to the blog'}><span class="a-bka" aria-hidden="true" set:html={arrowSvg('l')}></span><span class="a-bkw"><PixelWord text={talk ? 'build' : 'blog'} set="door" cell={1} ui class="a-bkc" /></span></a>
     <h1 class={long ? 'w-h w-long' : 'w-h'} id="w-h1" tabindex="-1">{d.title}</h1>
     <p class="a-desc">{firstLine(d.description)}</p>
     <div class={hasAff || (talk && d.where) ? 'a-meta a-hasaf' : 'a-meta'}>

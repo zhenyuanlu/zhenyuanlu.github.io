@@ -4,7 +4,7 @@ import { render } from 'astro:content';
 import Base from '../../layouts/Base.astro';
 import Article from '../../components/Article.astro';
 import LiveFigure from '../../components/LiveFigure.astro';
-import { absolute, listed, posts, topicsOf, type Post } from '../../lib/site';
+import { absolute, listed, posts, topicsOf, url, type Post } from '../../lib/site';
 import '../../styles/blog.css';
 import '../../styles/article.css';
 import 'katex/dist/katex-swap.min.css';
@@ -41,6 +41,7 @@ const cardAlt = d.coverAlt || plain(d.coverCaption) || d.title;
   imageAlt={d.cover ? cardAlt : undefined}
   article={{ published: d.date, modified: d.updated, authors: d.authors, topics: topicsOf(post), words }}
   talk={d.kind === 'talk' ? { date: d.date, where: d.where } : undefined}
+  up={d.kind === 'talk' ? { href: url(`/build/#${post.id}`), word: 'build', label: 'build: research and talks' } : { href: url('/blog/'), word: 'blog', label: 'the blog' }}
 >
   <Article post={post} zl={zl} older={older} newer={newer}>
     <Content components={{ LiveFigure }} />

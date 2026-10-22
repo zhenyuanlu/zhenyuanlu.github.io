@@ -27,7 +27,7 @@ export { wordBits, bitsFromRows, figureBits, PIXEL, DOOR_SET };
 let painters = [];
 
 /* the big-screen mode (scripts/wide.js; with ?wide=off, and wherever the frame stays 960px, zoom.k is not over 1 and
-   all of this is as it was): a control's word (the header's name, a page's title, an article's way back) never grows
+   all of this is as it was): a control's word (the header's name and a post's section, a page's title) never grows
    on a big screen: it stands in a box zoomed back to the window's px (styles/wide.css), while the page round it is
    zoomed by z. Its cells are sized by the screen's own ratio (uiDpr), and it is put on the device grid in the
    window's px (snap). Every other drawing grows from its cell on the plain page (paintPixels: zoom.grow) */

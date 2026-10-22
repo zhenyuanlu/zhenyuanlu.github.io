@@ -36,15 +36,17 @@ interface Props {
   talk?: Parameters<typeof Head>[0]['talk'];
   closeLine?: boolean;
   bare?: boolean;
+  /** a post's page: its section, beside the way home in the header (Header.astro) */
+  up?: { href: string; word: string; label: string };
 }
-const { title, description, path, page, ring = null, noindex, canonical, image, imageAlt, imageWidth, imageHeight, ld, article, talk, closeLine = false, bare = false } = Astro.props;
+const { title, description, path, page, ring = null, noindex, canonical, image, imageAlt, imageWidth, imageHeight, ld, article, talk, closeLine = false, bare = false, up } = Astro.props;
 ---
 <!doctype html>
 <html lang="en" class="in" data-page={page}>
   <head><DocHead title={title} description={description} path={path} noindex={noindex} canonical={canonical} image={image} imageAlt={imageAlt} imageWidth={imageWidth} imageHeight={imageHeight} ld={ld} article={article} talk={talk} /></head>
   <body>
     <div id="inner">
-      {!bare && <Header />}
+      {!bare && <Header up={up} />}
       <main class="ip" id="ip" tabindex="-1"><slot /></main>
       {!bare && <Ring door={ring} />}
       {closeLine && <div class="close" aria-hidden="true"><i></i></div>}
