@@ -7,7 +7,8 @@
 #   approx: true where they are rough), water (the river or lake), status (raced once run; registered or planned
 #   before), results (each an event and a place, or finisher: true, or qualified: true; a note), crews (each a name,
 #   a note, club: an id in clubs.yaml, a division), medley (its leg of the series in medley.yaml: 1, 2 or 3), weather
-#   (sun, sun-cloud, cloud, overcast-wind or rain: his word for the venue's day), note.
+#   (sun, sun-cloud, cloud, overcast-wind or rain: his word for the venue's day), note, organizer (who puts the race
+#   on: a name and its web address, for search engines; none on the page).
 # 中文提示：一条就是一场比赛，按日期排；比完把 status 改成 raced，再填 results。
 
 # 2025 (the owner, 2026-10-05): Hyrox Boston, the Boston dragon boat festival and Hartford; their crews left blank on
@@ -28,6 +29,7 @@
   results: []
   crews: []
   weather: sun
+  organizer: { name: Boston Dragon Boat Festival Inc., url: "https://www.bostondragonboat.org/" }
 
 - id: hartford-2025
   date: 2025-08-16
@@ -44,6 +46,7 @@
     - { event: "?", place: 1 }
   crews: []
   weather: cloud
+  organizer: { name: Riverfront Recapture, url: "https://riverfront.org/" }
 
 - id: hyrox-boston-2025
   date: 2025-09-26
@@ -60,3 +63,4 @@
   results:
     - { finisher: true }
   weather: sun
+  organizer: { name: HYROX, url: "https://hyrox.com/" }

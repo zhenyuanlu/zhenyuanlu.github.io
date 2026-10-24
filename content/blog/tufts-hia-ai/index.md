@@ -4,6 +4,7 @@ description: This workshop will introduce you to the concepts of big data, Artif
 date: 2021-01-08
 kind: talk
 where: Tufts University, Boston, MA
+organizer: { name: Tufts University School of Medicine, url: "https://medicine.tufts.edu/" }
 cover: ./diagram.webp
 coverAlt: "A small neural network: three red input nodes, two layers of four blue nodes and one green output node, which gives p(He’s flirting) = 0.9 and p(Just saying Hi) = 0.1."
 bibliography: ./refs.bib

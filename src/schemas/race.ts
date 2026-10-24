@@ -6,7 +6,7 @@
 import { existsSync, readFileSync, readdirSync } from 'node:fs';
 import path from 'node:path';
 import { z } from 'astro/zod';
-import { ContentError, asDay, day, gather, isDay, month, readList, readOne, slugText, text, whereOf, type Entry } from './common.ts';
+import { ContentError, address, asDay, day, gather, isDay, month, readList, readOne, slugText, text, whereOf, type Entry } from './common.ts';
 import { createModel } from '../scripts/race/model.js';
 import { slug as venueSlug } from '../scripts/race/util.js';
 import { currentOf, seasonsOf } from '../scripts/race/address.js';
@@ -53,6 +53,9 @@ export const resultEntry = z
 /** a crew he raced in */
 export const crewEntry = z.strictObject({ name: text, note: text.optional(), club: slugText.optional(), division: text.optional() });
 
+/** who puts the race on: its structured data's organizer (Google's Event asks for a name and a web address) */
+export const organizerEntry = z.strictObject({ name: text, url: address.refine((s) => /^https?:\/\//.test(s), 'a web address, https://…') });
+
 /** a race */
 export const raceEntry = z
   .strictObject({
@@ -86,11 +89,13 @@ export const raceEntry = z
     /** its leg of the series in medley.yaml */
     medley: z.number({ error: 'a leg, 1, 2 or 3' }).int().min(1).max(3).optional(),
     weather: z.enum(WEATHER).optional(),
+    organizer: organizerEntry.optional(),
   })
   .refine((r) => !r.end || (isDay(r.date) && r.end > r.date), { message: 'a later day than date (and date a day)', path: ['end'] });
 export type Race = z.output<typeof raceEntry>;
 export type Result = z.output<typeof resultEntry>;
 export type Crew = z.output<typeof crewEntry>;
+export type Organizer = z.output<typeof organizerEntry>;
 
 /** a club he races with */
 export const clubEntry = z
@@ -209,6 +214,7 @@ export interface DraftRace {
   crews?: Crew[];
   medley?: number;
   weather?: string;
+  organizer?: Organizer;
 }
 export interface DraftClub {
   id: string;

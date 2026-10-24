@@ -36,7 +36,7 @@ interface Props {
     topics: string[];
     words?: number;
   };
-  talk?: { date: Date; where?: string };
+  talk?: { date: Date; where?: string; organizer?: { name: string; url: string } };
 }
 const { title, description, path, canonical: hasCanonical = true, image, imageAlt, imageWidth = 1200, imageHeight = 630, ld = [], noindex = false, article, talk } = Astro.props;
 const me = await person();
@@ -100,15 +100,19 @@ if (path === '/') {
   });
 } else graph.push(personLd);
 if (talk) {
-  // a talk's page: the talk itself, given by him, on its day and at its place
+  // a talk's page: the talk itself, given by him, on its day (it began and ended that day), at its place, for its
+  // host (no offers: nothing is sold here)
   graph.push({
     '@type': 'EducationEvent',
     '@id': `${canonical}#talk`,
     name: title,
     description: desc,
     startDate: day(talk.date),
+    endDate: day(talk.date),
+    eventStatus: 'https://schema.org/EventScheduled',
     ...(talk.where ? { location: { '@type': 'Place', name: talk.where, address: talk.where } } : {}),
     performer: { '@id': personLd['@id'], '@type': 'Person', name: me.name },
+    ...(talk.organizer ? { organizer: { '@type': 'Organization', name: talk.organizer.name, url: talk.organizer.url } } : {}),
     url: canonical,
     mainEntityOfPage: { '@type': 'WebPage', '@id': canonical },
     image: [card],

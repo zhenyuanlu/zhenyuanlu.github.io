@@ -40,7 +40,7 @@ const cardAlt = d.coverAlt || plain(d.coverCaption) || d.title;
   image={d.cover ? absolute(`/og/${post.id}.png`) : undefined}
   imageAlt={d.cover ? cardAlt : undefined}
   article={{ published: d.date, modified: d.updated, authors: d.authors, topics: topicsOf(post), words }}
-  talk={d.kind === 'talk' ? { date: d.date, where: d.where } : undefined}
+  talk={d.kind === 'talk' ? { date: d.date, where: d.where, organizer: d.organizer } : undefined}
   up={d.kind === 'talk' ? { href: url(`/build/#${post.id}`), word: 'build', label: 'build: research and talks' } : { href: url('/blog/'), word: 'blog', label: 'the blog' }}
 >
   <Article post={post} zl={zl} older={older} newer={newer}>

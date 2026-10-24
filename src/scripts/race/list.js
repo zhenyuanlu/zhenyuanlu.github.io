@@ -9,8 +9,9 @@
 // renderRaceList(races, season, { today }) -> HTML: races is content/race in the draft's shape, season '2026' (the
 // newest when not given), today a Date or 'YYYY-MM-DD' (what counts as run: the build's own day by default). Each
 // race's item carries its id, so /race/#<id> lands on it without script too (with script the engine pins it).
-// raceEvents(races, season, { today, page, person }) -> [SportsEvent]: page the season page's canonical address
-// (each race is page#<id>), person the JSON-LD node that names him ({ '@id', '@type', name }).
+// raceEvents(races, season, { today, page, person, image }) -> [SportsEvent]: page the season page's canonical address
+// (each race is page#<id>), person the JSON-LD node that names him ({ '@id', '@type', name }), image the page's card
+// (an absolute address). A race known only by its months is left out: Google takes an Event's startDate as a day.
 // footerNext(races, today) -> the footer's "next: ..." words, or null: next.js's (the footer's, every inner page's).
 import { createModel } from './model.js';
 import { esc as E } from './util.js';
@@ -55,19 +56,22 @@ var SPORT_NAME = { run: 'Running', hyrox: 'Hyrox', dragonboat: 'Dragon boat raci
 export function raceEvents(races, season, opts) {
   var o = opts || {}, M = createModel(races || {}, dateOf(o.today)), y = seasonOf(M, season), page = String(o.page || '');
   if (!y) return [];
-  return M.racesOf(y).map(function (R) {
+  return M.racesOf(y).filter(function (R) { return /^\d{4}-\d{2}-\d{2}$/.test(stamp(R)); }).map(function (R) {
     var r = R.r, dt = stamp(R), at = page + '#' + r.id, more = moreOf(M, R), crews = M.crewsOf(R);
     var ev = { '@type': 'SportsEvent', '@id': at, name: r.name, url: at, sport: SPORT_NAME[r.sport] || r.sport };
-    if (dt) ev.startDate = dt;
-    if (r.end) ev.endDate = r.end;
-    else if (/^\d{4}-\d{2}-\d{2}$/.test(dt)) ev.endDate = dt;
+    ev.startDate = dt;
+    ev.endDate = r.end || dt;
     ev.eventStatus = 'https://schema.org/EventScheduled';
     ev.eventAttendanceMode = 'https://schema.org/OfflineEventAttendanceMode';
     ev.location = { '@type': 'Place', name: r.place, address: r.place };
     if (typeof r.lat === 'number' && typeof r.lon === 'number') ev.location.geo = { '@type': 'GeoCoordinates', latitude: r.lat, longitude: r.lon };
-    /* he raced it: alone, or in a crew (a team he was an athlete of) */
-    if (o.person) ev.competitor = crews.length ? crews.map(function (c) { return { '@type': 'SportsTeam', name: c.name, athlete: o.person }; }) : o.person;
+    if (o.image) ev.image = [o.image];
+    /* he raced it: alone, or in a crew (a team he was an athlete of). schema.org's competitor, and the same as
+       performer, the word Google reads */
+    if (o.person) ev.competitor = ev.performer = crews.length ? crews.map(function (c) { return { '@type': 'SportsTeam', name: c.name, athlete: o.person }; }) : o.person;
+    if (r.organizer) ev.organizer = { '@type': 'Organization', name: r.organizer.name, url: r.organizer.url };
     if (more.length) ev.description = more.join('. ') + '.';
+    /* (no offers: nothing is sold here) */
     return ev;
   });
 }

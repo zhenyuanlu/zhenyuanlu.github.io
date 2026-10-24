@@ -4,6 +4,7 @@ description: This presentation dive into applications of AI, progressing from mo
 date: 2023-09-05
 kind: talk
 where: School of Medicine, University of Washington, Seattle
+organizer: { name: University of Washington School of Medicine, url: "https://www.uwmedicine.org/school-of-medicine" }
 cover: ./cover.webp
 coverAlt: "A diagram of semi-supervised learning: a large amount of unlabeled data trains an encoder φ by contrastive learning; fine-tuned on a few labeled data, it gives the unlabeled data pseudo labels, and the pseudo-labeled data trains the last fine-tuned model."
 coverWidth: full
