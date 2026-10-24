@@ -112,7 +112,7 @@ const cards = shelf.map((p) => ({
 /* ---------- talks: the posts with kind: talk, newest first; each its list picture, else its cover ---------- */
 const talks = (await posts())
   .filter((w) => w.data.kind === 'talk')
-  .map((w) => ({ slug: w.id, title: w.data.title, date: w.data.date, where: T.PLACE[w.id] || w.data.where || '', pic: w.data.listCover || w.data.cover, pos: w.data.listPos, cover: !!w.data.cover }))
+  .map((w) => ({ slug: w.id, title: w.data.title, date: w.data.date, where: T.PLACE[w.id] || w.data.where || '', pic: w.data.listCover || w.data.cover, pos: w.data.listPos, cover: !!w.data.cover, place: w.data.where || '', organizer: w.data.organizer }))
   .sort((a, b) => +b.date - +a.date);
 
 /* ---------- Google Scholar, where every paper is (this page shows the featured one): the title's small aside ---------- */
@@ -158,10 +158,14 @@ const ld: Record<string, unknown>[] = [
     '@id': `${absolute(`/blog/${x.slug}/`)}#talk`,
     name: x.title,
     startDate: isoDate(x.date),
-    ...(x.where ? { location: { '@type': 'Place', name: x.where, address: x.where } } : {}),
+    endDate: isoDate(x.date),
+    eventStatus: 'https://schema.org/EventScheduled',
+    // the post's own place, as the talk's page gives it (its card shows build's shorter one)
+    ...(x.place ? { location: { '@type': 'Place', name: x.place, address: x.place } } : {}),
     performer: { ...PERSON, '@type': 'Person', name: ME },
+    ...(x.organizer ? { organizer: { '@type': 'Organization', name: x.organizer.name, url: x.organizer.url } } : {}),
     url: absolute(`/blog/${x.slug}/`),
-    ...(x.cover ? { image: [absolute(`/og/${x.slug}.png`)] } : {}),
+    image: [absolute(x.cover ? `/og/${x.slug}.png` : '/social-card.png')],
     inLanguage: 'en',
   })),
 ];

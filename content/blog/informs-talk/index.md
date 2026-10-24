@@ -4,6 +4,7 @@ description: The purpose is to help students understand what kinds of data visua
 date: 2022-10-13
 kind: talk
 where: Snell Library Classroom 017, Northeastern University, Boston, MA
+organizer: { name: INFORMS Student Chapter at Northeastern University, url: "https://mie.northeastern.edu/orgs/informs-institute-for-operations-research-and-the-management-sciences/" }
 cover: ./cent3.webp
 coverAlt: "Three network graphs of countries on a dark ground, coloured dots joined by fine lines; the first and densest names the UK, France, the USA, China, Germany, Japan, Italy and Switzerland."
 links:

@@ -27,6 +27,8 @@ const blog = defineCollection({
       // a talk is listed with build's research (phase 2), not on the blog; its page lives here all the same
       kind: z.enum(['post', 'talk']).default('post'),
       where: z.string().optional(),
+      // a talk's host: its structured data's organizer (Google's Event asks for a name and a web address)
+      organizer: z.object({ name: z.string().min(1), url: z.url({ protocol: /^https?$/ }) }).optional(),
       // the cover: the list's frame, the article's head, the social card
       cover: image().optional(),
       coverAlt: z.string().default(''),

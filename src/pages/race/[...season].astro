@@ -39,7 +39,7 @@ const description = `The races of ${me.name}, ${me.suffix || 'PhD'}, in the ${se
 // what the browser's script reads (the engine's data and each season's title), and the structured data
 const data = JSON.stringify({ races, labels }).replace(/</g, '\\u003c');
 const who = { '@id': absolute('/#person'), '@type': 'Person', name: me.name };
-const ld = JSON.stringify({ '@context': 'https://schema.org', '@graph': raceEvents(races, season, { today, page: absolute(path), person: who }) }).replace(/</g, '\\u003c');
+const ld = JSON.stringify({ '@context': 'https://schema.org', '@graph': raceEvents(races, season, { today, page: absolute(path), person: who, image: absolute('/social-card.png') }) }).replace(/</g, '\\u003c');
 ---
 <Base title={labels[season]} description={description} path={path} page="race" ring="race">
   <div data-race-static>

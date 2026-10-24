@@ -443,10 +443,20 @@ for (const page of pages.values()) {
       if (!/^\d{4}-\d{2}-\d{2}/.test(String(post.datePublished))) err(`${page.address}: BlogPosting datePublished is not a date`);
       if (post.url !== page.canonical) err(`${page.address}: BlogPosting url ${post.url} is not the canonical ${page.canonical}`);
     } else {
-      ['name', 'description', 'startDate', 'location', 'performer', 'url', 'image'].filter((k) => talk[k] == null).forEach((k) => err(`${page.address}: ${talk['@type']} has no ${k}`));
-      if (!/^\d{4}-\d{2}-\d{2}/.test(String(talk.startDate))) err(`${page.address}: ${talk['@type']} startDate is not a date`);
+      ['description', 'url'].filter((k) => talk[k] == null).forEach((k) => err(`${page.address}: ${talk['@type']} has no ${k}`));
       if (talk.url !== page.canonical) err(`${page.address}: ${talk['@type']} url ${talk.url} is not the canonical ${page.canonical}`);
     }
+  }
+  // every Event (a race, a talk) with what Google's Event report asks for: a day to begin and to end on, its status,
+  // its place, who performs and a picture; who organizes, where the content names it (organizer, optional in
+  // content/), with a name and a web address; offers are left out on purpose (nothing is sold here)
+  for (const ev of graph.filter((x) => /Event$/.test(String(x['@type'])))) {
+    const at = `${page.address}: ${ev['@type']} "${ev.name}"`;
+    ['name', 'startDate', 'endDate', 'eventStatus', 'location', 'performer', 'image'].filter((k) => ev[k] == null || (Array.isArray(ev[k]) && !ev[k].length)).forEach((k) => err(`${at} has no ${k}`));
+    const isDay = (s) => /^\d{4}-\d{2}-\d{2}$/.test(String(s));
+    if (ev.startDate != null && !isDay(ev.startDate)) err(`${at}: startDate ${ev.startDate} is not a day (YYYY-MM-DD)`);
+    if (ev.endDate != null && (!isDay(ev.endDate) || (isDay(ev.startDate) && ev.endDate < ev.startDate))) err(`${at}: endDate ${ev.endDate} is not a day on or after startDate`);
+    if (ev.organizer && (!ev.organizer.name || !/^https?:\/\//.test(String(ev.organizer.url)))) err(`${at}: organizer needs a name and a web address`);
   }
   // the home, and it alone, is the WebSite, with the name a search result shows above it (Google reads it there only)
   const site = graph.find((x) => x['@type'] === 'WebSite');

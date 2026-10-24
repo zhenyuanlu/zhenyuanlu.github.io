@@ -81,6 +81,7 @@ race in the printed list.
    | `cite` | "Cite this post", when it is not to be made from the title and the date (see [Cite](#cite)) | `cite: { text: "Lu, Z. (2026)…", bibtex: "@misc{…}" }` |
    | `kind` | `talk` for a talk: build lists it, not the blog; its page is here all the same, and its way back leads to its card on build | `kind: talk` |
    | `where` | a talk's place, in its byline | `where: Snell Library, Boston, MA` |
+   | `organizer` | a talk's host, for search engines only (its Event's organizer; no page shows it) | `organizer: { name: Tufts University School of Medicine, url: "https://medicine.tufts.edu/" }` |
    | `toc` | the contents, from the `##` and `###` headings (on by default) | `toc: false` |
    | `hidden` | off the blog's list and the feed; its address still works | `hidden: true` |
    | `draft` | while true, only `npm run dev` and the preview copy show it | `draft: true` |
@@ -167,7 +168,9 @@ cite:
   link and `#place`; every old address (see [The old addresses](#the-old-addresses)), and nothing built where
   another repository's site is served; every page's HTML (html-validate); the Content-Security-Policy (first in the
   head, and its hashes exactly the page's inline scripts'); the structured data (a Person on every page, his
-  photograph a file of the site with the pixels its data says, a BlogPosting on a post, an Event on a talk, and on
+  photograph a file of the site with the pixels its data says, a BlogPosting on a post, an Event on a talk, every
+  Event (a race, a talk) with a day to begin and to end on, its status, place, performer and picture (and an
+  organizer, where the content names one, with a name and a web address), and on
   the home alone a ProfilePage about the Person and a WebSite with its name and canonical address, the name a search
   result shows above the site); the pictures (each in its two forms, AVIF in a `<source>` and its
   fallback in the `<img>`, with the same sizes and widest width, no file as heavy as a wider one, and on every screen
